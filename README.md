@@ -11,7 +11,7 @@ install.packages("devtools")
 library(devtools)
 
 # Install and load EDIutils
-install_github("EDIorg/EDI-utilities/EDIutils")
+install_github("EDIorg/EDIutils")
 library(EDIutils)
 ```
 
