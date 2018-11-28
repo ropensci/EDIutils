@@ -17,7 +17,7 @@ library(EDIutils)
 
 ## Contributing
 
-We welcome contributions of all forms including code, bug reports, and requests for development. Please reference our [code conduct](https://github.com/EDIorg/EDI-utilities/blob/master/EDIutils/CODE_OF_CONDUCT.md) and [contributing guidelines](https://github.com/EDIorg/EDI-utilities/blob/master/EDIutils/CONTRIBUTING.md) for submitting pull requrests.
+We welcome contributions of all forms including code, bug reports, and requests for development. Please reference our [code conduct](https://github.com/EDIorg/EDIutils/blob/master/CODE_OF_CONDUCT.md) and [contributing guidelines](https://github.com/EDIorg/EDIutils/blob/master/CONTRIBUTING.md) for submitting pull requrests.
 
 ## Versioning
 
