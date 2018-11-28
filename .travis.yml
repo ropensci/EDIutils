@@ -1,0 +1,16 @@
+language: r
+cache: packages
+r_packages:
+  - stringr
+  - lubridate
+  - covr
+  - EML
+  - httr
+  - stringi
+  - reader
+  - readr
+  - xml2
+  - XML
+warnings_are_errors: false
+after_success:
+  - Rscript -e 'library(covr); codecov()'
