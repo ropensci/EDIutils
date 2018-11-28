@@ -1,3 +1,6 @@
+[![Travis-CI Build Status](https://travis-ci.com/EDIorg/EDIutils.svg?branch=master)](https://travis-ci.org/EDIorg/EDIutils)
+[![codecov.io](https://codecov.io/github/EDIorg/EDIutils/coverage.svg?branch=master)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
+
 # EDIutils
 `EDIutils` an R package for interacting with the EDI Data Repository API and providing helper functions to other EDI R packages like `EMLassemblyline`, `ecocomDP`, and `taxonomyCleanr`.
 
