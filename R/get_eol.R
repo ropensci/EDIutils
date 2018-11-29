@@ -24,19 +24,7 @@ get_eol <- function(path, file.name, os){
 
   # Check arguments -----------------------------------------------------
 
-  if (missing(path)){
-    stop('Input argument "path" is missing! Specify the path to the directory containing the target file.')
-  }
-  if (missing(file.name)){
-    stop('Input argument "file.name" is missing! Specify the names of the target file.')
-  }
-  if (missing(os)){
-    stop('Input argument "os" is missing! Specify your operating system.')
-  }
-
-  # Validate path
-
-  validate_path(path)
+  validate_arguments(x = as.list(environment()))
 
   # Validate file.name
 

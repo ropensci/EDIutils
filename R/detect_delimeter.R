@@ -33,19 +33,7 @@ detect_delimeter <- function(path, data.files, os){
   
   # Check arguments -----------------------------------------------------
   
-  if (missing(path)){
-    stop('Input argument "path" is missing! Specify the path to your dataset working directory.')
-  }
-  if (missing(data.files)){
-    stop('Input argument "data.files" is missing! Specify the names of all the data files in your dataset.')
-  }
-  if (missing(os)){
-    stop('Input argument "os" is missing! Specify your operating system.')
-  }
-  
-  # Validate path
-  
-  validate_path(path)
+  validate_arguments(x = as.list(environment()))
   
   # Validate data.files
   
