@@ -1,0 +1,7 @@
+﻿This dataset compiles long term chloride concentration data from 529 freshwater lakes and reservoirs in Europe and North America. All lakes in the dataset had greater than or equal to ten years of data. For each lake the following landscape and climate metrics were calculated: mean annual precipitation, mean monthly air temperatures, road density and impervious surface in 100 to 1500 m buffer zones, sea salt deposition. The dataset includes three files: 1) Descriptive data of lake sites 
+
+
+(physical lake metrics, climate, land-cover characteristics), 2) Chloride time-series, and 3) GIS shapefiles.
+
+
+
