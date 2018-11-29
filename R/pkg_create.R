@@ -37,73 +37,12 @@
 pkg_create <- function(path, package.id, environment, user.id, user.pass,
                        affiliation){
 
-  # Validate arguments --------------------------------------------------------
-
-  if (missing(path)){
-    stop('Input argument "path" is missing!')
-  }
-  if (missing(package.id)){
-    stop('Input argument "package.id" is missing!')
-  }
-  if (missing(environment)){
-    stop('Input argument "environment" is missing!')
-  }
-  if (missing(user.id)){
-    stop('Input argument "user.id" is missing!')
-  }
-  if (missing(user.pass)){
-    stop('Input argument "user.pass" is missing!')
-  }
-  if (missing(affiliation)){
-    stop('Input argument "affiliation" is missing!')
-  }
-  if (!isTRUE(stringr::str_detect(package.id,
-                                  '[:alpha:]\\.[:digit:]+\\.[:digit:]'))){
-    stop(paste0('Input argument "package.id" appears to be malformed.',
-                'A package ID must consist of a scope, identifier, ',
-                'and revision (e.g. "edi.100.4").'))
-  }
-
-  validate_path(path)
-
-  affiliation <- tolower(affiliation)
-  if ((affiliation != 'lter') & (affiliation != 'edi')){
-    stop('The input argument "affiliation" must be "lter" or "edi".')
-  }
-
-  environment <- tolower(environment)
-  if ((environment != 'development') & (environment != 'staging') &
-      (environment != 'production')){
-    stop(paste0('The input argument "environment" must be "development", ',
-                '"staging", or "production".'))
-  }
-
-  # Parameterize --------------------------------------------------------------
-
-  # Build URLS
-  if (environment == 'development'){
-    url_env <- 'https://pasta-d'
-  } else if (environment == 'staging'){
-    url_env <- 'https://pasta-s'
-  } else if (environment == 'production'){
-    url_env <- 'https://pasta'
-  }
-
-  # Build authentication key
-  if (affiliation == 'lter'){
-    key <- paste0('uid=', user.id, ',o=LTER',
-                  ',dc=ecoinformatics,dc=org')
-  } else if (affiliation == 'edi'){
-    key <- paste0('uid=', user.id, ',o=EDI',
-                  ',dc=edirepository,dc=org')
-  }
-
-  # Create package ------------------------------------------------------------
+  validate_arguments(x = as.list(environment()))
 
   # Place request
   r <- httr::POST(
-    url = paste0(url_env, '.lternet.edu/package/eml'),
-    config = authenticate(key, user.pass),
+    url = paste0(url_env(environment), '.lternet.edu/package/eml'),
+    config = authenticate(auth_key(user.id, affiliation), user.pass),
     body = upload_file(paste0(path, '/', package.id, '.xml'))
   )
 
@@ -113,9 +52,9 @@ pkg_create <- function(path, package.id, environment, user.id, user.pass,
     while (TRUE){
       Sys.sleep(2)
       r <- httr::GET(
-        url = paste0(url_env, '.lternet.edu/package/error/eml/',
+        url = paste0(url_env(environment), '.lternet.edu/package/error/eml/',
                      transaction_id),
-        config = authenticate(key, '10qp29wo')
+        config = authenticate(auth_key(user.id, affiliation), user.pass)
       )
       if (r$status_code == '200'){
         r_content <- content(r, type = 'text', encoding = 'UTF-8')
@@ -123,13 +62,13 @@ pkg_create <- function(path, package.id, environment, user.id, user.pass,
         break
       }
       r <- httr::GET(
-        url = paste0(url_env, '.lternet.edu/package/eml/',
+        url = paste0(url_env(environment), '.lternet.edu/package/eml/',
                      stringr::str_replace_all(package.id, '\\.', '/')),
-        config = authenticate(key, '10qp29wo')
+        config = authenticate(auth_key(user.id, affiliation), user.pass)
       )
       if (r$status_code == '200'){
         eval_report <- readr::read_file(
-          paste0(url_env, '.lternet.edu/package/report/eml/',
+          paste0(url_env(environment), '.lternet.edu/package/report/eml/',
                  stringr::str_replace_all(package.id, '\\.', '/'))
         )
         check_status <- unlist(
@@ -145,7 +84,7 @@ pkg_create <- function(path, package.id, environment, user.id, user.pass,
           'UPLOAD RESULTS\n',
           'Package Id: ', package.id, '\n',
           'Was Uploaded: Yes\n',
-          'Report: ', paste0(url_env,
+          'Report: ', paste0(url_env(environment),
                              '.lternet.edu/package/evaluate/report/eml/',
                              stringr::str_replace_all(package.id, '\\.', '/')),
           '\n',

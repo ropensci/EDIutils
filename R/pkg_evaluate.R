@@ -36,36 +36,12 @@
 pkg_evaluate <- function(path, package.id, environment, user.id, user.pass,
                          affiliation){
 
-  validate_arguments(x = as.list(sys.call()))
-
-  # Parameterize --------------------------------------------------------------
-
-  # Build URLS
-  environment <- tolower(environment)
-  if (environment == 'development'){
-    url_env <- 'https://pasta-d'
-  } else if (environment == 'staging'){
-    url_env <- 'https://pasta-s'
-  } else if (environment == 'production'){
-    url_env <- 'https://pasta'
-  }
-
-  # Build authentication key
-  affiliation <- tolower(affiliation)
-  if (affiliation == 'lter'){
-    key <- paste0('uid=', user.id, ',o=LTER',
-                  ',dc=ecoinformatics,dc=org')
-  } else if (affiliation == 'edi'){
-    key <- paste0('uid=', user.id, ',o=EDI',
-                  ',dc=edirepository,dc=org')
-  }
-
-  # Evaluate package ----------------------------------------------------------
+  validate_arguments(x = as.list(environment()))
 
   # Place request
   r <- httr::POST(
-    url = paste0(url_env, '.lternet.edu/package/evaluate/eml'),
-    config = authenticate(key, user.pass),
+    url = paste0(url_env(environment), '.lternet.edu/package/evaluate/eml'),
+    config = authenticate(auth_key(user.id, affiliation), user.pass),
     body = upload_file(paste0(path, '/', package.id, '.xml'))
   )
 
@@ -75,9 +51,9 @@ pkg_evaluate <- function(path, package.id, environment, user.id, user.pass,
     while (TRUE){
       Sys.sleep(2)
       r <- httr::GET(
-        url = paste0(url_env, '.lternet.edu/package/evaluate/report/eml/',
+        url = paste0(url_env(environment), '.lternet.edu/package/evaluate/report/eml/',
                      transaction_id),
-        config = authenticate(key, '10qp29wo')
+        config = authenticate(auth_key(user.id, affiliation), user.pass)
       )
       if (r$status_code == '200'){
         r_content <- content(r, type = 'text', encoding = 'UTF-8')
@@ -94,7 +70,7 @@ pkg_evaluate <- function(path, package.id, environment, user.id, user.pass,
           'EVALUATE RESULTS\n',
           'Package Id: ', package.id, '\n',
           'Was Evaluated: Yes\n',
-          'Report: ', paste0(url_env,
+          'Report: ', paste0(url_env(environment),
                              '.lternet.edu/package/evaluate/report/eml/',
                              transaction_id), '\n',
           'Creation Date:', check_datetime, '\n',
@@ -111,5 +87,73 @@ pkg_evaluate <- function(path, package.id, environment, user.id, user.pass,
   } else {
     stop('Error evaluating package.')
   }
+
+}
+
+
+
+
+
+#' Make URL for PASTA+ environment
+#'
+#' @description
+#'     Create the URL suffix to the PASTA+ environment specified by the
+#'     environment argument.
+#'
+#' @usage url_env(environment)
+#'
+#' @param environment
+#'     (character) Data repository environment to perform the evaluation in.
+#'     Can be: 'development', 'staging', 'production'.
+#'
+#' @export
+#'
+
+url_env <- function(environment){
+  
+  environment <- tolower(environment)
+  if (environment == 'development'){
+    url_env <- 'https://pasta-d'
+  } else if (environment == 'staging'){
+    url_env <- 'https://pasta-s'
+  } else if (environment == 'production'){
+    url_env <- 'https://pasta'
+  }
+  
+  url_env
+  
+}
+
+
+
+
+#' Make authentication key
+#'
+#' @description
+#'     Create user authentication key for PASTA+ operations.
+#'
+#' @usage auth_key(user.id, affiliation)
+#'
+#' @param user.id
+#'     (character) Identification of user performing the evaluation.
+#' @param affiliation
+#'     (character) Affiliation corresponding with the user.id argument supplied
+#'     above. Can be: 'LTER' or 'EDI'.
+#'
+#' @export
+#'
+
+auth_key <- function(user.id, affiliation){
+  
+  affiliation <- tolower(affiliation)
+  if (affiliation == 'lter'){
+    key <- paste0('uid=', user.id, ',o=LTER',
+                  ',dc=ecoinformatics,dc=org')
+  } else if (affiliation == 'edi'){
+    key <- paste0('uid=', user.id, ',o=EDI',
+                  ',dc=edirepository,dc=org')
+  }
+  
+  key
 
 }
