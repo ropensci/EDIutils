@@ -25,17 +25,6 @@ validate_fields <- function(path, data.files){
   
   # Check arguments and parameterize ------------------------------------------
   
-  if (missing(path)){
-    stop('Input argument "path" is missing! Specify the path to your dataset working directory.')
-  }
-  if (missing(data.files)){
-    stop('Input argument "data.files" is missing! Specify the names of all the data files in your dataset.')
-  }
-  
-  # Validate path
-  
-  validate_path(path)
-  
   # Validate data.files
   
   data_files <- validate_file_names(path, data.files)
