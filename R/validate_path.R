@@ -4,7 +4,7 @@
 #'     Use \code{dir.exists} to determine whether the input path is valid and 
 #'     returns an error message if not.
 #'
-#' @usage validate_path(path = "")
+#' @usage validate_path(path)
 #' 
 #' @param path 
 #'     A character string specifying a path to the dataset working directory.
@@ -16,12 +16,6 @@
 #'
 
 validate_path <- function(path){
-  
-  # Check arguments -----------------------------------------------------------
-  
-  if (missing(path)){
-    stop('Input argument "path" is missing! Specify the path to your dataset working directory.')
-  }
   
   # Validate path -------------------------------------------------------------
   

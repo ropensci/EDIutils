@@ -4,7 +4,7 @@
 \alias{validate_path}
 \title{Validate path}
 \usage{
-validate_path(path = "")
+validate_path(path)
 }
 \arguments{
 \item{path}{A character string specifying a path to the dataset working directory.}

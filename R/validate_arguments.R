@@ -30,6 +30,15 @@ validate_arguments <- function(x){
     }
   }
 
+  # Validate os
+  if ('os' %in% names(x)){
+    if (isTRUE((tolower(x[['os']]) != "win") & 
+               (tolower(x[['os']]) != "mac") &
+               (tolower(x[['os']]) != "lin"))){
+      stop('The value of input argument "os" is invalid.')
+    }
+  }
+  
   # package.id
   if ('package.id' %in% names(x)){
     if (!isTRUE(stringr::str_detect(x[['package.id']],

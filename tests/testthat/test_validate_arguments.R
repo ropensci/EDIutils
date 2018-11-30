@@ -37,6 +37,26 @@ testthat::test_that('Valid arguments do not result in error', {
     NULL
   )
 
+  # os
+  expect_equal(
+    validate_arguments(
+      list(os = 'mac')
+    ),
+    NULL
+  )
+  expect_equal(
+    validate_arguments(
+      list(os = 'win')
+    ),
+    NULL
+  )
+  expect_equal(
+    validate_arguments(
+      list(os = 'lin')
+    ),
+    NULL
+  )
+  
   # package.id
   expect_equal(
     validate_arguments(
@@ -70,6 +90,13 @@ testthat::test_that('Malformed arguments result in errors', {
     )
   )
 
+  # os
+  expect_error(
+    validate_arguments(
+      list(os = 'macwin')
+    )
+  )
+  
   # package.id
   expect_error(
     validate_arguments(
@@ -84,3 +111,13 @@ testthat::test_that('Malformed arguments result in errors', {
 
 })
 
+
+
+
+testthat::test_that('Test validate_path.R', {
+  
+  expect_error(
+    validate_path('somepath')
+  )
+  
+})

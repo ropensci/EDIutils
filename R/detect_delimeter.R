@@ -39,12 +39,6 @@ detect_delimeter <- function(path, data.files, os){
   
   data_files <- validate_file_names(path, data.files)
   
-  # Validate os
-  
-  if (isTRUE((os != "win") & (os != "mac"))){
-    stop('The value of input argument "os" is invalid.')
-  }
-  
   # Detect field delimiters ---------------------------------------------------
   
   delim_guess <- c()
@@ -77,58 +71,6 @@ detect_delimeter <- function(path, data.files, os){
                                              "|"))
     }
     
-    # Secondary check on delimeter detection with manual override
-    
-    detect_delimeter_2 <- function(data.file, delim.guess){
-      file_ext <- substr(data.file, 
-                         nchar(data.file)-3,
-                         nchar(data.file))
-      if (is.null(delim.guess)){
-        message(paste("I'm having trouble identifying the field delimeter of ", data.file,
-                      ". Enter the field delimeter of this file.",
-                      ' Valid options are:  ,  \\t  ;  |', sep = ""))
-        answer <- readline('ENTER here: ')
-        if (answer == "\\t"){
-          answer <- "\t"
-        }
-      } else if ((delim.guess == ",") & (file_ext == ".txt")){
-        message(paste("I'm having trouble identifying the field delimeter of ", data.file,
-                      ". Enter the field delimeter of this file.",
-                      ' Valid options are:  ,  \\t  ;  |', sep = ""))
-        answer <- readline('ENTER here: ')
-        if (answer == "\\t"){
-          answer <- "\t"
-        }
-      } else if ((delim.guess == "\t") & (file_ext == ".csv")){
-        message(paste("I'm having trouble identifying the field delimeter of ", data.file,
-                      ". Enter the field delimeter of this file.",
-                      ' Valid options are:  ,  \\t  ;  |', sep = ""))
-        answer <- readline('ENTER here: ')
-        if (answer == "\\t"){
-          answer <- "\t"
-        }
-      } else if ((delim.guess == "|") & (file_ext == ".csv")){
-        message(paste("I'm having trouble identifying the field delimeter of ", data.file,
-                      ". Enter the field delimeter of this file.",
-                      ' Valid options are:  ,  \\t  ;  |', sep = ""))
-        answer <- readline('ENTER here: ')
-        if (answer == "\\t"){
-          answer <- "\t"
-        }
-      } else if ((delim.guess == ";") & (file_ext == ".csv")){
-        message(paste("I'm having trouble identifying the field delimeter of ", data.file,
-                      ". Enter the field delimeter of this file.",
-                      ' Valid options are:  ,  \\t  ;  |', sep = ""))
-        answer <- readline('ENTER here: ')
-        if (answer == "\\t"){
-          answer <- "\t"
-        }
-      } else {
-        answer <- delim.guess
-      }
-      answer
-    }
-    
     delim_guess[i] <- detect_delimeter_2(data.file = data_files[i],
                                          delim.guess = delim_guess[i])
     
@@ -136,4 +78,48 @@ detect_delimeter <- function(path, data.files, os){
   
   delim_guess
   
+}
+
+
+
+
+#' Detect field delimiter 2
+#'
+#' @description  
+#'     Secondary check on delimeter detection with manual override
+#'
+#' @usage detect_delimeter_2(data.file, delim.guess)
+#' 
+#' @param data.file
+#'     (character) Data file name.
+#' @param delim.guess
+#'     (character) Delimiter guessed from `detect_delimeter`.
+#' 
+#' @return 
+#'     If ambiguity exists, a manual overide option is presented.
+#'
+#' @export
+#'
+
+detect_delimeter_2 <- function(data.file, delim.guess){
+  file_ext <- substr(data.file, 
+                     nchar(data.file)-3,
+                     nchar(data.file))
+  if (is.null(delim.guess) |
+      ((delim.guess == ",") & (file_ext == ".txt")) |
+      ((delim.guess == "\t") & (file_ext == ".csv")) |
+      ((delim.guess == "|") & (file_ext == ".csv")) |
+      ((delim.guess == ";") & (file_ext == ".csv"))){
+    message(
+      paste("I'm having trouble identifying the field delimeter of ", 
+            data.file, ". Enter the field delimeter of this file.",
+            ' Valid options are:  ,  \\t  ;  |', sep = ""))
+    answer <- readline('ENTER here: ')
+    if (answer == "\\t"){
+      answer <- "\t"
+    }
+  } else {
+    answer <- delim.guess
+  }
+  answer
 }

@@ -2,6 +2,7 @@
 
 export(auth_key)
 export(detect_delimeter)
+export(detect_delimeter_2)
 export(detect_os)
 export(get_eml_attribute)
 export(get_eol)

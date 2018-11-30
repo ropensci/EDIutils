@@ -30,12 +30,6 @@ get_eol <- function(path, file.name, os){
 
   file_name <- validate_file_names(path, file.name)
 
-  # Validate os
-
-  if (isTRUE((os != "win") & (os != "mac") & (os != "lin"))){
-    stop('The value of input argument "os" is invalid.')
-  }
-
   # Detect end of line character ----------------------------------------------
 
   if (os == 'mac'){ # Macintosh OS
