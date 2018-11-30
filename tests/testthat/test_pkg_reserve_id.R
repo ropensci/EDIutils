@@ -14,3 +14,15 @@ testthat::test_that('Invalid request results in error', {
   )
   
 })
+
+
+testthat::test_that('Test polling loop', {
+  
+  expect_error(
+    poll_pkg_reserve_id(list(status_code = 401))
+  )
+  expect_error(
+    poll_pkg_reserve_id(list(status_code = 400))
+  )
+  
+})
