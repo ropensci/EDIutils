@@ -52,7 +52,7 @@ get_eol <- function(path, file.name, os){
       intern = T
     )
 
-    use_i <- str_detect(
+    use_i <- stringr::str_detect(
       output,
       '\\\\r  \\\\n'
     )
@@ -60,7 +60,7 @@ get_eol <- function(path, file.name, os){
     if (sum(use_i) > 0){
       eol <- '\\r\\n'
     } else {
-      use_i <- str_detect(
+      use_i <- stringr::str_detect(
         output,
         '\\\\n'
       )
@@ -95,7 +95,7 @@ get_eol <- function(path, file.name, os){
 
 parse_delim <- function(x){
 
-  use_i <- str_detect(
+  use_i <- stringr::str_detect(
     x,
     '\\r\\n'
   )
@@ -103,7 +103,7 @@ parse_delim <- function(x){
   if (sum(use_i) > 0){
     eol <- '\\r\\n'
   } else {
-    use_i <- str_detect(
+    use_i <- stringr::str_detect(
       x,
       '\\n'
     )

@@ -4,18 +4,18 @@
 #'     Detect field delimiter of input files and return character string 
 #'     representation.
 #'
-#' @usage detect_delimeter(path = "", data.files = c("data.file.1", 
-#'     "data.file.2", "etc.") , os = "")
+#' @usage detect_delimeter(path, data.files, os)
 #' 
 #' @param path 
-#'     A character string specifying a path to the dataset working directory
-#'     containing the data files from which to detect the field delimeters.
+#'     (character) A character string specifying a path to the dataset working 
+#'     directory containing the data files from which to detect the field 
+#'     delimeters.
 #' @param data.files
-#'     A list of character strings specifying the names of the data files
-#'     from which to detect the field delimeters of. 
+#'     (character) A list of character strings specifying the names of the 
+#'     data files from which to detect the field delimeters of. 
 #' @param os
-#'     A character string specifying the operating system in which this 
-#'     function is to be called. Valid options are generated from 
+#'     (character) A character string specifying the operating system in which 
+#'     this function is to be called. Valid options are generated from 
 #'     \code{detect_os}.
 #' 
 #' @return 
@@ -61,7 +61,7 @@ detect_delimeter <- function(path, data.files, os){
     
     if (os == "mac"){
       
-      delim_guess[i] <- suppressWarnings(get.delim(data_path[i],
+      delim_guess[i] <- suppressWarnings(reader::get.delim(data_path[i],
                                                    n = 2,
                                                    delims = c("\t",
                                                               ",",
@@ -69,7 +69,7 @@ detect_delimeter <- function(path, data.files, os){
                                                               "|")))
     } else if (os == "win"){
       
-      delim_guess[i] <- get.delim(data_path[i],
+      delim_guess[i] <- reader::get.delim(data_path[i],
                                   n = 1,
                                   delims = c("\t",
                                              ",",

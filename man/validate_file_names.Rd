@@ -4,14 +4,14 @@
 \alias{validate_file_names}
 \title{Validate file names}
 \usage{
-validate_file_names(path = "", data.files = data.files = c("data.file.1", 
-    "data.file.2", "etc.")).
+validate_file_names(path, data.files)
 }
 \arguments{
-\item{path}{A character string specifying a path to the dataset working directory.}
+\item{path}{(character) A character string specifying a path to the dataset working 
+directory.}
 
-\item{data.files}{A list of character strings specifying the names of the data files
-of your dataset. It is not necessary to include the file extension.}
+\item{data.files}{A list of character strings specifying the names of the data files of 
+your dataset. It is not necessary to include the file extension.}
 }
 \value{
 A warning message if the data files don't exist at path, and which of

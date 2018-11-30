@@ -41,22 +41,22 @@ pkg_evaluate <- function(path, package.id, environment, user.id, user.pass,
   # Place request
   r <- httr::POST(
     url = paste0(url_env(environment), '.lternet.edu/package/evaluate/eml'),
-    config = authenticate(auth_key(user.id, affiliation), user.pass),
-    body = upload_file(paste0(path, '/', package.id, '.xml'))
+    config = httr::authenticate(auth_key(user.id, affiliation), user.pass),
+    body = httr::upload_file(paste0(path, '/', package.id, '.xml'))
   )
 
   # Enter polling loop
   if (r$status_code == '202'){
-    transaction_id <- content(r, as = 'text', encoding = 'UTF-8')
+    transaction_id <- httr::content(r, as = 'text', encoding = 'UTF-8')
     while (TRUE){
       Sys.sleep(2)
       r <- httr::GET(
         url = paste0(url_env(environment), '.lternet.edu/package/evaluate/report/eml/',
                      transaction_id),
-        config = authenticate(auth_key(user.id, affiliation), user.pass)
+        config = httr::authenticate(auth_key(user.id, affiliation), user.pass)
       )
       if (r$status_code == '200'){
-        r_content <- content(r, type = 'text', encoding = 'UTF-8')
+        r_content <- httr::content(r, type = 'text', encoding = 'UTF-8')
         check_status <- unlist(
           stringr::str_extract_all(r_content, '[:alpha:]+(?=</status>)'))
         check_datetime <- unlist(

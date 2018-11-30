@@ -34,7 +34,7 @@ get_eml_attribute <- function(attr.name, package.id){
   scope <- unlist(stringr::str_split(package.id, '\\.'))[1]
   identifier <- unlist(stringr::str_split(package.id, '\\.'))[2]
   revision <- unlist(stringr::str_split(package.id, '\\.'))[3]
-  metadata <- xmlParse(paste("http://pasta.lternet.edu/package/metadata/eml",
+  metadata <- XML::xmlParse(paste("http://pasta.lternet.edu/package/metadata/eml",
                              "/",
                              scope,
                              "/",
@@ -43,31 +43,31 @@ get_eml_attribute <- function(attr.name, package.id){
                              revision,
                              sep = ""))
   entity_names <- unlist(
-    xmlApply(metadata["//dataset/dataTable/entityName"],
-             xmlValue)
+    XML::xmlApply(metadata["//dataset/dataTable/entityName"],
+             XML::xmlValue)
   )
 
   for (i in 1:length(entity_names)){
     definition <- unlist(
-      try(xmlApply(
+      try(XML::xmlApply(
         metadata[
           paste0("//dataTable[./entityName = '",
                  entity_names[i],
                  "']//attribute[./attributeName = '",
                  attr.name,
                  "']//attributeDefinition")],
-        xmlValue
+        XML::xmlValue
       ), silent = TRUE)
     )
     unit <- unlist(
-      try(xmlApply(
+      try(XML::xmlApply(
         metadata[
           paste0("//dataTable[./entityName = '",
                  entity_names[i],
                  "']//attribute[./attributeName = '",
                  attr.name,
                  "']//standardUnit")],
-        xmlValue
+        XML::xmlValue
       ), silent = TRUE)
     )
     if (!is.character(definition)){

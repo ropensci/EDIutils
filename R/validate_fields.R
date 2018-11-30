@@ -5,13 +5,15 @@
 #'     of a data table.
 #'
 #' @usage 
-#'     validate_fields(path = "", data.files = c("data.file.1", "data.file.2", "etc."))
+#'     validate_fields(path, data.files)
 #'
 #' @param path 
-#'     A character string specifying a path to the dataset working directory.
+#'     (character) A character string specifying a path to the dataset working 
+#'     directory.
 #' @param data.files
-#'     A list of character strings specifying the names of the data files
-#'     of your dataset. It is not necessary to include the file extension.
+#'     (character) A list of character strings specifying the names of the 
+#'     data files of your dataset. It is not necessary to include the file 
+#'     extension.
 #'
 #' @return 
 #'     If incongruence is found an error is returned.
@@ -79,11 +81,11 @@ validate_fields <- function(path, data.files){
     # with quote character producing the fewest unique field delimiters.
     
     
-    count_quote <- count.fields(file = data_path[i],
+    count_quote <- utils::count.fields(file = data_path[i],
                                 sep = delim_guess[i],
                                 quote = "\"")
     
-    count_appos <- count.fields(file = data_path[i],
+    count_appos <- utils::count.fields(file = data_path[i],
                                 sep = delim_guess[i],
                                 quote = "\'")
 

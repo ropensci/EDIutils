@@ -4,7 +4,7 @@
 #'     Reserve a package identifier in the Environmental Data Initiative
 #'     repository.
 #'
-#' @usage pkg_reserve_id(environment, user.id, user.pass, affiliation)
+#' @usage pkg_reserve_id(scope, environment, user.id, user.pass, affiliation)
 #'
 #' @param scope
 #'     (character) Scope of identifier to be reserved (e.g. edi, knb-lter-ntl).
@@ -33,14 +33,14 @@ pkg_reserve_id <- function(scope, environment, user.id, user.pass, affiliation){
   # Place request
   r <- httr::POST(
     url = paste0(url_env(environment), '.lternet.edu/package/reservations/eml/', scope),
-    config = authenticate(auth_key(user.id, affiliation), user.pass)
+    config = httr::authenticate(auth_key(user.id, affiliation), user.pass)
   )
 
   # Enter polling loop
   while (TRUE){
     Sys.sleep(2)
     if (r$status_code == '201'){
-      reserved_pkg_id <- content(r, as = 'text', encoding = 'UTF-8')
+      reserved_pkg_id <- httr::content(r, as = 'text', encoding = 'UTF-8')
       reserved_pkg_id
       break
     } else if (r$status_code == '401'){

@@ -4,7 +4,7 @@
 \alias{pkg_reserve_id}
 \title{Reserve package identifier}
 \usage{
-pkg_reserve_id(environment, user.id, user.pass, affiliation)
+pkg_reserve_id(scope, environment, user.id, user.pass, affiliation)
 }
 \arguments{
 \item{scope}{(character) Scope of identifier to be reserved (e.g. edi, knb-lter-ntl).}

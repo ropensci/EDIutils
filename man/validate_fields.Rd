@@ -4,13 +4,15 @@
 \alias{validate_fields}
 \title{Validate table fields}
 \usage{
-validate_fields(path = "", data.files = c("data.file.1", "data.file.2", "etc."))
+validate_fields(path, data.files)
 }
 \arguments{
-\item{path}{A character string specifying a path to the dataset working directory.}
+\item{path}{(character) A character string specifying a path to the dataset working 
+directory.}
 
-\item{data.files}{A list of character strings specifying the names of the data files
-of your dataset. It is not necessary to include the file extension.}
+\item{data.files}{(character) A list of character strings specifying the names of the 
+data files of your dataset. It is not necessary to include the file 
+extension.}
 }
 \value{
 If incongruence is found an error is returned.

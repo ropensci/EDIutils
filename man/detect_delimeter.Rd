@@ -4,18 +4,18 @@
 \alias{detect_delimeter}
 \title{Detect field delimeter}
 \usage{
-detect_delimeter(path = "", data.files = c("data.file.1", 
-    "data.file.2", "etc.") , os = "")
+detect_delimeter(path, data.files, os)
 }
 \arguments{
-\item{path}{A character string specifying a path to the dataset working directory
-containing the data files from which to detect the field delimeters.}
+\item{path}{(character) A character string specifying a path to the dataset working 
+directory containing the data files from which to detect the field 
+delimeters.}
 
-\item{data.files}{A list of character strings specifying the names of the data files
-from which to detect the field delimeters of.}
+\item{data.files}{(character) A list of character strings specifying the names of the 
+data files from which to detect the field delimeters of.}
 
-\item{os}{A character string specifying the operating system in which this 
-function is to be called. Valid options are generated from 
+\item{os}{(character) A character string specifying the operating system in which 
+this function is to be called. Valid options are generated from 
 \code{detect_os}.}
 }
 \value{

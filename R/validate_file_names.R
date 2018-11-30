@@ -3,14 +3,14 @@
 #' @description  
 #'     Identify whether input data file names exist in the specified directory.
 #'
-#' @usage validate_file_names(path = "", data.files = data.files = c("data.file.1", 
-#'     "data.file.2", "etc.")).
+#' @usage validate_file_names(path, data.files)
 #' 
 #' @param path 
-#'     A character string specifying a path to the dataset working directory.
+#'     (character) A character string specifying a path to the dataset working 
+#'     directory.
 #' @param data.files
-#'     A list of character strings specifying the names of the data files
-#'     of your dataset. It is not necessary to include the file extension.
+#'     A list of character strings specifying the names of the data files of 
+#'     your dataset. It is not necessary to include the file extension.
 #' 
 #' @return 
 #'     A warning message if the data files don't exist at path, and which of
@@ -39,9 +39,9 @@ validate_file_names <- function(path, data.files){
   # Validate names ------------------------------------------------------------
   
   files <- list.files(path)
-  files <- c(files, str_replace(files, "\\.[:alnum:]*$", replacement = ""))
-  use_i <- str_detect(string = files,
-                      pattern = str_c("^", data.files, "$", collapse = "|"))
+  files <- c(files, stringr::str_replace(files, "\\.[:alnum:]*$", replacement = ""))
+  use_i <- stringr::str_detect(string = files,
+                      pattern = stringr::str_c("^", data.files, "$", collapse = "|"))
   if (!sum(use_i) == length(data.files)){
     if(sum(use_i) == 0){
       stop(paste("Invalid data.files entered: ", paste(data.files, collapse = ", "), sep = ""))
@@ -54,16 +54,16 @@ validate_file_names <- function(path, data.files){
   # Get file names ------------------------------------------------------------
 
   files <- list.files(path)
-  use_i <- str_detect(string = files,
-                      pattern = str_c("^", data.files, collapse = "|"))
+  use_i <- stringr::str_detect(string = files,
+                      pattern = stringr::str_c("^", data.files, collapse = "|"))
   data_files <- files[use_i]
   
   # Reorder file names to match input ordering --------------------------------
   
   data_files_out <- c()
   for (i in 1:length(data.files)){
-    use_i <- str_detect(string = data_files,
-                        pattern = str_c("^", data.files[i], collapse = "|"))
+    use_i <- stringr::str_detect(string = data_files,
+                        pattern = stringr::str_c("^", data.files[i], collapse = "|"))
     data_files_out[i] <- data_files[use_i]
   }
   
