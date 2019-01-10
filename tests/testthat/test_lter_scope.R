@@ -1,20 +1,16 @@
 context('Search for a LTER CV scope description.')
+library(EDIutils)
 
-library(EMLassemblyline)
-
-# Expect character ------------------------------------------------------------
-
-output <- lter_scope(
-  id = 65)
+# Expect character
 
 testthat::test_that('Output should be character.', {
-  
-  expect_equal(
-    class(
-      output
-    ),
-    'character'
-  )
-  
+  expect_equal(class(lter_scope(65)), 'character')
+})
+
+# Expect errors
+
+testthat::test_that('Expect errors', {
+  expect_error(lter_scope('65'))
+  expect_error(lter_scope(65, 75))
 })
 

@@ -22,9 +22,6 @@ lter_scope <- function(id){
   
   # Check arguments -----------------------------------------------------------
   
-  if (missing(id)){
-    stop('Input argument "id" is missing! Specify an identification number to get the scope description for.')
-  }
   if (is.numeric(id) != T){
     stop('Input argument "id" is not of class "numeric"!')
   }

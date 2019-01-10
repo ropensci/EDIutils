@@ -37,9 +37,6 @@ lter_term <- function(x, messages = FALSE, interactive = FALSE){
   
   # Check arguments -----------------------------------------------------------
   
-  if (missing(x)){
-    stop('Input argument "x" is missing! Specify a term to search for.')
-  }
   if (is.character(x) != T){
     stop('Input argument "x" is not of class "character"!')
   }
@@ -52,7 +49,7 @@ lter_term <- function(x, messages = FALSE, interactive = FALSE){
   
   # Construct the query and search --------------------------------------------
   
-  term <- str_replace_all(
+  term <- stringr::str_replace_all(
     string = x, 
     pattern = ' ', 
     replacement = '+'

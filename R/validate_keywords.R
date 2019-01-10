@@ -30,16 +30,9 @@ validate_keywords <- function(path, cv){
   
   # Check arguments -----------------------------------------------------------
   
-  if (missing(path)){
-    stop('Input argument "path" is missing! Specify the path to the directory containing the target file.')
-  }
   if (cv != 'lter'){
     stop('Input argument "cv" is not one of the allowed vocabularies!')
   }
-  
-  # Validate path
-  
-  validate_path(path)
   
   # Validate keywords.txt
   
@@ -104,15 +97,22 @@ validate_keywords <- function(path, cv){
   
   # Write results to file -----------------------------------------------------
   
-  suppressWarnings(write.table(keywords,
-                               paste(path,
-                                     "/",
-                                     "keywords.txt", sep = ""),
-                               sep = "\t",
-                               row.names = F,
-                               quote = F,
-                               fileEncoding = "UTF-8"))
+  # Write to file
+  lib_path <- system.file('keywords.txt', package = 'EDIutils')
+  lib_path <- substr(lib_path, 1, nchar(lib_path)-13)  
+  if (path != lib_path){
+    suppressWarnings(write.table(keywords,
+                                 paste(path,
+                                       "/",
+                                       "keywords.txt", sep = ""),
+                                 sep = "\t",
+                                 row.names = F,
+                                 quote = F,
+                                 fileEncoding = "UTF-8"))
+  }
   
+  # Return value
   
+  keywords
   
 }

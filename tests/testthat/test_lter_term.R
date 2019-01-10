@@ -1,32 +1,22 @@
 context('Search for a term in the LTER CV')
+library(EDIutils)
 
-library(EMLassemblyline)
+# Expect class logical
 
-# Expect logical response -----------------------------------------------------
-
-output <- lter_term(
-  x = 'water temperature')
-
-testthat::test_that('Output should be logical.', {
-  
-  expect_equal(
-    class(
-      output
-      ),
-    'logical'
-    )
-
+testthat::test_that('Output should be of logical class', {
+  expect_equal(class(lter_term('water temperature')), 'logical')
 })
 
-# Expect messages -------------------------------------------------------------
+# Expect messages
 
-testthat::test_that('Messages should be displayed if terms are not found, and when messages = T.', {
-  
-  expect_message(
-    lter_term(
-      x = 'ast',
-      messages = T
-    )
-  )
-  
+testthat::test_that('Expect messages when terms are not found', {
+  expect_message(lter_term('ast', messages = T))
+})
+
+# Expect errors
+
+testthat::test_that('Expect errors', {
+  expect_error(lter_term(65))
+  expect_error(lter_term(c('ast', 'tsa')))
+  expect_error(lter_term('ast', messages = T, interactive = T))
 })

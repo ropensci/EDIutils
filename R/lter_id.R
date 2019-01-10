@@ -22,9 +22,6 @@ lter_id <- function(x){
   
   # Check arguments -----------------------------------------------------------
   
-  if (missing(x)){
-    stop('Input argument "x" is missing! Specify a term get the ID number for.')
-  }
   if (is.character(x) != T){
     stop('Input argument "x" is not of class "character"!')
   }

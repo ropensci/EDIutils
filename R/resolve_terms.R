@@ -29,9 +29,6 @@ resolve_terms <- function(x, cv, messages = FALSE, interactive = FALSE){
   
   # Check arguments -----------------------------------------------------------
   
-  if (missing(x)){
-    stop('Input argument "x" is missing! Specify terms to resolve.')
-  }
   if (is.character(x) != T){
     stop('Input argument "x" is not of class "character"!')
   }
