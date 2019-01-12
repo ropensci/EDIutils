@@ -70,11 +70,14 @@ get_eml_attribute <- function(attr.name, package.id){
         XML::xmlValue
       ), silent = TRUE)
     )
-    if (!is.character(definition)){
+    if (class(definition) != 'character'){
       definition <- NA_character_
     }
-    if (!is.character(unit)){
+    if (class(unit) != 'character'){
       unit <- NA_character_
+    }
+    if (!is.na(definition) & !is.na(unit)){
+      break
     }
   }
 
