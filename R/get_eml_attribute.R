@@ -76,7 +76,7 @@ get_eml_attribute <- function(attr.name, package.id){
     if (class(unit) != 'character'){
       unit <- NA_character_
     }
-    if (!is.na(definition) & !is.na(unit)){
+    if (!is.na(definition) | !is.na(unit)){
       break
     }
   }
