@@ -21,7 +21,7 @@ detect_os <- function(){
   } else if (sysinfo == 'Windows'){
     os <- 'win'
   } else {
-    ls <- 'lin'
+    os <- 'lin'
   }
   os
 }
