@@ -4,7 +4,7 @@
 \alias{lter_term}
 \title{lter_term}
 \usage{
-lter_term(x, messages = FALSE)
+lter_term(x, messages = FALSE, interactive = FALSE)
 }
 \arguments{
 \item{x}{(character) A term to search for.}

@@ -4,7 +4,7 @@
 \alias{resolve_terms}
 \title{resolve_terms}
 \usage{
-resolve_terms(x, cv)
+resolve_terms(x, cv, messages = FALSE, interactive = FALSE)
 }
 \arguments{
 \item{x}{(character) Term(s) to resolve to a controlled vocabulary. Can be a 
@@ -16,6 +16,9 @@ vector of terms.}
 }}
 
 \item{messages}{(logical) Display diagnostic messages, e.g. alternative spelling options.}
+
+\item{interactive}{(logical) Query user to select from alternative terms and returns back
+selection.}
 }
 \value{
 (character) Controlled vocabulary names corresponding to successfully

@@ -5,7 +5,7 @@
 #'     Ecological Research Network).
 #'
 #' @usage 
-#'     lter_term(x, messages = FALSE)
+#'     lter_term(x, messages = FALSE, interactive = FALSE)
 #'
 #' @param x 
 #'     (character) A term to search for.

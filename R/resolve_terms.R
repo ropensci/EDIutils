@@ -4,7 +4,7 @@
 #'     Resolve terms to a controlled vocabulary.
 #'
 #' @usage 
-#'     resolve_terms(x, cv)
+#'     resolve_terms(x, cv, messages = FALSE, interactive = FALSE)
 #'
 #' @param x
 #'     (character) Term(s) to resolve to a controlled vocabulary. Can be a 
@@ -16,6 +16,9 @@
 #'     }
 #' @param messages 
 #'     (logical) Display diagnostic messages, e.g. alternative spelling options.
+#' @param interactive 
+#'     (logical) Query user to select from alternative terms and returns back
+#'     selection.
 #'
 #' @return 
 #'     (character) Controlled vocabulary names corresponding to successfully

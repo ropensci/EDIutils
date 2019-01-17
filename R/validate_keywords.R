@@ -45,7 +45,7 @@ validate_keywords <- function(path, cv){
   
   message("Reading keywords.txt")
   
-  keywords <- suppressWarnings(read.table(
+  keywords <- suppressWarnings(utils::read.table(
     paste(substr(fname_keywords, 1, nchar(fname_keywords) - 4),
           ".txt",
           sep = ""),
@@ -101,7 +101,7 @@ validate_keywords <- function(path, cv){
   lib_path <- system.file('keywords.txt', package = 'EDIutils')
   lib_path <- substr(lib_path, 1, nchar(lib_path)-13)  
   if (path != lib_path){
-    suppressWarnings(write.table(keywords,
+    suppressWarnings(utils::write.table(keywords,
                                  paste(path,
                                        "/",
                                        "keywords.txt", sep = ""),

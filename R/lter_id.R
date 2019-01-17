@@ -35,7 +35,7 @@ lter_id <- function(x){
     
     # Construct the search term and query
     
-    term <- str_replace_all(
+    term <- stringr::str_replace_all(
       string = x, 
       pattern = ' ', 
       replacement = '+'
