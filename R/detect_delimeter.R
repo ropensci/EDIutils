@@ -69,6 +69,13 @@ detect_delimeter <- function(path, data.files, os){
                                              ",",
                                              ";",
                                              "|"))
+    } else if (os == 'lin'){
+      delim_guess[i] <- reader::get.delim(data_path[i],
+                                          n = 1,
+                                          delims = c("\t",
+                                                     ",",
+                                                     ";",
+                                                     "|"))
     }
     
     delim_guess[i] <- detect_delimeter_2(data.file = data_files[i],
