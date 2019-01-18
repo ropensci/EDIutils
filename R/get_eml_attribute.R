@@ -1,39 +1,37 @@
-#' Get attribute metadata
+#' Get metadata for an attribute
 #'
 #' @description
-#'     Retrieve metadata for an attribute
+#'     Get metadata for an attribute.
 #'
 #' @usage get_eml_attribute(attr.name, package.id)
 #'
 #' @param attr.name
-#'     (character) Name of an attribute found in an EML metadata record
+#'     (character) Attribute name
 #' @param package.id
-#'     (character) ID of data package found in the Environmental Data
-#'     Initiative repository (e.g. knb-lter-cap.627.3), containing the
-#'     attribute defined by "attr.name".
+#'     (character) Data package identifier (e.g. knb-lter-cap.627.3) in the 
+#'     EDI Data Repository.
 #'
-#' @return
-#'     A named vector of metadata elements for the specified "attr.name". NA is
-#'     returned when the metadata element doesn't exist.
+#' @return 
+#'     (list) A named vector with these attribute elements:
+#'     \itemize{
+#'         \item{name} <attributeName>
+#'         \item{definition} <attributeDefinition> 
+#'         \item{unit} <standardUnit> or <customUnit>
+#'     }
 #'
 #' @export
 #'
 
 get_eml_attribute <- function(attr.name, package.id){
 
-  message(
-    paste0(
-      'Searching ',
-      package.id,
-      ' for "',
-      attr.name,
-      '"'
-    )
-  )
+  message(paste0('Searching ', package.id, ' for "', attr.name, '"'))
 
+  # Load EML and data entity names
+  
   scope <- unlist(stringr::str_split(package.id, '\\.'))[1]
   identifier <- unlist(stringr::str_split(package.id, '\\.'))[2]
   revision <- unlist(stringr::str_split(package.id, '\\.'))[3]
+  
   metadata <- XML::xmlParse(paste("http://pasta.lternet.edu/package/metadata/eml",
                              "/",
                              scope,
@@ -47,6 +45,8 @@ get_eml_attribute <- function(attr.name, package.id){
              XML::xmlValue)
   )
 
+  # Get the attributes definition and unit
+  
   for (i in 1:length(entity_names)){
     definition <- unlist(
       try(XML::xmlApply(
@@ -59,6 +59,7 @@ get_eml_attribute <- function(attr.name, package.id){
         XML::xmlValue
       ), silent = TRUE)
     )
+    
     unit <- unlist(
       try(XML::xmlApply(
         metadata[
@@ -66,10 +67,26 @@ get_eml_attribute <- function(attr.name, package.id){
                  entity_names[i],
                  "']//attribute[./attributeName = '",
                  attr.name,
-                 "']//standardUnit")],
+                 "']//standardUnit")
+        ],
         XML::xmlValue
       ), silent = TRUE)
     )
+    if (is.null(unit)){
+      unit <- unlist(
+        try(XML::xmlApply(
+          metadata[
+            paste0("//dataTable[./entityName = '",
+                   entity_names[i],
+                   "']//attribute[./attributeName = '",
+                   attr.name,
+                   "']//customUnit")
+            ],
+          XML::xmlValue
+        ), silent = TRUE)
+      ) 
+    }
+    
     if (class(definition) != 'character'){
       definition <- NA_character_
     }
