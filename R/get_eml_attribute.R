@@ -24,7 +24,9 @@
 
 get_eml_attribute <- function(attr.name, package.id){
 
-  message(paste0('Searching ', package.id, ' for "', attr.name, '"'))
+  if (!is.na(attr.name)){
+    message(paste0('Searching ', package.id, ' for "', attr.name, '"'))
+  }
 
   # Load EML and data entity names
   
