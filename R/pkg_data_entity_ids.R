@@ -1,9 +1,9 @@
-#' Get data entity names
+#' Get data entity IDs
 #'
 #' @description
-#'     Get names of data entities and corresponding IDs.
+#'     Get identifiers of data entities.
 #'
-#' @usage pkg_data_entity_names(package.id, environment = 'production')
+#' @usage pkg_data_entity_ids(package.id, environment = 'production')
 #'
 #' @param package.id
 #'     (character) Package identifier composed of scope, identifier, and
@@ -16,35 +16,34 @@
 #'     (data frame) A data frame with columns:
 #'     \itemize{
 #'         \item{identifier: Data entity identifier}
-#'         \item{names: Data entity name}
 #'     }
 #'
 #' @export
 #'
 
-pkg_data_entity_names <- function(package.id, environment = 'production'){
+pkg_data_entity_ids <- function(package.id, environment = 'production'){
   
-  message(paste('Retrieving data entity names for data package', package.id))
+  message(paste('Retrieving data entity IDs for data package', package.id))
   
   validate_arguments(x = as.list(environment()))
   
   r <- httr::GET(
     url = paste0(
       url_env(environment),
-      '.lternet.edu/package/name/eml/',
+      '.lternet.edu/package/data/eml/',
       stringr::str_replace_all(package.id, '\\.', '/')
     )
   )
   
   r <- httr::content(
-      r,
-      as = 'text',
-      encoding = 'UTF-8'
+    r,
+    as = 'text',
+    encoding = 'UTF-8'
   )
   
   output <- read.csv(
     text = c(
-      c('identifier,name\n'),
+      'identifier',
       r
     ),
     as.is = T
