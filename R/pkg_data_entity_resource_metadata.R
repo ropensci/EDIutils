@@ -1,0 +1,60 @@
+#' Get data entity resource metadata
+#'
+#' @description
+#'     Get resource metadata for a data entity.
+#'
+#' @usage pkg_data_entity_resource_metadata(package.id, entity.id, 
+#'     environment = 'production')
+#'
+#' @param package.id
+#'     (character) Package identifier composed of scope, identifier, and
+#'     revision (e.g. 'edi.101.1').
+#' @param entity.id
+#'     (character) Data entity identifier (e.g. 
+#'     "2353ac38985edd6aff140e4c65cb32de")
+#' @param environment
+#'     (character) Data repository environment to create the package in.
+#'     Can be: 'development', 'staging', 'production'.
+#'
+#' @return
+#'     ('XMLInternalDocument' 'XMLAbstractDocument') Resource metadata.
+#'     
+#'
+#' @export
+#'
+
+pkg_data_entity_resource_metadata <- function(package.id, entity.id, 
+                                              environment = 'production'){
+  
+  message(
+    paste(
+      'Retrieving resource metadata for data entity', 
+      entity.id, 
+      'from data package', 
+      package.id
+    )
+  )
+  
+  validate_arguments(x = as.list(environment()))
+  
+  r <- httr::GET(
+    url = paste0(
+      url_env(environment),
+      '.lternet.edu/package/data/rmd/eml/',
+      stringr::str_replace_all(package.id, '\\.', '/'),
+      '/',
+      entity.id
+    )
+  )
+  
+  metadata <- XML::xmlParse(
+    httr::content(
+      r,
+      as = 'parsed',
+      encoding = 'UTF-8'
+    )
+  )
+  
+  metadata
+  
+}
