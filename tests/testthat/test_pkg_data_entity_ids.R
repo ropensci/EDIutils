@@ -5,7 +5,7 @@ testthat::test_that('Test for object attributes', {
   
   expect_equal(
     class(
-      pkg_data_entity_names(
+      pkg_data_entity_ids(
         package.id = 'edi.275.1',
         environment = 'production'
       )
