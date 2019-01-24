@@ -18,7 +18,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     (integer) Vector of revisions, if more than one exists, otherwise a 
+#'     (character) Vector of revisions, if more than one exists, otherwise a 
 #'     single revision number.
 #'
 #' @export
@@ -74,12 +74,10 @@ pkg_revisions <- function(scope, identifier, filter = NULL, environment = 'produ
       )
     )
     
-    output <- as.integer(
-      httr::content(
+    output <- httr::content(
         r,
         as = 'text',
         encoding = 'UTF-8'
-      )
     )
 
   } else if (filter == 'oldest'){
@@ -95,12 +93,10 @@ pkg_revisions <- function(scope, identifier, filter = NULL, environment = 'produ
       )
     )
     
-    output <- as.integer(
-      httr::content(
+    output <- httr::content(
         r,
         as = 'text',
         encoding = 'UTF-8'
-      )
     )
     
   }

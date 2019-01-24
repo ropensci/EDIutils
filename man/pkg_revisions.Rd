@@ -18,7 +18,7 @@ pkg_revisions(scope, identifier, filter = NULL,
 Can be: 'development', 'staging', 'production'.}
 }
 \value{
-(integer) Vector of revisions, if more than one exists, otherwise a 
+(character) Vector of revisions, if more than one exists, otherwise a 
     single revision number.
 }
 \description{

@@ -11,7 +11,7 @@ testthat::test_that('Test for object attributes', {
         environment = 'production'
       )
     ),
-    'integer'
+    'character'
   )
   
   expect_equal(
@@ -23,7 +23,7 @@ testthat::test_that('Test for object attributes', {
         environment = 'production'
       )
     ),
-    'integer'
+    'character'
   )
   
   expect_equal(
@@ -35,7 +35,7 @@ testthat::test_that('Test for object attributes', {
         environment = 'production'
       )
     ),
-    'integer'
+    'character'
   )
   
 })
