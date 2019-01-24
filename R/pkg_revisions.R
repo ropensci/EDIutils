@@ -59,7 +59,7 @@ pkg_revisions <- function(scope, identifier, filter = NULL, environment = 'produ
       as.is = T
     )
     
-    output <- output$revision
+    output <- as.character(output$revision)
     
   } else if (filter == 'newest'){
     
