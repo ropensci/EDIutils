@@ -13,10 +13,7 @@ pkg_ids(scope, environment = 'production')
 Can be: 'development', 'staging', 'production'.}
 }
 \value{
-(data frame) Data frame with columns:
-    \itemize{
-        \item{ids: Data package identifiers}
-    }
+(character) Data package identifiers
 }
 \description{
 Get data package IDs for a specific scope.

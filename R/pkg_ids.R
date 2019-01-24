@@ -12,10 +12,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     (data frame) Data frame with columns:
-#'     \itemize{
-#'         \item{ids: Data package identifiers}
-#'     }
+#'     (character) Data package identifiers
 #'
 #' @export
 #'
@@ -40,12 +37,14 @@ pkg_ids <- function(scope, environment = 'production'){
     encoding = 'UTF-8'
   )
   
-  output <- read.csv(
-    text = c(
-      'identifier',
-      r
-    ),
-    as.is = T
+  output <- as.character(
+    read.csv(
+      text = c(
+        'identifier',
+        r
+      ),
+      as.is = T
+    )$identifier
   )
   
   output

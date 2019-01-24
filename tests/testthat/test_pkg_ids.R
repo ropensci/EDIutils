@@ -10,7 +10,7 @@ testthat::test_that('Test for object attributes', {
         environment = 'production'
       )
     ),
-    'data.frame'
+    'character'
   )
   
 })
