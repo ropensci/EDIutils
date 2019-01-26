@@ -4,28 +4,22 @@
 \alias{read_data_package}
 \title{Read data package}
 \usage{
-read_data_package(package.id, ore = FALSE, 
+read_data_package(package.id, 
     environment = 'production')
 }
 \arguments{
 \item{package.id}{(character) Package identifier composed of scope, identifier, and
 revision (e.g. 'edi.101.1').}
 
-\item{ore}{(logical) Use "ore" query parameter}
-
 \item{environment}{(character) Data repository environment to create the package in.
 Can be: 'development', 'staging', 'production'.}
 }
 \value{
-(character) Reference URLs, if ore = FALSE.
-    (rdf) OAI-ORE compliant resource map, if ore = TRUE.
+(character) Reference URLs.
 }
 \description{
 Read Data Package operation, specifying the scope, identifier, and 
     revision of the data package to be read in the URI, returning a resource 
     map with reference URLs to each of the metadata, data, and quality 
     report resources that comprise the data package.
-    
-    When the “?ore” query parameter is used, an OAI-ORE compliant resource 
-    map in RDF-XML format is returned.
 }
