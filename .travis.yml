@@ -12,6 +12,8 @@ r_packages:
   - xml2
   - XML
   - rdflib
+  - redland
+  - jsonld
 warnings_are_errors: false
 after_success:
   - Rscript -e 'library(covr); codecov()'
