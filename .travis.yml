@@ -11,6 +11,7 @@ r_packages:
   - readr
   - xml2
   - XML
+  - rdflib
 warnings_are_errors: false
 after_success:
   - Rscript -e 'library(covr); codecov()'
