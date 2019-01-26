@@ -12,6 +12,7 @@ Imports:
     reader (>= 1.0.6),
     readr (>= 1.1.1),
     xml2 (>= 1.1.1),
+    rdflib (>= 0.2.2),
     XML (>= 3.98-1.6)
 License: MIT License
 Encoding: UTF-8
