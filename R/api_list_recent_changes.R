@@ -28,7 +28,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     ('XMLInternalDocument' 'XMLAbstractDocument') dataPackageChanges 
+#'     ('xml_document' 'xml_node') dataPackageChanges 
 #'     metadata.
 #'
 #' @export
@@ -71,12 +71,10 @@ api_list_recent_changes <- function(from.date = NULL, to.date = NULL, scope = NU
     
   }
 
-  output <- XML::xmlParse(
-    httr::content(
-      r,
-      as = 'parsed',
-      encoding = 'UTF-8'
-    )
+  output <- httr::content(
+    r,
+    as = 'parsed',
+    encoding = 'UTF-8'
   )
   
   output

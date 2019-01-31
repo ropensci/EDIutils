@@ -14,7 +14,7 @@ revision (e.g. 'edi.101.1').}
 Can be: 'development', 'staging', 'production'.}
 }
 \value{
-('XMLInternalDocument' 'XMLAbstractDocument') EML metadata.
+("xml_document" "xml_node") EML metadata.
 }
 \description{
 Add Provenance Metadata from Level-1 metadata in PASTA to an XML 

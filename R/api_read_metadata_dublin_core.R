@@ -14,7 +14,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     ('XMLInternalDocument' 'XMLAbstractDocument') Dublin Core metadata
+#'     ('xml_document' 'xml_node') Dublin Core metadata
 #'     
 #'
 #' @export
@@ -34,12 +34,10 @@ api_read_metadata_dublin_core <- function(package.id, environment = 'production'
     )
   )
   
-  output <- XML::xmlParse(
-    httr::content(
-      r,
-      as = 'parsed',
-      encoding = 'UTF-8'
-    )
+  output <- httr::content(
+    r,
+    as = 'parsed',
+    encoding = 'UTF-8'
   )
   
   output

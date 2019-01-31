@@ -11,7 +11,7 @@ api_list_working_on(environment = 'production')
 Can be: 'development', 'staging', 'production'.}
 }
 \value{
-('XMLInternalDocument' 'XMLAbstractDocument') workingOn metadata
+('xml_document' 'xml_node') workingOn metadata
 }
 \description{
 List Working On operation, lists the set of data packages that PASTA is 

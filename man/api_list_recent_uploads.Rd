@@ -15,7 +15,7 @@ api_list_recent_uploads(type, limit = 5, environment = 'production')
 Can be: 'development', 'staging', 'production'.}
 }
 \value{
-('XMLInternalDocument' 'XMLAbstractDocument') dataPackageUploads 
+('xml_document' 'xml_node') dataPackageUploads 
     metadata.
 }
 \description{

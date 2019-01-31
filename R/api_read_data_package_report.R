@@ -15,7 +15,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     ('XMLInternalDocument' 'XMLAbstractDocument') Data package report.
+#'     ('xml_document' 'xml_node') Data package report.
 #'     
 #'
 #' @export
@@ -35,12 +35,10 @@ api_read_data_package_report <- function(package.id, environment = 'production')
     )
   )
   
-  output <- XML::xmlParse(
-    httr::content(
-      r,
-      as = 'parsed',
-      encoding = 'UTF-8'
-    )
+  output <- httr::content(
+    r,
+    as = 'parsed',
+    encoding = 'UTF-8'
   )
   
   output

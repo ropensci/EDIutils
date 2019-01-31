@@ -16,7 +16,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     ('XMLInternalDocument' 'XMLAbstractDocument') XML containing the the 
+#'     ("xml_document" "xml_node") XML containing the the 
 #'     data package ID, data package title, and data package URL.
 #'
 #' @export
@@ -36,12 +36,10 @@ api_list_data_descendants <- function(package.id, environment = 'production'){
     )
   )
   
-  output <- XML::xmlParse(
-    httr::content(
-      r,
-      as = 'parsed',
-      encoding = 'UTF-8'
-    )
+  output <- httr::content(
+    r,
+    as = 'parsed',
+    encoding = 'UTF-8'
   )
 
   output

@@ -14,7 +14,7 @@ revision (e.g. 'edi.101.1').}
 Can be: 'development', 'staging', 'production'.}
 }
 \value{
-('XMLInternalDocument' 'XMLAbstractDocument') Data package report.
+('xml_document' 'xml_node') Data package report.
 }
 \description{
 Read Data Package Report operation, specifying the scope, identifier, 
