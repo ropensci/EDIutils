@@ -15,7 +15,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     ('XMLInternalDocument' 'XMLAbstractDocument') The resource metadata for 
+#'     ('xml_document' 'xml_node') The resource metadata for 
 #'     the data package.
 #'
 #' @export
@@ -35,12 +35,10 @@ api_read_data_package_resource_metadata <- function(package.id, environment = 'p
     )
   )
   
-  output <- XML::xmlParse(
-    httr::content(
-      r,
-      as = 'parsed',
-      encoding = 'UTF-8'
-    )
+  output <- httr::content(
+    r,
+    as = 'parsed',
+    encoding = 'UTF-8'
   )
   
   output

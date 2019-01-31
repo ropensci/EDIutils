@@ -19,7 +19,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     ('XMLInternalDocument' 'XMLAbstractDocument') An XML string representing 
+#'     ('xml_document' 'xml_node') An XML string representing 
 #'     the resource metadata for the data entity.
 #'
 #' @export
@@ -49,12 +49,10 @@ api_read_data_entity_resource_metadata <- function(package.id, entity.id,
     )
   )
   
-  metadata <- XML::xmlParse(
-    httr::content(
-      r,
-      as = 'parsed',
-      encoding = 'UTF-8'
-    )
+  metadata <- httr::content(
+    r,
+    as = 'parsed',
+    encoding = 'UTF-8'
   )
   
   metadata

@@ -14,7 +14,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     ('XMLInternalDocument' 'XMLAbstractDocument') EML metadata.
+#'     ('xml_document' 'xml_node') EML metadata.
 #'     
 #'
 #' @export
@@ -34,12 +34,10 @@ api_read_metadata <- function(package.id, environment = 'production'){
     )
   )
   
-  eml <- XML::xmlParse(
-    httr::content(
-      r,
-      as = 'parsed',
-      encoding = 'UTF-8'
-    )
+  eml <- httr::content(
+    r,
+    as = 'parsed',
+    encoding = 'UTF-8'
   )
   
   eml

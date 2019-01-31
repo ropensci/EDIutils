@@ -14,7 +14,7 @@ revision (e.g. 'edi.101.1').}
 Can be: 'development', 'staging', 'production'.}
 }
 \value{
-('XMLInternalDocument' 'XMLAbstractDocument') Dublin Core metadata
+('xml_document' 'xml_node') Dublin Core metadata
 }
 \description{
 Read Metadata (Dublin Core) operation, specifying the scope, identifier, 

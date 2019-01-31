@@ -12,7 +12,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     ('XMLInternalDocument' 'XMLAbstractDocument') workingOn metadata
+#'     ('xml_document' 'xml_node') workingOn metadata
 #'
 #' @export
 #'
@@ -30,12 +30,10 @@ api_list_working_on <- function(environment = 'production'){
     )
   )
   
-  output <- XML::xmlParse(
-    httr::content(
-      r,
-      as = 'parsed',
-      encoding = 'UTF-8'
-    )
+  output <- httr::content(
+    r,
+    as = 'parsed',
+    encoding = 'UTF-8'
   )
   
   output

@@ -16,7 +16,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     ('XMLInternalDocument' 'XMLAbstractDocument') dataPackageUploads 
+#'     ('xml_document' 'xml_node') dataPackageUploads 
 #'     metadata.
 #'
 #' @export
@@ -39,12 +39,10 @@ api_list_recent_uploads <- function(type, limit = 5, environment = 'production')
     )
   )
   
-  output <- XML::xmlParse(
-    httr::content(
-      r,
-      as = 'parsed',
-      encoding = 'UTF-8'
-    )
+  output <- httr::content(
+    r,
+    as = 'parsed',
+    encoding = 'UTF-8'
   )
   
   output

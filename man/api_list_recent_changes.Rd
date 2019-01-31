@@ -18,7 +18,7 @@ api_list_recent_changes(from.date = NULL, to.date = NULL, scope = NULL,
 Can be: 'development', 'staging', 'production'.}
 }
 \value{
-('XMLInternalDocument' 'XMLAbstractDocument') dataPackageChanges 
+('xml_document' 'xml_node') dataPackageChanges 
     metadata.
 }
 \description{

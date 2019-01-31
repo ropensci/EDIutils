@@ -11,7 +11,7 @@ testthat::test_that('Test for object attributes', {
         environment = 'production'
       )
     ),
-    c('XMLInternalDocument', 'XMLAbstractDocument')
+    c('xml_document', 'xml_node')
   )
   
 })

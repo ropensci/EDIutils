@@ -35,12 +35,10 @@ api_list_data_package_citations <- function(package.id, environment = 'productio
     )
   )
   
-  output <- XML::xmlParse(
-    httr::content(
-      r,
-      as = 'parsed',
-      encoding = 'UTF-8'
-    )
+  output <- httr::content(
+    r,
+    as = 'parsed',
+    encoding = 'UTF-8'
   )
   
   output

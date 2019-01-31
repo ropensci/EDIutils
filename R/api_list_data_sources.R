@@ -14,7 +14,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     ('XMLInternalDocument' 'XMLAbstractDocument') For each data source, its 
+#'     ('xml_document' 'xml_node') For each data source, its 
 #'     package identifier, title, and URL values are included (if applicable) 
 #'     as documented in the metadata for the specified data package. Internal 
 #'     data sources include a “packageId” value and a URL to the source 
@@ -38,12 +38,10 @@ api_list_data_sources <- function(package.id, environment = 'production'){
     )
   )
   
-  output <- XML::xmlParse(
-    httr::content(
-      r,
-      as = 'parsed',
-      encoding = 'UTF-8'
-    )
+  output <- httr::content(
+    r,
+    as = 'parsed',
+    encoding = 'UTF-8'
   )
   
   output

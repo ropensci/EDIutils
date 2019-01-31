@@ -14,7 +14,7 @@ api_list_principal_owner_citations(dn, environment = 'production')
 Can be: 'development', 'staging', 'production'.}
 }
 \value{
-('XMLInternalDocument' 'XMLAbstractDocument') journalCitations metadata
+('xml_document' 'xml_node') journalCitations metadata
 }
 \description{
 List Principal Owner Citations operation.

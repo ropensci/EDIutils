@@ -14,7 +14,7 @@ revision (e.g. 'edi.101.1').}
 Can be: 'development', 'staging', 'production'.}
 }
 \value{
-('XMLInternalDocument' 'XMLAbstractDocument') XML containing the the 
+("xml_document" "xml_node") XML containing the the 
     data package ID, data package title, and data package URL.
 }
 \description{

@@ -14,7 +14,7 @@ revision (e.g. 'edi.101.1').}
 Can be: 'development', 'staging', 'production'.}
 }
 \value{
-('XMLInternalDocument' 'XMLAbstractDocument') An XML string representing 
+('xml_document' 'xml_node') An XML string representing 
     the resource metadata for the data package metadata resource.
 }
 \description{

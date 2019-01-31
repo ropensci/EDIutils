@@ -13,7 +13,7 @@
 #'     Can be: 'development', 'staging', 'production'.
 #'
 #' @return
-#'     ('XMLInternalDocument' 'XMLAbstractDocument') journalCitations metadata
+#'     ('xml_document' 'xml_node') journalCitations metadata
 #'
 #' @export
 #'
@@ -32,12 +32,10 @@ api_list_principal_owner_citations <- function(dn, environment = 'production'){
     )
   )
   
-  output <- XML::xmlParse(
-    httr::content(
-      r,
-      as = 'parsed',
-      encoding = 'UTF-8'
-    )
+  output <- httr::content(
+    r,
+    as = 'parsed',
+    encoding = 'UTF-8'
   )
   
   output
