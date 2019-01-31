@@ -24,11 +24,11 @@ testthat::test_that('Delimeters are accurately detected', {
   
 })
 
-testthat::test_that('Ambiguity in delimiter guess issues a warning', {
-  
-  # .txt file with ',' delimiter detected
-  expect_message(
-    detect_delimeter_2('mock_file_name.txt', ',')
-  )
-  
-})
+# testthat::test_that('Ambiguity in delimiter guess issues a warning', {
+#   
+#   # .txt file with ',' delimiter detected
+#   expect_message(
+#     detect_delimeter_2('mock_file_name.txt', ',')
+#   )
+#   
+# })

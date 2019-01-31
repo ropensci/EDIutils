@@ -2,21 +2,24 @@
 % Please edit documentation in R/get_eml_attribute.R
 \name{get_eml_attribute}
 \alias{get_eml_attribute}
-\title{Get attribute metadata}
+\title{Get metadata for an attribute}
 \usage{
 get_eml_attribute(attr.name, package.id)
 }
 \arguments{
-\item{attr.name}{(character) Name of an attribute found in an EML metadata record}
+\item{attr.name}{(character) Attribute name}
 
-\item{package.id}{(character) ID of data package found in the Environmental Data
-Initiative repository (e.g. knb-lter-cap.627.3), containing the
-attribute defined by "attr.name".}
+\item{package.id}{(character) Data package identifier (e.g. knb-lter-cap.627.3) in the 
+EDI Data Repository.}
 }
 \value{
-A named vector of metadata elements for the specified "attr.name". NA is
-    returned when the metadata element doesn't exist.
+(list) A named vector with these attribute elements:
+    \itemize{
+        \item{name} <attributeName>
+        \item{definition} <attributeDefinition> 
+        \item{unit} <standardUnit> or <customUnit>
+    }
 }
 \description{
-Retrieve metadata for an attribute
+Get metadata for an attribute.
 }
