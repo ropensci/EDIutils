@@ -5,9 +5,6 @@
 `EDIutils` is an R library for using the PASTA+ Data Package Manager and Audit Manager APIs as well as for providing helper functions to EDI R libraries `EMLassemblyline`, `ecocomDP`, `taxonomyCleanr`, and `dataCleanr`.
 
 ## Install
-
-Installation requires `devtools`
-
 ```
 # Install and load devtools
 install.packages("devtools")
