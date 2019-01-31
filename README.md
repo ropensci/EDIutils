@@ -2,7 +2,7 @@
 [![codecov.io](https://codecov.io/github/EDIorg/EDIutils/coverage.svg?branch=master)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
 
 # EDIutils
-`EDIutils` an R package for interacting with the EDI Data Repository API and providing helper functions to other EDI R packages like `EMLassemblyline`, `ecocomDP`, and `taxonomyCleanr`.
+`EDIutils` is an R library for using the PASTA+ Data Package Manager and Audit Manager APIs as well as for providing helper functions to EDI R libraries `EMLassemblyline`, `ecocomDP`, `taxonomyCleanr`, and `dataCleanr`.
 
 ## Install
 
