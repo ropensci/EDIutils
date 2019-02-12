@@ -14,7 +14,7 @@ devtools::install_github("EDIorg/EDIutils")
 
 ## Usage
 
-Check out available functions and use cases at 
+[Check out available functions and use cases at the EDIutils website](https://ediorg.github.io/EDIutils/)
 
 ## Roadmap
 
