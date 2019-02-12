@@ -15,11 +15,13 @@
 #'
 
 detect_os <- function(){
-  sysinfo <- Sys.info()["sysname"]
-  if (sysinfo == "Darwin"){
-    os <- "mac"
+  sysinfo <- Sys.info()['sysname']
+  if (sysinfo == 'Darwin'){
+    os <- 'mac'
+  } else if (sysinfo == 'Windows'){
+    os <- 'win'
   } else {
-    os <- "win"
+    os <- 'lin'
   }
   os
 }
