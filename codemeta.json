@@ -1,5 +1,8 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "EDIutils",
   "description": "Functions for interacting with the EDI Repository Data Package and Audit Manager APIs, as well as providing helper functions to other EDI R packages.",
@@ -170,6 +173,10 @@
     }
   ],
   "readme": "https://github.com/EDIorg/EDIutils/blob/master/README.md",
-  "fileSize": "81.856KB",
-  "contIntegration": ["https://travis-ci.org/EDIorg/EDIutils", "https://codecov.io/github/EDIorg/EDIutils?branch=master"]
+  "fileSize": "81.898KB",
+  "contIntegration": [
+    "https://travis-ci.org/EDIorg/EDIutils",
+    "https://codecov.io/github/EDIorg/EDIutils?branch=master"
+  ],
+  "relatedLink": "https://ediorg.github.io/EDIutils/"
 }
