@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make URL for PASTA+ environment — url_env • EDIutils</title>
+<title>List service methods — api_list_service_methods • EDIutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="Make URL for PASTA+ environment — url_env" />
+<meta property="og:title" content="List service methods — api_list_service_methods" />
 
-<meta property="og:description" content="Create the URL suffix to the PASTA+ environment specified by the
-    environment argument." />
+<meta property="og:description" content="List Service Methods operation, returning a simple list of web service 
+    methods supported by the Data Package Manager web service." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -100,29 +100,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make URL for PASTA+ environment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_evaluate_data_package.R'><code>R/api_evaluate_data_package.R</code></a></small>
-    <div class="hidden name"><code>url_env.Rd</code></div>
+    <h1>List service methods</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_list_service_methods.R'><code>R/api_list_service_methods.R</code></a></small>
+    <div class="hidden name"><code>api_list_service_methods.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create the URL suffix to the PASTA+ environment specified by the
-    environment argument.</p>
+    <p>List Service Methods operation, returning a simple list of web service 
+    methods supported by the Data Package Manager web service.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>url_env</span>(<span class='no'>environment</span>)</pre>
+    <pre class="usage"><span class='fu'>api_list_service_methods</span>(<span class='kw'>environment</span> <span class='kw'>=</span> <span class='st'>'production'</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>environment</th>
-      <td><p>(character) Data repository environment to perform the evaluation in.
+      <td><p>(character) Data repository environment to create the package in.
 Can be: 'development', 'staging', 'production'.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>(character) All scope values extant in the data package registry.</p>
     
 
   </div>
@@ -130,7 +134,9 @@ Can be: 'development', 'staging', 'production'.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

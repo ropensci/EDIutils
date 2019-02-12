@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get attribute metadata — get_eml_attribute • EDIutils</title>
+<title>Get metadata for an attribute — get_eml_attribute • EDIutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Get attribute metadata — get_eml_attribute" />
+<meta property="og:title" content="Get metadata for an attribute — get_eml_attribute" />
 
-<meta property="og:description" content="Retrieve metadata for an attribute" />
+<meta property="og:description" content="Get metadata for an attribute." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,14 +99,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get attribute metadata</h1>
+    <h1>Get metadata for an attribute</h1>
     <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/get_eml_attribute.R'><code>R/get_eml_attribute.R</code></a></small>
     <div class="hidden name"><code>get_eml_attribute.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Retrieve metadata for an attribute</p>
+    <p>Get metadata for an attribute.</p>
     
     </div>
 
@@ -117,20 +117,23 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>attr.name</th>
-      <td><p>(character) Name of an attribute found in an EML metadata record</p></td>
+      <td><p>(character) Attribute name</p></td>
     </tr>
     <tr>
       <th>package.id</th>
-      <td><p>(character) ID of data package found in the Environmental Data
-Initiative repository (e.g. knb-lter-cap.627.3), containing the
-attribute defined by "attr.name".</p></td>
+      <td><p>(character) Data package identifier (e.g. knb-lter-cap.627.3) in the 
+EDI Data Repository.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A named vector of metadata elements for the specified "attr.name". NA is
-    returned when the metadata element doesn't exist.</p>
+    <p>(list) A named vector with these attribute elements:</p><ul>
+<li><p>name &lt;attributeName&gt;</p></li>
+<li><p>definition &lt;attributeDefinition&gt;</p></li>
+<li><p>unit &lt;standardUnit&gt; or &lt;customUnit&gt;</p></li>
+</ul>
+
     
 
   </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make URL for PASTA+ environment — url_env • EDIutils</title>
+<title>resolve_terms — resolve_terms • EDIutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Make URL for PASTA+ environment — url_env" />
+<meta property="og:title" content="resolve_terms — resolve_terms" />
 
-<meta property="og:description" content="Create the URL suffix to the PASTA+ environment specified by the
-    environment argument." />
+<meta property="og:description" content="Resolve terms to a controlled vocabulary." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -100,29 +99,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make URL for PASTA+ environment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_evaluate_data_package.R'><code>R/api_evaluate_data_package.R</code></a></small>
-    <div class="hidden name"><code>url_env.Rd</code></div>
+    <h1>resolve_terms</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/resolve_terms.R'><code>R/resolve_terms.R</code></a></small>
+    <div class="hidden name"><code>resolve_terms.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create the URL suffix to the PASTA+ environment specified by the
-    environment argument.</p>
+    <p>Resolve terms to a controlled vocabulary.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>url_env</span>(<span class='no'>environment</span>)</pre>
+    <pre class="usage"><span class='fu'>resolve_terms</span>(<span class='no'>x</span>, <span class='no'>cv</span>, <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>environment</th>
-      <td><p>(character) Data repository environment to perform the evaluation in.
-Can be: 'development', 'staging', 'production'.</p></td>
+      <th>x</th>
+      <td><p>(character) Term(s) to resolve to a controlled vocabulary. Can be a 
+vector of terms.</p></td>
+    </tr>
+    <tr>
+      <th>cv</th>
+      <td><p>(character) A controlled vocabulary to search. Valid options are:</p><ul>
+<li><p>lter - The LTER Controlled Vocabulary (http://vocab.lternet.edu/vocab/vocab/index.php)</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>messages</th>
+      <td><p>(logical) Display diagnostic messages, e.g. alternative spelling options.</p></td>
+    </tr>
+    <tr>
+      <th>interactive</th>
+      <td><p>(logical) Query user to select from alternative terms and returns back
+selection.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>(character) Controlled vocabulary names corresponding to successfully
+    resolved terms.</p>
     
 
   </div>
@@ -130,7 +148,9 @@ Can be: 'development', 'staging', 'production'.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make URL for PASTA+ environment — url_env • EDIutils</title>
+<title>Create data package — api_create_data_package • EDIutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,11 @@
 
 
 
-<meta property="og:title" content="Make URL for PASTA+ environment — url_env" />
+<meta property="og:title" content="Create data package — api_create_data_package" />
 
-<meta property="og:description" content="Create the URL suffix to the PASTA+ environment specified by the
-    environment argument." />
+<meta property="og:description" content="Create a data package in the Environmental Data Initiative repository.
+    Use this function to create the first version of a data package. Use
+    `pkg_update` to update a data package." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -100,29 +101,61 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make URL for PASTA+ environment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_evaluate_data_package.R'><code>R/api_evaluate_data_package.R</code></a></small>
-    <div class="hidden name"><code>url_env.Rd</code></div>
+    <h1>Create data package</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_create_data_package.R'><code>R/api_create_data_package.R</code></a></small>
+    <div class="hidden name"><code>api_create_data_package.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create the URL suffix to the PASTA+ environment specified by the
-    environment argument.</p>
+    <p>Create a data package in the Environmental Data Initiative repository.
+    Use this function to create the first version of a data package. Use
+    `pkg_update` to update a data package.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>url_env</span>(<span class='no'>environment</span>)</pre>
+    <pre class="usage"><span class='fu'>api_create_data_package</span>(<span class='no'>path</span>, <span class='no'>package.id</span>, <span class='no'>environment</span>, <span class='no'>user.id</span>, <span class='no'>user.pass</span>,
+    <span class='no'>affiliation</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>path</th>
+      <td><p>(character) Path to the data package EML file.</p></td>
+    </tr>
+    <tr>
+      <th>package.id</th>
+      <td><p>(character) Package identifier composed of scope, identifier, and
+revision (e.g. 'edi.101.1').</p></td>
+    </tr>
+    <tr>
       <th>environment</th>
-      <td><p>(character) Data repository environment to perform the evaluation in.
+      <td><p>(character) Data repository environment to create the package in.
 Can be: 'development', 'staging', 'production'.</p></td>
     </tr>
+    <tr>
+      <th>user.id</th>
+      <td><p>(character) Identification of user creating the data package.</p></td>
+    </tr>
+    <tr>
+      <th>user.pass</th>
+      <td><p>(character) Password corresponding with the user.id argument supplied
+above.</p></td>
+    </tr>
+    <tr>
+      <th>affiliation</th>
+      <td><p>(character) Affiliation corresponding with the user.id argument supplied
+above. Can be: 'LTER' or 'EDI'.</p></td>
+    </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Data described by the EML metadata record must be accessible through a
+    URL supporting download by the EDI data repository. This URL must be
+    supplied for each data entity in the "physical" node of the EML (i.e.
+    //physical/distribution/online/url).</p>
     
 
   </div>
@@ -130,7 +163,9 @@ Can be: 'development', 'staging', 'production'.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#note">Note</a></li>
+          </ul>
 
   </div>
 </div>

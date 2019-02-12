@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make URL for PASTA+ environment — url_env • EDIutils</title>
+<title>validate_keywords — validate_keywords • EDIutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="Make URL for PASTA+ environment — url_env" />
+<meta property="og:title" content="validate_keywords — validate_keywords" />
 
-<meta property="og:description" content="Create the URL suffix to the PASTA+ environment specified by the
-    environment argument." />
+<meta property="og:description" content="Check the validity of terms listed in keywords.txt against controlled 
+    vocabularies, and receive suggestions for improving non-aligned terms." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -100,29 +100,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make URL for PASTA+ environment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_evaluate_data_package.R'><code>R/api_evaluate_data_package.R</code></a></small>
-    <div class="hidden name"><code>url_env.Rd</code></div>
+    <h1>validate_keywords</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/validate_keywords.R'><code>R/validate_keywords.R</code></a></small>
+    <div class="hidden name"><code>validate_keywords.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create the URL suffix to the PASTA+ environment specified by the
-    environment argument.</p>
+    <p>Check the validity of terms listed in keywords.txt against controlled 
+    vocabularies, and receive suggestions for improving non-aligned terms.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>url_env</span>(<span class='no'>environment</span>)</pre>
+    <pre class="usage"><span class='fu'>validate_keywords</span>(<span class='no'>path</span>, <span class='no'>cv</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>environment</th>
-      <td><p>(character) Data repository environment to perform the evaluation in.
-Can be: 'development', 'staging', 'production'.</p></td>
+      <th>path</th>
+      <td><p>(character) Path to the directory containing keywords.txt.</p></td>
+    </tr>
+    <tr>
+      <th>cv</th>
+      <td><p>(character) A controlled vocabulary to search. Valid options are:</p><ul>
+<li><p>lter - The LTER Controlled Vocabulary (http://vocab.lternet.edu/vocab/vocab/index.php)</p></li>
+</ul></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An updated version of keywords.txt with the controlled vocabulary name 
+    listed along side keywords for which a direct match was found. For each
+    keyword that could not be matched, a set of options are listed in the 
+    RStudio Console Window that the user must manually select from. The 
+    results of this selection process are written to keywords.txt.</p>
     
 
   </div>
@@ -130,7 +143,9 @@ Can be: 'development', 'staging', 'production'.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

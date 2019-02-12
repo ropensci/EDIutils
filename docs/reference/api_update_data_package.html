@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make authentication key — auth_key • EDIutils</title>
+<title>Update data package — api_update_data_package • EDIutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,27 @@
 
 
 
-<meta property="og:title" content="Make authentication key — auth_key" />
+<meta property="og:title" content="Update data package — api_update_data_package" />
 
-<meta property="og:description" content="Create user authentication key for PASTA+ operations." />
+<meta property="og:description" content="Update Data Package operation, specifying the scope and identifier of 
+    the data package to be updated in the URI, along with the EML document 
+    describing the data package to be created in the request message body, 
+    and returning a transaction identifier in the response message body as 
+    plain text; the transaction identifier may be used in a subsequent call 
+    to Read Data Package Error to determine the operation status; see Read 
+    Data Package to obtain the data package resource map if the operation 
+    completed successfully.    
+An optional query parameter, “useChecksum”, can be appended to the URL. 
+    When specified, the useChecksum query parameter directs the server to 
+    determine whether it can use an existing copy of a data entity from a 
+    previous revision of the data package based on matching a 
+    metadata-documented checksum value (MD5 or SHA-1) to the checksum of 
+    the existing copy. If a match is found, the server will skip the upload 
+    of the data entity from the remote URL and instead use its matching 
+    copy.    
+Please Note: Specifying “useChecksum” can save time by eliminating data 
+    uploads, but clients should take care to ensure that metadata-documented 
+    checksum values are accurate and up to date." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,25 +117,63 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make authentication key</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_evaluate_data_package.R'><code>R/api_evaluate_data_package.R</code></a></small>
-    <div class="hidden name"><code>auth_key.Rd</code></div>
+    <h1>Update data package</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_update_data_package.R'><code>R/api_update_data_package.R</code></a></small>
+    <div class="hidden name"><code>api_update_data_package.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create user authentication key for PASTA+ operations.</p>
+    <p>Update Data Package operation, specifying the scope and identifier of 
+    the data package to be updated in the URI, along with the EML document 
+    describing the data package to be created in the request message body, 
+    and returning a transaction identifier in the response message body as 
+    plain text; the transaction identifier may be used in a subsequent call 
+    to Read Data Package Error to determine the operation status; see Read 
+    Data Package to obtain the data package resource map if the operation 
+    completed successfully.</p>    
+<p>An optional query parameter, “useChecksum”, can be appended to the URL. 
+    When specified, the useChecksum query parameter directs the server to 
+    determine whether it can use an existing copy of a data entity from a 
+    previous revision of the data package based on matching a 
+    metadata-documented checksum value (MD5 or SHA-1) to the checksum of 
+    the existing copy. If a match is found, the server will skip the upload 
+    of the data entity from the remote URL and instead use its matching 
+    copy.</p>    
+<p>Please Note: Specifying “useChecksum” can save time by eliminating data 
+    uploads, but clients should take care to ensure that metadata-documented 
+    checksum values are accurate and up to date.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>auth_key</span>(<span class='no'>user.id</span>, <span class='no'>affiliation</span>)</pre>
+    <pre class="usage"><span class='fu'>api_update_data_package</span>(<span class='no'>path</span>, <span class='no'>package.id</span>, <span class='no'>environment</span>, <span class='no'>user.id</span>, <span class='no'>user.pass</span>,
+    <span class='no'>affiliation</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>path</th>
+      <td><p>(character) Path to the data package EML file.</p></td>
+    </tr>
+    <tr>
+      <th>package.id</th>
+      <td><p>(character) Package identifier composed of scope, identifier, and
+revision (e.g. 'edi.101.2').</p></td>
+    </tr>
+    <tr>
+      <th>environment</th>
+      <td><p>(character) Data repository environment containing the package to be
+updated. Can be: 'development', 'staging', 'production'.</p></td>
+    </tr>
+    <tr>
       <th>user.id</th>
-      <td><p>(character) Identification of user performing the evaluation.</p></td>
+      <td><p>(character) Identification of user updating the data package.</p></td>
+    </tr>
+    <tr>
+      <th>user.pass</th>
+      <td><p>(character) Password corresponding with the user.id argument supplied
+above.</p></td>
     </tr>
     <tr>
       <th>affiliation</th>
@@ -126,13 +182,22 @@ above. Can be: 'LTER' or 'EDI'.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Data described by the EML metadata record must be accessible through a
+    URL supporting download by the EDI data repository. This URL must be
+    supplied for each data entity in the "physical" node of the EML (i.e.
+    //physical/distribution/online/url).</p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#note">Note</a></li>
+          </ul>
 
   </div>
 </div>

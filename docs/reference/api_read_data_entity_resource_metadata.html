@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make URL for PASTA+ environment — url_env • EDIutils</title>
+<title>Read data entity resource metadata — api_read_data_entity_resource_metadata • EDIutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,11 @@
 
 
 
-<meta property="og:title" content="Make URL for PASTA+ environment — url_env" />
+<meta property="og:title" content="Read data entity resource metadata — api_read_data_entity_resource_metadata" />
 
-<meta property="og:description" content="Create the URL suffix to the PASTA+ environment specified by the
-    environment argument." />
+<meta property="og:description" content="Read Data Entity Resource Metadata operation, specifying the scope, 
+    identifier, revision, and entity identifier of the data entity object 
+    whose resource metadata is to be read in the URI." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -100,29 +101,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make URL for PASTA+ environment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_evaluate_data_package.R'><code>R/api_evaluate_data_package.R</code></a></small>
-    <div class="hidden name"><code>url_env.Rd</code></div>
+    <h1>Read data entity resource metadata</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_read_data_entity_resource_metadata.R'><code>R/api_read_data_entity_resource_metadata.R</code></a></small>
+    <div class="hidden name"><code>api_read_data_entity_resource_metadata.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Create the URL suffix to the PASTA+ environment specified by the
-    environment argument.</p>
+    <p>Read Data Entity Resource Metadata operation, specifying the scope, 
+    identifier, revision, and entity identifier of the data entity object 
+    whose resource metadata is to be read in the URI.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>url_env</span>(<span class='no'>environment</span>)</pre>
+    <pre class="usage"><span class='fu'>api_pkg_data_entity_resource_metadata</span>(<span class='no'>package.id</span>, <span class='no'>entity.id</span>,
+    <span class='kw'>environment</span> <span class='kw'>=</span> <span class='st'>'production'</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>package.id</th>
+      <td><p>(character) Package identifier composed of scope, identifier, and
+revision (e.g. 'edi.101.1').</p></td>
+    </tr>
+    <tr>
+      <th>entity.id</th>
+      <td><p>(character) Data entity identifier (e.g. 
+"2353ac38985edd6aff140e4c65cb32de")</p></td>
+    </tr>
+    <tr>
       <th>environment</th>
-      <td><p>(character) Data repository environment to perform the evaluation in.
+      <td><p>(character) Data repository environment to create the package in.
 Can be: 'development', 'staging', 'production'.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>('xml_document' 'xml_node') An XML string representing 
+    the resource metadata for the data entity.</p>
     
 
   </div>
@@ -130,7 +148,9 @@ Can be: 'development', 'staging', 'production'.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>
