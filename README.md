@@ -2,21 +2,22 @@
 [![codecov.io](https://codecov.io/github/EDIorg/EDIutils/coverage.svg?branch=master)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
 
 # EDIutils
-`EDIutils` an R package for interacting with the EDI Data Repository API and providing helper functions to other EDI R packages like `EMLassemblyline`, `ecocomDP`, and `taxonomyCleanr`.
+`EDIutils` is an R package for interacting with the EDI Repository Data Package and Audit Manager APIs and providing helper functions to EDI R packages like `EMLassemblyline`, `ecocomDP`, and `taxonomyCleanr`.
 
 ## Install
 
-Installation requires `devtools`
-
 ```
-# Install and load devtools
-install.packages("devtools")
-library(devtools)
-
-# Install and load EDIutils
-install_github("EDIorg/EDIutils")
-library(EDIutils)
+# Install from GitHub
+devtools::install_github("EDIorg/EDIutils")
 ```
+
+## Usage
+
+Check out available functions and use cases at 
+
+## Roadmap
+
+`EDIutils` focuses on functions for interacting with the EDI Repository Data Package and Audit Manager APIs, as well as helper functions to EDI R libraries.
 
 ## Contributing
 

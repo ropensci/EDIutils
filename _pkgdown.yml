@@ -1,0 +1,27 @@
+reference:
+  - title: EDI API
+    desc: Functions for interacting with the Data Package and Audit Manager APIs
+    contents:
+    - starts_with("api_")
+  - title: Helper functions
+    desc: Helper functions to EDI R libraries
+    contents:
+    - create_provenance_metadata
+    - detect_delimeter
+    - detect_os
+    - get_eml_attribute
+    - get_eol
+    - validate_arguments
+    - validate_fields
+    - validate_file_names
+    - validate_keywords
+    - validate_path
+    - view_unit_dictionary
+  - title: LTER Controlled Vocabulary
+    desc: Functions for interacting with the LTER Controlled Vocabulary API
+    contents:
+    - lter_id
+    - lter_scope
+    - lter_term
+    - resolve_terms
+    
