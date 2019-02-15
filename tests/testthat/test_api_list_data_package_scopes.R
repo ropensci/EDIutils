@@ -5,7 +5,7 @@ testthat::test_that('Test for object attributes', {
   
   expect_equal(
     class(
-      api_list_data_package_scope(
+      api_list_data_package_scopes(
         environment = 'production'
       )
     ),

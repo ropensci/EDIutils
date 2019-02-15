@@ -5,7 +5,7 @@
 #'     (excluding revision values) that have been deleted from the data package 
 #'     registry.
 #'
-#' @usage api_list_data_package_scopes(environment = 'production')
+#' @usage api_list_deleted_data_packages(environment = 'production')
 #'
 #' @param environment
 #'     (character) Data repository environment to create the package in.

@@ -4,8 +4,7 @@
 \alias{api_read_data_entity_sizes}
 \title{Read data entity sizes}
 \usage{
-api_read_data_entity_sizes(package.id, identifier, 
-    environment = 'production')
+api_read_data_entity_sizes(package.id, environment = 'production')
 }
 \arguments{
 \item{package.id}{(character) Package identifier composed of scope, identifier, and

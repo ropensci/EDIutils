@@ -5,7 +5,7 @@
 #'     identifier, revision, and entity identifier of the data entity object 
 #'     whose resource metadata is to be read in the URI.
 #'
-#' @usage api_pkg_data_entity_resource_metadata(package.id, entity.id, 
+#' @usage api_read_data_entity_resource_metadata(package.id, entity.id, 
 #'     environment = 'production')
 #'
 #' @param package.id

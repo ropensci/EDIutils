@@ -4,7 +4,7 @@
 \alias{api_read_data_entity_resource_metadata}
 \title{Read data entity resource metadata}
 \usage{
-api_pkg_data_entity_resource_metadata(package.id, entity.id, 
+api_read_data_entity_resource_metadata(package.id, entity.id, 
     environment = 'production')
 }
 \arguments{

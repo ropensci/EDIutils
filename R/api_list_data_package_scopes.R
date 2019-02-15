@@ -15,7 +15,7 @@
 #' @export
 #'
 
-api_list_data_package_scope <- function(environment = 'production'){
+api_list_data_package_scopes <- function(environment = 'production'){
   
   message(paste('Listing data package scopes in the', environment, 'environment'))
   

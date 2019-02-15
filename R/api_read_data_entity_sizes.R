@@ -7,8 +7,7 @@
 #'     and size values (in bytes). Only data entities that the user is 
 #'     authorized to read are included in the list.
 #'
-#' @usage api_read_data_entity_sizes(package.id, identifier, 
-#'     environment = 'production')
+#' @usage api_read_data_entity_sizes(package.id, environment = 'production')
 #'
 #' @param package.id
 #'     (character) Package identifier composed of scope, identifier, and

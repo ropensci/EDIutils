@@ -4,7 +4,7 @@
 \alias{api_list_data_descendants}
 \title{List data descendants}
 \usage{
-api_pkg_data_descendants(package.id, environment = 'production')
+api_list_data_descendants(package.id, environment = 'production')
 }
 \arguments{
 \item{package.id}{(character) Package identifier composed of scope, identifier, and

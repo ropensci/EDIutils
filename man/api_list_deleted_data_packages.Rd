@@ -4,7 +4,7 @@
 \alias{api_list_deleted_data_packages}
 \title{List deleted data packages}
 \usage{
-api_list_data_package_scopes(environment = 'production')
+api_list_deleted_data_packages(environment = 'production')
 }
 \arguments{
 \item{environment}{(character) Data repository environment to create the package in.

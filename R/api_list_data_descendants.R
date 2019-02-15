@@ -6,7 +6,7 @@
 #'     packages that are known to be derived, in whole or in part, from 
 #'     the specified source data package.
 #'
-#' @usage api_pkg_data_descendants(package.id, environment = 'production')
+#' @usage api_list_data_descendants(package.id, environment = 'production')
 #'
 #' @param package.id
 #'     (character) Package identifier composed of scope, identifier, and
