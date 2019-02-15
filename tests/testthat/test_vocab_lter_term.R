@@ -3,9 +3,9 @@ library(EDIutils)
 
 # Expect class logical
 
-# testthat::test_that('Output should be of logical class', {
-#   expect_equal(class(vocab_lter_term('water temperature')), 'logical')
-# })
+testthat::test_that('Output should be of logical class', {
+  expect_equal(class(vocab_lter_term('water temperature')), 'logical')
+})
 
 # Expect messages
 

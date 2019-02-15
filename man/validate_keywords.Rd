@@ -4,7 +4,7 @@
 \alias{validate_keywords}
 \title{validate_keywords}
 \usage{
-validate_keywords(path, cv)
+validate_keywords(path, cv, interactive.mode = FALSE)
 }
 \arguments{
 \item{path}{(character) Path to the directory containing keywords.txt.}
@@ -13,6 +13,9 @@ validate_keywords(path, cv)
 \itemize{
     \item{lter} - The LTER Controlled Vocabulary (http://vocab.lternet.edu/vocab/vocab/index.php)
 }}
+
+\item{interactive.mode}{(logical) Should a list of possible matches be returned to the user to 
+select from?}
 }
 \value{
 An updated version of keywords.txt with the controlled vocabulary name 

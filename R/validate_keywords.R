@@ -5,7 +5,7 @@
 #'     vocabularies, and receive suggestions for improving non-aligned terms.
 #'
 #' @usage 
-#'     validate_keywords(path, cv)
+#'     validate_keywords(path, cv, interactive.mode = FALSE)
 #'
 #' @param path
 #'     (character) Path to the directory containing keywords.txt.
@@ -14,6 +14,9 @@
 #'     \itemize{
 #'         \item{lter} - The LTER Controlled Vocabulary (http://vocab.lternet.edu/vocab/vocab/index.php)
 #'     }
+#' @param interactive.mode
+#'     (logical) Should a list of possible matches be returned to the user to 
+#'     select from?
 #'
 #' @return 
 #'     An updated version of keywords.txt with the controlled vocabulary name 
@@ -26,7 +29,7 @@
 #'
 
 
-validate_keywords <- function(path, cv){
+validate_keywords <- function(path, cv, interactive.mode = FALSE){
   
   # Check arguments -----------------------------------------------------------
   
@@ -82,18 +85,22 @@ validate_keywords <- function(path, cv){
   
   # Resolve terms (manually) --------------------------------------------------
   
-  unresolved_terms <- keywords[keywords$keywordThesaurus == '', 'keyword']
-  
-  results <- vocab_resolve_terms(
-    x = unresolved_terms,
-    cv = cv,
-    interactive = T
-  )
-  
-  use_i <- results[ , 'controlled_vocabulary'] != ''
-  use_i2 <- match(unresolved_terms[use_i], keywords$keyword)
-  keywords[use_i2, 'keywordThesaurus'] <- 'controlled_vocabulary'
-  keywords[use_i2, 'keyword'] <- results$term[use_i]
+  if (isTRUE(interactive.mode)){
+    
+    unresolved_terms <- keywords[keywords$keywordThesaurus == '', 'keyword']
+    
+    results <- vocab_resolve_terms(
+      x = unresolved_terms,
+      cv = cv,
+      interactive = T
+    )
+    
+    use_i <- results[ , 'controlled_vocabulary'] != ''
+    use_i2 <- match(unresolved_terms[use_i], keywords$keyword)
+    keywords[use_i2, 'keywordThesaurus'] <- 'controlled_vocabulary'
+    keywords[use_i2, 'keyword'] <- results$term[use_i]
+    
+  }
   
   # Write results to file -----------------------------------------------------
   
