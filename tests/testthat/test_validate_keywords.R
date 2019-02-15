@@ -16,7 +16,13 @@ testthat::test_that('Expect errors', {
 
 testthat::test_that('Resolve keywords', {
   expect_equal(
-    class(validate_keywords(path, 'lter', interactive.mode = F)),
-    'data.frame')
+    class(
+      validate_keywords(
+        path, 
+        'lter', 
+        interactive.mode = F
+      )
+    ),
+    'data.frame'
+  )
 })
-
