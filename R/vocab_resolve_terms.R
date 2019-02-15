@@ -1,10 +1,10 @@
-#' resolve_terms
+#' Resolve terms to a controlled vocabulary
 #'
 #' @description  
 #'     Resolve terms to a controlled vocabulary.
 #'
 #' @usage 
-#'     resolve_terms(x, cv, messages = FALSE, interactive = FALSE)
+#'     vocab_resolve_terms(x, cv, messages = FALSE, interactive = FALSE)
 #'
 #' @param x
 #'     (character) Term(s) to resolve to a controlled vocabulary. Can be a 
@@ -28,7 +28,7 @@
 #'
 
 
-resolve_terms <- function(x, cv, messages = FALSE, interactive = FALSE){
+vocab_resolve_terms <- function(x, cv, messages = FALSE, interactive = FALSE){
   
   # Check arguments -----------------------------------------------------------
   
@@ -55,11 +55,11 @@ resolve_terms <- function(x, cv, messages = FALSE, interactive = FALSE){
     
     if (!missing(messages) & isTRUE(messages)){
       # Messages
-      use_i <- unlist(lapply(x, FUN = lter_term, messages = T))
+      use_i <- unlist(lapply(x, FUN = vocab_lter_term, messages = T))
       output[use_i, 'controlled_vocabulary'] <- 'LTER Controlled Vocabulary'      
     } else if (!missing(interactive) & isTRUE(interactive)){
       # Interactive
-      alternative_terms <- unlist(lapply(x, FUN = lter_term, interactive = T))
+      alternative_terms <- unlist(lapply(x, FUN = vocab_lter_term, interactive = T))
       use_i <- ((alternative_terms == 'NONE OF THE ABOVE') | (is.na(alternative_terms)))
       output[!use_i, 'term'] <- alternative_terms[!use_i]
       output$term[output$term == 'TRUE'] <- x[output$term == 'TRUE']
@@ -69,7 +69,7 @@ resolve_terms <- function(x, cv, messages = FALSE, interactive = FALSE){
       output$controlled_vocabulary[use_i] <- ''
     } else {
       # Automatic
-      use_i <- unlist(lapply(x, FUN = lter_term))
+      use_i <- unlist(lapply(x, FUN = vocab_lter_term))
       output[use_i, 'controlled_vocabulary'] <- 'LTER Controlled Vocabulary'
     }
     

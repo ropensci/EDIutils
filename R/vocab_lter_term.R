@@ -1,11 +1,11 @@
-#' lter_term
+#' Search for an LTER Controlled Vocabulary term
 #'
 #' @description  
 #'     Search for a term in the LTER Controlled Vocabulary (Long Term 
 #'     Ecological Research Network).
 #'
 #' @usage 
-#'     lter_term(x, messages = FALSE, interactive = FALSE)
+#'     vocab_lter_term(x, messages = FALSE, interactive = FALSE)
 #'
 #' @param x 
 #'     (character) A term to search for.
@@ -28,7 +28,7 @@
 #'
 
 
-lter_term <- function(x, messages = FALSE, interactive = FALSE){
+vocab_lter_term <- function(x, messages = FALSE, interactive = FALSE){
   
   # The LTER controlled vocabulary produces different results for a standard
   # search and fuzzy (similar) search. Both searches are run and results 

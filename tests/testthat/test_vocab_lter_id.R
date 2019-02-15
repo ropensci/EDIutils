@@ -4,7 +4,7 @@ library(EDIutils)
 
 # Parameterize
 
-output <- lter_id('water temperature')
+output <- vocab_lter_id('water temperature')
 
 # Expect numeric output
 
@@ -15,7 +15,7 @@ testthat::test_that('Output should be numeric.', {
 # Expect error
 
 testthat::test_that('Error should result from invalid terms.', {
-  expect_error(lter_id('ast'))
-  expect_error(lter_id(123))
-  expect_error(lter_id(c('temperature', 'water')))
+  expect_error(vocab_lter_id('ast'))
+  expect_error(vocab_lter_id(123))
+  expect_error(vocab_lter_id(c('temperature', 'water')))
 })

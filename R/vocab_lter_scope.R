@@ -1,10 +1,10 @@
-#' lter_scope
+#' Get the scope of an LTER Controlled Vocabulary term
 #'
 #' @description  
 #'     Get the scope description for a term in the LTER Controlled Vocabulary.
 #'
 #' @usage 
-#'     lter_scope(id)
+#'     vocab_lter_scope(id)
 #'
 #' @param id 
 #'     (numeric) An identification number of a valid term in the LTER 
@@ -18,7 +18,7 @@
 #'
 
 
-lter_scope <- function(id){
+vocab_lter_scope <- function(id){
   
   # Check arguments -----------------------------------------------------------
   

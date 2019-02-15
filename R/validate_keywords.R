@@ -71,7 +71,7 @@ validate_keywords <- function(path, cv){
   
   unresolved_terms <- keywords[keywords$keywordThesaurus == '', 'keyword']
   
-  results <- resolve_terms(
+  results <- vocab_resolve_terms(
     x = unresolved_terms,
     cv = cv
   )
@@ -84,7 +84,7 @@ validate_keywords <- function(path, cv){
   
   unresolved_terms <- keywords[keywords$keywordThesaurus == '', 'keyword']
   
-  results <- resolve_terms(
+  results <- vocab_resolve_terms(
     x = unresolved_terms,
     cv = cv,
     interactive = T

@@ -17,11 +17,8 @@ reference:
     - validate_keywords
     - validate_path
     - view_unit_dictionary
-  - title: LTER Controlled Vocabulary
-    desc: Functions for interacting with the LTER Controlled Vocabulary API
+  - title: Controlled Vocabulary
+    desc: Functions for interacting with controlled vocabulary APIs
     contents:
-    - lter_id
-    - lter_scope
-    - lter_term
-    - resolve_terms
+    - starts_with("vocab_")
     

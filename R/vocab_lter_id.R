@@ -1,11 +1,11 @@
-#' lter_id
+#' Get the ID for an LTER controlled vocab term
 #'
 #' @description  
 #'     Get the identification number for a valid term in the LTER Controlled 
 #'     Vocabulary.
 #'
 #' @usage 
-#'     lter_id(x)
+#'     vocab_lter_id(x)
 #'
 #' @param x 
 #'     (character) A valid term in the LTER Controlled Vocabulary.
@@ -18,7 +18,7 @@
 #'
 
 
-lter_id <- function(x){
+vocab_lter_id <- function(x){
   
   # Check arguments -----------------------------------------------------------
   
@@ -31,7 +31,7 @@ lter_id <- function(x){
   
   # Get the term ID and report ------------------------------------------------
   
-  if (isTRUE(lter_term(x = x))){
+  if (isTRUE(vocab_lter_term(x = x))){
     
     # Construct the search term and query
     
