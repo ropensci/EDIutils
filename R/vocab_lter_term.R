@@ -61,8 +61,8 @@ vocab_lter_term <- function(x, messages = FALSE, interactive = FALSE){
     paste0(
       'http://vocab.lternet.edu/vocab/vocab/services.php/?task=search&arg=',
       term
-      )
     )
+  )
   
   # Fuzzy search
   
@@ -74,6 +74,8 @@ vocab_lter_term <- function(x, messages = FALSE, interactive = FALSE){
   )
   
   # Parse the responses and combine -------------------------------------------
+  
+
   
   term_list <- c()
   
@@ -118,10 +120,10 @@ vocab_lter_term <- function(x, messages = FALSE, interactive = FALSE){
         paste0(
           term_list, 
           collapse = '\n'
-          ),
+        ),
         '\n'
-        )
       )
+    )
     
   }
   
@@ -135,8 +137,8 @@ vocab_lter_term <- function(x, messages = FALSE, interactive = FALSE){
         x,
         '" could not be found in the LTER Controlled Vocabulary. Possible alternatives:',
         '\n'
-        )
       )
+    )
     
     term_list <- c(term_list, 'NONE OF THE ABOVE')
     

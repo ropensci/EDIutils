@@ -12,6 +12,9 @@
 #' @param package.id
 #'     (character) Package identifier composed of scope, identifier, and
 #'     revision (e.g. 'edi.101.1').
+#' @param identifier
+#'     (character) Data entity identifier (e.g. 
+#'     5c224a0e74547b14006272064dc869b1)
 #' @param environment
 #'     (character) Data repository environment to create the package in.
 #'     Can be: 'development', 'staging', 'production'.

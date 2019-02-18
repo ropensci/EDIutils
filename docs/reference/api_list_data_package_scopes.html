@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read data package report — api_read_data_package_report • EDIutils</title>
+<title>List data package scopes — api_list_data_package_scopes • EDIutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +30,9 @@
 
 
 
-<meta property="og:title" content="Read data package report — api_read_data_package_report" />
+<meta property="og:title" content="List data package scopes — api_list_data_package_scopes" />
 
-<meta property="og:description" content="Read Data Package Report operation, specifying the scope, identifier, 
-    and revision of the data package quality report document to be read 
-    in the URI." />
+<meta property="og:description" content="List data package scopes" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -101,29 +99,22 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read data package report</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_read_data_package_report.R'><code>R/api_read_data_package_report.R</code></a></small>
-    <div class="hidden name"><code>api_read_data_package_report.Rd</code></div>
+    <h1>List data package scopes</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_list_data_package_scopes.R'><code>R/api_list_data_package_scopes.R</code></a></small>
+    <div class="hidden name"><code>api_list_data_package_scopes.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Read Data Package Report operation, specifying the scope, identifier, 
-    and revision of the data package quality report document to be read 
-    in the URI.</p>
+    <p>List data package scopes</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>api_read_data_package_report</span>(<span class='no'>package.id</span>, <span class='kw'>environment</span> <span class='kw'>=</span> <span class='st'>'production'</span>)</pre>
+    <pre class="usage"><span class='fu'>api_list_data_package_scopes</span>(<span class='kw'>environment</span> <span class='kw'>=</span> <span class='st'>'production'</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>package.id</th>
-      <td><p>(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').</p></td>
-    </tr>
     <tr>
       <th>environment</th>
       <td><p>(character) Data repository environment to create the package in.
@@ -133,7 +124,7 @@ Can be: 'development', 'staging', 'production'.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>('xml_document' 'xml_node') Data package report.</p>
+    <p>(character) All scope values extant in the data package registry.</p>
     
 
   </div>
