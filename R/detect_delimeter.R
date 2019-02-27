@@ -55,27 +55,53 @@ detect_delimeter <- function(path, data.files, os){
     
     if (os == "mac"){
       
-      delim_guess[i] <- suppressWarnings(reader::get.delim(data_path[i],
+      delim_guess[i] <- suppressWarnings(try(reader::get.delim(data_path[i],
                                                    n = 2,
                                                    delims = c("\t",
                                                               ",",
                                                               ";",
-                                                              "|")))
+                                                              "|")), silent = T))
+      if (is.na(delim_guess[i])){
+        if (stringr::str_detect(data_path[i], '.csv$')){
+          delim_guess[i] <- ','
+        } else if (stringr::str_detect(data_path[i], '.txt$')){
+          delim_guess[i] <- '\t'
+        }
+      }
+      
     } else if (os == "win"){
       
-      delim_guess[i] <- reader::get.delim(data_path[i],
+      delim_guess[i] <- suppressWarnings(try(reader::get.delim(data_path[i],
                                   n = 1,
                                   delims = c("\t",
                                              ",",
                                              ";",
-                                             "|"))
+                                             "|")), silent = T))
+      
+      if (is.na(delim_guess[i])){
+        if (stringr::str_detect(data_path[i], '.csv$')){
+          delim_guess[i] <- ','
+        } else if (stringr::str_detect(data_path[i], '.txt$')){
+          delim_guess[i] <- '\t'
+        }
+      }
+      
     } else if (os == 'lin'){
-      delim_guess[i] <- reader::get.delim(data_path[i],
+      
+      delim_guess[i] <- suppressWarnings(try(reader::get.delim(data_path[i],
                                           n = 1,
                                           delims = c("\t",
                                                      ",",
                                                      ";",
-                                                     "|"))
+                                                     "|")), silent = T))
+      if (is.na(delim_guess[i])){
+        if (stringr::str_detect(data_path[i], '.csv$')){
+          delim_guess[i] <- ','
+        } else if (stringr::str_detect(data_path[i], '.txt$')){
+          delim_guess[i] <- '\t'
+        }
+      }
+      
     }
     
     delim_guess[i] <- detect_delimeter_2(data.file = data_files[i],
