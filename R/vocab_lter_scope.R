@@ -39,7 +39,7 @@ vocab_lter_scope <- function(id){
       as.character(id)
     )
   )
-  
+
   # Parse results
   
   if (length(xml2::xml_find_all(search_output, './/result')) != 0){
@@ -60,5 +60,5 @@ vocab_lter_scope <- function(id){
   # Return result -------------------------------------------------------------
   
   node_terms
-  
+
 }
