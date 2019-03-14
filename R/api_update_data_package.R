@@ -27,7 +27,8 @@
 #'     affiliation)
 #'
 #' @param path
-#'     (character) Path to the data package EML file.
+#'     (character) Local or server path to the data package EML file.
+#'     
 #' @param package.id
 #'     (character) Package identifier composed of scope, identifier, and
 #'     revision (e.g. 'edi.101.2').
@@ -55,7 +56,7 @@
 api_update_data_package <- function(path, package.id, environment, user.id, user.pass,
                        affiliation){
 
-  validate_arguments(x = as.list(environment()))
+  # validate_arguments(x = as.list(environment()))
   
   # Build scope-identifier
   sid <- stringr::str_remove(package.id, '\\.[:digit:]+$')

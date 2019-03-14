@@ -8,7 +8,7 @@ api_update_data_package(path, package.id, environment, user.id, user.pass,
     affiliation)
 }
 \arguments{
-\item{path}{(character) Path to the data package EML file.}
+\item{path}{(character) Local or server path to the data package EML file.}
 
 \item{package.id}{(character) Package identifier composed of scope, identifier, and
 revision (e.g. 'edi.101.2').}
