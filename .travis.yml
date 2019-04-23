@@ -4,13 +4,14 @@ r_packages:
   - stringr
   - lubridate
   - covr
-  - EML
   - httr
   - stringi
   - reader
   - readr
   - xml2
   - XML
+r_github_packages:
+  - clnsmth/EML103
 warnings_are_errors: false
 after_success:
   - Rscript -e 'library(covr); codecov()'

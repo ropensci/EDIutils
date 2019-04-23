@@ -9,7 +9,7 @@
 
 ```
 # Install from GitHub
-devtools::install_github("EDIorg/EDIutils")
+remotes::install_github("EDIorg/EDIutils")
 ```
 
 ## Usage

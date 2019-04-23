@@ -56,19 +56,6 @@
   "softwareRequirements": [
     {
       "@type": "SoftwareApplication",
-      "identifier": "EML",
-      "name": "EML",
-      "version": ">= 1.0.3",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=EML"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "httr",
       "name": "httr",
       "version": ">= 1.3.1",
@@ -173,7 +160,7 @@
     }
   ],
   "readme": "https://github.com/EDIorg/EDIutils/blob/master/README.md",
-  "fileSize": "83.766KB",
+  "fileSize": "83.781KB",
   "contIntegration": [
     "https://travis-ci.org/EDIorg/EDIutils",
     "https://codecov.io/github/EDIorg/EDIutils?branch=master"
