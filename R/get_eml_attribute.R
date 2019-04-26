@@ -30,63 +30,67 @@ get_eml_attribute <- function(attr.name, package.id){
 
   # Load EML and data entity names
   
-  scope <- unlist(stringr::str_split(package.id, '\\.'))[1]
-  identifier <- unlist(stringr::str_split(package.id, '\\.'))[2]
-  revision <- unlist(stringr::str_split(package.id, '\\.'))[3]
+  metadata <- api_read_metadata(package.id = package.id)
   
-  metadata <- XML::xmlParse(paste("http://pasta.lternet.edu/package/metadata/eml",
-                             "/",
-                             scope,
-                             "/",
-                             identifier,
-                             "/",
-                             revision,
-                             sep = ""))
-  entity_names <- unlist(
-    XML::xmlApply(metadata["//dataset/dataTable/entityName"],
-             XML::xmlValue)
+  entity_names <- xml2::xml_text(
+    xml2::xml_find_all(
+      metadata,
+      "//dataset/dataTable/physical/objectName"
+    )
   )
 
   # Get the attributes definition and unit
   
   for (i in 1:length(entity_names)){
-    definition <- unlist(
-      try(XML::xmlApply(
-        metadata[
-          paste0("//dataTable[./entityName = '",
-                 entity_names[i],
-                 "']//attribute[./attributeName = '",
-                 attr.name,
-                 "']//attributeDefinition")],
-        XML::xmlValue
-      ), silent = TRUE)
+    
+    definition <- try(
+      xml2::xml_text(
+        xml2::xml_find_all(
+          x = metadata, 
+          xpath = paste0(
+            "//dataTable[./entityName = '",
+            entity_names[i],
+            "']//attribute[./attributeName = '",
+            attr.name,
+            "']//attributeDefinition"
+          )
+        )
+      ),
+      silent = TRUE
     )
     
-    unit <- unlist(
-      try(XML::xmlApply(
-        metadata[
-          paste0("//dataTable[./entityName = '",
-                 entity_names[i],
-                 "']//attribute[./attributeName = '",
-                 attr.name,
-                 "']//standardUnit")
-        ],
-        XML::xmlValue
-      ), silent = TRUE)
+    unit <- try(
+      xml2::xml_text(
+        xml2::xml_find_all(
+          x = metadata, 
+          xpath = paste0(
+            "//dataTable[./entityName = '",
+            entity_names[i],
+            "']//attribute[./attributeName = '",
+            attr.name,
+            "']//standardUnit"
+          )
+        )
+      ),
+      silent = TRUE
     )
-    if (is.null(unit)){
-      unit <- unlist(
-        try(XML::xmlApply(
-          metadata[
-            paste0("//dataTable[./entityName = '",
-                   entity_names[i],
-                   "']//attribute[./attributeName = '",
-                   attr.name,
-                   "']//customUnit")
-            ],
-          XML::xmlValue
-        ), silent = TRUE)
-      ) 
+    
+    if (identical(unit, character(0))){
+      unit <- try(
+        xml2::xml_text(
+          xml2::xml_find_all(
+            x = metadata, 
+            xpath = paste0(
+              "//dataTable[./entityName = '",
+              entity_names[i],
+              "']//attribute[./attributeName = '",
+              attr.name,
+              "']//customUnit"
+            )
+          )
+        ),
+        silent = TRUE
+      )
     }
     
     if (class(definition) != 'character'){
