@@ -1,3 +1,5 @@
+<!-- This comment enables badge extraction to pkgdown site -->
+
 [![Travis-CI Build Status](https://travis-ci.com/EDIorg/EDIutils.svg?branch=master)](https://travis-ci.org/EDIorg/EDIutils)
 [![codecov.io](https://codecov.io/github/EDIorg/EDIutils/coverage.svg?branch=master)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
 [![DOI](https://zenodo.org/badge/159572464.svg)](https://zenodo.org/badge/latestdoi/159572464)
