@@ -17,7 +17,7 @@ remotes::install_github("EDIorg/EDIutils")
 
 ## Usage
 
-[Check out available functions and use cases at the EDIutils website](https://ediorg.github.io/EDIutils/)
+[Check out example use cases in the EDIutils website articles](https://ediorg.github.io/EDIutils/)
 
 ## Roadmap
 
