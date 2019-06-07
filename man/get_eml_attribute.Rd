@@ -21,5 +21,5 @@ EDI Data Repository.}
     }
 }
 \description{
-Get metadata for an attribute.
+Get attribute metadata
 }
