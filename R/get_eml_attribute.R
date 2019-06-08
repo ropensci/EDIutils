@@ -41,7 +41,7 @@ get_eml_attribute <- function(attr.name, package.id){
       xml2::xml_find_all(
         x = metadata, 
         xpath = paste0(
-          "//definition[ancestor::attribute[child::attributeName[text() = '",
+          "//attributeDefinition[ancestor::attribute[child::attributeName[text() = '",
           attr.name,
           "']]]"
         )
@@ -88,14 +88,14 @@ get_eml_attribute <- function(attr.name, package.id){
   
   if (class(definition) != 'character'){
     definition <- NA_character_
+  } else {
+    definition <- definition[1]
   }
   
   if (class(unit) != 'character'){
     unit <- NA_character_
-  }
-  
-  if (!is.na(definition) | !is.na(unit)){
-    break
+  } else {
+    unit <- unit[1]
   }
 
   # Return results
