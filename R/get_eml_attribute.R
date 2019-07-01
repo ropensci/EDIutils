@@ -1,7 +1,7 @@
 #' Get metadata for an attribute
 #'
 #' @description
-#'     Get metadata for an attribute.
+#'     Get attribute metadata
 #'
 #' @usage get_eml_attribute(attr.name, package.id)
 #'
@@ -24,86 +24,82 @@
 
 get_eml_attribute <- function(attr.name, package.id){
 
+  # Send message
+  
   if (!is.na(attr.name)){
     message(paste0('Searching ', package.id, ' for "', attr.name, '"'))
   }
 
-  # Load EML and data entity names
+  # Load EML
   
-  metadata <- api_read_metadata(package.id = package.id)
-  
-  entity_names <- xml2::xml_text(
-    xml2::xml_find_all(
-      metadata,
-      "//dataset/dataTable/physical/objectName"
-    )
-  )
+  metadata <- suppressMessages(api_read_metadata(package.id))
 
-  # Get the attributes definition and unit
-  
-  for (i in 1:length(entity_names)){
+  # Get definition
     
-    definition <- try(
-      xml2::xml_text(
-        xml2::xml_find_all(
-          x = metadata, 
-          xpath = paste0(
-            "//dataTable[./entityName = '",
-            entity_names[i],
-            "']//attribute[./attributeName = '",
-            attr.name,
-            "']//attributeDefinition"
-          )
+  definition <- try(
+    xml2::xml_text(
+      xml2::xml_find_all(
+        x = metadata, 
+        xpath = paste0(
+          "//attributeDefinition[ancestor::attribute[child::attributeName[text() = '",
+          attr.name,
+          "']]]"
         )
-      ),
-      silent = TRUE
-    )
-    
+      )
+    ),
+    silent = TRUE
+  )
+  
+  # Get standard unit
+  
+  unit <- try(
+    xml2::xml_text(
+      xml2::xml_find_all(
+        x = metadata, 
+        xpath = paste0(
+          "//standardUnit[ancestor::attribute[child::attributeName[text()  = '",
+          attr.name,
+          "']]]"
+        )
+      )
+    ),
+    silent = TRUE
+  )
+  
+  # Get custom unit
+  
+  if (identical(unit, character(0))){
     unit <- try(
       xml2::xml_text(
         xml2::xml_find_all(
           x = metadata, 
           xpath = paste0(
-            "//dataTable[./entityName = '",
-            entity_names[i],
-            "']//attribute[./attributeName = '",
+            "//customUnit[ancestor::attribute[child::attributeName[text()  = '",
             attr.name,
-            "']//standardUnit"
+            "']]]"
           )
         )
       ),
       silent = TRUE
     )
-    
-    if (identical(unit, character(0))){
-      unit <- try(
-        xml2::xml_text(
-          xml2::xml_find_all(
-            x = metadata, 
-            xpath = paste0(
-              "//dataTable[./entityName = '",
-              entity_names[i],
-              "']//attribute[./attributeName = '",
-              attr.name,
-              "']//customUnit"
-            )
-          )
-        ),
-        silent = TRUE
-      )
-    }
-    
-    if (class(definition) != 'character'){
-      definition <- NA_character_
-    }
-    if (class(unit) != 'character'){
-      unit <- NA_character_
-    }
-    if (!is.na(definition) | !is.na(unit)){
-      break
-    }
+  }
+  
+  # Parse results
+  
+  if (class(definition) != 'character'){
+    definition <- NA_character_
+  } else {
+    definition <- definition[1]
+  }
+  
+  if (class(unit) != 'character'){
+    unit <- NA_character_
+  } else {
+    unit <- unit[1]
   }
 
+  # Return results
+  
   list(
     name = attr.name,
     definition = definition,
