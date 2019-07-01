@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>List principal owner citations — api_list_principal_owner_citations • EDIutils</title>
+<title>Infer field delimiter from file name — delimiter_infer • EDIutils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="List principal owner citations — api_list_principal_owner_citations" />
+<meta property="og:title" content="Infer field delimiter from file name — delimiter_infer" />
 
-<meta property="og:description" content="List Principal Owner Citations operation." />
+<meta property="og:description" content="Infer field delimiter from file name" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,37 +99,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>List principal owner citations</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_list_principal_owner_citations.R'><code>R/api_list_principal_owner_citations.R</code></a></small>
-    <div class="hidden name"><code>api_list_principal_owner_citations.Rd</code></div>
+    <h1>Infer field delimiter from file name</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/detect_delimeter.R'><code>R/detect_delimeter.R</code></a></small>
+    <div class="hidden name"><code>delimiter_infer.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>List Principal Owner Citations operation.</p>
+    <p>Infer field delimiter from file name</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>api_list_principal_owner_citations</span>(<span class='no'>dn</span>, <span class='kw'>environment</span> <span class='kw'>=</span> <span class='st'>'production'</span>)</pre>
+    <pre class="usage"><span class='fu'>delimiter_infer</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dn</th>
-      <td><p>(character) Distinguished name (e.g. 
-'uid=csmith,o=LTER,dc=ecoinformatics,dc=org')</p></td>
-    </tr>
-    <tr>
-      <th>environment</th>
-      <td><p>(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.</p></td>
+      <th>x</th>
+      <td><p>(character) File name including path</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>('xml_document' 'xml_node') journalCitations metadata</p>
+    <p>(character) Delimiter</p>
     
 
   </div>
