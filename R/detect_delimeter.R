@@ -1,26 +1,25 @@
-#' Detect field delimeter
+#' Get field delimiters of input files
 #'
 #' @description  
-#'     Detect field delimiter of input files and return character string 
-#'     representation.
+#'     Detect and return field delimiters of input files (tables).
 #'
-#' @usage detect_delimeter(path, data.files, os)
+#' @usage 
+#' detect_delimeter(
+#'   path, 
+#'   data.files, 
+#'   os
+#' )
 #' 
 #' @param path 
-#'     (character) A character string specifying a path to the dataset working 
-#'     directory containing the data files from which to detect the field 
-#'     delimeters.
+#'     (character) Path to files.
 #' @param data.files
-#'     (character) A list of character strings specifying the names of the 
-#'     data files from which to detect the field delimeters of. 
+#'     (character) File names.
 #' @param os
-#'     (character) A character string specifying the operating system in which 
-#'     this function is to be called. Valid options are generated from 
-#'     \code{detect_os}.
+#'     (character) Operating system. Valid options are returned from  
+#'     \code{EDIutils::detect_os}.
 #' 
 #' @return 
-#'     A character string representation of the field delimeters listed in 
-#'     order of files listed in the data.files argument.
+#'     (character) Field delimiters of input files.
 #'     \item{"\\t"}{tab}
 #'     \item{","}{comma}
 #'     \item{";"}{semi-colon}
@@ -31,83 +30,96 @@
 
 detect_delimeter <- function(path, data.files, os){
   
-  # Check arguments -----------------------------------------------------
+  # Validate arguments --------------------------------------------------------
+  
+  # Validate arguments
   
   validate_arguments(x = as.list(environment()))
   
-  # Validate data.files
+  # Validate data tables
   
   data_files <- validate_file_names(path, data.files)
   
   # Detect field delimiters ---------------------------------------------------
+  # Loop through each table using reader::get.delim() to return the field
+  # delimiter. Note: reader::get.delim() performance seems to be operating 
+  # system specific.
   
   delim_guess <- c()
   data_path <- c()
-  for (i in 1:length(data_files)){
+  
+  for (i in seq_along(data_files)){
     
-    data_path[i] <- paste(path,
-                          "/",
-                          data_files[i],
-                          sep = "")
+    # Initialize output vector
     
-    nlines <- length(readLines(data_path[i],
-                               warn = F))
+    data_path[i] <- paste0(path, '/', data_files[i])
     
     if (os == "mac"){
       
-      delim_guess[i] <- suppressWarnings(try(reader::get.delim(data_path[i],
-                                                   n = 2,
-                                                   delims = c("\t",
-                                                              ",",
-                                                              ";",
-                                                              "|")), silent = T))
-      if (is.na(delim_guess[i])){
-        if (stringr::str_detect(data_path[i], '.csv$')){
-          delim_guess[i] <- ','
-        } else if (stringr::str_detect(data_path[i], '.txt$')){
-          delim_guess[i] <- '\t'
-        }
-      }
+      # Detect delimiter for table in Mac OS
+      
+      delim_guess[i] <- suppressWarnings(
+        try(
+          reader::get.delim(
+            data_path[i],
+            n = 2,
+            delims = c('\t', ',', ';', '|')
+          ), 
+          silent = T
+        )
+      )
       
     } else if (os == "win"){
       
-      delim_guess[i] <- suppressWarnings(try(reader::get.delim(data_path[i],
-                                  n = 1,
-                                  delims = c("\t",
-                                             ",",
-                                             ";",
-                                             "|")), silent = T))
+      # Detect delimiter for table in Windows OS
       
-      if (is.na(delim_guess[i])){
-        if (stringr::str_detect(data_path[i], '.csv$')){
-          delim_guess[i] <- ','
-        } else if (stringr::str_detect(data_path[i], '.txt$')){
-          delim_guess[i] <- '\t'
-        }
-      }
-      
+      delim_guess[i] <- suppressWarnings(
+        try(
+          reader::get.delim(
+            data_path[i],
+            n = 1,
+            delims = c('\t', ',', ';', '|')
+          ), 
+          silent = T
+        )
+      )
+
     } else if (os == 'lin'){
       
-      delim_guess[i] <- suppressWarnings(try(reader::get.delim(data_path[i],
-                                          n = 1,
-                                          delims = c("\t",
-                                                     ",",
-                                                     ";",
-                                                     "|")), silent = T))
-      if (is.na(delim_guess[i])){
-        if (stringr::str_detect(data_path[i], '.csv$')){
-          delim_guess[i] <- ','
-        } else if (stringr::str_detect(data_path[i], '.txt$')){
-          delim_guess[i] <- '\t'
-        }
-      }
+      # Detect delimiter for table in Linux OS
+      
+      delim_guess[i] <- suppressWarnings(
+        try(
+          reader::get.delim(
+            data_path[i],
+            n = 1,
+            delims = c('\t', ',', ';', '|')
+          ), 
+          silent = T
+        )
+      )
       
     }
     
-    delim_guess[i] <- detect_delimeter_2(data.file = data_files[i],
-                                         delim.guess = delim_guess[i])
+    # Infer field delimiter (if necessary) ------------------------------------
+    
+    # If the field delimiter can't be determined, then infer it from the file 
+    # name.
+    
+    if (is.na(delim_guess[i])){
+      delim_guess[i] <- delimiter_infer(data_path[i])
+    }
+    
+    # Check delimiters and provide manual override ----------------------------
+    
+    delim_guess[i] <- detect_delimeter_2(
+      data.file = data_files[i],
+      delim.guess = delim_guess[i]
+    )
     
   }
+  
+  # Return --------------------------------------------------------------------
   
   delim_guess
   
@@ -116,11 +128,53 @@ detect_delimeter <- function(path, data.files, os){
 
 
 
+
+
+#' Infer field delimiter from file name
+#' 
+#' @param x
+#'   (character) File name including path
+#'
+#' @return
+#'   (character) Delimiter
+#' 
+
+delimiter_infer <- function(x){
+  
+  # FIXME: The following method needs improvement. 
+
+  if (stringr::str_detect(x, '.csv$')){
+    output <- ','
+  } else if (stringr::str_detect(x, '.txt$')){
+    output <- '\t'
+  }
+  
+  warning(
+    paste0(
+      'Cannot detect field delimiter for ',
+      x,
+      ', assigning a value of "',
+      output,
+      '".'
+    )
+  )
+  
+  # Return
+  
+  output
+
+}
+
+
+
+
+
+
 #' Detect field delimiter 2
-#'
-#' @description  
+#' 
+#' @description
 #'     Secondary check on delimeter detection with manual override
-#'
+#' 
 #' @usage detect_delimeter_2(data.file, delim.guess)
 #' 
 #' @param data.file
@@ -128,31 +182,52 @@ detect_delimeter <- function(path, data.files, os){
 #' @param delim.guess
 #'     (character) Delimiter guessed from `detect_delimeter`.
 #' 
-#' @return 
+#' @return
 #'     If ambiguity exists, a manual overide option is presented.
-#'
-#' @export
-#'
+#'     
 
 detect_delimeter_2 <- function(data.file, delim.guess){
-  file_ext <- substr(data.file, 
-                     nchar(data.file)-3,
-                     nchar(data.file))
+  
+  # Get file extension
+  
+  file_ext <- substr(
+    data.file,
+    nchar(data.file)-3,
+    nchar(data.file)
+  )
+  
+  # Apply logic
+  
   if (is.null(delim.guess) |
       ((delim.guess == ",") & (file_ext == ".txt")) |
       ((delim.guess == "\t") & (file_ext == ".csv")) |
-      ((delim.guess == "|") & (file_ext == ".csv")) |
-      ((delim.guess == ";") & (file_ext == ".csv"))){
+      ((delim.guess == "|") & (file_ext == ".csv"))){
+    
+    # Send option for manual override
+    
     message(
-      paste("I'm having trouble identifying the field delimeter of ", 
-            data.file, ". Enter the field delimeter of this file.",
-            ' Valid options are:  ,  \\t  ;  |', sep = ""))
+      paste0(
+        "I'm having trouble identifying the field delimeter of ",
+        data.file, 
+        ". Enter the field delimeter of this file.",
+        ' Valid options are:  ,  \\t  ;  |'
+      )
+    )
+    
     answer <- readline('ENTER here: ')
+    
+    # Process user input (add escape characters)
+    
     if (answer == "\\t"){
       answer <- "\t"
     }
+    
   } else {
+    
     answer <- delim.guess
+    
   }
+  
   answer
+  
 }

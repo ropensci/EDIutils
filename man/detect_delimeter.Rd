@@ -2,31 +2,29 @@
 % Please edit documentation in R/detect_delimeter.R
 \name{detect_delimeter}
 \alias{detect_delimeter}
-\title{Detect field delimeter}
+\title{Get field delimiters of input files}
 \usage{
-detect_delimeter(path, data.files, os)
+detect_delimeter(
+  path, 
+  data.files, 
+  os
+)
 }
 \arguments{
-\item{path}{(character) A character string specifying a path to the dataset working 
-directory containing the data files from which to detect the field 
-delimeters.}
+\item{path}{(character) Path to files.}
 
-\item{data.files}{(character) A list of character strings specifying the names of the 
-data files from which to detect the field delimeters of.}
+\item{data.files}{(character) File names.}
 
-\item{os}{(character) A character string specifying the operating system in which 
-this function is to be called. Valid options are generated from 
-\code{detect_os}.}
+\item{os}{(character) Operating system. Valid options are returned from
+\code{EDIutils::detect_os}.}
 }
 \value{
-A character string representation of the field delimeters listed in 
-    order of files listed in the data.files argument.
+(character) Field delimiters of input files.
     \item{"\\t"}{tab}
     \item{","}{comma}
     \item{";"}{semi-colon}
     \item{"|"}{pipe}
 }
 \description{
-Detect field delimiter of input files and return character string 
-    representation.
+Detect and return field delimiters of input files (tables).
 }
