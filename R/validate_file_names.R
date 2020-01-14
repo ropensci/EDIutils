@@ -10,7 +10,7 @@
 #'     directory.
 #' @param data.files
 #'     A list of character strings specifying the names of the data files of 
-#'     your dataset. It is not necessary to include the file extension.
+#'     your dataset.
 #' 
 #' @return 
 #'     A warning message if the data files don't exist at path, and which of
@@ -23,21 +23,44 @@
 
 validate_file_names <- function(path, data.files){
   
-  # Validate names ------------------------------------------------------------
+  # Validate file presence ----------------------------------------------------
   
+  # Index data.files in path
   files <- list.files(path)
-  files <- c(files, stringr::str_replace(files, "\\.[:alnum:]*$", replacement = ""))
-  use_i <- stringr::str_detect(string = files,
-                      pattern = stringr::str_c("^", data.files, "$", collapse = "|"))
-  if (!sum(use_i) == length(data.files)){
-    if(sum(use_i) == 0){
-      stop(paste("Invalid data.files entered: ", paste(data.files, collapse = ", "), sep = ""))
-    } else {
-      name_issues <- data.files[!files[use_i] == data.files]
-      stop(paste("Invalid data.files entered: ", paste(name_issues, collapse = ", "), sep = ""))
-    }
+  use_i <- data.files %in% files
+  
+  # Throw an error if any data.files are missing
+  if (sum(use_i) != length(data.files)){
+    stop(
+      paste0(
+        "\nThese files don't exist in the specified directory:\n", 
+        paste(data.files[!use_i], collapse = "\n")
+      ),
+      call. = FALSE
+    )
   }
   
+  # Check file naming convention ----------------------------------------------
+  
+  # Index file names that are not composed of alphanumerics and underscores
+  use_i <- stringr::str_detect(
+    string = tools::file_path_sans_ext(data.files), 
+    pattern = "([:blank:]|([:punct:]^_))"
+  )
+  
+  # Issue warning if this best practice is not followed
+  if (any(isTRUE(use_i))) {
+    warning(
+      paste0(
+        "Composing file names from only alphanumerics and underscores is a ",
+        "best practice. These files don't follow this recommendation:\n",
+        paste(data.files[use_i], collapse = "\n"),
+        "\nPlease consider renaming these files."
+      ),
+      call. = FALSE
+    )
+  }
+
   # Get file names ------------------------------------------------------------
 
   files <- list.files(path)

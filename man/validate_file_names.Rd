@@ -11,7 +11,7 @@ validate_file_names(path, data.files)
 directory.}
 
 \item{data.files}{A list of character strings specifying the names of the data files of 
-your dataset. It is not necessary to include the file extension.}
+your dataset.}
 }
 \value{
 A warning message if the data files don't exist at path, and which of
