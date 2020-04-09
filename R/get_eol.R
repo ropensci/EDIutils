@@ -35,10 +35,11 @@ get_eol <- function(path, file.name, os){
   if (os == 'mac'){ # Macintosh OS
 
     command <- paste0(
-      'od -c ',
+      'od -c "',
       path,
       '/',
-      file.name
+      file.name,
+      '"'
     )
 
     output <- system(
