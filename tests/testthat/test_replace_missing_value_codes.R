@@ -42,22 +42,15 @@ testthat::test_that("replace_missing_value_codes()", {
       x = data.frame(a = c(1,2,3)),
       eml = "not_an_xml_object"),
     regexp = "'eml' should be an 'xml_document' 'xml_node'")
-  
-  # with is a character
-  expect_error(
-    replace_missing_value_codes(
-      x = ants,
-      eml = eml,
-      with = 42),
-    regexp = "'with' should be a character.")
+
   
   # file cannot be found in the eml
   expect_error(
     replace_missing_value_codes(
       x = ants,
       eml = eml,
-      with = 42),
-    regexp = "'with' should be a character.")
+      file = "not_a_file_in_eml"),
+    regexp = "'file' cannot be found in 'eml'")
 
   # Test function -------------------------------------------------------------
   
