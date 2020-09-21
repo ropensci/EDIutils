@@ -10,14 +10,14 @@
   "codeRepository": "https://github.com/EDIorg/EDIutils",
   "issueTracker": "https://github.com/EDIorg/EDIutils/issues",
   "license": "MIT License",
-  "version": "1.0.2",
+  "version": "1.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.2",
+    "version": "4.0.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.2 (2018-12-20)",
+  "runtimePlatform": "R version 4.0.2 (2020-06-22)",
   "author": [
     {
       "@type": "Person",
@@ -54,6 +54,19 @@
     }
   ],
   "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "EML",
+      "name": "EML",
+      "version": ">= 2.0.3",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=EML"
+    },
     {
       "@type": "SoftwareApplication",
       "identifier": "httr",
@@ -160,7 +173,7 @@
     }
   ],
   "readme": "https://github.com/EDIorg/EDIutils/blob/master/README.md",
-  "fileSize": "84.409KB",
+  "fileSize": "92.587KB",
   "contIntegration": [
     "https://travis-ci.org/EDIorg/EDIutils",
     "https://codecov.io/github/EDIorg/EDIutils?branch=master"
