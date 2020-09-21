@@ -2,6 +2,7 @@ language: r
 cache: packages
 r_packages:
   - EML
+  - data.table
   - stringr
   - lubridate
   - covr

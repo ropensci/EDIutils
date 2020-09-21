@@ -5,6 +5,7 @@ Authors@R: person("Colin", "Smith", email = "colin.smith@wisc.edu", role = c("au
 Description: Functions for interacting with the EDI Repository Data Package and Audit Manager APIs, as well as providing helper functions to other EDI R packages.
 Imports: 
     EML (>= 2.0.3),
+    data.table (>= 1.13.0),
     httr (>= 1.3.1),
     lubridate(>= 1.7.4),
     stringr (>= 1.2.0),
