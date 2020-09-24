@@ -24,7 +24,7 @@ listed in \code{x} as specified by \code{eml}. Default is NA.}
 
 \item{file}{(character) Name of the file, which \code{x} was created from (e.g. 
 "Resin_Deposition.csv". Use this argument if a column in \code{x} 
-has more than one match in \eml{x} (see details).}
+has more than one match in \code{x} (see details).}
 
 \item{coerce}{(logical) Columns of \code{x} defined as numeric in \code{eml} will be
 coerced to numeric after missing value code replacement. Default is 
