@@ -13,7 +13,10 @@ read_tables(eml)
 (list) List of named data frames
 }
 \description{
-Read data tables of a data package from an EML metadata based repository. The EML contains all information required to do this.
+Read data tables of a data package from the EML metadata.
+}
+\details{
+This function uses \code{data.table::fread()} and uses default argument values if the EML based values return an error.
 }
 \examples{
 
