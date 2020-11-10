@@ -19,37 +19,37 @@ compare_eml <- function(newest,
   results <- list()
   
   # Abstract
-  
+
   r <- compare_node_as_string(
     newest, previous, ".//dataset/abstract")
   results <- c(results, r)
-  
+
   # Geographic coverage
-  
+
   r <- compare_node_as_string(
     newest, previous, ".//dataset/coverage/geographicCoverage")
   results <- c(results, r)
-  
+
   # Temporal coverage
-  
+
   r <- compare_node_as_string(
     newest, previous, ".//dataset/coverage/temporalCoverage")
   results <- c(results, r)
-  
+
   # Taxonomic coverage
-  
+
   r <- compare_node_as_string(
     newest, previous, ".//dataset/coverage/taxonomicCoverage")
   results <- c(results, r)
-  
+
   # Methods
-  
+
   r <- compare_node_as_string(
     newest, previous, ".//dataset/methods")
   results <- c(results, r)
-  
+
   # Keywords
-  
+
   r <- compare_node_as_string(
     newest, previous, ".//dataset/keywordSet")
   results <- c(results, r)
@@ -128,11 +128,11 @@ compare_node_as_string <- function(newest, previous, xpath) {
   
   # Compare strings and return
   
-  if (all(newest %in% previous)) {
+  if (all(newest == previous)) {
     paste0("'", xpath, "'", " is the same")
-  } else if (any(newest %in% previous)) {
+  } else if (any(newest == previous)) {
     paste0("'", xpath, "'", " is different at node ", 
-           which(!(newest %in% previous)))
+           which(!(newest == previous)))
   } else {
     paste0("'", xpath, "'", " is different")
   }
