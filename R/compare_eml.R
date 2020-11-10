@@ -66,6 +66,17 @@ compare_eml <- function(newest,
     newest, previous, ".//dataTable/attributeList")
   results <- c(results, r)
   
+  # TODO: Compare dataTable in more detail
+  # Object name
+  # Checksum
+  # Column names
+  # Number of columns
+  # Number of rows
+  # Column classes
+  # Field delimiter
+  # Number of header lines
+  # datetime format string
+  
   # Other entity physical (doesn't check distribution)
   
   r <- compare_node_as_string(
