@@ -13,6 +13,13 @@
 compare_eml <- function(newest, 
                         previous) {
   
+  # Abstract "previous" == "newest"
+  # Coverage "previous" == "newest" (geographic, taxonomic, temporal)
+  # Methods "previous" == "newest"
+  # keywordSet "previous" == "newest"
+  # dataTable "previous" == "newest"
+  # otherEntity "previous" == "newest"
+  
   return(differences)
   
 }
