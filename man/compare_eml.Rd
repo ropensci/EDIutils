@@ -2,7 +2,7 @@
 % Please edit documentation in R/compare_eml.R
 \name{compare_eml}
 \alias{compare_eml}
-\title{Did EML change between versions?}
+\title{Did the EML change between data package versions?}
 \usage{
 compare_eml(newest, previous)
 }
@@ -12,10 +12,13 @@ compare_eml(newest, previous)
 \item{previous}{(xml_document, xml_node) EML of the previous version of a data package, where inputs are returned from \code{api_read_metadata()}.}
 }
 \value{
-(list) A list of differences.
+(character) A vector of check results
 }
 \description{
-If changes to descriptions and other human defined elements, then semantic meaning may have changed too and thus may have ramifications for downstream processes.
+If changes to descriptions and other human defined elements, then semantic meaning may have changed too and thus have ramifications for downstream processes.
+}
+\details{
+The current set of checks are rather simple. They collapse nodes into character strings and report whether the node has changed.
 }
 \examples{
 
