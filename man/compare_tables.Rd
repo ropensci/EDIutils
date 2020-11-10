@@ -12,8 +12,15 @@ compare_tables(newest, previous)
 \item{previous}{(list) Tables from the previous version of a data package, where inputs are returned from \code{read_tables()}.}
 }
 \value{
-(list) A list of differences.
+(character) A vector of check results
 }
 \description{
-If table attributes changed, then downstream processes relying on an expected structure may fail. This checks for common structural changes leading to such issues.
+If table attributes changed, then downstream processes relying on an expected structure may fail. This checks for common structural changes in the tables (not EML, see \code{compare_eml()}).
+}
+\examples{
+
+compare_tables(
+  newest = read_tables(api_read_metadata("knb-lter-hfr.118.32")),
+  previous = read_tables(api_read_metadata("knb-lter-hfr.118.31")))
+
 }
