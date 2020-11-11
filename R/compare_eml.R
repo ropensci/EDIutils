@@ -18,49 +18,87 @@ compare_eml <- function(newest,
   
   results <- list()
   
-  # Abstract
+  # Abstract ------------------------------------------------------------------
 
   r <- compare_node_as_string(
     newest, previous, ".//dataset/abstract")
   results <- c(results, r)
 
-  # Geographic coverage
+  # Geographic coverage -------------------------------------------------------
 
   r <- compare_node_as_string(
     newest, previous, ".//dataset/coverage/geographicCoverage")
   results <- c(results, r)
 
-  # Temporal coverage
+  # Temporal coverage ---------------------------------------------------------
 
   r <- compare_node_as_string(
     newest, previous, ".//dataset/coverage/temporalCoverage")
   results <- c(results, r)
 
-  # Taxonomic coverage
+  # Taxonomic coverage --------------------------------------------------------
 
   r <- compare_node_as_string(
     newest, previous, ".//dataset/coverage/taxonomicCoverage")
   results <- c(results, r)
 
-  # Methods
+  # Methods -------------------------------------------------------------------
 
   r <- compare_node_as_string(
     newest, previous, ".//dataset/methods")
   results <- c(results, r)
 
-  # Keywords
+  # Keywords ------------------------------------------------------------------
 
   r <- compare_node_as_string(
     newest, previous, ".//dataset/keywordSet")
   results <- c(results, r)
   
-  # Data table physical (doesn't check distribution)
+  # Data table physical -------------------------------------------------------
   
   r <- compare_node_as_string(
-    newest, previous, ".//dataTable/physical")
+    newest, 
+    previous, 
+    ".//dataTable/physical/objectName")
   results <- c(results, r)
   
-  # Data table attributes
+  r <- compare_node_as_string(
+    newest, 
+    previous, 
+    ".//dataTable/physical/size")
+  results <- c(results, r)
+  
+  r <- compare_node_as_string(
+    newest, 
+    previous, 
+    ".//dataTable/physical/authentication")
+  results <- c(results, r)
+  
+  r <- compare_node_as_string(
+    newest, 
+    previous, 
+    ".//dataTable/physical/dataFormat/textFormat/numHeaderLines")
+  results <- c(results, r)
+  
+  r <- compare_node_as_string(
+    newest, 
+    previous, 
+    ".//dataTable/physical/dataFormat/textFormat/recordDelimiter")
+  results <- c(results, r)
+  
+  r <- compare_node_as_string(
+    newest, 
+    previous, 
+    ".//dataTable/physical/dataFormat/textFormat/attributeOrientation")
+  results <- c(results, r)
+  
+  r <- compare_node_as_string(
+    newest, 
+    previous, 
+    ".//dataTable/physical/dataFormat/textFormat/simpleDelimited/fieldDelimiter")
+  results <- c(results, r)
+  
+  # Data table attributes -----------------------------------------------------
   
   r <- compare_node_as_string(
     newest, previous, ".//dataTable/attributeList")
@@ -77,11 +115,51 @@ compare_eml <- function(newest,
   # Number of header lines
   # datetime format string
   
-  # Other entity physical (doesn't check distribution)
+  # Other entity physical -----------------------------------------------------
   
   r <- compare_node_as_string(
-    newest, previous, ".//otherEntity/physical")
+    newest, 
+    previous, 
+    ".//otherEntity/physical/objectName")
   results <- c(results, r)
+  
+  r <- compare_node_as_string(
+    newest, 
+    previous, 
+    ".//otherEntity/physical/size")
+  results <- c(results, r)
+  
+  r <- compare_node_as_string(
+    newest, 
+    previous, 
+    ".//otherEntity/physical/authentication")
+  results <- c(results, r)
+  
+  r <- compare_node_as_string(
+    newest, 
+    previous, 
+    ".//otherEntity/physical/dataFormat/textFormat/numHeaderLines")
+  results <- c(results, r)
+  
+  r <- compare_node_as_string(
+    newest, 
+    previous, 
+    ".//otherEntity/physical/dataFormat/textFormat/recordDelimiter")
+  results <- c(results, r)
+  
+  r <- compare_node_as_string(
+    newest, 
+    previous, 
+    ".//otherEntity/physical/dataFormat/textFormat/attributeOrientation")
+  results <- c(results, r)
+  
+  r <- compare_node_as_string(
+    newest, 
+    previous, 
+    ".//otherEntity/physical/dataFormat/textFormat/simpleDelimited/fieldDelimiter")
+  results <- c(results, r)
+  
+  # Return --------------------------------------------------------------------
   
   return(unlist(results))
   
@@ -104,41 +182,21 @@ compare_eml <- function(newest,
 #' 
 compare_node_as_string <- function(newest, previous, xpath) {
   
-  # Don't compare distribution since this always changes. Operate on a copy of 
-  # the newest and previous EML otherwise the url node will be dropped from the
-  # global environment from which this function is called and thus will affect
-  # downstream processes
-  
-  eml_newest <- newest
-  eml_previous <- previous
-  
-  if (xpath %in% c(".//dataTable/physical", ".//otherEntity/physical")) {
-    
-    distribution <- xml2::xml_find_all(
-      eml_newest, paste0(".//", xpath, "/distribution"))
-    xml2::xml_remove(distribution)
-    
-    distribution <- xml2::xml_find_all(
-      eml_previous, paste0(".//", xpath, "/distribution"))
-    xml2::xml_remove(distribution)
-    
-  }
-  
   # Collapse to string
   
-  eml_newest <- xml2::xml_text(
-    xml2::xml_find_all(eml_newest, xpath))
+  newest <- xml2::xml_text(
+    xml2::xml_find_all(newest, xpath))
   
-  eml_previous <- xml2::xml_text(
-    xml2::xml_find_all(eml_previous, xpath))
+  previous <- xml2::xml_text(
+    xml2::xml_find_all(previous, xpath))
   
   # Compare strings and return
   
-  if (all(eml_newest == eml_previous)) {
+  if (all(newest == previous)) {
     paste0("'", xpath, "'", " is the same")
-  } else if (any(eml_newest == eml_previous)) {
+  } else if (any(newest == previous)) {
     paste0("'", xpath, "'", " is different at node ", 
-           which(!(eml_newest == eml_previous)))
+           which(!(newest == previous)))
   } else {
     paste0("'", xpath, "'", " is different")
   }
