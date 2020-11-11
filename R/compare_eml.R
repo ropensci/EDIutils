@@ -104,35 +104,41 @@ compare_eml <- function(newest,
 #' 
 compare_node_as_string <- function(newest, previous, xpath) {
   
-  # Don't compare distribution since this always changes
+  # Don't compare distribution since this always changes. Operate on a copy of 
+  # the newest and previous EML otherwise the url node will be dropped from the
+  # global environment from which this function is called and thus will affect
+  # downstream processes
+  
+  eml_newest <- newest
+  eml_previous <- previous
   
   if (xpath %in% c(".//dataTable/physical", ".//otherEntity/physical")) {
     
     distribution <- xml2::xml_find_all(
-      newest, paste0(".//", xpath, "/distribution"))
+      eml_newest, paste0(".//", xpath, "/distribution"))
     xml2::xml_remove(distribution)
     
     distribution <- xml2::xml_find_all(
-      previous, paste0(".//", xpath, "/distribution"))
+      eml_previous, paste0(".//", xpath, "/distribution"))
     xml2::xml_remove(distribution)
     
   }
   
   # Collapse to string
   
-  newest <- xml2::xml_text(
-    xml2::xml_find_all(newest, xpath))
+  eml_newest <- xml2::xml_text(
+    xml2::xml_find_all(eml_newest, xpath))
   
-  previous <- xml2::xml_text(
-    xml2::xml_find_all(previous, xpath))
+  eml_previous <- xml2::xml_text(
+    xml2::xml_find_all(eml_previous, xpath))
   
   # Compare strings and return
   
-  if (all(newest == previous)) {
+  if (all(eml_newest == eml_previous)) {
     paste0("'", xpath, "'", " is the same")
-  } else if (any(newest == previous)) {
+  } else if (any(eml_newest == eml_previous)) {
     paste0("'", xpath, "'", " is different at node ", 
-           which(!(newest == previous)))
+           which(!(eml_newest == eml_previous)))
   } else {
     paste0("'", xpath, "'", " is different")
   }
