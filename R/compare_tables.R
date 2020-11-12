@@ -37,7 +37,7 @@ compare_tables <- function(newest,
       # Column names
       
       colnames_newest <- colnames(newest[[i]])
-      colnames_previous <- colnames(previous[[which(i %in% names(previous))]])
+      colnames_previous <- colnames(previous[[which(names(previous) %in% i)]])
       if (all(colnames_newest %in% colnames_previous) & 
           all(colnames_previous %in% colnames_newest)) {
         results <- c(results, paste0("Column names of ", i, " are the same"))
@@ -48,7 +48,7 @@ compare_tables <- function(newest,
       # Number of columns
       
       ncol_newest <- ncol(newest[[i]])
-      ncol_previous <- ncol(previous[[which(i %in% names(previous))]])
+      ncol_previous <- ncol(previous[[which(names(previous) %in% i)]])
       if (ncol_newest == ncol_previous) {
         results <- c(results, paste0("Number of columns in ", i, " are the same"))
       } else {
@@ -58,7 +58,7 @@ compare_tables <- function(newest,
       # Number of rows
       
       nrow_newest <- nrow(newest[[i]])
-      nrow_previous <- nrow(previous[[which(i %in% names(previous))]])
+      nrow_previous <- nrow(previous[[which(names(previous) %in% i)]])
       if (nrow_newest == nrow_previous) {
         results <- c(results, paste0("Number of rows in ", i, " are the same"))
       } else {
