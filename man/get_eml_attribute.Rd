@@ -11,6 +11,8 @@ get_eml_attribute(attr.name, package.id)
 
 \item{package.id}{(character) Data package identifier (e.g. knb-lter-cap.627.3) in the 
 EDI Data Repository.}
+
+\item{evironment}{(character) Repository environment in which the L0 and L1 exist. Some repositories have development, staging, and production environments which are distinct from one another. This argument allows execution for the \code{update_L1} workflow within the context of one of these environments. Default is "production".}
 }
 \value{
 (list) A named vector with these attribute elements:

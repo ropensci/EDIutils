@@ -10,6 +10,7 @@
 #' @param package.id
 #'     (character) Data package identifier (e.g. knb-lter-cap.627.3) in the 
 #'     EDI Data Repository.
+#' @param evironment (character) Repository environment in which the L0 and L1 exist. Some repositories have development, staging, and production environments which are distinct from one another. This argument allows execution for the \code{update_L1} workflow within the context of one of these environments. Default is "production".
 #'
 #' @return 
 #'     (list) A named vector with these attribute elements:
@@ -22,7 +23,7 @@
 #' @export
 #'
 
-get_eml_attribute <- function(attr.name, package.id){
+get_eml_attribute <- function(attr.name, package.id, environment = "production"){
 
   # Send message
   
@@ -32,7 +33,7 @@ get_eml_attribute <- function(attr.name, package.id){
 
   # Load EML
   
-  metadata <- suppressMessages(api_read_metadata(package.id))
+  metadata <- suppressMessages(api_read_metadata(package.id, environment = environment))
 
   # Get definition
     
