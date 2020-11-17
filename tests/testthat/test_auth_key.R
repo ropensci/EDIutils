@@ -6,7 +6,7 @@ testthat::test_that('Keys are valid', {
   # LTER
   expect_equal(
     auth_key(user.id = 'exampleID', affiliation = 'LTER'),
-    'uid=exampleID,o=LTER,dc=ecoinformatics,dc=org'
+    'uid=exampleID,o=LTER,dc=edirepository,dc=org'
   )
   
   # EDI

@@ -3,6 +3,15 @@ reference:
     desc: Functions for interacting with the Data Package and Audit Manager APIs
     contents:
     - starts_with("api_")
+  - title: Read data
+    desc: Functions that read data entities into R based on their EML descriptions
+    contents:
+    - read_tables
+  - title: Compare objects
+    desc: Sometimes it's useful to know if a data package component has changed between versions
+    contents:
+    - compare_eml
+    - compare_tables
   - title: Helper functions
     desc: Helper functions to EDI R libraries
     contents:

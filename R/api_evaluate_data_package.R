@@ -165,7 +165,7 @@ auth_key <- function(user.id, affiliation){
   affiliation <- tolower(affiliation)
   if (affiliation == 'lter'){
     key <- paste0('uid=', user.id, ',o=LTER',
-                  ',dc=ecoinformatics,dc=org')
+                  ',dc=edirepository,dc=org')
   } else if (affiliation == 'edi'){
     key <- paste0('uid=', user.id, ',o=EDI',
                   ',dc=edirepository,dc=org')
