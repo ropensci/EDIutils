@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Replace missing value codes with a new value — replace_missing_value_codes • EDIutils</title>
+<title>Read data tables of a data package — read_tables • EDIutils</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,8 @@
 
 
 
-<meta property="og:title" content="Replace missing value codes with a new value — replace_missing_value_codes" />
-<meta property="og:description" content="Missing value codes vary across data packages and some computational 
-    environments have preferences (e.g. R uses NA). This function transform 
-    these codes to make downstream use simpler." />
+<meta property="og:title" content="Read data tables of a data package — read_tables" />
+<meta property="og:description" content="Read data tables of a data package from the EML metadata." />
 
 
 
@@ -110,74 +108,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Replace missing value codes with a new value</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/replace_missing_value_codes.R'><code>R/replace_missing_value_codes.R</code></a></small>
-    <div class="hidden name"><code>replace_missing_value_codes.Rd</code></div>
+    <h1>Read data tables of a data package</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/read_tables.R'><code>R/read_tables.R</code></a></small>
+    <div class="hidden name"><code>read_tables.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Missing value codes vary across data packages and some computational 
-    environments have preferences (e.g. R uses NA). This function transform 
-    these codes to make downstream use simpler.</p>
+    <p>Read data tables of a data package from the EML metadata.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>replace_missing_value_codes</span>(
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>eml</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>with</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>file</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>coerce</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>read_tables</span>(<span class='no'>eml</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>(data frame) Data with missing value codes to convert to NA.</p></td>
-    </tr>
-    <tr>
       <th>eml</th>
-      <td><p>(xml_document xml_node) EML metadata listing missing value codes for 
-<code>x</code>. Use <code><a href='api_read_metadata.html'>EDIutils::api_read_metadata()</a></code> or 
-<code><a href='http://xml2.r-lib.org/reference/read_xml.html'>xml2::read_xml()</a></code> to read the EML file.</p></td>
-    </tr>
-    <tr>
-      <th>with</th>
-      <td><p>(character or NA) New missing value code. This value will replace those 
-listed in <code>x</code> as specified by <code>eml</code>. Default is NA.</p></td>
-    </tr>
-    <tr>
-      <th>file</th>
-      <td><p>(character) Name of the file, which <code>x</code> was created from (e.g. 
-"Resin_Deposition.csv". Use this argument if a column in <code>x</code> 
-has more than one match in <code>x</code> (see details).</p></td>
-    </tr>
-    <tr>
-      <th>coerce</th>
-      <td><p>(logical) Columns of <code>x</code> defined as numeric in <code>eml</code> will be
-coerced to numeric after missing value code replacement. Default is 
-TRUE.</p></td>
+      <td><p>(xml_document, xml_node) EML metadata returned from <code>read_eml()</code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(data frame) <code>x</code> with missing value codes replaced with 
-    <code>with</code>.</p>
+    <p>(list) List of named data frames</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>For each column in <code>x</code> a matching attribute is searched for in 
-    <code>eml</code>. If one is found, then the missing value code listed in 
-    <code>eml</code> is replaced in the data with <code>with</code>. If more than one
-    attribute is found then an error is returned prompting the use of the 
-    <code>file</code> argument. <code>file</code> maps to 
-    /eml/dataset/dataTable/physical/objectName in <code>eml</code> and creates an 
-    unambiguous column name/attribute match.</p>    
-<p>Columns in <code>x</code> that are defined in <code>eml</code> as numeric, but 
-    are read in as character due to the missing value code, are converted
-    to numeric.</p>
+    <p>This function uses <code><a href='https://Rdatatable.gitlab.io/data.table/reference/fread.html'>data.table::fread()</a></code> and uses default argument values if the EML based values return an error.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -130,6 +130,10 @@
       <th>package.id</th>
       <td><p>(character) Data package identifier (e.g. knb-lter-cap.627.3) in the 
 EDI Data Repository.</p></td>
+    </tr>
+    <tr>
+      <th>evironment</th>
+      <td><p>(character) Repository environment in which the L0 and L1 exist. Some repositories have development, staging, and production environments which are distinct from one another. This argument allows execution for the <code>update_L1</code> workflow within the context of one of these environments. Default is "production".</p></td>
     </tr>
     </table>
 
