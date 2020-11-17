@@ -12,6 +12,8 @@
 #'
 #' @examples
 #' 
+#' d <- read_tables(api_read_metadata("knb-lter-nwt.1.6"))
+#' 
 read_tables <- function(eml) {
   
   tbl_metadata <- xml2::xml_find_all(eml, ".//dataTable/physical")
