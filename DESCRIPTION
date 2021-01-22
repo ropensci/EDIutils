@@ -1,6 +1,6 @@
 Package: EDIutils
 Title: A collection of EDI specific functions
-Version: 1.3.0
+Version: 1.4.0
 Authors@R: person("Colin", "Smith", email = "colin.smith@wisc.edu", role = c("aut", "cre"), comment = "https://orcid.org/0000-0003-2261-9931")
 Description: Functions for interacting with the EDI Repository Data Package and Audit Manager APIs, as well as providing helper functions to other EDI R packages.
 Imports: 
