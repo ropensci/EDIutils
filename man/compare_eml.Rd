@@ -35,6 +35,7 @@ XPaths of checked nodes (and whether "meaningful"):
   \item{.//dataTable/physical/dataFormat/textFormat/attributeOrientation (TRUE)}
   \item{.//dataTable/physical/dataFormat/textFormat/simpleDelimited/fieldDelimiter (TRUE)}
   \item{.//dataTable/attributeList (TRUE)}
+  \item{.//dataTable/numberOfRecords (FALSE)}
   \item{.//otherEntity/physical/objectName (TRUE)}
   \item{.//otherEntity/physical/size (FALSE)}
   \item{.//otherEntity/physical/authentication (FALSE)}

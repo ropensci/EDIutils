@@ -24,6 +24,7 @@
 #'   \item{.//dataTable/physical/dataFormat/textFormat/attributeOrientation (TRUE)}
 #'   \item{.//dataTable/physical/dataFormat/textFormat/simpleDelimited/fieldDelimiter (TRUE)}
 #'   \item{.//dataTable/attributeList (TRUE)}
+#'   \item{.//dataTable/numberOfRecords (FALSE)}
 #'   \item{.//otherEntity/physical/objectName (TRUE)}
 #'   \item{.//otherEntity/physical/size (FALSE)}
 #'   \item{.//otherEntity/physical/authentication (FALSE)}
@@ -70,6 +71,7 @@ compare_eml <- function(newest,
     `.//dataTable/physical/dataFormat/textFormat/attributeOrientation` = TRUE,
     `.//dataTable/physical/dataFormat/textFormat/simpleDelimited/fieldDelimiter` = TRUE,
     `.//dataTable/attributeList` = TRUE,
+    `.//dataTable/numberOfRecords` = FALSE,
     `.//otherEntity/physical/objectName` = TRUE,
     `.//otherEntity/physical/size` = FALSE,
     `.//otherEntity/physical/authentication` = FALSE,
