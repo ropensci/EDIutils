@@ -38,6 +38,17 @@
 #'
 #' @examples
 #' 
+#' # Return only "meaningful" differences (default behavior)
+#' compare_eml(
+#'   newest = api_read_metadata("knb-lter-hfr.118.32"),
+#'   previous = api_read_metadata("knb-lter-hfr.118.31"))
+#'   
+#' # Return all differences
+#' compare_eml(
+#'   newest = api_read_metadata("knb-lter-hfr.118.32"),
+#'   previous = api_read_metadata("knb-lter-hfr.118.31"),
+#'   return.all = TRUE)
+#' 
 compare_eml <- function(newest, 
                         previous,
                         return.all = FALSE) {
