@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Collapse EML node and compare as string — compare_node_as_string • EDIutils</title>
+<title>Collapse EML node to string then compare — compare_node_as_string • EDIutils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Collapse EML node and compare as string — compare_node_as_string" />
-<meta property="og:description" content="Collapse EML node and compare as string" />
+<meta property="og:title" content="Collapse EML node to string then compare — compare_node_as_string" />
+<meta property="og:description" content="Collapse EML node to string then compare" />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -91,7 +91,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/EDIorg/EDIutils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -108,39 +108,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Collapse EML node and compare as string</h1>
+    <h1>Collapse EML node to string then compare</h1>
     <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/compare_eml.R'><code>R/compare_eml.R</code></a></small>
     <div class="hidden name"><code>compare_node_as_string.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Collapse EML node and compare as string</p>
+    <p>Collapse EML node to string then compare</p>
     </div>
 
-    <pre class="usage"><span class='fu'>compare_node_as_string</span>(<span class='no'>newest</span>, <span class='no'>previous</span>, <span class='no'>xpath</span>)</pre>
+    <pre class="usage"><span class='fu'>compare_node_as_string</span><span class='op'>(</span><span class='va'>newest</span>, <span class='va'>previous</span>, <span class='va'>xpath</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>newest</th>
-      <td><p>(xml_document, xml_node) EML of the newest version of a data package, where inputs are returned from <code><a href='api_read_metadata.html'>api_read_metadata()</a></code>.</p></td>
+      <td><p>(xml_document, xml_node) Newest version of an EML document</p></td>
     </tr>
     <tr>
       <th>previous</th>
-      <td><p>(xml_document, xml_node) EML of the previous version of a data package, where inputs are returned from <code><a href='api_read_metadata.html'>api_read_metadata()</a></code>.</p></td>
+      <td><p>(xml_document, xml_node) Previous version of an EML document</p></td>
     </tr>
     <tr>
       <th>xpath</th>
-      <td><p>(character) xpath to node of interest</p></td>
+      <td><p>(character) xpath of node to compare</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
-
-
+    <p>(character) xpath of node if <code>newest</code> and <code>previous</code> differ, otherwise NULL</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -157,7 +155,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

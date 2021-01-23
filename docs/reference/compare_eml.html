@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Did the EML change between data package versions? — compare_eml • EDIutils</title>
+<title>Are there meaningful differences between EML documents? — compare_eml • EDIutils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Did the EML change between data package versions? — compare_eml" />
-<meta property="og:description" content="If changes to descriptions and other human defined elements, then semantic meaning may have changed too and thus have ramifications for downstream processes." />
+<meta property="og:title" content="Are there meaningful differences between EML documents? — compare_eml" />
+<meta property="og:description" content="For discovering changes within a dataset that may have affect downstream processes relying on consistent dataset structure and meaning. This is useful in workflow automation where reporting such changes can expedite trouble shooting and manual intervention." />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -91,7 +91,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/EDIorg/EDIutils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -108,16 +108,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Did the EML change between data package versions?</h1>
+    <h1>Are there meaningful differences between EML documents?</h1>
     <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/compare_eml.R'><code>R/compare_eml.R</code></a></small>
     <div class="hidden name"><code>compare_eml.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>If changes to descriptions and other human defined elements, then semantic meaning may have changed too and thus have ramifications for downstream processes.</p>
+    <p>For discovering changes within a dataset that may have affect downstream processes relying on consistent dataset structure and meaning. This is useful in workflow automation where reporting such changes can expedite trouble shooting and manual intervention.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>compare_eml</span>(<span class='no'>newest</span>, <span class='no'>previous</span>)</pre>
+    <pre class="usage"><span class='fu'>compare_eml</span><span class='op'>(</span><span class='va'>newest</span>, <span class='va'>previous</span>, return.all <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -130,17 +130,76 @@
       <th>previous</th>
       <td><p>(xml_document, xml_node) EML of the previous version of a data package, where inputs are returned from <code><a href='api_read_metadata.html'>api_read_metadata()</a></code>.</p></td>
     </tr>
+    <tr>
+      <th>return.all</th>
+      <td><p>(logical) Return all differences? Default is FALSE, i.e. only return meaningful differences. Meaningful differences do not include elements expected to change between versions (e.g. number of rows, file size, temporal coverage).</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(character) A vector of check results</p>
+    <p>(character) XPaths of nodes that differ between versions</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The current set of checks are rather simple. They collapse nodes into character strings and report whether the node has changed.</p>
+    <p>XPaths of checked nodes (and whether "meaningful"):</p><ul>
+<li><p>.//dataset/abstract (TRUE)</p></li>
+<li><p>.//dataset/coverage/geographicCoverage (FALSE)</p></li>
+<li><p>.//dataset/coverage/temporalCoverage (FALSE)</p></li>
+<li><p>.//dataset/coverage/taxonomicCoverage (FALSE)</p></li>
+<li><p>.//dataset/keywordSet (FALSE)</p></li>
+<li><p>.//dataTable/physical/objectName (TRUE)</p></li>
+<li><p>.//dataTable/physical/size (FALSE)</p></li>
+<li><p>.//dataTable/physical/authentication (FALSE)</p></li>
+<li><p>.//dataTable/physical/dataFormat/textFormat/numHeaderLines (TRUE)</p></li>
+<li><p>.//dataTable/physical/dataFormat/textFormat/recordDelimiter (FALSE)</p></li>
+<li><p>.//dataTable/physical/dataFormat/textFormat/attributeOrientation (TRUE)</p></li>
+<li><p>.//dataTable/physical/dataFormat/textFormat/simpleDelimited/fieldDelimiter (TRUE)</p></li>
+<li><p>.//dataTable/attributeList (TRUE)</p></li>
+<li><p>.//dataTable/numberOfRecords (FALSE)</p></li>
+<li><p>.//otherEntity/physical/objectName (TRUE)</p></li>
+<li><p>.//otherEntity/physical/size (FALSE)</p></li>
+<li><p>.//otherEntity/physical/authentication (FALSE)</p></li>
+<li><p>.//otherEntity/physical/dataFormat/textFormat/numHeaderLines (TRUE)</p></li>
+<li><p>.//otherEntity/physical/dataFormat/textFormat/recordDelimiter (TRUE)</p></li>
+<li><p>.//otherEntity/physical/dataFormat/textFormat/attributeOrientation (TRUE)</p></li>
+<li><p>.//otherEntity/physical/dataFormat/textFormat/simpleDelimited/fieldDelimiter (TRUE)</p></li>
+<li><p>.//otherEntity/attributeList (TRUE)</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+<span class='co'># Return only "meaningful" differences (default behavior)</span>
+<span class='fu'>compare_eml</span><span class='op'>(</span>
+  newest <span class='op'>=</span> <span class='fu'><a href='api_read_metadata.html'>api_read_metadata</a></span><span class='op'>(</span><span class='st'>"knb-lter-hfr.118.32"</span><span class='op'>)</span>,
+  previous <span class='op'>=</span> <span class='fu'><a href='api_read_metadata.html'>api_read_metadata</a></span><span class='op'>(</span><span class='st'>"knb-lter-hfr.118.31"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Retrieving EML for data package knb-lter-hfr.118.32</span></div><div class='output co'>#&gt; <span class='message'>Retrieving EML for data package knb-lter-hfr.118.31</span></div><div class='output co'>#&gt;  [1] "'.//dataset/abstract' is the same"                                                         
+#&gt;  [2] "'.//dataset/coverage/geographicCoverage' is the same"                                      
+#&gt;  [3] "'.//dataset/coverage/temporalCoverage' is the same"                                        
+#&gt;  [4] "'.//dataset/coverage/taxonomicCoverage' is the same"                                       
+#&gt;  [5] "'.//dataset/methods' is the same"                                                          
+#&gt;  [6] "'.//dataset/keywordSet' is the same"                                                       
+#&gt;  [7] "'.//dataTable/physical/objectName' is the same"                                            
+#&gt;  [8] "'.//dataTable/physical/size' is different"                                                 
+#&gt;  [9] "'.//dataTable/physical/authentication' is different"                                       
+#&gt; [10] "'.//dataTable/physical/dataFormat/textFormat/numHeaderLines' is the same"                  
+#&gt; [11] "'.//dataTable/physical/dataFormat/textFormat/recordDelimiter' is the same"                 
+#&gt; [12] "'.//dataTable/physical/dataFormat/textFormat/attributeOrientation' is the same"            
+#&gt; [13] "'.//dataTable/physical/dataFormat/textFormat/simpleDelimited/fieldDelimiter' is the same"  
+#&gt; [14] "'.//dataTable/attributeList' is different at node 1"                                       
+#&gt; [15] "'.//otherEntity/physical/objectName' is the same"                                          
+#&gt; [16] "'.//otherEntity/physical/size' is the same"                                                
+#&gt; [17] "'.//otherEntity/physical/authentication' is the same"                                      
+#&gt; [18] "'.//otherEntity/physical/dataFormat/textFormat/numHeaderLines' is the same"                
+#&gt; [19] "'.//otherEntity/physical/dataFormat/textFormat/recordDelimiter' is the same"               
+#&gt; [20] "'.//otherEntity/physical/dataFormat/textFormat/attributeOrientation' is the same"          
+#&gt; [21] "'.//otherEntity/physical/dataFormat/textFormat/simpleDelimited/fieldDelimiter' is the same"</div><div class='input'>  
+<span class='co'># Return all differences</span>
+<span class='fu'>compare_eml</span><span class='op'>(</span>
+  newest <span class='op'>=</span> <span class='fu'><a href='api_read_metadata.html'>api_read_metadata</a></span><span class='op'>(</span><span class='st'>"knb-lter-hfr.118.32"</span><span class='op'>)</span>,
+  previous <span class='op'>=</span> <span class='fu'><a href='api_read_metadata.html'>api_read_metadata</a></span><span class='op'>(</span><span class='st'>"knb-lter-hfr.118.31"</span><span class='op'>)</span>,
+  return.all <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in compare_eml(newest = api_read_metadata("knb-lter-hfr.118.32"),     previous = api_read_metadata("knb-lter-hfr.118.31"), return.all = TRUE): unused argument (return.all = TRUE)</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -157,7 +216,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

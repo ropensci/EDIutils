@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Did a set of tables change between versions? — compare_tables • EDIutils</title>
+<title>Are there meaningful differences between dataset tables? — compare_tables • EDIutils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Did a set of tables change between versions? — compare_tables" />
-<meta property="og:description" content="If table attributes changed, then downstream processes relying on an expected structure may fail. This checks for common structural changes in the tables (not EML, see compare_eml())." />
+<meta property="og:title" content="Are there meaningful differences between dataset tables? — compare_tables" />
+<meta property="og:description" content="If table attributes changed, then downstream processes relying on an expected structure may fail. This checks for common structural differences between tables, not EML describing the tables. This function augments compare_eml(), which stops short of checking table attributes." />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -91,7 +91,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/EDIorg/EDIutils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -108,39 +108,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Did a set of tables change between versions?</h1>
+    <h1>Are there meaningful differences between dataset tables?</h1>
     <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/compare_tables.R'><code>R/compare_tables.R</code></a></small>
     <div class="hidden name"><code>compare_tables.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>If table attributes changed, then downstream processes relying on an expected structure may fail. This checks for common structural changes in the tables (not EML, see <code><a href='compare_eml.html'>compare_eml()</a></code>).</p>
+    <p>If table attributes changed, then downstream processes relying on an expected structure may fail. This checks for common structural differences between tables, not EML describing the tables. This function augments <code><a href='compare_eml.html'>compare_eml()</a></code>, which stops short of checking table attributes.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>compare_tables</span>(<span class='no'>newest</span>, <span class='no'>previous</span>)</pre>
+    <pre class="usage"><span class='fu'>compare_tables</span><span class='op'>(</span><span class='va'>newest</span>, <span class='va'>previous</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>newest</th>
-      <td><p>(list) Tables from the newest version of a data package, where inputs are returned from <code><a href='read_tables.html'>read_tables()</a></code>.</p></td>
+      <td><p>(list) Tables from the newest version of a data package. Use <code><a href='read_tables.html'>read_tables()</a></code> to create this list.</p></td>
     </tr>
     <tr>
       <th>previous</th>
-      <td><p>(list) Tables from the previous version of a data package, where inputs are returned from <code><a href='read_tables.html'>read_tables()</a></code>.</p></td>
+      <td><p>(list) Tables from the previous version of a data package. Use <code><a href='read_tables.html'>read_tables()</a></code> to create this list.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(character) A vector of check results</p>
+    <p>(character) Attributes that differ between versions</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Checked attributes:</p><ul>
+<li><p>File names</p></li>
+<li><p>Column names</p></li>
+<li><p>Number of columns</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>compare_tables</span>(
-  <span class='kw'>newest</span> <span class='kw'>=</span> <span class='fu'><a href='read_tables.html'>read_tables</a></span>(<span class='fu'><a href='api_read_metadata.html'>api_read_metadata</a></span>(<span class='st'>"knb-lter-hfr.118.32"</span>)),
-  <span class='kw'>previous</span> <span class='kw'>=</span> <span class='fu'><a href='read_tables.html'>read_tables</a></span>(<span class='fu'><a href='api_read_metadata.html'>api_read_metadata</a></span>(<span class='st'>"knb-lter-hfr.118.31"</span>)))</div><div class='output co'>#&gt; <span class='message'>Retrieving EML for data package knb-lter-hfr.118.32</span></div><div class='output co'>#&gt; <span class='message'>Retrieving EML for data package knb-lter-hfr.118.31</span></div><div class='output co'>#&gt; [1] "Table names are the same"                                        
+<span class='fu'>compare_tables</span><span class='op'>(</span>
+  newest <span class='op'>=</span> <span class='fu'><a href='read_tables.html'>read_tables</a></span><span class='op'>(</span><span class='fu'><a href='api_read_metadata.html'>api_read_metadata</a></span><span class='op'>(</span><span class='st'>"knb-lter-hfr.118.32"</span><span class='op'>)</span><span class='op'>)</span>,
+  previous <span class='op'>=</span> <span class='fu'><a href='read_tables.html'>read_tables</a></span><span class='op'>(</span><span class='fu'><a href='api_read_metadata.html'>api_read_metadata</a></span><span class='op'>(</span><span class='st'>"knb-lter-hfr.118.31"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Retrieving EML for data package knb-lter-hfr.118.32</span></div><div class='output co'>#&gt; <span class='message'>Retrieving EML for data package knb-lter-hfr.118.31</span></div><div class='output co'>#&gt; [1] "Table names are the same"                                        
 #&gt; [2] "Column names of hf118-01-ants.csv are different"                 
 #&gt; [3] "Number of columns in hf118-01-ants.csv are different"            
 #&gt; [4] "Number of rows in hf118-01-ants.csv are different"               
@@ -163,7 +172,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
