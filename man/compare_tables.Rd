@@ -2,20 +2,28 @@
 % Please edit documentation in R/compare_tables.R
 \name{compare_tables}
 \alias{compare_tables}
-\title{Did a set of tables change between versions?}
+\title{Are there meaningful differences between dataset tables?}
 \usage{
 compare_tables(newest, previous)
 }
 \arguments{
-\item{newest}{(list) Tables from the newest version of a data package, where inputs are returned from \code{read_tables()}.}
+\item{newest}{(list) Tables from the newest version of a data package. Use \code{read_tables()} to create this list.}
 
-\item{previous}{(list) Tables from the previous version of a data package, where inputs are returned from \code{read_tables()}.}
+\item{previous}{(list) Tables from the previous version of a data package. Use \code{read_tables()} to create this list.}
 }
 \value{
-(character) A vector of check results
+(character) Attributes that differ between versions
 }
 \description{
-If table attributes changed, then downstream processes relying on an expected structure may fail. This checks for common structural changes in the tables (not EML, see \code{compare_eml()}).
+If table attributes changed, then downstream processes relying on an expected structure may fail. This checks for common structural differences between tables, not EML describing the tables. This function augments \code{compare_eml()}, which stops short of checking table attributes.
+}
+\details{
+Checked attributes:
+\itemize{
+  \item{File names}
+  \item{Column names}
+  \item{Number of columns}
+}
 }
 \examples{
 

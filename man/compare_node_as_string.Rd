@@ -2,20 +2,20 @@
 % Please edit documentation in R/compare_eml.R
 \name{compare_node_as_string}
 \alias{compare_node_as_string}
-\title{Collapse EML node and compare as string}
+\title{Collapse EML node to string then compare}
 \usage{
 compare_node_as_string(newest, previous, xpath)
 }
 \arguments{
-\item{newest}{(xml_document, xml_node) EML of the newest version of a data package, where inputs are returned from \code{api_read_metadata()}.}
+\item{newest}{(xml_document, xml_node) Newest version of an EML document}
 
-\item{previous}{(xml_document, xml_node) EML of the previous version of a data package, where inputs are returned from \code{api_read_metadata()}.}
+\item{previous}{(xml_document, xml_node) Previous version of an EML document}
 
-\item{xpath}{(character) xpath to node of interest}
+\item{xpath}{(character) xpath of node to compare}
 }
 \value{
-
+(character) xpath of node if \code{newest} and \code{previous} differ, otherwise NULL
 }
 \description{
-Collapse EML node and compare as string
+Collapse EML node to string then compare
 }
