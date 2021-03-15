@@ -62,7 +62,7 @@ detect_delimeter <- function(path, data.files, os){
         try(
           reader::get.delim(
             data_path[i],
-            n = 2,
+            n = 1,
             delims = c('\t', ',', ';', '|')
           ), 
           silent = T
