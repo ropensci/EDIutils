@@ -45,6 +45,7 @@
 replace_missing_value_codes <- function(
   x = NULL, eml = NULL, with = NA, file = NULL, coerce = TRUE) {
   
+  .Deprecated(new = "read_tables(..., convert.missing.value)")
   message("Replacing missing value codes with ", with)
   
   # Validate arguments
