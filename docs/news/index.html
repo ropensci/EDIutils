@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>List data package identifiers — api_list_data_package_identifiers • EDIutils</title>
+<title>Changelog • EDIutils</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,7 @@
 
 
 
-<meta property="og:title" content="List data package identifiers — api_list_data_package_identifiers" />
-<meta property="og:description" content="List Data Package Identifiers operation, specifying the scope value to 
-    match in the URI." />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -60,7 +58,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -112,42 +110,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>List data package identifiers</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_list_data_package_identifiers.R'><code>R/api_list_data_package_identifiers.R</code></a></small>
-    <div class="hidden name"><code>api_list_data_package_identifiers.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    <p>List Data Package Identifiers operation, specifying the scope value to 
-    match in the URI.</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>api_list_data_package_identifiers</span><span class='op'>(</span><span class='va'>scope</span>, environment <span class='op'>=</span> <span class='st'>'production'</span><span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>scope</th>
-      <td><p>(character) Scope (e.g. 'edi', 'knb-lter-bnz').</p></td>
-    </tr>
-    <tr>
-      <th>environment</th>
-      <td><p>(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>(character) Data package identifiers</p>
-
+    <div id="ediutils-150" class="section level1">
+<h1 class="page-header" data-toc-text="1.5.0">
+<a href="#ediutils-150" class="anchor"></a>EDIutils 1.5.0</h1>
+<div id="enhancement" class="section level3">
+<h3 class="hasAnchor">
+<a href="#enhancement" class="anchor"></a>Enhancement</h3>
+<ul>
+<li><p><strong>read_tables():</strong> New arguments to control file parsing: <code>strip.white</code> strips leading and trailing whitespaces of unquoted fields, <code>na.strings</code> allows specification of strings to be interpreted as NA, <code>convert.missing.value</code> converts all missing value codes specified in the EML metadata (e.g. “-99999”, “NaN”, “Not measured”) to NA, <code>add.units</code> adds a variable’s unit of measurement to the table in a separate column. Default settings read tables in their original published form.</p></li>
+<li><p><strong>replace_missing_value_codes():</strong> This function will be deprecated in favor of <code><a href="../reference/read_tables.html">read_tables(..., convert.missing.value)</a></code>, but will persist in the meantime with a deprecation notice.</p></li>
+</ul>
+</div>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 

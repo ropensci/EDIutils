@@ -186,10 +186,11 @@
     }
   ],
   "readme": "https://github.com/EDIorg/EDIutils/blob/master/README.md",
-  "fileSize": "99.419KB",
+  "fileSize": "101.445KB",
   "contIntegration": [
     "https://travis-ci.org/EDIorg/EDIutils",
     "https://codecov.io/github/EDIorg/EDIutils?branch=master"
   ],
-  "relatedLink": "https://ediorg.github.io/EDIutils/"
+  "relatedLink": "https://ediorg.github.io/EDIutils/",
+  "releaseNotes": "https://github.com/EDIorg/EDIutils/blob/master/NEWS.md"
 }

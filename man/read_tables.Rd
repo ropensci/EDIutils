@@ -36,6 +36,4 @@ This function uses \code{data.table::fread()} and uses default argument values i
 }
 \examples{
 
-d <- read_tables(api_read_metadata("knb-lter-nwt.1.6"))
-
 }

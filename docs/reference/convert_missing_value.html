@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>List data package identifiers — api_list_data_package_identifiers • EDIutils</title>
+<title>Convert missing value codes to NA — convert_missing_value • EDIutils</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="List data package identifiers — api_list_data_package_identifiers" />
-<meta property="og:description" content="List Data Package Identifiers operation, specifying the scope value to 
-    match in the URI." />
+<meta property="og:title" content="Convert missing value codes to NA — convert_missing_value" />
+<meta property="og:description" content="Convert missing value codes to NA" />
 
 
 
@@ -112,35 +111,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>List data package identifiers</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_list_data_package_identifiers.R'><code>R/api_list_data_package_identifiers.R</code></a></small>
-    <div class="hidden name"><code>api_list_data_package_identifiers.Rd</code></div>
+    <h1>Convert missing value codes to NA</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/read_tables.R'><code>R/read_tables.R</code></a></small>
+    <div class="hidden name"><code>convert_missing_value.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>List Data Package Identifiers operation, specifying the scope value to 
-    match in the URI.</p>
+    <p>Convert missing value codes to NA</p>
     </div>
 
-    <pre class="usage"><span class='fu'>api_list_data_package_identifiers</span><span class='op'>(</span><span class='va'>scope</span>, environment <span class='op'>=</span> <span class='st'>'production'</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>convert_missing_value</span><span class='op'>(</span><span class='va'>v</span>, <span class='va'>code</span>, <span class='va'>type</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>scope</th>
-      <td><p>(character) Scope (e.g. 'edi', 'knb-lter-bnz').</p></td>
+      <th>v</th>
+      <td><p>Vector of values</p></td>
     </tr>
     <tr>
-      <th>environment</th>
-      <td><p>(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.</p></td>
+      <th>code</th>
+      <td><p>(character) Missing value code</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>(character) Type (class) <code>v</code> should be. Supported types are: "character", "numeric", "datetime"</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(character) Data package identifiers</p>
+    <p>Vector of values with <code>code</code> replaced by NA in the class of <code>type</code></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

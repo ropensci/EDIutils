@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
       </span>
     </div>
 
@@ -86,6 +86,9 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -117,14 +120,36 @@
     <p>Read data tables of a data package from the EML metadata.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_tables</span><span class='op'>(</span><span class='va'>eml</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>read_tables</span><span class='op'>(</span>
+  <span class='va'>eml</span>,
+  strip.white <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  na.strings <span class='op'>=</span> <span class='cn'>NULL</span>,
+  convert.missing.value <span class='op'>=</span> <span class='cn'>NULL</span>,
+  add.units <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>eml</th>
-      <td><p>(xml_document, xml_node) EML metadata returned from <code>read_eml()</code></p></td>
+      <td><p>(xml_document, xml_node) EML metadata returned from <code>read_eml()</code>.</p></td>
+    </tr>
+    <tr>
+      <th>strip.white</th>
+      <td><p>(logical) Strips leading and trailing whitespaces of unquoted fields. Default if FALSE.</p></td>
+    </tr>
+    <tr>
+      <th>na.strings</th>
+      <td><p>(character) Strings to be interpreted as NA. Setting <code>na.strings = ""</code> converts "" to NA. By default, blank strings "" are read as is.</p></td>
+    </tr>
+    <tr>
+      <th>convert.missing.value</th>
+      <td><p>(logical) Converts all missing value codes specified in <code>eml</code> (e.g. "-99999", "NaN", "Not measured") to NA. Missing value codes vary across data packages and converting to a consistent form recognized by R makes downstream use simpler. However, care must be exercised when using this argument. The author of a dataset described by <code>eml</code> may have defined "missing value code" to mean something different than you expect (e.g. "below detection limit") therefore reviewing the authors missing value code definitions is a good idea. Default is FALSE.</p></td>
+    </tr>
+    <tr>
+      <th>add.units</th>
+      <td><p>(logical) If TRUE, a variable's unit of measurement will be added to the table in a separate column with a column name of the form: &lt;unit&gt;_&lt;variable_name&gt;. This argument is useful when gathering variables into a long (attribute-value) table.</p></td>
     </tr>
     </table>
 
@@ -133,12 +158,11 @@
     <p>(list) List of named data frames</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function uses <code><a href='https://Rdatatable.gitlab.io/data.table/reference/fread.html'>data.table::fread()</a></code> and uses default argument values if the EML based values return an error.</p>
+    <p>This function uses <code><a href='https://Rdatatable.gitlab.io/data.table/reference/fread.html'>data.table::fread()</a></code> and uses default argument values if the EML based values return an error.</p>    
+<p>Default settings preserve the form the data were originally published in.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'>read_tables</span><span class='op'>(</span><span class='fu'><a href='api_read_metadata.html'>api_read_metadata</a></span><span class='op'>(</span><span class='st'>"knb-lter-nwt.1.6"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Retrieving EML for data package knb-lter-nwt.1.6</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
