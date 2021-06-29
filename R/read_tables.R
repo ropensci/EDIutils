@@ -60,13 +60,15 @@ read_tables <- function(eml,
             input = url,
             sep = field_delimiter,
             skip = header_lines - 1,
-            strip.white = strip.white,
             na.strings = na.strings), 
           error = function(e) {
             warning("Could not read ", object_name, ". Trying ",
                     "data.table::fread() defaults.", call. = FALSE)
             data.table::fread(input = url)})
       tbl <- as.data.frame(tbl)
+      
+      # Strip white space
+      tbl <- as.data.frame(lapply(tbl, trimws))
       
       # Convert missing value codes to NA
       if (!is.null(convert.missing.value)) {

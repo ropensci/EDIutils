@@ -1,3 +1,9 @@
+# EDIutils 1.6.0
+
+### Enhancement
+
+* __read_tables():__ Remove leading and trailing white space from character fields when `strip.white = TRUE`, even when quoted.
+
 # EDIutils 1.5.0
 
 ### Enhancement
