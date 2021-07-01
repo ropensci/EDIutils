@@ -1,3 +1,9 @@
+# EDIutils 1.6.1
+
+### Bug fix
+
+* __read_tables():__ Columnn names beginning with an underscore (e.g. "_2_5_mm") were being prefixed with "X" (e.g. "X_2_5_mm"). This is no longer occuring.
+
 # EDIutils 1.6.0
 
 ### Enhancement

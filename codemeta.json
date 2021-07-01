@@ -10,7 +10,7 @@
   "codeRepository": "https://github.com/EDIorg/EDIutils",
   "issueTracker": "https://github.com/EDIorg/EDIutils/issues",
   "license": "MIT License",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -186,7 +186,7 @@
     }
   ],
   "readme": "https://github.com/EDIorg/EDIutils/blob/master/README.md",
-  "fileSize": "98.965KB",
+  "fileSize": "99.055KB",
   "contIntegration": [
     "https://travis-ci.org/EDIorg/EDIutils",
     "https://codecov.io/github/EDIorg/EDIutils?branch=master"

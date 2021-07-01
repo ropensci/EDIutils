@@ -68,7 +68,7 @@ read_tables <- function(eml,
       tbl <- as.data.frame(tbl)
       
       # Strip white space
-      tbl <- as.data.frame(lapply(tbl, trimws))
+      tbl <- list2DF(lapply(tbl, trimws))
       
       # Convert missing value codes to NA
       if (!is.null(convert.missing.value)) {
