@@ -7,9 +7,9 @@
 compare_eml(newest, previous, return.all = FALSE)
 }
 \arguments{
-\item{newest}{(xml_document, xml_node) EML of the newest version of a data package, where inputs are returned from \code{api_read_metadata()}.}
+\item{newest}{(xml_document, xml_node) EML of the newest version of a data package, where inputs are returned from \code{read_metadata()}.}
 
-\item{previous}{(xml_document, xml_node) EML of the previous version of a data package, where inputs are returned from \code{api_read_metadata()}.}
+\item{previous}{(xml_document, xml_node) EML of the previous version of a data package, where inputs are returned from \code{read_metadata()}.}
 
 \item{return.all}{(logical) Return all differences? Default is FALSE, i.e. only return meaningful differences. Meaningful differences do not include elements expected to change between versions (e.g. number of rows, file size, temporal coverage).}
 }
@@ -50,13 +50,13 @@ XPaths of checked nodes (and whether "meaningful"):
 
 # Return only "meaningful" differences (default behavior)
 compare_eml(
-  newest = api_read_metadata("knb-lter-hfr.118.32"),
-  previous = api_read_metadata("knb-lter-hfr.118.31"))
+  newest = read_metadata("knb-lter-hfr.118.32"),
+  previous = read_metadata("knb-lter-hfr.118.31"))
   
 # Return all differences
 compare_eml(
-  newest = api_read_metadata("knb-lter-hfr.118.32"),
-  previous = api_read_metadata("knb-lter-hfr.118.31"),
+  newest = read_metadata("knb-lter-hfr.118.32"),
+  previous = read_metadata("knb-lter-hfr.118.31"),
   return.all = TRUE)
 
 }

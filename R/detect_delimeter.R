@@ -138,7 +138,6 @@ detect_delimeter <- function(path, data.files, os){
 #' @return
 #'   (character) Delimiter
 #' 
-
 delimiter_infer <- function(x){
   
   # FIXME: The following method needs improvement. 

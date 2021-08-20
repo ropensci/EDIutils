@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>List recent changes — api_list_recent_changes • EDIutils</title>
+<title>List recent changes — list_recent_changes • EDIutils</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="List recent changes — api_list_recent_changes" />
+<meta property="og:title" content="List recent changes — list_recent_changes" />
 <meta property="og:description" content="List Recent Changes operation, listing all data package insert, update, 
     and delete operations, optionally specifying the date and time to 
     and/or from which the changes should be listed. An optional scope value 
@@ -83,7 +83,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -91,18 +91,21 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/EDIorg/EDIutils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -120,8 +123,8 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>List recent changes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/api_list_recent_changes.R'><code>R/api_list_recent_changes.R</code></a></small>
-    <div class="hidden name"><code>api_list_recent_changes.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/list_recent_changes.R'><code>R/list_recent_changes.R</code></a></small>
+    <div class="hidden name"><code>list_recent_changes.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -139,8 +142,8 @@
     deletes are recorded in “dataPackageDelete” elements.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>api_list_recent_changes</span>(<span class='kw'>from.date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>to.date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scope</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-    <span class='kw'>environment</span> <span class='kw'>=</span> <span class='st'>'production'</span>)</pre>
+    <pre class="usage"><span class='fu'>list_recent_changes</span><span class='op'>(</span>from.date <span class='op'>=</span> <span class='cn'>NULL</span>, to.date <span class='op'>=</span> <span class='cn'>NULL</span>, scope <span class='op'>=</span> <span class='cn'>NULL</span>,
+    environment <span class='op'>=</span> <span class='st'>'production'</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -184,7 +187,7 @@ Can be: 'development', 'staging', 'production'.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -115,31 +115,3 @@ read_tables <- function(eml,
   return(unlist(tbls, recursive = FALSE))
   
 }
-
-
-
-
-
-
-
-
-#' Convert missing value codes to NA
-#'
-#' @param v Vector of values
-#' @param code (character) Missing value code
-#' @param type (character) Type (class) \code{v} should be. Supported types are: "character", "numeric", "datetime"
-#'
-#' @return Vector of values with \code{code} replaced by NA in the class of \code{type}
-#'
-convert_missing_value <- function(v, code, type) {
-  if (type == "character") {
-    res <- stringr::str_replace_all(as.character(v), paste(code, collapse = "|"), NA_character_)
-  } else if (type == "numeric") {
-    res <- stringr::str_replace_all(as.character(v), paste(code, collapse = "|"), NA_character_)
-    res <- as.numeric(res)
-  } else if (type == "datetime") {
-    # TODO: Parse datetime according to date time format specifier
-    res <- v
-  }
-  return(res)
-}

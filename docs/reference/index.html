@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -79,18 +79,21 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/EDIorg/EDIutils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -121,8 +124,8 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-edi-api" class="hasAnchor"><a href="#section-edi-api" class="anchor"></a>EDI API</h2>
-          <p class="section-desc"><p>Functions for interacting with the Data Package and Audit Manager APIs</p></p>
+          <h2 id="section-upload-and-evaluation" class="hasAnchor"><a href="#section-upload-and-evaluation" class="anchor"></a>Upload and Evaluation</h2>
+          <p class="section-desc"><p>Describes web service methods for uploading (creating or updating) and evaluating data packages.</p></p>
         </th>
       </tr>
       
@@ -133,225 +136,27 @@
       <tr>
         
         <td>
-          <p><code><a href="api_create_data_package.html">api_create_data_package()</a></code> </p>
+          <p><code><a href="create_data_package.html">create_data_package()</a></code> </p>
         </td>
         <td><p>Create data package</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="api_create_reservation.html">api_create_reservation()</a></code> </p>
-        </td>
-        <td><p>Create reservation</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_evaluate_data_package.html">api_evaluate_data_package()</a></code> </p>
+          <p><code><a href="evaluate_data_package.html">evaluate_data_package()</a></code> </p>
         </td>
         <td><p>Evaluate data package</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="api_get_provenance_metadata.html">api_get_provenance_metadata()</a></code> </p>
-        </td>
-        <td><p>Get provenance metadata</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_data_descendants.html">api_list_data_descendants()</a></code> </p>
-        </td>
-        <td><p>List data descendants</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_data_entities.html">api_list_data_entities()</a></code> </p>
-        </td>
-        <td><p>List data entities</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_data_package_citations.html">api_list_data_package_citations()</a></code> </p>
-        </td>
-        <td><p>List data package citations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_data_package_identifiers.html">api_list_data_package_identifiers()</a></code> </p>
-        </td>
-        <td><p>List data package identifiers</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_data_package_revisions.html">api_list_data_package_revisions()</a></code> </p>
-        </td>
-        <td><p>List data package revisions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_data_package_scopes.html">api_list_data_package_scopes()</a></code> </p>
-        </td>
-        <td><p>List data package scopes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_data_sources.html">api_list_data_sources()</a></code> </p>
-        </td>
-        <td><p>List data sources</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_deleted_data_packages.html">api_list_deleted_data_packages()</a></code> </p>
-        </td>
-        <td><p>List deleted data packages</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_principal_owner_citations.html">api_list_principal_owner_citations()</a></code> </p>
-        </td>
-        <td><p>List principal owner citations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_recent_changes.html">api_list_recent_changes()</a></code> </p>
-        </td>
-        <td><p>List recent changes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_recent_uploads.html">api_list_recent_uploads()</a></code> </p>
-        </td>
-        <td><p>List recent uploads</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_service_methods.html">api_list_service_methods()</a></code> </p>
-        </td>
-        <td><p>List service methods</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_user_data_packages.html">api_list_user_data_packages()</a></code> </p>
-        </td>
-        <td><p>List user data packages</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_list_working_on.html">api_list_working_on()</a></code> </p>
-        </td>
-        <td><p>List working on</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_data_entity_checksum.html">api_read_data_entity_checksum()</a></code> </p>
-        </td>
-        <td><p>Read data entity checksum</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_data_entity_name.html">api_read_data_entity_name()</a></code> </p>
-        </td>
-        <td><p>Read data entity name</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_data_entity_names.html">api_read_data_entity_names()</a></code> </p>
-        </td>
-        <td><p>Read data entity names</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_data_entity_resource_metadata.html">api_read_data_entity_resource_metadata()</a></code> </p>
-        </td>
-        <td><p>Read data entity resource metadata</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_data_entity_size.html">api_read_data_entity_size()</a></code> </p>
-        </td>
-        <td><p>Read data entity size</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_data_entity_sizes.html">api_read_data_entity_sizes()</a></code> </p>
-        </td>
-        <td><p>Read data entity sizes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_data_package.html">api_read_data_package()</a></code> </p>
-        </td>
-        <td><p>Read data package</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_data_package_doi.html">api_read_data_package_doi()</a></code> </p>
-        </td>
-        <td><p>Read data package DOI</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_data_package_report.html">api_read_data_package_report()</a></code> </p>
-        </td>
-        <td><p>Read data package report</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_data_package_report_checksum.html">api_read_data_package_report_checksum()</a></code> </p>
-        </td>
-        <td><p>Read data package report checksum</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_data_package_report_resource_metadata.html">api_read_data_package_report_resource_metadata()</a></code> </p>
-        </td>
-        <td><p>Read data package report resource metadata</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_data_package_resource_metadata.html">api_read_data_package_resource_metadata()</a></code> </p>
-        </td>
-        <td><p>Read data package resource metadata</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_metadata.html">api_read_metadata()</a></code> </p>
-        </td>
-        <td><p>Read metadata</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_metadata_checksum.html">api_read_metadata_checksum()</a></code> </p>
-        </td>
-        <td><p>Read metadata checksum</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_metadata_dublin_core.html">api_read_metadata_dublin_core()</a></code> </p>
-        </td>
-        <td><p>Read metadata Dublin Core</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_metadata_format.html">api_read_metadata_format()</a></code> </p>
-        </td>
-        <td><p>Read metadata format</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_read_metadata_resource_metadata.html">api_read_metadata_resource_metadata()</a></code> </p>
-        </td>
-        <td><p>Read metadata resource metadata</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="api_update_data_package.html">api_update_data_package()</a></code> </p>
+          <p><code><a href="update_data_package.html">update_data_package()</a></code> </p>
         </td>
         <td><p>Update data package</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-helper-functions" class="hasAnchor"><a href="#section-helper-functions" class="anchor"></a>Helper functions</h2>
-          <p class="section-desc"><p>Helper functions to EDI R libraries</p></p>
+          <h2 id="section-browse-and-discovery" class="hasAnchor"><a href="#section-browse-and-discovery" class="anchor"></a>Browse and Discovery</h2>
+          <p class="section-desc"><p>Describes web service methods for browsing and discovering data packages.</p></p>
         </th>
       </tr>
       
@@ -360,6 +165,538 @@
       
       
       <tr>
+        
+        <td>
+          <p><code><a href="search_data_packages.html">search_data_packages()</a></code> </p>
+        </td>
+        <td><p>Search Data Packages</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-listing" class="hasAnchor"><a href="#section-listing" class="anchor"></a>Listing</h2>
+          <p class="section-desc"><p>Describes web service methods for listing data packages.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="list_data_entities.html">list_data_entities()</a></code> </p>
+        </td>
+        <td><p>List Data Entities</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_data_descendants.html">list_data_descendants()</a></code> </p>
+        </td>
+        <td><p>List Data Descendants</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_data_sources.html">list_data_sources()</a></code> </p>
+        </td>
+        <td><p>List Data Sources</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_data_package_identifiers.html">list_data_package_identifiers()</a></code> </p>
+        </td>
+        <td><p>List data package identifiers</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_data_package_revisions.html">list_data_package_revisions()</a></code> </p>
+        </td>
+        <td><p>List data package revisions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_data_package_scopes.html">list_data_package_scopes()</a></code> </p>
+        </td>
+        <td><p>List data package scopes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_user_data_packages.html">list_user_data_packages()</a></code> </p>
+        </td>
+        <td><p>List user data packages</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_deleted_data_packages.html">list_deleted_data_packages()</a></code> </p>
+        </td>
+        <td><p>List deleted data packages</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_service_methods.html">list_service_methods()</a></code> </p>
+        </td>
+        <td><p>List service methods</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_recent_changes.html">list_recent_changes()</a></code> </p>
+        </td>
+        <td><p>List recent changes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_recent_uploads.html">list_recent_uploads()</a></code> </p>
+        </td>
+        <td><p>List recent uploads</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-accessing" class="hasAnchor"><a href="#section-accessing" class="anchor"></a>Accessing</h2>
+          <p class="section-desc"><p>Describes web service methods for accessing data package resources such as data, metadata, and reports.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="read_data_entity.html">read_data_entity()</a></code> </p>
+        </td>
+        <td><p>Read data entity</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_entity_acl.html">read_data_entity_acl()</a></code> </p>
+        </td>
+        <td><p>Read data entity</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_entity_checksum.html">read_data_entity_checksum()</a></code> </p>
+        </td>
+        <td><p>Read data entity checksum</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_entity_name.html">read_data_entity_name()</a></code> </p>
+        </td>
+        <td><p>Read data entity name</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_entity_names.html">read_data_entity_names()</a></code> </p>
+        </td>
+        <td><p>Read data entity names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_entity_resource_metadata.html">read_data_entity_resource_metadata()</a></code> </p>
+        </td>
+        <td><p>Read data entity resource metadata</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_entity_size.html">read_data_entity_size()</a></code> </p>
+        </td>
+        <td><p>Read data entity size</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_entity_sizes.html">read_data_entity_sizes()</a></code> </p>
+        </td>
+        <td><p>Read data entity sizes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_package.html">read_data_package()</a></code> </p>
+        </td>
+        <td><p>Read data package</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_package_from_doi.html">read_data_package_from_doi()</a></code> </p>
+        </td>
+        <td><p>Read data package from DOI</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_package_acl.html">read_data_package_acl()</a></code> </p>
+        </td>
+        <td><p>Read data package ACL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_package_archive.html">read_data_package_archive()</a></code> </p>
+        </td>
+        <td><p>Read data package archive</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_package_doi.html">read_data_package_doi()</a></code> </p>
+        </td>
+        <td><p>Read data package DOI</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_package_error.html">read_data_package_error()</a></code> </p>
+        </td>
+        <td><p>Read data package error</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_package_resource_metadata.html">read_data_package_resource_metadata()</a></code> </p>
+        </td>
+        <td><p>Read data package resource metadata</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_package_report.html">read_data_package_report()</a></code> </p>
+        </td>
+        <td><p>Read data package report</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_package_report_acl.html">read_data_package_report_acl()</a></code> </p>
+        </td>
+        <td><p>Read data package report ACL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_package_report_checksum.html">read_data_package_report_checksum()</a></code> </p>
+        </td>
+        <td><p>Read data package report checksum</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_data_package_report_resource_metadata.html">read_data_package_report_resource_metadata()</a></code> </p>
+        </td>
+        <td><p>Read data package report resource metadata</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_evaluate_report.html">read_evaluate_report()</a></code> </p>
+        </td>
+        <td><p>Read evaluate report</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_metadata.html">read_metadata()</a></code> </p>
+        </td>
+        <td><p>Read metadata</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_metadata_dublin_core.html">read_metadata_dublin_core()</a></code> </p>
+        </td>
+        <td><p>Read metadata Dublin Core</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_metadata_acl.html">read_metadata_acl()</a></code> </p>
+        </td>
+        <td><p>Read metadata ACL</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_metadata_checksum.html">read_metadata_checksum()</a></code> </p>
+        </td>
+        <td><p>Read metadata checksum</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_metadata_format.html">read_metadata_format()</a></code> </p>
+        </td>
+        <td><p>Read metadata format</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_metadata_resource_metadata.html">read_metadata_resource_metadata()</a></code> </p>
+        </td>
+        <td><p>Read metadata resource metadata</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-provenance" class="hasAnchor"><a href="#section-provenance" class="anchor"></a>Provenance</h2>
+          <p class="section-desc"><p>Describes web service methods for tracking and generating provenance metadata.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="get_provenance_metadata.html">get_provenance_metadata()</a></code> </p>
+        </td>
+        <td><p>Get provenance metadata</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-event-notifications" class="hasAnchor"><a href="#section-event-notifications" class="anchor"></a>Event Notifications</h2>
+          <p class="section-desc"><p>Describes web service methods for subscribing to and receiving data package event notifications.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="create_event_subscription.html">create_event_subscription()</a></code> </p>
+        </td>
+        <td><p>Create event subscription</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="delete_event_subscription.html">delete_event_subscription()</a></code> </p>
+        </td>
+        <td><p>Delete event subscription</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="execute_event_subscription.html">execute_event_subscription()</a></code> </p>
+        </td>
+        <td><p>Execute event subscription</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="query_event_subscriptions.html">query_event_subscriptions()</a></code> </p>
+        </td>
+        <td><p>Query event subscriptions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_event_subscription.html">get_event_subscription()</a></code> </p>
+        </td>
+        <td><p>Get event subscription</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_event_subscription_schema.html">get_event_subscription_schema()</a></code> </p>
+        </td>
+        <td><p>Get event subscription schema</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-identifier-reservations" class="hasAnchor"><a href="#section-identifier-reservations" class="anchor"></a>Identifier Reservations</h2>
+          <p class="section-desc"><p>Web service methods whereby an end user may reserve data package identifiers for future upload to PASTA.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="create_reservation.html">create_reservation()</a></code> </p>
+        </td>
+        <td><p>Create reservation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="delete_reservation.html">delete_reservation()</a></code> </p>
+        </td>
+        <td><p>Delete reservation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_active_reservations.html">list_active_reservations()</a></code> </p>
+        </td>
+        <td><p>List active reservations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_reservation_identifiers.html">list_reservation_identifiers()</a></code> </p>
+        </td>
+        <td><p>List reservation identifiers</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-journal-citations" class="hasAnchor"><a href="#section-journal-citations" class="anchor"></a>Journal Citations</h2>
+          <p class="section-desc"><p>Web service methods for creating, reading, and deleting journal citation entries associated with data packages.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="create_journal_citation.html">create_journal_citation()</a></code> </p>
+        </td>
+        <td><p>Create journal citation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="delete_journal_citation.html">delete_journal_citation()</a></code> </p>
+        </td>
+        <td><p>Delete journal citation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_journal_citation.html">get_journal_citation()</a></code> </p>
+        </td>
+        <td><p>Get journal citation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_data_package_citations.html">list_data_package_citations()</a></code> </p>
+        </td>
+        <td><p>List data package citations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_principal_owner_citations.html">list_principal_owner_citations()</a></code> </p>
+        </td>
+        <td><p>List principal owner citations</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-system-monitoring" class="hasAnchor"><a href="#section-system-monitoring" class="anchor"></a>System Monitoring</h2>
+          <p class="section-desc"><p>Web service methods for monitoring the state of data packages being processed in PASTA.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="list_working_on.html">list_working_on()</a></code> </p>
+        </td>
+        <td><p>List working on</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-miscellaneous" class="hasAnchor"><a href="#section-miscellaneous" class="anchor"></a>Miscellaneous</h2>
+          <p class="section-desc"><p>Additional web service methods for working with data packages.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="create_data_package_archive.html">create_data_package_archive()</a></code> </p>
+        </td>
+        <td><p>Create data package archive</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="is_authorized.html">is_authorized()</a></code> </p>
+        </td>
+        <td><p>Is authorized</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-audit-manager-services" class="hasAnchor"><a href="#section-audit-manager-services" class="anchor"></a>Audit Manager Services</h2>
+          <p class="section-desc"><p>The Audit Manager web service allows other PASTA web services to create, and users to access, PASTA audit logs.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="create_audit_record.html">create_audit_record()</a></code> </p>
+        </td>
+        <td><p>Create audit record</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_audit_record.html">get_audit_record()</a></code> </p>
+        </td>
+        <td><p>Get audit record</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_audit_report.html">get_audit_report()</a></code> </p>
+        </td>
+        <td><p>Get audit record</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_audit_count.html">get_audit_count()</a></code> </p>
+        </td>
+        <td><p>Get audit count</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_docid_reads.html">get_docid_reads()</a></code> </p>
+        </td>
+        <td><p>Get doc ID reads</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_packageid_reads.html">get_packageid_reads()</a></code> </p>
+        </td>
+        <td><p>Get package ID reads</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_recent_uploads.html">get_recent_uploads()</a></code> </p>
+        </td>
+        <td><p>Get recent uploads</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-general-helpers" class="hasAnchor"><a href="#section-general-helpers" class="anchor"></a>General Helpers</h2>
+          <p class="section-desc"><p>Tools serving common use cases</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="read_tables.html">read_tables()</a></code> </p>
+        </td>
+        <td><p>Read data tables of a data package</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="compare_eml.html">compare_eml()</a></code> </p>
+        </td>
+        <td><p>Are there meaningful differences between EML documents?</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="compare_tables.html">compare_tables()</a></code> </p>
+        </td>
+        <td><p>Are there meaningful differences between dataset tables?</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="create_provenance_metadata.html">create_provenance_metadata()</a></code> </p>
@@ -431,20 +768,7 @@
           <p><code><a href="view_unit_dictionary.html">view_unit_dictionary()</a></code> </p>
         </td>
         <td><p>View the standard unit dictionary</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-controlled-vocabulary" class="hasAnchor"><a href="#section-controlled-vocabulary" class="anchor"></a>Controlled Vocabulary</h2>
-          <p class="section-desc"><p>Functions for interacting with controlled vocabulary APIs</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
+      </tr><tr>
         
         <td>
           <p><code><a href="vocab_lter_id.html">vocab_lter_id()</a></code> </p>
@@ -487,7 +811,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

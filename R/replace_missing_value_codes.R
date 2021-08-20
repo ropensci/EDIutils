@@ -9,7 +9,7 @@
 #'     (data frame) Data with missing value codes to convert to NA.
 #' @param eml
 #'     (xml_document xml_node) EML metadata listing missing value codes for 
-#'     \code{x}. Use \code{EDIutils::api_read_metadata()} or 
+#'     \code{x}. Use \code{EDIutils::read_metadata()} or 
 #'     \code{xml2::read_xml()} to read the EML file.
 #' @param with
 #'     (character or NA) New missing value code. This value will replace those 

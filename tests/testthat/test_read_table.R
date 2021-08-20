@@ -20,7 +20,7 @@ testthat::test_that('convert.missing.value()', {
 
 
 testthat::test_that("strip.white, na.strings, add.units", {
-  eml <- EDIutils::api_read_metadata("knb-lter-hfr.118.32")
+  eml <- EDIutils::read_metadata("knb-lter-hfr.118.32")
   d <- EDIutils::read_tables(eml, strip.white = TRUE, na.strings = "", add.units = TRUE)
   expect_true(!any(na.omit(d$`hf118-01-ants.csv`$trap.num == ""))) # all "" are converted to NA
   expect_true(all(c("unit_hl", "unit_rel", "unit_rll") %in% colnames(d$`hf118-02-functional-traits.csv`))) # unit columns created for each numeric variable

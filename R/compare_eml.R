@@ -2,8 +2,8 @@
 #' 
 #' @description For discovering changes within a dataset that may have affect downstream processes relying on consistent dataset structure and meaning. This is useful in workflow automation where reporting such changes can expedite trouble shooting and manual intervention.
 #'
-#' @param newest (xml_document, xml_node) EML of the newest version of a data package, where inputs are returned from \code{api_read_metadata()}.
-#' @param previous (xml_document, xml_node) EML of the previous version of a data package, where inputs are returned from \code{api_read_metadata()}.
+#' @param newest (xml_document, xml_node) EML of the newest version of a data package, where inputs are returned from \code{read_metadata()}.
+#' @param previous (xml_document, xml_node) EML of the previous version of a data package, where inputs are returned from \code{read_metadata()}.
 #' @param return.all (logical) Return all differences? Default is FALSE, i.e. only return meaningful differences. Meaningful differences do not include elements expected to change between versions (e.g. number of rows, file size, temporal coverage).
 #'
 #' @return (character) XPaths of nodes that differ between versions
@@ -41,13 +41,13 @@
 #' 
 #' # Return only "meaningful" differences (default behavior)
 #' compare_eml(
-#'   newest = api_read_metadata("knb-lter-hfr.118.32"),
-#'   previous = api_read_metadata("knb-lter-hfr.118.31"))
+#'   newest = read_metadata("knb-lter-hfr.118.32"),
+#'   previous = read_metadata("knb-lter-hfr.118.31"))
 #'   
 #' # Return all differences
 #' compare_eml(
-#'   newest = api_read_metadata("knb-lter-hfr.118.32"),
-#'   previous = api_read_metadata("knb-lter-hfr.118.31"),
+#'   newest = read_metadata("knb-lter-hfr.118.32"),
+#'   previous = read_metadata("knb-lter-hfr.118.31"),
 #'   return.all = TRUE)
 #' 
 compare_eml <- function(newest, 
@@ -101,47 +101,3 @@ compare_eml <- function(newest,
   return(unlist(res))
   
 }
-
-
-
-
-
-
-
-
-#' Collapse EML node to string then compare
-#'
-#' @param newest (xml_document, xml_node) Newest version of an EML document
-#' @param previous (xml_document, xml_node) Previous version of an EML document
-#' @param xpath (character) xpath of node to compare
-#'
-#' @return (character) xpath of node if \code{newest} and \code{previous} differ, otherwise NULL
-#' 
-compare_node_as_string <- function(newest, previous, xpath) {
-  
-  # Collapse to string
-  newest <- xml2::xml_text(xml2::xml_find_all(newest, xpath))
-  previous <- xml2::xml_text(xml2::xml_find_all(previous, xpath))
-  
-  # Only return dissimilar nodes. Add node number to xpath for exact reference.
-  if (!all(newest == previous)) {
-    nodes <- which(!(newest == previous))
-    if (stringr::str_detect(xpath, "dataTable")) {
-      parts <- stringr::str_split(xpath, "(?<=dataTable)")
-      res <- paste0(parts[[1]][1], "[", nodes, "]", parts[[1]][2])
-      return(res)
-    } else if (stringr::str_detect(xpath, "otherEntity")) {
-      parts <- stringr::str_split(xpath, "(?<=otherEntity)")
-      res <- paste0(parts[[1]][1], "[", nodes, "]", parts[[1]][2])
-      return(res)
-    } else {
-      res <- xpath
-      return(res)
-    }
-  }
-  
-}
-
-
-
-

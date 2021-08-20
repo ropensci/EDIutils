@@ -28,7 +28,7 @@ Checked attributes:
 \examples{
 
 compare_tables(
-  newest = read_tables(api_read_metadata("knb-lter-hfr.118.32")),
-  previous = read_tables(api_read_metadata("knb-lter-hfr.118.31")))
+  newest = read_tables(read_metadata("knb-lter-hfr.118.32")),
+  previous = read_tables(read_metadata("knb-lter-hfr.118.31")))
 
 }

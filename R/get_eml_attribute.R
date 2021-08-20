@@ -33,7 +33,7 @@ get_eml_attribute <- function(attr.name, package.id, environment = "production")
 
   # Load EML
   
-  metadata <- suppressMessages(api_read_metadata(package.id, environment = environment))
+  metadata <- suppressMessages(read_metadata(package.id, environment = environment))
 
   # Get definition
     

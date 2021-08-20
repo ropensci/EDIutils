@@ -1,20 +1,121 @@
 reference:
-  - title: EDI API
-    desc: Functions for interacting with the Data Package and Audit Manager APIs
+  - title: Upload and Evaluation
+    desc: Describes web service methods for uploading (creating or updating) and evaluating data packages.
     contents:
-    - starts_with("api_")
-  - title: Read data
-    desc: Functions that read data entities into R based on their EML descriptions
+    - create_data_package
+    - evaluate_data_package
+    - update_data_package
+    
+  - title: Browse and Discovery
+    desc: Describes web service methods for browsing and discovering data packages.
+    contents:
+    - search_data_packages
+    
+  - title: Listing
+    desc: Describes web service methods for listing data packages.
+    contents:
+    - list_data_entities
+    - list_data_descendants
+    - list_data_sources
+    - list_data_package_identifiers
+    - list_data_package_revisions
+    - list_data_package_scopes
+    - list_user_data_packages
+    - list_deleted_data_packages
+    - list_service_methods
+    - list_recent_changes
+    - list_recent_uploads
+    
+  - title: Accessing
+    desc: Describes web service methods for accessing data package resources such as data, metadata, and reports.
+    contents:
+    - read_data_entity
+    - read_data_entity_acl
+    - read_data_entity_checksum
+    - read_data_entity_name
+    - read_data_entity_names
+    - read_data_entity_resource_metadata
+    - read_data_entity_size
+    - read_data_entity_sizes
+    - read_data_package
+    - read_data_package_from_doi
+    - read_data_package_acl
+    - read_data_package_archive
+    - read_data_package_doi
+    - read_data_package_error
+    - read_data_package_resource_metadata
+    - read_data_package_report
+    - read_data_package_report_acl
+    - read_data_package_report_checksum
+    - read_data_package_report_resource_metadata
+    - read_evaluate_report
+    - read_metadata
+    - read_metadata_dublin_core
+    - read_metadata_acl
+    - read_metadata_checksum
+    - read_metadata_format
+    - read_metadata_resource_metadata
+    
+  - title: Provenance
+    desc: Describes web service methods for tracking and generating provenance metadata.
+    contents:
+    - get_provenance_metadata
+    
+  - title: Event Notifications
+    desc: Describes web service methods for subscribing to and receiving data package event notifications.
+    contents: 
+    - create_event_subscription
+    - delete_event_subscription
+    - execute_event_subscription
+    - query_event_subscriptions
+    - get_event_subscription
+    - get_event_subscription_schema
+    
+  - title: Identifier Reservations
+    desc: Web service methods whereby an end user may reserve data package identifiers for future upload to PASTA.
+    contents:
+    - create_reservation
+    - delete_reservation
+    - list_active_reservations
+    - list_reservation_identifiers
+    
+  - title: Journal Citations
+    desc: Web service methods for creating, reading, and deleting journal citation entries associated with data packages.
+    contents:
+    - create_journal_citation
+    - delete_journal_citation
+    - get_journal_citation
+    - list_data_package_citations
+    - list_principal_owner_citations
+    
+  - title: System Monitoring
+    desc: Web service methods for monitoring the state of data packages being processed in PASTA.
+    contents:
+    - list_working_on
+    
+  - title: Miscellaneous
+    desc: Additional web service methods for working with data packages.
+    contents:
+    - create_data_package_archive
+    - is_authorized
+    
+  - title: Audit Manager Services
+    desc: The Audit Manager web service allows other PASTA web services to create, and users to access, PASTA audit logs.
+    contents: 
+    - create_audit_record
+    - get_audit_record
+    - get_audit_report
+    - get_audit_count
+    - get_docid_reads
+    - get_packageid_reads
+    - get_recent_uploads
+    
+  - title: General Helpers
+    desc: Tools serving common use cases
     contents:
     - read_tables
-  - title: Compare objects
-    desc: Sometimes it's useful to know if a data package component has changed between versions
-    contents:
     - compare_eml
     - compare_tables
-  - title: Helper functions
-    desc: Helper functions to EDI R libraries
-    contents:
     - create_provenance_metadata
     - detect_delimeter
     - detect_os
@@ -27,8 +128,5 @@ reference:
     - validate_keywords
     - validate_path
     - view_unit_dictionary
-  - title: Controlled Vocabulary
-    desc: Functions for interacting with controlled vocabulary APIs
-    contents:
     - starts_with("vocab_")
     
