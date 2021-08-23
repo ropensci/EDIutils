@@ -1,56 +1,27 @@
-#' List Data Entities
-#'
-#' @description List Data Entities operation, specifying the scope, identifier, and revision values to match in the URI.
-#'
-#' @usage list_data_entities(package.id, environment = 'production')
-#'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     (data frame) A data frame with columns:
-#'     \itemize{
-#'         \item{identifier: Data entity identifier}
-#'     }
-#'     
+#' List data entities
+#' 
+#' @param scope (character) Data package scope
+#' @param identifier (character) Data package identifier
+#' @param revision (character) Data package revision
+#' @param environment (character) PASTA environment to which this operation will be applied. Can be: 'production', 'staging', or 'development'
+#' 
+#' @return (data.frame) Data entity identifiers of the specified data package
+#' 
 #' @details GET : https://pasta.lternet.edu/package/data/eml/{scope}/{identifier}/{revision}
-#'
+#' 
 #' @export
 #' 
-#' @examples 
+#' @examples
+#' list_data_entities(scope = "edi", identifier = "193", revision = "5")
 #'
-list_data_entities <- function(package.id, environment = 'production'){
-  
-  message(paste('Retrieving data entity IDs for data package', package.id))
-  
+list_data_entities <- function(scope, identifier, revision, 
+                               environment = "production") {
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/data/eml/',
-      stringr::str_replace_all(package.id, '\\.', '/')
-    )
-  )
-  
-  r <- httr::content(
-    r,
-    as = 'text',
-    encoding = 'UTF-8'
-  )
-  
-  output <- read.csv(
-    text = c(
-      'identifier',
-      r
-    ),
-    as.is = T
-  )
-  
-  output
-  
+  url <- paste0(url_env(environment), ".lternet.edu/package/data/eml/",
+                paste(c(scope, identifier, revision), collapse = "/"))
+  resp <- httr::GET(url, set_user_agent())
+  httr::stop_for_status(resp)
+  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
+  res <- read.csv(text = c("entityId", parsed), as.is = TRUE)
+  return(res)
 }

@@ -1,16 +1,9 @@
 context('List data entities')
-library(EDIutils)
 
-testthat::test_that('Test for object attributes', {
-  
-  expect_equal(
-    class(
-      list_data_entities(
-        package.id = 'edi.275.1',
-        environment = 'production'
-      )
-    ),
-    'data.frame'
-  )
-  
+testthat::test_that('Test attributes of returned object', {
+  pkg <- get_test_package()
+  res <- list_data_entities(pkg$scope, pkg$id, pkg$rev, environment = "staging")
+  expect_equal(class(res), "data.frame")
+  expect_true(names(res) == "entityId")
+  expect_true(nrow(res) > 0)
 })

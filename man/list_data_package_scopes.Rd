@@ -4,21 +4,21 @@
 \alias{list_data_package_scopes}
 \title{List data package scopes}
 \usage{
-list_data_package_scopes(environment = 'production')
+list_data_package_scopes(environment = "production")
 }
 \arguments{
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
 }
 \value{
 (character) All scope values extant in the data package registry.
 }
 \description{
-List Data Package Scopes operation, returning all scope values extant in the data package registry.
+List data package scopes
 }
 \details{
 GET : https://pasta.lternet.edu/package/eml
 }
 \examples{
+list_data_package_scopes()
 
 }

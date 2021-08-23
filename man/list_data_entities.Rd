@@ -2,29 +2,29 @@
 % Please edit documentation in R/list_data_entities.R
 \name{list_data_entities}
 \alias{list_data_entities}
-\title{List Data Entities}
+\title{List data entities}
 \usage{
-list_data_entities(package.id, environment = 'production')
+list_data_entities(scope, identifier, revision, environment = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{scope}{(character) Data package scope}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{identifier}{(character) Data package identifier}
+
+\item{revision}{(character) Data package revision}
+
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: 'production', 'staging', or 'development'}
 }
 \value{
-(data frame) A data frame with columns:
-    \itemize{
-        \item{identifier: Data entity identifier}
-    }
+(data.frame) Data entity identifiers of the specified data package
 }
 \description{
-List Data Entities operation, specifying the scope, identifier, and revision values to match in the URI.
+List data entities
 }
 \details{
 GET : https://pasta.lternet.edu/package/data/eml/{scope}/{identifier}/{revision}
 }
 \examples{
+list_data_entities(scope = "edi", identifier = "193", revision = "5")
 
 }

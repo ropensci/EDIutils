@@ -1,104 +1,40 @@
 #' List data package revisions
 #'
-#' @description List Data Package Revisions operation, specifying the scope and identifier values to match in the URI. The request may be filtered by applying the modifiers “oldest” or “newest” to the “filter” query parameter.
+#' @param scope (character) Data package scope (e.g. "edi", "knb-lter-bnz")
+#' @param identifier (character) Data package identifier
+#' @param filter (character) Filter returned revisions. Can be "newest" or "oldest"
+#' @param environment (character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"
 #'
-#' @param scope
-#'     (character) Data package scope (e.g. 'edi', 'knb-lter-bnz').
-#' @param identifier
-#'     (character) Data package identifier (e.g. '100', '275').
-#' @param filter
-#'     (character) Filter to data packages, can be 'oldest' or 'newest'.
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     (character) Vector of revisions, if more than one exists, otherwise a 
-#'     single revision number.
+#' @return (data.frame) Data package revision(s)
 #'     
 #' @details GET : https://pasta.lternet.edu/package/eml/{scope}/{identifier}
 #' 
 #' @export
 #' 
 #' @examples 
+#' # All revisions
+#' list_data_package_revisions("edi", "275")
 #' 
-list_data_package_revisions <- function(scope, identifier, filter = NULL, environment = 'production'){
-  
-  message(paste('Retrieving data package revisions for', 
-                paste(scope, '.', identifier)
-                )
-          )
-  
+#' # Newest revision
+#' list_data_package_revisions("edi", "275", filter = "newest")
+#' 
+#' # Oldest revision
+#' list_data_package_revisions("edi", "275", filter = "oldest")
+#' 
+list_data_package_revisions <- function(scope, 
+                                        identifier, 
+                                        filter = NULL, 
+                                        environment = "production") {
   validate_arguments(x = as.list(environment()))
-  
-  if (is.null(filter)){
-    
-    r <- httr::GET(
-      url = paste0(
-        url_env(environment),
-        '.lternet.edu/package/eml/',
-        scope,
-        '/',
-        identifier
-      )
-    )
-    
-    r <- httr::content(
-      r,
-      as = 'text',
-      encoding = 'UTF-8'
-    )
-    
-    output <- read.csv(
-      text = c(
-        'revision',
-        r
-      ),
-      as.is = T
-    )
-    
-    output <- as.character(output$revision)
-    
-  } else if (filter == 'newest'){
-    
-    r <- httr::GET(
-      url = paste0(
-        url_env(environment),
-        '.lternet.edu/package/eml/',
-        scope,
-        '/',
-        identifier,
-        '?filter=newest'
-      )
-    )
-    
-    output <- httr::content(
-        r,
-        as = 'text',
-        encoding = 'UTF-8'
-    )
-
-  } else if (filter == 'oldest'){
-    
-    r <- httr::GET(
-      url = paste0(
-        url_env(environment),
-        '.lternet.edu/package/eml/',
-        scope,
-        '/',
-        identifier,
-        '?filter=oldest'
-      )
-    )
-    
-    output <- httr::content(
-        r,
-        as = 'text',
-        encoding = 'UTF-8'
-    )
-    
+  url <- paste0(url_env(environment), ".lternet.edu/package/eml/",
+                paste(c(scope, identifier), collapse = "/"))
+  if (!is.null(filter)) {
+    url <- paste0(url, "?filter=", filter)
   }
-  
-  output
-
+  resp <- httr::GET(url, set_user_agent())
+  httr::stop_for_status(resp)
+  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
+  res <- read.csv(text = c("revision", parsed), as.is = TRUE, 
+                  colClasses = "character")
+  return(res)
 }

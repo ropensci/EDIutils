@@ -1,15 +1,8 @@
-context('List data package scopes')
-library(EDIutils)
+context("List data package scopes")
 
-testthat::test_that('Test for object attributes', {
-  
-  expect_equal(
-    class(
-      list_data_package_scopes(
-        environment = 'production'
-      )
-    ),
-    'character'
-  )
-  
+testthat::test_that("Test attributes of returned object", {
+  res <- list_data_package_scopes(environment = "staging")
+  expect_equal(class(res), "data.frame")
+  expect_true(names(res) == "scope")
+  expect_true(nrow(res) > 0)
 })

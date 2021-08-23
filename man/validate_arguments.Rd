@@ -2,7 +2,7 @@
 % Please edit documentation in R/validate_arguments.R
 \name{validate_arguments}
 \alias{validate_arguments}
-\title{Validate function arguments}
+\title{Validate arguments to EDIutils functions}
 \usage{
 validate_arguments(x)
 }
@@ -10,5 +10,8 @@ validate_arguments(x)
 \item{x}{(list) A named list of arguments and corresponding values.}
 }
 \description{
-Validate the contents of function arguments.
+Validate arguments to EDIutils functions
+}
+\details{
+Checks performed by this function provide user friendly warnings and error messages to make their lives simpler.
 }

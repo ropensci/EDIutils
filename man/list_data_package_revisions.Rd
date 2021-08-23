@@ -12,25 +12,31 @@ list_data_package_revisions(
 )
 }
 \arguments{
-\item{scope}{(character) Data package scope (e.g. 'edi', 'knb-lter-bnz').}
+\item{scope}{(character) Data package scope (e.g. "edi", "knb-lter-bnz")}
 
-\item{identifier}{(character) Data package identifier (e.g. '100', '275').}
+\item{identifier}{(character) Data package identifier}
 
-\item{filter}{(character) Filter to data packages, can be 'oldest' or 'newest'.}
+\item{filter}{(character) Filter returned revisions. Can be "newest" or "oldest"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
 }
 \value{
-(character) Vector of revisions, if more than one exists, otherwise a 
-    single revision number.
+(data.frame) Data package revision(s)
 }
 \description{
-List Data Package Revisions operation, specifying the scope and identifier values to match in the URI. The request may be filtered by applying the modifiers “oldest” or “newest” to the “filter” query parameter.
+List data package revisions
 }
 \details{
 GET : https://pasta.lternet.edu/package/eml/{scope}/{identifier}
 }
 \examples{
+# All revisions
+list_data_package_revisions("edi", "275")
+
+# Newest revision
+list_data_package_revisions("edi", "275", filter = "newest")
+
+# Oldest revision
+list_data_package_revisions("edi", "275", filter = "oldest")
 
 }

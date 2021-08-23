@@ -7,18 +7,20 @@
 list_data_package_identifiers(scope, environment = "production")
 }
 \arguments{
-\item{scope}{(character) Scope (e.g. 'edi', 'knb-lter-bnz').}
+\item{scope}{(character) Data package scope (e.g. "edi", "knb-lter-bnz").}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".}
 }
 \value{
-(character) Data package identifiers
+(data.frame) All identifiers within a \code{scope}
 }
 \description{
-List Data Package Identifiers operation, specifying the scope value to match in the URI.
+List data package identifiers
+}
+\details{
+GET : https://pasta.lternet.edu/package/eml/{scope}
 }
 \examples{
-# GET : https://pasta.lternet.edu/package/eml/{scope}
+list_data_package_identifiers("knb-lter-ble")
 
 }

@@ -4,13 +4,12 @@
 \alias{list_user_data_packages}
 \title{List user data packages}
 \usage{
-list_user_data_packages(dn, environment = 'production')
+list_user_data_packages(dn, environment = "production")
 }
 \arguments{
 \item{dn}{(character) Distinguished name (e.g. 'uid=csmith,o=LTER,dc=ecoinformatics,dc=org')}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
 }
 \value{
 (character) Data packages uploaded by a distinguished name.

@@ -2,16 +2,10 @@
 #'
 #' @description List all data packages (including their revision values) uploaded to the repository by a particular user, specified by a distinguished name. Data packages that were uploaded by the specified user but have since been deleted are excluded from the list.
 #'
-#' @usage list_user_data_packages(dn, environment = 'production')
+#' @param dn (character) Distinguished name (e.g. 'uid=csmith,o=LTER,dc=ecoinformatics,dc=org')
+#' @param environment (character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"
 #'
-#' @param dn
-#'     (character) Distinguished name (e.g. 'uid=csmith,o=LTER,dc=ecoinformatics,dc=org')
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     (character) Data packages uploaded by a distinguished name.
+#' @return (character) Data packages uploaded by a distinguished name.
 #'
 #' @details GET : https://pasta.lternet.edu/package/user/{dn}
 #'

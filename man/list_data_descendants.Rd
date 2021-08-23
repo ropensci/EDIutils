@@ -2,28 +2,37 @@
 % Please edit documentation in R/list_data_descendants.R
 \name{list_data_descendants}
 \alias{list_data_descendants}
-\title{List Data Descendants}
+\title{List data descendants}
 \usage{
-list_data_descendants(package.id, environment = "production")
+list_data_descendants(
+  scope,
+  identifier,
+  revision,
+  environment = "production",
+  output = "xml_document"
+)
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{scope}{(character) Data package scope}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{identifier}{(character) Data package identifier}
+
+\item{revision}{(character) Data package revision}
+
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".}
+
+\item{output}{(character) Can be: "xml_document" or "data.frame".}
 }
 \value{
-("xml_document" "xml_node") XML containing the the 
-    data package ID, data package title, and data package URL.
+(xml_document or data.frame) Data descendant(s) packageId, title, and url
 }
 \description{
-List Data Descendants operation, specifying the scope, identifier, and revision values to match in the URI. Data descendants are data packages that are known to be derived, in whole or in part, from the specified source data package.
+Data descendants are data packages that are known to be derived, in whole or in part, from the specified source data package.
 }
 \details{
 GET : https://pasta.lternet.edu/package/descendants/eml/{scope}/{identifier}/{revision}
 }
 \examples{
-# Using curl to list data descendants of a data package:
+list_data_descendants("knb-lter-bnz", "501", "17")
 
 }

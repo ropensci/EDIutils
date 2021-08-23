@@ -99,6 +99,50 @@ convert_missing_value <- function(v, code, type) {
 
 
 
+#' Get the first data package in the staging environment for testing
+#' 
+#' @param parsed (logical) Return parsed scope, identifier, and revision. Default is TRUE.
+#' 
+#' @return (character) Data package scope, identifier, and revision
+#' 
+get_test_package <- function(parsed = TRUE) {
+  id <- list_data_package_identifiers("edi", "staging")[1]
+  rev <- list_data_package_revisions("edi", id[1], "newest", "staging")
+  if (isTRUE(parsed)) {
+    r <- list(scope = "edi", id = id, rev = rev)
+    return(r)
+  } else {
+    r <- paste(c("edi", id, rev), collapse = ".")
+    return(r)
+  }
+}
+
+
+
+
+
+
+
+
+#' Parse package ID into scope, identifier, and revision
+#'
+#' @param package.id (character) Data packageId
+#'
+#' @return (list) Data package scope, identifier, and revision
+#' 
+parse_packageId <- function(package.id) {
+  parts <- unlist(strsplit(package.id, ".", fixed = TRUE))
+  res <- list(scope = parts[1], id = parts[2], rev = parts[3])
+  return(res)
+}
+
+
+
+
+
+
+
+
 
 #' Polling loop for reserving package IDs
 #'
@@ -138,6 +182,22 @@ poll_pkg_reserve_id <- function(r){
 
 
 
+#' Set EDIutils user agent for http requests
+#' 
+#' @return (request) EDIutils user agent
+#' 
+set_user_agent <- function() {
+  res <- httr::user_agent("https://github.com/EDIorg/EDIutils")
+  return(res)
+}
+
+
+
+
+
+
+
+
 #' Make URL for PASTA+ environment
 #'
 #' @description
@@ -163,4 +223,25 @@ url_env <- function(environment){
   
   url_env
   
+}
+
+
+
+
+
+
+
+
+#' Convert minimally nested XML to data.frame
+#'
+#' @param xml (xml_document xml_node) XML with one level of nesting
+#' 
+#' @return (data.frame) A data.frame of \code{xml}
+#' 
+xml2df <- function(xml) {
+  lst <- xml2::as_list(xml)[[1]]
+  df <- data.frame(
+    matrix(unlist(lst), ncol = max(lengths(lst)), byrow = TRUE))
+  names(df) <- names(lst[[which(lengths(lst) > 0)[1]]])
+  return(df)
 }

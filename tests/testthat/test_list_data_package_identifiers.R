@@ -1,16 +1,8 @@
-context('List data package identifiers')
-library(EDIutils)
+context("List data package identifiers")
 
-testthat::test_that('Test for object attributes', {
-  
-  expect_equal(
-    class(
-      list_data_package_identifiers(
-        scope = 'edi',
-        environment = 'production'
-      )
-    ),
-    'character'
-  )
-  
+testthat::test_that('Test attributes of returned object', {
+  res <- list_data_package_identifiers("edi", environment = "staging")
+  expect_equal(class(res), "data.frame")
+  expect_true(names(res) == "identifier")
+  expect_true(nrow(res) > 0)
 })
