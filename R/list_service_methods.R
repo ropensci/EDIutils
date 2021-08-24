@@ -1,46 +1,22 @@
 #' List service methods
 #'
-#' @description List Service Methods operation, returning a simple list of web service methods supported by the Data Package Manager web service.
-
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
+#' @param environment (character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"
 #'
-#' @return
-#'     (character) All scope values extant in the data package registry.
+#' @return (data.frame) A simple list of web service methods supported by the Data Package Manager web service.
+#' 
 #' @details GET : https://pasta.lternet.edu/package/service-methods
+#' 
 #' @export
+#' 
 #' @examples 
+#' list_service_methods()
 #'
-list_service_methods <- function(environment = 'production'){
-  
-  message(paste('Listing service methods supported by the Data Package Manager web services'))
-  
+list_service_methods <- function(environment = "production") {
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/service-methods'
-    )
-  )
-  
-  r <- httr::content(
-    r,
-    as = 'text',
-    encoding = 'UTF-8'
-  )
-  
-  output <- as.character(
-    read.csv(
-      text = c(
-        'identifier',
-        r
-      ),
-      as.is = T
-    )$identifier
-  )
-  
-  output
-  
+  url <- paste0(url_env(environment), ".lternet.edu/package/service-methods")
+  resp <- httr::GET(url, set_user_agent())
+  httr::stop_for_status(resp)
+  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
+  res <- read.csv(text = c("serviceMethod", parsed), as.is = TRUE)
+  return(res)
 }

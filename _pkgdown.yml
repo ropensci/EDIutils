@@ -119,6 +119,7 @@ reference:
     - create_provenance_metadata
     - detect_delimeter
     - detect_os
+    - get_distinguished_name
     - get_eml_attribute
     - get_eol
     - replace_missing_value_codes

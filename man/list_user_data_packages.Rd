@@ -7,7 +7,7 @@
 list_user_data_packages(dn, environment = "production")
 }
 \arguments{
-\item{dn}{(character) Distinguished name (e.g. 'uid=csmith,o=LTER,dc=ecoinformatics,dc=org')}
+\item{dn}{(character) Distinguished name (e.g. "uid=dbjourneynorth,o=EDI,dc=edirepository,dc=org"). Use \code{get_distinguished_name()} to create input to \code{dn}.}
 
 \item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
 }
@@ -21,6 +21,6 @@ List all data packages (including their revision values) uploaded to the reposit
 GET : https://pasta.lternet.edu/package/user/{dn}
 }
 \examples{
-# Using curl to list all (undeleted) data packages uploaded by user ucarroll with distinguished name uid=ucarroll,o=LTER,dc=ecoinformatics,dc=org:
-
+# List all (undeleted) data packages uploaded by user "dbjourneynorth" under the organizational unit "EDI"
+list_user_data_packages(get_distinguished_name("dbjourneynorth", "EDI"))
 }

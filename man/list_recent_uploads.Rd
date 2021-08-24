@@ -11,19 +11,18 @@ list_recent_uploads(type, limit = 5, environment = "production")
 
 \item{limit}{(integer) Maximum limit.}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".}
 }
 \value{
-('xml_document' 'xml_node') dataPackageUploads 
-    metadata.
+(xml_document) packageId, scope, identifier, revision, principal, doi, serviceMethod, and date of data package uploads.
 }
 \description{
-List Recent Uploads operation, optionally specifying the upload type (“insert” or “update”) and a maximum limit as query parameters in the URL. (See example below.)
+List recent uploads
 }
 \details{
 GET : https://pasta.lternet.edu/package/uploads/eml
 }
 \examples{
+list_recent_uploads("update", 10)
 
 }

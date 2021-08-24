@@ -6,13 +6,23 @@
 #'
 validate_arguments <- function(x) {
 
-  # package.id
-  if ('package.id' %in% names(x)){
-    if (!isTRUE(stringr::str_detect(x[['package.id']],
-                                    '[:alpha:]\\.[:digit:]+\\.[:digit:]+$'))){
-      stop(paste0('Input argument "package.id" appears to be malformed. ',
-                  'A package ID must consist of a scope, identifier, ',
-                  'and revision (e.g. "edi.100.4").'))
+  # environment
+  if ('environment' %in% names(x)){
+    if ((tolower(x[['environment']]) != 'development') &
+        (tolower(x[['environment']]) != 'staging') &
+        (tolower(x[['environment']]) != 'production')){
+      stop(paste0('The input argument "environment" must be "development", ',
+                  '"staging", or "production".'), call. = FALSE)
+    }
+  }
+  
+  # fromDate
+  if ("fromDate" %in% names(x)) {
+    is_accpeted_format <- grepl(
+      "[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}T[[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}", 
+      x[["fromDate"]])
+    if (!is_accpeted_format) {
+      stop('Input "fromDate" is not of the format YYYY-MM-DDThh:mm:ss', call. = FALSE)
     }
   }
   
@@ -24,21 +34,19 @@ validate_arguments <- function(x) {
     }
   }
   
-  # revision
-  if ('revision' %in% names(x)){
-    is_int <- as.numeric(x[["revision"]]) %% 1 == 0
-    if (!is_int) {
-      stop('Input "revision" is not an integer value.', call. = FALSE)
+  # o (LDAP; organizational unit)
+  if ("o" %in% names(x)) {
+    if (!x[["o"]] %in% c("LTER", "EDI")) {
+      stop('Input "o" is not "EDI" or "LTER".', call. = FALSE)
     }
   }
   
-  # environment
-  if ('environment' %in% names(x)){
-    if ((tolower(x[['environment']]) != 'development') &
-        (tolower(x[['environment']]) != 'staging') &
-        (tolower(x[['environment']]) != 'production')){
-      stop(paste0('The input argument "environment" must be "development", ',
-                  '"staging", or "production".'))
+  # operating system
+  if ('os' %in% names(x)){
+    if (isTRUE((tolower(x[['os']]) != "win") & 
+               (tolower(x[['os']]) != "mac") &
+               (tolower(x[['os']]) != "lin"))){
+      stop('The value of input argument "os" is invalid.', call. = FALSE)
     }
   }
   
@@ -49,13 +57,34 @@ validate_arguments <- function(x) {
   #     stop('Input "output" is not supported.', call. = FALSE)
   #   }
   # }
-
-  # operating system
-  if ('os' %in% names(x)){
-    if (isTRUE((tolower(x[['os']]) != "win") & 
-               (tolower(x[['os']]) != "mac") &
-               (tolower(x[['os']]) != "lin"))){
-      stop('The value of input argument "os" is invalid.')
+  
+  # package.id
+  if ('package.id' %in% names(x)){
+    if (!isTRUE(stringr::str_detect(x[['package.id']],
+                                    '[:alpha:]\\.[:digit:]+\\.[:digit:]+$'))){
+      stop(paste0('Input argument "package.id" appears to be malformed. ',
+                  'A package ID must consist of a scope, identifier, ',
+                  'and revision (e.g. "edi.100.4").'), call. = FALSE)
+    }
+  }
+  
+  # TODO Implement check on scope
+  
+  # revision
+  if ('revision' %in% names(x)){
+    is_int <- as.numeric(x[["revision"]]) %% 1 == 0
+    if (!is_int) {
+      stop('Input "revision" is not an integer value.', call. = FALSE)
+    }
+  }
+  
+  # toDate
+  if ("toDate" %in% names(x)) {
+    is_accpeted_format <- grepl(
+      "[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}T[[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}", 
+      x[["toDate"]])
+    if (!is_accpeted_format) {
+      stop('Input "toDate" is not of the format YYYY-MM-DDThh:mm:ss', call. = FALSE)
     }
   }
 

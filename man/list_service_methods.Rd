@@ -7,18 +7,18 @@
 list_service_methods(environment = "production")
 }
 \arguments{
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
 }
 \value{
-(character) All scope values extant in the data package registry.
+(data.frame) A simple list of web service methods supported by the Data Package Manager web service.
 }
 \description{
-List Service Methods operation, returning a simple list of web service methods supported by the Data Package Manager web service.
+List service methods
 }
 \details{
 GET : https://pasta.lternet.edu/package/service-methods
 }
 \examples{
+list_service_methods()
 
 }

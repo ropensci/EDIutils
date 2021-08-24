@@ -7,18 +7,18 @@
 list_deleted_data_packages(environment = "production")
 }
 \arguments{
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
 }
 \value{
-(character) Deleted data packages
+(data.frame) All document identifiers (excluding revision values) that have been deleted from the data package registry.
 }
 \description{
-List Deleted Data Packages operation, returning all document identifiers (excluding revision values) that have been deleted from the data package registry.
+List deleted data packages
 }
 \details{
 GET : https://pasta.lternet.edu/package/eml/deleted
 }
 \examples{
+list_deleted_data_packages()
 
 }

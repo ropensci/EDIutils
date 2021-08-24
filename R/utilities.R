@@ -99,6 +99,37 @@ convert_missing_value <- function(v, code, type) {
 
 
 
+#' Get distinguished name
+#'
+#' @param uid (character) PASTA userId
+#' @param o (character) Organizational unit in which \code{uid} belongs. Can be "EDI" or "LTER".
+#'
+#' @return (character) Distinguished name
+#' 
+#' @export
+#' 
+#' @examples 
+#' get_distinguished_name("csmith", "EDI")
+#' 
+get_distinguished_name <- function(uid, o) {
+  o <- toupper(o)
+  validate_arguments(x = as.list(environment()))
+  res <- paste0("uid=", uid, ",o=", o, ",")
+  if (o == "EDI") {
+    res <- paste0(res, "dc=edirepository,dc=org")
+  } else {
+    res <- paste0(res, "dc=ecoinformatics,dc=org")
+  }
+  return(res)
+}
+
+
+
+
+
+
+
+
 #' Get the first data package in the staging environment for testing
 #' 
 #' @param parsed (logical) Return parsed scope, identifier, and revision. Default is TRUE.

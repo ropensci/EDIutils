@@ -1,15 +1,8 @@
-context('List service methods')
-library(EDIutils)
+context("List service methods")
 
-testthat::test_that('Test for object attributes', {
-  
-  expect_equal(
-    class(
-      list_service_methods(
-        environment = 'production'
-      )
-    ),
-    'character'
-  )
-  
+testthat::test_that("Test attributes of returned object", {
+  res <- list_service_methods()
+  expect_equal(class(res), "data.frame")
+  expect_true(names(res) == "serviceMethod")
+  expect_true(nrow(res) > 0)
 })
