@@ -5,7 +5,7 @@
 #' @param filter (character) Filter returned revisions. Can be "newest" or "oldest"
 #' @param environment (character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"
 #'
-#' @return (data.frame) Data package revision(s)
+#' @return (character) Data package revisions
 #'     
 #' @details GET : https://pasta.lternet.edu/package/eml/{scope}/{identifier}
 #' 
@@ -34,7 +34,6 @@ list_data_package_revisions <- function(scope,
   resp <- httr::GET(url, set_user_agent())
   httr::stop_for_status(resp)
   parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  res <- read.csv(text = c("revision", parsed), as.is = TRUE, 
-                  colClasses = "character")
+  res <- text2char(parsed)
   return(res)
 }

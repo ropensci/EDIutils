@@ -4,23 +4,20 @@
 \alias{read_data_entity_checksum}
 \title{Read data entity checksum}
 \usage{
-read_data_entity_checksum(package.id, identifier, environment = "production")
+read_data_entity_checksum(package.id, entityId, environment = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{package.id}{(character) Package identifier composed of scope, identifier, and revision (e.g. "edi.101.1").}
 
-\item{identifier}{(character) Data entity identifier (e.g. 
-5c224a0e74547b14006272064dc869b1)}
+\item{entityId}{(character) Data entity identifier (e.g. 5c224a0e74547b14006272064dc869b1)}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
 }
 \value{
-(character) Data entity checksum
+(character) Data entity checksum value
 }
 \description{
-Read Data Entity Checksum operation, specifying the scope, identifier, revision, and entity identifier of the data entity object whose checksum is to be read in the URI, returning a 40-character SHA-1 checksum value.
+Read data entity checksum
 }
 \details{
 GET : https://pasta.lternet.edu/package/data/checksum/eml/{scope}/{identifier}/{revision}/{entityId}

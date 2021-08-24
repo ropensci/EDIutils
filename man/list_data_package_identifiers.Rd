@@ -12,7 +12,7 @@ list_data_package_identifiers(scope, environment = "production")
 \item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".}
 }
 \value{
-(data.frame) All identifiers within a \code{scope}
+(character) Data package identifiers
 }
 \description{
 List data package identifiers

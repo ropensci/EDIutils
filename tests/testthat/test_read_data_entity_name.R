@@ -1,5 +1,10 @@
 context('Read data entity name')
-library(EDIutils)
+
+testthat::test_that('Test attributes of returned object', {
+  res <- list_data_package_identifiers("edi", environment = "staging")
+  expect_equal(class(res), "character")
+  expect_true(length(res) > 0)
+})
 
 testthat::test_that('Test for object attributes', {
   

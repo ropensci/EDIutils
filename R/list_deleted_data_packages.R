@@ -2,7 +2,7 @@
 #'
 #' @param environment (character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"
 #'
-#' @return (data.frame) All document identifiers (excluding revision values) that have been deleted from the data package registry.
+#' @return (character) All document identifiers (excluding revision values) that have been deleted from the data package registry.
 #' 
 #' @details GET : https://pasta.lternet.edu/package/eml/deleted
 #' 
@@ -17,6 +17,6 @@ list_deleted_data_packages <- function(environment = "production") {
   resp <- httr::GET(url, set_user_agent())
   httr::stop_for_status(resp)
   parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  res <- read.csv(text = c("packageId", parsed), as.is = TRUE)
+  res <- text2char(parsed)
   return(res)
 }

@@ -1,21 +1,15 @@
 #' Read data entity name
 #'
-#' @description Read Data Entity Name operation, specifying the scope, identifier, revision, and entity identifier of the data entity whose name is to be read in the URI.
+#' @param package.id (character) Package identifier composed of scope, identifier, and revision (e.g. "edi.101.1")
+#' @param entityId (character) Data entity identifier (e.g. "5c224a0e74547b14006272064dc869b1")
+#' @param environment (character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".
 #'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param identifier
-#'     (character) Data entity identifier (e.g. 
-#'     5c224a0e74547b14006272064dc869b1)
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     (character) Data entity name
+#' @return (character) Data entity name
+#' 
 #' @details GET : https://pasta.lternet.edu/package/name/eml/{scope}/{identifier}/{revision}/{entityId}
+#' 
 #' @export
+#' 
 #' @examples 
 #'
 read_data_entity_name <- function(package.id, identifier, environment = 'production'){

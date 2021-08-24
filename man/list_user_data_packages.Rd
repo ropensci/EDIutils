@@ -23,4 +23,5 @@ GET : https://pasta.lternet.edu/package/user/{dn}
 \examples{
 # List all (undeleted) data packages uploaded by user "dbjourneynorth" under the organizational unit "EDI"
 list_user_data_packages(get_distinguished_name("dbjourneynorth", "EDI"))
+
 }

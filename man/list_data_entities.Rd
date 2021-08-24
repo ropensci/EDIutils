@@ -16,7 +16,7 @@ list_data_entities(scope, identifier, revision, environment = "production")
 \item{environment}{(character) PASTA environment to which this operation will be applied. Can be: 'production', 'staging', or 'development'}
 }
 \value{
-(data.frame) Data entity identifiers of the specified data package
+(character) Data entity identifier(s) of the specified data package
 }
 \description{
 List data entities

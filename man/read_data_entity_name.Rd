@@ -7,20 +7,17 @@
 read_data_entity_name(package.id, identifier, environment = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{package.id}{(character) Package identifier composed of scope, identifier, and revision (e.g. "edi.101.1")}
 
-\item{identifier}{(character) Data entity identifier (e.g. 
-5c224a0e74547b14006272064dc869b1)}
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{entityId}{(character) Data entity identifier (e.g. "5c224a0e74547b14006272064dc869b1")}
 }
 \value{
 (character) Data entity name
 }
 \description{
-Read Data Entity Name operation, specifying the scope, identifier, revision, and entity identifier of the data entity whose name is to be read in the URI.
+Read data entity name
 }
 \details{
 GET : https://pasta.lternet.edu/package/name/eml/{scope}/{identifier}/{revision}/{entityId}

@@ -1,9 +1,8 @@
-context('List data entities')
+context("List data entities")
 
-testthat::test_that('Test attributes of returned object', {
+testthat::test_that("Test attributes of returned object", {
   pkg <- get_test_package()
   res <- list_data_entities(pkg$scope, pkg$id, pkg$rev, environment = "staging")
-  expect_equal(class(res), "data.frame")
-  expect_true(names(res) == "entityId")
-  expect_true(nrow(res) > 0)
+  expect_equal(class(res), "character")
+  expect_true(length(res) > 0)
 })

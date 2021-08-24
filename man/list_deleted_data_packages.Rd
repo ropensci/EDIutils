@@ -10,7 +10,7 @@ list_deleted_data_packages(environment = "production")
 \item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
 }
 \value{
-(data.frame) All document identifiers (excluding revision values) that have been deleted from the data package registry.
+(character) All document identifiers (excluding revision values) that have been deleted from the data package registry.
 }
 \description{
 List deleted data packages

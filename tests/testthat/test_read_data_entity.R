@@ -1,17 +1,6 @@
-context('Get data entity checksum')
-library(EDIutils)
+context("Read data entity")
 
-testthat::test_that('Test for object attributes', {
-  
-  expect_equal(
-    class(
-      read_data_entity_checksum(
-        package.id = 'edi.275.1',
-        identifier = '5c224a0e74547b14006272064dc869b1',
-        environment = 'production'
-      )
-    ),
-    'character'
-  )
-  
-})
+# testthat::test_that("Test attributes of returned object", {
+#   entityId <- list_data_entities("edi", "193", "5")
+#   resp <- read_data_entity("edi.193.5", entityId$entityId[1])
+# })

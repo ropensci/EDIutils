@@ -21,7 +21,7 @@ list_data_package_revisions(
 \item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
 }
 \value{
-(data.frame) Data package revision(s)
+(character) Data package revisions
 }
 \description{
 List data package revisions

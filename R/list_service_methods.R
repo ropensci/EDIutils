@@ -17,6 +17,6 @@ list_service_methods <- function(environment = "production") {
   resp <- httr::GET(url, set_user_agent())
   httr::stop_for_status(resp)
   parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  res <- read.csv(text = c("serviceMethod", parsed), as.is = TRUE)
+  res <- text2char(parsed)
   return(res)
 }

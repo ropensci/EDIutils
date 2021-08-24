@@ -5,7 +5,7 @@
 #' @param revision (character) Data package revision
 #' @param environment (character) PASTA environment to which this operation will be applied. Can be: 'production', 'staging', or 'development'
 #' 
-#' @return (data.frame) Data entity identifiers of the specified data package
+#' @return (character) Data entity identifier(s) of the specified data package
 #' 
 #' @details GET : https://pasta.lternet.edu/package/data/eml/{scope}/{identifier}/{revision}
 #' 
@@ -22,6 +22,6 @@ list_data_entities <- function(scope, identifier, revision,
   resp <- httr::GET(url, set_user_agent())
   httr::stop_for_status(resp)
   parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  res <- read.csv(text = c("entityId", parsed), as.is = TRUE)
+  res <- text2char(parsed)
   return(res)
 }

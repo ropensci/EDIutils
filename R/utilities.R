@@ -138,13 +138,13 @@ get_distinguished_name <- function(uid, o) {
 #' 
 get_test_package <- function(parsed = TRUE) {
   id <- list_data_package_identifiers("edi", "staging")[1]
-  rev <- list_data_package_revisions("edi", id[1], "newest", "staging")
+  rev <- list_data_package_revisions("edi", id, "newest", "staging")
   if (isTRUE(parsed)) {
-    r <- list(scope = "edi", id = id, rev = rev)
-    return(r)
+    res <- list(scope = "edi", id = id, rev = rev)
+    return(res)
   } else {
-    r <- paste(c("edi", id, rev), collapse = ".")
-    return(r)
+    res <- paste(c("edi", id, rev), collapse = ".")
+    return(res)
   }
 }
 
@@ -219,6 +219,28 @@ poll_pkg_reserve_id <- function(r){
 #' 
 set_user_agent <- function() {
   res <- httr::user_agent("https://github.com/EDIorg/EDIutils")
+  return(res)
+}
+
+
+
+
+
+
+
+
+#' Convert newline separated text to character vector
+#'
+#' @param txt (character) New line separated character string returned from \cod{httr::content(resp, as = "text", encoding = "UTF-8")}
+#'
+#' @return (character) \code{txt} converted to character vector
+#' 
+text2char <- function(txt) {
+  res <- read.csv(
+    text = txt, 
+    as.is = TRUE, 
+    colClasses = "character", 
+    header = FALSE)[[1]]
   return(res)
 }
 

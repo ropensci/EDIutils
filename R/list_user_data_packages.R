@@ -14,12 +14,13 @@
 #' @examples 
 #' # List all (undeleted) data packages uploaded by user "dbjourneynorth" under the organizational unit "EDI"
 #' list_user_data_packages(get_distinguished_name("dbjourneynorth", "EDI"))
-list_user_data_packages <- function(dn, environment = "production"){
+#' 
+list_user_data_packages <- function(dn, environment = "production") {
   validate_arguments(x = as.list(environment()))
   url <- paste0(url_env(environment), ".lternet.edu/package/user/", dn)
   resp <- httr::GET(url, set_user_agent())
   httr::stop_for_status(resp)
   parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  res <- read.csv(text = c("packageId", parsed), as.is = TRUE)
+  res <- text2char(parsed)
   return(res)
 }

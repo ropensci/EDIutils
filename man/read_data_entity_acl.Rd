@@ -2,25 +2,22 @@
 % Please edit documentation in R/read_data_entity_acl.R
 \name{read_data_entity_acl}
 \alias{read_data_entity_acl}
-\title{Read data entity}
+\title{Read data entity access control list}
 \usage{
-read_data_entity_acl(package.id, identifier, environment = "production")
+read_data_entity_acl(package.id, entityId, environment = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{package.id}{(character) Package identifier composed of scope, identifier, and revision (e.g. 'edi.101.1').}
 
-\item{identifier}{(character) Data entity identifier (e.g. 
-5c224a0e74547b14006272064dc869b1)}
+\item{entityId}{(character) Data entity identifier (e.g. 5c224a0e74547b14006272064dc869b1)}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
 }
 \value{
-(character) Data entity checksum
+(xml_document) The access control list for the data entity. Please note: only a very limited set of users are authorized to use this service method.
 }
 \description{
-Read Data Entity ACL operation, specifying the scope, identifier, revision, and entity identifier of the data entity object whose Access Control List (ACL) is to be read in the URI, returning an XML string representing the ACL for the data entity. Please note: only a very limited set of users are authorized to use this service method.
+Read data entity access control list
 }
 \details{
 GET : https://pasta.lternet.edu/package/data/acl/eml/{scope}/{identifier}/{revision}/{entityId}

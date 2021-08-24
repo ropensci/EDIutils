@@ -4,23 +4,20 @@
 \alias{read_data_entity}
 \title{Read data entity}
 \usage{
-read_data_entity(package.id, identifier, environment = "production")
+read_data_entity(package.id, entityId, environment = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{package.id}{(character) Package identifier composed of scope, identifier, and revision (e.g. "edi.101.1").}
 
-\item{identifier}{(character) Data entity identifier (e.g. 
-5c224a0e74547b14006272064dc869b1)}
+\item{entityId}{(character) Identifier of data entity to read (e.g. 5c224a0e74547b14006272064dc869b1)}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
 }
 \value{
 (character) Data entity checksum
 }
 \description{
-Read Data Entity operation, specifying the scope, identifier, revision, and entity identifier of the data entity to be read in the URI. Revision may be specified as “newest” or “oldest” to retrieve data from the newest or oldest revision, respectively.
+Read data entity
 }
 \details{
 GET : https://pasta.lternet.edu/package/data/eml/{scope}/{identifier}/{revision}/{entityId}

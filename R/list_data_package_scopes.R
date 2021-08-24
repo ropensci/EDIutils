@@ -17,6 +17,6 @@ list_data_package_scopes <- function(environment = "production") {
   resp <- httr::GET(url, set_user_agent())
   httr::stop_for_status(resp)
   parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  res <- read.csv(text = c("scope", parsed), as.is = TRUE)
+  res <- text2char(parsed)
   return(res)
 }
