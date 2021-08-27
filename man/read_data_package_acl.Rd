@@ -2,26 +2,22 @@
 % Please edit documentation in R/read_data_package_acl.R
 \name{read_data_package_acl}
 \alias{read_data_package_acl}
-\title{Read data package ACL}
+\title{Read data package Access Control List}
 \usage{
-read_data_package_acl(package.id, environment = "production")
+read_data_package_acl(packageId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) The canonical Digital Object Identifier.
+(xml_document) Access Control List (ACL) for \code{packageId}. Please note: only a very limited set of users are authorized to use this service method.
 }
 \description{
-Read Data Package ACL operation, specifying the scope, identifier, and revision of the data package whose Access Control List (ACL) is to be read in the URI, returning an XML string representing the ACL for the data package. Please note: only a very limited set of users are authorized to use this service method.
-}
-\details{
-GET : https://pasta.lternet.edu/package/acl/eml/{scope}/{identifier}/{revision}
+Read data package Access Control List
 }
 \examples{
+
 
 }

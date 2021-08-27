@@ -2,27 +2,29 @@
 % Please edit documentation in R/read_data_package_from_doi.R
 \name{read_data_package_from_doi}
 \alias{read_data_package_from_doi}
-\title{Read data package from DOI}
+\title{Read data package from Digital Object Identifier}
 \usage{
-read_data_package_from_doi(package.id, environment = "production")
+read_data_package_from_doi(doi, ore = FALSE)
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{doi}{(character) Data package DOI of the form "shoulder/pasta/md5"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{ore}{(logical) Return an OAI-ORE compliant resource map in RDF-XML format}
 }
 \value{
-(character) Reference URLs.
+(character or xml_document) A resource map with reference URLs to each of the metadata, data, and quality report resources that comprise the data package.
 }
 \description{
-Read Data Package From DOI operation, specifying the DOI of the data package to be read in the URI, returning a resource map with reference URLs to each of the metadata, data, and quality report resources that comprise the data package. The DOI is specified in the “shoulder”, “pasta”, and “md5” path segments of the URI (see example below). When the “?ore” query parameter is appended to the request URL, an OAI-ORE compliant resource map in RDF-XML format is returned.
-}
-\details{
-GET : https://pasta.lternet.edu/package/doi/{shoulder}/{pasta}/{md5}
+Read data package from Digital Object Identifier
 }
 \examples{
-# Using curl to read a data package resource map by specifying the DOI as three path segments in the URL:
+# Get resource map
+read_data_package_from_doi(
+  doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25")
+
+# Get resource map in ORE format
+read_data_package_from_doi(
+  doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25", 
+  ore = TRUE)
 
 }

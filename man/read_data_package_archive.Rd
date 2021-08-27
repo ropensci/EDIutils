@@ -4,25 +4,21 @@
 \alias{read_data_package_archive}
 \title{Read data package archive}
 \usage{
-read_data_package_archive(package.id, environment = "production")
+read_data_package_archive(packageId, transaction, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{transaction}{(character) Transaction identifier returned for each data package evaluate, upload, and delete operation}
+
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Reference URLs.
+(.zip) The data package archive of \code{packageId}
 }
 \description{
-Read Data Package Archive operation, specifying the transaction identifier of the data package archive to be read in the URI, returning the data package archive as a binary object in the ZIP file format.
-}
-\details{
-GET : https://pasta.lternet.edu/package/archive/eml/{scope}/{identifier}/{revision}/{transaction}
+Read data package archive
 }
 \examples{
-# Using curl to read a data package archive and redirect the output to a file:
 
 }

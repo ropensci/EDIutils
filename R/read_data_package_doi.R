@@ -1,40 +1,22 @@
-#' Read data package DOI
+#' Read data package Digital Object Identifier
 #'
-#' @description Read Data Package DOI operation, specifying the scope, identifier, and revision of the data package DOI to be read in the URI, returning the canonical Digital Object Identifier.
+#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     (character) The canonical Digital Object Identifier.
-#' @details GET : https://pasta.lternet.edu/package/doi/eml/{scope}/{identifier}/{revision}
+#' @return (character) The canonical Digital Object Identifier for \code{packageId}
+#' 
 #' @export
+#' 
 #' @examples 
+#' read_data_package_doi("knb-lter-jrn.210548103.15")
 #'
-read_data_package_doi <- function(package.id, environment = 'production'){
-  
-  message(paste('Retrieving DOI for', package.id))
-  
+read_data_package_doi <- function(packageId, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/doi/eml/',
-      stringr::str_replace_all(package.id, '\\.', '/')
-    )
-  )
-  
-  output <- httr::content(
-    r,
-    as = 'text',
-    encoding = 'UTF-8'
-  )
-  
-  output
-  
+  url <- paste0(url_env(tier), ".lternet.edu/package/doi/eml/", 
+                paste(parse_packageId(packageId), collapse = "/"))
+  resp <- httr::GET(url, set_user_agent())
+  httr::stop_for_status(resp)
+  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
+  res <- text2char(parsed)
+  return(res)
 }

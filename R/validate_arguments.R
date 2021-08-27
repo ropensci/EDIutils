@@ -6,22 +6,25 @@
 #'
 validate_arguments <- function(x) {
 
+  # doi
+  if ("doi" %in% names(x)) {
+    parts <- unlist(strsplit(x[["doi"]], "/"))
+    valid_shoulder <- parts[1] == "doi:10.6073"
+    valid_mid <- parts[2] == "pasta"
+    valid_md5 <- grepl("[0-9a-z]{32}", parts[3])
+    if (!all(valid_shoulder, valid_mid, valid_md5)) {
+      stop("Input 'doi' should have the form 'shoulder/pasta/md5' (e.g. ",
+           "'doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25')",
+           call. = FALSE)
+    }
+  }
+  
   # entityId
   if ("entityId" %in% names(x)) {
     pattern <- "[0-9a-z]{32}"
     if (!grepl(pattern, x[["entityId"]])) {
       stop("Input 'entityId' should be a checksum value (e.g. ",
            "'fa434ccf555bc3ed47c6c593a2d9aac0').", call. = FALSE)
-    }
-  }
-  
-  # tier
-  if ('tier' %in% names(x)){
-    if ((tolower(x[['tier']]) != 'development') &
-        (tolower(x[['tier']]) != 'staging') &
-        (tolower(x[['tier']]) != 'production')){
-      stop("The input argument 'tier' must be 'development', ",
-           "'staging', or 'production'.", call. = FALSE)
     }
   }
   
@@ -76,6 +79,7 @@ validate_arguments <- function(x) {
     }
   }
   
+  # TODO Use output arg?
   # # output
   # if ("output" %in% names(x)){
   #   supported <- c("xml_document", "data.frame")
@@ -104,6 +108,16 @@ validate_arguments <- function(x) {
     }
   }
   
+  # tier
+  if ('tier' %in% names(x)){
+    if ((tolower(x[['tier']]) != 'development') &
+        (tolower(x[['tier']]) != 'staging') &
+        (tolower(x[['tier']]) != 'production')){
+      stop("The input argument 'tier' must be 'development', ",
+           "'staging', or 'production'.", call. = FALSE)
+    }
+  }
+  
   # toDate
   if ("toDate" %in% names(x)) {
     is_accpeted_format <- grepl(
@@ -113,5 +127,7 @@ validate_arguments <- function(x) {
       stop("Input 'toDate' is not of the format YYYY-MM-DDThh:mm:ss", call. = FALSE)
     }
   }
+  
+  # TODO implement check on transaction identifier
 
 }

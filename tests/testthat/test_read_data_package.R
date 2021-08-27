@@ -1,27 +1,12 @@
 context("Read data package")
 
 testthat::test_that("Test attributes of returned object", {
-  # All
-  res <- read_data_package("edi.193.5")
-  # Newest
-  # Oldest
-  # ORE
+  # Standard output
+  res <- read_data_package("knb-lter-cwt.5026.13")
+  expect_equal(class(res), "character")
+  expect_true(length(res) > 0)
+  # ORE output
+  res <- read_data_package("knb-lter-cwt.5026.13", ore = TRUE)
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))
-  expect_true("dataDescendant" %in% xml2::xml_name(xml2::xml_children(res)))
-  dd_children <- xml2::xml_name(xml2::xml_children(xml2::xml_children(res)[1]))
-  expect_true(all(c("packageId", "title", "url") %in% dd_children))
-})
-
-testthat::test_that('Test for object attributes', {
-  
-  expect_equal(
-    class(
-      read_data_package(
-        package.id = 'edi.275.1',
-        environment = 'production'
-      )
-    ),
-    'character'
-  )
-  
+  expect_true("Description" %in% xml2::xml_name(xml2::xml_children(res)))
 })

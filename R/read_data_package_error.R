@@ -16,7 +16,7 @@
 #' @examples 
 #'
 read_data_package_error <- function(package.id, environment = 'production'){
-  # TODO implement
+  # TODO implement from read_data_package_archive()
   message(paste('Retrieving resource map for', package.id))
   
   validate_arguments(x = as.list(environment()))

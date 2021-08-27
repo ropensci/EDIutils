@@ -1,16 +1,5 @@
-context('Read data package DOI')
-library(EDIutils)
+context("Read data package archive")
 
-testthat::test_that('Test for object attributes', {
-  
-  expect_equal(
-    class(
-      read_data_package_doi(
-        package.id = 'edi.275.1',
-        environment = 'production'
-      )
-    ),
-    'character'
-  )
-  
+testthat::test_that("Test attributes of returned object", {
+  res <- read_data_package_archive()
 })

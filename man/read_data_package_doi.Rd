@@ -2,26 +2,22 @@
 % Please edit documentation in R/read_data_package_doi.R
 \name{read_data_package_doi}
 \alias{read_data_package_doi}
-\title{Read data package DOI}
+\title{Read data package Digital Object Identifier}
 \usage{
-read_data_package_doi(package.id, environment = "production")
+read_data_package_doi(packageId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) The canonical Digital Object Identifier.
+(character) The canonical Digital Object Identifier for \code{packageId}
 }
 \description{
-Read Data Package DOI operation, specifying the scope, identifier, and revision of the data package DOI to be read in the URI, returning the canonical Digital Object Identifier.
-}
-\details{
-GET : https://pasta.lternet.edu/package/doi/eml/{scope}/{identifier}/{revision}
+Read data package Digital Object Identifier
 }
 \examples{
+read_data_package_doi("knb-lter-jrn.210548103.15")
 
 }

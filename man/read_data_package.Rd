@@ -4,34 +4,26 @@
 \alias{read_data_package}
 \title{Read data package}
 \usage{
-read_data_package(
-  package.id,
-  filter = NULL,
-  ore = FALSE,
-  environment = "production"
-)
+read_data_package(packageId, tier = "production", ore = FALSE)
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and revision (e.g. "edi.101.1")}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{filter}{(character) Filter returned revisions. Can be "newest" or "oldest"}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 
 \item{ore}{(logical) Return an OAI-ORE compliant resource map in RDF-XML format}
-
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) A resource map with reference URLs to each of the metadata, data, and quality report resources that comprise the data package.
+(character or xml_document) A resource map with reference URLs to each of the metadata, data, and quality report resources that comprise the \code{packageId}.
 }
 \description{
 Read data package
 }
-\details{
-GET : https://pasta.lternet.edu/package/eml/{scope}/{identifier}/{revision}
-}
 \examples{
-# Read a data package resource map
+# Get resource map
+read_data_package("knb-lter-cwt.5026.13")
 
-# Read a data package resource map in OAI-ORE compliant format
+# Get resource map in ORE format
+read_data_package("knb-lter-cwt.5026.13", ore = TRUE)
 
 }
