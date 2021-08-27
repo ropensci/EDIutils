@@ -1,16 +1,9 @@
-context('Read data entity sizes')
-library(EDIutils)
+context("Read data entity sizes")
 
-testthat::test_that('Test for object attributes', {
-  
-  expect_equal(
-    class(
-      read_data_entity_sizes(
-        package.id = 'edi.275.1',
-        environment = 'production'
-      )
-    ),
-    'character'
-  )
-  
+testthat::test_that("Test attributes of returned object", {
+  packageId <- "knb-lter-cdr.711.1"
+  res <- read_data_entity_sizes(packageId)
+  expect_equal(class(res), "data.frame")
+  expect_true(all(names(res) %in% c("entityId", "size")))
+  expect_true(nrow(res) > 0)
 })

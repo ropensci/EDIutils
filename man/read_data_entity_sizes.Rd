@@ -4,24 +4,20 @@
 \alias{read_data_entity_sizes}
 \title{Read data entity sizes}
 \usage{
-read_data_entity_sizes(package.id, environment = "production")
+read_data_entity_sizes(packageId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Data entity sizes (in bytes)
+(data.frame) Size (in bytes) and identifiers of data entities in \code{packageId}
 }
 \description{
-Read Data Entity Sizes operation, specifying the scope, identifier, and revision of the data package whose data entity sizes are to be read in the URI, returning a newline-separated list of entity identifiers and size values (in bytes). Each line in the list contains an entity identifier and its corresponding size value, separated by a comma. Only data entities that the user is authorized to read are included in the list.
-}
-\details{
-GET : https://pasta.lternet.edu/package/data/size/eml/{scope}/{identifier}/{revision}
+Read data entity sizes
 }
 \examples{
+read_data_entity_sizes("knb-lter-cdr.711.1")
 
 }

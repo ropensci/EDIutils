@@ -4,27 +4,20 @@
 \alias{read_data_entity_names}
 \title{Read data entity names}
 \usage{
-read_data_entity_names(package.id, identifier, environment = "production")
+read_data_entity_names(packageId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{identifier}{(character) Data entity identifier (e.g. 
-5c224a0e74547b14006272064dc869b1)}
-
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Data entity names
+(data.frame) Names and identifiers of all data entities in \code{packageId}
 }
 \description{
-Read Data Entity Names operation, specifying the scope, identifier, and revision of the data package whose data entity names are to be read in the URI, returning a newline-separated list of entity identifiers and name values. Each line in the list contains an entity identifier and its corresponding name value, separated by a comma. Only data entities that the user is authorized to read are included in the list.
-}
-\details{
-GET : https://pasta.lternet.edu/package/name/eml/{scope}/{identifier}/{revision}
+Read data entity names
 }
 \examples{
+read_data_entity_names("knb-lter-cap.691.2")
 
 }

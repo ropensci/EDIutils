@@ -4,24 +4,25 @@
 \alias{read_data_entity_name}
 \title{Read data entity name}
 \usage{
-read_data_entity_name(package.id, identifier, environment = "production")
+read_data_entity_name(packageId, entityId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and revision (e.g. "edi.101.1")}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".}
+\item{entityId}{(character) Data entity identifier}
 
-\item{entityId}{(character) Data entity identifier (e.g. "5c224a0e74547b14006272064dc869b1")}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Data entity name
+(character) Name of \code{entityId} in \code{packageId}
 }
 \description{
 Read data entity name
 }
-\details{
-GET : https://pasta.lternet.edu/package/name/eml/{scope}/{identifier}/{revision}/{entityId}
-}
 \examples{
+# Get name of first data entity in data package "knb-lter-cap.691.2"
+packageId <- "knb-lter-cap.691.2"
+entityIds <- list_data_entities(packageId)
+read_data_entity_name(packageId, entityIds[1])
 
 }

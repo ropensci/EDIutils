@@ -4,27 +4,25 @@
 \alias{read_data_entity_size}
 \title{Read data entity size}
 \usage{
-read_data_entity_size(package.id, identifier, environment = "production")
+read_data_entity_size(packageId, entityId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{identifier}{(character) Data entity identifier (e.g. 
-5c224a0e74547b14006272064dc869b1)}
+\item{entityId}{(character) Data entity identifier}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Data entity size (in bytes)
+(numeric) Size, in bytes, of \code{entityId} in \code{packageId}
 }
 \description{
-Read Data Entity Size operation, specifying the scope, identifier, and revision of the data entity object whose size is to be read in the URI, returning the size value (in bytes).
-}
-\details{
-GET : https://pasta.lternet.edu/package/data/size/eml/{scope}/{identifier}/{revision}/{entityId}
+Read data entity size
 }
 \examples{
+# Get size of first data entity in data package "knb-lter-cdr.711.1
+packageId <- "knb-lter-cdr.711.1"
+entityIds <- list_data_entities(packageId)
+read_data_entity_size(packageId, entityIds[1])
 
 }

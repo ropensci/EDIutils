@@ -4,25 +4,22 @@
 \alias{read_data_entity_checksum}
 \title{Read data entity checksum}
 \usage{
-read_data_entity_checksum(package.id, entityId, environment = "production")
+read_data_entity_checksum(packageId, entityId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and revision (e.g. "edi.101.1").}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{entityId}{(character) Data entity identifier (e.g. 5c224a0e74547b14006272064dc869b1)}
+\item{entityId}{(character) Data entity identifier}
 
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Data entity checksum value
+(character) Checksum value of \code{entityId} in \code{packageId}
 }
 \description{
 Read data entity checksum
 }
-\details{
-GET : https://pasta.lternet.edu/package/data/checksum/eml/{scope}/{identifier}/{revision}/{entityId}
-}
 \examples{
-
+list_data_entities("knb-lter-ble.1.7")
 
 }

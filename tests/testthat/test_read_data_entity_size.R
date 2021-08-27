@@ -1,17 +1,9 @@
-context('Read data entity size')
-library(EDIutils)
+context("Read data entity size")
 
-testthat::test_that('Test for object attributes', {
-  
-  expect_equal(
-    class(
-      read_data_entity_size(
-        package.id = 'edi.275.1',
-        identifier = '5c224a0e74547b14006272064dc869b1',
-        environment = 'production'
-      )
-    ),
-    'character'
-  )
-  
+testthat::test_that('Test attributes of returned object', {
+  packageId <- "knb-lter-cdr.711.1"
+  entityIds <- list_data_entities(packageId)
+  res <- read_data_entity_size(packageId, entityIds[1])
+  expect_equal(class(res), "numeric")
+  expect_true(length(res) > 0)
 })
