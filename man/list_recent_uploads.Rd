@@ -4,25 +4,26 @@
 \alias{list_recent_uploads}
 \title{List recent uploads}
 \usage{
-list_recent_uploads(type, limit = 5, environment = "production")
+list_recent_uploads(type, limit = 5, tier = "production")
 }
 \arguments{
-\item{type}{(character) Upload type. Can be: "insert" or "update".}
+\item{type}{(character) Upload type, which can be: "insert" or "update"}
 
-\item{limit}{(integer) Maximum limit.}
+\item{limit}{(numeric) Limit on return values}
 
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(xml_document) packageId, scope, identifier, revision, principal, doi, serviceMethod, and date of data package uploads.
+(xml_document) Data package uploads and their packageId, scope, identifier, revision, principal, doi, serviceMethod, and date.
 }
 \description{
 List recent uploads
 }
-\details{
-GET : https://pasta.lternet.edu/package/uploads/eml
-}
 \examples{
-list_recent_uploads("update", 10)
+# Get the 5 newest data packages
+list_recent_uploads("insert", 3)
+
+# Get the 5 newest revisions
+list_recent_uploads("update", 3)
 
 }

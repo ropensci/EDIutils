@@ -4,21 +4,25 @@
 \alias{list_data_package_scopes}
 \title{List data package scopes}
 \usage{
-list_data_package_scopes(environment = "production")
+list_data_package_scopes(tier = "production")
 }
 \arguments{
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) All scope values extant in the data package registry.
+(numeric) Scopes within a specified \code{tier}
 }
 \description{
 List data package scopes
 }
-\details{
-GET : https://pasta.lternet.edu/package/eml
-}
 \examples{
+# All scopes in production
 list_data_package_scopes()
+
+# All scopes in staging
+list_data_package_scopes("staging")
+
+#' # All scopes in development
+list_data_package_scopes("development")
 
 }

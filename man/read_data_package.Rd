@@ -4,27 +4,34 @@
 \alias{read_data_package}
 \title{Read data package}
 \usage{
-read_data_package(package.id, environment = "production")
+read_data_package(
+  package.id,
+  filter = NULL,
+  ore = FALSE,
+  environment = "production"
+)
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{package.id}{(character) Package identifier composed of scope, identifier, and revision (e.g. "edi.101.1")}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{filter}{(character) Filter returned revisions. Can be "newest" or "oldest"}
+
+\item{ore}{(logical) Return an OAI-ORE compliant resource map in RDF-XML format}
+
+\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".}
 }
 \value{
-(character) Reference URLs.
+(xml_document) A resource map with reference URLs to each of the metadata, data, and quality report resources that comprise the data package.
 }
 \description{
-Read Data Package operation, specifying the scope, identifier, and revision of the data package to be read in the URI, returning a resource map with reference URLs to each of the metadata, data, and quality report resources that comprise the data package. Revision may be specified as “newest” or “oldest” to retrieve the newest or oldest revision, respectively. When the “?ore” query parameter is appended to the request URL, an OAI-ORE compliant resource map in RDF-XML format is returned.
+Read data package
 }
 \details{
 GET : https://pasta.lternet.edu/package/eml/{scope}/{identifier}/{revision}
 }
 \examples{
-# Using curl to read a data package resource map:
+# Read a data package resource map
 
-# Using curl to read a data package resource map, using the “?ore” query parameter to specify that the resource map should be returned as an OAI-ORE compliant RDF-XML document:
+# Read a data package resource map in OAI-ORE compliant format
 
 }

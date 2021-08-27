@@ -4,21 +4,25 @@
 \alias{list_deleted_data_packages}
 \title{List deleted data packages}
 \usage{
-list_deleted_data_packages(environment = "production")
+list_deleted_data_packages(tier = "production")
 }
 \arguments{
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) All document identifiers (excluding revision values) that have been deleted from the data package registry.
+(character) All data packages (excluding revision values) that have been deleted from the data package registry.
 }
 \description{
 List deleted data packages
 }
-\details{
-GET : https://pasta.lternet.edu/package/eml/deleted
-}
 \examples{
+# All packages deleted from production
 list_deleted_data_packages()
+
+# All packages deleted from staging
+list_deleted_data_packages("staging")
+
+# All packages deleted from development
+list_deleted_data_packages("development")
 
 }

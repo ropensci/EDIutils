@@ -7,18 +7,15 @@
 list_data_sources(package.id, environment = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(xml_document) For each data source, its package identifier, title, and URL values are included (if applicable) as documented in the metadata for the specified data package.
+(xml_document) Data sources to \code{packageId} including their data package identifier, title, and url
 }
 \description{
-Data sources can be either internal or external to PASTA. Internal data sources include a "packageId" value and a URL to the source metadata. For data sources external to PASTA, the "packageId" element will be empty and a URL value may or not be documented.
-}
-\details{
-GET : https://pasta.lternet.edu/package/sources/eml/{scope}/{identifier}/{revision}
+Data sources are data packages, or other online digital objects, that are known to be inputs to the specified derived data package.
 }
 \examples{
 list_data_sources("edi.275.4")

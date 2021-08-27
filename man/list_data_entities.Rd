@@ -4,27 +4,20 @@
 \alias{list_data_entities}
 \title{List data entities}
 \usage{
-list_data_entities(scope, identifier, revision, environment = "production")
+list_data_entities(packageId, tier = "production")
 }
 \arguments{
-\item{scope}{(character) Data package scope}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{identifier}{(character) Data package identifier}
-
-\item{revision}{(character) Data package revision}
-
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: 'production', 'staging', or 'development'}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Data entity identifier(s) of the specified data package
+(character) Identifiers for all data entities in \code{packageId}
 }
 \description{
 List data entities
 }
-\details{
-GET : https://pasta.lternet.edu/package/data/eml/{scope}/{identifier}/{revision}
-}
 \examples{
-list_data_entities(scope = "edi", identifier = "193", revision = "5")
+list_data_entities("knb-lter-and.2726.6")
 
 }

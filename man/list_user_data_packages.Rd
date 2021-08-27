@@ -4,24 +4,22 @@
 \alias{list_user_data_packages}
 \title{List user data packages}
 \usage{
-list_user_data_packages(dn, environment = "production")
+list_user_data_packages(dn, tier = "production")
 }
 \arguments{
-\item{dn}{(character) Distinguished name (e.g. "uid=dbjourneynorth,o=EDI,dc=edirepository,dc=org"). Use \code{get_distinguished_name()} to create input to \code{dn}.}
+\item{dn}{(character) Distinguished name of user. Use \code{construct_dn()} to create input to this argument.}
 
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Data packages uploaded by a distinguished name.
+(character) Data package identifiers belonging to a \code{dn}
 }
 \description{
 List all data packages (including their revision values) uploaded to the repository by a particular user, specified by a distinguished name. Data packages that were uploaded by the specified user but have since been deleted are excluded from the list.
 }
-\details{
-GET : https://pasta.lternet.edu/package/user/{dn}
-}
 \examples{
-# List all (undeleted) data packages uploaded by user "dbjourneynorth" under the organizational unit "EDI"
-list_user_data_packages(get_distinguished_name("dbjourneynorth", "EDI"))
+# List all data packages uploaded by user "dbjourneynorth" who is apart of the "EDI" organizational unit
+dn <- construct_dn("dbjourneynorth", "EDI")
+list_user_data_packages(dn)
 
 }

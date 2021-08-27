@@ -4,21 +4,18 @@
 \alias{list_data_package_identifiers}
 \title{List data package identifiers}
 \usage{
-list_data_package_identifiers(scope, environment = "production")
+list_data_package_identifiers(scope, tier = "production")
 }
 \arguments{
-\item{scope}{(character) Data package scope (e.g. "edi", "knb-lter-bnz").}
+\item{scope}{(character) Scope of data package (i.e. the first component of a \code{packageId})}
 
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Data package identifiers
+(numeric) Identifiers of data packages within a specified \code{scope}
 }
 \description{
 List data package identifiers
-}
-\details{
-GET : https://pasta.lternet.edu/package/eml/{scope}
 }
 \examples{
 list_data_package_identifiers("knb-lter-ble")

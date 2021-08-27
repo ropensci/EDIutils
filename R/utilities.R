@@ -99,10 +99,10 @@ convert_missing_value <- function(v, code, type) {
 
 
 
-#' Get distinguished name
+#' Construct a users distinguished name
 #'
-#' @param uid (character) PASTA userId
-#' @param o (character) Organizational unit in which \code{uid} belongs. Can be "EDI" or "LTER".
+#' @param userId (character) PASTA userId
+#' @param ou (character) Organizational unit in which \code{userId} belongs. Can be "EDI" or "LTER".
 #'
 #' @return (character) Distinguished name
 #' 
@@ -111,11 +111,11 @@ convert_missing_value <- function(v, code, type) {
 #' @examples 
 #' get_distinguished_name("csmith", "EDI")
 #' 
-get_distinguished_name <- function(uid, o) {
-  o <- toupper(o)
+construct_dn <- function(userId, ou) {
+  ou <- toupper(ou)
   validate_arguments(x = as.list(environment()))
-  res <- paste0("uid=", uid, ",o=", o, ",")
-  if (o == "EDI") {
+  res <- paste0("uid=", userId, ",o=", ou, ",")
+  if (ou == "EDI") {
     res <- paste0(res, "dc=edirepository,dc=org")
   } else {
     res <- paste0(res, "dc=ecoinformatics,dc=org")
@@ -132,20 +132,13 @@ get_distinguished_name <- function(uid, o) {
 
 #' Get the first data package in the staging environment for testing
 #' 
-#' @param parsed (logical) Return parsed scope, identifier, and revision. Default is TRUE.
+#' @return (character) Data package ID of the form "scope.identifier.revision".
 #' 
-#' @return (character) Data package scope, identifier, and revision
-#' 
-get_test_package <- function(parsed = TRUE) {
+get_test_package <- function() {
   id <- list_data_package_identifiers("edi", "staging")[1]
   rev <- list_data_package_revisions("edi", id, "newest", "staging")
-  if (isTRUE(parsed)) {
-    res <- list(scope = "edi", id = id, rev = rev)
-    return(res)
-  } else {
-    res <- paste(c("edi", id, rev), collapse = ".")
-    return(res)
-  }
+  res <- paste(c("edi", id, rev), collapse = ".")
+  return(res)
 }
 
 
@@ -263,14 +256,14 @@ text2char <- function(txt) {
 #'     (character) Data repository environment to perform the evaluation in.
 #'     Can be: 'development', 'staging', 'production'.
 #'
-url_env <- function(environment){
+url_env <- function(tier){
   
-  environment <- tolower(environment)
-  if (environment == 'development'){
+  tier <- tolower(tier)
+  if (tier == 'development'){
     url_env <- 'https://pasta-d'
-  } else if (environment == 'staging'){
+  } else if (tier == 'staging'){
     url_env <- 'https://pasta-s'
-  } else if (environment == 'production'){
+  } else if (tier == 'production'){
     url_env <- 'https://pasta'
   }
   

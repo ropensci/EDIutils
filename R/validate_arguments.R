@@ -15,13 +15,22 @@ validate_arguments <- function(x) {
     }
   }
   
-  # environment
-  if ('environment' %in% names(x)){
-    if ((tolower(x[['environment']]) != 'development') &
-        (tolower(x[['environment']]) != 'staging') &
-        (tolower(x[['environment']]) != 'production')){
-      stop("The input argument 'environment' must be 'development', ",
+  # tier
+  if ('tier' %in% names(x)){
+    if ((tolower(x[['tier']]) != 'development') &
+        (tolower(x[['tier']]) != 'staging') &
+        (tolower(x[['tier']]) != 'production')){
+      stop("The input argument 'tier' must be 'development', ",
            "'staging', or 'production'.", call. = FALSE)
+    }
+  }
+  
+  # filter
+  if ("filter" %in% names(x)) {
+    if (!is.null(x[["filter"]])) {
+      if (!x[["filter"]] %in% c("newest", "oldest")) {
+        stop("Input 'filter' must be 'newest' or 'oldest'", call. = FALSE)
+      }
     }
   }
   
@@ -48,6 +57,13 @@ validate_arguments <- function(x) {
   if ("o" %in% names(x)) {
     if (!x[["o"]] %in% c("LTER", "EDI")) {
       stop("Input 'o' is not 'EDI' or 'LTER'.", call. = FALSE)
+    }
+  }
+  
+  # ore
+  if ("ore" %in% names(x)) {
+    if (!is.logical(x[["ore"]])) {
+      stop("Input 'ore' must be logical.", call. = FALSE)
     }
   }
   

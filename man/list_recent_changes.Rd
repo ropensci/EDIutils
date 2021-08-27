@@ -8,39 +8,34 @@ list_recent_changes(
   fromDate = NULL,
   toDate = NULL,
   scope = NULL,
-  environment = "production"
+  tier = "production"
 )
 }
 \arguments{
-\item{fromDate}{(character) Start date (e.g. "2019-01-01T12:00:00")}
+\item{fromDate}{(character) Start date in format "YYYY-MM-DDThh:mm:ss"}
 
-\item{toDate}{(character) End date (e.g. "2019-01-25T12:00:00")}
+\item{toDate}{(character) End date in format "YYYY-MM-DDThh:mm:ss"}
 
-\item{scope}{(character) Data package scope}
+\item{scope}{(character) Scope of data package (i.e. the first component of a \code{packageId})}
 
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(xml_document) packageId, scope, identifier, revision, principal, doi, serviceMethod, and date of data package changes.
+(xml_document) Recent changes and their corresponding packageId, scope, identifier, revision, principal, doi, serviceMethod, and date.
 }
 \description{
 List all data package insert, update, and delete operations, optionally specifying the date and time to and/or from which the changes should be listed. An optional scope value can be specified to filter results for a particular data package scope.
 }
-\details{
-GET : https://pasta.lternet.edu/package/changes/eml
-
-If "fromDate" and "toDate" are omitted, lists the complete set of changes recorded in PASTA's  resource registry. If a "scope" value is omitted, results are returned for all data package scopes that exist in the resource registry. Multiple instances of the scope parameter are not supported. Inserts and updates are recorded in "dataPackageUpload" elements, while deletes are recorded in "dataPackageDelete" elements.
-}
 \examples{
-# Changes occurring in January 2021 for the scope "knb-lter-hbr"
+# Changes occurring in January 2021 within the scope "knb-lter-hbr"
 list_recent_changes(
   fromDate = "2021-01-01T00:00:00", 
   toDate = "2021-02-01T00:00:00", 
   scope = "knb-lter-hbr")
   
-# Changes occurring in January 2021 for all scopes
+# Changes occurring in the first 3 days of 2021 for all scopes
 list_recent_changes(
   fromDate = "2021-01-01T00:00:00", 
-  toDate = "2021-02-01T00:00:00")
+  toDate = "2021-01-03T00:00:00")
 
 }

@@ -7,36 +7,33 @@
 list_data_package_revisions(
   scope,
   identifier,
-  filter = NULL,
-  environment = "production"
+  tier = "production",
+  filter = NULL
 )
 }
 \arguments{
-\item{scope}{(character) Data package scope (e.g. "edi", "knb-lter-bnz")}
+\item{scope}{(character) Scope of data package (i.e. the first component of a \code{packageId})}
 
-\item{identifier}{(character) Data package identifier}
+\item{identifier}{(numeric) Identifier of data package (i.e. the second component of a \code{packageId})}
 
-\item{filter}{(character) Filter returned revisions. Can be "newest" or "oldest"}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
+\item{filter}{(character) Filter results by "newest" or "oldest"}
 }
 \value{
-(character) Data package revisions
+(numeric) Revisions of a data package within a specified \code{scope} and \code{identifier}
 }
 \description{
 List data package revisions
 }
-\details{
-GET : https://pasta.lternet.edu/package/eml/{scope}/{identifier}
-}
 \examples{
 # All revisions
-list_data_package_revisions("edi", "275")
+list_data_package_revisions("knb-lter-arc", 20131)
 
 # Newest revision
-list_data_package_revisions("edi", "275", filter = "newest")
+list_data_package_revisions("knb-lter-arc", 20131, filter = "newest")
 
 # Oldest revision
-list_data_package_revisions("edi", "275", filter = "oldest")
+list_data_package_revisions("knb-lter-arc", 20131, filter = "oldest")
 
 }

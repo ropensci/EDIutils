@@ -1,39 +1,35 @@
 #' List data package revisions
 #'
-#' @param scope (character) Data package scope (e.g. "edi", "knb-lter-bnz")
-#' @param identifier (character) Data package identifier
-#' @param filter (character) Filter returned revisions. Can be "newest" or "oldest"
-#' @param environment (character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"
+#' @param scope (character) Scope of data package (i.e. the first component of a \code{packageId})
+#' @param identifier (numeric) Identifier of data package (i.e. the second component of a \code{packageId})
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param filter (character) Filter results by "newest" or "oldest"
 #'
-#' @return (character) Data package revisions
-#'     
-#' @details GET : https://pasta.lternet.edu/package/eml/{scope}/{identifier}
+#' @return (numeric) Revisions of a data package within a specified \code{scope} and \code{identifier}
 #' 
 #' @export
 #' 
 #' @examples 
 #' # All revisions
-#' list_data_package_revisions("edi", "275")
+#' list_data_package_revisions("knb-lter-arc", 20131)
 #' 
 #' # Newest revision
-#' list_data_package_revisions("edi", "275", filter = "newest")
+#' list_data_package_revisions("knb-lter-arc", 20131, filter = "newest")
 #' 
 #' # Oldest revision
-#' list_data_package_revisions("edi", "275", filter = "oldest")
+#' list_data_package_revisions("knb-lter-arc", 20131, filter = "oldest")
 #' 
-list_data_package_revisions <- function(scope, 
-                                        identifier, 
-                                        filter = NULL, 
-                                        environment = "production") {
+list_data_package_revisions <- function(scope, identifier, tier = "production",
+                                        filter = NULL) {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(environment), ".lternet.edu/package/eml/",
-                paste(c(scope, identifier), collapse = "/"))
+  url <- paste0(url_env(tier), ".lternet.edu/package/eml/",
+                paste(c(scope, as.character(identifier)), collapse = "/"))
   if (!is.null(filter)) {
     url <- paste0(url, "?filter=", filter)
   }
   resp <- httr::GET(url, set_user_agent())
   httr::stop_for_status(resp)
   parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  res <- text2char(parsed)
+  res <- as.numeric(text2char(parsed))
   return(res)
 }

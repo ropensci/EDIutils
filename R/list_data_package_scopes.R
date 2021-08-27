@@ -1,19 +1,24 @@
 #' List data package scopes
 #'
-#' @param environment (character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @return (character) All scope values extant in the data package registry.
+#' @return (numeric) Scopes within a specified \code{tier}
 #'
 #' @export
 #' 
-#' @details GET : https://pasta.lternet.edu/package/eml
-#' 
 #' @examples 
+#' # All scopes in production
 #' list_data_package_scopes()
+#' 
+#' # All scopes in staging
+#' list_data_package_scopes("staging")
+#' 
+#' #' # All scopes in development
+#' list_data_package_scopes("development")
 #'
-list_data_package_scopes <- function(environment = "production") {
+list_data_package_scopes <- function(tier = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(environment), ".lternet.edu/package/eml")
+  url <- paste0(url_env(tier), ".lternet.edu/package/eml")
   resp <- httr::GET(url, set_user_agent())
   httr::stop_for_status(resp)
   parsed <- httr::content(resp, as = "text", encoding = "UTF-8")

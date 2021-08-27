@@ -4,13 +4,10 @@
 \alias{get_test_package}
 \title{Get the first data package in the staging environment for testing}
 \usage{
-get_test_package(parsed = TRUE)
-}
-\arguments{
-\item{parsed}{(logical) Return parsed scope, identifier, and revision. Default is TRUE.}
+get_test_package()
 }
 \value{
-(character) Data package scope, identifier, and revision
+(character) Data package ID of the form "scope.identifier.revision".
 }
 \description{
 Get the first data package in the staging environment for testing

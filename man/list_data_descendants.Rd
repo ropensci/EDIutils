@@ -4,35 +4,20 @@
 \alias{list_data_descendants}
 \title{List data descendants}
 \usage{
-list_data_descendants(
-  scope,
-  identifier,
-  revision,
-  environment = "production",
-  output = "xml_document"
-)
+list_data_descendants(packageId, tier = "production")
 }
 \arguments{
-\item{scope}{(character) Data package scope}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{identifier}{(character) Data package identifier}
-
-\item{revision}{(character) Data package revision}
-
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development".}
-
-\item{output}{(character) Can be: "xml_document" or "data.frame".}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(xml_document or data.frame) Data descendant(s) packageId, title, and url
+(xml_document) Descendants of \code{packageId}, including their packageId, title, and url
 }
 \description{
 Data descendants are data packages that are known to be derived, in whole or in part, from the specified source data package.
 }
-\details{
-GET : https://pasta.lternet.edu/package/descendants/eml/{scope}/{identifier}/{revision}
-}
 \examples{
-list_data_descendants("knb-lter-bnz", "501", "17")
+list_data_descendants("knb-lter-bnz.501.17")
 
 }

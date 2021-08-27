@@ -4,21 +4,25 @@
 \alias{list_service_methods}
 \title{List service methods}
 \usage{
-list_service_methods(environment = "production")
+list_service_methods(tier = "production")
 }
 \arguments{
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(data.frame) A simple list of web service methods supported by the Data Package Manager web service.
+(character) A simple list of web service methods supported by the Data Package Manager web service.
 }
 \description{
 List service methods
 }
-\details{
-GET : https://pasta.lternet.edu/package/service-methods
-}
 \examples{
+# All service methods in production
 list_service_methods()
+
+# All service methods in staging
+list_service_methods("staging")
+
+#' # All service methods in development
+list_service_methods("development")
 
 }
