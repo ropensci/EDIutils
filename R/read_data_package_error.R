@@ -1,50 +1,22 @@
 #' Read data package error
 #'
-#' @description Read Data Package Error operation, specifying the scope, identifier, revision, and transaction identifier of the data package error to be read in the URI, returning the error message as plain text.
+#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param transaction (character) Transaction identifier returned for each data package evaluate, upload, and delete operation
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     (character) Reference URLs.
-#' @details GET : https://pasta.lternet.edu/package/error/eml/{transaction}
+#' @return (character) Data package error
+#' 
 #' @export
+#' 
 #' @examples 
 #'
-read_data_package_error <- function(package.id, environment = 'production'){
-  # TODO implement from read_data_package_archive()
-  message(paste('Retrieving resource map for', package.id))
-  
+read_data_package_error <- function(packageId, transaction, tier = "production") {
   validate_arguments(x = as.list(environment()))
-
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/eml/',
-      stringr::str_replace_all(package.id, '\\.', '/')
-    )
-  )
-  
-  r <- httr::content(
-    r,
-    as = 'text',
-    encoding = 'UTF-8'
-  )
-  
-  output <- as.character(
-    read.csv(
-      text = c(
-        'identifier',
-        r
-      ),
-      as.is = T
-    )$identifier
-  )
-
-  output
-  
+  url <- paste0(url_env(tier), ".lternet.edu/package/error/eml/", 
+                paste(parse_packageId(packageId), collapse = "/"))
+  resp <- httr::GET(url, set_user_agent())
+  httr::stop_for_status(resp)
+  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
+  res <- text2char(parsed)
+  return(res)
 }

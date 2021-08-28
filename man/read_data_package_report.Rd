@@ -4,24 +4,33 @@
 \alias{read_data_package_report}
 \title{Read data package report}
 \usage{
-read_data_package_report(package.id, environment = "production")
+read_data_package_report(
+  packageId,
+  tier = "production",
+  html = FALSE,
+  strip_ns = TRUE
+)
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+
+\item{html}{(logical) Return result in HTML format?}
+
+\item{strip_ns}{(logical) Strip result namespace?}
 }
 \value{
-('xml_document' 'xml_node') Data package report.
+(xml_document or html) Data package report
 }
 \description{
-Read Data Package Report operation, specifying the scope, identifier, and revision of the data package quality report document to be read in the URI. If an HTTP Accept header with value ‘text/html’ is included in the request, returns an HTML representation of the report. The default representation is XML.
-}
-\details{
-GET : https://pasta.lternet.edu/package/report/eml/{scope}/{identifier}/{revision}
+Read data package report
 }
 \examples{
+# Result in XML format
+read_data_package_report("knb-lter-knz.260.4")
+
+# Result in HTML format
+read_data_package_report("knb-lter-knz.260.4", html = TRUE)
 
 }

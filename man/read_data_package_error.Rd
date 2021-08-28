@@ -4,23 +4,20 @@
 \alias{read_data_package_error}
 \title{Read data package error}
 \usage{
-read_data_package_error(package.id, environment = "production")
+read_data_package_error(packageId, transaction, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{transaction}{(character) Transaction identifier returned for each data package evaluate, upload, and delete operation}
+
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Reference URLs.
+(character) Data package error
 }
 \description{
-Read Data Package Error operation, specifying the scope, identifier, revision, and transaction identifier of the data package error to be read in the URI, returning the error message as plain text.
-}
-\details{
-GET : https://pasta.lternet.edu/package/error/eml/{transaction}
+Read data package error
 }
 \examples{
 

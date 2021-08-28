@@ -48,6 +48,13 @@ validate_arguments <- function(x) {
     }
   }
   
+  # html
+  if ("html" %in% names(x)) {
+    if (!is.logical(x[["html"]])) {
+      stop("Input 'html' should be of class 'logical'", call. = FALSE)
+    }
+  }
+  
   # identifier
   if ("identifier" %in% names(x)){
     is_int <- as.numeric(x[["identifier"]]) %% 1 == 0
