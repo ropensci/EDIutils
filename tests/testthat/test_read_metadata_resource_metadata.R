@@ -1,16 +1,12 @@
-context('Read metadata resource metadata')
-library(EDIutils)
+context("Read metadata resource metadata")
 
-testthat::test_that('Test for object attributes', {
-  
-  expect_equal(
-    class(
-      read_metadata_resource_metadata(
-        package.id = 'edi.100.1',
-        environment = 'production'
-      )
-    ),
-    c('xml_document', 'xml_node')
-  )
-  
+testthat::test_that("Test attributes of returned object", {
+  res <- read_metadata_resource_metadata("knb-lter-pal.309.1")
+  expect_true(all(class(res) %in% c("xml_document", "xml_node")))
+  children_expected <- c("dateCreated", "entityId", "entityName", "fileName", 
+                         "formatType", "identifier", "md5Checksum", 
+                         "packageId", "principalOwner", "resourceId", 
+                         "resourceType", "revision", "scope", "sha1Checksum")
+  children_found <- xml2::xml_name(xml2::xml_children(res))
+  expect_true(all(children_found %in% children_expected))
 })

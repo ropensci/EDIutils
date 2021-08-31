@@ -4,28 +4,27 @@
 \alias{read_evaluate_report}
 \title{Read evaluate report}
 \usage{
-read_evaluate_report(package.id, identifier, environment = "production")
+read_evaluate_report(
+  transaction,
+  tier = "production",
+  html = FALSE,
+  strip_ns = TRUE
+)
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{transaction}{(character) Transaction identifier returned for each data package evaluate, upload, and delete operation}
 
-\item{identifier}{(character) Data entity identifier (e.g. 
-5c224a0e74547b14006272064dc869b1)}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{html}{(logical) Return result in HTML format?}
+
+\item{strip_ns}{(logical) Strip result namespace?}
 }
 \value{
-(character) Data entity checksum
+(xml_document) The evaluate quality report document
 }
 \description{
-Read Evaluate Report operation, specifying the transaction identifier of the evaluate quality report document to be read in the URI. 
-
-If an HTTP Accept header with value ‘text/html’ is included in the request, returns an HTML representation of the report. The default representation is XML. See the Evaluate Data Package service method for information about how to obtain the transaction identifier.
-}
-\details{
-GET : https://pasta.lternet.edu/package/evaluate/report/eml/{transaction}
+Read evaluate report
 }
 \examples{
 

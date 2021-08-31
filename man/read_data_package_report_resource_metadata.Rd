@@ -18,6 +18,6 @@ read_data_package_report_resource_metadata(packageId, tier = "production")
 Read data package report resource metadata
 }
 \examples{
-read_data_package_report_resource_metadata("knb-lter-kbs.199.22")
+read_data_package_report_resource_metadata("knb-lter-mcm.9129.3")
 
 }

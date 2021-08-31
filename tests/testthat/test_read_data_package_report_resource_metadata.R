@@ -1,7 +1,7 @@
 context("Read data package report resource metadata")
 
 testthat::test_that("Test attributes of returned object", {
-  res <- read_data_package_report_resource_metadata("knb-lter-kbs.199.22")
+  res <- read_data_package_report_resource_metadata("knb-lter-mcm.9129.3")
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))
   found_children <- xml2::xml_name(xml2::xml_children(res))
   expected_children <- c("dateCreated", "doi", "entityId", "entityName", 

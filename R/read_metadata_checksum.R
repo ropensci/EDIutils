@@ -1,40 +1,22 @@
 #' Read metadata checksum
 #'
-#' @description Read Metadata Checksum operation, specifying the scope, identifier, and revision of the metadata object whose checksum value is to be read in the URI, returning a 40 character SHA-1 checksum value.
+#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     (character) Data package report checksum
-#' @details GET : https://pasta.lternet.edu/package/metadata/checksum/eml/{scope}/{identifier}/{revision}
+#' @return (character) A 40 character SHA-1 checksum value
+#' 
 #' @export
+#' 
 #' @examples 
+#' read_metadata_checksum("knb-lter-ntl.409.1")
 #'
-read_metadata_checksum <- function(package.id, environment = 'production'){
-  
-  message(paste('Retrieving metadata checksum for', package.id))
-  
+read_metadata_checksum <- function(packageId, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/metadata/checksum/eml/',
-      stringr::str_replace_all(package.id, '\\.', '/')
-    )
-  )
-  
-  output <- httr::content(
-    r,
-    as = 'text',
-    encoding = 'UTF-8'
-  )
-  
-  output
-  
+  url <- paste0(url_env(tier), ".lternet.edu/package/metadata/checksum/eml/", 
+                paste(parse_packageId(packageId), collapse = "/"))
+  resp <- httr::GET(url, set_user_agent())
+  httr::stop_for_status(resp)
+  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
+  res <- text2char(parsed)
+  return(res)
 }

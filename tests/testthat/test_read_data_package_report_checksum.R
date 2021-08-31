@@ -1,16 +1,7 @@
-context('Read data package report checksum')
-library(EDIutils)
+context("Read data package report checksum")
 
-testthat::test_that('Test for object attributes', {
-  
-  expect_equal(
-    class(
-      read_data_package_report_checksum(
-        package.id = 'edi.275.1',
-        environment = 'production'
-      )
-    ),
-    'character'
-  )
-  
+testthat::test_that('Test attributes of returned object', {
+  res <- read_data_package_report_checksum("knb-lter-luq.208.1")
+  expect_equal(class(res), "character")
+  expect_true(length(res) > 0)
 })

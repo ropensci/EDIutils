@@ -2,25 +2,22 @@
 % Please edit documentation in R/read_metadata_acl.R
 \name{read_metadata_acl}
 \alias{read_metadata_acl}
-\title{Read metadata ACL}
+\title{Read metadata Access Control List}
 \usage{
-read_metadata_acl(package.id, environment = "production")
+read_metadata_acl(packageId, tier = "production", strip_ns = TRUE)
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+
+\item{strip_ns}{(logical) Strip result namespace?}
 }
 \value{
-(character) Data package report checksum
+(xml_document) Metadata ACL resource. Please note: only a very limited set of users are authorized to use this service method.
 }
 \description{
-Read Metadata ACL operation, specifying the scope, identifier, and revision of the data package metadata whose Access Control List (ACL) is to be read in the URI, returning an XML string representing the ACL for the data package metadata resource. Please note: only a very limited set of users are authorized to use this service method.
-}
-\details{
-GET : https://pasta.lternet.edu/package/metadata/acl/eml/{scope}/{identifier}/{revision}
+Read metadata Access Control List
 }
 \examples{
 

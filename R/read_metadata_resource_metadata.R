@@ -1,42 +1,21 @@
 #' Read metadata resource metadata
 #'
-#' @description Read Metadata Resource Metadata operation, specifying the scope, identifier, and revision of the data package metadata whose resource metadata is to be read in the URI, returning an XML string representing the resource metadata for the data package metadata resource.
-#'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     ('xml_document' 'xml_node') An XML string representing 
-#'     the resource metadata for the data package metadata resource.
-#'     
-#' @details GET : https://pasta.lternet.edu/package/metadata/rmd/eml/{scope}/{identifier}/{revision}
+#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' 
+#' @return (xml_document) Resource metadata for the data package metadata resource
+#' 
 #' @export
+#' 
 #' @examples 
+#' read_metadata_resource_metadata("knb-lter-pal.309.1")
 #'
-read_metadata_resource_metadata <- function(package.id, environment = 'production'){
-  
-  message(paste('Retrieving metadata resource metadata for ', package.id))
-  
+read_metadata_resource_metadata <- function(packageId, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/metadata/rmd/eml/',
-      stringr::str_replace_all(package.id, '\\.', '/')
-    )
-  )
-  
-  output <- httr::content(
-    r,
-    as = 'parsed',
-    encoding = 'UTF-8'
-  )
-  
-  output
-  
+  url <- paste0(url_env(tier), ".lternet.edu/package/metadata/rmd/eml/",
+                paste(parse_packageId(packageId), collapse = "/"))
+  resp <- httr::GET(url, set_user_agent())
+  httr::stop_for_status(resp)
+  parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
+  return(parsed)
 }

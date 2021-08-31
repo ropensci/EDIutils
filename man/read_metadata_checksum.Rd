@@ -4,24 +4,20 @@
 \alias{read_metadata_checksum}
 \title{Read metadata checksum}
 \usage{
-read_metadata_checksum(package.id, environment = "production")
+read_metadata_checksum(packageId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Data package report checksum
+(character) A 40 character SHA-1 checksum value
 }
 \description{
-Read Metadata Checksum operation, specifying the scope, identifier, and revision of the metadata object whose checksum value is to be read in the URI, returning a 40 character SHA-1 checksum value.
-}
-\details{
-GET : https://pasta.lternet.edu/package/metadata/checksum/eml/{scope}/{identifier}/{revision}
+Read metadata checksum
 }
 \examples{
+read_metadata_checksum("knb-lter-ntl.409.1")
 
 }

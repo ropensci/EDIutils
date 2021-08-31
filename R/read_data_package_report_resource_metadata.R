@@ -8,7 +8,7 @@
 #' @export
 #' 
 #' @examples 
-#' read_data_package_report_resource_metadata("knb-lter-kbs.199.22")
+#' read_data_package_report_resource_metadata("knb-lter-mcm.9129.3")
 #'
 read_data_package_report_resource_metadata <- function(packageId, tier = "production") {
   validate_arguments(x = as.list(environment()))

@@ -4,24 +4,22 @@
 \alias{read_metadata}
 \title{Read metadata}
 \usage{
-read_metadata(package.id, environment = "production")
+read_metadata(packageId, tier = "production", strip_ns = TRUE)
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+
+\item{strip_ns}{(logical) Strip result namespace?}
 }
 \value{
-('xml_document' 'xml_node') EML metadata.
+("xml_document") EML document
 }
 \description{
-Description Read Metadata (EML) operation, specifying the scope, identifier, and revision of the EML document to be read in the URI. Revision may be specified as “newest” or “oldest” to retrieve the newest or oldest revision, respectively.
-}
-\details{
-GET : https://pasta.lternet.edu/package/metadata/eml/{scope}/{identifier}/{revision}
+Read metadata
 }
 \examples{
+read_metadata("edi.100.1")
 
 }

@@ -1,41 +1,26 @@
 #' Read metadata
 #'
-#' @description Description Read Metadata (EML) operation, specifying the scope, identifier, and revision of the EML document to be read in the URI. Revision may be specified as “newest” or “oldest” to retrieve the newest or oldest revision, respectively.
+#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param strip_ns (logical) Strip result namespace?
 #'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     ('xml_document' 'xml_node') EML metadata.
-#'     
-#' @details GET : https://pasta.lternet.edu/package/metadata/eml/{scope}/{identifier}/{revision}
+#' @return ("xml_document") EML document
+#' 
 #' @export
+#' 
 #' @examples 
+#' read_metadata("edi.100.1")
 #'
-read_metadata <- function(package.id, environment = 'production'){
-  
-  message(paste('Retrieving EML for data package', package.id))
-  
+read_metadata <- function(packageId, tier = "production", strip_ns = TRUE) {
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/metadata/eml/',
-      stringr::str_replace_all(package.id, '\\.', '/')
-    )
-  )
-  
-  eml <- httr::content(
-    r,
-    as = 'parsed',
-    encoding = 'UTF-8'
-  )
-  
-  eml
-
+  url <- paste0(url_env(tier), ".lternet.edu/package/metadata/eml/",
+                paste(parse_packageId(packageId), collapse = "/"))
+  resp <- httr::GET(url, set_user_agent())
+  httr::stop_for_status(resp)
+  parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
+  if (strip_ns) {
+    return(xml2::xml_ns_strip(parsed))
+  } else {
+    return(parsed)
+  }
 }

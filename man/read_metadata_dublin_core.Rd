@@ -4,24 +4,22 @@
 \alias{read_metadata_dublin_core}
 \title{Read metadata Dublin Core}
 \usage{
-read_metadata_dublin_core(package.id, environment = "production")
+read_metadata_dublin_core(packageId, tier = "production", strip_ns = TRUE)
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+
+\item{strip_ns}{(logical) Strip result namespace?}
 }
 \value{
-('xml_document' 'xml_node') Dublin Core metadata
+("xml_document") Dublin Core metadata
 }
 \description{
-Read Metadata (Dublin Core) operation, specifying the scope, identifier, and revision of the Dublin Core metadata to be read in the URI. Revision may be specified as “newest” or “oldest” to retrieve the newest or oldest revision, respectively.
-}
-\details{
-GET : https://pasta.lternet.edu/package/metadata/dc/{scope}/{identifier}/{revision}
+Read metadata Dublin Core
 }
 \examples{
+read_metadata_dublin_core("knb-lter-nes.10.1")
 
 }

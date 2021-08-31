@@ -1,40 +1,26 @@
-#' Read metadata ACL
+#' Read metadata Access Control List
 #'
-#' @description Read Metadata ACL operation, specifying the scope, identifier, and revision of the data package metadata whose Access Control List (ACL) is to be read in the URI, returning an XML string representing the ACL for the data package metadata resource. Please note: only a very limited set of users are authorized to use this service method.
+#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param strip_ns (logical) Strip result namespace?
 #'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     (character) Data package report checksum
-#' @details GET : https://pasta.lternet.edu/package/metadata/acl/eml/{scope}/{identifier}/{revision}
+#' @return (xml_document) Metadata ACL resource. Please note: only a very limited set of users are authorized to use this service method.
+#' 
 #' @export
+#' 
 #' @examples 
 #'
-read_metadata_acl <- function(package.id, environment = 'production'){
-  
-  message(paste('Retrieving metadata checksum for', package.id))
-  
+read_metadata_acl <- function(packageId, tier = "production", 
+                              strip_ns = TRUE) {
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/metadata/checksum/eml/',
-      stringr::str_replace_all(package.id, '\\.', '/')
-    )
-  )
-  
-  output <- httr::content(
-    r,
-    as = 'text',
-    encoding = 'UTF-8'
-  )
-  
-  output
-  
+  url <- paste0(url_env(tier), ".lternet.edu/package/metadata/acl/eml/",
+                paste(parse_packageId(packageId), collapse = "/"))
+  resp <- httr::GET(url, set_user_agent())
+  httr::stop_for_status(resp)
+  parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
+  if (strip_ns) {
+    return(xml2::xml_ns_strip(parsed))
+  } else {
+    return(parsed)
+  }
 }

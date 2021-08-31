@@ -1,41 +1,22 @@
 #' Read metadata format
 #'
-#' @description Read Metadata Format operation, specifying the scope, identifier, and revision of the metadata to be read in the URI, returning the metadata format type, e.g. “eml://ecoinformatics.org/eml-2.1.1”
-#'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     (character) The metadata format type, e.g. 
-#'     “eml://ecoinformatics.org/eml-2.1.1”
-#' @details GET : https://pasta.lternet.edu/package/metadata/format/eml/{scope}/{identifier}/{revision}
+#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' 
+#' @return (character) metadata format type
+#' 
 #' @export
+#' 
 #' @examples 
+#' read_metadata_format("knb-lter-nwt.930.1")
 #'
-read_metadata_format <- function(package.id, environment = 'production'){
-  
-  message(paste('Retrieving metadata format for', package.id))
-  
+read_metadata_format <- function(packageId, tier = "production"){
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/metadata/format/eml/',
-      stringr::str_replace_all(package.id, '\\.', '/')
-    )
-  )
-  
-  output <- httr::content(
-    r,
-    as = 'text',
-    encoding = 'UTF-8'
-  )
-  
-  output
-  
+  url <- paste0(url_env(tier), ".lternet.edu/package/metadata/format/eml/", 
+                paste(parse_packageId(packageId), collapse = "/"))
+  resp <- httr::GET(url, set_user_agent())
+  httr::stop_for_status(resp)
+  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
+  res <- text2char(parsed)
+  return(res)
 }

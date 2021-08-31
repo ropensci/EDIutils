@@ -4,25 +4,20 @@
 \alias{read_metadata_format}
 \title{Read metadata format}
 \usage{
-read_metadata_format(package.id, environment = "production")
+read_metadata_format(packageId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) The metadata format type, e.g. 
-    “eml://ecoinformatics.org/eml-2.1.1”
+(character) metadata format type
 }
 \description{
-Read Metadata Format operation, specifying the scope, identifier, and revision of the metadata to be read in the URI, returning the metadata format type, e.g. “eml://ecoinformatics.org/eml-2.1.1”
-}
-\details{
-GET : https://pasta.lternet.edu/package/metadata/format/eml/{scope}/{identifier}/{revision}
+Read metadata format
 }
 \examples{
+read_metadata_format("knb-lter-nwt.930.1")
 
 }
