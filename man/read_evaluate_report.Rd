@@ -4,21 +4,14 @@
 \alias{read_evaluate_report}
 \title{Read evaluate report}
 \usage{
-read_evaluate_report(
-  transaction,
-  tier = "production",
-  html = FALSE,
-  strip_ns = TRUE
-)
+read_evaluate_report(transaction, html = FALSE, tier = "production")
 }
 \arguments{
 \item{transaction}{(character) Transaction identifier returned for each data package evaluate, upload, and delete operation}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
-
 \item{html}{(logical) Return result in HTML format?}
 
-\item{strip_ns}{(logical) Strip result namespace?}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
 (xml_document) The evaluate quality report document

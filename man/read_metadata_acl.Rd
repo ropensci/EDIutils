@@ -4,14 +4,12 @@
 \alias{read_metadata_acl}
 \title{Read metadata Access Control List}
 \usage{
-read_metadata_acl(packageId, tier = "production", strip_ns = TRUE)
+read_metadata_acl(packageId, tier = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
-
-\item{strip_ns}{(logical) Strip result namespace?}
 }
 \value{
 (xml_document) Metadata ACL resource. Please note: only a very limited set of users are authorized to use this service method.

@@ -31,7 +31,7 @@ vocab_lter_id <- function(x){
   
   # Get the term ID and report ------------------------------------------------
   
-  if (isTRUE(vocab_lter_term(x = x))){
+  if (vocab_lter_term(x = x)){
     
     # Construct the search term and query
     

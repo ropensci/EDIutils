@@ -119,7 +119,7 @@ reference:
     - create_provenance_metadata
     - detect_delimeter
     - detect_os
-    - get_distinguished_name
+    - construct_dn
     - get_eml_attribute
     - get_eol
     - replace_missing_value_codes
@@ -129,5 +129,4 @@ reference:
     - validate_keywords
     - validate_path
     - view_unit_dictionary
-    - starts_with("vocab_")
     

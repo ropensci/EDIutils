@@ -18,6 +18,6 @@ construct_dn(userId, ou)
 Construct a users distinguished name
 }
 \examples{
-get_distinguished_name("csmith", "EDI")
+construct_dn("csmith", "EDI")
 
 }

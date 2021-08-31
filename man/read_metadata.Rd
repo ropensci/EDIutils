@@ -4,17 +4,15 @@
 \alias{read_metadata}
 \title{Read metadata}
 \usage{
-read_metadata(packageId, tier = "production", strip_ns = TRUE)
+read_metadata(packageId, tier = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
-
-\item{strip_ns}{(logical) Strip result namespace?}
 }
 \value{
-("xml_document") EML document
+(xml_document) EML document
 }
 \description{
 Read metadata

@@ -20,12 +20,12 @@
 read_data_package_from_doi <- function(doi, ore = FALSE) {
   validate_arguments(x = as.list(environment()))
   url <- paste0(url_env("production"), ".lternet.edu/package/doi/", doi)
-  if (isTRUE(ore)) {
+  if (ore) {
     url <- paste0(url, "?ore")
   }
   resp <- httr::GET(url, set_user_agent())
   httr::stop_for_status(resp)
-  if (isTRUE(ore)) {
+  if (ore) {
     parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
     return(parsed)
   } else {

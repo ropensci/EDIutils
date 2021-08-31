@@ -12,11 +12,11 @@
 #' @examples 
 #' list_data_sources("edi.275.4")
 #'
-list_data_sources <- function(package.id, environment = "production") {
+list_data_sources <- function(packageId, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  parts <- parse_packageId(package.id)
-  url <- paste0(url_env(environment), ".lternet.edu/package/sources/eml/", 
-                paste(parts, collapse = "/"))
+  parts <- parse_packageId(packageId)
+  url <- paste0(url_env(tier), ".lternet.edu/package/sources/eml/", 
+                paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent())
   httr::stop_for_status(resp)
   parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))

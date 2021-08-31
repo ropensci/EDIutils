@@ -43,7 +43,7 @@ vocab_lter_term <- function(x, messages = FALSE, interactive = FALSE){
   if (length(x) != 1){
     stop('Input argument "x" has a length > 1! Only single terms are allowed.')
   }
-  if (!missing(messages) & isTRUE(messages) & !missing(interactive) & isTRUE(interactive)){
+  if (!missing(messages) & messages & !missing(interactive) & interactive){
     stop('Both arguments "messages" & "interactive" can not be used at the same time. Please select one or the other.')
   }
   
@@ -109,7 +109,7 @@ vocab_lter_term <- function(x, messages = FALSE, interactive = FALSE){
   
   # Report near misses --------------------------------------------------------
   
-  if (!missing(messages) & isTRUE(messages) & (!isTRUE(term_found)) & (length(term_list) != 0)){
+  if (!missing(messages) & messages & (!term_found) & (length(term_list) != 0)){
     
     msg <- message(
       paste0(
@@ -129,7 +129,7 @@ vocab_lter_term <- function(x, messages = FALSE, interactive = FALSE){
   
   # Interactive mode ----------------------------------------------------------
   
-  if (!missing(interactive) & isTRUE(interactive) & (!isTRUE(term_found)) & (length(term_list) != 0)){
+  if (!missing(interactive) & interactive & (!term_found) & (length(term_list) != 0)){
     
     msg <- message(
       paste0(
@@ -151,7 +151,7 @@ vocab_lter_term <- function(x, messages = FALSE, interactive = FALSE){
   
   # Output results ------------------------------------------------------------
   
-  if (!missing(interactive) & isTRUE(interactive) & (!isTRUE(term_found)) & (length(term_list) != 0)){
+  if (!missing(interactive) & interactive & (!term_found) & (length(term_list) != 0)){
     
     alternative_term
     

@@ -4,17 +4,15 @@
 \alias{read_metadata_dublin_core}
 \title{Read metadata Dublin Core}
 \usage{
-read_metadata_dublin_core(packageId, tier = "production", strip_ns = TRUE)
+read_metadata_dublin_core(packageId, tier = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
-
-\item{strip_ns}{(logical) Strip result namespace?}
 }
 \value{
-("xml_document") Dublin Core metadata
+(xml_document) Dublin Core metadata
 }
 \description{
 Read metadata Dublin Core

@@ -109,7 +109,7 @@ convert_missing_value <- function(v, code, type) {
 #' @export
 #' 
 #' @examples 
-#' get_distinguished_name("csmith", "EDI")
+#' construct_dn("csmith", "EDI")
 #' 
 construct_dn <- function(userId, ou) {
   ou <- toupper(ou)

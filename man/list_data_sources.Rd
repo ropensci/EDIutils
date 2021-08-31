@@ -4,7 +4,7 @@
 \alias{list_data_sources}
 \title{List data sources}
 \usage{
-list_data_sources(package.id, environment = "production")
+list_data_sources(packageId, tier = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}

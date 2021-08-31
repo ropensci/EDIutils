@@ -7,8 +7,8 @@
 list_data_package_revisions(
   scope,
   identifier,
-  tier = "production",
-  filter = NULL
+  filter = NULL,
+  tier = "production"
 )
 }
 \arguments{
@@ -16,9 +16,9 @@ list_data_package_revisions(
 
 \item{identifier}{(numeric) Identifier of data package (i.e. the second component of a \code{packageId})}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
-
 \item{filter}{(character) Filter results by "newest" or "oldest"}
+
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
 (numeric) Revisions of a data package within a specified \code{scope} and \code{identifier}

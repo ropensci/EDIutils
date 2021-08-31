@@ -49,7 +49,7 @@ validate_file_names <- function(path, data.files){
   )
   
   # Issue warning if this best practice is not followed
-  if (any(isTRUE(use_i))) {
+  if (any(use_i)) {
     warning(
       paste0(
         "Composing file names from only alphanumerics and underscores is a ",

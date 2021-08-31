@@ -79,9 +79,9 @@ validate_arguments <- function(x) {
   
   # operating system
   if ("os" %in% names(x)){
-    if (isTRUE((tolower(x[['os']]) != "win") & 
-               (tolower(x[['os']]) != "mac") &
-               (tolower(x[['os']]) != "lin"))){
+    if ((tolower(x[['os']]) != "win") & 
+        (tolower(x[['os']]) != "mac") &
+        (tolower(x[['os']]) != "lin")) {
       stop("The value of input argument 'os' is invalid.", call. = FALSE)
     }
   }
@@ -97,8 +97,8 @@ validate_arguments <- function(x) {
   
   # package.id
   if ("package.id" %in% names(x)){
-    if (!isTRUE(stringr::str_detect(x[['package.id']],
-                                    '[:alpha:]\\.[:digit:]+\\.[:digit:]+$'))){
+    if (!stringr::str_detect(x[['package.id']],
+                                    '[:alpha:]\\.[:digit:]+\\.[:digit:]+$')) {
       stop("Input argument 'package.id' appears to be malformed. ",
            "A package ID must consist of a scope, identifier, ",
            "and revision (e.g. 'edi.100.4').", call. = FALSE)

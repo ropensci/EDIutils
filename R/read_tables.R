@@ -94,7 +94,7 @@ read_tables <- function(eml,
       }
       
       # Add units
-      if (isTRUE(add.units)) {
+      if (add.units) {
         dataTable <- xml2::xml_find_all(eml, paste0(".//dataTable[.//objectName='", object_name, "']"))
         attrs_w_units <- xml2::xml_find_all(dataTable, ".//attribute[.//standardUnit|.//customUnit]")
         if (length(attrs_w_units) != 0) {

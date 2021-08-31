@@ -4,22 +4,18 @@
 \alias{list_working_on}
 \title{List working on}
 \usage{
-list_working_on(environment = "production")
+list_working_on(tier = "production")
 }
 \arguments{
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-('xml_document' 'xml_node') workingOn metadata
+(xml_document) The set of data packages the EDI repository is currently working on inserting or updating. Note that data packages currently being evaluated by PASTA are not included in the list.
 }
 \description{
-List Working On operation, lists the set of data packages that PASTA is currently working on inserting or updating. (Note that data packages currently being evaluated by PASTA are not included in the list.)
-}
-\details{
-GET : https://pasta.lternet.edu/package/workingon/eml
+List working on
 }
 \examples{
-# Using curl to list data packages that PASTA is working on uploading:
+list_working_on()
 
 }

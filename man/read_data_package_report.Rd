@@ -4,24 +4,17 @@
 \alias{read_data_package_report}
 \title{Read data package report}
 \usage{
-read_data_package_report(
-  packageId,
-  tier = "production",
-  html = FALSE,
-  strip_ns = TRUE
-)
+read_data_package_report(packageId, html = FALSE, tier = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
-
 \item{html}{(logical) Return result in HTML format?}
 
-\item{strip_ns}{(logical) Strip result namespace?}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(xml_document or html) Data package report
+(xml_document) Data package report
 }
 \description{
 Read data package report

@@ -7,8 +7,8 @@ testthat::test_that("Test attributes of returned object", {
     scope = "knb-lter-hbr")
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))
   expect_true("dataPackage" %in% xml2::xml_name(xml2::xml_children(res)))
-  dp_children <- xml2::xml_name(xml2::xml_children(xml2::xml_children(res)[1]))
-  expect_true(
-    all(c("packageId", "scope", "identifier", "revision", "principal", "doi", 
-          "serviceMethod", "date") %in% dp_children))
+  children_found <- xml2::xml_name(xml2::xml_children(xml2::xml_children(res)[1]))
+  children_expected <- c("packageId", "scope", "identifier", "revision", 
+                         "principal", "doi", "serviceMethod", "date")
+  expect_true(all(children_found %in% children_expected))
 })

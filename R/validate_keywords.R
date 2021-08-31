@@ -40,7 +40,7 @@ validate_keywords <- function(path, cv, interactive.mode = FALSE){
   # Validate keywords.txt
   
   fname_keywords <- paste0(path, '/keywords.txt')
-  if (!isTRUE(file.exists(fname_keywords))){
+  if (!file.exists(fname_keywords)) {
     stop('keywords.txt does not exist! Run import_templates.txt to create this template.')
   }
   
@@ -85,7 +85,7 @@ validate_keywords <- function(path, cv, interactive.mode = FALSE){
   
   # Resolve terms (manually) --------------------------------------------------
   
-  if (isTRUE(interactive.mode)){
+  if (interactive.mode) {
     
     unresolved_terms <- keywords[keywords$keywordThesaurus == '', 'keyword']
     

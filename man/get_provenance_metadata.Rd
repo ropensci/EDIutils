@@ -4,24 +4,20 @@
 \alias{get_provenance_metadata}
 \title{Get provenance metadata}
 \usage{
-get_provenance_metadata(package.id, environment = "production")
+get_provenance_metadata(packageId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-("xml_document" "xml_node") EML metadata.
+(xml_document) Provenance metadata
 }
 \description{
-Add Provenance Metadata from Level-1 metadata in PASTA to an XML document containing a single methods element in the request message body.
-}
-\details{
-GET : https://pasta.lternet.edu/package/provenance/eml/{scope}/{identifier}/{revision}
+Get provenance metadata
 }
 \examples{
+get_provenance_metadata("knb-lter-pal.309.1")
 
 }

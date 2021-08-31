@@ -38,7 +38,7 @@ vocab_resolve_terms <- function(x, cv, messages = FALSE, interactive = FALSE){
   if (cv != 'lter'){
     stop('Input argument "cv" is not one of the allowed vocabularies!')
   }
-  if (!missing(messages) & isTRUE(messages) & !missing(interactive) & isTRUE(interactive)){
+  if (!missing(messages) & messages & !missing(interactive) & interactive){
     stop('Both arguments "messages" & "interactive" can not be used at the same time. Please select one or the other.')
   }
   
@@ -53,11 +53,11 @@ vocab_resolve_terms <- function(x, cv, messages = FALSE, interactive = FALSE){
   
   if (cv == 'lter'){
     
-    if (!missing(messages) & isTRUE(messages)){
+    if (!missing(messages) & messages){
       # Messages
       use_i <- unlist(lapply(x, FUN = vocab_lter_term, messages = T))
       output[use_i, 'controlled_vocabulary'] <- 'LTER Controlled Vocabulary'      
-    } else if (!missing(interactive) & isTRUE(interactive)){
+    } else if (!missing(interactive) & interactive){
       # Interactive
       alternative_terms <- unlist(lapply(x, FUN = vocab_lter_term, interactive = T))
       use_i <- ((alternative_terms == 'NONE OF THE ABOVE') | (is.na(alternative_terms)))

@@ -28,8 +28,9 @@
 create_data_package_archive <- function(path, package.id, environment, user.id, user.pass,
                        affiliation){
 
-  validate_arguments(x = as.list(environment()))
-
+  url <- paste0(url_env(tier), ".lternet.edu/package/archive/eml/", 
+                paste(parse_packageId(packageId), collapse = "/"))
+  
   # Place request
   r <- httr::POST(
     url = paste0(url_env(environment), '.lternet.edu/package/eml'),

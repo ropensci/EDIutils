@@ -12,7 +12,7 @@
 #' # Get resource metadata for the first data entity in "knb-lter-cce.310.1"
 #' packageId <- "knb-lter-cce.310.1"
 #' entityIds <- list_data_entities(packageId)
-#' res <- read_data_entity_resource_metadata(packageId, entityIds[1])
+#' read_data_entity_resource_metadata(packageId, entityIds[1])
 #'
 read_data_entity_resource_metadata <- function(packageId, entityId, 
                                                tier = "production") {
