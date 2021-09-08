@@ -224,7 +224,7 @@ set_user_agent <- function() {
 
 #' Convert newline separated text to character vector
 #'
-#' @param txt (character) New line separated character string returned from \cod{httr::content(resp, as = "text", encoding = "UTF-8")}
+#' @param txt (character) New line separated character string returned from \code{httr::content(resp, as = "text", encoding = "UTF-8")}
 #'
 #' @return (character) \code{txt} converted to character vector
 #' 

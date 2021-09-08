@@ -7,7 +7,7 @@
 text2char(txt)
 }
 \arguments{
-\item{txt}{(character) New line separated character string returned from \cod{httr::content(resp, as = "text", encoding = "UTF-8")}}
+\item{txt}{(character) New line separated character string returned from \code{httr::content(resp, as = "text", encoding = "UTF-8")}}
 }
 \value{
 (character) \code{txt} converted to character vector
