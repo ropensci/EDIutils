@@ -4,26 +4,21 @@
 \alias{is_authorized}
 \title{Is authorized}
 \usage{
-is_authorized(package.id, environment = "production")
+is_authorized(resourceId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{resourceId}{(character) Identifier of an EDI Repository resource}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-("xml_document" "xml_node") XML containing the the 
-    data package ID, data package title, and data package URL.
+(logical) Whether the user as defined in the authentication token has permission to read the specified data package resource
 }
 \description{
-Is Authorized (to read resource) operation, determines whether the user as defined in the authentication token has permission to read the specified data package resource.
+Is authorized
 }
-\details{
-GET : https://pasta.lternet.edu/package/reservations/eml
-
-GET : https://pasta.lternet.edu/package/authz?resourceId={resource identifier}
+\note{
+User authentication is required (see \code{login()})
 }
 \examples{
 

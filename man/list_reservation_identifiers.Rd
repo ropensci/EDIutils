@@ -4,27 +4,20 @@
 \alias{list_reservation_identifiers}
 \title{List reservation identifiers}
 \usage{
-list_reservation_identifiers(type, limit = 5, environment = "production")
+list_reservation_identifiers(scope, tier = "production")
 }
 \arguments{
-\item{type}{(character) Upload type. Can be: "insert" or "update".}
+\item{scope}{(character) Scope of data package (i.e. the first component of a \code{packageId})}
 
-\item{limit}{(integer) Maximum limit.}
-
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-('xml_document' 'xml_node') dataPackageUploads 
-    metadata.
+(numeric) The set of identifiers for the specified scope that end users have actively reserved for future upload
 }
 \description{
-List Reservation Identifiers operation, lists the set of numeric identifiers for the specified scope that end users have actively reserved for future upload to PASTA. The numeric identifiers are listed one per line.
-}
-\details{
-GET : https://pasta.lternet.edu/package/reservations/eml/{scope}
+List reservation identifiers
 }
 \examples{
-# Using curl to list reservation identifiers for a specified scope:
+list_reservation_identifiers("edi")
 
 }

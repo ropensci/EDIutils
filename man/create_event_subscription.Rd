@@ -4,37 +4,16 @@
 \alias{create_event_subscription}
 \title{Create event subscription}
 \usage{
-create_event_subscription(
-  path,
-  package.id,
-  environment,
-  user.id,
-  user.pass,
-  affiliation
-)
+create_event_subscription(tier = "production")
 }
 \arguments{
-\item{path}{(character) Path to the data package EML file.}
-
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
-
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
-
-\item{user.id}{(character) Identification of user creating the data package.}
-
-\item{user.pass}{(character) Password corresponding with the user.id argument supplied
-above.}
-
-\item{affiliation}{(character) Affiliation corresponding with the user.id argument supplied
-above. Can be: 'LTER' or 'EDI'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+}
+\value{
+A new event subscription
 }
 \description{
-Create Event Subscription creates a new event subscription.
-}
-\details{
-POST : https://pasta.lternet.edu/package/event/eml
+Create event subscription
 }
 \examples{
 

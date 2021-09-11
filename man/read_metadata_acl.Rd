@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_metadata_acl.R
 \name{read_metadata_acl}
 \alias{read_metadata_acl}
-\title{Read metadata Access Control List}
+\title{Read metadata access control list}
 \usage{
 read_metadata_acl(packageId, tier = "production")
 }
@@ -12,10 +12,13 @@ read_metadata_acl(packageId, tier = "production")
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(xml_document) Metadata ACL resource. Please note: only a very limited set of users are authorized to use this service method.
+(xml_document) Metadata access control list. Please note: only a very limited set of users are authorized to use this service method.
 }
 \description{
-Read metadata Access Control List
+Read metadata access control list
+}
+\note{
+User authentication is required (see \code{login()})
 }
 \examples{
 

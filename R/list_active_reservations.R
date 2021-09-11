@@ -1,45 +1,19 @@
 #' List active reservations
 #'
-#' @description List Active Reservations operation, lists the set of data package identifiers that users have actively reserved in PASTA. Note that data package identifiers that have been successfully uploaded into PASTA are no longer considered active reservations and thus are not included in this list.
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     ("xml_document" "xml_node") XML containing the the 
-#'     data package ID, data package title, and data package URL.
-#'
-#' @details GET : https://pasta.lternet.edu/package/reservations/eml
+#' @return (xml_document) The set of data package identifiers that users have actively reserved. Note that data package identifiers that have been successfully uploaded are no longer considered active reservations and thus are not included in this list.
 #'
 #' @export
 #' 
 #' @examples 
-#' # Using curl to list active reservations:
+#' list_active_reservations()
 #'
-list_active_reservations <- function(package.id, environment = 'production'){
-  
-  message(paste('Retrieving descendants of data package', package.id))
-  
+list_active_reservations <- function(tier = "production"){
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/descendants/eml/',
-      stringr::str_replace_all(package.id, '\\.', '/')
-    )
-  )
-  
-  output <- httr::content(
-    r,
-    as = 'parsed',
-    encoding = 'UTF-8'
-  )
-
-  output
-  
+  url <- paste0(url_env(tier), ".lternet.edu/package/reservations/eml")
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  httr::stop_for_status(resp)
+  parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
+  return(parsed)
 }

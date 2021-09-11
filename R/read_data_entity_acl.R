@@ -18,7 +18,9 @@ read_data_entity_acl <- function(packageId, entityId, tier = "production") {
   url <- paste0(url_env(tier), ".lternet.edu/package/data/acl/eml/",
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 entityId)
-  
+  cookie <- bake_cookie()
+  resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
+  httr::stop_for_status(resp)
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
   httr::stop_for_status(resp)
   parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))

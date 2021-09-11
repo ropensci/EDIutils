@@ -1,46 +1,21 @@
 #' List reservation identifiers
+#' 
+#' @param scope (character) Scope of data package (i.e. the first component of a \code{packageId})
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @description List Reservation Identifiers operation, lists the set of numeric identifiers for the specified scope that end users have actively reserved for future upload to PASTA. The numeric identifiers are listed one per line.
-#'
-#' @param type
-#'     (character) Upload type. Can be: "insert" or "update".
-#' @param limit
-#'     (integer) Maximum limit.
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     ('xml_document' 'xml_node') dataPackageUploads 
-#'     metadata.
-#' @details GET : https://pasta.lternet.edu/package/reservations/eml/{scope}
+#' @return (numeric) The set of identifiers for the specified scope that end users have actively reserved for future upload
+#' 
 #' @export
+#' 
 #' @examples 
-#' # Using curl to list reservation identifiers for a specified scope:
+#' list_reservation_identifiers("edi")
 #'
-list_reservation_identifiers <- function(type, limit = 5, environment = 'production'){
-  
-  message(paste('Retrieving recent uploads of type', type))
-  
+list_reservation_identifiers <- function(scope, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/uploads/eml',
-      '?type=',
-      type,
-      '&limit=',
-      limit
-    )
-  )
-  
-  output <- httr::content(
-    r,
-    as = 'parsed',
-    encoding = 'UTF-8'
-  )
-  
-  output
-  
+  url <- paste0(url_env(tier), ".lternet.edu/package/reservations/eml/", scope)
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  httr::stop_for_status(resp)
+  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
+  res <- text2char(parsed)
+  return(as.numeric(res))
 }

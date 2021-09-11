@@ -4,24 +4,18 @@
 \alias{get_event_subscription_schema}
 \title{Get event subscription schema}
 \usage{
-get_event_subscription_schema(package.id, environment = "production")
+get_event_subscription_schema(tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
-
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-("xml_document" "xml_node") EML metadata.
+(xml_document) Schema for event subscription creation request entities
 }
 \description{
-Get Event Subscription Schema operation, returns the XML schema for event subscription creation request entities.
-}
-\details{
-GET : https://pasta.lternet.edu/package/event/eml/schema
+Get event subscription schema
 }
 \examples{
+get_event_subscription_schema()
 
 }

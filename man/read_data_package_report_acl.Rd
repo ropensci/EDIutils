@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_data_package_report_acl.R
 \name{read_data_package_report_acl}
 \alias{read_data_package_report_acl}
-\title{Read data package report Access Control List}
+\title{Read data package report access control list}
 \usage{
 read_data_package_report_acl(packageId, tier = "production")
 }
@@ -12,10 +12,13 @@ read_data_package_report_acl(packageId, tier = "production")
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(xml_document) The ACL
+(xml_document) The access control list
 }
 \description{
-Read data package report Access Control List
+Read data package report access control list
+}
+\note{
+User authentication is required (see \code{login()})
 }
 \examples{
 

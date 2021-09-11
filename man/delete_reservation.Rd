@@ -4,32 +4,29 @@
 \alias{delete_reservation}
 \title{Delete reservation}
 \usage{
-delete_reservation(scope, environment, user.id, user.pass, affiliation)
+delete_reservation(scope, identifier, tier = "production")
 }
 \arguments{
-\item{scope}{(character) Scope of identifier to be reserved (e.g. edi, knb-lter-ntl).}
+\item{scope}{(character) Scope of data package (i.e. the first component of a \code{packageId})}
 
-\item{environment}{(character) Data repository environment in which to reserve the
-identifier. Can be: 'development', 'staging', 'production'.}
+\item{identifier}{(numeric) Identifier of data package (i.e. the second component of a \code{packageId})}
 
-\item{user.id}{(character) Identification of user reserving the identifier.}
-
-\item{user.pass}{(character) Password corresponding with the user.id argument supplied
-above.}
-
-\item{affiliation}{(character) Affiliation corresponding with the user.id argument supplied
-above. Can be: 'LTER' or 'EDI'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Package identifier.
+(numeric) The deleted reservation identifier value
 }
 \description{
-Delete Reservation operation, deletes an existing reservation from PASTA. The same user who originally authenticated to create the reservation must authenticate to delete it, otherwise a “401 Unauthorized” response is returned. When successfully deleted, a “200 OK” response is returned, and the integer value of the deleted reservation identifier value is returned in the web service response body.
+Delete reservation
 }
-\details{
-DELETE : https://pasta.lternet.edu/package/reservations/eml/{scope}/{identifier}
+\note{
+User authentication is required (see \code{login()}). The same user who originally authenticated to create the reservation must authenticate to delete it.
 }
 \examples{
-# Using curl to delete an existing reservation for scope (“edi”) and identifier (“12”):
+\dontrun{
+login()
+identifier <- create_reservation("edi")
+delete_reservation("edi", identifier)
+}
 
 }

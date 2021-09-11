@@ -123,7 +123,8 @@ validate_arguments <- function(x) {
     }
   }
   
-  # TODO Implement check on scope
+  # TODO Implement check on resourceId
+  
   
   # revision
   if ('revision' %in% names(x)){
@@ -132,6 +133,8 @@ validate_arguments <- function(x) {
       stop("Input 'revision' is not an integer value.", call. = FALSE)
     }
   }
+  
+  # TODO Implement check on scope
   
   # tier
   if ('tier' %in% names(x)){

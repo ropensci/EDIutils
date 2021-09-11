@@ -1,37 +1,29 @@
 #' Delete reservation
 #'
-#' @description Delete Reservation operation, deletes an existing reservation from PASTA. The same user who originally authenticated to create the reservation must authenticate to delete it, otherwise a “401 Unauthorized” response is returned. When successfully deleted, a “200 OK” response is returned, and the integer value of the deleted reservation identifier value is returned in the web service response body.
-#'
-#' @param scope
-#'     (character) Scope of identifier to be reserved (e.g. edi, knb-lter-ntl).
-#' @param environment
-#'     (character) Data repository environment in which to reserve the
-#'     identifier. Can be: 'development', 'staging', 'production'.
-#' @param user.id
-#'     (character) Identification of user reserving the identifier.
-#' @param user.pass
-#'     (character) Password corresponding with the user.id argument supplied
-#'     above.
-#' @param affiliation
-#'     (character) Affiliation corresponding with the user.id argument supplied
-#'     above. Can be: 'LTER' or 'EDI'.
-#' @details DELETE : https://pasta.lternet.edu/package/reservations/eml/{scope}/{identifier}
-#' @return
-#'     (character) Package identifier.
+#' @param scope (character) Scope of data package (i.e. the first component of a \code{packageId})
+#' @param identifier (numeric) Identifier of data package (i.e. the second component of a \code{packageId})
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' 
+#' @note User authentication is required (see \code{login()}). The same user who originally authenticated to create the reservation must authenticate to delete it.
+#'     
+#' @return (numeric) The deleted reservation identifier value
+#' 
 #' @export
+#' 
 #' @examples 
-#' # Using curl to delete an existing reservation for scope (“edi”) and identifier (“12”):
+#' \dontrun{
+#' login()
+#' identifier <- create_reservation("edi")
+#' delete_reservation("edi", identifier)
+#' }
 #'
-delete_reservation <- function(scope, environment, user.id, user.pass, affiliation){
-
+delete_reservation <- function(scope, identifier, tier = "production") {
   validate_arguments(x = as.list(environment()))
-
-  poll_pkg_reserve_id(
-    httr::POST(
-      url = paste0(url_env(environment), 
-                   '.lternet.edu/package/reservations/eml/', scope),
-      config = httr::authenticate(auth_key(user.id, affiliation), user.pass)
-    )
-  )
-
+  url <- paste0(url_env(tier), ".lternet.edu/package/reservations/eml/", scope,
+                "/", identifier)
+  cookie <- bake_cookie()
+  resp <- httr::DELETE(url, set_user_agent(), cookie, handle = httr::handle(""))
+  httr::stop_for_status(resp)
+  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
+  return(as.numeric(parsed))
 }
