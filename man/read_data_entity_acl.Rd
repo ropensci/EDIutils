@@ -4,14 +4,14 @@
 \alias{read_data_entity_acl}
 \title{Read data entity access control list}
 \usage{
-read_data_entity_acl(package.id, entityId, environment = "production")
+read_data_entity_acl(packageId, entityId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{entityId}{(character) Data entity identifier (e.g. 5c224a0e74547b14006272064dc869b1)}
+\item{entityId}{(character) Data entity identifier}
 
-\item{environment}{(character) PASTA environment to which this operation will be applied. Can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
 (xml_document) The access control list for the data entity. Please note: only a very limited set of users are authorized to use this service method.
@@ -19,8 +19,8 @@ read_data_entity_acl(package.id, entityId, environment = "production")
 \description{
 Read data entity access control list
 }
-\details{
-GET : https://pasta.lternet.edu/package/data/acl/eml/{scope}/{identifier}/{revision}/{entityId}
+\note{
+User authentication is required (see \code{login()})
 }
 \examples{
 

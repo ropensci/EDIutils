@@ -6,6 +6,24 @@
 #'
 validate_arguments <- function(x) {
 
+  # config
+  if ("config" %in% names(x)) {
+    if (!is.null(x[["config"]])) {
+      txt <- readLines(x[["config"]], warn = FALSE)
+      pattern <- "(?<==).*"
+      i <- grepl("userId", txt)
+      name <- trimws(regmatches(txt[i], regexpr(pattern, txt[i], perl = TRUE)))
+      if (length(name) == 0) {
+        stop("Cannot parse 'userId' from config.txt.", call. = FALSE)
+      }
+      i <- grepl("userPass", txt)
+      pass <- trimws(regmatches(txt[i], regexpr(pattern, txt[i], perl = TRUE)))
+      if (length(name) == 0) {
+        stop("Cannot parse 'userPass' from config.txt.", call. = FALSE)
+      }
+    }
+  }
+  
   # doi
   if ("doi" %in% names(x)) {
     parts <- unlist(strsplit(x[["doi"]], "/"))

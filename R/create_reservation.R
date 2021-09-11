@@ -1,37 +1,26 @@
 #' Create reservation
 #'
-#' @description Create Reservation operation, creates a new reservation in PASTA for the specified user on the next reservable identifier for the specified scope. The integer value of the reserved identifier (as assigned by PASTA) is returned in the web service response body. User authentication is required.
-#'
-#' @param scope
-#'     (character) Scope of identifier to be reserved (e.g. edi, knb-lter-ntl).
-#' @param environment
-#'     (character) Data repository environment in which to reserve the
-#'     identifier. Can be: 'development', 'staging', 'production'.
-#' @param user.id
-#'     (character) Identification of user reserving the identifier.
-#' @param user.pass
-#'     (character) Password corresponding with the user.id argument supplied
-#'     above.
-#' @param affiliation
-#'     (character) Affiliation corresponding with the user.id argument supplied
-#'     above. Can be: 'LTER' or 'EDI'.
-#' @details POST : https://pasta.lternet.edu/package/reservations/eml/{scope}
-#' @return
-#'     (character) Package identifier.
+#' @param scope (character) Scope of data package (i.e. the first component of a \code{packageId})
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' 
+#' @return (numeric) Identifier of reserved data package (i.e. the second component of a \code{packageId})
+#' 
+#' @note User authentication is required (see \code{login()})
+#' 
 #' @export
+#' 
 #' @examples 
-#' # Using curl to reserve the next available identifier for the specified scope (“edi”):
+#' \dontrun{
+#' login()
+#' create_reservation("edi")
+#' }
 #'
-create_reservation <- function(scope, environment, user.id, user.pass, affiliation){
-
+create_reservation <- function(scope, tier = "production") {
   validate_arguments(x = as.list(environment()))
-
-  poll_pkg_reserve_id(
-    httr::POST(
-      url = paste0(url_env(environment), 
-                   '.lternet.edu/package/reservations/eml/', scope),
-      config = httr::authenticate(auth_key(user.id, affiliation), user.pass)
-    )
-  )
-
+  url <- paste0(url_env(tier), ".lternet.edu/package/reservations/eml/", scope)
+  cookie <- bake_cookie()
+  resp <- httr::POST(url, set_user_agent(), cookie, handle = httr::handle(""))
+  httr::stop_for_status(resp)
+  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
+  return(as.numeric(parsed))
 }

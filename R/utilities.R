@@ -31,6 +31,29 @@ auth_key <- function(user.id, affiliation){
 
 
 
+#' Create authentication cookie for EDI Repository Gatekeeper
+#'
+#' @return (request) The request object returned by \code{httr::set_cookies()} with the EDI Repository authentication token baked in. Yum!
+#'
+bake_cookie <- function() {
+  token_file <- paste0(tempdir(), "/edi_token.txt")
+  if (!file.exists(token_file)) {
+    stop("Authentication token not found. Run 'login()' then try again.", 
+         call. = FALSE)
+  }
+  token <- readLines(token_file, encoding = "UTF-8")
+  cookie <- httr::set_cookies(`auth-token` = token)
+  cookie$options$cookie <- curl::curl_unescape(cookie$options$cookie)
+  return(cookie)
+}
+
+
+
+
+
+
+
+
 #' Collapse EML node to string then compare
 #'
 #' @param newest (xml_document, xml_node) Newest version of an EML document
@@ -213,6 +236,23 @@ poll_pkg_reserve_id <- function(r){
 set_user_agent <- function() {
   res <- httr::user_agent("https://github.com/EDIorg/EDIutils")
   return(res)
+}
+
+
+
+
+
+
+
+#' Skip tests when logged out
+#'
+#' @details Facilitates testing of functions requiring authentication
+#' 
+skip_if_logged_out <- function() {
+  token_file <- paste0(tempdir(), "/edi_token.txt")
+  if (!file.exists(token_file)) {
+    skip("Not run when logged out")
+  }
 }
 
 

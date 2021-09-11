@@ -4,32 +4,26 @@
 \alias{create_reservation}
 \title{Create reservation}
 \usage{
-create_reservation(scope, environment, user.id, user.pass, affiliation)
+create_reservation(scope, tier = "production")
 }
 \arguments{
-\item{scope}{(character) Scope of identifier to be reserved (e.g. edi, knb-lter-ntl).}
+\item{scope}{(character) Scope of data package (i.e. the first component of a \code{packageId})}
 
-\item{environment}{(character) Data repository environment in which to reserve the
-identifier. Can be: 'development', 'staging', 'production'.}
-
-\item{user.id}{(character) Identification of user reserving the identifier.}
-
-\item{user.pass}{(character) Password corresponding with the user.id argument supplied
-above.}
-
-\item{affiliation}{(character) Affiliation corresponding with the user.id argument supplied
-above. Can be: 'LTER' or 'EDI'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Package identifier.
+(numeric) Identifier of reserved data package (i.e. the second component of a \code{packageId})
 }
 \description{
-Create Reservation operation, creates a new reservation in PASTA for the specified user on the next reservable identifier for the specified scope. The integer value of the reserved identifier (as assigned by PASTA) is returned in the web service response body. User authentication is required.
+Create reservation
 }
-\details{
-POST : https://pasta.lternet.edu/package/reservations/eml/{scope}
+\note{
+User authentication is required (see \code{login()})
 }
 \examples{
-# Using curl to reserve the next available identifier for the specified scope (“edi”):
+\dontrun{
+login()
+create_reservation("edi")
+}
 
 }

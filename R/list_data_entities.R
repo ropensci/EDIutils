@@ -14,7 +14,7 @@ list_data_entities <- function(packageId, tier = "production") {
   validate_arguments(x = as.list(environment()))
   url <- paste0(url_env(tier), ".lternet.edu/package/data/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
-  resp <- httr::GET(url, set_user_agent())
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   httr::stop_for_status(resp)
   parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
   res <- text2char(parsed)
