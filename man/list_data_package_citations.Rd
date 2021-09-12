@@ -4,25 +4,20 @@
 \alias{list_data_package_citations}
 \title{List data package citations}
 \usage{
-list_data_package_citations(package.id, environment = "production")
+list_data_package_citations(packageId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-('XMLInternalDocument' 'XMLAbstractDocument') journalCitations metadata
+(xml_document) A list of journal citations
 }
 \description{
-List Data Package Citations operation, specifying the data package scope, identifier, and revision values to match in the URI. Returns a list of journal citations as an XML metadata document.
-}
-\details{
-GET : https://pasta.lternet.edu/package/citations/eml/{scope}/{identifier}/{revision}
+List data package citations
 }
 \examples{
-# Using curl to access the list of journal citations for the data package with package ID “edi.1000.1”
+
 
 }

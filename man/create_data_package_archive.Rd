@@ -2,39 +2,23 @@
 % Please edit documentation in R/create_data_package_archive.R
 \name{create_data_package_archive}
 \alias{create_data_package_archive}
-\title{Create data package archive}
+\title{Create data package archive (zip)}
 \usage{
-create_data_package_archive(
-  path,
-  package.id,
-  environment,
-  user.id,
-  user.pass,
-  affiliation
-)
+create_data_package_archive(packageId, tier = "production")
 }
 \arguments{
-\item{path}{(character) Path to the data package EML file.}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
-
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
-
-\item{user.id}{(character) Identification of user creating the data package.}
-
-\item{user.pass}{(character) Password corresponding with the user.id argument supplied
-above.}
-
-\item{affiliation}{(character) Affiliation corresponding with the user.id argument supplied
-above. Can be: 'LTER' or 'EDI'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+}
+\value{
+(character) A transaction identifier
 }
 \description{
-Create Data Package Archive (Zip) operation, specifying the scope, identifier, and revision of the data package to be Zipped in the URI, and returning a transaction identifier in the response message body as plain text; the transaction identifier may be used in a subsequent call to Read Data Package Error to determine the operation status or to Read Data Package Archive to obtain the Zip archive.
+Create data package archive (zip)
 }
 \details{
-POST : https://pasta.lternet.edu/package/archive/eml/{scope}/{identifier}/{revision}
+The transaction identifier may be used in a subsequent call to \code{read_data_package_error()} to determine the operation status or to \code{read_data_package_archive()} to obtain the Zip archive.
 }
 \examples{
 

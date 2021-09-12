@@ -1,41 +1,22 @@
 #' List data package citations
 #'
-#' @description List Data Package Citations operation, specifying the data package scope, identifier, and revision values to match in the URI. Returns a list of journal citations as an XML metadata document.
+#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     ('XMLInternalDocument' 'XMLAbstractDocument') journalCitations metadata
-#' @details GET : https://pasta.lternet.edu/package/citations/eml/{scope}/{identifier}/{revision}
+#' @return (xml_document) A list of journal citations
+#' 
 #' @export
+#' 
 #' @examples 
-#' # Using curl to access the list of journal citations for the data package with package ID “edi.1000.1”
+#' 
 #'
-list_data_package_citations <- function(package.id, environment = 'production'){
-  
-  message(paste('Retrieving journal citations for package', package.id))
-  
+list_data_package_citations <- function(packageId, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/citations/eml/',
-      stringr::str_replace_all(package.id, '\\.', '/')
-    )
-  )
-  
-  output <- httr::content(
-    r,
-    as = 'parsed',
-    encoding = 'UTF-8'
-  )
-  
-  output
-  
+  browser()
+  url <- paste0(url_env(tier), ".lternet.edu/package/descendants/eml/",
+                paste(parse_packageId(packageId), collapse = "/"))
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  httr::stop_for_status(resp)
+  parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
+  return(parsed)
 }

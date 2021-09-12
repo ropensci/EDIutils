@@ -4,17 +4,15 @@
 \alias{read_data_package_error}
 \title{Read data package error}
 \usage{
-read_data_package_error(packageId, transaction, tier = "production")
+read_data_package_error(transaction, tier = "production")
 }
 \arguments{
-\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
-
-\item{transaction}{(character) Transaction identifier returned for each data package evaluate, upload, and delete operation}
+\item{transaction}{(character) Transaction identifier}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Data package error
+(character) Result of operation
 }
 \description{
 Read data package error

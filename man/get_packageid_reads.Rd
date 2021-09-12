@@ -4,31 +4,20 @@
 \alias{get_packageid_reads}
 \title{Get package ID reads}
 \usage{
-get_packageid_reads(attr.name, package.id, environment = "production")
+get_packageid_reads(packageId, tier = "production")
 }
 \arguments{
-\item{attr.name}{(character) Attribute name}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{package.id}{(character) Data package identifier (e.g. knb-lter-cap.627.3) in the 
-EDI Data Repository.}
-
-\item{evironment}{(character) Repository environment in which the L0 and L1 exist. Some repositories have development, staging, and production environments which are distinct from one another. This argument allows execution for the \code{update_L1} workflow within the context of one of these environments. Default is "production".}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(list) A named vector with these attribute elements:
-    \itemize{
-        \item{name} <attributeName>
-        \item{definition} <attributeDefinition> 
-        \item{unit} <standardUnit> or <customUnit>
-    }
+(xml_document) Summary of all the successful reads (total reads and non-robot reads) of \code{packageId}
 }
 \description{
-Returns an XML-formatted list that summarizes all the successful reads (total reads and non-robot reads) for all the resources of a given PASTA package ID, where a package ID is of the format “scope.identifier.revision”.
-}
-\details{
-GET : https://pasta.lternet.edu/audit/reads/{scope}/{identifier}/{revision}
+Get package ID reads
 }
 \examples{
-# Using curl to list resource reads for package identifier “knb-lter-nwk.3120.2”.:
+get_packageid_reads("knb-lter-sgs.817.17")
 
 }

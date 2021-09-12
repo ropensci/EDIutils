@@ -4,37 +4,16 @@
 \alias{create_audit_record}
 \title{Create audit record}
 \usage{
-create_audit_record(
-  path,
-  package.id,
-  environment,
-  user.id,
-  user.pass,
-  affiliation
-)
+create_audit_record(tier = "production")
 }
 \arguments{
-\item{path}{(character) Path to the data package EML file.}
-
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
-
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
-
-\item{user.id}{(character) Identification of user creating the data package.}
-
-\item{user.pass}{(character) Password corresponding with the user.id argument supplied
-above.}
-
-\item{affiliation}{(character) Affiliation corresponding with the user.id argument supplied
-above. Can be: 'LTER' or 'EDI'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+}
+\value{
+New logged entry in the Audit Manager’s logging database
 }
 \description{
-Creates a new logged entry in the Audit Manager’s logging database.
-}
-\details{
-POST : https://pasta.lternet.edu/audit
+Create audit record
 }
 \examples{
 

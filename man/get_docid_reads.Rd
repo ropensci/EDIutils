@@ -4,31 +4,22 @@
 \alias{get_docid_reads}
 \title{Get doc ID reads}
 \usage{
-get_docid_reads(attr.name, package.id, environment = "production")
+get_docid_reads(scope, identifier, tier = "production")
 }
 \arguments{
-\item{attr.name}{(character) Attribute name}
+\item{scope}{(character) Scope of data package (i.e. the first component of a \code{packageId})}
 
-\item{package.id}{(character) Data package identifier (e.g. knb-lter-cap.627.3) in the 
-EDI Data Repository.}
+\item{identifier}{(numeric) Identifier of data package (i.e. the second component of a \code{packageId})}
 
-\item{evironment}{(character) Repository environment in which the L0 and L1 exist. Some repositories have development, staging, and production environments which are distinct from one another. This argument allows execution for the \code{update_L1} workflow within the context of one of these environments. Default is "production".}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(list) A named vector with these attribute elements:
-    \itemize{
-        \item{name} <attributeName>
-        \item{definition} <attributeDefinition> 
-        \item{unit} <standardUnit> or <customUnit>
-    }
+(xml_document) Summary of all the successful reads (total reads and non-robot reads) for all the resources of a given \code{scope} and \code{identifier}.
 }
 \description{
-Returns an XML-formatted list that summarizes all the successful reads (total reads and non-robot reads) for all the resources of a given PASTA document ID, where a document ID is of the format “scope.identifier” (excludes revision).
-}
-\details{
-GET : https://pasta.lternet.edu/audit/reads/{scope}/{identifier}
+Get doc ID reads
 }
 \examples{
-# Using curl to list resource reads for document identifier “knb-lter-nwk.3120”. Note that results from multiple revisions of “knb-lter-nwk.3120” are included in the output.:
+get_docid_reads("knb-lter-sgs", "817")
 
 }
