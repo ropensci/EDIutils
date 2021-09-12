@@ -18,6 +18,6 @@ list_data_package_citations(packageId, tier = "production")
 List data package citations
 }
 \examples{
-
+list_data_package_citations("edi.845.1")
 
 }

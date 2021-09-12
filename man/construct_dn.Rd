@@ -4,7 +4,7 @@
 \alias{construct_dn}
 \title{Construct a users distinguished name}
 \usage{
-construct_dn(userId, ou)
+construct_dn(userId, ou = "EDI")
 }
 \arguments{
 \item{userId}{(character) PASTA userId}
@@ -18,6 +18,6 @@ construct_dn(userId, ou)
 Construct a users distinguished name
 }
 \examples{
-construct_dn("csmith", "EDI")
+construct_dn("csmith")
 
 }

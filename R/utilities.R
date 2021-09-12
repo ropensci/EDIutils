@@ -132,9 +132,9 @@ convert_missing_value <- function(v, code, type) {
 #' @export
 #' 
 #' @examples 
-#' construct_dn("csmith", "EDI")
+#' construct_dn("csmith")
 #' 
-construct_dn <- function(userId, ou) {
+construct_dn <- function(userId, ou = "EDI") {
   ou <- toupper(ou)
   validate_arguments(x = as.list(environment()))
   res <- paste0("uid=", userId, ",o=", ou, ",")

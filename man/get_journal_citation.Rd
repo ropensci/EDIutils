@@ -4,25 +4,24 @@
 \alias{get_journal_citation}
 \title{Get journal citation}
 \usage{
-get_journal_citation(package.id, environment = "production")
+get_journal_citation(journalCitationId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{journalCitationId}{(numeric) Journal citation identifier}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-("xml_document" "xml_node") EML metadata.
+(xml_document) Journal citation
 }
 \description{
-Get Journal Citation operation, returns an XML metadata document for the journal citation with the specified integer ID value.
-}
-\details{
-GET : https://pasta.lternet.edu/package/citation/eml/{journalCitationId}
+Get journal citation
 }
 \examples{
-# Using curl to access the journal citation with identifier value 15:
+# Get first journal citation of data package edi.845.1
+journalCitationIds <- list_data_package_citations("edi.845.1")
+journalCitationId <- xml2::xml_text(
+  xml2::xml_find_first(citations, ".//journalCitationId"))
+get_journal_citation(journalCitationId)
 
 }

@@ -2,81 +2,64 @@
 % Please edit documentation in R/search_data_packages.R
 \name{search_data_packages}
 \alias{search_data_packages}
-\title{Search Data Packages}
+\title{Search data packages}
 \usage{
 search_data_packages(
-  path,
-  package.id,
-  environment,
-  user.id,
-  user.pass,
-  affiliation
+  query,
+  ecotrends = FALSE,
+  lter_landsat = FALSE,
+  tier = "production"
 )
 }
 \arguments{
-\item{path}{(character) Path to the data package EML file.}
+\item{query}{(character) Solr query. See details (below) for searchable fields and \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr Wiki} for how to construct a Solr query}
 
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{ecotrends}{(logical) Include "ecotrends" scope in search results.}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{lter_landsat}{(logical) Include "lter-landsat" scope in search results.}
 
-\item{user.id}{(character) Identification of user creating the data package.}
-
-\item{user.pass}{(character) Password corresponding with the user.id argument supplied
-above.}
-
-\item{affiliation}{(character) Affiliation corresponding with the user.id argument supplied
-above. Can be: 'LTER' or 'EDI'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-Search results are returned in XML format. (See examples below.)
+(xml_document) Search results
 }
 \description{
-Searches data packages in PASTA using the specified Solr query as the query parameters in the URL. Search results are returned as XML. Detailed examples of Solr queries and their corresponding search results XML are shown below.
+Searches data packages in the EDI Data Repository using the specified Solr query
 }
 \details{
-GET : https://pasta.lternet.edu/package/search/eml
+Documents in PASTA’s Solr repository can be discovered based on metadata values stored in the following list of searchable fields:
 
-Solr queries are demonstrated in the examples below.
+Single-value fields:
+\itemize{
+  \item abstract
+  \item begindate
+  \item doi
+  \item enddate
+  \item funding
+  \item geographicdescription
+  \item id
+  \item methods
+  \item packageid
+  \item pubdate
+  \item responsibleParties
+  \item scope
+  \item singledate
+  \item site
+  \item taxonomic
+  \item title
+}
 
-Note: A full discussion of Solr query syntax is beyond the scope of this document. Documentation on this topic can be found online, for example, the Apache Solr Wiki.
-
-Searchable Fields:
-
-Documents in PASTA’s Solr repository can be discovered based on metadata values stored in the following list of searchable fields: Single-value Fields:
-Single-value Fields:
- abstract
- - begindate
- - doi
- - enddate
- - funding
- - geographicdescription
- - id
- - methods
- - packageid
- - pubdate
- - responsibleParties
- - scope
- - singledate
- - site
- - taxonomic
- - title
- Multi-value Fields
- - author
- - coordinates
- - keyword
- - organization
- - projectTitle
- - relatedProjectTitle
- - timescale
+Multi-value fields:
+\itemize{
+  \item author
+  \item coordinates
+  \item keyword
+  \item organization
+  \item projectTitle
+  \item relatedProjectTitle
+  \item timescale
+}
 }
 \examples{
-# Using curl to query PASTA for all documents containing the term "Vernberg", excluding documents with scope "ecotrends" (fq=-scope:ecotrends) and also excluding documents with a scope that begins with the substring "lter-landsat" (fq=-scope:lter-landsat*). In this example, all fields for matching documents are included in the search results (fl=*)
-
-Using curl to query PASTA for all documents with scope “knb-lter-nwt” containing the terms “plant” and “nitrogen” as keywords, and limiting the returned fields to the “packageid”, “doi”, and “keyword” fields and only the first two matches (rows=2). Note that because the keyword field is a multi-value field, its elements are nested inside a parent keywords element.:
-
-Using curl to query PASTA for all documents containing the term “sediment” in the title or the term “disturbance” in the keyword field (q=title:sediment+OR+keyword:disturbance) and limiting the returned fields to the packageid and keyword (fl=packageid,keyword) with up to 1000 matches (rows=1000). Note that because the keyword field is a multi-value field, its elements are nested inside a parent keywords element.
 
 }

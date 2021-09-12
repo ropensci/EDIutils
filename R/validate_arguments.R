@@ -123,6 +123,8 @@ validate_arguments <- function(x) {
     }
   }
   
+  # TODO Implement check on journalCitationId
+  
   # TODO Implement check on resourceId
   
   

@@ -8,12 +8,11 @@
 #' @export
 #' 
 #' @examples 
-#' 
+#' list_data_package_citations("edi.845.1")
 #'
 list_data_package_citations <- function(packageId, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  browser()
-  url <- paste0(url_env(tier), ".lternet.edu/package/descendants/eml/",
+  url <- paste0(url_env(tier), ".lternet.edu/package/citations/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   httr::stop_for_status(resp)

@@ -4,24 +4,21 @@
 \alias{list_principal_owner_citations}
 \title{List principal owner citations}
 \usage{
-list_principal_owner_citations(dn, environment = "production")
+list_principal_owner_citations(principalOwner, tier = "production")
 }
 \arguments{
-\item{dn}{(character) Distinguished name (e.g. 
-'uid=csmith,o=LTER,dc=ecoinformatics,dc=org')}
+\item{principalOwner}{(character) Principal owner in the form returned by \code{construct_dn()}}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-('xml_document' 'xml_node') journalCitations metadata
+(xml_document) Journal citations metadata for all entries owned by the specified principal owner
 }
 \description{
-List Principal Owner Citations operation, returns journal citations metadata for all entries owned by the specified principal owner.
-}
-\details{
-GET : https://pasta.lternet.edu/package/citations/eml/{principalOwner}
+List principal owner citations
 }
 \examples{
-# Using curl to access the list of journal citations owned by user “ucarroll”
+principalOwner <- construct_dn("csmith")
+list_principal_owner_citations(principalOwner)
+
 }
