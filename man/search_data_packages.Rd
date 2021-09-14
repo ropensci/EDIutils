@@ -12,11 +12,11 @@ search_data_packages(
 )
 }
 \arguments{
-\item{query}{(character) Solr query. See details (below) for searchable fields and \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr Wiki} for how to construct a Solr query}
+\item{query}{(character) Solr query. See details (below) for searchable fields and \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr Wiki} for how to construct a Solr query.}
 
-\item{ecotrends}{(logical) Include "ecotrends" scope in search results.}
+\item{ecotrends}{(logical) Include "ecotrends" scope in search results. EcoTrends contains NUM_NON_UNIQUE data packages about ...}
 
-\item{lter_landsat}{(logical) Include "lter-landsat" scope in search results.}
+\item{lter_landsat}{(logical) Include "lter-landsat" scope in search results. LTER-Landsat contains NUM_NON_UNIQUE data packages about ...}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
@@ -24,10 +24,10 @@ search_data_packages(
 (xml_document) Search results
 }
 \description{
-Searches data packages in the EDI Data Repository using the specified Solr query
+Searches data packages in the EDI Data Repository using the specified Solr query. See ADD RESOURCE for constructing queries.
 }
 \details{
-Documents in PASTA’s Solr repository can be discovered based on metadata values stored in the following list of searchable fields:
+Documents in the EDI Data Repository Solr index can be discovered based on metadata values stored in the following list of searchable fields (not all EML content is queryable):
 
 Single-value fields:
 \itemize{
@@ -59,6 +59,12 @@ Multi-value fields:
   \item relatedProjectTitle
   \item timescale
 }
+
+\code{query} parser: The optimal query parser (eDisMax) is added if none are included in the query.
+TODO describe landsat and ecotrends handling
+}
+\note{
+Only the newest version of data packages are searchable (older versions are not).
 }
 \examples{
 

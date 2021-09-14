@@ -81,6 +81,8 @@ validate_arguments <- function(x) {
     }
   }
   
+  # TODO Implement check on journalCitationId
+  
   # o (LDAP; organizational unit)
   if ("o" %in% names(x)) {
     if (!x[["o"]] %in% c("LTER", "EDI")) {
@@ -123,7 +125,7 @@ validate_arguments <- function(x) {
     }
   }
   
-  # TODO Implement check on journalCitationId
+  # TODO Implement check on query
   
   # TODO Implement check on resourceId
   
