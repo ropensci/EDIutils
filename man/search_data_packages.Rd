@@ -4,19 +4,10 @@
 \alias{search_data_packages}
 \title{Search data packages}
 \usage{
-search_data_packages(
-  query,
-  ecotrends = FALSE,
-  lter_landsat = FALSE,
-  tier = "production"
-)
+search_data_packages(query, tier = "production")
 }
 \arguments{
 \item{query}{(character) Solr query. See details (below) for searchable fields and \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr Wiki} for how to construct a Solr query.}
-
-\item{ecotrends}{(logical) Include "ecotrends" scope in search results. EcoTrends contains NUM_NON_UNIQUE data packages about ...}
-
-\item{lter_landsat}{(logical) Include "lter-landsat" scope in search results. LTER-Landsat contains NUM_NON_UNIQUE data packages about ...}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
@@ -60,12 +51,27 @@ Multi-value fields:
   \item timescale
 }
 
-\code{query} parser: The optimal query parser (eDisMax) is added if none are included in the query.
-TODO describe landsat and ecotrends handling
+\code{query} parser: The optimal query parser (defType=edismax) is added to every query.
 }
 \note{
-Only the newest version of data packages are searchable (older versions are not).
+Only the newest version of data packages are searchable, older versions are not.
+
+When constructing a query note that the 15403 data packages of the \href{https://lternet.edu/the-ecotrends-project/}{ecotrends} project and 10492 data packages of the \href{https://lternet.edu/lter-remote-sensing-and-geographic-information-system-data/}{LTER Landsat} project, can be excluded from the returned results by including \code{&fq=-scope:(ecotrends+lter-landsat)} in the query string.
 }
 \examples{
+# Search for data packages containing the term "air temperature"
+query <- 'q="air+temperature"&fl=*'
+search_data_packages(query)
+
+# Search for data packages containing the term "air temperature" and returning 
+# only the packageid, title, and score of each match
+query <- 'q="air+temperature"&fl=packageid,title,score'
+search_data_packages(query)
+
+# Search for data packages containing the term "air temperature", returning 
+# only the packageid, title, score, and excluding ecotrends and lter-landsat 
+# scopes from the returned results
+query <- 'q="air+temperature"&fl=packageid,title,score&fq=-scope:(ecotrends+lter-landsat)'
+search_data_packages(query)
 
 }

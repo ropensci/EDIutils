@@ -2,8 +2,8 @@ reference:
   - title: Upload and Evaluation
     desc: Describes web service methods for uploading (creating or updating) and evaluating data packages.
     contents:
-    - create_data_package
     - evaluate_data_package
+    - create_data_package
     - update_data_package
     
   - title: Browse and Discovery

@@ -1,87 +1,36 @@
 #' Evaluate data package
 #'
-#' @description Evaluate Data Package operation, specifying the EML document describing the data package to be evaluated in the request message body, and returning a transaction identifier in the response message body as plain text; the transaction identifier may be used in a subsequent call to Read Data Package Error to determine the operation status or to Read Evaluate Report to obtain the evaluate quality report.
+#' @param eml (character) Full path to the EML file to be evaluated
+#' @param useChecksum (logical) Whether to to use an existing copy of the data entities from a previous revision of the data package (see details below).
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #' 
-#' An optional query parameter, “useChecksum”, can be appended to the URL. When specified, the useChecksum query parameter directs the server to determine whether it can use an existing copy of a data entity from a previous revision of the data package based on matching a metadata-documented checksum value (MD5 or SHA-1) to the checksum of the existing copy. If a match is found, the server will skip the upload of the data entity from the remote URL and instead use its matching copy.
+#' @param transaction (character) Transaction identifier. Use \code{check_evaluation_status()} to check if evaluation has completed and \code{read_evaluate_report()} to read the report.
 #' 
-#' Please Note: Specifying “useChecksum” can save time by eliminating data uploads, but clients should take care to ensure that metadata-documented checksum values are accurate and up to date.
-#'
-#' @param path
-#'     (character) Path to the data package EML file.
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.4').
-#' @param environment
-#'     (character) Data repository environment to perform the evaluation in.
-#'     Can be: 'development', 'staging', 'production'.
-#' @param user.id
-#'     (character) Identification of user performing the evaluation.
-#' @param user.pass
-#'     (character) Password corresponding with the user.id argument supplied
-#'     above.
-#' @param affiliation
-#'     (character) Affiliation corresponding with the user.id argument supplied
-#'     above. Can be: 'LTER' or 'EDI'.
-#'     
-#' @details POST : https://pasta.lternet.edu/package/evaluate/eml
+#' @note User authentication is required (see \code{login()}). 
+#'           
+#' @details Each data entity described in \code{eml} must be accessible to the EDI Data Repository through URLs listed in the \code{eml} at the XPath ".//physical/distribution/online/url". This URL should be static and not present the EDI Data Repository with any redirects, otherwise the data entity will not be accessible.
+#' 
+#' An optional query parameter, "useChecksum", can be appended to the URL. When specified, the useChecksum query parameter directs the repository to determine whether it can use an existing copy of a data entity from a previous revision of the data package based on matching a metadata-documented checksum value (MD5 or SHA-1) to the checksum of the existing copy. If a match is found, the repository will skip the upload of the data entity from the remote URL and instead use its matching copy. Specifying "useChecksum" can save time by eliminating data uploads, but clients should take care to ensure that metadata-documented checksum values are accurate and up to date.
 #' 
 #' @export
 #' 
 #' @examples 
+#' \dontrun{
+#' path <- "/Users/me/Documents/edi.468.1.xml"
+#' evaluate_data_package(path)
+#' }
 #'
-evaluate_data_package <- function(path, package.id, environment, user.id, user.pass,
-                         affiliation){
-
+evaluate_data_package <- function(eml, useChecksum = FALSE, tier = "production") {
+  # TODO implement useChecsum
   validate_arguments(x = as.list(environment()))
-
-  # Place request
-  r <- httr::POST(
-    url = paste0(url_env(environment), '.lternet.edu/package/evaluate/eml'),
-    config = httr::authenticate(auth_key(user.id, affiliation), user.pass),
-    body = httr::upload_file(paste0(path, '/', package.id, '.xml'))
-  )
-
-  # Enter polling loop
-  if (r$status_code == '202'){
-    transaction_id <- httr::content(r, as = 'text', encoding = 'UTF-8')
-    while (TRUE){
-      Sys.sleep(2)
-      r <- httr::GET(
-        url = paste0(url_env(environment), '.lternet.edu/package/evaluate/report/eml/',
-                     transaction_id),
-        config = httr::authenticate(auth_key(user.id, affiliation), user.pass)
-      )
-      if (r$status_code == '200'){
-        r_content <- httr::content(r, type = 'text', encoding = 'UTF-8')
-        check_status <- unlist(
-          stringr::str_extract_all(r_content, '[:alpha:]+(?=</status>)'))
-        check_datetime <- unlist(
-          stringr::str_extract_all(
-            r_content, '(?<=<creationDate>)[:graph:]+(?=</creationDate>)'))
-        n_valid <- as.character(sum(check_status == 'valid'))
-        n_warn <- as.character(sum(check_status == 'warn'))
-        n_error <- as.character(sum(check_status == 'error'))
-        n_info <- as.character(sum(check_status == 'info'))
-        message(paste0(
-          'EVALUATE RESULTS\n',
-          'Package Id: ', package.id, '\n',
-          'Was Evaluated: Yes\n',
-          'Report: ', paste0(url_env(environment),
-                             '.lternet.edu/package/evaluate/report/eml/',
-                             transaction_id), '\n',
-          'Creation Date:', check_datetime, '\n',
-          'Total Quality Checks: ', length(check_status), '\n',
-          'Valid: ', n_valid, '\n',
-          'Info: ', n_info, '\n',
-          'Warn: ', n_warn, '\n',
-          'Error: ', n_error, '\n'
-          )
-        )
-        break
-      }
-    }
-  } else {
-    stop('Error evaluating package.')
-  }
-
+  url <- paste0(url_env(tier), ".lternet.edu/package/evaluate/eml")
+  cookie <- bake_cookie()
+  resp <- httr::POST(url, 
+                     set_user_agent(), 
+                     cookie, 
+                     handle = httr::handle(""), 
+                     body = httr::upload_file(eml))
+  httr::stop_for_status(resp)
+  transaction <- httr::content(resp, as = "text", encoding = "UTF-8")
+  return(transaction)
 }

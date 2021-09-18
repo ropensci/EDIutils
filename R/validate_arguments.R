@@ -37,6 +37,8 @@ validate_arguments <- function(x) {
     }
   }
   
+  # TODO Implement check on eml
+  
   # entityId
   if ("entityId" %in% names(x)) {
     pattern <- "[0-9a-z]{32}"
