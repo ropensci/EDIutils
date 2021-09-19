@@ -7,7 +7,7 @@
 read_evaluate_report(transaction, html = FALSE, tier = "production")
 }
 \arguments{
-\item{transaction}{(character) Transaction identifier returned for each data package evaluate, upload, and delete operation}
+\item{transaction}{(character) Transaction identifier}
 
 \item{html}{(logical) Return result in HTML format?}
 
@@ -19,6 +19,18 @@ read_evaluate_report(transaction, html = FALSE, tier = "production")
 \description{
 Read evaluate report
 }
+\note{
+User authentication is required (see \code{login()})
+}
 \examples{
+# Evaluate data package
+path <- "/Users/me/Documents/edi.468.1.xml"
+transaction <- evaluate_data_package(path)
+
+# Result in XML format
+read_evaluate_report(transaction)
+
+# Result in HTML format
+read_evaluate_report(transaction, html = TRUE)
 
 }

@@ -30,7 +30,6 @@ reference:
     desc: Describes web service methods for accessing data package resources such as data, metadata, and reports.
     contents:
     - read_data_entity
-    - read_data_entity_acl
     - read_data_entity_checksum
     - read_data_entity_name
     - read_data_entity_names
@@ -39,19 +38,16 @@ reference:
     - read_data_entity_sizes
     - read_data_package
     - read_data_package_from_doi
-    - read_data_package_acl
     - read_data_package_archive
     - read_data_package_doi
     - read_data_package_error
     - read_data_package_resource_metadata
     - read_data_package_report
-    - read_data_package_report_acl
     - read_data_package_report_checksum
     - read_data_package_report_resource_metadata
     - read_evaluate_report
     - read_metadata
     - read_metadata_dublin_core
-    - read_metadata_acl
     - read_metadata_checksum
     - read_metadata_format
     - read_metadata_resource_metadata

@@ -6,7 +6,7 @@ testthat::test_that("Test attributes of returned object", {
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))
   found_children <- xml2::xml_name(xml2::xml_children(res))
   expected_children <- c("creationDate", "packageId", "includeSystem", 
-                         "includeSystem", "datasetReport", "entityReport")
+                         "datasetReport", "entityReport")
   expect_true(all(found_children %in% expected_children))
   expect_true(length(xml2::xml_find_all(res, ".//creationDate")) != 0)
   # As html
