@@ -7,13 +7,18 @@
 evaluate_data_package(eml, useChecksum = FALSE, tier = "production")
 }
 \arguments{
-\item{eml}{(character) Full path to the EML file to be evaluated}
+\item{eml}{(character) Full path to an EML document}
 
 \item{useChecksum}{(logical) Whether to to use an existing copy of the data entities from a previous revision of the data package (see details below).}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
-
-\item{transaction}{(character) Transaction identifier. Use \code{check_evaluation_status()} to check if evaluation has completed and \code{read_evaluate_report()} to read the report.}
+}
+\value{
+transaction (character) Transaction identifier. Use this value with: 
+\itemize{
+  \item \code{check_status_evaluate()} to see if evaluation has completed or if any errors occurred while processing the request
+  \item \code{read_evaluate_report()} to read the evaluation report
+}
 }
 \description{
 Evaluate data package

@@ -1,10 +1,14 @@
 #' Evaluate data package
 #'
-#' @param eml (character) Full path to the EML file to be evaluated
+#' @param eml (character) Full path to an EML document
 #' @param useChecksum (logical) Whether to to use an existing copy of the data entities from a previous revision of the data package (see details below).
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #' 
-#' @param transaction (character) Transaction identifier. Use \code{check_evaluation_status()} to check if evaluation has completed and \code{read_evaluate_report()} to read the report.
+#' @return transaction (character) Transaction identifier. Use this value with: 
+#' \itemize{
+#'   \item \code{check_status_evaluate()} to see if evaluation has completed or if any errors occurred while processing the request
+#'   \item \code{read_evaluate_report()} to read the evaluation report
+#' }
 #' 
 #' @note User authentication is required (see \code{login()}). 
 #'           

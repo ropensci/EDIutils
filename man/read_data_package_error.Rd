@@ -12,11 +12,25 @@ read_data_package_error(transaction, tier = "production")
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Result of operation
+An error is returned if an error occurred while processing the request, otherwise \code{NULL} is returned if no error was encountered or if processing is still underway.
 }
 \description{
 Read data package error
 }
+\note{
+User authentication is required (see \code{login()})
+}
 \examples{
+\dontrun{
+# Returns an error because of malformed packageId
+path <- "/Users/me/Documents/bad_id.xml"
+transaction <- evaluate_data_package(path)
+read_data_package_error(transaction)
+
+# Does not return an error
+path <- "/Users/me/Documents/edi.468.1.xml"
+transaction <- evaluate_data_package(path)
+read_data_package_error(transaction)
+}
 
 }

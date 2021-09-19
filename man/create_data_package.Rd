@@ -4,39 +4,33 @@
 \alias{create_data_package}
 \title{Create data package}
 \usage{
-create_data_package(
-  path,
-  package.id,
-  environment,
-  user.id,
-  user.pass,
-  affiliation
-)
+create_data_package(eml, useChecksum = FALSE, tier = "production")
 }
 \arguments{
-\item{path}{(character) Path to the data package EML file.}
+\item{eml}{(character) Full path to an EML document}
 
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{useChecksum}{(logical) Whether to to use an existing copy of the data entities from a previous revision of the data package (see details below).}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
-
-\item{user.id}{(character) Identification of user creating the data package.}
-
-\item{user.pass}{(character) Password corresponding with the user.id argument supplied
-above.}
-
-\item{affiliation}{(character) Affiliation corresponding with the user.id argument supplied
-above. Can be: 'LTER' or 'EDI'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+}
+\value{
+transaction (character) Transaction identifier. Use this value with: 
+\itemize{
+  \item \code{check_status_create()} to see if creations has completed or if any errors occurred while processing the request
+  \item \code{read_evaluate_report()} to read the evaluation report
+  \item \code{read_data_package()} to obtain the data package resource map
+}
 }
 \description{
-Creates a new PASTA data package by providing the EML document describing the data package to be created in the request message body and returning a transaction identifier in the response message body as plain text; the transaction identifier may be used in a subsequent call to Read Data Package Error to determine the operation status; see Read Data Package to obtain the data package resource map if the operation completed successfully.
+Create data package
 }
 \details{
-POST : https://pasta.lternet.edu/package/eml
+Each data entity described in \code{eml} must be accessible to the EDI Data Repository through URLs listed in the \code{eml} at the XPath ".//physical/distribution/online/url". This URL should be static and not present the EDI Data Repository with any redirects, otherwise the data entity will not be accessible.
 }
 \examples{
-Upload a new data package where knb-lter-lno.1.1.xml is the filesystem EML document in XML format
+\dontrun{
+path <- "/Users/me/Documents/edi.468.1.xml"
+create_data_package(path)
+}
 
 }
