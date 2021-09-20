@@ -4,10 +4,12 @@
 \alias{check_status_evaluate}
 \title{Check status of data package evaluation}
 \usage{
-check_status_evaluate(transaction, tier = "production")
+check_status_evaluate(transaction, wait = TRUE, tier = "production")
 }
 \arguments{
 \item{transaction}{(character) Transaction identifier}
+
+\item{wait}{(logical) Wait for evaluation to complete? See details below.}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
@@ -16,6 +18,9 @@ check_status_evaluate(transaction, tier = "production")
 }
 \description{
 Check status of data package evaluation
+}
+\details{
+If \code{wait = TRUE}, then the function will enter a "while" loop checking every 2 seconds for the completed evaluation report. If \code{wait = FALSE}, then the function will only check once and return the result.
 }
 \note{
 User authentication is required (see \code{login()})

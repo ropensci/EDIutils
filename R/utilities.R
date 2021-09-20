@@ -306,6 +306,42 @@ skip_if_logged_out <- function() {
 
 
 
+#' Summarize evaluation report
+#'
+#' @param eval_report (character) Evaluation report XML as a character string
+#'
+#' @return (character) Summary of evaluation report
+#'
+summarize_evalutation_report <- function(eval_report) {
+  pattern <- "[[:alpha:]]+(?=</status>)"
+  check_status <- unlist(
+    regmatches(eval_report, gregexpr(pattern, eval_report, perl = TRUE)))
+  n_valid <- as.character(sum(check_status == 'valid'))
+  n_warn <- as.character(sum(check_status == 'warn'))
+  n_error <- as.character(sum(check_status == 'error'))
+  n_info <- as.character(sum(check_status == 'info'))
+  if (n_error == 0) {
+    was_uploaded <- "Yes"
+  } else {
+    was_uploaded <- "No"
+  }
+  parsed <- paste0(
+    'RESULTS\n',
+    'Was Uploaded: ', was_uploaded, '\n',
+    'Total Quality Checks: ', length(check_status), '\n',
+    'Valid: ', n_valid, '\n',
+    'Info: ', n_info, '\n',
+    'Warn: ', n_warn, '\n',
+    'Error: ', n_error, '\n')
+  return(parsed)
+}
+
+
+
+
+
+
+
 
 #' Convert newline separated text to character vector
 #'

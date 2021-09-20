@@ -4,42 +4,32 @@
 \alias{update_data_package}
 \title{Update data package}
 \usage{
-update_data_package(
-  path,
-  package.id,
-  environment,
-  user.id,
-  user.pass,
-  affiliation
-)
+update_data_package(eml, useChecksum = FALSE, tier = "production")
 }
 \arguments{
-\item{path}{(character) Local or server path to the data package EML file.}
+\item{eml}{(character) Full path to an EML document}
 
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.2').}
+\item{useChecksum}{(logical) Whether to use an existing copy of the data entities from a previous revision of the data package (see details below).}
 
-\item{environment}{(character) Data repository environment containing the package to be
-updated. Can be: 'development', 'staging', 'production'.}
-
-\item{user.id}{(character) Identification of user updating the data package.}
-
-\item{user.pass}{(character) Password corresponding with the user.id argument supplied
-above.}
-
-\item{affiliation}{(character) Affiliation corresponding with the user.id argument supplied
-above. Can be: 'LTER' or 'EDI'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+}
+\value{
+transaction (character) Transaction identifier. Use this value with: 
+\itemize{
+  \item \code{check_status_update()} to see if the update has completed or if any errors occurred while processing the request
+  \item \code{read_evaluate_report()} to read the evaluation report
+  \item \code{read_data_package()} to obtain the data package resource map
+}
 }
 \description{
-Update Data Package operation, specifying the scope and identifier of the data package to be updated in the URI, along with the EML document describing the data package to be created in the request message body, and returning a transaction identifier in the response message body as plain text; the transaction identifier may be used in a subsequent call to Read Data Package Error to determine the operation status; see Read Data Package to obtain the data package resource map if the operation completed successfully.
-
-An optional query parameter, “useChecksum”, can be appended to the URL. When specified, the useChecksum query parameter directs the server to determine whether it can use an existing copy of a data entity from a previous revision of the data package based on matching a metadata-documented checksum value (MD5 or SHA-1) to the checksum of the existing copy. If a match is found, the server will skip the upload of the data entity from the remote URL and instead use its matching copy.
-
-Please Note: Specifying “useChecksum” can save time by eliminating data uploads, but clients should take care to ensure that metadata-documented checksum values are accurate and up to date.
+Update data package
 }
 \details{
-PUT : https://pasta.lternet.edu/package/eml/{scope}/{identifier}
+Each data entity described in \code{eml} must be accessible to the EDI Data Repository through URLs listed in the \code{eml} at the XPath ".//physical/distribution/online/url". This URL should be static and not present the EDI Data Repository with any redirects, otherwise the data entity will not be accessible.
 }
 \examples{
+path <- "/Users/me/Documents/edi.468.2.xml"
+update_data_package(path)
+
 
 }

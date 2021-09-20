@@ -16,7 +16,7 @@ create_data_package(eml, useChecksum = FALSE, tier = "production")
 \value{
 transaction (character) Transaction identifier. Use this value with: 
 \itemize{
-  \item \code{check_status_create()} to see if creations has completed or if any errors occurred while processing the request
+  \item \code{check_status_create()} to see if creation has completed or if any errors occurred while processing the request
   \item \code{read_evaluate_report()} to read the evaluation report
   \item \code{read_data_package()} to obtain the data package resource map
 }

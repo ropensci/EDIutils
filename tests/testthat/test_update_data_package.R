@@ -1,15 +1,8 @@
-context('Update data package')
-library(EDIutils)
+context("Update data package")
 
-testthat::test_that('Invalid request results in error', {
-  
-  path <- system.file('edi.151.4.xml', package = 'EDIutils')
-  path <- substr(path, 1, nchar(path)-14)
-  
-  expect_error(
-    update_data_package(path = path, package.id = 'edi.151.4', environment = 'staging',
-                 user.id = 'myuserid', user.pass = 'mypassword', 
-                 affiliation = 'LTER')
-  )
-  
+testthat::test_that("Test attributes of returned object", {
+  skip_if_logged_out()
+  path <- "/Users/csmith/Documents/EDI/datasets/pkg_ediutils_test/edi.468.2.xml"
+  res <- update_data_package(path, tier = "staging")
+  expect_true(class(res) %in% "character")
 })

@@ -9,7 +9,7 @@ evaluate_data_package(eml, useChecksum = FALSE, tier = "production")
 \arguments{
 \item{eml}{(character) Full path to an EML document}
 
-\item{useChecksum}{(logical) Whether to to use an existing copy of the data entities from a previous revision of the data package (see details below).}
+\item{useChecksum}{(logical) Whether to use an existing copy of the data entities from a previous revision of the data package (see details below).}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }

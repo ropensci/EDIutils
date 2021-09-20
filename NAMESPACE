@@ -2,6 +2,7 @@
 
 export(check_status_create)
 export(check_status_evaluate)
+export(check_status_update)
 export(compare_eml)
 export(compare_tables)
 export(construct_dn)
