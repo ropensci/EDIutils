@@ -9,7 +9,7 @@ create_event_subscription(packageId, url, tier = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{url}{(character) Where the event notification will be sent. The URL must have "http" as its scheme and must be able to receive POST requests with MIME type text/plain}
+\item{url}{(character) Where the event notification will be sent}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
@@ -21,6 +21,8 @@ Create event subscription
 }
 \note{
 User authentication is required (see \code{login()})
+
+ The \code{url} must have "http" as its scheme and must be able to receive POST requests with MIME type text/plain. Additionally, because the \code{url} will be passed in an XML body, some characters must be escaped, such as ampersands from & to &amp;.
 }
 \examples{
 \dontrun{

@@ -1,107 +1,40 @@
-#' Get audit record
+#' Get audit report
 #'
-#' @description Gets an audit report, an XML list of zero or more audit records matching the query parameters as specified in the request.
+#' @param query (character) Audit report query (see details below)
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @param attr.name
-#'     (character) Attribute name
-#' @param package.id
-#'     (character) Data package identifier (e.g. knb-lter-cap.627.3) in the 
-#'     EDI Data Repository.
-#' @param evironment (character) Repository environment in which the L0 and L1 exist. Some repositories have development, staging, and production environments which are distinct from one another. This argument allows execution for the \code{update_L1} workflow within the context of one of these environments. Default is "production".
-#'
-#' @return 
-#'     (list) A named vector with these attribute elements:
-#'     \itemize{
-#'         \item{name} <attributeName>
-#'         \item{definition} <attributeDefinition> 
-#'         \item{unit} <standardUnit> or <customUnit>
-#'     }
-#' @details GET : https://pasta.lternet.edu/audit/report
+#' @return (xml_document) An XML list of zero or more audit records matching the query parameters as specified in the request.
+#' 
+#' @details Query parameters:
+#' \itemize{
+#'   \item category - Can be: "debug", "info", "error", "warn"
+#'   \item service - Any of the EDI Data Repository services
+#'   \item serviceMethod - Any of the EDI Data Repository service Resource class JAX-RS methods
+#'   \item user - Any user
+#'   \item group - Any group
+#'   \item authSystem - A valid auth system identifier
+#'   \item status - A valid HTTP Response Code
+#'   \item resourceId - An EDI Data Repository resource identifier, e.g. https://pasta.lternet.edu/package/eml/knb-lter-and/2719/6, or a thereof (see details below)
+#'   \item fromTime - An ISO8601 timestamp
+#'   \item toTime - An ISO8601 timestamp
+#'   \item limit - A positive whole number
+#' }
+#' 
+#' The query parameters fromTime and optionally toTime should be used to indicate a time span. When toTime is absent, the report will consist of all matching records up to the current time. Either of these parameters may only be used once. The query parameter limit sets an upper limit on the number of audit records returned. For example, "limit=1000". The query parameter resourceId will match any audit log entry whose resourceId value contains the specified string value. Thus, a query parameter of "resourceId=knb-lter-and" will match any audit log entry whose resourceId value contains the substring "knb-lter-and", while a query parameter of "resourceId=knb-lter-and/2719/6" will match any audit log entry whose resourceId value contains the substring "knb-lter-and/2719/6".
+#' 
+#' @note User authentication is required (see \code{login()})
+#' 
 #' @export
+#' 
 #' @examples 
 #'
-get_audit_report <- function(attr.name, package.id, environment = "production"){
-
-  # Send message
-  
-  if (!is.na(attr.name)){
-    message(paste0('Searching ', package.id, ' for "', attr.name, '"'))
-  }
-
-  # Load EML
-  
-  metadata <- suppressMessages(read_metadata(package.id, environment = environment))
-
-  # Get definition
-    
-  definition <- try(
-    xml2::xml_text(
-      xml2::xml_find_all(
-        x = metadata, 
-        xpath = paste0(
-          "//attributeDefinition[ancestor::attribute[child::attributeName[text() = '",
-          attr.name,
-          "']]]"
-        )
-      )
-    ),
-    silent = TRUE
-  )
-  
-  # Get standard unit
-  
-  unit <- try(
-    xml2::xml_text(
-      xml2::xml_find_all(
-        x = metadata, 
-        xpath = paste0(
-          "//standardUnit[ancestor::attribute[child::attributeName[text()  = '",
-          attr.name,
-          "']]]"
-        )
-      )
-    ),
-    silent = TRUE
-  )
-  
-  # Get custom unit
-  
-  if (identical(unit, character(0))){
-    unit <- try(
-      xml2::xml_text(
-        xml2::xml_find_all(
-          x = metadata, 
-          xpath = paste0(
-            "//customUnit[ancestor::attribute[child::attributeName[text()  = '",
-            attr.name,
-            "']]]"
-          )
-        )
-      ),
-      silent = TRUE
-    )
-  }
-  
-  # Parse results
-  
-  if (class(definition) != 'character'){
-    definition <- NA_character_
-  } else {
-    definition <- definition[1]
-  }
-  
-  if (class(unit) != 'character'){
-    unit <- NA_character_
-  } else {
-    unit <- unit[1]
-  }
-
-  # Return results
-  
-  list(
-    name = attr.name,
-    definition = definition,
-    unit = unit
-  )
-
+get_audit_report <- function(query, tier = "production") {
+  validate_arguments(x = as.list(environment()))
+  browser()
+  # query <- gsub(pattern = "\"", replacement = "%22", x = query)
+  url <- paste0(url_env(tier), ".lternet.edu/audit/report?", query)
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  httr::stop_for_status(resp)
+  parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
+  return(parsed)
 }

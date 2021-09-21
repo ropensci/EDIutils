@@ -1,28 +1,13 @@
-context('Create reservation')
-library(EDIutils)
+context("Query event subscriptions")
 
-testthat::test_that('Invalid request results in error', {
+testthat::test_that("Test attributes of returned object", {
+  skip_if_logged_out()
   
-  path <- system.file('edi.151.4.xml', package = 'EDIutils')
-  path <- substr(path, 1, nchar(path)-14)
-  
-  expect_error(
-    create_reservation(scope = 'edi', environment = 'staging', 
-                   user.id = 'myuserid', user.pass = 'mypassword', 
-                   affiliation = 'LTER'
-                   )
-  )
-  
-})
-
-
-testthat::test_that('Test polling loop', {
-  
-  expect_error(
-    poll_pkg_reserve_id(list(status_code = 401))
-  )
-  expect_error(
-    poll_pkg_reserve_id(list(status_code = 400))
-  )
+  res <- query_event_subscriptions(tier = "staging")
+  expect_true(all(class(res) %in% c("xml_document", "xml_node")))
+  expect_true("reservation" %in% xml2::xml_name(xml2::xml_children(res)))
+  children_found <- xml2::xml_name(xml2::xml_children(xml2::xml_children(res)[1]))
+  children_expected <- c("docid", "principal", "dateReserved")
+  expect_true(all(children_found %in% children_expected))
   
 })

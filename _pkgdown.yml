@@ -98,7 +98,6 @@ reference:
   - title: Audit Manager Services
     desc: The Audit Manager web service allows other PASTA web services to create, and users to access, PASTA audit logs.
     contents: 
-    - create_audit_record
     - get_audit_record
     - get_audit_report
     - get_audit_count

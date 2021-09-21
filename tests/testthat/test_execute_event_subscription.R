@@ -1,28 +1,11 @@
-context('Create reservation')
-library(EDIutils)
+context("Execute event subscription")
 
-testthat::test_that('Invalid request results in error', {
-  
-  path <- system.file('edi.151.4.xml', package = 'EDIutils')
-  path <- substr(path, 1, nchar(path)-14)
-  
-  expect_error(
-    create_reservation(scope = 'edi', environment = 'staging', 
-                   user.id = 'myuserid', user.pass = 'mypassword', 
-                   affiliation = 'LTER'
-                   )
-  )
-  
-})
-
-
-testthat::test_that('Test polling loop', {
-  
-  expect_error(
-    poll_pkg_reserve_id(list(status_code = 401))
-  )
-  expect_error(
-    poll_pkg_reserve_id(list(status_code = 400))
-  )
-  
+testthat::test_that("Test attributes of returned object", {
+  skip_if_logged_out()
+  packageId <- get_test_package()
+  url <- "https://some.server.org"
+  subscriptionId <- create_event_subscription(packageId, url, tier = "staging")
+  on.exit(delete_event_subscription(subscriptionId, tier = "staging"))
+  res <- execute_event_subscription(subscriptionId, tier = "staging")
+  expect_true(class(res) %in% "logical")
 })

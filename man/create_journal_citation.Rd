@@ -5,42 +5,46 @@
 \title{Create journal citation}
 \usage{
 create_journal_citation(
-  title,
-  creator,
-  online.description,
-  url,
-  contact,
-  path = NULL,
-  file.name = NULL
+  packageId,
+  articleDoi = NULL,
+  articleUrl = NULL,
+  articleTitle = NULL,
+  journalTitle = NULL,
+  tier = "production"
 )
 }
 \arguments{
-\item{title}{(character) Title of external data source.}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{creator}{(list) Named list of EML creator elements and values. Supprted elements 
-are: givenName, surName, organizationName, electronicMailAddress}
+\item{articleDoi}{(character) Article DOI. Required if \code{articleUrl} is missing.}
 
-\item{online.description}{(character) Description of online resource.}
+\item{articleUrl}{(character) Article URL. Required if \code{articleDoi} is missing.}
 
-\item{url}{(character) URL of online resource.}
+\item{articleTitle}{(character) Article title. Optional.}
 
-\item{contact}{(list) Named list of EML contact elements and values. Supprted elements 
-are: givenName, surName, organizationName, electronicMailAddress}
+\item{journalTitle}{(character) Journal title. Optional.}
 
-\item{path}{(character) Where the XML will be written.}
-
-\item{file.name}{(character) Name of file to be written.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-('xml_document' 'xml_node') EML provenance metadata
+(numeric) Journal citation ID
 }
 \description{
-Create Journal Citation operation, creates a new journal citation entry in PASTA. An XML document containing metadata for the journal citation must be supplied in the HTTP request body.
+Create journal citation
 }
 \details{
-POST : https://pasta.lternet.edu/package/citation/eml
+Creates a new journal citation entry in the EDI Data Repository
+}
+\note{
+User authentication is required (see \code{login()})
 }
 \examples{
-# Using curl to create a journal citation with the XML metadata stored in a file:
+\dontrun{
+res <- create_journal_citation(
+  packageId = "edi.17.1", 
+  articleDoi = "https://doi.org/10.1890/11-1026.1",
+  articleTitle = "Corridors promote fire via connectivity and edge effects",
+  journalTitle = "Ecological Applications")
+}
 
 }

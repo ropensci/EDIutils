@@ -4,33 +4,31 @@
 \alias{execute_event_subscription}
 \title{Execute event subscription}
 \usage{
-execute_event_subscription(scope, environment, user.id, user.pass, affiliation)
+execute_event_subscription(subscriptionId, tier = "production")
 }
 \arguments{
-\item{scope}{(character) Scope of identifier to be reserved (e.g. edi, knb-lter-ntl).}
+\item{subscriptionId}{(numeric) Event subscription ID}
 
-\item{environment}{(character) Data repository environment in which to reserve the
-identifier. Can be: 'development', 'staging', 'production'.}
-
-\item{user.id}{(character) Identification of user reserving the identifier.}
-
-\item{user.pass}{(character) Password corresponding with the user.id argument supplied
-above.}
-
-\item{affiliation}{(character) Affiliation corresponding with the user.id argument supplied
-above. Can be: 'LTER' or 'EDI'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(character) Package identifier.
+(logical) TRUE if the event subscription was deleted
 }
 \description{
-Execute Event Subscription operation, specifying the ID of the event subscription whose URL is to be executed. Used to execute a particular subscription in the event manager, via an HTTP POST request. Upon notification, the event manager queries its database for the subscription matching the specified subscriptionId. POST requests are then made (asynchronously) to the matching subscription.
-
-The request headers must contain an authorization token. If the request is successful, an HTTP response with status code 200 ‘OK’ is returned. If the request is unauthorized, based on the content of the authorization token and the current access control rule for event notification, status code 401 ‘Unauthorized’ is returned. If the request contains an error, status code 400 ‘Bad Request’ is returned, with a description of the encountered error.
+Execute event subscription
 }
 \details{
-POST : https://pasta.lternet.edu/package/event/eml/{subscriptionId}
+Upon notification, the event manager queries its database for the subscription matching the specified subscriptionId. POST requests are then made (asynchronously) to the matching subscription.
+}
+\note{
+User authentication is required (see \code{login()})
 }
 \examples{
+\dontrun{
+packageId <- "knb-lter-vcr.340.1"
+url <- "https://some.server.org"
+subscriptionId <- create_event_subscription(packageId, url)
+execute_event_subscription(subscriptionId)
+}
 
 }

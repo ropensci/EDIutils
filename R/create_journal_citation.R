@@ -1,102 +1,65 @@
 #' Create journal citation
-#'
-#' @description Create Journal Citation operation, creates a new journal citation entry in PASTA. An XML document containing metadata for the journal citation must be supplied in the HTTP request body.
-#'
-#' @param title
-#'     (character) Title of external data source.
-#' @param creator
-#'     (list) Named list of EML creator elements and values. Supprted elements 
-#'     are: givenName, surName, organizationName, electronicMailAddress
-#' @param online.description
-#'     (character) Description of online resource.
-#' @param url
-#'     (character) URL of online resource.
-#' @param contact
-#'     (list) Named list of EML contact elements and values. Supprted elements 
-#'     are: givenName, surName, organizationName, electronicMailAddress
-#' @param path
-#'     (character) Where the XML will be written.
-#' @param file.name
-#'     (character) Name of file to be written.
+#' 
+#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param articleDoi (character) Article DOI. Required if \code{articleUrl} is missing.
+#' @param articleUrl (character) Article URL. Required if \code{articleDoi} is missing.
+#' @param articleTitle (character) Article title. Optional.
+#' @param journalTitle (character) Journal title. Optional.
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' 
+#' @return (numeric) Journal citation ID
 #'     
-#' @return
-#'     ('xml_document' 'xml_node') EML provenance metadata
-#' @details POST : https://pasta.lternet.edu/package/citation/eml 
+#' @details Creates a new journal citation entry in the EDI Data Repository
+#' 
+#' @note User authentication is required (see \code{login()})
+#' 
 #' @export
+#' 
 #' @examples
-#' # Using curl to create a journal citation with the XML metadata stored in a file:
-#'
-create_journal_citation <- function(title, creator, online.description, url, contact, path = NULL, file.name = NULL){
-  
-  message('Creating provenance metadata')
-
-  # Handle NULL values.
-  
-  for (i in 1:length(creator)){
-    creator[[i]]$givenName <- if (is.null(creator[[i]]$givenName)){''} else {creator[[i]]$givenName}
-    creator[[i]]$surName <- if (is.null(creator[[i]]$surName)){''} else {creator[[i]]$surName}
-    creator[[i]]$organizationName <- if (is.null(creator[[i]]$organizationName)){''} else {creator[[i]]$organizationName}
-    creator[[i]]$electronicMailAddress <- if (is.null(creator[[i]]$electronicMailAddress)){''} else {creator[[i]]$electronicMailAddress}
+#' \dontrun{
+#' res <- create_journal_citation(
+#'   packageId = "edi.17.1", 
+#'   articleDoi = "https://doi.org/10.1890/11-1026.1",
+#'   articleTitle = "Corridors promote fire via connectivity and edge effects",
+#'   journalTitle = "Ecological Applications")
+#' }
+#' 
+create_journal_citation <- function(packageId, 
+                                    articleDoi = NULL, 
+                                    articleUrl = NULL,
+                                    articleTitle = NULL, 
+                                    journalTitle = NULL, 
+                                    tier = "production") {
+  validate_arguments(x = as.list(environment()))
+  if (is.null(c(articleDoi, articleUrl))) {
+    stop('One of "articleDoi" or "articleUrl" is required.', call. = FALSE)
   }
-  
-  for (i in 1:length(contact)){
-    contact[[i]]$givenName <- if (is.null(contact[[i]]$givenName)){''} else {contact[[i]]$givenName}
-    contact[[i]]$surName <- if (is.null(contact[[i]]$surName)){''} else {contact[[i]]$surName}
-    contact[[i]]$organizationName <- if (is.null(contact[[i]]$organizationName)){''} else {contact[[i]]$organizationName}
-    contact[[i]]$electronicMailAddress <- if (is.null(contact[[i]]$electronicMailAddress)){''} else {contact[[i]]$electronicMailAddress}
+  # Build citation
+  citation <- xml2::xml_new_document()
+  xml2::xml_add_child(citation, "journalCitation")
+  xml2::xml_add_child(citation, "packageId", packageId)
+  if (!is.null(articleDoi)) {
+    xml2::xml_add_child(citation, "articleDoi", articleDoi)
   }
-    
-  # Create provenance methodStep for EML
-  
-  method_step <- xml2::xml_new_root(.value = 'methodStep')
-  
-  xml2::xml_add_child(.x = method_step, .value = 'description')
-  data_source <- xml2::xml_add_child(.x = method_step, .value = 'dataSource')
-  tag <- xml2::xml_add_child(.x = data_source, .value = 'title')
-  xml2::xml_set_text(x = tag, value = title)
-  
-  for (i in 1:length(creator)){
-    cr <- xml2::xml_add_child(.x = data_source, .value = 'creator')
-    individualname <- xml2::xml_add_child(.x = cr, .value = 'individualName')
-    tag <- xml2::xml_add_child(.x = individualname, .value = 'givenName')
-    xml2::xml_set_text(x = tag, value = creator[[i]]$givenName)
-    tag <- xml2::xml_add_child(.x = individualname, .value = 'surName')
-    xml2::xml_set_text(x = tag, value = creator[[i]]$surName)
-    tag <- xml2::xml_add_child(.x = cr, .value = 'organizationName')
-    xml2::xml_set_text(x = tag, value = creator[[i]]$organizationName)
-    tag <- xml2::xml_add_child(.x = cr, .value = 'electronicMailAddress')
-    xml2::xml_set_text(x = tag, value = creator[[i]]$electronicMailAddress)
+  if (!is.null(articleTitle)) {
+    xml2::xml_add_child(citation, "articleTitle", articleTitle)
   }
-  
-  distr <- xml2::xml_add_child(.x = data_source, .value = 'distribution')
-  onl <- xml2::xml_add_child(.x = distr, .value =  'online')
-  tag <- xml2::xml_add_child(.x = onl, .value = 'onlineDescription')
-  xml2::xml_set_text(x = tag, value = online.description)
-  tag <- xml2::xml_add_child(.x = onl, .value = 'url')
-  xml2::xml_set_text(x = tag, value = url)
-  
-  for (i in 1:length(contact)){
-    cr <- xml2::xml_add_child(.x = data_source, .value = 'contact')
-    individualname <- xml2::xml_add_child(.x = cr, .value = 'individualName')
-    tag <- xml2::xml_add_child(.x = individualname, .value = 'givenName')
-    xml2::xml_set_text(x = tag, value = contact[[i]]$givenName)
-    tag <- xml2::xml_add_child(.x = individualname, .value = 'surName')
-    xml2::xml_set_text(x = tag, value = contact[[i]]$surName)
-    tag <- xml2::xml_add_child(.x = cr, .value = 'organizationName')
-    xml2::xml_set_text(x = tag, value = contact[[i]]$organizationName)
-    tag <- xml2::xml_add_child(.x = cr, .value = 'electronicMailAddress')
-    xml2::xml_set_text(x = tag, value = contact[[i]]$electronicMailAddress)
+  if (!is.null(articleUrl)) {
+    xml2::xml_add_child(citation, "articleUrl", articleUrl)
   }
-
-  # Write to file
-  
-  if (!is.null(path) & !is.null(file.name)){
-    xml2::write_xml(method_step, paste0(path, '/', file.name))
-  }
-  
-
-  # Return
-  
-  method_step
-
+  fname <- paste0(tempdir(), "/payload.xml")
+  xml2::write_xml(citation, fname)
+  on.exit(file.remove(fname))
+  # Submit request
+  url <- paste0(url_env(tier), ".lternet.edu/package/citation/eml")
+  cookie <- bake_cookie()
+  resp <- httr::POST(url, 
+                     set_user_agent(), 
+                     cookie, 
+                     body = httr::upload_file(fname), 
+                     handle = httr::handle(""))
+  httr::stop_for_status(resp)
+  parsed <- unlist(strsplit(resp$headers$location, split = "/"))
+  res <- parsed[length(parsed)]
+  return(as.numeric(res))
 }

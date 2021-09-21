@@ -6,6 +6,12 @@
 #'
 validate_arguments <- function(x) {
 
+  # TODO articleDoi
+  
+  # TODO articleUrl
+  
+  # TODO articleTitle
+  
   # config
   if ("config" %in% names(x)) {
     if (!is.null(x[["config"]])) {
@@ -85,6 +91,8 @@ validate_arguments <- function(x) {
   
   # TODO Implement check on journalCitationId
   
+  # TODO journalTitle
+  
   # o (LDAP; organizational unit)
   if ("o" %in% names(x)) {
     if (!x[["o"]] %in% c("LTER", "EDI")) {
@@ -163,5 +171,7 @@ validate_arguments <- function(x) {
   }
   
   # TODO implement check on transaction identifier
+  
+  # TODO url
 
 }

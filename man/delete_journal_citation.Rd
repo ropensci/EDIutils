@@ -4,39 +4,26 @@
 \alias{delete_journal_citation}
 \title{Delete journal citation}
 \usage{
-delete_journal_citation(
-  path,
-  package.id,
-  environment,
-  user.id,
-  user.pass,
-  affiliation
-)
+delete_journal_citation(journalCitationId, tier = "production")
 }
 \arguments{
-\item{path}{(character) Path to the data package EML file.}
+\item{journalCitationId}{(numeric) Journal citation identifier}
 
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
-
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
-
-\item{user.id}{(character) Identification of user creating the data package.}
-
-\item{user.pass}{(character) Password corresponding with the user.id argument supplied
-above.}
-
-\item{affiliation}{(character) Affiliation corresponding with the user.id argument supplied
-above. Can be: 'LTER' or 'EDI'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+}
+\value{
+(logical) TRUE if deleted
 }
 \description{
-Delete Journal Citation operation, deletes the journal citation entry with the specified ID from the journal citation table. Requires authentication by the owner of the journal citation entry.
+Delete journal citation
 }
-\details{
-DELETE : https://pasta.lternet.edu/package/citation/eml/{journalCitationId}
+\note{
+User authentication is required (see \code{login()})
 }
 \examples{
-# Using curl to delete the journal citation with identifier value 15, owned by user “ucarroll”:
+\dontrun{
+journalCitationId <- 65
+delete_journal_citation(journalCitationId)
+}
 
 }

@@ -1,37 +1,37 @@
 #' Query event subscriptions
 #'
-#' @description Query Event Subscriptions operation, returns a list of the subscriptions whose attributes match those specified in the query string. If a query string is omitted, all subscriptions in the subscription database will be returned for which the requesting user is authorized to read. If query parameters are included, they are used to filter that set of subscriptions based on their attributes.
+#' @param query (character) Query (see details below)
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @param scope
-#'     (character) Scope of identifier to be reserved (e.g. edi, knb-lter-ntl).
-#' @param environment
-#'     (character) Data repository environment in which to reserve the
-#'     identifier. Can be: 'development', 'staging', 'production'.
-#' @param user.id
-#'     (character) Identification of user reserving the identifier.
-#' @param user.pass
-#'     (character) Password corresponding with the user.id argument supplied
-#'     above.
-#' @param affiliation
-#'     (character) Affiliation corresponding with the user.id argument supplied
-#'     above. Can be: 'LTER' or 'EDI'.
-#'
-#' @return
-#'     (character) Package identifier.
-#' @details GET : https://pasta.lternet.edu/package/event/eml
+#' @return (xml_document) a list of the subscriptions whose attributes match those specified in the query string (see details below). If a query string is omitted, all subscriptions in the subscription database will be returned for which the requesting user is authorized to read. If query parameters are included, they are used to filter that set of subscriptions based on their attributes.
+#' 
+#' @details Query parameters are specified as key=value pairs, multiple pairs must be delimited with ampersands (&), and only a single value should be specified for a particular key. The following query parameter keys are allowed:
+#' 
+#' \itemize{
+#'   \item creator
+#'   \item scope
+#'   \item identifier
+#'   \item revision
+#'   \item url
+#' }
+#' 
+#' If a query parameter is specified, and a subscription's respective attribute does not match it, that subscription will not be included in the group of subscriptions returned. If scope, identifier, or revision are used, their values must together constitute a syntactically and semantically correct EML packageId (i.e. "scope.identifier.revision") - either partial or complete. If url is used, its value must not contain ampersands. Therefore, if a subscription's URL contains ampersands, it cannot be filtered based on its URL.
+#' 
+#' @note User authentication is required (see \code{login()})
+#' 
 #' @export
+#' 
 #' @examples 
 #'
-query_event_subscriptions <- function(scope, environment, user.id, user.pass, affiliation){
-
+query_event_subscriptions <- function(query = NULL, tier = "production") {
   validate_arguments(x = as.list(environment()))
-
-  poll_pkg_reserve_id(
-    httr::POST(
-      url = paste0(url_env(environment), 
-                   '.lternet.edu/package/reservations/eml/', scope),
-      config = httr::authenticate(auth_key(user.id, affiliation), user.pass)
-    )
-  )
-
+  browser()
+  url <- paste0(url_env(tier), ".lternet.edu/package/event/eml")
+  if (!is.null(query)) {
+    browser()
+  }
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  httr::stop_for_status(resp)
+  parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
+  return(parsed)
 }

@@ -1,12 +1,14 @@
 #' Create event subscription
 #' 
 #' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
-#' @param url (character) Where the event notification will be sent. The URL must have "http" as its scheme and must be able to receive POST requests with MIME type text/plain
+#' @param url (character) Where the event notification will be sent
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #' 
 #' @return (numeric) Event subscription ID
 #' 
 #' @note User authentication is required (see \code{login()})
+#' 
+#'  The \code{url} must have "http" as its scheme and must be able to receive POST requests with MIME type text/plain. Additionally, because the \code{url} will be passed in an XML body, some characters must be escaped, such as ampersands from & to &amp;.
 #' 
 #' @export
 #' 

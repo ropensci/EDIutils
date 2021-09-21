@@ -2,7 +2,7 @@
 % Please edit documentation in R/is_authorized.R
 \name{is_authorized}
 \alias{is_authorized}
-\title{Is authorized}
+\title{Is authorized to read}
 \usage{
 is_authorized(resourceId, tier = "production")
 }
@@ -12,14 +12,18 @@ is_authorized(resourceId, tier = "production")
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(logical) Whether the user as defined in the authentication token has permission to read the specified data package resource
+(logical) TRUE if the authenticated user has permission to read the specified resource
 }
 \description{
-Is authorized
+Is authorized to read
 }
 \note{
 User authentication is required (see \code{login()})
 }
 \examples{
+\dontrun{
+resourceId <- "https://pasta.lternet.edu/package/report/eml/knb-lter-sbc/6006/3"
+is_authorized(resourceId)
+}
 
 }
