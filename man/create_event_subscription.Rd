@@ -4,17 +4,29 @@
 \alias{create_event_subscription}
 \title{Create event subscription}
 \usage{
-create_event_subscription(tier = "production")
+create_event_subscription(packageId, url, tier = "production")
 }
 \arguments{
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
+
+\item{url}{(character) Where the event notification will be sent. The URL must have "http" as its scheme and must be able to receive POST requests with MIME type text/plain}
+
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-A new event subscription
+(numeric) Event subscription ID
 }
 \description{
 Create event subscription
 }
+\note{
+User authentication is required (see \code{login()})
+}
 \examples{
+\dontrun{
+packageId <- "knb-lter-vcr.340.1"
+url <- "https://some.server.org"
+create_event_subscription(packageId, url)
+}
 
 }

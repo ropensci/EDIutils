@@ -4,38 +4,28 @@
 \alias{delete_event_subscription}
 \title{Delete event subscription}
 \usage{
-delete_event_subscription(
-  path,
-  package.id,
-  environment,
-  user.id,
-  user.pass,
-  affiliation
-)
+delete_event_subscription(subscriptionId, tier = "production")
 }
 \arguments{
-\item{path}{(character) Path to the data package EML file.}
+\item{subscriptionId}{(numeric) Event subscription ID}
 
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
-
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
-
-\item{user.id}{(character) Identification of user creating the data package.}
-
-\item{user.pass}{(character) Password corresponding with the user.id argument supplied
-above.}
-
-\item{affiliation}{(character) Affiliation corresponding with the user.id argument supplied
-above. Can be: 'LTER' or 'EDI'.}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
+}
+\value{
+(logical) TRUE if the event subscription was deleted
 }
 \description{
-Delete Event Subscription deletes the event subscription with the specified ID from the subscription database. After “deletion,” the subscription might still exist in the subscription database, but it will be inactive - it will not conflict with future creation requests, it cannot be read, and it will not be notified of events.
+Delete event subscription
 }
 \details{
-DELETE : https://pasta.lternet.edu/package/event/eml/{subscriptionId}
+After "deletion", the subscription might still exist in the subscription database, but it will be inactive - it will not conflict with future creation requests, it cannot be read, and it will not be notified of events.
+}
+\note{
+User authentication is required (see \code{login()})
 }
 \examples{
+\dontrun{
+
+}
 
 }

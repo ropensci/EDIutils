@@ -1,7 +1,6 @@
 #' Create data package
 #'
 #' @param eml (character) Full path to an EML document
-#' @param useChecksum (logical) Whether to to use an existing copy of the data entities from a previous revision of the data package (see details below).
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #' 
 #' @return transaction (character) Transaction identifier. Use this value with: 
@@ -21,10 +20,7 @@
 #' create_data_package(path)
 #' }
 #'
-create_data_package <- function(eml, 
-                                useChecksum = FALSE, 
-                                tier = "production") {
-  # TODO implement checksum
+create_data_package <- function(eml, tier = "production") {
   validate_arguments(x = as.list(environment()))
   url <- paste0(url_env(tier), ".lternet.edu/package/eml")
   cookie <- bake_cookie()

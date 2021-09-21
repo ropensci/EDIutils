@@ -1,20 +1,40 @@
 #' Create event subscription
 #' 
+#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param url (character) Where the event notification will be sent. The URL must have "http" as its scheme and must be able to receive POST requests with MIME type text/plain
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #' 
-#' @return A new event subscription
+#' @return (numeric) Event subscription ID
+#' 
+#' @note User authentication is required (see \code{login()})
 #' 
 #' @export
 #' 
 #' @examples 
+#' \dontrun{
+#' packageId <- "knb-lter-vcr.340.1"
+#' url <- "https://some.server.org"
+#' create_event_subscription(packageId, url)
+#' }
 #'
-create_event_subscription <- function(tier = "production") {
+create_event_subscription <- function(packageId, url, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  browser()
+  subscription <- xml2::xml_new_document()
+  xml2::xml_add_child(subscription, "subscription", type = "eml")
+  xml2::xml_add_child(subscription, "packageId", packageId)
+  xml2::xml_add_child(subscription, "url", url)
+  fsub <- paste0(tempdir(), "/payload.xml")
+  xml2::write_xml(subscription, fsub)
+  on.exit(file.remove(fsub))
   url <- paste0(url_env(tier), ".lternet.edu/package/event/eml")
   cookie <- bake_cookie()
-  resp <- httr::POST(url, set_user_agent(), cookie, handle = httr::handle(""))
+  resp <- httr::POST(url, 
+                     set_user_agent(), 
+                     cookie, 
+                     body = httr::upload_file(fsub), 
+                     handle = httr::handle(""))
   httr::stop_for_status(resp)
-  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  return(as.numeric(parsed))
+  parsed <- unlist(strsplit(resp$headers$location, split = "/"))
+  res <- parsed[length(parsed)]
+  return(as.numeric(res))
 }

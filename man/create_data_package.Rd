@@ -4,12 +4,10 @@
 \alias{create_data_package}
 \title{Create data package}
 \usage{
-create_data_package(eml, useChecksum = FALSE, tier = "production")
+create_data_package(eml, tier = "production")
 }
 \arguments{
 \item{eml}{(character) Full path to an EML document}
-
-\item{useChecksum}{(logical) Whether to to use an existing copy of the data entities from a previous revision of the data package (see details below).}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }

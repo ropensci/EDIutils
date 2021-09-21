@@ -21,11 +21,13 @@
 #' 
 #'
 update_data_package <- function(eml, useChecksum = FALSE, tier = "production"){
-  # TODO implement useChecsum
   validate_arguments(x = as.list(environment()))
   scope <- unlist(strsplit(basename(eml), "\\."))[1]
   identifier <- unlist(strsplit(basename(eml), "\\."))[2]
   url <- paste0(url_env(tier), ".lternet.edu/package/eml/", scope, "/", identifier)
+  if (useChecksum) {
+    url <- paste0(url, "?useChecksum")
+  }
   cookie <- bake_cookie()
   resp <- httr::PUT(url, 
                     set_user_agent(), 

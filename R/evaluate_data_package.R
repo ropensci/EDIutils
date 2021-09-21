@@ -25,9 +25,11 @@
 #' }
 #'
 evaluate_data_package <- function(eml, useChecksum = FALSE, tier = "production") {
-  # TODO implement useChecsum
   validate_arguments(x = as.list(environment()))
   url <- paste0(url_env(tier), ".lternet.edu/package/evaluate/eml")
+  if (useChecksum) {
+    url <- paste0(url, "?useChecksum")
+  }
   cookie <- bake_cookie()
   resp <- httr::POST(url, 
                      set_user_agent(), 
