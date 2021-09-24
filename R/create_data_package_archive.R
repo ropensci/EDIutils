@@ -10,16 +10,14 @@
 #' @export
 #' 
 #' @examples 
+#' create_data_package_archive("knb-lter-sev.31999.1")
 #'
 create_data_package_archive <- function(packageId, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  browser()
   url <- paste0(url_env(tier), ".lternet.edu/package/archive/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::POST(url, set_user_agent(), handle = httr::handle(""))
-  transaction <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp)
-  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  res <- text2char(parsed)
-  return(as.numeric(res))
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  return(res)
 }

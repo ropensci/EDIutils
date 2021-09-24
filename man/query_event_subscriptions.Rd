@@ -34,5 +34,6 @@ If a query parameter is specified, and a subscription's respective attribute doe
 User authentication is required (see \code{login()})
 }
 \examples{
+query_event_subscriptions()
 
 }

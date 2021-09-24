@@ -5,9 +5,10 @@
 #'
 #' @return (xml_document) An XML list of zero or more audit records matching the query parameters as specified in the request.
 #' 
-#' @details Query parameters:
+#' @details Query parameters are specified as key=value pairs, multiple pairs must be delimited with ampersands (&), and only a single value should be specified for a particular key. The following query parameter keys are allowed:
+#' 
 #' \itemize{
-#'   \item category - Can be: "debug", "info", "error", "warn"
+#'   \item category - Can be: debug, info, error, warn
 #'   \item service - Any of the EDI Data Repository services
 #'   \item serviceMethod - Any of the EDI Data Repository service Resource class JAX-RS methods
 #'   \item user - Any user
@@ -27,14 +28,20 @@
 #' @export
 #' 
 #' @examples 
+#' \dontrun{
+#' # Get all audit records for user "ecocomdp"
+#' query <- paste0("user=", construct_dn("ecocomdp"))
+#' res <- get_audit_report(query)
+#' }
 #'
 get_audit_report <- function(query, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  browser()
-  # query <- gsub(pattern = "\"", replacement = "%22", x = query)
+  # TODO Escape quotes?: query <- gsub(pattern = "\"", replacement = "%22", x = query)
   url <- paste0(url_env(tier), ".lternet.edu/audit/report?", query)
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
-  httr::stop_for_status(resp)
+  cookie <- bake_cookie()
+  resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
+  msg <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, msg)
   parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
   return(parsed)
 }

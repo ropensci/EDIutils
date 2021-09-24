@@ -19,7 +19,7 @@ read_data_package_archive <- function(packageId,
   url <- paste0(url_env(tier), ".lternet.edu/package/archive/eml/",
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 transaction)
-  resp <- httr::GET(url, set_user_agent())
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   httr::stop_for_status(resp)
   # parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
   # return(parsed)

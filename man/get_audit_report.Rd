@@ -18,9 +18,10 @@ get_audit_report(query, tier = "production")
 Get audit report
 }
 \details{
-Query parameters:
+Query parameters are specified as key=value pairs, multiple pairs must be delimited with ampersands (&), and only a single value should be specified for a particular key. The following query parameter keys are allowed:
+
 \itemize{
-  \item category - Can be: "debug", "info", "error", "warn"
+  \item category - Can be: debug, info, error, warn
   \item service - Any of the EDI Data Repository services
   \item serviceMethod - Any of the EDI Data Repository service Resource class JAX-RS methods
   \item user - Any user
@@ -39,5 +40,10 @@ The query parameters fromTime and optionally toTime should be used to indicate a
 User authentication is required (see \code{login()})
 }
 \examples{
+\dontrun{
+# Get all audit records for user "ecocomdp"
+query <- paste0("user=", construct_dn("ecocomdp"))
+res <- get_audit_report(query)
+}
 
 }

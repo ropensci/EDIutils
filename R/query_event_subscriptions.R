@@ -21,17 +21,18 @@
 #' 
 #' @export
 #' 
-#' @examples 
+#' @examples
+#' query_event_subscriptions()
 #'
 query_event_subscriptions <- function(query = NULL, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  browser()
-  url <- paste0(url_env(tier), ".lternet.edu/package/event/eml")
+  url <- paste0(url_env(tier), ".lternet.edu/package/event/eml?")
   if (!is.null(query)) {
-    browser()
+    url <- paste0(url, query)
   }
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
-  httr::stop_for_status(resp)
+  cookie <- bake_cookie()
+  resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
+  httr::stop_for_status(resp, httr::content(resp, "text", encoding = "UTF-8"))
   parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
   return(parsed)
 }

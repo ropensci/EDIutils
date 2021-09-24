@@ -21,5 +21,6 @@ Create data package archive (zip)
 The transaction identifier may be used in a subsequent call to \code{read_data_package_error()} to determine the operation status or to \code{read_data_package_archive()} to obtain the Zip archive.
 }
 \examples{
+create_data_package_archive("knb-lter-sev.31999.1")
 
 }
