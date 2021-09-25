@@ -22,12 +22,13 @@ read_data_package_report <- function(packageId, html = FALSE,
                 paste(parse_packageId(packageId), collapse = "/"))
   if (html) {
     resp <- httr::GET(url, set_user_agent(), httr::accept("text/html"))
-    httr::stop_for_status(resp)
-    parsed <- xml2::read_html(httr::content(resp, "text", encoding = "UTF-8"))
+    res <- httr::content(resp, as = "text", encoding = "UTF-8")
+    httr::stop_for_status(resp, res)
+    return(xml2::read_html(res))
   } else {
     resp <- httr::GET(url, set_user_agent())
-    httr::stop_for_status(resp)
-    parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
+    res <- httr::content(resp, as = "text", encoding = "UTF-8")
+    httr::stop_for_status(resp, res)
+    return(xml2::read_xml(res))
   }
-  return(parsed)
 }
