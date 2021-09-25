@@ -20,7 +20,7 @@ create_reservation <- function(scope, tier = "production") {
   url <- paste0(url_env(tier), ".lternet.edu/package/reservations/eml/", scope)
   cookie <- bake_cookie()
   resp <- httr::POST(url, set_user_agent(), cookie, handle = httr::handle(""))
-  httr::stop_for_status(resp)
-  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  return(as.numeric(parsed))
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  return(as.numeric(res))
 }

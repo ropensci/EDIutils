@@ -21,8 +21,12 @@ read_data_entity <- function(packageId, entityId, tier = "production") {
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 entityId)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
-  httr::stop_for_status(resp)
-  raw <- httr::content(resp, as = "raw", encoding = "UTF-8")
+  if (resp$status_code == "200") {
+    res <- httr::content(resp, as = "raw", encoding = "UTF-8")
+  } else {
+    res <- httr::content(resp, as = "text", encoding = "UTF-8")
+    httr::stop_for_status(resp, res)
+  }
   # TODO Implement reader options for dataTable, spatialRaster, spatialVector, etc., listing their dependencies under DESCRIPTION/suggests. Parse EML into reader arguments. Preserve raw option.
-  return(raw)
+  return(res)
 }

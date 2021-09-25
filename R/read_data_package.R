@@ -23,13 +23,11 @@ read_data_package <- function(packageId, ore = FALSE, tier = "production") {
     url <- paste0(url, "?ore")
   }
   resp <- httr::GET(url, set_user_agent())
-  httr::stop_for_status(resp)
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
   if (ore) {
-    parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
-    return(parsed)
+    return(xml2::read_xml(res))
   } else {
-    parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-    res <- text2char(parsed)
-    return(res)
+    return(text2char(res))
   }
 }

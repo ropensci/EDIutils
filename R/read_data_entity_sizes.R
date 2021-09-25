@@ -15,9 +15,9 @@ read_data_entity_sizes <- function(packageId, tier = "production") {
   url <- paste0(url_env(tier), ".lternet.edu/package/data/size/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent())
-  httr::stop_for_status(resp)
-  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  df <- read.csv(text = parsed, as.is = TRUE, header = FALSE)
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  df <- read.csv(text = res, as.is = TRUE, header = FALSE)
   names(df) <- c("entityId", "size")
   return(df)
 }

@@ -20,8 +20,7 @@ read_data_entity_size <- function(packageId, entityId, tier = "production") {
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 entityId)
   resp <- httr::GET(url, set_user_agent())
-  httr::stop_for_status(resp)
-  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  res <- as.numeric(text2char(parsed))
-  return(res)
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  return(as.numeric(text2char(res)))
 }

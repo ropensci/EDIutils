@@ -20,8 +20,7 @@ list_data_package_scopes <- function(tier = "production") {
   validate_arguments(x = as.list(environment()))
   url <- paste0(url_env(tier), ".lternet.edu/package/eml")
   resp <- httr::GET(url, set_user_agent())
-  httr::stop_for_status(resp)
-  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  res <- text2char(parsed)
-  return(res)
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  return(text2char(res))
 }

@@ -14,8 +14,7 @@ list_reservation_identifiers <- function(scope, tier = "production") {
   validate_arguments(x = as.list(environment()))
   url <- paste0(url_env(tier), ".lternet.edu/package/reservations/eml/", scope)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
-  httr::stop_for_status(resp)
-  parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-  res <- text2char(parsed)
-  return(as.numeric(res))
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  return(as.numeric(text2char(res)))
 }

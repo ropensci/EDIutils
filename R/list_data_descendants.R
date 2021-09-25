@@ -17,7 +17,7 @@ list_data_descendants <- function(packageId, tier = "production") {
   url <- paste0(url_env(tier), ".lternet.edu/package/descendants/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent())
-  httr::stop_for_status(resp)
-  parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
-  return(parsed)
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  return(xml2::read_xml(res))
 }
