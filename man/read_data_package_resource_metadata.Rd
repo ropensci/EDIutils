@@ -4,25 +4,20 @@
 \alias{read_data_package_resource_metadata}
 \title{Read data package resource metadata}
 \usage{
-read_data_package_resource_metadata(package.id, environment = 'production')
+read_data_package_resource_metadata(packageId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-('xml_document' 'xml_node') The resource metadata for 
-    the data package.
+(xml_document) Resource metadata
 }
 \description{
-Read Data Package Resource Metadata operation, specifying the scope, identifier, and revision of the data package whose resource metadata is to be read in the URI, returning an XML string representing the resource metadata for the data package.
-}
-\details{
-GET : https://pasta.lternet.edu/package/rmd/eml/{scope}/{identifier}/{revision}
+Read data package resource metadata
 }
 \examples{
+
 
 }

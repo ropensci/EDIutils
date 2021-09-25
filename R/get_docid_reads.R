@@ -15,7 +15,7 @@ get_docid_reads <- function(scope, identifier, tier = "production") {
   validate_arguments(x = as.list(environment()))
   url <- paste0(url_env(tier), ".lternet.edu/audit/reads/", scope, "/", identifier)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
-  httr::stop_for_status(resp)
-  parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
-  return(parsed)
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  return(xml2::read_xml(res))
 }

@@ -34,7 +34,7 @@ update_data_package <- function(eml, useChecksum = FALSE, tier = "production"){
                     cookie, 
                     handle = httr::handle(""), 
                     body = httr::upload_file(eml))
-  httr::stop_for_status(resp)
-  transaction <- httr::content(resp, as = "text", encoding = "UTF-8")
-  return(transaction)
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  return(res)
 }

@@ -35,7 +35,8 @@ create_event_subscription <- function(packageId, url, tier = "production") {
                      cookie, 
                      body = httr::upload_file(fsub), 
                      handle = httr::handle(""))
-  httr::stop_for_status(resp)
+  msg <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, msg)
   parsed <- unlist(strsplit(resp$headers$location, split = "/"))
   res <- parsed[length(parsed)]
   return(as.numeric(res))

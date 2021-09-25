@@ -1,43 +1,22 @@
 #' Read data package resource metadata
 #'
-#' @description Read Data Package Resource Metadata operation, specifying the scope, identifier, and revision of the data package whose resource metadata is to be read in the URI, returning an XML string representing the resource metadata for the data package.
+#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @usage read_data_package_resource_metadata(package.id, environment = 'production')
-#'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-#' @return
-#'     ('xml_document' 'xml_node') The resource metadata for 
-#'     the data package.
-#' @details GET : https://pasta.lternet.edu/package/rmd/eml/{scope}/{identifier}/{revision}
+#' @return (xml_document) Resource metadata
+#' 
 #' @export
+#' 
 #' @examples 
+#' 
 #'
-read_data_package_resource_metadata <- function(package.id, environment = 'production'){
-  
-  message(paste('Retrieving resource metadat for ', package.id))
-  
+read_data_package_resource_metadata <- function(packageId, 
+                                                tier = "production") {
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/rmd/eml/',
-      stringr::str_replace_all(package.id, '\\.', '/')
-    )
-  )
-  
-  output <- httr::content(
-    r,
-    as = 'parsed',
-    encoding = 'UTF-8'
-  )
-  
-  output
-  
+  url <- paste0(url_env(tier), ".lternet.edu/package/rmd/eml/",
+                paste(parse_packageId(packageId), collapse = "/"))
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  return(xml2::read_xml(res))
 }

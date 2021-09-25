@@ -1,6 +1,7 @@
-#' Delete journal citation
+#' Delete data package
 #'
-#' @param journalCitationId (numeric) Journal citation identifier
+#' @param scope (character) Scope of data package (i.e. the first component of a \code{packageId})
+#' @param identifier (numeric) Identifier of data package (i.e. the second component of a
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #' 
 #' @return (logical) TRUE if deleted
@@ -11,14 +12,13 @@
 #' 
 #' @examples 
 #' \dontrun{
-#' journalCitationId <- 65
-#' delete_journal_citation(journalCitationId)
+#' 
 #' }
 #'
-delete_journal_citation <- function(journalCitationId, tier = "production") {
+delete_data_package <- function(scope, identifier, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/citation/eml/", 
-                journalCitationId)
+  url <- paste0(url_env(tier), ".lternet.edu/package/eml/", scope, "/", 
+                identifier)
   cookie <- bake_cookie()
   resp <- httr::DELETE(url, 
                        set_user_agent(), 

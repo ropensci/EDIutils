@@ -20,7 +20,7 @@ list_recent_uploads <- function(type, limit = 5, tier = "production") {
   url <- paste0(url_env(tier), ".lternet.edu/package/uploads/eml", 
                 "?type=", type, "&limit=", limit)
   resp <- httr::GET(url, set_user_agent())
-  httr::stop_for_status(resp)
-  parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
-  return(parsed)
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  return(xml2::read_xml(res))
 }

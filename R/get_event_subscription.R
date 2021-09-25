@@ -2,40 +2,26 @@
 #'
 #' @description Get Event Subscription returns the event subscription with the specified ID.
 #'
-#' @param package.id
-#'     (character) Package identifier composed of scope, identifier, and
-#'     revision (e.g. 'edi.101.1').
-#' @param environment
-#'     (character) Data repository environment to create the package in.
-#'     Can be: 'development', 'staging', 'production'.
+#' @param subscriptionId (numeric) Event subscription ID
+#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @return
-#'     ("xml_document" "xml_node") EML metadata.
-#'     
-#' @details GET : https://pasta.lternet.edu/package/event/eml/{subscriptionId}
+#' @return (xml_document) Subscription metadata
+#' 
 #' @export
+#' 
 #' @examples 
+#' packageId <- "knb-lter-vcr.340.1"
+#' url <- "https://some.server.org"
+#' subscriptionId <- create_event_subscription(packageId, url)
+#' get_event_subscription(subscriptionId)
 #'
-get_event_subscription <- function(package.id, environment = 'production'){
-  
-  message(paste('Retrieving provenance metadata for ', package.id))
-  
+get_event_subscription <- function(subscriptionId, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  
-  r <- httr::GET(
-    url = paste0(
-      url_env(environment),
-      '.lternet.edu/package/provenance/eml/',
-      stringr::str_replace_all(package.id, '\\.', '/')
-    )
-  )
-  
-  output <- httr::content(
-    r,
-    as = 'parsed',
-    encoding = 'UTF-8'
-  )
-  
-  output
-  
+  url <- paste0(url_env(tier), ".lternet.edu/package/event/eml/", 
+                subscriptionId)
+  cookie <- bake_cookie()
+  resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  return(xml2::read_xml(res))
 }

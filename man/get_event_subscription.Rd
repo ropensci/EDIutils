@@ -4,24 +4,23 @@
 \alias{get_event_subscription}
 \title{Get event subscription}
 \usage{
-get_event_subscription(package.id, environment = "production")
+get_event_subscription(subscriptionId, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{subscriptionId}{(numeric) Event subscription ID}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-("xml_document" "xml_node") EML metadata.
+(xml_document) Subscription metadata
 }
 \description{
 Get Event Subscription returns the event subscription with the specified ID.
 }
-\details{
-GET : https://pasta.lternet.edu/package/event/eml/{subscriptionId}
-}
 \examples{
+packageId <- "knb-lter-vcr.340.1"
+url <- "https://some.server.org"
+subscriptionId <- create_event_subscription(packageId, url)
+get_event_subscription(subscriptionId)
 
 }

@@ -32,7 +32,7 @@ query_event_subscriptions <- function(query = NULL, tier = "production") {
   }
   cookie <- bake_cookie()
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
-  httr::stop_for_status(resp, httr::content(resp, "text", encoding = "UTF-8"))
-  parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
-  return(parsed)
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  return(xml2::read_xml(res))
 }
