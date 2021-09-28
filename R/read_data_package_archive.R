@@ -22,6 +22,9 @@ read_data_package_archive <- function(packageId,
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
-  # parsed <- xml2::read_xml(httr::content(resp, "text", encoding = "UTF-8"))
-  # return(parsed)
+  res <- httr::content(resp, as = "raw", encoding = "UTF-8")
+  return(res)
+  # TODO direct output to path
+  tmp <- tempfile(tmpdir = paste0(path, "/data.zip"))
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""), httr::write_disk(tmp))
 }

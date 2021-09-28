@@ -4,30 +4,26 @@
 \alias{get_audit_record}
 \title{Get audit record}
 \usage{
-get_audit_record(attr.name, package.id, environment = "production")
+get_audit_record(oid, tier = "production")
 }
 \arguments{
-\item{attr.name}{(character) Attribute name}
+\item{oid}{(numeric) Audit identifier}
 
-\item{package.id}{(character) Data package identifier (e.g. knb-lter-cap.627.3) in the 
-EDI Data Repository.}
-
-\item{evironment}{(character) Repository environment in which the L0 and L1 exist. Some repositories have development, staging, and production environments which are distinct from one another. This argument allows execution for the \code{update_L1} workflow within the context of one of these environments. Default is "production".}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(list) A named vector with these attribute elements:
-    \itemize{
-        \item{name} <attributeName>
-        \item{definition} <attributeDefinition> 
-        \item{unit} <standardUnit> or <customUnit>
-    }
+() An audit record
 }
 \description{
-Gets a single audit record based on the audit identifier value specified in the path.
+Get audit record
 }
-\details{
-GET : https://pasta.lternet.edu/audit/report/{oid}
+\note{
+User authentication is required (see \code{login()})
 }
 \examples{
+query <- "serviceMethod=createDataPackage&limit=5"
+recent_uploads <- get_recent_uploads(query)
+oid <- xml2::xml_text(xml2::xml_find_all(recent_uploads, ".//oid"))[1]
+get_audit_record(oid)
 
 }

@@ -4,24 +4,32 @@
 \alias{get_recent_uploads}
 \title{Get recent uploads}
 \usage{
-get_recent_uploads(package.id, environment = "production")
+get_recent_uploads(query, tier = "production")
 }
 \arguments{
-\item{package.id}{(character) Package identifier composed of scope, identifier, and
-revision (e.g. 'edi.101.1').}
+\item{query}{(character) Query (see details below)}
 
-\item{environment}{(character) Data repository environment to create the package in.
-Can be: 'development', 'staging', 'production'.}
+\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-("xml_document" "xml_node") EML metadata.
+(xml_document) A list of zero or more audit records of either recently inserted or recently updated data packages.
 }
 \description{
-Gets a list of zero or more audit records of either recently inserted or recently updated data packages, as specified in the request.
+Get recent uploads
 }
 \details{
-GET : https://pasta.lternet.edu/audit/recent-uploads
+Query parameters are specified as key=value pairs, multiple pairs must be delimited with ampersands (&), and only a single value should be specified for a particular key. The following query parameter keys are allowed:
+
+\itemize{
+  \item serviceMethod - Can be: createDataPackage, updateDataPackage
+  \item fromTime - An ISO8601 timestamp
+  \item limit - A positive whole number
+}
+
+The query parameter serviceMethod should have the value "createDataPackage" (to retrieve recent inserts) or "updateDataPackage" (to retrieve recent updates). The query parameter fromTime is used to specify the date/time in the past that represents the oldest audit records that should be returned. Data packages uploaded prior to that time are not considered recent uploads and are thus filtered from the query results. The query parameter limit sets an upper limit on the number of audit records returned. For example, "limit=3".
 }
 \examples{
+query <- "serviceMethod=createDataPackage&limit=5"
+get_recent_uploads(query)
 
 }
