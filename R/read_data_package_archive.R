@@ -2,29 +2,31 @@
 #'
 #' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
 #' @param transaction (character) Transaction identifier
+#' @param path (character) Path of directory in which the result will be written
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @return (.zip) The data package archive of \code{packageId}
+#' @return (.zip file) The data package archive
 #' 
 #' @export
 #' 
 #' @examples 
+#' packageId <- "knb-lter-vcr.340.1"
+#' transaction <- create_data_package_archive(packageId)
+#' path <- "/Users/me/Documents"
+#' read_data_package_archive(packageId, transaction, path)
 #'
 read_data_package_archive <- function(packageId, 
-                                      transaction, 
+                                      transaction,
+                                      path,
                                       tier = "production") {
-  # TODO redirect output to file?
   validate_arguments(x = as.list(environment()))
-  browser()
+  read_data_package_error(transaction, tier)
   url <- paste0(url_env(tier), ".lternet.edu/package/archive/eml/",
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 transaction)
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
-  res <- httr::content(resp, as = "text", encoding = "UTF-8")
-  httr::stop_for_status(resp, res)
-  res <- httr::content(resp, as = "raw", encoding = "UTF-8")
-  return(res)
-  # TODO direct output to path
-  tmp <- tempfile(tmpdir = paste0(path, "/data.zip"))
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""), httr::write_disk(tmp))
+  resp <- httr::GET(url, 
+                    set_user_agent(), 
+                    handle = httr::handle(""), 
+                    httr::write_disk(paste0(path, "/", packageId, ".zip")),
+                    httr::progress())
 }

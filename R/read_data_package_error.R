@@ -27,16 +27,8 @@ read_data_package_error <- function(transaction, tier = "production") {
   url <- paste0(url_env(tier), ".lternet.edu/package/error/eml/", transaction)
   cookie <- bake_cookie()
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
-  if (resp$status_code == "200") {
-    # Error messages have multiple forms. Use regex to detect the form and 
-    # parse into a meaningful form for the user.
-    parsed <- httr::content(resp, as = "text", encoding = "UTF-8")
-    is_quality_report <- grepl("eml://ecoinformatics.org/qualityReport", parsed)
-    if (is_quality_report) {
-      msg <- "The data package was not uploaded due to one or more errors in the metadata. Use evaluate_data_package() then read_evaluate_report() for a detailed explanation."
-      stop(msg, call. = FALSE)
-    } else {
-      stop(parsed, call. = FALSE)
-    }
+  if (resp$status_code != "404") {
+    res <- httr::content(resp, as = "text", encoding = "UTF-8")
+    stop(res, call. = FALSE)
   }
 }

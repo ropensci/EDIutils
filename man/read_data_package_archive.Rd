@@ -4,21 +4,27 @@
 \alias{read_data_package_archive}
 \title{Read data package archive}
 \usage{
-read_data_package_archive(packageId, transaction, tier = "production")
+read_data_package_archive(packageId, transaction, path, tier = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
 \item{transaction}{(character) Transaction identifier}
 
+\item{path}{(character) Path of directory in which the result will be written}
+
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(.zip) The data package archive of \code{packageId}
+(.zip file) The data package archive
 }
 \description{
 Read data package archive
 }
 \examples{
+packageId <- "knb-lter-vcr.340.1"
+transaction <- create_data_package_archive(packageId)
+path <- "/Users/me/Documents"
+read_data_package_archive(packageId, transaction, path)
 
 }
