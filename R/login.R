@@ -2,8 +2,7 @@
 #'
 #' @param userId (character) EDI user name
 #' @param userPass (character) Password
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
-#' @param config (character) Path to config.txt, which contains \code{userId}, \code{userPass}, and \code{tier} (see details below)
+#' @param config (character) Path to config.txt, which contains \code{userId} and \code{userPass} (see details below)
 #'
 #' @return (file) A temporary (~10 hour) authentication token written to edi_token.txt within the session \code{tempdir()}.
 #' 
@@ -30,8 +29,7 @@
 #' login()
 #' }
 #' 
-login <- function(userId = NULL, userPass = NULL, tier = "production", 
-                  config = NULL) {
+login <- function(userId = NULL, userPass = NULL, config = NULL) {
   validate_arguments(x = as.list(environment()))
   on.exit(rm(userId))
   on.exit(rm(userPass))
@@ -47,7 +45,7 @@ login <- function(userId = NULL, userPass = NULL, tier = "production",
     userPass <- trimws(regmatches(txt[i], regexpr(pattern, txt[i], perl = TRUE)))
   }
   dn <- construct_dn(userId, "EDI")
-  resp <- httr::GET(url = paste0(url_env(tier), ".lternet.edu/package/eml"),
+  resp <- httr::GET(url = paste0(url_env("production"), ".lternet.edu/package/eml"),
                     config = httr::authenticate(dn, userPass, type = "basic"),
                     handle = httr::handle(""))
   httr::stop_for_status(resp)

@@ -22,7 +22,7 @@ read_data_package <- function(packageId, ore = FALSE, tier = "production") {
   if (ore) {
     url <- paste0(url, "?ore")
   }
-  resp <- httr::GET(url, set_user_agent())
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   if (ore) {

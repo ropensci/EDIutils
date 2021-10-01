@@ -36,7 +36,7 @@ list_recent_changes <- function(fromDate = NULL, toDate = NULL, scope = NULL,
   if (!is.null(scope)) {
     url <- paste0(url, "&scope=", scope)
   }
-  resp <- httr::GET(url, set_user_agent())
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   return(xml2::read_xml(res))

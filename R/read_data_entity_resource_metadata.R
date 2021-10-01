@@ -20,7 +20,7 @@ read_data_entity_resource_metadata <- function(packageId, entityId,
   url <- paste0(url_env(tier), ".lternet.edu/package/data/rmd/eml/",
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 entityId)
-  resp <- httr::GET(url, set_user_agent())
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   return(xml2::read_xml(res))

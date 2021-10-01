@@ -16,7 +16,7 @@ read_data_entity_checksum <- function(packageId, entityId, tier = "production") 
   pkg <- parse_packageId(packageId)
   url <- paste0(url_env(tier), ".lternet.edu/package/data/checksum/eml/",
                 paste(pkg, collapse = "/"), "/", entityId)
-  resp <- httr::GET(url, set_user_agent())
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   return(text2char(res))

@@ -17,7 +17,7 @@ list_data_sources <- function(packageId, tier = "production") {
   parts <- parse_packageId(packageId)
   url <- paste0(url_env(tier), ".lternet.edu/package/sources/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"))
-  resp <- httr::GET(url, set_user_agent())
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   return(xml2::read_xml(res))

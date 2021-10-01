@@ -4,16 +4,14 @@
 \alias{login}
 \title{Login to the EDI repository}
 \usage{
-login(userId = NULL, userPass = NULL, tier = "production", config = NULL)
+login(userId = NULL, userPass = NULL, config = NULL)
 }
 \arguments{
 \item{userId}{(character) EDI user name}
 
 \item{userPass}{(character) Password}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
-
-\item{config}{(character) Path to config.txt, which contains \code{userId}, \code{userPass}, and \code{tier} (see details below)}
+\item{config}{(character) Path to config.txt, which contains \code{userId} and \code{userPass} (see details below)}
 }
 \value{
 (file) A temporary (~10 hour) authentication token written to edi_token.txt within the session \code{tempdir()}.
