@@ -1,7 +1,7 @@
 ---
 title: "Retrieving dataset download stats"
 author: "Corinna Gries"
-date: "2021-10-19"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Retrieving dataset download stats}
@@ -9,7 +9,12 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
 The EDIutils package provides R wrappers to the PASTA REST API functions. 
 
@@ -17,26 +22,12 @@ This vignette demonstrates how to query PASTA for dataset download statistics. T
 
 #### Set up the R environment
 
-
-```r
+```{r libraries}
 library(EDIutils)
 library(xml2)
 library(stringr)
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 library(lubridate)
-#> 
-#> Attaching package: 'lubridate'
-#> The following objects are masked from 'package:base':
-#> 
-#>     date, intersect, setdiff, union
 library(ggplot2)
 ```
 
@@ -70,8 +61,7 @@ For more documentation see the [PASTA API Documentation](https://pasta.lternet.e
   
 The parameters need to be separated by an ampersand
 
-
-```r
+```{r get audit report}
 login(userId = Sys.getenv("USERID"), userPass = Sys.getenv("USERPW"))
 
 query <- paste("category=info",
@@ -90,8 +80,7 @@ logout()
 
 The returned XML has the format:
 
-
-```xml
+```{xml}
 <auditReport>
   <auditRecord>
     <oid>115951546</oid>
@@ -113,8 +102,7 @@ The returned XML has the format:
 
 Set up the data frame to hold date and packageID
 
-
-```r
+```{r date frame}
 df_results <- data.frame(dl_date = as.Date(character()),
                          dl_scope = character(),
                          dl_datasetID = character(),
@@ -124,8 +112,7 @@ df_results <- data.frame(dl_date = as.Date(character()),
 
 Get the date and packageID
 
-
-```r
+```{r parse report}
 download_date_time <- xml_text(xml_find_all(report_xml, "//entryTime"))
 
 download_data_entity <- xml_text(xml_find_all(report_xml, "//resourceId"))
@@ -150,18 +137,15 @@ for (i in 1:length(download_data_entity)) {
 
 Group and count downloads for each data package for the entire time period
 
-
-```r
+```{r count downloads}
 df_downloads <- df_results %>%
   group_by(dl_datasetID, dl_scope) %>%
   summarise(n = n())
-#> `summarise()` has grouped output by 'dl_datasetID'. You can override using the `.groups` argument.
 ```
 
 Or count downloads per month
 
-
-```r
+```{r}
 df_downloads_per_month <- df_results %>%
   mutate(dl_month = month(dl_date)) %>% 
   group_by(dl_month) %>%
@@ -170,8 +154,7 @@ df_downloads_per_month <- df_results %>%
 
 And graph the downloads
 
-
-```r
+```{r daily_downloads, fig.show='hold'}
 df_downloads_daily <- df_results %>%
   group_by(dl_date) %>%
   arrange(dl_date) %>%
@@ -185,7 +168,6 @@ ggplot(df_downloads_daily, aes(x=dl_date, y=n, group = 1)) +
         axis.title.x = element_blank(),
         axis.line = element_line(colour = "black"),
         panel.background = element_rect(fill = "white"))
-```
 
-<img src="daily_downloads-1.png"title="plot of chunk daily_downloads" alt="plot of chunk daily_downloads" width="50%" />
+```
 
