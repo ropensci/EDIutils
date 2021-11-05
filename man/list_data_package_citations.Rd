@@ -4,12 +4,14 @@
 \alias{list_data_package_citations}
 \title{List data package citations}
 \usage{
-list_data_package_citations(packageId, tier = "production")
+list_data_package_citations(packageId, tier = "production", list_all = FALSE)
 }
 \arguments{
 \item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+
+\item{list_all}{(logical) Whether to return all citations within a data package series (i.e. multiple revisions)}
 }
 \value{
 (xml_document) A list of journal citations
