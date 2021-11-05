@@ -80,7 +80,7 @@ for (j in 1:length(identifiers)){
 
 ```
 
-The list of `citation_dois` now contains all journal publication DOIs that have cited a dataset in the EDI scope (on 11/5/2021).
+The list of `citation_dois` now contains all journal publication DOIs that have cited a dataset in the EDI scope (on 11/5/2021). This is not the number of journal articles because one article may cite more than one dataset. To get to the number of journal articles, the number of unique DOIs needs to be counted.
 
 ```{r}
 print(length(citation_dois))

@@ -37,7 +37,7 @@ scope <- "edi"
 identifiers <- list_data_package_identifiers(scope = scope, tier = "production")
 ```
 
-Get all revisions for each identifer and retrieve journal citations for each
+Get all revisions for each identifer and retrieve journal citations for each. Citation information is connected to the specific revision of a dataset.
 
 The citation information is returned as XMl in the format:
 
@@ -76,7 +76,7 @@ for (j in 1:length(identifiers)){
 }
 ```
 
-The list of `citation_dois` now contains all journal publication DOIs that have cited a dataset in the EDI scope (on 11/5/2021).
+The list of `citation_dois` now contains all journal publication DOIs that have cited a dataset in the EDI scope (on 11/5/2021). This is not the number of journal articles because one article may cite more than one dataset. To get to the number of journal articles, the number of unique DOIs needs to be counted.
 
 
 ```r
