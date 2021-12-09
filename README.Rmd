@@ -22,7 +22,9 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-A client for the Environmental Data Initiative (EDI) Repository (https://portal.edirepository.org/nis/home.jsp). Provides create, read, update, and delete operations for the Data Package Manager and Audit Manager APIs. The EDI Data Repository is an open access repository for anyone curating or reusing high quality environmental and ecological data.
+A client for the Environmental Data Initiative (EDI) repository (https://portal.edirepository.org/nis/home.jsp). Provides create, read, update, and delete operations for the Data Package Manager and Audit Manager APIs. The EDI Data Repository is an open access repository for anyone curating or reusing high quality environmental and ecological data.
+
+[Introduction to the repository]()
 
 ## Installation
 
@@ -34,7 +36,10 @@ remotes::install_github("EDIorg/EDIutils")
 
 ## Usage
 
-TODO
+[Access data]()
+[Upload data]()
+[Report to stakeholders]()
+[Analyze holdings]()
 
 ## Getting help
 
