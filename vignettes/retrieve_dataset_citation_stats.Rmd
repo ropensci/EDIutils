@@ -1,0 +1,86 @@
+---
+title: "Retrieving dataset citation stats"
+author: "Corinna Gries"
+date: "2021-11-05"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Retrieving dataset citation stats}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+The EDIutils package provides R wrappers to the PASTA REST API functions. 
+
+This vignette demonstrates how to query PASTA for journal articles that cite a certain dataset. These stats may be used in reports.
+
+#### Set up the R environment
+
+
+```r
+library(EDIutils)
+library(xml2)
+```
+
+
+Several PASTA REST API functions return XML, `xml2` is a convenient package to extract desired information and to save returned EML files locally.
+
+
+#### Get the journal citation report for specific data packages
+
+Get all identifiers for a certain scope
+
+
+```r
+scope <- "edi"
+identifiers <- list_data_package_identifiers(scope = scope, tier = "production")
+```
+
+Get all revisions for each identifer and retrieve journal citations for each. Citation information is connected to the specific revision of a dataset.
+
+The citation information is returned as XMl in the format:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<journalCitations>
+    <journalCitation>
+        <journalCitationId>15</journalCitationId>
+        <principalOwner>uid=ucarroll,o=LTER,dc=ecoinformatics,dc=org</principalOwner>
+        <dateCreated>2017-12-21T14:28:26.235</dateCreated>
+        <packageId>edi.1000.1</packageId>
+        <articleDoi>10.5072/FK2/06dccc7b0cb2a2d5f6fef62cb4b36dae</articleDoi>
+        <articleTitle>Tree Survey in Southern Arizona</articleTitle>
+        <articleUrl>http://treejournal.com/articles/12345</articleUrl>
+        <journalTitle>The Tree Journal</journalTitle>
+    </journalCitation>
+<journalCitations>
+```
+
+
+```r
+citation_dois <- c()
+for (j in 1:length(identifiers)){
+  revisions <- list_data_package_revisions(
+    scope = scope,
+    identifier = identifiers[j],
+    tier = "production"
+  )
+  
+  for (i in 1:length(revisions)) {
+    datapackage <- paste(scope, identifiers[j],revisions[i], sep = ".")
+    return_xml <- list_data_package_citations(packageId = datapackage)
+    return_dois <- xml_text(xml_find_all(return_xml, "//articleDoi"))
+    citation_dois <- append(citation_dois, return_dois)
+  }
+}
+```
+
+The list of `citation_dois` now contains all journal publication DOIs that have cited a dataset in the EDI scope (on 11/5/2021). This is not the number of journal articles because one article may cite more than one dataset. To get to the number of journal articles, the number of unique DOIs needs to be counted.
+
+
+```r
+print(length(citation_dois))
+#> [1] 272
+```
+
