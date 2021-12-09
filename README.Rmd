@@ -1,0 +1,49 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  # fig.path = "man/figures/README-",
+  fig.path = "README-",
+  out.width = "100%"
+)
+```
+
+# EDIutils
+
+<!-- badges: start -->
+[![codecov.io](https://codecov.io/github/EDIorg/EDIutils/coverage.svg?branch=master)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
+<!-- badges: end -->
+
+## Overview
+
+A client for the Environmental Data Initiative (EDI) repository. Provides create, read, update, and delete operations to the EDI Data Package and Audit Manager APIs. The EDI Data Repository (https://portal.edirepository.org/nis/home.jsp) is an open access repository for anyone curating or reusing high quality environmental and ecological data.
+
+## Installation
+
+Get the latest development version:
+```{r eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("EDIorg/EDIutils")
+```
+
+## Usage
+
+TODO
+
+## Getting help
+
+Use [GitHub Issues](https://github.com/EDIorg/EDIutils/issues) for bug reporting, feature requests, and general questions/discussions. When filing bug reports, please include a minimal reproducible example.
+
+## Contributing
+
+Community contributions are welcome! Please reference our [contributing guidelines](https://github.com/EDIorg/EDIutils/blob/master/CONTRIBUTING.md) for details.
+
+-----
+
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/EDIorg/EDIutils/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
