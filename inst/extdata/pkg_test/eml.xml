@@ -179,10 +179,10 @@
       </methodStep>
     </methods>
     <otherEntity>
-      <entityName>processing_and_analysis.R</entityName>
+      <entityName>data.txt</entityName>
       <physical>
-        <objectName>processing_and_analysis.R</objectName>
-        <size unit="bytes">2157</size>
+        <objectName>data.txt</objectName>
+        <size unit="bytes">14</size>
         <authentication method="MD5">9d4c55e9fcea10126a50efe60111e522</authentication>
         <dataFormat>
           <externallyDefinedFormat>
