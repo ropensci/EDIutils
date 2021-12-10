@@ -1,0 +1,39 @@
+---
+title: "Publish Data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Publish Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(EDIutils)
+```
+
+## Create Data Package
+
+### What is a Data Package?
+
+### Identifiers
+
+### Versioning
+
+## Authentication
+
+## Evaluate Data Package
+- Tiers
+
+### Quality Evaluation
+
+### Quality Evaluation Report
+
+## Upload Data Package
+- Tiers

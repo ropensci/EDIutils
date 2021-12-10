@@ -1,3 +1,8 @@
+title: EDIutils
+
+template:
+  bootswatch: spacelab
+
 reference:
   - title: Upload and Evaluation
     desc: Describes web service methods for uploading (creating or updating) and evaluating data packages.
@@ -105,23 +110,30 @@ reference:
     - get_packageid_reads
     - get_recent_uploads
     
-  - title: General Helpers
-    desc: Tools serving common use cases
-    contents:
-    - read_tables
-    - compare_eml
-    - compare_tables
-    - create_provenance_metadata
-    - detect_delimeter
-    - detect_os
-    - construct_dn
-    - get_eml_attribute
-    - get_eol
-    - replace_missing_value_codes
-    - validate_arguments
-    - validate_fields
-    - validate_file_names
-    - validate_keywords
-    - validate_path
-    - view_unit_dictionary
-    
+
+navbar:
+  title: ~
+  type: default
+  left:
+    - text: Functions
+      href: reference/index.html
+    - text: Articles
+      menu:
+      - text: Repository Overview
+        href: articles/repository_overview.html
+      - text: Publish Data
+        href: articles/publish_data.html
+      - text: Download Data
+        href: articles/download_data.html
+      - text: Read Metadata
+        href: articles/read_eml_metadata.html
+      - text: Retrieve Citations
+        href: articles/retrieve_dataset_citation_stats.html
+      - text: Retrieve Downloads
+        href: articles/retrieve_dataset_citation_stats.html
+      - text: Authentication
+        href: articles/authentication.html
+      - text: Glossary
+        href: articles/glossary.html
+    - text: News
+      href: news/index.html

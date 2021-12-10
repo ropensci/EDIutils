@@ -1,0 +1,31 @@
+---
+title: "Repository Overview"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Overview of the EDI Repository}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(EDIutils)
+```
+
+## PASTA+ & Web Services
+
+## Data Package Manager
+
+## Audit Manager
+
+## Gate Keeper
+
+## Tiers
+- Development, Staging, Production
+- Test in staging. Publish in production.
