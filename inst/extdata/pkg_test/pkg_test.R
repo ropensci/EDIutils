@@ -54,11 +54,11 @@ create_test_package <- function(path) {
 #' source(system.file("extdata", "/pkg_test/pkg_test.R", package = "EDIutils"))
 #' 
 #' # Create new EML file for a test
-#' create_test_eml("/Users/me/Documents", "edi.1.1")
+#' create_test_eml("/Users/me/Documents/pkg_test", "edi.1.1")
 #' }
 #' 
 create_test_eml <- function(path, packageId) {
-  eml <- xml2::read_xml(paste0(path, "/pkg_test/eml.xml"))
+  eml <- xml2::read_xml(paste0(path, "/eml.xml"))
   xml2::xml_attr(eml, "packageId") <- packageId
   xml2::write_xml(eml, paste0(path, "/", packageId, ".xml"))
 }
