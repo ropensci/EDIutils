@@ -4,7 +4,7 @@
 #' @param html (logical) Return result in HTML format?
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @return (xml_document) The evaluate quality report document
+#' @return (xml_document) The evaluate quality report document. Get high-level results with \code{summarize_quality_report()}
 #' 
 #' @note User authentication is required (see \code{login()})
 #' 
@@ -16,10 +16,11 @@
 #' transaction <- evaluate_data_package(path)
 #' 
 #' # Result in XML format
-#' read_evaluate_report(transaction)
+#' qualityReport <- read_evaluate_report(transaction)
 #' 
-#' # Result in HTML format
-#' read_evaluate_report(transaction, html = TRUE)
+#' # Result in HTML format. Write to file for human review.
+#' qualityReport <- read_evaluate_report(transaction, html = TRUE)
+#' xml2::write_html(qualityReport, "/Users/me/Documents/qualityReport.html)
 #'
 read_evaluate_report <- function(transaction, 
                                  html = FALSE, 

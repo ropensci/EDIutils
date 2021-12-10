@@ -14,23 +14,11 @@ read_evaluate_report(transaction, html = FALSE, tier = "production")
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(xml_document) The evaluate quality report document
+(xml_document) The evaluate quality report document. Get high-level results with \code{summarize_quality_report()}
 }
 \description{
 Read evaluate report
 }
 \note{
 User authentication is required (see \code{login()})
-}
-\examples{
-# Evaluate data package
-path <- "/Users/me/Documents/edi.468.1.xml"
-transaction <- evaluate_data_package(path)
-
-# Result in XML format
-read_evaluate_report(transaction)
-
-# Result in HTML format
-read_evaluate_report(transaction, html = TRUE)
-
 }
