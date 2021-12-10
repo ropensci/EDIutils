@@ -2,7 +2,7 @@
 <eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="eml.xxx.x" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd" system="edi">
   <access authSystem="https://pasta.edirepository.org/authentication" order="allowFirst" scope="document">
     <allow>
-      <principal>uid=csmith,o=EDI,dc=edirepository,dc=org</principal>
+      <principal>uid=ENTER_USER_ID,o=EDI,dc=edirepository,dc=org</principal>
       <permission>all</permission>
     </allow>
     <allow>
@@ -14,41 +14,17 @@
     <title>Sphagnum and Vascular Plant Decomposition under Increasing Nitrogen Additions</title>
     <creator>
       <individualName>
-        <givenName>John</givenName>
-        <givenName>J.</givenName>
-        <surName>Magnuson</surName>
+        <givenName>Me</givenName>
+        <givenName>A.</givenName>
+        <surName>Person</surName>
       </individualName>
       <organizationName>University of Wisconsin</organizationName>
       <electronicMailAddress>john.magnuson@wisc.edu</electronicMailAddress>
-    </creator>
-    <creator>
-      <individualName>
-        <givenName>Stephen</givenName>
-        <givenName>R.</givenName>
-        <surName>Carpenter</surName>
-      </individualName>
-      <organizationName>University of Wisconsin</organizationName>
-      <electronicMailAddress>steve.carpenter@wisc.edu</electronicMailAddress>
-    </creator>
-    <creator>
-      <individualName>
-        <givenName>Emily</givenName>
-        <givenName>H.</givenName>
-        <surName>Stanley</surName>
-      </individualName>
-      <organizationName>University of Wisconsin</organizationName>
-      <electronicMailAddress>ehstanley@wisc.edu</electronicMailAddress>
     </creator>
     <pubDate>2021-09-18</pubDate>
     <abstract>
       <para>This is the abstract.</para>
     </abstract>
-    <keywordSet>
-      <keyword>Villanova Peatland Biogeochemistry Group</keyword>
-      <keyword>peat</keyword>
-      <keyword>vascular</keyword>
-      <keyword>moss</keyword>
-    </keywordSet>
     <keywordSet>
       <keyword>bog</keyword>
       <keyword>decomposition</keyword>
@@ -59,87 +35,6 @@
 </para>
     </intellectualRights>
     <coverage>
-      <geographicCoverage>
-        <geographicDescription>site_1</geographicDescription>
-        <boundingCoordinates>
-          <westBoundingCoordinate>-89.43</westBoundingCoordinate>
-          <eastBoundingCoordinate>-89.43</eastBoundingCoordinate>
-          <northBoundingCoordinate>45.23</northBoundingCoordinate>
-          <southBoundingCoordinate>45.23</southBoundingCoordinate>
-        </boundingCoordinates>
-      </geographicCoverage>
-      <geographicCoverage>
-        <geographicDescription>site_2</geographicDescription>
-        <boundingCoordinates>
-          <westBoundingCoordinate>-89.44</westBoundingCoordinate>
-          <eastBoundingCoordinate>-89.44</eastBoundingCoordinate>
-          <northBoundingCoordinate>45.24</northBoundingCoordinate>
-          <southBoundingCoordinate>45.24</southBoundingCoordinate>
-        </boundingCoordinates>
-      </geographicCoverage>
-      <geographicCoverage>
-        <geographicDescription>site_3</geographicDescription>
-        <boundingCoordinates>
-          <westBoundingCoordinate>-89.45</westBoundingCoordinate>
-          <eastBoundingCoordinate>-89.45</eastBoundingCoordinate>
-          <northBoundingCoordinate>45.25</northBoundingCoordinate>
-          <southBoundingCoordinate>45.25</southBoundingCoordinate>
-        </boundingCoordinates>
-      </geographicCoverage>
-      <geographicCoverage>
-        <geographicDescription>site_4</geographicDescription>
-        <boundingCoordinates>
-          <westBoundingCoordinate>-89.46</westBoundingCoordinate>
-          <eastBoundingCoordinate>-89.46</eastBoundingCoordinate>
-          <northBoundingCoordinate>45.26</northBoundingCoordinate>
-          <southBoundingCoordinate>45.26</southBoundingCoordinate>
-        </boundingCoordinates>
-      </geographicCoverage>
-      <geographicCoverage>
-        <geographicDescription>site_5</geographicDescription>
-        <boundingCoordinates>
-          <westBoundingCoordinate>-89.47</westBoundingCoordinate>
-          <eastBoundingCoordinate>-89.47</eastBoundingCoordinate>
-          <northBoundingCoordinate>45.27</northBoundingCoordinate>
-          <southBoundingCoordinate>45.27</southBoundingCoordinate>
-        </boundingCoordinates>
-      </geographicCoverage>
-      <geographicCoverage>
-        <geographicDescription>site_6</geographicDescription>
-        <boundingCoordinates>
-          <westBoundingCoordinate>-89.48</westBoundingCoordinate>
-          <eastBoundingCoordinate>-89.48</eastBoundingCoordinate>
-          <northBoundingCoordinate>45.28</northBoundingCoordinate>
-          <southBoundingCoordinate>45.28</southBoundingCoordinate>
-        </boundingCoordinates>
-      </geographicCoverage>
-      <geographicCoverage>
-        <geographicDescription>site_7</geographicDescription>
-        <boundingCoordinates>
-          <westBoundingCoordinate>-89.49</westBoundingCoordinate>
-          <eastBoundingCoordinate>-89.49</eastBoundingCoordinate>
-          <northBoundingCoordinate>45.29</northBoundingCoordinate>
-          <southBoundingCoordinate>45.29</southBoundingCoordinate>
-        </boundingCoordinates>
-      </geographicCoverage>
-      <geographicCoverage>
-        <geographicDescription>site_8</geographicDescription>
-        <boundingCoordinates>
-          <westBoundingCoordinate>-89.5</westBoundingCoordinate>
-          <eastBoundingCoordinate>-89.5</eastBoundingCoordinate>
-          <northBoundingCoordinate>45.3</northBoundingCoordinate>
-          <southBoundingCoordinate>45.3</southBoundingCoordinate>
-        </boundingCoordinates>
-      </geographicCoverage>
-      <geographicCoverage>
-        <geographicDescription>site_9</geographicDescription>
-        <boundingCoordinates>
-          <westBoundingCoordinate>-89.51</westBoundingCoordinate>
-          <eastBoundingCoordinate>-89.51</eastBoundingCoordinate>
-          <northBoundingCoordinate>45.31</northBoundingCoordinate>
-          <southBoundingCoordinate>45.31</southBoundingCoordinate>
-        </boundingCoordinates>
-      </geographicCoverage>
       <geographicCoverage>
         <geographicDescription>site_10</geographicDescription>
         <boundingCoordinates>
@@ -165,11 +60,11 @@
     </maintenance>
     <contact>
       <individualName>
-        <givenName>NTL</givenName>
-        <surName>Information Manager</surName>
+        <givenName>Me</givenName>
+        <surName>Me</surName>
       </individualName>
       <organizationName>University of Wisconsin</organizationName>
-      <electronicMailAddress>ntl.infomgr@gmail.com</electronicMailAddress>
+      <electronicMailAddress>me@email.com</electronicMailAddress>
     </contact>
     <methods>
       <methodStep>
