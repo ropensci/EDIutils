@@ -1,36 +1,3 @@
-#' Make authentication key
-#'
-#' @description
-#'     Create user authentication key for PASTA+ operations.
-#'
-#' @param user.id
-#'     (character) Identification of user performing the evaluation.
-#' @param affiliation
-#'     (character) Affiliation corresponding with the user.id argument supplied
-#'     above. Can be: 'LTER' or 'EDI'.
-#'
-auth_key <- function(user.id, affiliation){
-  
-  affiliation <- tolower(affiliation)
-  if (affiliation == 'lter'){
-    key <- paste0('uid=', user.id, ',o=LTER',
-                  ',dc=edirepository,dc=org')
-  } else if (affiliation == 'edi'){
-    key <- paste0('uid=', user.id, ',o=EDI',
-                  ',dc=edirepository,dc=org')
-  }
-  
-  key
-  
-}
-
-
-
-
-
-
-
-
 #' Create authentication cookie for EDI Repository Gatekeeper
 #'
 #' @return (request) The request object returned by \code{httr::set_cookies()} with the EDI Repository authentication token baked in. Yum!
@@ -45,74 +12,6 @@ bake_cookie <- function() {
   cookie <- httr::set_cookies(`auth-token` = token)
   cookie$options$cookie <- curl::curl_unescape(cookie$options$cookie)
   return(cookie)
-}
-
-
-
-
-
-
-
-
-#' Collapse EML node to string then compare
-#'
-#' @param newest (xml_document, xml_node) Newest version of an EML document
-#' @param previous (xml_document, xml_node) Previous version of an EML document
-#' @param xpath (character) xpath of node to compare
-#'
-#' @return (character) xpath of node if \code{newest} and \code{previous} differ, otherwise NULL
-#' 
-compare_node_as_string <- function(newest, previous, xpath) {
-  
-  # Collapse to string
-  newest <- xml2::xml_text(xml2::xml_find_all(newest, xpath))
-  previous <- xml2::xml_text(xml2::xml_find_all(previous, xpath))
-  
-  # Only return dissimilar nodes. Add node number to xpath for exact reference.
-  if (!all(newest == previous)) {
-    nodes <- which(!(newest == previous))
-    if (stringr::str_detect(xpath, "dataTable")) {
-      parts <- stringr::str_split(xpath, "(?<=dataTable)")
-      res <- paste0(parts[[1]][1], "[", nodes, "]", parts[[1]][2])
-      return(res)
-    } else if (stringr::str_detect(xpath, "otherEntity")) {
-      parts <- stringr::str_split(xpath, "(?<=otherEntity)")
-      res <- paste0(parts[[1]][1], "[", nodes, "]", parts[[1]][2])
-      return(res)
-    } else {
-      res <- xpath
-      return(res)
-    }
-  }
-  
-}
-
-
-
-
-
-
-
-
-#' Convert missing value codes to NA
-#'
-#' @param v Vector of values
-#' @param code (character) Missing value code
-#' @param type (character) Type (class) \code{v} should be. Supported types are: "character", "numeric", "datetime"
-#'
-#' @return Vector of values with \code{code} replaced by NA in the class of \code{type}
-#'
-convert_missing_value <- function(v, code, type) {
-  if (type == "character") {
-    res <- stringr::str_replace_all(as.character(v), paste(code, collapse = "|"), NA_character_)
-  } else if (type == "numeric") {
-    res <- stringr::str_replace_all(as.character(v), paste(code, collapse = "|"), NA_character_)
-    res <- as.numeric(res)
-  } else if (type == "datetime") {
-    # TODO: Parse datetime according to date time format specifier
-    res <- v
-  }
-  return(res)
 }
 
 
@@ -420,25 +319,4 @@ url_env <- function(tier){
   
   url_env
   
-}
-
-
-
-
-
-
-
-
-#' Convert minimally nested XML to data.frame
-#'
-#' @param xml (xml_document xml_node) XML with one level of nesting
-#' 
-#' @return (data.frame) A data.frame of \code{xml}
-#' 
-xml2df <- function(xml) {
-  lst <- xml2::as_list(xml)[[1]]
-  df <- data.frame(
-    matrix(unlist(lst), ncol = max(lengths(lst)), byrow = TRUE))
-  names(df) <- names(lst[[which(lengths(lst) > 0)[1]]])
-  return(df)
 }
