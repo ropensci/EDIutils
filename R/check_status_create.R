@@ -31,6 +31,8 @@ check_status_create <- function(transaction, packageId, wait = TRUE, tier = "pro
                    paste(parse_packageId(packageId), collapse = "/"))
       cookie <- bake_cookie()
       resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
+      res <- httr::content(resp, as = "text", encoding = "UTF-8")
+      httr::stop_for_status(resp, res)
       if (resp$status == "200") {
         return(TRUE)
       } else {
@@ -43,6 +45,8 @@ check_status_create <- function(transaction, packageId, wait = TRUE, tier = "pro
                  paste(parse_packageId(packageId), collapse = "/"))
     cookie <- bake_cookie()
     resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
+    res <- httr::content(resp, as = "text", encoding = "UTF-8")
+    httr::stop_for_status(resp, res)
     if (resp$status == "200") {
       return(TRUE)
     } else {
