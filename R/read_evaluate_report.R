@@ -20,7 +20,7 @@
 #' 
 #' # Result in HTML format. Write to file for human review.
 #' qualityReport <- read_evaluate_report(transaction, html = TRUE)
-#' xml2::write_html(qualityReport, "/Users/me/Documents/qualityReport.html)
+#' xml2::write_html(qualityReport, "/Users/me/Documents/qualityReport.html")
 #'
 read_evaluate_report <- function(transaction, 
                                  html = FALSE, 

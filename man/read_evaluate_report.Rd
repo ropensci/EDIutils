@@ -22,3 +22,16 @@ Read evaluate report
 \note{
 User authentication is required (see \code{login()})
 }
+\examples{
+# Evaluate data package
+path <- "/Users/me/Documents/edi.468.1.xml"
+transaction <- evaluate_data_package(path)
+
+# Result in XML format
+qualityReport <- read_evaluate_report(transaction)
+
+# Result in HTML format. Write to file for human review.
+qualityReport <- read_evaluate_report(transaction, html = TRUE)
+xml2::write_html(qualityReport, "/Users/me/Documents/qualityReport.html")
+
+}

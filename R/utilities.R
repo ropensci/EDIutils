@@ -222,34 +222,126 @@ skip_if_logged_out <- function() {
 
 
 
-#' Summarize evaluation report
+#' Parse the evaluate quality report
 #'
-#' @param eval_report (character) Evaluation report XML as a character string
+#' @param qualityReport (xml_document) Evaluate quality report document
+#' @param full (logical) Return the full report if TRUE, otherwise return only warnings and errors.
+#' 
+#' @return (character) A parsed \code{qualityReport}
+#' 
+#' @export
+#' 
+#' @examples 
+#' 
 #'
-#' @return (character) Summary of evaluation report
+parse_quality_report <- function(qualityReport, full = FALSE) {
+  validate_arguments(x = as.list(environment()))
+  xml2::xml_ns_strip(qualityReport)
+  
+  # A helper for parsing quality checks
+  parse_check <- function(check) {
+    parent <- xml2::xml_name(check)
+    children <- xml2::xml_children(check)
+    nms <- xml2::xml_name(children) # names
+    values <- xml2::xml_text(children)
+    descs <- paste0(toupper(nms), ": ", values) # descriptions
+    res <- paste0(paste(descs, collapse = "\n"), "\n")
+    return(res)
+  }
+  
+  # A helper for parsing reports (dataset & entity)
+  parse_report <- function(report) {
+    entity_name <- xml2::xml_text(xml2::xml_find_all(report, "entityName"))
+    if (length(entity_name) > 0) {
+      header <- paste0(
+        "---------------------------------------------------\n",
+        " ENTITY REPORT: ", entity_name, "\n",
+        "---------------------------------------------------\n")
+    } else {
+      header <- paste0(
+        "---------------------------------------------------\n",
+        " DATASET REPORT\n",
+        "---------------------------------------------------\n")
+    }
+    checks <- xml2::xml_find_all(report, ".//qualityCheck")
+    parsed <- lapply(checks, parse_check)
+    res <- paste0(paste(c(header, parsed), collapse = "\n"), "\n")
+    return(res)
+  }
+  
+  # Summarize, then remove any unwanted nodes
+  # FIXME Create copy of qualityReport then remove unwanted nodes to preserve the original quality report and keep it from changing out underneath the user
+  overview <- summarize_quality_report(qualityReport)
+  checks <- xml2::xml_find_all(qualityReport, ".//qualityCheck")
+  status <- xml2::xml_find_all(qualityReport, ".//status")
+  if (full == FALSE) {
+    i <- xml2::xml_text(status) %in% c("warn", "error")
+    xml2::xml_remove(checks[!i])
+  }
+  
+  # Parse reports, combine, and return
+  dataset_report <- xml2::xml_find_all(qualityReport, ".//datasetReport")
+  dataset_report <- lapply(dataset_report, parse_report)
+  entity_reports <- xml2::xml_find_all(qualityReport, ".//entityReport")
+  entity_reports <- lapply(entity_reports, parse_report)
+  reports <- c(overview, dataset_report, entity_reports)
+  return(reports)
+}
+
+
+
+
+
+
+
+
+#' Summarize an evaluate quality report document
 #'
-summarize_evalutation_report <- function(eval_report) {
-  pattern <- "[[:alpha:]]+(?=</status>)"
-  check_status <- unlist(
-    regmatches(eval_report, gregexpr(pattern, eval_report, perl = TRUE)))
-  n_valid <- as.character(sum(check_status == 'valid'))
-  n_warn <- as.character(sum(check_status == 'warn'))
-  n_error <- as.character(sum(check_status == 'error'))
-  n_info <- as.character(sum(check_status == 'info'))
+#' @param qualityReport (xml_document) Evaluate quality report document
+#' @param raise_exception (logical) Convert report exceptions to R exceptions
+#'
+#' @return (character) A summary of \code{qualityReport} including the total number of checks with "valid", "info", "warn", and "error" status.
+#' 
+#' @noRd
+#' 
+summarize_quality_report <- function(qualityReport, raise_exception = FALSE) {
+  xml2::xml_ns_strip(qualityReport)
+  nodes <- xml2::xml_find_all(qualityReport, ".//qualityCheck")
+  status <- xml2::xml_text(xml2::xml_find_all(qualityReport, ".//status"))
+  n_valid <- sum(status == "valid")
+  n_warn <- sum(status == "warn")
+  n_error <- sum(status == "error")
+  n_info <- sum(status == "info")
   if (n_error == 0) {
     was_uploaded <- "Yes"
   } else {
     was_uploaded <- "No"
   }
-  parsed <- paste0(
-    'RESULTS\n',
-    'Was Uploaded: ', was_uploaded, '\n',
-    'Total Quality Checks: ', length(check_status), '\n',
+  creation_date <- xml2::xml_text(
+    xml2::xml_find_first(qualityReport, ".//creationDate"))
+  package_id <- xml2::xml_text(
+    xml2::xml_find_first(qualityReport, ".//packageId"))
+  res <- paste0(
+    "\n===================================================\n",
+    " EVALUATION REPORT\n",
+    "===================================================\n\n",
+    "PackageId: ", package_id, "\n",
+    "Report Date/Time: ", creation_date, "\n",
+    'Total Quality Checks: ', length(status), '\n',
     'Valid: ', n_valid, '\n',
     'Info: ', n_info, '\n',
     'Warn: ', n_warn, '\n',
-    'Error: ', n_error, '\n')
-  return(parsed)
+    'Error: ', n_error, '\n\n')
+  if (raise_exception) {
+    if (n_error > 0) {
+      stop(res, call. = FALSE)
+    } else if (n_warn > 0) {
+      warning(res, call. = FALSE)
+    } else {
+      message(res)
+    }
+  }
+  return(res)
 }
 
 

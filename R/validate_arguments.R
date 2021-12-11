@@ -93,12 +93,16 @@ validate_arguments <- function(x) {
   
   # TODO journalTitle
   
+  # TODO full
+  
   # o (LDAP; organizational unit)
   if ("o" %in% names(x)) {
     if (!x[["o"]] %in% c("LTER", "EDI")) {
       stop("Input 'o' is not 'EDI' or 'LTER'.", call. = FALSE)
     }
   }
+  
+  # TODO Implement check on raise_exception
   
   # ore
   if ("ore" %in% names(x)) {
@@ -138,7 +142,6 @@ validate_arguments <- function(x) {
   # TODO Implement check on query
   
   # TODO Implement check on resourceId
-  
   
   # revision
   if ('revision' %in% names(x)){
