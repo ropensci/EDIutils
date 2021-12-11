@@ -63,6 +63,8 @@ validate_arguments <- function(x) {
     }
   }
   
+  # TODO Implement check on format
+  
   # fromDate
   if ("fromDate" %in% names(x)) {
     is_accpeted_format <- grepl(
@@ -176,5 +178,7 @@ validate_arguments <- function(x) {
   # TODO implement check on transaction identifier
   
   # TODO url
+  
+  # TODO with_exceptions
 
 }

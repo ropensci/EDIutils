@@ -4,20 +4,23 @@
 \alias{read_evaluate_report}
 \title{Read evaluate report}
 \usage{
-read_evaluate_report(transaction, html = FALSE, tier = "production")
+read_evaluate_report(transaction, format = "xml", tier = "production")
 }
 \arguments{
 \item{transaction}{(character) Transaction identifier}
 
-\item{html}{(logical) Return result in HTML format?}
+\item{format}{(character) Format of the returned report, which can be: "xml", "html", "character"}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-(xml_document) The evaluate quality report document. Get high-level results with \code{summarize_quality_report()}
+(xml_document/html_document/character) The evaluate quality report document
 }
 \description{
 Read evaluate report
+}
+\details{
+If \code{format = "character"}, the report is parsed into a character string. Wrap in \code{message()} or write to file for human readability.
 }
 \note{
 User authentication is required (see \code{login()})
@@ -30,8 +33,12 @@ transaction <- evaluate_data_package(path)
 # Result in XML format
 qualityReport <- read_evaluate_report(transaction)
 
-# Result in HTML format. Write to file for human review.
-qualityReport <- read_evaluate_report(transaction, html = TRUE)
-xml2::write_html(qualityReport, "/Users/me/Documents/qualityReport.html")
+# Result in HTML format
+qualityReport <- read_evaluate_report(transaction, format = "html")
+
+# Result as character string
+qualityReport <- read_evaluate_report(transaction, format = "character")
+message(qualityReport)
+writeLines(qualityReport, "/Users/me/Documents/report.txt"))
 
 }

@@ -18,6 +18,7 @@ transaction (character) Transaction identifier. Use this value with:
 \itemize{
   \item \code{check_status_evaluate()} to see if evaluation has completed or if any errors occurred while processing the request
   \item \code{read_evaluate_report()} to read the evaluation report
+  \item \code{summarize_evaluate_report()} to get a summary and raise exceptions
 }
 }
 \description{
