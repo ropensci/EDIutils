@@ -36,7 +36,6 @@
 #'
 get_audit_report <- function(query, tier = "production") {
   validate_arguments(x = as.list(environment()))
-  # TODO Escape quotes?: query <- gsub(pattern = "\"", replacement = "%22", x = query)
   url <- paste0(url_env(tier), ".lternet.edu/audit/report?", query)
   cookie <- bake_cookie()
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))

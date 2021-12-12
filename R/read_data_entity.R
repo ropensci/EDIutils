@@ -27,6 +27,5 @@ read_data_entity <- function(packageId, entityId, tier = "production") {
     res <- httr::content(resp, as = "text", encoding = "UTF-8")
     httr::stop_for_status(resp, res)
   }
-  # TODO Implement reader options for dataTable, spatialRaster, spatialVector, etc., listing their dependencies under DESCRIPTION/suggests. Parse EML into reader arguments. Preserve raw option.
   return(res)
 }

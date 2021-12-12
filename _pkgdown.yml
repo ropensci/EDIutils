@@ -97,6 +97,7 @@ reference:
   - title: Miscellaneous
     desc: Additional web service methods for working with data packages.
     contents:
+    - construct_dn
     - create_data_package_archive
     - is_authorized
     
