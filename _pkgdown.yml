@@ -134,7 +134,5 @@ navbar:
         href: articles/retrieve_dataset_citation_stats.html
       - text: Authentication
         href: articles/authentication.html
-      - text: Glossary
-        href: articles/glossary.html
     - text: News
       href: news/index.html
