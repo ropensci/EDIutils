@@ -9,7 +9,7 @@ check_status_create(transaction, packageId, wait = TRUE, tier = "production")
 \arguments{
 \item{transaction}{(character) Transaction identifier}
 
-\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
+\item{packageId}{(character) Data package identifier}
 
 \item{wait}{(logical) Wait for evaluation to complete? See details below.}
 

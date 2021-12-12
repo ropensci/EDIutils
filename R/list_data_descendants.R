@@ -2,7 +2,7 @@
 #' 
 #' @description Data descendants are data packages that are known to be derived, in whole or in part, from the specified source data package.
 #' 
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #' 
 #' @return (xml_document) Descendants of \code{packageId}, including their packageId, title, and url

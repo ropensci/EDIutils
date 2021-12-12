@@ -1,6 +1,6 @@
 #' Read data entity resource metadata
 #'
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' @param entityId (character) Data entity identifier
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'

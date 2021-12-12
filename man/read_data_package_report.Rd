@@ -7,7 +7,7 @@
 read_data_package_report(packageId, html = FALSE, tier = "production")
 }
 \arguments{
-\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
+\item{packageId}{(character) Data package identifier}
 
 \item{html}{(logical) Return result in HTML format?}
 

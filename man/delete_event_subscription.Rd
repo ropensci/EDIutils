@@ -9,7 +9,7 @@ delete_event_subscription(subscriptionId, tier = "production")
 \arguments{
 \item{subscriptionId}{(numeric) Event subscription ID}
 
-\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
+\item{packageId}{(character) Data package identifier}
 }
 \value{
 (logical) TRUE if the event subscription was deleted

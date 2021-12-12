@@ -1,6 +1,6 @@
 #' Read data entity names
 #'
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
 #' @return (data.frame) Names and identifiers of all data entities in \code{packageId}

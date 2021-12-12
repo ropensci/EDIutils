@@ -7,7 +7,7 @@
 create_event_subscription(packageId, url, tier = "production")
 }
 \arguments{
-\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
+\item{packageId}{(character) Data package identifier}
 
 \item{url}{(character) Where the event notification will be sent}
 

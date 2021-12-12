@@ -1,7 +1,7 @@
 #' Check data package creation status
 #'
 #' @param transaction (character) Transaction identifier
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' @param wait (logical) Wait for evaluation to complete? See details below.
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'

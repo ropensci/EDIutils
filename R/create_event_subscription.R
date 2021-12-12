@@ -1,6 +1,6 @@
 #' Create event subscription
 #' 
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' @param url (character) Where the event notification will be sent
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #' 

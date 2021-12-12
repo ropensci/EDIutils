@@ -7,7 +7,7 @@
 read_data_package(packageId, ore = FALSE, tier = "production")
 }
 \arguments{
-\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
+\item{packageId}{(character) Data package identifier}
 
 \item{ore}{(logical) Return an OAI-ORE compliant resource map in RDF-XML format}
 

@@ -1,6 +1,6 @@
 #' Read data package archive
 #'
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' @param transaction (character) Transaction identifier
 #' @param path (character) Path of directory in which the result will be written
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"

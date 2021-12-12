@@ -1,6 +1,6 @@
 #' Read data package report
 #'
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' @param html (logical) Return result in HTML format?
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'

@@ -1,6 +1,6 @@
 #' List data package citations
 #'
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #' @param list_all (logical) Whether to return all citations within a data package series (i.e. multiple revisions)
 #'

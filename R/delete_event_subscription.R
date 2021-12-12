@@ -1,7 +1,7 @@
 #' Delete event subscription
 #'
 #' @param subscriptionId (numeric) Event subscription ID
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' 
 #' @return (logical) TRUE if the event subscription was deleted
 #' 

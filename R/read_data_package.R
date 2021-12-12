@@ -1,6 +1,6 @@
 #' Read data package
 #'
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' @param ore (logical) Return an OAI-ORE compliant resource map in RDF-XML format
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'

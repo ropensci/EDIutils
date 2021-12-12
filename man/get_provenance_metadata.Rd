@@ -7,7 +7,7 @@
 get_provenance_metadata(packageId, tier = "production")
 }
 \arguments{
-\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
+\item{packageId}{(character) Data package identifier}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }

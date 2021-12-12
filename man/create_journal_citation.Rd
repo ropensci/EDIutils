@@ -14,7 +14,7 @@ create_journal_citation(
 )
 }
 \arguments{
-\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
+\item{packageId}{(character) Data package identifier}
 
 \item{articleDoi}{(character) Article DOI. Required if \code{articleUrl} is missing.}
 

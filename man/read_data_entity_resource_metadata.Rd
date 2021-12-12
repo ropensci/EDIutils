@@ -7,7 +7,7 @@
 read_data_entity_resource_metadata(packageId, entityId, tier = "production")
 }
 \arguments{
-\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
+\item{packageId}{(character) Data package identifier}
 
 \item{entityId}{(character) Data entity identifier}
 

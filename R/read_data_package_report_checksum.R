@@ -1,6 +1,6 @@
 #' Read data package report checksum
 #'
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
 #' @return (character) A 40 character SHA-1 checksum value

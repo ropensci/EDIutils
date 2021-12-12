@@ -1,6 +1,6 @@
 #' Create journal citation
 #' 
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' @param articleDoi (character) Article DOI. Required if \code{articleUrl} is missing.
 #' @param articleUrl (character) Article URL. Required if \code{articleDoi} is missing.
 #' @param articleTitle (character) Article title. Optional.

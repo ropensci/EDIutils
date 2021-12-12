@@ -7,7 +7,7 @@
 read_data_package_archive(packageId, transaction, path, tier = "production")
 }
 \arguments{
-\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
+\item{packageId}{(character) Data package identifier}
 
 \item{transaction}{(character) Transaction identifier}
 

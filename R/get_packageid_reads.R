@@ -1,6 +1,6 @@
 #' Get package ID reads
 #'
-#' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
+#' @param packageId (character) Data package identifier
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
 #' @return (xml_document) Summary of all the successful reads (total reads and non-robot reads) of \code{packageId}

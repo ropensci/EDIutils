@@ -7,7 +7,7 @@
 list_data_package_citations(packageId, tier = "production", list_all = FALSE)
 }
 \arguments{
-\item{packageId}{(character) Data package identifier of the form "scope.identifier.revision"}
+\item{packageId}{(character) Data package identifier}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 
