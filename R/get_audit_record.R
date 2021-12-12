@@ -3,7 +3,7 @@
 #' @param oid (numeric) Audit identifier
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
 #'
-#' @return () An audit record
+#' @return (xml_document) An audit record
 #' 
 #' @note User authentication is required (see \code{login()})
 #' 

@@ -12,7 +12,7 @@ get_audit_record(oid, tier = "production")
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
 \value{
-() An audit record
+(xml_document) An audit record
 }
 \description{
 Get audit record
