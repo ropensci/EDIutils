@@ -1,8 +1,8 @@
 #' List data package citations
 #'
 #' @param packageId (character) Data package identifier
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
-#' @param list_all (logical) Whether to return all citations within a data package series (i.e. multiple revisions)
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param list_all (logical) Return all citations within a data package series?
 #'
 #' @return (xml_document) A list of journal citations
 #' 

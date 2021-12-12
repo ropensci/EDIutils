@@ -7,7 +7,7 @@
 login(userId = NULL, userPass = NULL, config = NULL)
 }
 \arguments{
-\item{userId}{(character) EDI user name}
+\item{userId}{(character) PASTA userId}
 
 \item{userPass}{(character) Password}
 

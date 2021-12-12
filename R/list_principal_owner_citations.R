@@ -1,7 +1,7 @@
 #' List principal owner citations
 #'
-#' @param principalOwner (character) Principal owner in the form returned by \code{create_dn()}
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param principalOwner (character) Principal owner in the format returned by \code{construct_dn()}
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) Journal citations metadata for all entries owned by the specified principal owner
 #' 

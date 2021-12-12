@@ -7,9 +7,9 @@
 create_data_package(eml, tier = "production")
 }
 \arguments{
-\item{eml}{(character) Full path to an EML document}
+\item{eml}{(character) Full path to an EML file}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 transaction (character) Transaction identifier. Use this value with: 

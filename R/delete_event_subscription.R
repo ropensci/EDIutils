@@ -1,6 +1,6 @@
 #' Delete event subscription
 #'
-#' @param subscriptionId (numeric) Event subscription ID
+#' @param subscriptionId (numeric) Event subscription identifier
 #' @param packageId (character) Data package identifier
 #' 
 #' @return (logical) TRUE if the event subscription was deleted

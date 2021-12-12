@@ -1,7 +1,7 @@
 #' Get recent uploads
 #'
 #' @param query (character) Query (see details below)
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) A list of zero or more audit records of either recently inserted or recently updated data packages.
 #' 

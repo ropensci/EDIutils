@@ -9,7 +9,7 @@ create_data_package_archive(packageId, tier = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (character) A transaction identifier

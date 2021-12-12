@@ -12,13 +12,13 @@ list_data_package_revisions(
 )
 }
 \arguments{
-\item{scope}{(character) Scope of data package (i.e. the first component of a \code{packageId})}
+\item{scope}{(character) Scope of data package}
 
-\item{identifier}{(numeric) Identifier of data package (i.e. the second component of a \code{packageId})}
+\item{identifier}{(numeric) Identifier of data package}
 
 \item{filter}{(character) Filter results by "newest" or "oldest"}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) Revisions of a data package within a specified \code{scope} and \code{identifier}

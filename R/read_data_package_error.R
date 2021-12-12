@@ -1,7 +1,7 @@
 #' Read data package error
 #'
 #' @param transaction (character) Transaction identifier
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return An error is returned if an error occurred while processing the request, otherwise \code{NULL} is returned if no error was encountered or if processing is still underway.
 #' 

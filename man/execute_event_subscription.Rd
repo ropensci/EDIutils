@@ -7,9 +7,9 @@
 execute_event_subscription(subscriptionId, tier = "production")
 }
 \arguments{
-\item{subscriptionId}{(numeric) Event subscription ID}
+\item{subscriptionId}{(numeric) Event subscription identifier}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (logical) TRUE if the event subscription was deleted

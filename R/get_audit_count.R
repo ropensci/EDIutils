@@ -1,7 +1,7 @@
 #' Get audit count
 #'
 #' @param query (character) Query (see details below)
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (numeric) Returns a count of the number of audit records matching the query parameters as specified in the request.
 #' 

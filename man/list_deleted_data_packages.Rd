@@ -7,7 +7,7 @@
 list_deleted_data_packages(tier = "production")
 }
 \arguments{
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (character) All data packages (excluding revision values) that have been deleted from the data package registry.

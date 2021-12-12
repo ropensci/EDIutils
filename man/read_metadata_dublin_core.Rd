@@ -9,7 +9,7 @@ read_metadata_dublin_core(packageId, tier = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Dublin Core metadata

@@ -3,7 +3,7 @@
 #' @param packageId (character) Data package identifier
 #' @param transaction (character) Transaction identifier
 #' @param path (character) Path of directory in which the result will be written
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (.zip file) The data package archive
 #' 

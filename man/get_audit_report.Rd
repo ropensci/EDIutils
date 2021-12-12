@@ -7,9 +7,9 @@
 get_audit_report(query, tier = "production")
 }
 \arguments{
-\item{query}{(character) Audit report query (see details below)}
+\item{query}{(character) Query (see details below)}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) An XML list of zero or more audit records matching the query parameters as specified in the request.

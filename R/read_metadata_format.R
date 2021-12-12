@@ -1,7 +1,7 @@
 #' Read metadata format
 #'
 #' @param packageId (character) Data package identifier
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #' 
 #' @return (character) metadata format type
 #' 

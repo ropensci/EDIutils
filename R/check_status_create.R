@@ -3,7 +3,7 @@
 #' @param transaction (character) Transaction identifier
 #' @param packageId (character) Data package identifier
 #' @param wait (logical) Wait for evaluation to complete? See details below.
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (logical) TRUE if creation has completed, FALSE if in progress, and error if an error was encountered while processing the request
 #' 

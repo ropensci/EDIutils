@@ -15,7 +15,7 @@ summarize_evaluate_report(
 
 \item{with_exceptions}{(logical) Convert quality report warnings and errors to R warnings and errors}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (message/warning/error) A message listing the total number of checks resulting in valid, info, warn, and error status. Exceptions are raised if warnings and errors are found and \code{with_exceptions} is TRUE.

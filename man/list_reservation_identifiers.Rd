@@ -7,9 +7,9 @@
 list_reservation_identifiers(scope, tier = "production")
 }
 \arguments{
-\item{scope}{(character) Scope of data package (i.e. the first component of a \code{packageId})}
+\item{scope}{(character) Scope of data package}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) The set of identifiers for the specified scope that end users have actively reserved for future upload

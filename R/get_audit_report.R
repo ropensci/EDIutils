@@ -1,7 +1,7 @@
 #' Get audit report
 #'
-#' @param query (character) Audit report query (see details below)
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param query (character) Query (see details below)
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) An XML list of zero or more audit records matching the query parameters as specified in the request.
 #' 

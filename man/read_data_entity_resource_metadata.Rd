@@ -11,7 +11,7 @@ read_data_entity_resource_metadata(packageId, entityId, tier = "production")
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) The resource metadata of \code{entityId} in \code{packageId}.

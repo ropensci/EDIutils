@@ -2,8 +2,8 @@
 #'
 #' @description Get Event Subscription returns the event subscription with the specified ID.
 #'
-#' @param subscriptionId (numeric) Event subscription ID
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param subscriptionId (numeric) Event subscription identifier
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) Subscription metadata
 #' 

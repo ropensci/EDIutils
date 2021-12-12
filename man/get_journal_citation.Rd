@@ -9,7 +9,7 @@ get_journal_citation(journalCitationId, tier = "production")
 \arguments{
 \item{journalCitationId}{(numeric) Journal citation identifier}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Journal citation

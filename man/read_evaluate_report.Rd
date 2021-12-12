@@ -9,9 +9,9 @@ read_evaluate_report(transaction, format = "xml", tier = "production")
 \arguments{
 \item{transaction}{(character) Transaction identifier}
 
-\item{format}{(character) Format of the returned report, which can be: "xml", "html", "character"}
+\item{format}{(character) Format of the returned report. Can be: "xml", "html", or "character".}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document/html_document/character) The evaluate quality report document

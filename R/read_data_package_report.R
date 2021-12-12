@@ -2,7 +2,7 @@
 #'
 #' @param packageId (character) Data package identifier
 #' @param html (logical) Return result in HTML format?
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) Data package report
 #' 

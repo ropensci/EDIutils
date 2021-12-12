@@ -2,7 +2,7 @@
 #'
 #' @param packageId (character) Data package identifier
 #' @param entityId (character) Data entity identifier
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #' 
 #' @return (character) Checksum value of \code{entityId} in \code{packageId}
 #' 

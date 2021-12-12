@@ -7,7 +7,7 @@
 list_data_package_scopes(tier = "production")
 }
 \arguments{
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) Scopes within a specified \code{tier}

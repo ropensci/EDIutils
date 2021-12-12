@@ -11,7 +11,7 @@ read_data_entity_size(packageId, entityId, tier = "production")
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) Size, in bytes, of \code{entityId} in \code{packageId}

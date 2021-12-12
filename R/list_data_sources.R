@@ -3,7 +3,7 @@
 #' @description Data sources are data packages, or other online digital objects, that are known to be inputs to the specified derived data package.
 #'
 #' @param packageId (character) Data package identifier
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) Data sources to \code{packageId} including their data package identifier, title, and url
 #'

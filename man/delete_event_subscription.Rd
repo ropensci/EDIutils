@@ -7,7 +7,7 @@
 delete_event_subscription(subscriptionId, tier = "production")
 }
 \arguments{
-\item{subscriptionId}{(numeric) Event subscription ID}
+\item{subscriptionId}{(numeric) Event subscription identifier}
 
 \item{packageId}{(character) Data package identifier}
 }

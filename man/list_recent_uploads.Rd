@@ -7,11 +7,11 @@
 list_recent_uploads(type, limit = 5, tier = "production")
 }
 \arguments{
-\item{type}{(character) Upload type, which can be: "insert" or "update"}
+\item{type}{(character) Upload type. Can be: "insert" or "update".}
 
-\item{limit}{(numeric) Limit on return values}
+\item{limit}{(numeric) Maximum number of results to return}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Data package uploads and their packageId, scope, identifier, revision, principal, doi, serviceMethod, and date.

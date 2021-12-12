@@ -1,9 +1,9 @@
 #' List data package revisions
 #'
-#' @param scope (character) Scope of data package (i.e. the first component of a \code{packageId})
-#' @param identifier (numeric) Identifier of data package (i.e. the second component of a \code{packageId})
+#' @param scope (character) Scope of data package
+#' @param identifier (numeric) Identifier of data package
 #' @param filter (character) Filter results by "newest" or "oldest"
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (numeric) Revisions of a data package within a specified \code{scope} and \code{identifier}
 #' 

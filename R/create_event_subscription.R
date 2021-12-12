@@ -2,7 +2,7 @@
 #' 
 #' @param packageId (character) Data package identifier
 #' @param url (character) Where the event notification will be sent
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #' 
 #' @return (numeric) Event subscription ID
 #' 

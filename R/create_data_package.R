@@ -1,7 +1,7 @@
 #' Create data package
 #'
-#' @param eml (character) Full path to an EML document
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param eml (character) Full path to an EML file
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #' 
 #' @return transaction (character) Transaction identifier. Use this value with: 
 #' \itemize{

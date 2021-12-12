@@ -1,6 +1,6 @@
 #' Read data package from Digital Object Identifier
 #'
-#' @param doi (character) Data package DOI of the form "shoulder/pasta/md5"
+#' @param doi (character) Digital Object Identifier of data package in the format "shoulder/pasta/md5"
 #' @param ore (logical) Return an OAI-ORE compliant resource map in RDF-XML format
 #'
 #' @return (character or xml_document) A resource map with reference URLs to each of the metadata, data, and quality report resources that comprise the data package.

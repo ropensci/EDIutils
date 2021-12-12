@@ -24,7 +24,7 @@ bake_cookie <- function() {
 #' Construct a users distinguished name
 #'
 #' @param userId (character) PASTA userId
-#' @param ou (character) Organizational unit in which \code{userId} belongs. Can be "EDI" or "LTER".
+#' @param ou (character) Organizational unit in which \code{userId} belongs. Can be "EDI" or "LTER". All \code{userId} issued after "2020-05-01" have \code{ou = "EDI"}.
 #'
 #' @return (character) Distinguished name
 #' 
@@ -93,7 +93,7 @@ parse_packageId <- function(package.id) {
 #'
 #' @param qualityReport (xml_document) Evaluate quality report document
 #' @param full (logical) Return the full report if TRUE, otherwise return only warnings and errors.
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #' 
 #' @return (character) A parsed evaluate quality report
 #' 
@@ -229,7 +229,7 @@ skip_if_logged_out <- function() {
 #' 
 #' @param transaction (character) Transaction identifier
 #' @param with_exceptions (logical) Convert quality report warnings and errors to R warnings and errors
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (message/warning/error) A message listing the total number of checks resulting in valid, info, warn, and error status. Exceptions are raised if warnings and errors are found and \code{with_exceptions} is TRUE.
 #' 

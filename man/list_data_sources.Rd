@@ -9,7 +9,7 @@ list_data_sources(packageId, tier = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Data sources to \code{packageId} including their data package identifier, title, and url

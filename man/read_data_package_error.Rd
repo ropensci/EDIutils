@@ -9,7 +9,7 @@ read_data_package_error(transaction, tier = "production")
 \arguments{
 \item{transaction}{(character) Transaction identifier}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 An error is returned if an error occurred while processing the request, otherwise \code{NULL} is returned if no error was encountered or if processing is still underway.

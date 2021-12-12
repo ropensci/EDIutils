@@ -2,8 +2,8 @@
 #'
 #' @description List all data packages (including their revision values) uploaded to the repository by a particular user, specified by a distinguished name. Data packages that were uploaded by the specified user but have since been deleted are excluded from the list.
 #'
-#' @param dn (character) Distinguished name of user. Use \code{create_dn()} to create input to this argument.
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param dn (character) Distinguished name of user. Create with \code{create_dn()}.
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (character) Data package identifiers belonging to a \code{dn}
 #'

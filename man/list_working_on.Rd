@@ -7,7 +7,7 @@
 list_working_on(tier = "production")
 }
 \arguments{
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) The set of data packages the EDI repository is currently working on inserting or updating. Note that data packages currently being evaluated by PASTA are not included in the list.

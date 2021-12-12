@@ -7,11 +7,11 @@
 get_docid_reads(scope, identifier, tier = "production")
 }
 \arguments{
-\item{scope}{(character) Scope of data package (i.e. the first component of a \code{packageId})}
+\item{scope}{(character) Scope of data package}
 
-\item{identifier}{(numeric) Identifier of data package (i.e. the second component of a \code{packageId})}
+\item{identifier}{(numeric) Identifier of data package}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Summary of all the successful reads (total reads and non-robot reads) for all the resources of a given \code{scope} and \code{identifier}.

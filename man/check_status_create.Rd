@@ -13,7 +13,7 @@ check_status_create(transaction, packageId, wait = TRUE, tier = "production")
 
 \item{wait}{(logical) Wait for evaluation to complete? See details below.}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (logical) TRUE if creation has completed, FALSE if in progress, and error if an error was encountered while processing the request

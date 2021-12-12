@@ -7,7 +7,7 @@
 list_service_methods(tier = "production")
 }
 \arguments{
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (character) A simple list of web service methods supported by the Data Package Manager web service.

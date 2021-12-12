@@ -1,6 +1,6 @@
 #' List data package scopes
 #'
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (numeric) Scopes within a specified \code{tier}
 #'

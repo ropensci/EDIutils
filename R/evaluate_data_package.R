@@ -1,8 +1,8 @@
 #' Evaluate data package
 #'
-#' @param eml (character) Full path to an EML document
-#' @param useChecksum (logical) Whether to use an existing copy of the data entities from a previous revision of the data package (see details below).
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param eml (character) Full path to an EML file
+#' @param useChecksum (logical) Use data entities from a previous version of the data package? See details below.
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #' 
 #' @return transaction (character) Transaction identifier. Use this value with: 
 #' \itemize{

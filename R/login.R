@@ -1,6 +1,6 @@
 #' Login to the EDI repository
 #'
-#' @param userId (character) EDI user name
+#' @param userId (character) PASTA userId
 #' @param userPass (character) Password
 #' @param config (character) Path to config.txt, which contains \code{userId} and \code{userPass} (see details below)
 #'

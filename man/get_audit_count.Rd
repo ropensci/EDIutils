@@ -9,7 +9,7 @@ get_audit_count(query, tier = "production")
 \arguments{
 \item{query}{(character) Query (see details below)}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) Returns a count of the number of audit records matching the query parameters as specified in the request.

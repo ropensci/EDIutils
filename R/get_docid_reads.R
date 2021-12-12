@@ -1,8 +1,8 @@
 #' Get doc ID reads
 #'
-#' @param scope (character) Scope of data package (i.e. the first component of a \code{packageId})
-#' @param identifier (numeric) Identifier of data package (i.e. the second component of a \code{packageId})
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param scope (character) Scope of data package
+#' @param identifier (numeric) Identifier of data package
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) Summary of all the successful reads (total reads and non-robot reads) for all the resources of a given \code{scope} and \code{identifier}.
 #' 

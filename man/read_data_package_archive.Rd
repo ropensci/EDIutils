@@ -13,7 +13,7 @@ read_data_package_archive(packageId, transaction, path, tier = "production")
 
 \item{path}{(character) Path of directory in which the result will be written}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (.zip file) The data package archive

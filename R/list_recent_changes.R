@@ -2,10 +2,10 @@
 #'
 #' @description List all data package insert, update, and delete operations, optionally specifying the date and time to and/or from which the changes should be listed. An optional scope value can be specified to filter results for a particular data package scope.
 #'
-#' @param fromDate (character) Start date in format "YYYY-MM-DDThh:mm:ss"
-#' @param toDate (character) End date in format "YYYY-MM-DDThh:mm:ss"
-#' @param scope (character) Scope of data package (i.e. the first component of a \code{packageId})
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param fromDate (character) Start date in the format "YYYY-MM-DDThh:mm:ss"
+#' @param toDate (character) End date in the format "YYYY-MM-DDThh:mm:ss"
+#' @param scope (character) Scope of data package
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) Recent changes and their corresponding packageId, scope, identifier, revision, principal, doi, serviceMethod, and date.
 #' 

@@ -1,8 +1,8 @@
 #' Read evaluate report
 #'
 #' @param transaction (character) Transaction identifier
-#' @param format (character) Format of the returned report, which can be: "xml", "html", "character"
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param format (character) Format of the returned report. Can be: "xml", "html", or "character".
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document/html_document/character) The evaluate quality report document
 #' 

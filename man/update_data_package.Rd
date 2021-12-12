@@ -7,11 +7,11 @@
 update_data_package(eml, useChecksum = FALSE, tier = "production")
 }
 \arguments{
-\item{eml}{(character) Full path to an EML document}
+\item{eml}{(character) Full path to an EML file}
 
-\item{useChecksum}{(logical) Whether to use an existing copy of the data entities from a previous revision of the data package (see details below).}
+\item{useChecksum}{(logical) Use data entities from a previous version of the data package? See details below.}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 transaction (character) Transaction identifier. Use this value with: 

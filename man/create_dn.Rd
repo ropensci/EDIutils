@@ -9,7 +9,7 @@ create_dn(userId, ou = "EDI")
 \arguments{
 \item{userId}{(character) PASTA userId}
 
-\item{ou}{(character) Organizational unit in which \code{userId} belongs. Can be "EDI" or "LTER".}
+\item{ou}{(character) Organizational unit in which \code{userId} belongs. Can be "EDI" or "LTER". All \code{userId} issued after "2020-05-01" have \code{ou = "EDI"}.}
 }
 \value{
 (character) Distinguished name

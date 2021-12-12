@@ -1,7 +1,7 @@
 #' List data package identifiers
 #'
-#' @param scope (character) Scope of data package (i.e. the first component of a \code{packageId})
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param scope (character) Scope of data package
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (numeric) Identifiers of data packages within a specified \code{scope}
 #'

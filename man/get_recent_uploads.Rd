@@ -9,7 +9,7 @@ get_recent_uploads(query, tier = "production")
 \arguments{
 \item{query}{(character) Query (see details below)}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) A list of zero or more audit records of either recently inserted or recently updated data packages.

@@ -7,7 +7,7 @@
 read_data_package_from_doi(doi, ore = FALSE)
 }
 \arguments{
-\item{doi}{(character) Data package DOI of the form "shoulder/pasta/md5"}
+\item{doi}{(character) Digital Object Identifier of data package in the format "shoulder/pasta/md5"}
 
 \item{ore}{(logical) Return an OAI-ORE compliant resource map in RDF-XML format}
 }

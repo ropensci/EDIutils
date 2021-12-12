@@ -11,7 +11,7 @@ read_data_package_report(packageId, html = FALSE, tier = "production")
 
 \item{html}{(logical) Return result in HTML format?}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Data package report

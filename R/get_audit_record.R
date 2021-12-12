@@ -1,7 +1,7 @@
 #' Get audit record
 #' 
 #' @param oid (numeric) Audit identifier
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) An audit record
 #' 

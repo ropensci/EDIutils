@@ -1,6 +1,6 @@
 #' List deleted data packages
 #'
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (character) All data packages (excluding revision values) that have been deleted from the data package registry.
 #' 

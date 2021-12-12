@@ -9,9 +9,9 @@ list_data_package_citations(packageId, tier = "production", list_all = FALSE)
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 
-\item{list_all}{(logical) Whether to return all citations within a data package series (i.e. multiple revisions)}
+\item{list_all}{(logical) Return all citations within a data package series?}
 }
 \value{
 (xml_document) A list of journal citations

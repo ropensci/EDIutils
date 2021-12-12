@@ -1,7 +1,7 @@
 #' Get journal citation
 #'
 #' @param journalCitationId (numeric) Journal citation identifier
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) Journal citation
 #' 

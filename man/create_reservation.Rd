@@ -7,9 +7,9 @@
 create_reservation(scope, tier = "production")
 }
 \arguments{
-\item{scope}{(character) Scope of data package (i.e. the first component of a \code{packageId})}
+\item{scope}{(character) Scope of data package}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) Identifier of reserved data package (i.e. the second component of a \code{packageId})

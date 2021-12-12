@@ -7,7 +7,7 @@
 get_event_subscription_schema(tier = "production")
 }
 \arguments{
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Schema for event subscription creation request entities

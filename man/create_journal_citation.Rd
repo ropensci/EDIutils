@@ -20,11 +20,11 @@ create_journal_citation(
 
 \item{articleUrl}{(character) Article URL. Required if \code{articleDoi} is missing.}
 
-\item{articleTitle}{(character) Article title. Optional.}
+\item{articleTitle}{(character) Article title}
 
-\item{journalTitle}{(character) Journal title. Optional.}
+\item{journalTitle}{(character) Journal title}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) Journal citation ID

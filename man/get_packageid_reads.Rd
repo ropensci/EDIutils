@@ -9,7 +9,7 @@ get_packageid_reads(packageId, tier = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Summary of all the successful reads (total reads and non-robot reads) of \code{packageId}

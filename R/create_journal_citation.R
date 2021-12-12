@@ -3,9 +3,9 @@
 #' @param packageId (character) Data package identifier
 #' @param articleDoi (character) Article DOI. Required if \code{articleUrl} is missing.
 #' @param articleUrl (character) Article URL. Required if \code{articleDoi} is missing.
-#' @param articleTitle (character) Article title. Optional.
-#' @param journalTitle (character) Journal title. Optional.
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param articleTitle (character) Article title
+#' @param journalTitle (character) Journal title
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #' 
 #' @return (numeric) Journal citation ID
 #'     

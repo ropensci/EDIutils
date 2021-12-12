@@ -7,9 +7,9 @@
 search_data_packages(query, tier = "production")
 }
 \arguments{
-\item{query}{(character) Solr query. See details (below) for searchable fields and \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr Wiki} for how to construct a Solr query.}
+\item{query}{(character) Query (see details below)}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Search results
@@ -52,6 +52,8 @@ Multi-value fields:
 }
 
 \code{query} parser: The optimal query parser (defType=edismax) is added to every query.
+
+ See \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr Wiki} for how to construct a Solr query.
 }
 \note{
 Only the newest version of data packages are searchable, older versions are not.

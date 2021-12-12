@@ -7,9 +7,9 @@
 list_user_data_packages(dn, tier = "production")
 }
 \arguments{
-\item{dn}{(character) Distinguished name of user. Use \code{create_dn()} to create input to this argument.}
+\item{dn}{(character) Distinguished name of user. Create with \code{create_dn()}.}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (character) Data package identifiers belonging to a \code{dn}

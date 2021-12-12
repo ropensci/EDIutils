@@ -1,7 +1,7 @@
 #' Is authorized to read
 #'
-#' @param resourceId (character) Identifier of an EDI Repository resource
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param resourceId (character) Resource identifier
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (logical) TRUE if the authenticated user has permission to read the specified resource
 #'

@@ -1,7 +1,7 @@
 #' Get package ID reads
 #'
 #' @param packageId (character) Data package identifier
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) Summary of all the successful reads (total reads and non-robot reads) of \code{packageId}
 #' 

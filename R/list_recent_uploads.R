@@ -1,8 +1,8 @@
 #' List recent uploads
 #'
-#' @param type (character) Upload type, which can be: "insert" or "update"
-#' @param limit (numeric) Limit on return values
-#' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param type (character) Upload type. Can be: "insert" or "update".
+#' @param limit (numeric) Maximum number of results to return
+#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) Data package uploads and their packageId, scope, identifier, revision, principal, doi, serviceMethod, and date.
 #' 

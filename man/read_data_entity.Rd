@@ -11,7 +11,7 @@ read_data_entity(packageId, entityId, tier = "production")
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (raw) Raw bytes (i.e. application/octet-stream) to be parsed by a reader function appropriate for the data type

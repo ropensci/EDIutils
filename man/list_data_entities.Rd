@@ -9,7 +9,7 @@ list_data_entities(packageId, tier = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
+\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
 (character) Identifiers for all data entities in \code{packageId}
