@@ -30,7 +30,7 @@
 #' @examples 
 #' \dontrun{
 #' # Get all audit records for user "ecocomdp"
-#' query <- paste0("user=", construct_dn("ecocomdp"))
+#' query <- paste0("user=", create_dn("ecocomdp"))
 #' res <- get_audit_report(query)
 #' }
 #'

@@ -7,7 +7,7 @@
 list_principal_owner_citations(principalOwner, tier = "production")
 }
 \arguments{
-\item{principalOwner}{(character) Principal owner in the form returned by \code{construct_dn()}}
+\item{principalOwner}{(character) Principal owner in the form returned by \code{create_dn()}}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
@@ -18,7 +18,7 @@ list_principal_owner_citations(principalOwner, tier = "production")
 List principal owner citations
 }
 \examples{
-principalOwner <- construct_dn("csmith")
+principalOwner <- create_dn("csmith")
 list_principal_owner_citations(principalOwner)
 
 }

@@ -4,6 +4,12 @@
 #' @param packageId (character) Data package identifier of the form "scope.identifier.revision"
 #' @param wait (logical) Wait for evaluation to complete? See details below.
 #' @param tier (character) Repository tier, which can be: "production", "staging", or "development"
+#' @param testing (character) Repository tier. Can be: 
+#' \itemize{
+#'   \item "production" - For publication quality data packages
+#'   \item "staging" - For testing. Is one level below "production"
+#'   \item "development" - For testing. Is two levels below "production"
+#' }
 #'
 #' @return (logical) TRUE if creation has completed, FALSE if in progress, and error if an error was encountered while processing the request
 #' 

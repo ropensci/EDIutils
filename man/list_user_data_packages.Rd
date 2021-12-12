@@ -7,7 +7,7 @@
 list_user_data_packages(dn, tier = "production")
 }
 \arguments{
-\item{dn}{(character) Distinguished name of user. Use \code{construct_dn()} to create input to this argument.}
+\item{dn}{(character) Distinguished name of user. Use \code{create_dn()} to create input to this argument.}
 
 \item{tier}{(character) Repository tier, which can be: "production", "staging", or "development"}
 }
@@ -19,7 +19,7 @@ List all data packages (including their revision values) uploaded to the reposit
 }
 \examples{
 # List all data packages uploaded by user "dbjourneynorth" who is apart of the "EDI" organizational unit
-dn <- construct_dn("dbjourneynorth", "EDI")
+dn <- create_dn("dbjourneynorth", "EDI")
 list_user_data_packages(dn)
 
 }

@@ -31,9 +31,9 @@ bake_cookie <- function() {
 #' @export
 #' 
 #' @examples 
-#' construct_dn("csmith")
+#' create_dn("csmith")
 #' 
-construct_dn <- function(userId, ou = "EDI") {
+create_dn <- function(userId, ou = "EDI") {
   ou <- toupper(ou)
   validate_arguments(x = as.list(environment()))
   res <- paste0("uid=", userId, ",o=", ou, ",")
