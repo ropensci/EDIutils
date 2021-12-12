@@ -5,14 +5,7 @@ Authors@R: person("Colin", "Smith", email = "colin.smith@wisc.edu", role = c("au
 Description: The EDI Data Repository (https://portal.edirepository.org/nis/home.jsp) is for the archive and reuse of ecological data, emphasizing data quality and information rich metadata. EDIutils includes functions to search the repository, retrieve metadata, download files, and more.
 Imports: 
     curl (>= 3.0.0),
-    data.table (>= 1.13.0),
-    EML (>= 2.0.4),
     httr (>= 1.3.1),
-    lubridate(>= 1.7.4),
-    reader (>= 1.0.6),
-    readr (>= 1.1.1),
-    stringr (>= 1.2.0),
-    stringi (>= 1.1.5),
     xml2 (>= 1.1.1)
 License: MIT License
 Encoding: UTF-8
