@@ -17,6 +17,10 @@ This vignette demonstrates how to query PASTA for dataset download statistics. T
 
 #### Set up the R environment
 
+```{r eval=FALSE}
+# This vignette uses a development version of EDIutils on the "cran" branch
+remotes::install_github("EDIorg/EDIutils", ref = "cran")
+```
 
 ```r
 library(EDIutils)

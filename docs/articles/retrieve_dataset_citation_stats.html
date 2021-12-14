@@ -112,6 +112,9 @@
 <h4 class="hasAnchor">
 <a href="#set-up-the-r-environment" class="anchor"></a>Set up the R environment</h4>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># This vignette uses a development version of EDIutils on the "cran" branch</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"EDIorg/EDIutils"</span>, ref <span class="op">=</span> <span class="st">"cran"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EDIorg/EDIutils">EDIutils</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://xml2.r-lib.org/">xml2</a></span><span class="op">)</span></code></pre></div>
 <p>Several PASTA REST API functions return XML, <code>xml2</code> is a convenient package to extract desired information and to save returned EML files locally.</p>
@@ -120,7 +123,7 @@
 <h4 class="hasAnchor">
 <a href="#get-the-journal-citation-report-for-specific-data-packages" class="anchor"></a>Get the journal citation report for specific data packages</h4>
 <p>Get all identifiers for a certain scope</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">scope</span> <span class="op">&lt;-</span> <span class="st">"edi"</span>
 <span class="va">identifiers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_data_package_identifiers.html">list_data_package_identifiers</a></span><span class="op">(</span>scope <span class="op">=</span> <span class="va">scope</span>, tier <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
 <p>Get all revisions for each identifer and retrieve journal citations for each. Citation information is connected to the specific revision of a dataset.</p>
@@ -138,7 +141,7 @@
         &lt;journalTitle&gt;The Tree Journal&lt;/journalTitle&gt;
     &lt;/journalCitation&gt;
 &lt;journalCitations&gt;</code></pre>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">citation_dois</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span>
 <span class="kw">for</span> <span class="op">(</span><span class="va">j</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">identifiers</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
   <span class="va">revisions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_data_package_revisions.html">list_data_package_revisions</a></span><span class="op">(</span>
@@ -155,7 +158,7 @@
   <span class="op">}</span>
 <span class="op">}</span></code></pre></div>
 <p>The list of <code>citation_dois</code> now contains all journal publication DOIs that have cited a dataset in the EDI scope (on 11/5/2021). This is not the number of journal articles because one article may cite more than one dataset. To get to the number of journal articles, the number of unique DOIs needs to be counted.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">citation_dois</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] 272</span></code></pre></div>
 </div>
