@@ -11,9 +11,9 @@ vignette: >
 
 
 
-The EDIutils package provides R wrappers to the PASTA REST API functions. 
+The EDIutils package provides R wrappers to the EDI data repository API functions. 
 
-This vignette demonstrates how to query PASTA for journal articles that cite a certain dataset. These stats may be used in reports.
+This vignette demonstrates how to query the EDI repository for journal articles that cite a certain dataset. These stats may be used in reports.
 
 #### Set up the R environment
 
@@ -24,7 +24,7 @@ library(xml2)
 ```
 
 
-Several PASTA REST API functions return XML, `xml2` is a convenient package to extract desired information and to save returned EML files locally.
+Several EDI REST API functions return XML, `xml2` is a convenient package to extract desired information and to save returned EML files locally.
 
 
 #### Get the journal citation report for specific data packages

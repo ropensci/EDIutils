@@ -15,10 +15,10 @@ search_data_packages(query, env = "production")
 (xml_document) Search results
 }
 \description{
-Searches data packages in the EDI Data Repository using the specified Solr query.
+Searches data packages in the EDI data repository using the specified Solr query.
 }
 \details{
-Documents in the EDI Data Repository Solr index can be discovered based on metadata values stored in the following list of searchable fields (not all EML content is queryable):
+Documents in the EDI data repository Solr index can be discovered based on metadata values stored in the following list of searchable fields (not all EML content is queryable):
 
 Single-value fields:
 \itemize{

@@ -10,7 +10,7 @@ list_working_on(env = "production")
 \item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) The set of data packages the EDI repository is currently working on inserting or updating. Note that data packages currently being evaluated by PASTA are not included in the list.
+(xml_document) The set of data packages the EDI repository is currently working on inserting or updating. Note that data packages currently being evaluated by the EDI repository are not included in the list.
 }
 \description{
 List working on

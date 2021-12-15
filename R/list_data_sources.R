@@ -7,7 +7,7 @@
 #'
 #' @return (xml_document) Data sources to \code{packageId}
 #' 
-#' @details Data sources can be either internal or external to PASTA. Internal data sources include a packageId value and a URL to the source metadata. For data sources external to PASTA, the packageId element will be empty and a URL value may or not be documented.
+#' @details Data sources can be either internal or external to the EDI data repository. Internal data sources include a packageId value and a URL to the source metadata. For data sources external to PASTA, the packageId element will be empty and a URL value may or not be documented.
 #'
 #' @export
 #'

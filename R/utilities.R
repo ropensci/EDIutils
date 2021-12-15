@@ -1,6 +1,6 @@
-#' Create authentication cookie for EDI Repository Gatekeeper
+#' Create authentication cookie for EDI repository Gatekeeper
 #'
-#' @return (request) The request object returned by \code{httr::set_cookies()} with the EDI Repository authentication token baked in. Yum!
+#' @return (request) The request object returned by \code{httr::set_cookies()} with the EDI repository authentication token baked in. Yum!
 #'
 bake_cookie <- function() {
   token_file <- paste0(tempdir(), "/edi_token.txt")
@@ -23,7 +23,7 @@ bake_cookie <- function() {
 
 #' Construct a users distinguished name
 #'
-#' @param userId (character) PASTA userId
+#' @param userId (character) User identifier of an EDI data repository account
 #' @param ou (character) Organizational unit in which \code{userId} belongs. Can be "EDI" or "LTER". All \code{userId} issued after "2020-05-01" have \code{ou = "EDI"}.
 #'
 #' @return (character) Distinguished name

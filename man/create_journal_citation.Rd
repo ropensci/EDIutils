@@ -33,7 +33,7 @@ create_journal_citation(
 Create journal citation
 }
 \details{
-Creates a new journal citation entry in the EDI Data Repository
+Creates a new journal citation entry in the EDI data repository
 }
 \note{
 User authentication is required (see \code{login()})

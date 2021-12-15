@@ -1,4 +1,4 @@
-context("List data packages PASTA+ is working on")
+context("List data packages the EDI repository is working on")
 
 testthat::test_that("Test attributes of returned object", {
   res <- list_working_on("staging")

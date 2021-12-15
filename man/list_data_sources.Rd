@@ -18,7 +18,7 @@ list_data_sources(packageId, env = "production")
 Data sources are data packages, or other online digital objects, that are known to be inputs to the specified derived data package.
 }
 \details{
-Data sources can be either internal or external to PASTA. Internal data sources include a packageId value and a URL to the source metadata. For data sources external to PASTA, the packageId element will be empty and a URL value may or not be documented.
+Data sources can be either internal or external to the EDI data repository. Internal data sources include a packageId value and a URL to the source metadata. For data sources external to PASTA, the packageId element will be empty and a URL value may or not be documented.
 }
 \examples{
 list_data_sources("edi.275.4")

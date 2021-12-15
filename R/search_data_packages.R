@@ -1,6 +1,6 @@
 #' Search data packages
 #'
-#' @description Searches data packages in the EDI Data Repository using the specified Solr query.
+#' @description Searches data packages in the EDI data repository using the specified Solr query.
 #'
 #' @param query (character) Query (see details below)
 #' @param env (character) Repository environment. Can be: "production", "staging", or "development".
@@ -11,7 +11,7 @@
 #' 
 #' When constructing a query note that the 15403 data packages of the \href{https://lternet.edu/the-ecotrends-project/}{ecotrends} project and 10492 data packages of the \href{https://lternet.edu/lter-remote-sensing-and-geographic-information-system-data/}{LTER Landsat} project, can be excluded from the returned results by including \code{&fq=-scope:(ecotrends+lter-landsat)} in the query string.
 #' 
-#' @details Documents in the EDI Data Repository Solr index can be discovered based on metadata values stored in the following list of searchable fields (not all EML content is queryable):
+#' @details Documents in the EDI data repository Solr index can be discovered based on metadata values stored in the following list of searchable fields (not all EML content is queryable):
 #' 
 #' Single-value fields:
 #' \itemize{

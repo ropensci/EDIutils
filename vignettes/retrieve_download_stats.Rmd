@@ -11,9 +11,9 @@ vignette: >
 
 
 
-The EDIutils package provides R wrappers to the PASTA REST API functions. 
+The EDIutils package provides R wrappers to the EDI data repository REST API functions. 
 
-This vignette demonstrates how to query PASTA for dataset download statistics. These stats may be used in reports or further processed to understand data user behavior.
+This vignette demonstrates how to query the EDI repository for dataset download statistics. These stats may be used in reports or further processed to understand data user behavior.
 
 #### Set up the R environment
 
@@ -40,7 +40,7 @@ library(lubridate)
 library(ggplot2)
 ```
 
-Several PASTA REST API functions return XML, `xml2` is a convenient package to extract desired information and to save returned EML files locally.
+Several EDI API functions return XML, `xml2` is a convenient package to extract desired information and to save returned EML files locally.
 
 
 #### Get the audit report for downloaded data entities

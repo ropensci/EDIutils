@@ -2,7 +2,7 @@
 #'
 #' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
-#' @return (xml_document) The set of data packages the EDI repository is currently working on inserting or updating. Note that data packages currently being evaluated by PASTA are not included in the list.
+#' @return (xml_document) The set of data packages the EDI repository is currently working on inserting or updating. Note that data packages currently being evaluated by the EDI repository are not included in the list.
 #' 
 #' @export
 #' 

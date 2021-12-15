@@ -2,13 +2,13 @@
 % Please edit documentation in R/utilities.R
 \name{bake_cookie}
 \alias{bake_cookie}
-\title{Create authentication cookie for EDI Repository Gatekeeper}
+\title{Create authentication cookie for EDI repository Gatekeeper}
 \usage{
 bake_cookie()
 }
 \value{
-(request) The request object returned by \code{httr::set_cookies()} with the EDI Repository authentication token baked in. Yum!
+(request) The request object returned by \code{httr::set_cookies()} with the EDI repository authentication token baked in. Yum!
 }
 \description{
-Create authentication cookie for EDI Repository Gatekeeper
+Create authentication cookie for EDI repository Gatekeeper
 }
