@@ -125,7 +125,7 @@
 <p>Get all identifiers for a certain scope</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">scope</span> <span class="op">&lt;-</span> <span class="st">"edi"</span>
-<span class="va">identifiers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_data_package_identifiers.html">list_data_package_identifiers</a></span><span class="op">(</span>scope <span class="op">=</span> <span class="va">scope</span>, tier <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
+<span class="va">identifiers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_data_package_identifiers.html">list_data_package_identifiers</a></span><span class="op">(</span>scope <span class="op">=</span> <span class="va">scope</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
 <p>Get all revisions for each identifer and retrieve journal citations for each. Citation information is connected to the specific revision of a dataset.</p>
 <p>The citation information is returned as XMl in the format:</p>
 <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -147,7 +147,7 @@
   <span class="va">revisions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_data_package_revisions.html">list_data_package_revisions</a></span><span class="op">(</span>
     scope <span class="op">=</span> <span class="va">scope</span>,
     identifier <span class="op">=</span> <span class="va">identifiers</span><span class="op">[</span><span class="va">j</span><span class="op">]</span>,
-    tier <span class="op">=</span> <span class="st">"production"</span>
+    env <span class="op">=</span> <span class="st">"production"</span>
   <span class="op">)</span>
   
   <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">revisions</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
