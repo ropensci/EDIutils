@@ -4,12 +4,12 @@
 \alias{get_audit_report}
 \title{Get audit report}
 \usage{
-get_audit_report(query, tier = "production")
+get_audit_report(query, env = "production")
 }
 \arguments{
 \item{query}{(character) Query (see details below)}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) An XML list of zero or more audit records matching the query parameters as specified in the request.

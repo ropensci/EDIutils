@@ -1,8 +1,8 @@
 #' List data package scopes
 #'
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
-#' @return (numeric) Scopes within a specified \code{tier}
+#' @return (numeric) Scopes within a specified \code{env}
 #'
 #' @export
 #' 
@@ -16,9 +16,9 @@
 #' #' # All scopes in development
 #' list_data_package_scopes("development")
 #'
-list_data_package_scopes <- function(tier = "production") {
+list_data_package_scopes <- function(env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/eml")
+  url <- paste0(url_env(env), ".lternet.edu/package/eml")
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)

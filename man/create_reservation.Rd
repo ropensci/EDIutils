@@ -4,12 +4,12 @@
 \alias{create_reservation}
 \title{Create reservation}
 \usage{
-create_reservation(scope, tier = "production")
+create_reservation(scope, env = "production")
 }
 \arguments{
 \item{scope}{(character) Scope of data package}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) Identifier of reserved data package

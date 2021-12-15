@@ -4,12 +4,12 @@
 \alias{read_data_entity_names}
 \title{Read data entity names}
 \usage{
-read_data_entity_names(packageId, tier = "production")
+read_data_entity_names(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (data.frame) Names and identifiers of all data entities in \code{packageId}

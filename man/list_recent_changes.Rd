@@ -8,7 +8,7 @@ list_recent_changes(
   fromDate = NULL,
   toDate = NULL,
   scope = NULL,
-  tier = "production"
+  env = "production"
 )
 }
 \arguments{
@@ -18,7 +18,7 @@ list_recent_changes(
 
 \item{scope}{(character) Scope of data package}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Recent changes and their corresponding packageId, scope, identifier, revision, principal, doi, serviceMethod, and date.

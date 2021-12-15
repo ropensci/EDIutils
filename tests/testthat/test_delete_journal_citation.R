@@ -7,7 +7,7 @@ testthat::test_that("Test attributes of returned object", {
     articleDoi = "https://doi.org/10.1890/11-1026.1",
     articleTitle = "Corridors promote fire via connectivity and edge effects",
     journalTitle = "Ecological Applications",
-    tier = "staging")
+    env = "staging")
   res <- delete_journal_citation(journalCitationId, "staging")
   expect_true(res)
 })

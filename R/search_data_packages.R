@@ -3,7 +3,7 @@
 #' @description Searches data packages in the EDI Data Repository using the specified Solr query.
 #'
 #' @param query (character) Query (see details below)
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'     
 #' @return (xml_document) Search results
 #' 
@@ -66,10 +66,10 @@
 #' query <- 'q="air+temperature"&fl=packageid,title,score&fq=-scope:(ecotrends+lter-landsat)'
 #' search_data_packages(query)
 #'
-search_data_packages <- function(query, tier = "production") {
+search_data_packages <- function(query, env = "production") {
   validate_arguments(x = as.list(environment()))
   query <- gsub(pattern = "\"", replacement = "%22", x = query)
-  url <- paste0(url_env(tier), 
+  url <- paste0(url_env(env), 
                 ".lternet.edu/package/search/eml?defType=edismax&", query)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

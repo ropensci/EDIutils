@@ -5,7 +5,7 @@
 #' @param articleUrl (character) Article URL. Required if \code{articleDoi} is missing.
 #' @param articleTitle (character) Article title
 #' @param journalTitle (character) Journal title
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
 #' @return (numeric) Journal citation identifier
 #'     

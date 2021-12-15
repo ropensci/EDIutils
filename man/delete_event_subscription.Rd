@@ -4,7 +4,7 @@
 \alias{delete_event_subscription}
 \title{Delete event subscription}
 \usage{
-delete_event_subscription(subscriptionId, tier = "production")
+delete_event_subscription(subscriptionId, env = "production")
 }
 \arguments{
 \item{subscriptionId}{(numeric) Event subscription identifier}

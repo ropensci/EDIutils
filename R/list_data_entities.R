@@ -1,7 +1,7 @@
 #' List data entities
 #' 
 #' @param packageId (character) Data package identifier
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
 #' @return (character) Identifiers for all data entities in \code{packageId}
 #' 
@@ -10,9 +10,9 @@
 #' @examples
 #' list_data_entities("knb-lter-and.2726.6")
 #'
-list_data_entities <- function(packageId, tier = "production") {
+list_data_entities <- function(packageId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/data/eml/",
+  url <- paste0(url_env(env), ".lternet.edu/package/data/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   

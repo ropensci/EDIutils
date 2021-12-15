@@ -1,7 +1,7 @@
 #' Create data package
 #'
 #' @param eml (character) Full path to an EML file describing the data package to be created
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
 #' @return transaction (character) Transaction identifier. May be used in a subsequent call to:
 #' \itemize{
@@ -21,9 +21,9 @@
 #' create_data_package(path)
 #' }
 #'
-create_data_package <- function(eml, tier = "production") {
+create_data_package <- function(eml, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/eml")
+  url <- paste0(url_env(env), ".lternet.edu/package/eml")
   cookie <- bake_cookie()
   resp <- httr::POST(url, 
                      set_user_agent(), 

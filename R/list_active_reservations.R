@@ -1,6 +1,6 @@
 #' List active reservations
 #'
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) The set of data package identifiers that users have actively reserved. Note that data package identifiers that have been successfully uploaded are no longer considered active reservations and thus are not included in this list.
 #'
@@ -9,9 +9,9 @@
 #' @examples 
 #' list_active_reservations()
 #'
-list_active_reservations <- function(tier = "production"){
+list_active_reservations <- function(env = "production"){
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/reservations/eml")
+  url <- paste0(url_env(env), ".lternet.edu/package/reservations/eml")
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)

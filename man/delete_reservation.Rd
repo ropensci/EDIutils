@@ -4,14 +4,14 @@
 \alias{delete_reservation}
 \title{Delete reservation}
 \usage{
-delete_reservation(scope, identifier, tier = "production")
+delete_reservation(scope, identifier, env = "production")
 }
 \arguments{
 \item{scope}{(character) Scope of data package}
 
 \item{identifier}{(numeric) Identifier of data package}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) The deleted reservation identifier value

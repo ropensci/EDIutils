@@ -4,14 +4,14 @@
 \alias{evaluate_data_package}
 \title{Evaluate data package}
 \usage{
-evaluate_data_package(eml, useChecksum = FALSE, tier = "production")
+evaluate_data_package(eml, useChecksum = FALSE, env = "production")
 }
 \arguments{
 \item{eml}{(character) Full path to an EML file describing the data package to be evaluated}
 
 \item{useChecksum}{(logical) Use data entities from a previous version of the data package? See details below.}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 transaction (character) Transaction identifier. May be used in a subsequent call to:

@@ -4,12 +4,12 @@
 \alias{get_provenance_metadata}
 \title{Get provenance metadata}
 \usage{
-get_provenance_metadata(packageId, tier = "production")
+get_provenance_metadata(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Provenance metadata of \code{packageId}, representing a <methodStep> element that can be inserted into the <methods> section of a dependent data package

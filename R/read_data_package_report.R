@@ -2,7 +2,7 @@
 #'
 #' @param packageId (character) Data package identifier
 #' @param html (logical) Return result in HTML format?
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) Data package report
 #' 
@@ -16,9 +16,9 @@
 #' read_data_package_report("knb-lter-knz.260.4", html = TRUE)
 #'
 read_data_package_report <- function(packageId, html = FALSE, 
-                                     tier = "production") {
+                                     env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/report/eml/",
+  url <- paste0(url_env(env), ".lternet.edu/package/report/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   if (html) {
     resp <- httr::GET(url, 

@@ -1,7 +1,7 @@
 #' Read data package error
 #'
 #' @param transaction (character) Transaction identifier
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return An error is returned if an error occurred while processing the request, otherwise \code{NULL} is returned if no error was encountered or if processing is still underway.
 #' 
@@ -22,9 +22,9 @@
 #' read_data_package_error(transaction)
 #' }
 #'
-read_data_package_error <- function(transaction, tier = "production") {
+read_data_package_error <- function(transaction, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/error/eml/", transaction)
+  url <- paste0(url_env(env), ".lternet.edu/package/error/eml/", transaction)
   cookie <- bake_cookie()
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
   if (resp$status_code != "404") {

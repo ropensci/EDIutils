@@ -4,12 +4,12 @@
 \alias{read_data_package_report_checksum}
 \title{Read data package report checksum}
 \usage{
-read_data_package_report_checksum(packageId, tier = "production")
+read_data_package_report_checksum(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (character) A 40 character SHA-1 checksum value for the report

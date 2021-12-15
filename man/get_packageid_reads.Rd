@@ -4,12 +4,12 @@
 \alias{get_packageid_reads}
 \title{Get package ID reads}
 \usage{
-get_packageid_reads(packageId, tier = "production")
+get_packageid_reads(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Summary of all the successful reads (total reads and non-robot reads) of \code{packageId}

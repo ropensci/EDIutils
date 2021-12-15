@@ -4,12 +4,12 @@
 \alias{list_data_sources}
 \title{List data sources}
 \usage{
-list_data_sources(packageId, tier = "production")
+list_data_sources(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Data sources to \code{packageId}

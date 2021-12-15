@@ -1,7 +1,7 @@
 #' Get audit report
 #'
 #' @param query (character) Query (see details below)
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) An XML list of zero or more audit records matching the query parameters as specified in the request.
 #' 
@@ -34,9 +34,9 @@
 #' res <- get_audit_report(query)
 #' }
 #'
-get_audit_report <- function(query, tier = "production") {
+get_audit_report <- function(query, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/audit/report?", query)
+  url <- paste0(url_env(env), ".lternet.edu/audit/report?", query)
   cookie <- bake_cookie()
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
   msg <- httr::content(resp, as = "text", encoding = "UTF-8")

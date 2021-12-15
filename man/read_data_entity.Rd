@@ -4,14 +4,14 @@
 \alias{read_data_entity}
 \title{Read data entity}
 \usage{
-read_data_entity(packageId, entityId, tier = "production")
+read_data_entity(packageId, entityId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (raw) Raw bytes (i.e. application/octet-stream) to be parsed by a reader function appropriate for the data type

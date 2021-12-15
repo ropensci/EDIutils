@@ -4,14 +4,14 @@
 \alias{read_data_entity_checksum}
 \title{Read data entity checksum}
 \usage{
-read_data_entity_checksum(packageId, entityId, tier = "production")
+read_data_entity_checksum(packageId, entityId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (character) A 40-character SHA-1 checksum value of \code{entityId} in \code{packageId}

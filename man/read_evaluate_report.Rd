@@ -4,14 +4,14 @@
 \alias{read_evaluate_report}
 \title{Read evaluate report}
 \usage{
-read_evaluate_report(transaction, format = "xml", tier = "production")
+read_evaluate_report(transaction, format = "xml", env = "production")
 }
 \arguments{
 \item{transaction}{(character) Transaction identifier}
 
 \item{format}{(character) Format of the returned report. Can be: "xml", "html", or "character".}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document or html_document or character) The evaluate quality report document

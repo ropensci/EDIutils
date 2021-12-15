@@ -3,7 +3,7 @@
 #' @param scope (character) Scope of data package
 #' @param identifier (numeric) Identifier of data package
 #' @param filter (character) Filter results by "newest" or "oldest"
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (numeric) Revisions of a data package within a specified \code{scope} and \code{identifier}
 #' 
@@ -20,9 +20,9 @@
 #' list_data_package_revisions("knb-lter-arc", 20131, filter = "oldest")
 #' 
 list_data_package_revisions <- function(scope, identifier, filter = NULL, 
-                                        tier = "production") {
+                                        env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/eml/",
+  url <- paste0(url_env(env), ".lternet.edu/package/eml/",
                 paste(c(scope, as.character(identifier)), collapse = "/"))
   if (!is.null(filter)) {
     url <- paste0(url, "?filter=", filter)

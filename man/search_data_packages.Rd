@@ -4,12 +4,12 @@
 \alias{search_data_packages}
 \title{Search data packages}
 \usage{
-search_data_packages(query, tier = "production")
+search_data_packages(query, env = "production")
 }
 \arguments{
 \item{query}{(character) Query (see details below)}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Search results

@@ -4,12 +4,12 @@
 \alias{execute_event_subscription}
 \title{Execute event subscription}
 \usage{
-execute_event_subscription(subscriptionId, tier = "production")
+execute_event_subscription(subscriptionId, env = "production")
 }
 \arguments{
 \item{subscriptionId}{(numeric) Event subscription identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (logical) TRUE if the event subscription was executed

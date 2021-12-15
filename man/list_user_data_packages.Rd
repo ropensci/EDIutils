@@ -4,12 +4,12 @@
 \alias{list_user_data_packages}
 \title{List user data packages}
 \usage{
-list_user_data_packages(dn, tier = "production")
+list_user_data_packages(dn, env = "production")
 }
 \arguments{
 \item{dn}{(character) Distinguished name of user. Create with \code{create_dn()}.}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (character) Data package identifiers belonging to a \code{dn}

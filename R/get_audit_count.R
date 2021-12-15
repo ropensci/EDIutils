@@ -1,7 +1,7 @@
 #' Get audit count
 #'
 #' @param query (character) Query (see details below)
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (numeric) Returns a count of the number of audit records matching the query parameters as specified in the request.
 #' 
@@ -31,9 +31,9 @@
 #' query <- "category=error&limit=5"
 #' get_audit_count(query)
 #'
-get_audit_count <- function(query, tier = "production") {
+get_audit_count <- function(query, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/audit/count?")
+  url <- paste0(url_env(env), ".lternet.edu/audit/count?")
   if (!is.null(query)) {
     url <- paste0(url, query)
   }

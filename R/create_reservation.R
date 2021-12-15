@@ -3,7 +3,7 @@
 #' @description Reserves the next available identifier for the specified scope
 #'
 #' @param scope (character) Scope of data package
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
 #' @return (numeric) Identifier of reserved data package
 #' 
@@ -17,9 +17,9 @@
 #' create_reservation("edi")
 #' }
 #'
-create_reservation <- function(scope, tier = "production") {
+create_reservation <- function(scope, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/reservations/eml/", scope)
+  url <- paste0(url_env(env), ".lternet.edu/package/reservations/eml/", scope)
   cookie <- bake_cookie()
   resp <- httr::POST(url, set_user_agent(), cookie, handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

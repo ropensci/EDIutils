@@ -1,7 +1,7 @@
 #' Delete journal citation
 #'
 #' @param journalCitationId (numeric) Journal citation identifier
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
 #' @return (logical) TRUE if deleted
 #' 

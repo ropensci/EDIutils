@@ -2,7 +2,7 @@
 #'
 #' @param packageId (character) Data package identifier
 #' @param entityId (character) Data entity identifier
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (raw) Raw bytes (i.e. application/octet-stream) to be parsed by a reader function appropriate for the data type
 #' 
@@ -15,9 +15,9 @@
 #' raw <- read_data_entity(packageId, entityId)
 #' data <- readr::read_csv(raw)
 #'
-read_data_entity <- function(packageId, entityId, tier = "production") {
+read_data_entity <- function(packageId, entityId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/data/eml/", 
+  url <- paste0(url_env(env), ".lternet.edu/package/data/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 entityId)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

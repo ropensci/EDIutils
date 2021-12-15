@@ -24,7 +24,7 @@ create_journal_citation(
 
 \item{journalTitle}{(character) Journal title}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) Journal citation identifier

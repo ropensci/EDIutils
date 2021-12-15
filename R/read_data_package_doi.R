@@ -1,7 +1,7 @@
 #' Read data package Digital Object Identifier
 #'
 #' @param packageId (character) Data package identifier
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (character) The canonical Digital Object Identifier for \code{packageId}
 #' 
@@ -10,9 +10,9 @@
 #' @examples 
 #' read_data_package_doi("knb-lter-jrn.210548103.15")
 #'
-read_data_package_doi <- function(packageId, tier = "production") {
+read_data_package_doi <- function(packageId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/doi/eml/", 
+  url <- paste0(url_env(env), ".lternet.edu/package/doi/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

@@ -4,12 +4,12 @@
 \alias{read_data_package_doi}
 \title{Read data package Digital Object Identifier}
 \usage{
-read_data_package_doi(packageId, tier = "production")
+read_data_package_doi(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (character) The canonical Digital Object Identifier for \code{packageId}

@@ -93,7 +93,7 @@ parse_packageId <- function(package.id) {
 #'
 #' @param qualityReport (xml_document) Evaluate quality report document
 #' @param full (logical) Return the full report if TRUE, otherwise return only warnings and errors.
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
 #' @return (character) A parsed evaluate quality report
 #' 
@@ -103,7 +103,7 @@ parse_packageId <- function(package.id) {
 #' 
 #' @noRd
 #'
-report2char <- function(qualityReport, full = TRUE, tier) {
+report2char <- function(qualityReport, full = TRUE, env) {
   validate_arguments(x = as.list(environment()))
   xml2::xml_ns_strip(qualityReport)
   
@@ -229,7 +229,7 @@ skip_if_logged_out <- function() {
 #' 
 #' @param transaction (character) Transaction identifier
 #' @param with_exceptions (logical) Convert quality report warnings and errors to R warnings and errors
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (message/warning/error) A message listing the total number of checks resulting in valid, info, warn, and error status. Exceptions are raised if warnings and errors are found and \code{with_exceptions} is TRUE.
 #' 
@@ -248,10 +248,10 @@ skip_if_logged_out <- function() {
 #' 
 summarize_evaluate_report <- function(transaction, 
                                       with_exceptions = TRUE, 
-                                      tier = "production") {
+                                      env = "production") {
   validate_arguments(x = as.list(environment()))
-  qualityReport <- read_evaluate_report(transaction, tier = tier)
-  res <- report2char(qualityReport, full = FALSE, tier = tier)
+  qualityReport <- read_evaluate_report(transaction, env = env)
+  res <- report2char(qualityReport, full = FALSE, env = env)
   message(res)
   if (with_exceptions) {
     any_warn <- !grepl("Warn: 0", res[1])
@@ -306,14 +306,14 @@ text2char <- function(txt) {
 #'     (character) Data repository environment to perform the evaluation in.
 #'     Can be: 'development', 'staging', 'production'.
 #'
-url_env <- function(tier){
+url_env <- function(env){
   
-  tier <- tolower(tier)
-  if (tier == 'development'){
+  env <- tolower(env)
+  if (env == 'development'){
     url_env <- 'https://pasta-d'
-  } else if (tier == 'staging'){
+  } else if (env == 'staging'){
     url_env <- 'https://pasta-s'
-  } else if (tier == 'production'){
+  } else if (env == 'production'){
     url_env <- 'https://pasta'
   }
   

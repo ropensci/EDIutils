@@ -4,12 +4,12 @@
 \alias{get_audit_record}
 \title{Get audit record}
 \usage{
-get_audit_record(oid, tier = "production")
+get_audit_record(oid, env = "production")
 }
 \arguments{
 \item{oid}{(numeric) Audit identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) An audit record

@@ -4,12 +4,12 @@
 \alias{create_data_package}
 \title{Create data package}
 \usage{
-create_data_package(eml, tier = "production")
+create_data_package(eml, env = "production")
 }
 \arguments{
 \item{eml}{(character) Full path to an EML file describing the data package to be created}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 transaction (character) Transaction identifier. May be used in a subsequent call to:

@@ -3,7 +3,7 @@ context("Get recent uploads")
 testthat::test_that("Test attributes of returned object", {
   skip_if_logged_out()
   query <- "serviceMethod=createDataPackage&limit=5"
-  res <- get_recent_uploads(query, tier = "staging")
+  res <- get_recent_uploads(query, env = "staging")
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))
   expect_true("auditRecord" %in% xml2::xml_name(xml2::xml_children(res)))
   children_found <- xml2::xml_name(xml2::xml_children(xml2::xml_children(res)[1]))

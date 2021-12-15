@@ -2,7 +2,7 @@
 #' 
 #' @param eml (character) Full path to an EML file describing the data package to be evaluated
 #' @param useChecksum (logical) Use data entities from a previous version of the data package? See details below.
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
 #' @return transaction (character) Transaction identifier. May be used in a subsequent call to:
 #' \itemize{
@@ -25,9 +25,9 @@
 #' evaluate_data_package(path)
 #' }
 #'
-evaluate_data_package <- function(eml, useChecksum = FALSE, tier = "production") {
+evaluate_data_package <- function(eml, useChecksum = FALSE, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/evaluate/eml")
+  url <- paste0(url_env(env), ".lternet.edu/package/evaluate/eml")
   if (useChecksum) {
     url <- paste0(url, "?useChecksum")
   }

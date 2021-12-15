@@ -2,7 +2,7 @@ context("Get audit record")
 
 testthat::test_that("Test attributes of returned object", {
   query <- "serviceMethod=createDataPackage&limit=5"
-  res <- get_recent_uploads(query, tier = "staging")
+  res <- get_recent_uploads(query, env = "staging")
   oid <- xml2::xml_text(xml2::xml_find_all(res, ".//oid"))[1]
   res <- get_audit_record(oid, "staging")
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))

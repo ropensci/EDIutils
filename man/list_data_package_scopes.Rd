@@ -4,13 +4,13 @@
 \alias{list_data_package_scopes}
 \title{List data package scopes}
 \usage{
-list_data_package_scopes(tier = "production")
+list_data_package_scopes(env = "production")
 }
 \arguments{
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(numeric) Scopes within a specified \code{tier}
+(numeric) Scopes within a specified \code{env}
 }
 \description{
 List data package scopes

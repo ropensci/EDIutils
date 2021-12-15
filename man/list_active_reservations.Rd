@@ -4,10 +4,10 @@
 \alias{list_active_reservations}
 \title{List active reservations}
 \usage{
-list_active_reservations(tier = "production")
+list_active_reservations(env = "production")
 }
 \arguments{
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) The set of data package identifiers that users have actively reserved. Note that data package identifiers that have been successfully uploaded are no longer considered active reservations and thus are not included in this list.

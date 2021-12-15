@@ -4,12 +4,12 @@
 \alias{get_audit_count}
 \title{Get audit count}
 \usage{
-get_audit_count(query, tier = "production")
+get_audit_count(query, env = "production")
 }
 \arguments{
 \item{query}{(character) Query (see details below)}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) Returns a count of the number of audit records matching the query parameters as specified in the request.

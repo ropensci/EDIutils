@@ -3,7 +3,7 @@
 #' @param packageId (character) Data package identifier
 #' @param transaction (character) Transaction identifier
 #' @param path (character) Path of directory in which the result will be written
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (.zip file) The data package archive of \code{packageId} requested by \code{transaction}
 #' 
@@ -18,10 +18,10 @@
 read_data_package_archive <- function(packageId, 
                                       transaction,
                                       path,
-                                      tier = "production") {
+                                      env = "production") {
   validate_arguments(x = as.list(environment()))
-  read_data_package_error(transaction, tier)
-  url <- paste0(url_env(tier), ".lternet.edu/package/archive/eml/",
+  read_data_package_error(transaction, env)
+  url <- paste0(url_env(env), ".lternet.edu/package/archive/eml/",
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 transaction)
   resp <- httr::GET(url, 

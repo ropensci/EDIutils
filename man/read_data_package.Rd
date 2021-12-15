@@ -4,14 +4,14 @@
 \alias{read_data_package}
 \title{Read data package}
 \usage{
-read_data_package(packageId, ore = FALSE, tier = "production")
+read_data_package(packageId, ore = FALSE, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
 \item{ore}{(logical) Return an OAI-ORE compliant resource map in RDF-XML format}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (character or xml_document) A resource map with reference URLs to each of the metadata, data, and quality report resources that comprise the \code{packageId}.
