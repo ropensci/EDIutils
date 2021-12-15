@@ -4,14 +4,14 @@
 \alias{read_data_package_report}
 \title{Read data package report}
 \usage{
-read_data_package_report(packageId, html = FALSE, tier = "production")
+read_data_package_report(packageId, html = FALSE, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
 \item{html}{(logical) Return result in HTML format?}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Data package report

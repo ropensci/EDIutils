@@ -4,12 +4,12 @@
 \alias{is_authorized}
 \title{Is authorized to read}
 \usage{
-is_authorized(resourceId, tier = "production")
+is_authorized(resourceId, env = "production")
 }
 \arguments{
 \item{resourceId}{(character) Resource identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (logical) TRUE if the authenticated user has permission to read the specified resource

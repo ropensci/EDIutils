@@ -1,4 +1,4 @@
-context('Create PASTA+ environment URL prefix')
+context('Create EDI repository environment URL prefix')
 library(EDIutils)
 
 testthat::test_that('Output URLs are valid', {

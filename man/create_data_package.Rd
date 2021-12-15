@@ -4,18 +4,17 @@
 \alias{create_data_package}
 \title{Create data package}
 \usage{
-create_data_package(eml, tier = "production")
+create_data_package(eml, env = "production")
 }
 \arguments{
-\item{eml}{(character) Full path to an EML file}
+\item{eml}{(character) Full path to an EML file describing the data package to be created}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-transaction (character) Transaction identifier. Use this value with: 
+transaction (character) Transaction identifier. May be used in a subsequent call to:
 \itemize{
-  \item \code{check_status_create()} to see if creation has completed or if any errors occurred while processing the request
-  \item \code{read_evaluate_report()} to read the evaluation report
+  \item \code{check_status_create()} to determine the operation status
   \item \code{read_data_package()} to obtain the data package resource map
 }
 }
@@ -23,7 +22,10 @@ transaction (character) Transaction identifier. Use this value with:
 Create data package
 }
 \details{
-Each data entity described in \code{eml} must be accessible to the EDI Data Repository through URLs listed in the \code{eml} at the XPath ".//physical/distribution/online/url". This URL should be static and not present the EDI Data Repository with any redirects, otherwise the data entity will not be accessible.
+Each data entity described in \code{eml} must be accompanied by a web accessible URL at the EML XPath ".//physical/distribution/online/url". The EDI data repository downloads the data entities via this URL. The URLs must be static and not have any redirects otherwise the data entities will not be downloaded.
+}
+\note{
+User authentication is required (see \code{login()})
 }
 \examples{
 \dontrun{

@@ -5,11 +5,11 @@
 #' @param articleUrl (character) Article URL. Required if \code{articleDoi} is missing.
 #' @param articleTitle (character) Article title
 #' @param journalTitle (character) Journal title
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
-#' @return (numeric) Journal citation ID
+#' @return (numeric) Journal citation identifier
 #'     
-#' @details Creates a new journal citation entry in the EDI Data Repository
+#' @details Creates a new journal citation entry in the EDI data repository
 #' 
 #' @note User authentication is required (see \code{login()})
 #' 
@@ -29,7 +29,7 @@ create_journal_citation <- function(packageId,
                                     articleUrl = NULL,
                                     articleTitle = NULL, 
                                     journalTitle = NULL, 
-                                    tier = "production") {
+                                    env = "production") {
   validate_arguments(x = as.list(environment()))
   if (is.null(c(articleDoi, articleUrl))) {
     stop('One of "articleDoi" or "articleUrl" is required.', call. = FALSE)
@@ -51,7 +51,7 @@ create_journal_citation <- function(packageId,
   xml2::write_xml(citation, fname)
   on.exit(file.remove(fname))
   # Submit request
-  url <- paste0(url_env(tier), ".lternet.edu/package/citation/eml")
+  url <- paste0(base_url(env), "/package/citation/eml")
   cookie <- bake_cookie()
   resp <- httr::POST(url, 
                      set_user_agent(), 

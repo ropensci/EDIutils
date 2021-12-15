@@ -5,7 +5,7 @@
 #' @param fromDate (character) Start date in the format "YYYY-MM-DDThh:mm:ss"
 #' @param toDate (character) End date in the format "YYYY-MM-DDThh:mm:ss"
 #' @param scope (character) Scope of data package
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) Recent changes and their corresponding packageId, scope, identifier, revision, principal, doi, serviceMethod, and date.
 #' 
@@ -24,9 +24,9 @@
 #'   toDate = "2021-01-03T00:00:00")
 #'
 list_recent_changes <- function(fromDate = NULL, toDate = NULL, scope = NULL,
-                                tier = "production") {
+                                env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/changes/eml")
+  url <- paste0(base_url(env), "/package/changes/eml")
   if (any(c(!is.null(fromDate), !is.null(toDate), !is.null(scope)))) {
     url <- paste0(url, "?")
   }

@@ -4,18 +4,21 @@
 \alias{list_data_sources}
 \title{List data sources}
 \usage{
-list_data_sources(packageId, tier = "production")
+list_data_sources(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) Data sources to \code{packageId} including their data package identifier, title, and url
+(xml_document) Data sources to \code{packageId}
 }
 \description{
 Data sources are data packages, or other online digital objects, that are known to be inputs to the specified derived data package.
+}
+\details{
+Data sources can be either internal or external to the EDI data repository. Internal data sources include a packageId value and a URL to the source metadata. For data sources external to PASTA, the packageId element will be empty and a URL value may or not be documented.
 }
 \examples{
 list_data_sources("edi.275.4")

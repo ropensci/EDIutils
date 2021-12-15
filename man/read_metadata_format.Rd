@@ -4,15 +4,15 @@
 \alias{read_metadata_format}
 \title{Read metadata format}
 \usage{
-read_metadata_format(packageId, tier = "production")
+read_metadata_format(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(character) metadata format type
+(character) Metadata format type
 }
 \description{
 Read metadata format

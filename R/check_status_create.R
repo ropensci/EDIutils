@@ -3,7 +3,7 @@
 #' @param transaction (character) Transaction identifier
 #' @param packageId (character) Data package identifier
 #' @param wait (logical) Wait for evaluation to complete? See details below.
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (logical) TRUE if creation has completed, FALSE if in progress, and error if an error was encountered while processing the request
 #' 
@@ -21,13 +21,13 @@
 #' check_status_create(transaction, packageId)
 #' }
 #'
-check_status_create <- function(transaction, packageId, wait = TRUE, tier = "production") {
+check_status_create <- function(transaction, packageId, wait = TRUE, env = "production") {
   validate_arguments(x = as.list(environment()))
   if (wait) {
     while (TRUE) {
       Sys.sleep(2)
-      read_data_package_error(transaction, tier)
-      url = paste0(url_env(tier), ".lternet.edu/package/report/eml/",
+      read_data_package_error(transaction, env)
+      url = paste0(base_url(env), "/package/report/eml/",
                    paste(parse_packageId(packageId), collapse = "/"))
       cookie <- bake_cookie()
       resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
@@ -40,8 +40,8 @@ check_status_create <- function(transaction, packageId, wait = TRUE, tier = "pro
       }
     }
   } else {
-    read_data_package_error(transaction, tier)
-    url = paste0(url_env(tier), ".lternet.edu/package/report/eml/",
+    read_data_package_error(transaction, env)
+    url = paste0(base_url(env), "/package/report/eml/",
                  paste(parse_packageId(packageId), collapse = "/"))
     cookie <- bake_cookie()
     resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))

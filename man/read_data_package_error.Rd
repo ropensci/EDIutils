@@ -4,12 +4,12 @@
 \alias{read_data_package_error}
 \title{Read data package error}
 \usage{
-read_data_package_error(transaction, tier = "production")
+read_data_package_error(transaction, env = "production")
 }
 \arguments{
 \item{transaction}{(character) Transaction identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 An error is returned if an error occurred while processing the request, otherwise \code{NULL} is returned if no error was encountered or if processing is still underway.

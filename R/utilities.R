@@ -1,6 +1,6 @@
-#' Create authentication cookie for EDI Repository Gatekeeper
+#' Create authentication cookie for EDI repository Gatekeeper
 #'
-#' @return (request) The request object returned by \code{httr::set_cookies()} with the EDI Repository authentication token baked in. Yum!
+#' @return (request) The request object returned by \code{httr::set_cookies()} with the EDI repository authentication token baked in. Yum!
 #'
 bake_cookie <- function() {
   token_file <- paste0(tempdir(), "/edi_token.txt")
@@ -23,7 +23,7 @@ bake_cookie <- function() {
 
 #' Construct a users distinguished name
 #'
-#' @param userId (character) PASTA userId
+#' @param userId (character) User identifier of an EDI data repository account
 #' @param ou (character) Organizational unit in which \code{userId} belongs. Can be "EDI" or "LTER". All \code{userId} issued after "2020-05-01" have \code{ou = "EDI"}.
 #'
 #' @return (character) Distinguished name
@@ -93,7 +93,7 @@ parse_packageId <- function(package.id) {
 #'
 #' @param qualityReport (xml_document) Evaluate quality report document
 #' @param full (logical) Return the full report if TRUE, otherwise return only warnings and errors.
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
 #' @return (character) A parsed evaluate quality report
 #' 
@@ -103,7 +103,7 @@ parse_packageId <- function(package.id) {
 #' 
 #' @noRd
 #'
-report2char <- function(qualityReport, full = TRUE, tier) {
+report2char <- function(qualityReport, full = TRUE, env) {
   validate_arguments(x = as.list(environment()))
   xml2::xml_ns_strip(qualityReport)
   
@@ -229,7 +229,7 @@ skip_if_logged_out <- function() {
 #' 
 #' @param transaction (character) Transaction identifier
 #' @param with_exceptions (logical) Convert quality report warnings and errors to R warnings and errors
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (message/warning/error) A message listing the total number of checks resulting in valid, info, warn, and error status. Exceptions are raised if warnings and errors are found and \code{with_exceptions} is TRUE.
 #' 
@@ -248,10 +248,10 @@ skip_if_logged_out <- function() {
 #' 
 summarize_evaluate_report <- function(transaction, 
                                       with_exceptions = TRUE, 
-                                      tier = "production") {
+                                      env = "production") {
   validate_arguments(x = as.list(environment()))
-  qualityReport <- read_evaluate_report(transaction, tier = tier)
-  res <- report2char(qualityReport, full = FALSE, tier = tier)
+  qualityReport <- read_evaluate_report(transaction, env = env)
+  res <- report2char(qualityReport, full = FALSE, env = env)
   message(res)
   if (with_exceptions) {
     any_warn <- !grepl("Warn: 0", res[1])
@@ -294,29 +294,18 @@ text2char <- function(txt) {
 
 
 
-#' Make URL for PASTA+ environment
+#' Construct base URL of the EDI repository web services
 #'
-#' @description
-#'     Create the URL suffix to the PASTA+ environment specified by the
-#'     environment argument.
+#' @param env (character) Data repository environment to perform the evaluation in. Can be: 'development', 'staging', 'production'.
 #'
-#' @usage url_env(environment)
-#'
-#' @param environment
-#'     (character) Data repository environment to perform the evaluation in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-url_env <- function(tier){
-  
-  tier <- tolower(tier)
-  if (tier == 'development'){
-    url_env <- 'https://pasta-d'
-  } else if (tier == 'staging'){
-    url_env <- 'https://pasta-s'
-  } else if (tier == 'production'){
-    url_env <- 'https://pasta'
+base_url <- function(env){
+  env <- tolower(env)
+  if (env == 'development'){
+    res <- 'https://pasta-d.lternet.edu'
+  } else if (env == 'staging'){
+    res <- 'https://pasta-s.lternet.edu'
+  } else if (env == 'production'){
+    res <- 'https://pasta.lternet.edu'
   }
-  
-  url_env
-  
+  return(res)
 }

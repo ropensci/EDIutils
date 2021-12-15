@@ -4,15 +4,15 @@
 \alias{list_data_descendants}
 \title{List data descendants}
 \usage{
-list_data_descendants(packageId, tier = "production")
+list_data_descendants(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) Descendants of \code{packageId}, including their packageId, title, and url
+(xml_document) Descendants of \code{packageId}
 }
 \description{
 Data descendants are data packages that are known to be derived, in whole or in part, from the specified source data package.

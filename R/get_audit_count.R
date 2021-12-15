@@ -1,7 +1,7 @@
 #' Get audit count
 #'
 #' @param query (character) Query (see details below)
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (numeric) Returns a count of the number of audit records matching the query parameters as specified in the request.
 #' 
@@ -9,13 +9,13 @@
 #' 
 #' \itemize{
 #'   \item category - Can be: debug, info, error, warn
-#'   \item service - Any of the EDI Data Repository services
-#'   \item serviceMethod - Any of the EDI Data Repository service Resource class JAX-RS methods
+#'   \item service - Any of the EDI data repository services
+#'   \item serviceMethod - Any of the EDI data repository service Resource class JAX-RS methods
 #'   \item user - Any user
 #'   \item group - Any group
 #'   \item authSystem - A valid auth system identifier
 #'   \item status - A valid HTTP Response Code
-#'   \item resourceId - An EDI Data Repository resource identifier, e.g. https://pasta.lternet.edu/package/eml/knb-lter-and/2719/6, or a thereof (see details below)
+#'   \item resourceId - An EDI data repository resource identifier, e.g. https://pasta.lternet.edu/package/eml/knb-lter-and/2719/6, or a thereof (see details below)
 #'   \item fromTime - An ISO8601 timestamp
 #'   \item toTime - An ISO8601 timestamp
 #'   \item limit - A positive whole number
@@ -31,9 +31,9 @@
 #' query <- "category=error&limit=5"
 #' get_audit_count(query)
 #'
-get_audit_count <- function(query, tier = "production") {
+get_audit_count <- function(query, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/audit/count?")
+  url <- paste0(base_url(env), "/audit/count?")
   if (!is.null(query)) {
     url <- paste0(url, query)
   }

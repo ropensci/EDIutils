@@ -4,14 +4,14 @@
 \alias{read_data_entity_size}
 \title{Read data entity size}
 \usage{
-read_data_entity_size(packageId, entityId, tier = "production")
+read_data_entity_size(packageId, entityId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) Size, in bytes, of \code{entityId} in \code{packageId}

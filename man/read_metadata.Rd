@@ -4,15 +4,15 @@
 \alias{read_metadata}
 \title{Read metadata}
 \usage{
-read_metadata(packageId, tier = "production")
+read_metadata(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) EML document
+(xml_document) EML metadata document
 }
 \description{
 Read metadata

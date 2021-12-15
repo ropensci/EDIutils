@@ -4,8 +4,8 @@ testthat::test_that("Test attributes of returned object", {
   skip_if_logged_out()
   packageId <- get_test_package()
   url <- "https://some.server.org"
-  subscriptionId <- create_event_subscription(packageId, url, tier = "staging")
-  on.exit(delete_event_subscription(subscriptionId, tier = "staging"))
+  subscriptionId <- create_event_subscription(packageId, url, env = "staging")
+  on.exit(delete_event_subscription(subscriptionId, env = "staging"))
   res <- get_event_subscription(subscriptionId, "staging")
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))
   expect_true("subscription" %in% xml2::xml_name(xml2::xml_children(res)))

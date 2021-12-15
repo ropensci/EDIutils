@@ -2,7 +2,7 @@
 #'
 #' @param scope (character) Scope of data package
 #' @param identifier (numeric) Identifier of data package
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
 #' @note User authentication is required (see \code{login()}). The same user who originally authenticated to create the reservation must authenticate to delete it.
 #'     
@@ -17,9 +17,9 @@
 #' delete_reservation("edi", identifier)
 #' }
 #'
-delete_reservation <- function(scope, identifier, tier = "production") {
+delete_reservation <- function(scope, identifier, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/reservations/eml/", scope,
+  url <- paste0(base_url(env), "/package/reservations/eml/", scope,
                 "/", identifier)
   cookie <- bake_cookie()
   resp <- httr::DELETE(url, set_user_agent(), cookie, handle = httr::handle(""))

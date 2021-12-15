@@ -2,7 +2,7 @@
 #'
 #' @param packageId (character) Data package identifier
 #' @param entityId (character) Data entity identifier
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (character) Name of \code{entityId} in \code{packageId}
 #' 
@@ -14,9 +14,9 @@
 #' entityIds <- list_data_entities(packageId)
 #' read_data_entity_name(packageId, entityIds[1])
 #'
-read_data_entity_name <- function(packageId, entityId, tier = "production"){
+read_data_entity_name <- function(packageId, entityId, env = "production"){
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/name/eml/",
+  url <- paste0(base_url(env), "/package/name/eml/",
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 entityId)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

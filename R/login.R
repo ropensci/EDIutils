@@ -1,7 +1,7 @@
 #' Login to the EDI repository
 #'
-#' @param userId (character) PASTA userId
-#' @param userPass (character) Password
+#' @param userId (character) User identifier of an EDI data repository account
+#' @param userPass (character) Password of \code{userId}
 #' @param config (character) Path to config.txt, which contains \code{userId} and \code{userPass} (see details below)
 #'
 #' @return (file) A temporary (~10 hour) authentication token written to edi_token.txt within the session \code{tempdir()}.

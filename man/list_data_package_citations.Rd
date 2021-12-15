@@ -4,12 +4,12 @@
 \alias{list_data_package_citations}
 \title{List data package citations}
 \usage{
-list_data_package_citations(packageId, tier = "production", list_all = FALSE)
+list_data_package_citations(packageId, env = "production", list_all = FALSE)
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 
 \item{list_all}{(logical) Return all citations within a data package series?}
 }

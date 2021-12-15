@@ -7,9 +7,9 @@
 login(userId = NULL, userPass = NULL, config = NULL)
 }
 \arguments{
-\item{userId}{(character) PASTA userId}
+\item{userId}{(character) User identifier of an EDI data repository account}
 
-\item{userPass}{(character) Password}
+\item{userPass}{(character) Password of \code{userId}}
 
 \item{config}{(character) Path to config.txt, which contains \code{userId} and \code{userPass} (see details below)}
 }

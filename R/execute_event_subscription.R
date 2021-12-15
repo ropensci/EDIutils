@@ -1,9 +1,9 @@
 #' Execute event subscription
 #'
 #' @param subscriptionId (numeric) Event subscription identifier
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
-#' @return (logical) TRUE if the event subscription was deleted
+#' @return (logical) TRUE if the event subscription was executed
 #'     
 #' @details Upon notification, the event manager queries its database for the subscription matching the specified subscriptionId. POST requests are then made (asynchronously) to the matching subscription.
 #' 
@@ -19,9 +19,9 @@
 #' execute_event_subscription(subscriptionId)
 #' }
 #'
-execute_event_subscription <- function(subscriptionId, tier = "production") {
+execute_event_subscription <- function(subscriptionId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/event/eml/", 
+  url <- paste0(base_url(env), "/package/event/eml/", 
                 subscriptionId)
   cookie <- bake_cookie()
   resp <- httr::POST(url, 

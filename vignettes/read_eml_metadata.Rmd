@@ -11,9 +11,9 @@ vignette: >
 
 
 
-The EDIutils package provides R wrappers to the PASTA REST API functions. 
+The EDIutils package provides R wrappers to the EDI data repository REST API functions. 
 
-This vignette demonstrates how to query PASTA for the newest EML metadata for an LTER site using the scope or using a keyword. The EML files may then be used to analyze their content or update metadata. 
+This vignette demonstrates how to query the EDI repository for the newest EML metadata for an LTER site using the scope or using a keyword. The EML files may then be used to analyze their content or update metadata. 
 
 #### Set up the R environment
 
@@ -27,13 +27,13 @@ library(EDIutils)
 library(xml2)
 ```
 
-Several PASTA REST API functions return XML, `xml2` is a convenient package to extract desired information and to save returned EML files locally.
+Several EDI API functions return XML, `xml2` is a convenient package to extract desired information and to save returned EML files locally.
 
 ## Search for datasets by using the LTER site scope
 
 NTL will be used as example throughout, change to different scope.
 
-#### Query PASTA for all data package IDs in a certain scope.
+#### Query EDI for all data package IDs in a certain scope.
 
 
 ```r
@@ -41,7 +41,7 @@ scope <- "knb-lter-ntl"
 identifiers <- list_data_package_identifiers(scope = scope, env = "production")
 ```
 
-#### Query PASTA for the latest revision of each data package
+#### Query EDI for the latest revision of each data package
 
 Build the correct metadata ID and save in a vector in the format of, e.g. knb-lter-ntl.1.52
 
@@ -61,7 +61,7 @@ for (i in 1:length(identifiers)) {
 
 In this example the search is for the keyword "Trout Lake Station".
 
-#### Query PASTA for data packages based on a keyword
+#### Query EDI for data packages based on a keyword
 
 Determine how many datasets were found and set the return limits accordingly in the query parameters. Then search returns the latest package IDs as an XML file.
 

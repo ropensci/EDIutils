@@ -1,7 +1,7 @@
 #' Get journal citation
 #'
 #' @param journalCitationId (numeric) Journal citation identifier
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) Journal citation
 #' 
@@ -14,9 +14,9 @@
 #'   xml2::xml_find_first(citations, ".//journalCitationId"))
 #' get_journal_citation(journalCitationId)
 #'
-get_journal_citation <- function(journalCitationId, tier = "production") {
+get_journal_citation <- function(journalCitationId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/citation/eml/", 
+  url <- paste0(base_url(env), "/package/citation/eml/", 
                 journalCitationId)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

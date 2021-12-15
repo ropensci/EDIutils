@@ -4,7 +4,7 @@
 \alias{read_data_package_archive}
 \title{Read data package archive}
 \usage{
-read_data_package_archive(packageId, transaction, path, tier = "production")
+read_data_package_archive(packageId, transaction, path, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
@@ -13,10 +13,10 @@ read_data_package_archive(packageId, transaction, path, tier = "production")
 
 \item{path}{(character) Path of directory in which the result will be written}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(.zip file) The data package archive
+(.zip file) The data package archive of \code{packageId} requested by \code{transaction}
 }
 \description{
 Read data package archive

@@ -1,7 +1,7 @@
 #' List data package citations
 #'
 #' @param packageId (character) Data package identifier
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' @param list_all (logical) Return all citations within a data package series?
 #'
 #' @return (xml_document) A list of journal citations
@@ -12,10 +12,10 @@
 #' list_data_package_citations("edi.845.1")
 #'
 list_data_package_citations <- function(packageId, 
-                                        tier = "production", 
+                                        env = "production", 
                                         list_all = FALSE) {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/citations/eml/",
+  url <- paste0(base_url(env), "/package/citations/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   if (list_all) {
     url <- paste0(url, "?all")

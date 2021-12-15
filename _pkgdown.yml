@@ -4,12 +4,13 @@ template:
   bootswatch: spacelab
 
 reference:
-  - title: Upload and Evaluation
-    desc: Describes web service methods for uploading (creating or updating) and evaluating data packages.
+  - title: Evaluation and Upload
+    desc: Describes web service methods for evaluating and uploading data packages.
     contents:
     - evaluate_data_package
     - create_data_package
     - update_data_package
+    - delete_data_package
     
   - title: Browse and Discovery
     desc: Describes web service methods for browsing and discovering data packages.

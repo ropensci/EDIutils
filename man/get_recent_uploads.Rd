@@ -4,12 +4,12 @@
 \alias{get_recent_uploads}
 \title{Get recent uploads}
 \usage{
-get_recent_uploads(query, tier = "production")
+get_recent_uploads(query, env = "production")
 }
 \arguments{
 \item{query}{(character) Query (see details below)}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) A list of zero or more audit records of either recently inserted or recently updated data packages.

@@ -4,12 +4,12 @@
 \alias{list_principal_owner_citations}
 \title{List principal owner citations}
 \usage{
-list_principal_owner_citations(principalOwner, tier = "production")
+list_principal_owner_citations(principalOwner, env = "production")
 }
 \arguments{
 \item{principalOwner}{(character) Principal owner in the format returned by \code{construct_dn()}}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Journal citations metadata for all entries owned by the specified principal owner

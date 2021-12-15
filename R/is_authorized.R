@@ -1,10 +1,10 @@
 #' Is authorized to read
 #'
 #' @param resourceId (character) Resource identifier
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (logical) TRUE if the authenticated user has permission to read the specified resource
-#'
+#' 
 #' @note User authentication is required (see \code{login()})
 #'
 #' @export
@@ -15,9 +15,9 @@
 #' is_authorized(resourceId)
 #' }
 #'
-is_authorized <- function(resourceId, tier = "production") {
+is_authorized <- function(resourceId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/authz?resourceId=", 
+  url <- paste0(base_url(env), "/package/authz?resourceId=", 
                 resourceId)
   cookie <- bake_cookie()
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))

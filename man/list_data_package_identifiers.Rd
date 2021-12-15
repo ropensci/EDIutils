@@ -4,12 +4,12 @@
 \alias{list_data_package_identifiers}
 \title{List data package identifiers}
 \usage{
-list_data_package_identifiers(scope, tier = "production")
+list_data_package_identifiers(scope, env = "production")
 }
 \arguments{
 \item{scope}{(character) Scope of data package}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) Identifiers of data packages within a specified \code{scope}

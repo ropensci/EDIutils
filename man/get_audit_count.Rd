@@ -4,12 +4,12 @@
 \alias{get_audit_count}
 \title{Get audit count}
 \usage{
-get_audit_count(query, tier = "production")
+get_audit_count(query, env = "production")
 }
 \arguments{
 \item{query}{(character) Query (see details below)}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (numeric) Returns a count of the number of audit records matching the query parameters as specified in the request.
@@ -22,13 +22,13 @@ Query parameters are specified as key=value pairs, multiple pairs must be delimi
 
 \itemize{
   \item category - Can be: debug, info, error, warn
-  \item service - Any of the EDI Data Repository services
-  \item serviceMethod - Any of the EDI Data Repository service Resource class JAX-RS methods
+  \item service - Any of the EDI data repository services
+  \item serviceMethod - Any of the EDI data repository service Resource class JAX-RS methods
   \item user - Any user
   \item group - Any group
   \item authSystem - A valid auth system identifier
   \item status - A valid HTTP Response Code
-  \item resourceId - An EDI Data Repository resource identifier, e.g. https://pasta.lternet.edu/package/eml/knb-lter-and/2719/6, or a thereof (see details below)
+  \item resourceId - An EDI data repository resource identifier, e.g. https://pasta.lternet.edu/package/eml/knb-lter-and/2719/6, or a thereof (see details below)
   \item fromTime - An ISO8601 timestamp
   \item toTime - An ISO8601 timestamp
   \item limit - A positive whole number

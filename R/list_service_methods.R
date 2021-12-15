@@ -1,8 +1,8 @@
 #' List service methods
 #'
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
-#' @return (character) A simple list of web service methods supported by the Data Package Manager web service.
+#' @return (character) A simple list of web service methods supported by the Data Package Manager web service
 #' 
 #' @export
 #' 
@@ -16,9 +16,9 @@
 #' #' # All service methods in development
 #' list_service_methods("development")
 #'
-list_service_methods <- function(tier = "production") {
+list_service_methods <- function(env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/service-methods")
+  url <- paste0(base_url(env), "/package/service-methods")
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)

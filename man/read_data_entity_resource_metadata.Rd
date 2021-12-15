@@ -4,17 +4,17 @@
 \alias{read_data_entity_resource_metadata}
 \title{Read data entity resource metadata}
 \usage{
-read_data_entity_resource_metadata(packageId, entityId, tier = "production")
+read_data_entity_resource_metadata(packageId, entityId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) The resource metadata of \code{entityId} in \code{packageId}.
+(xml_document) The resource metadata of \code{entityId} in \code{packageId}
 }
 \description{
 Read data entity resource metadata

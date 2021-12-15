@@ -1,7 +1,7 @@
 #' Query event subscriptions
 #'
 #' @param query (character) Query (see details below)
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) A list of the subscriptions whose attributes match those specified in the query string (see details below). If a query string is omitted, all subscriptions in the subscription database will be returned for which the requesting user is authorized to read. If query parameters are included, they are used to filter that set of subscriptions based on their attributes.
 #' 
@@ -24,9 +24,9 @@
 #' @examples
 #' query_event_subscriptions()
 #'
-query_event_subscriptions <- function(query = NULL, tier = "production") {
+query_event_subscriptions <- function(query = NULL, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/event/eml?")
+  url <- paste0(base_url(env), "/package/event/eml?")
   if (!is.null(query)) {
     url <- paste0(url, query)
   }

@@ -4,21 +4,22 @@
 \alias{create_data_package_archive}
 \title{Create data package archive (zip)}
 \usage{
-create_data_package_archive(packageId, tier = "production")
+create_data_package_archive(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(character) A transaction identifier
+transaction (character) Transaction identifier. May be used in a subsequent call to:
+\itemize{
+  \item \code{read_data_package_error()} to determine the operation status
+  \item \code{read_data_package_archive()} to obtain the Zip archive
+}
 }
 \description{
 Create data package archive (zip)
-}
-\details{
-The transaction identifier may be used in a subsequent call to \code{read_data_package_error()} to determine the operation status or to \code{read_data_package_archive()} to obtain the Zip archive.
 }
 \examples{
 create_data_package_archive("knb-lter-sev.31999.1")

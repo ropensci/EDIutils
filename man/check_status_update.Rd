@@ -4,7 +4,7 @@
 \alias{check_status_update}
 \title{Check data package update status}
 \usage{
-check_status_update(transaction, packageId, wait = TRUE, tier = "production")
+check_status_update(transaction, packageId, wait = TRUE, env = "production")
 }
 \arguments{
 \item{transaction}{(character) Transaction identifier}
@@ -13,7 +13,7 @@ check_status_update(transaction, packageId, wait = TRUE, tier = "production")
 
 \item{wait}{(logical) Wait for evaluation to complete? See details below.}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (logical) TRUE if the update has completed, FALSE if in progress, and error if an error was encountered while processing the request

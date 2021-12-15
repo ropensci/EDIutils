@@ -4,10 +4,10 @@
 \alias{get_event_subscription_schema}
 \title{Get event subscription schema}
 \usage{
-get_event_subscription_schema(tier = "production")
+get_event_subscription_schema(env = "production")
 }
 \arguments{
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Schema for event subscription creation request entities

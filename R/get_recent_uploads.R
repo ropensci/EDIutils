@@ -1,7 +1,7 @@
 #' Get recent uploads
 #'
 #' @param query (character) Query (see details below)
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document) A list of zero or more audit records of either recently inserted or recently updated data packages.
 #' 
@@ -21,9 +21,9 @@
 #' query <- "serviceMethod=createDataPackage&limit=5"
 #' get_recent_uploads(query)
 #'
-get_recent_uploads <- function(query, tier = "production") {
+get_recent_uploads <- function(query, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/audit/recent-uploads?")
+  url <- paste0(base_url(env), "/audit/recent-uploads?")
   if (!is.null(query)) {
     url <- paste0(url, query)
   }

@@ -2,13 +2,11 @@
 #'
 #' @param transaction (character) Transaction identifier
 #' @param format (character) Format of the returned report. Can be: "xml", "html", or "character".
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
-#' @return (xml_document/html_document/character) The evaluate quality report document
+#' @return (xml_document or html_document or character) The evaluate quality report document
 #' 
 #' @note User authentication is required (see \code{login()})
-#' 
-#' @details If \code{format = "character"}, the report is parsed into a character string. Wrap in \code{message()} or write to file for human readability.
 #' 
 #' @export
 #' 
@@ -30,9 +28,9 @@
 #'
 read_evaluate_report <- function(transaction, 
                                  format = "xml", 
-                                 tier = "production") {
+                                 env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/evaluate/report/eml/",
+  url <- paste0(base_url(env), "/package/evaluate/report/eml/",
                 transaction)
   cookie <- bake_cookie()
   if (format == "html") {
@@ -54,7 +52,7 @@ read_evaluate_report <- function(transaction,
     if (format == "xml") {
       return(xml2::read_xml(res))
     } else if (format == "character") {
-      char <- report2char(xml2::read_xml(res), tier = tier)
+      char <- report2char(xml2::read_xml(res), env = env)
       return(char)
     }
   }

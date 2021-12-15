@@ -1,7 +1,7 @@
 #' Delete journal citation
 #'
 #' @param journalCitationId (numeric) Journal citation identifier
-#' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
 #' @return (logical) TRUE if deleted
 #' 
@@ -15,9 +15,9 @@
 #' delete_journal_citation(journalCitationId)
 #' }
 #'
-delete_journal_citation <- function(journalCitationId, tier = "production") {
+delete_journal_citation <- function(journalCitationId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/citation/eml/", 
+  url <- paste0(base_url(env), "/package/citation/eml/", 
                 journalCitationId)
   cookie <- bake_cookie()
   resp <- httr::DELETE(url, 

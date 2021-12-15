@@ -4,15 +4,15 @@
 \alias{read_data_package_report_resource_metadata}
 \title{Read data package report resource metadata}
 \usage{
-read_data_package_report_resource_metadata(packageId, tier = "production")
+read_data_package_report_resource_metadata(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) Resource metadata
+(xml_document) Report resource metadata
 }
 \description{
 Read data package report resource metadata

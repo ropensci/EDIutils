@@ -4,12 +4,12 @@
 \alias{delete_journal_citation}
 \title{Delete journal citation}
 \usage{
-delete_journal_citation(journalCitationId, tier = "production")
+delete_journal_citation(journalCitationId, env = "production")
 }
 \arguments{
 \item{journalCitationId}{(numeric) Journal citation identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (logical) TRUE if deleted

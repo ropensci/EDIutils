@@ -4,13 +4,13 @@
 \alias{list_service_methods}
 \title{List service methods}
 \usage{
-list_service_methods(tier = "production")
+list_service_methods(env = "production")
 }
 \arguments{
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(character) A simple list of web service methods supported by the Data Package Manager web service.
+(character) A simple list of web service methods supported by the Data Package Manager web service
 }
 \description{
 List service methods

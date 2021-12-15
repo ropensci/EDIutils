@@ -4,10 +4,10 @@
 \alias{list_deleted_data_packages}
 \title{List deleted data packages}
 \usage{
-list_deleted_data_packages(tier = "production")
+list_deleted_data_packages(env = "production")
 }
 \arguments{
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (character) All data packages (excluding revision values) that have been deleted from the data package registry.

@@ -4,18 +4,18 @@
 \alias{create_reservation}
 \title{Create reservation}
 \usage{
-create_reservation(scope, tier = "production")
+create_reservation(scope, env = "production")
 }
 \arguments{
 \item{scope}{(character) Scope of data package}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(numeric) Identifier of reserved data package (i.e. the second component of a \code{packageId})
+(numeric) Identifier of reserved data package
 }
 \description{
-Create reservation
+Reserves the next available identifier for the specified scope
 }
 \note{
 User authentication is required (see \code{login()})

@@ -4,12 +4,12 @@
 \alias{read_metadata_dublin_core}
 \title{Read metadata Dublin Core}
 \usage{
-read_metadata_dublin_core(packageId, tier = "production")
+read_metadata_dublin_core(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (xml_document) Dublin Core metadata
