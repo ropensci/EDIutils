@@ -294,29 +294,18 @@ text2char <- function(txt) {
 
 
 
-#' Make URL for PASTA+ environment
+#' Construct base URL of the EDI repository web services
 #'
-#' @description
-#'     Create the URL suffix to the PASTA+ environment specified by the
-#'     environment argument.
+#' @param env (character) Data repository environment to perform the evaluation in. Can be: 'development', 'staging', 'production'.
 #'
-#' @usage url_env(environment)
-#'
-#' @param environment
-#'     (character) Data repository environment to perform the evaluation in.
-#'     Can be: 'development', 'staging', 'production'.
-#'
-url_env <- function(env){
-  
+base_url <- function(env){
   env <- tolower(env)
   if (env == 'development'){
-    url_env <- 'https://pasta-d'
+    res <- 'https://pasta-d.lternet.edu'
   } else if (env == 'staging'){
-    url_env <- 'https://pasta-s'
+    res <- 'https://pasta-s.lternet.edu'
   } else if (env == 'production'){
-    url_env <- 'https://pasta'
+    res <- 'https://pasta.lternet.edu'
   }
-  
-  url_env
-  
+  return(res)
 }

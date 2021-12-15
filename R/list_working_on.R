@@ -11,7 +11,7 @@
 #' 
 list_working_on <- function(env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/workingon/eml")
+  url <- paste0(base_url(env), "/package/workingon/eml")
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)

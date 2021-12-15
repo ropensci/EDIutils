@@ -17,7 +17,7 @@
 #'
 read_data_entity <- function(packageId, entityId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/data/eml/", 
+  url <- paste0(base_url(env), "/package/data/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 entityId)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

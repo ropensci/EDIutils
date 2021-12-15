@@ -17,7 +17,7 @@
 #'
 read_data_package <- function(packageId, ore = FALSE, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/eml/",
+  url <- paste0(base_url(env), "/package/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   if (ore) {
     url <- paste0(url, "?ore")

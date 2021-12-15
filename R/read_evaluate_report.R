@@ -30,7 +30,7 @@ read_evaluate_report <- function(transaction,
                                  format = "xml", 
                                  env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/evaluate/report/eml/",
+  url <- paste0(base_url(env), "/package/evaluate/report/eml/",
                 transaction)
   cookie <- bake_cookie()
   if (format == "html") {

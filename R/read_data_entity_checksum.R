@@ -14,7 +14,7 @@
 read_data_entity_checksum <- function(packageId, entityId, env = "production") {
   validate_arguments(x = as.list(environment()))
   pkg <- parse_packageId(packageId)
-  url <- paste0(url_env(env), ".lternet.edu/package/data/checksum/eml/",
+  url <- paste0(base_url(env), "/package/data/checksum/eml/",
                 paste(pkg, collapse = "/"), "/", entityId)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

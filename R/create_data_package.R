@@ -23,7 +23,7 @@
 #'
 create_data_package <- function(eml, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/eml")
+  url <- paste0(base_url(env), "/package/eml")
   cookie <- bake_cookie()
   resp <- httr::POST(url, 
                      set_user_agent(), 

@@ -51,7 +51,7 @@ create_journal_citation <- function(packageId,
   xml2::write_xml(citation, fname)
   on.exit(file.remove(fname))
   # Submit request
-  url <- paste0(url_env(env), ".lternet.edu/package/citation/eml")
+  url <- paste0(base_url(env), "/package/citation/eml")
   cookie <- bake_cookie()
   resp <- httr::POST(url, 
                      set_user_agent(), 

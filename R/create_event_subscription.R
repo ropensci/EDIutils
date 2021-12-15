@@ -28,7 +28,7 @@ create_event_subscription <- function(packageId, url, env = "production") {
   fsub <- paste0(tempdir(), "/payload.xml")
   xml2::write_xml(subscription, fsub)
   on.exit(file.remove(fsub))
-  url <- paste0(url_env(env), ".lternet.edu/package/event/eml")
+  url <- paste0(base_url(env), "/package/event/eml")
   cookie <- bake_cookie()
   resp <- httr::POST(url, 
                      set_user_agent(), 

@@ -17,7 +17,7 @@
 #'
 get_audit_record <- function(oid, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/audit/report/", oid)
+  url <- paste0(base_url(env), "/audit/report/", oid)
   cookie <- bake_cookie()
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

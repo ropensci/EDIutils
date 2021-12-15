@@ -21,7 +21,7 @@ read_data_package_archive <- function(packageId,
                                       env = "production") {
   validate_arguments(x = as.list(environment()))
   read_data_package_error(transaction, env)
-  url <- paste0(url_env(env), ".lternet.edu/package/archive/eml/",
+  url <- paste0(base_url(env), "/package/archive/eml/",
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 transaction)
   resp <- httr::GET(url, 

@@ -33,7 +33,7 @@
 #'
 get_audit_count <- function(query, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/audit/count?")
+  url <- paste0(base_url(env), "/audit/count?")
   if (!is.null(query)) {
     url <- paste0(url, query)
   }

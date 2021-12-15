@@ -69,8 +69,8 @@
 search_data_packages <- function(query, env = "production") {
   validate_arguments(x = as.list(environment()))
   query <- gsub(pattern = "\"", replacement = "%22", x = query)
-  url <- paste0(url_env(env), 
-                ".lternet.edu/package/search/eml?defType=edismax&", query)
+  url <- paste0(base_url(env), 
+                "/package/search/eml?defType=edismax&", query)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)

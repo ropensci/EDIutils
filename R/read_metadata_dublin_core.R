@@ -12,7 +12,7 @@
 #'
 read_metadata_dublin_core <- function(packageId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/metadata/dc/",
+  url <- paste0(base_url(env), "/package/metadata/dc/",
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

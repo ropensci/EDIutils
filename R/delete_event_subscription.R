@@ -18,7 +18,7 @@
 #'
 delete_event_subscription <- function(subscriptionId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/event/eml", "/",
+  url <- paste0(base_url(env), "/package/event/eml", "/",
                 subscriptionId)
   cookie <- bake_cookie()
   resp <- httr::DELETE(url, set_user_agent(), cookie, handle = httr::handle(""))

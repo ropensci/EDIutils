@@ -13,7 +13,7 @@
 #'
 list_principal_owner_citations <- function(principalOwner, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/citations/eml/", 
+  url <- paste0(base_url(env), "/package/citations/eml/", 
                 principalOwner)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

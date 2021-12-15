@@ -18,7 +18,7 @@
 #'
 list_service_methods <- function(env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/service-methods")
+  url <- paste0(base_url(env), "/package/service-methods")
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)

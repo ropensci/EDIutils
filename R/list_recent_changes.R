@@ -26,7 +26,7 @@
 list_recent_changes <- function(fromDate = NULL, toDate = NULL, scope = NULL,
                                 env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/changes/eml")
+  url <- paste0(base_url(env), "/package/changes/eml")
   if (any(c(!is.null(fromDate), !is.null(toDate), !is.null(scope)))) {
     url <- paste0(url, "?")
   }

@@ -17,7 +17,7 @@
 list_data_sources <- function(packageId, env = "production") {
   validate_arguments(x = as.list(environment()))
   parts <- parse_packageId(packageId)
-  url <- paste0(url_env(env), ".lternet.edu/package/sources/eml/", 
+  url <- paste0(base_url(env), "/package/sources/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

@@ -17,7 +17,7 @@
 #'
 list_recent_uploads <- function(type, limit = 5, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/uploads/eml", 
+  url <- paste0(base_url(env), "/package/uploads/eml", 
                 "?type=", type, "&limit=", limit)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

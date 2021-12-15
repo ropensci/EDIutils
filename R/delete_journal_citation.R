@@ -17,7 +17,7 @@
 #'
 delete_journal_citation <- function(journalCitationId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/citation/eml/", 
+  url <- paste0(base_url(env), "/package/citation/eml/", 
                 journalCitationId)
   cookie <- bake_cookie()
   resp <- httr::DELETE(url, 

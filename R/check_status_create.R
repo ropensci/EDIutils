@@ -27,7 +27,7 @@ check_status_create <- function(transaction, packageId, wait = TRUE, env = "prod
     while (TRUE) {
       Sys.sleep(2)
       read_data_package_error(transaction, env)
-      url = paste0(url_env(env), ".lternet.edu/package/report/eml/",
+      url = paste0(base_url(env), "/package/report/eml/",
                    paste(parse_packageId(packageId), collapse = "/"))
       cookie <- bake_cookie()
       resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
@@ -41,7 +41,7 @@ check_status_create <- function(transaction, packageId, wait = TRUE, env = "prod
     }
   } else {
     read_data_package_error(transaction, env)
-    url = paste0(url_env(env), ".lternet.edu/package/report/eml/",
+    url = paste0(base_url(env), "/package/report/eml/",
                  paste(parse_packageId(packageId), collapse = "/"))
     cookie <- bake_cookie()
     resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))

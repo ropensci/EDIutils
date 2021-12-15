@@ -17,7 +17,7 @@
 read_data_entity_resource_metadata <- function(packageId, entityId, 
                                                env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/data/rmd/eml/",
+  url <- paste0(base_url(env), "/package/data/rmd/eml/",
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 entityId)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

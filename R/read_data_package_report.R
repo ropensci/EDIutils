@@ -18,7 +18,7 @@
 read_data_package_report <- function(packageId, html = FALSE, 
                                      env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/report/eml/",
+  url <- paste0(base_url(env), "/package/report/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   if (html) {
     resp <- httr::GET(url, 

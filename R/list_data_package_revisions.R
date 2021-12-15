@@ -22,7 +22,7 @@
 list_data_package_revisions <- function(scope, identifier, filter = NULL, 
                                         env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/package/eml/",
+  url <- paste0(base_url(env), "/package/eml/",
                 paste(c(scope, as.character(identifier)), collapse = "/"))
   if (!is.null(filter)) {
     url <- paste0(url, "?filter=", filter)

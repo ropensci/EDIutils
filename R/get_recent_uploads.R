@@ -23,7 +23,7 @@
 #'
 get_recent_uploads <- function(query, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(env), ".lternet.edu/audit/recent-uploads?")
+  url <- paste0(base_url(env), "/audit/recent-uploads?")
   if (!is.null(query)) {
     url <- paste0(url, query)
   }
