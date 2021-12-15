@@ -11,7 +11,6 @@
 #' read_metadata_dublin_core("knb-lter-nes.10.1")
 #'
 read_metadata_dublin_core <- function(packageId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/metadata/dc/",
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

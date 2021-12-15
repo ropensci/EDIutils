@@ -23,7 +23,6 @@
 #' }
 #'
 read_data_package_error <- function(transaction, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/error/eml/", transaction)
   cookie <- bake_cookie()
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))

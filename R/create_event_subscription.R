@@ -20,7 +20,6 @@
 #' }
 #'
 create_event_subscription <- function(packageId, url, env = "production") {
-  validate_arguments(x = as.list(environment()))
   subscription <- xml2::xml_new_document()
   xml2::xml_add_child(subscription, "subscription", type = "eml")
   xml2::xml_add_child(subscription, "packageId", packageId)

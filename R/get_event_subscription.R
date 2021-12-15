@@ -16,7 +16,6 @@
 #' get_event_subscription(subscriptionId)
 #'
 get_event_subscription <- function(subscriptionId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/event/eml/", 
                 subscriptionId)
   cookie <- bake_cookie()

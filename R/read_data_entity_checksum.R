@@ -12,7 +12,6 @@
 #' list_data_entities("knb-lter-ble.1.7")
 #' 
 read_data_entity_checksum <- function(packageId, entityId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   pkg <- parse_packageId(packageId)
   url <- paste0(base_url(env), "/package/data/checksum/eml/",
                 paste(pkg, collapse = "/"), "/", entityId)

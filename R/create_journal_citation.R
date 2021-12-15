@@ -30,7 +30,6 @@ create_journal_citation <- function(packageId,
                                     articleTitle = NULL, 
                                     journalTitle = NULL, 
                                     env = "production") {
-  validate_arguments(x = as.list(environment()))
   if (is.null(c(articleDoi, articleUrl))) {
     stop('One of "articleDoi" or "articleUrl" is required.', call. = FALSE)
   }

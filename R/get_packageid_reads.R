@@ -11,7 +11,6 @@
 #' get_packageid_reads("knb-lter-sgs.817.17")
 #'
 get_packageid_reads <- function(packageId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/audit/reads/",
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

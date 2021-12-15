@@ -30,7 +30,6 @@
 #' }
 #' 
 login <- function(userId = NULL, userPass = NULL, config = NULL) {
-  validate_arguments(x = as.list(environment()))
   on.exit(rm(userId))
   on.exit(rm(userPass))
   if (is.null(userId) & is.null(userPass) & is.null(config)) {

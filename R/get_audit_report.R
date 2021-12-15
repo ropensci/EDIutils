@@ -35,7 +35,6 @@
 #' }
 #'
 get_audit_report <- function(query, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/audit/report?", query)
   cookie <- bake_cookie()
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))

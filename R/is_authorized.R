@@ -16,7 +16,6 @@
 #' }
 #'
 is_authorized <- function(resourceId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/authz?resourceId=", 
                 resourceId)
   cookie <- bake_cookie()

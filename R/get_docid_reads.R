@@ -12,7 +12,6 @@
 #' get_docid_reads("knb-lter-sgs", "817")
 #'
 get_docid_reads <- function(scope, identifier, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/audit/reads/", scope, "/", identifier)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

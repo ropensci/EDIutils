@@ -15,7 +15,6 @@
 #' read_data_entity_name(packageId, entityIds[1])
 #'
 read_data_entity_name <- function(packageId, entityId, env = "production"){
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/name/eml/",
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 entityId)

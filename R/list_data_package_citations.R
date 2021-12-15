@@ -14,7 +14,6 @@
 list_data_package_citations <- function(packageId, 
                                         env = "production", 
                                         list_all = FALSE) {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/citations/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   if (list_all) {

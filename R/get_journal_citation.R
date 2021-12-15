@@ -15,7 +15,6 @@
 #' get_journal_citation(journalCitationId)
 #'
 get_journal_citation <- function(journalCitationId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/citation/eml/", 
                 journalCitationId)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

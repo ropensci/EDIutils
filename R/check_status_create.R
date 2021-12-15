@@ -22,7 +22,6 @@
 #' }
 #'
 check_status_create <- function(transaction, packageId, wait = TRUE, env = "production") {
-  validate_arguments(x = as.list(environment()))
   if (wait) {
     while (TRUE) {
       Sys.sleep(2)

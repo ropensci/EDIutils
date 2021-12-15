@@ -12,7 +12,6 @@
 #'
 read_data_package_resource_metadata <- function(packageId, 
                                                 env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/rmd/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

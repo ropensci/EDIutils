@@ -13,7 +13,6 @@
 #' get_provenance_metadata("knb-lter-pal.309.1")
 #'
 get_provenance_metadata <- function(packageId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/provenance/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

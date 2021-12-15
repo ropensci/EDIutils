@@ -15,7 +15,6 @@
 #' create_data_package_archive("knb-lter-sev.31999.1")
 #'
 create_data_package_archive <- function(packageId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/archive/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::POST(url, set_user_agent(), handle = httr::handle(""))

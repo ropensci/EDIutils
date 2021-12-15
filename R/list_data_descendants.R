@@ -13,7 +13,6 @@
 #' list_data_descendants("knb-lter-bnz.501.17")
 #'
 list_data_descendants <- function(packageId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/descendants/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

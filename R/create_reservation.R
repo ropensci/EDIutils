@@ -18,7 +18,6 @@
 #' }
 #'
 create_reservation <- function(scope, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/reservations/eml/", scope)
   cookie <- bake_cookie()
   resp <- httr::POST(url, set_user_agent(), cookie, handle = httr::handle(""))

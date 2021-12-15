@@ -11,7 +11,6 @@
 #' read_data_entity_names("knb-lter-cap.691.2")
 #'
 read_data_entity_names <- function(packageId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/name/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

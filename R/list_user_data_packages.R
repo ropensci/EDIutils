@@ -15,7 +15,6 @@
 #' list_user_data_packages(dn)
 #' 
 list_user_data_packages <- function(dn, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/user/", dn)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

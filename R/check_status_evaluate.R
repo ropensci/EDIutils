@@ -20,7 +20,6 @@
 #' }
 #'
 check_status_evaluate <- function(transaction, wait = TRUE, env = "production") {
-  validate_arguments(x = as.list(environment()))
   if (wait) {
     while (TRUE) {
       Sys.sleep(2)

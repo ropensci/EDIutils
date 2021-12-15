@@ -11,7 +11,6 @@
 #' read_data_entity_sizes("knb-lter-cdr.711.1")
 #'
 read_data_entity_sizes <- function(packageId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/data/size/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

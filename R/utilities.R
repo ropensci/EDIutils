@@ -35,7 +35,6 @@ bake_cookie <- function() {
 #' 
 create_dn <- function(userId, ou = "EDI") {
   ou <- toupper(ou)
-  validate_arguments(x = as.list(environment()))
   res <- paste0("uid=", userId, ",o=", ou, ",")
   if (ou == "EDI") {
     res <- paste0(res, "dc=edirepository,dc=org")
@@ -104,7 +103,6 @@ parse_packageId <- function(package.id) {
 #' @noRd
 #'
 report2char <- function(qualityReport, full = TRUE, env) {
-  validate_arguments(x = as.list(environment()))
   xml2::xml_ns_strip(qualityReport)
   
   # A helper for summarizing the report
@@ -249,7 +247,6 @@ skip_if_logged_out <- function() {
 summarize_evaluate_report <- function(transaction, 
                                       with_exceptions = TRUE, 
                                       env = "production") {
-  validate_arguments(x = as.list(environment()))
   qualityReport <- read_evaluate_report(transaction, env = env)
   res <- report2char(qualityReport, full = FALSE, env = env)
   message(res)

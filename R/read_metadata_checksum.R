@@ -11,7 +11,6 @@
 #' read_metadata_checksum("knb-lter-ntl.409.1")
 #'
 read_metadata_checksum <- function(packageId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/metadata/checksum/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

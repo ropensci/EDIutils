@@ -17,7 +17,6 @@
 #'
 read_data_package_report <- function(packageId, html = FALSE, 
                                      env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/report/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   if (html) {

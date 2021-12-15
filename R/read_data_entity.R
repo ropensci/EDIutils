@@ -16,7 +16,6 @@
 #' data <- readr::read_csv(raw)
 #'
 read_data_entity <- function(packageId, entityId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/data/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 entityId)

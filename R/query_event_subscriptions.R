@@ -25,7 +25,6 @@
 #' query_event_subscriptions()
 #'
 query_event_subscriptions <- function(query = NULL, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/event/eml?")
   if (!is.null(query)) {
     url <- paste0(url, query)

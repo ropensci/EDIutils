@@ -16,7 +16,6 @@
 #' read_data_package("knb-lter-cwt.5026.13", ore = TRUE)
 #'
 read_data_package <- function(packageId, ore = FALSE, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   if (ore) {

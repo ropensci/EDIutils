@@ -26,7 +26,6 @@
 #' }
 #'
 evaluate_data_package <- function(eml, useChecksum = FALSE, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/evaluate/eml")
   if (useChecksum) {
     url <- paste0(url, "?useChecksum")

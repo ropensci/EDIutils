@@ -15,7 +15,6 @@
 #' list_data_sources("edi.275.4")
 #'
 list_data_sources <- function(packageId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   parts <- parse_packageId(packageId)
   url <- paste0(base_url(env), "/package/sources/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"))

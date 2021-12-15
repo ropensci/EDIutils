@@ -16,7 +16,6 @@
 #' }
 #'
 delete_data_package <- function(scope, identifier, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/eml/", scope, "/", 
                 identifier)
   cookie <- bake_cookie()

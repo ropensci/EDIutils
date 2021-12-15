@@ -67,7 +67,6 @@
 #' search_data_packages(query)
 #'
 search_data_packages <- function(query, env = "production") {
-  validate_arguments(x = as.list(environment()))
   query <- gsub(pattern = "\"", replacement = "%22", x = query)
   url <- paste0(base_url(env), 
                 "/package/search/eml?defType=edismax&", query)

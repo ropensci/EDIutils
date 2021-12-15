@@ -18,7 +18,6 @@
 #' }
 #'
 delete_reservation <- function(scope, identifier, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/reservations/eml/", scope,
                 "/", identifier)
   cookie <- bake_cookie()

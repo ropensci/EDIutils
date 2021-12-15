@@ -17,7 +17,6 @@
 #' list_data_package_scopes("development")
 #'
 list_data_package_scopes <- function(env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/eml")
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

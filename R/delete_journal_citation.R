@@ -16,7 +16,6 @@
 #' }
 #'
 delete_journal_citation <- function(journalCitationId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/citation/eml/", 
                 journalCitationId)
   cookie <- bake_cookie()

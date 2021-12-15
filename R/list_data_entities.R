@@ -11,7 +11,6 @@
 #' list_data_entities("knb-lter-and.2726.6")
 #'
 list_data_entities <- function(packageId, env = "production") {
-  validate_arguments(x = as.list(environment()))
   url <- paste0(base_url(env), "/package/data/eml/",
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

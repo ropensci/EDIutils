@@ -22,7 +22,6 @@
 #' 
 #'
 update_data_package <- function(eml, useChecksum = FALSE, env = "production"){
-  validate_arguments(x = as.list(environment()))
   scope <- unlist(strsplit(basename(eml), "\\."))[1]
   identifier <- unlist(strsplit(basename(eml), "\\."))[2]
   url <- paste0(base_url(env), "/package/eml/", scope, "/", identifier)
