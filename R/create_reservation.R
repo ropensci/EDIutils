@@ -1,9 +1,11 @@
 #' Create reservation
+#' 
+#' @description Reserves the next available identifier for the specified scope
 #'
 #' @param scope (character) Scope of data package
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #' 
-#' @return (numeric) Identifier of reserved data package (i.e. the second component of a \code{packageId})
+#' @return (numeric) Identifier of reserved data package
 #' 
 #' @note User authentication is required (see \code{login()})
 #' 

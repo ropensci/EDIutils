@@ -12,7 +12,7 @@ read_metadata_format(packageId, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(character) metadata format type
+(character) Metadata format type
 }
 \description{
 Read metadata format

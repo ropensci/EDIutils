@@ -16,7 +16,7 @@ read_data_package_archive(packageId, transaction, path, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(.zip file) The data package archive
+(.zip file) The data package archive of \code{packageId} requested by \code{transaction}
 }
 \description{
 Read data package archive

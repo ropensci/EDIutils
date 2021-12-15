@@ -4,7 +4,7 @@
 #' @param url (character) Where the event notification will be sent
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #' 
-#' @return (numeric) Event subscription ID
+#' @return (numeric) Event subscription identifier
 #' 
 #' @note User authentication is required (see \code{login()})
 #' 

@@ -3,7 +3,7 @@
 #' @param scope (character) Scope of data package
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
-#' @return (numeric) The set of identifiers for the specified scope that end users have actively reserved for future upload
+#' @return (numeric) The set of identifiers for the specified \code{scope} that end users have actively reserved for future upload
 #' 
 #' @export
 #' 

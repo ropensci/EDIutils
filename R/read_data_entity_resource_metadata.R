@@ -4,7 +4,7 @@
 #' @param entityId (character) Data entity identifier
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
-#' @return (xml_document) The resource metadata of \code{entityId} in \code{packageId}.
+#' @return (xml_document) The resource metadata of \code{entityId} in \code{packageId}
 #' 
 #' @export
 #' 

@@ -4,7 +4,7 @@
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
 #' @return (logical) TRUE if the authenticated user has permission to read the specified resource
-#'
+#' 
 #' @note User authentication is required (see \code{login()})
 #'
 #' @export

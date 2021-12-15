@@ -3,9 +3,11 @@
 #' @param packageId (character) Data package identifier
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'     
-#' @return (character) A transaction identifier
-#' 
-#' @details The transaction identifier may be used in a subsequent call to \code{read_data_package_error()} to determine the operation status or to \code{read_data_package_archive()} to obtain the Zip archive.
+#' @return transaction (character) Transaction identifier. May be used in a subsequent call to:
+#' \itemize{
+#'   \item \code{read_data_package_error()} to determine the operation status
+#'   \item \code{read_data_package_archive()} to obtain the Zip archive
+#' }
 #'
 #' @export
 #' 

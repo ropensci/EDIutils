@@ -14,7 +14,7 @@ read_data_entity_checksum(packageId, entityId, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(character) Checksum value of \code{entityId} in \code{packageId}
+(character) A 40-character SHA-1 checksum value of \code{entityId} in \code{packageId}
 }
 \description{
 Read data entity checksum

@@ -15,7 +15,7 @@ search_data_packages(query, tier = "production")
 (xml_document) Search results
 }
 \description{
-Searches data packages in the EDI Data Repository using the specified Solr query. See ADD RESOURCE for constructing queries.
+Searches data packages in the EDI Data Repository using the specified Solr query.
 }
 \details{
 Documents in the EDI Data Repository Solr index can be discovered based on metadata values stored in the following list of searchable fields (not all EML content is queryable):
@@ -53,7 +53,7 @@ Multi-value fields:
 
 \code{query} parser: The optimal query parser (defType=edismax) is added to every query.
 
- See \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr Wiki} for how to construct a Solr query.
+See \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr Wiki} for how to construct a Solr query.
 }
 \note{
 Only the newest version of data packages are searchable, older versions are not.

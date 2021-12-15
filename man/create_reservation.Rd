@@ -12,10 +12,10 @@ create_reservation(scope, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(numeric) Identifier of reserved data package (i.e. the second component of a \code{packageId})
+(numeric) Identifier of reserved data package
 }
 \description{
-Create reservation
+Reserves the next available identifier for the specified scope
 }
 \note{
 User authentication is required (see \code{login()})

@@ -14,7 +14,7 @@ create_event_subscription(packageId, url, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(numeric) Event subscription ID
+(numeric) Event subscription identifier
 }
 \description{
 Create event subscription

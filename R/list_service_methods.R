@@ -2,7 +2,7 @@
 #'
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
-#' @return (character) A simple list of web service methods supported by the Data Package Manager web service.
+#' @return (character) A simple list of web service methods supported by the Data Package Manager web service
 #' 
 #' @export
 #' 

@@ -3,7 +3,7 @@
 #' @param packageId (character) Data package identifier
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
-#' @return (character) A 40 character SHA-1 checksum value
+#' @return (character) A 40 character SHA-1 checksum value for the report
 #' 
 #' @export
 #' 

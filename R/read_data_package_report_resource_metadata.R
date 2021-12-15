@@ -3,7 +3,7 @@
 #' @param packageId (character) Data package identifier
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
-#' @return (xml_document) Resource metadata
+#' @return (xml_document) Report resource metadata
 #' 
 #' @export
 #' 

@@ -1,6 +1,6 @@
 #' Search data packages
 #'
-#' @description Searches data packages in the EDI Data Repository using the specified Solr query. See ADD RESOURCE for constructing queries.
+#' @description Searches data packages in the EDI Data Repository using the specified Solr query.
 #'
 #' @param query (character) Query (see details below)
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
@@ -46,7 +46,7 @@
 #' 
 #' \code{query} parser: The optimal query parser (defType=edismax) is added to every query.
 #' 
-#'  See \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr Wiki} for how to construct a Solr query.
+#' See \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr Wiki} for how to construct a Solr query.
 #'
 #' @export
 #' 

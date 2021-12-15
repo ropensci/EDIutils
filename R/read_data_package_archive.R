@@ -5,7 +5,7 @@
 #' @param path (character) Path of directory in which the result will be written
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
-#' @return (.zip file) The data package archive
+#' @return (.zip file) The data package archive of \code{packageId} requested by \code{transaction}
 #' 
 #' @export
 #' 

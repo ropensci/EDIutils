@@ -10,7 +10,7 @@ list_service_methods(tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(character) A simple list of web service methods supported by the Data Package Manager web service.
+(character) A simple list of web service methods supported by the Data Package Manager web service
 }
 \description{
 List service methods

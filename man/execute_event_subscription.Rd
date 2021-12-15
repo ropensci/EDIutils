@@ -12,7 +12,7 @@ execute_event_subscription(subscriptionId, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(logical) TRUE if the event subscription was deleted
+(logical) TRUE if the event subscription was executed
 }
 \description{
 Execute event subscription

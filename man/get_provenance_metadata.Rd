@@ -12,10 +12,10 @@ get_provenance_metadata(packageId, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) Provenance metadata
+(xml_document) Provenance metadata of \code{packageId}, representing a <methodStep> element that can be inserted into the <methods> section of a dependent data package
 }
 \description{
-Get provenance metadata
+Generates the provenance metadata of a source data package
 }
 \examples{
 get_provenance_metadata("knb-lter-pal.309.1")

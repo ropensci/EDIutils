@@ -12,7 +12,7 @@ list_reservation_identifiers(scope, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(numeric) The set of identifiers for the specified scope that end users have actively reserved for future upload
+(numeric) The set of identifiers for the specified \code{scope} that end users have actively reserved for future upload
 }
 \description{
 List reservation identifiers

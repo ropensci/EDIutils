@@ -15,7 +15,10 @@ get_event_subscription(subscriptionId, tier = "production")
 (xml_document) Subscription metadata
 }
 \description{
-Get Event Subscription returns the event subscription with the specified ID.
+Get event subscription
+}
+\note{
+User authentication is required (see \code{login()})
 }
 \examples{
 packageId <- "knb-lter-vcr.340.1"

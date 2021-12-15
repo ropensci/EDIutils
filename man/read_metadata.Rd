@@ -12,7 +12,7 @@ read_metadata(packageId, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) EML document
+(xml_document) EML metadata document
 }
 \description{
 Read metadata

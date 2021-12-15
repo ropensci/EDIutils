@@ -12,7 +12,7 @@ read_data_package_report_resource_metadata(packageId, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) Resource metadata
+(xml_document) Report resource metadata
 }
 \description{
 Read data package report resource metadata

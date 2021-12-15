@@ -4,7 +4,7 @@
 #' @param limit (numeric) Maximum number of results to return
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
-#' @return (xml_document) Data package uploads and their packageId, scope, identifier, revision, principal, doi, serviceMethod, and date.
+#' @return (xml_document) Data package uploads
 #' 
 #' @export
 #' 

@@ -14,13 +14,10 @@ read_evaluate_report(transaction, format = "xml", tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document/html_document/character) The evaluate quality report document
+(xml_document or html_document or character) The evaluate quality report document
 }
 \description{
 Read evaluate report
-}
-\details{
-If \code{format = "character"}, the report is parsed into a character string. Wrap in \code{message()} or write to file for human readability.
 }
 \note{
 User authentication is required (see \code{login()})

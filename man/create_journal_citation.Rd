@@ -27,7 +27,7 @@ create_journal_citation(
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(numeric) Journal citation ID
+(numeric) Journal citation identifier
 }
 \description{
 Create journal citation

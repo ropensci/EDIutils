@@ -4,11 +4,9 @@
 #' @param format (character) Format of the returned report. Can be: "xml", "html", or "character".
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
-#' @return (xml_document/html_document/character) The evaluate quality report document
+#' @return (xml_document or html_document or character) The evaluate quality report document
 #' 
 #' @note User authentication is required (see \code{login()})
-#' 
-#' @details If \code{format = "character"}, the report is parsed into a character string. Wrap in \code{message()} or write to file for human readability.
 #' 
 #' @export
 #' 

@@ -3,7 +3,7 @@
 #' @param subscriptionId (numeric) Event subscription identifier
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
-#' @return (logical) TRUE if the event subscription was deleted
+#' @return (logical) TRUE if the event subscription was executed
 #'     
 #' @details Upon notification, the event manager queries its database for the subscription matching the specified subscriptionId. POST requests are then made (asynchronously) to the matching subscription.
 #' 

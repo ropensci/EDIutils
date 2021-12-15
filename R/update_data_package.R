@@ -1,17 +1,18 @@
 #' Update data package
 #'
-#' @param eml (character) Full path to an EML file
+#' @param eml (character) Full path to an EML file describing the data package to be updated
 #' @param useChecksum (logical) Use data entities from a previous version of the data package? See details below.
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #' 
-#' @return transaction (character) Transaction identifier. Use this value with: 
+#' @return transaction (character) Transaction identifier. May be used in a subsequent call to:
 #' \itemize{
-#'   \item \code{check_status_update()} to see if the update has completed or if any errors occurred while processing the request
-#'   \item \code{read_evaluate_report()} to read the evaluation report
+#'   \item \code{check_status_update()} to determine the operation status
 #'   \item \code{read_data_package()} to obtain the data package resource map
 #' }
 #' 
-#' @details Each data entity described in \code{eml} must be accessible to the EDI Data Repository through URLs listed in the \code{eml} at the XPath ".//physical/distribution/online/url". This URL should be static and not present the EDI Data Repository with any redirects, otherwise the data entity will not be accessible.
+#' @details Each data entity described in \code{eml} must be accompanied by a web accessible URL at the XPath ".//physical/distribution/online/url". The EDI data repository uses these links to download the data entities. The URLs must be static and not have any redirects otherwise the data entities will not be downloadable.
+#' 
+#' @note User authentication is required (see \code{login()})
 #'
 #' @export
 #' 

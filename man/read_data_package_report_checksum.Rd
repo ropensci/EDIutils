@@ -12,7 +12,7 @@ read_data_package_report_checksum(packageId, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(character) A 40 character SHA-1 checksum value
+(character) A 40 character SHA-1 checksum value for the report
 }
 \description{
 Read data package report checksum

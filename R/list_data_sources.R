@@ -5,7 +5,9 @@
 #' @param packageId (character) Data package identifier
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
-#' @return (xml_document) Data sources to \code{packageId} including their data package identifier, title, and url
+#' @return (xml_document) Data sources to \code{packageId}
+#' 
+#' @details Data sources can be either internal or external to PASTA. Internal data sources include a packageId value and a URL to the source metadata. For data sources external to PASTA, the packageId element will be empty and a URL value may or not be documented.
 #'
 #' @export
 #'

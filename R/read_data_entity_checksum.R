@@ -4,7 +4,7 @@
 #' @param entityId (character) Data entity identifier
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #' 
-#' @return (character) Checksum value of \code{entityId} in \code{packageId}
+#' @return (character) A 40-character SHA-1 checksum value of \code{entityId} in \code{packageId}
 #' 
 #' @export
 #' 

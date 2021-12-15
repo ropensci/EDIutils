@@ -1,9 +1,11 @@
 #' Get provenance metadata
+#' 
+#' @description Generates the provenance metadata of a source data package
 #'
 #' @param packageId (character) Data package identifier
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #'
-#' @return (xml_document) Provenance metadata
+#' @return (xml_document) Provenance metadata of \code{packageId}, representing a <methodStep> element that can be inserted into the <methods> section of a dependent data package
 #' 
 #' @export
 #' 

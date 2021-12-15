@@ -7,7 +7,7 @@
 #' @param journalTitle (character) Journal title
 #' @param tier (character) Repository tier. Can be: "production", "staging", or "development".
 #' 
-#' @return (numeric) Journal citation ID
+#' @return (numeric) Journal citation identifier
 #'     
 #' @details Creates a new journal citation entry in the EDI Data Repository
 #' 

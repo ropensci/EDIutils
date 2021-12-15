@@ -14,7 +14,7 @@ list_recent_uploads(type, limit = 5, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) Data package uploads and their packageId, scope, identifier, revision, principal, doi, serviceMethod, and date.
+(xml_document) Data package uploads
 }
 \description{
 List recent uploads

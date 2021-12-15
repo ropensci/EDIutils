@@ -12,7 +12,7 @@ list_data_descendants(packageId, tier = "production")
 \item{tier}{(character) Repository tier. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) Descendants of \code{packageId}, including their packageId, title, and url
+(xml_document) Descendants of \code{packageId}
 }
 \description{
 Data descendants are data packages that are known to be derived, in whole or in part, from the specified source data package.
