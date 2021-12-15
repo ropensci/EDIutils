@@ -14,9 +14,14 @@
 #' 
 #' @examples 
 #' \dontrun{
-#' path <- "/Users/me/Documents/edi.468.1.xml"
-#' transaction <- evaluate_data_package(path)
-#' check_status_evaluate(transaction)
+#' login()
+#' eml <- "./data/edi.595.1.xml"
+#' transaction <- evaluate_data_package(eml, env = "staging")
+#' packageId <- "edi.595.1"
+#' status <- check_status_evaluate(transaction, env = "staging")
+#' status
+#' #> [1] TRUE
+#' logout()
 #' }
 #'
 check_status_evaluate <- function(transaction, wait = TRUE, env = "production") {

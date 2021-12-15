@@ -1,19 +1,16 @@
-context("Check status evaluation")
+context("Check status create")
 
 testthat::test_that("Test attributes of returned object", {
   skip_if_logged_out()
-  # login()
+  # login() # Manually login in global environment
+  # test_path <- readClipboard() # Create global variable to dir containing test package
   path <- test_path
   identifier <- create_reservation(scope = "edi", env = "staging")
-  
-  packageId <- "edi.468.1"
-  transaction <- create_data_package(path, env = "staging")
+  packageId <- paste0("edi.", identifier, ".1")
+  source(system.file("/inst/extdata/test_pkg/test_pkg.R", package = "EDIutils"))
+  create_test_eml(test_path, packageId)
+  eml <- paste0(test_path, "/", packageId, ".xml")
+  transaction <- create_data_package(eml, env = "staging")
   res <- check_status_create(transaction, packageId, env = "staging")
-  expect_true(is.logical(res))
+  expect_true(res)
 })
-
-
-#' path <- "/Users/me/Documents/edi.468.1.xml"
-#' transaction <- create_data_package(path)
-#' packageId <- "edi.468.1"
-#' check_status_create(transaction, packageId)
