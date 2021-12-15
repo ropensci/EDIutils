@@ -5,26 +5,15 @@ testthat::test_that('Output URLs are valid', {
   
   # development
   expect_equal(
-    url_env(
-      'development'
-    ),
-    'https://pasta-d'
+    base_url('development'), 'https://pasta-d.lternet.edu'
   )
   
   # staging
   expect_equal(
-    url_env(
-      'staging'
-    ),
-    'https://pasta-s'
-  )
+    base_url('staging'), 'https://pasta-s.lternet.edu')
   
   # production
   expect_equal(
-    url_env(
-      'production'
-    ),
-    'https://pasta'
-  )
+    base_url('production'), 'https://pasta.lternet.edu')
   
 })

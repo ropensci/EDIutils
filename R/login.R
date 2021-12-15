@@ -44,7 +44,7 @@ login <- function(userId = NULL, userPass = NULL, config = NULL) {
     userPass <- trimws(regmatches(txt[i], regexpr(pattern, txt[i], perl = TRUE)))
   }
   dn <- create_dn(userId, "EDI")
-  resp <- httr::GET(url = paste0(url_env("production"), ".lternet.edu/package/eml"),
+  resp <- httr::GET(url = paste0(base_url("production"), "/package/eml"),
                     config = httr::authenticate(dn, userPass, type = "basic"),
                     handle = httr::handle(""))
   httr::stop_for_status(resp)

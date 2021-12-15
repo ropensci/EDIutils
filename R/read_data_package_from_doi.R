@@ -18,7 +18,7 @@
 #'   ore = TRUE)
 #'
 read_data_package_from_doi <- function(doi, ore = FALSE) {
-  url <- paste0(url_env("production"), ".lternet.edu/package/doi/", doi)
+  url <- paste0(base_url("production"), "/package/doi/", doi)
   if (ore) {
     url <- paste0(url, "?ore")
   }
