@@ -59,10 +59,12 @@ create_test_package <- function(path) {
 #' create_test_eml("/Users/me/Documents/pkg_test", "edi.1.1", dn)
 #' }
 #' 
-create_test_eml <- function(path, packageId, dn) {
+create_test_eml <- function(path, packageId, dn = NULL) {
   eml <- xml2::read_xml(paste0(path, "/eml.xml"))
   xml2::xml_attr(eml, "packageId") <- packageId
-  principal <- xml2::xml_find_first(eml, ".//principal")
-  xml2::xml_text(principal) <- dn
+  if (!is.null(dn)) {
+    principal <- xml2::xml_find_first(eml, ".//principal")
+    xml2::xml_text(principal) <- dn
+  }
   xml2::write_xml(eml, paste0(path, "/", packageId, ".xml"))
 }
