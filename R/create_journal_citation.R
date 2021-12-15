@@ -29,7 +29,7 @@ create_journal_citation <- function(packageId,
                                     articleUrl = NULL,
                                     articleTitle = NULL, 
                                     journalTitle = NULL, 
-                                    tier = "production") {
+                                    env = "production") {
   validate_arguments(x = as.list(environment()))
   if (is.null(c(articleDoi, articleUrl))) {
     stop('One of "articleDoi" or "articleUrl" is required.', call. = FALSE)
@@ -51,7 +51,7 @@ create_journal_citation <- function(packageId,
   xml2::write_xml(citation, fname)
   on.exit(file.remove(fname))
   # Submit request
-  url <- paste0(url_env(tier), ".lternet.edu/package/citation/eml")
+  url <- paste0(url_env(env), ".lternet.edu/package/citation/eml")
   cookie <- bake_cookie()
   resp <- httr::POST(url, 
                      set_user_agent(), 

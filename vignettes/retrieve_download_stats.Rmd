@@ -81,7 +81,7 @@ query <- paste("category=info",
                "toTime=2021-10-19T00:00:00",
                sep = "&")
 
-report_xml <- get_audit_report(query = query, tier = "production")
+report_xml <- get_audit_report(query = query, env = "production")
 
 logout()
 ```

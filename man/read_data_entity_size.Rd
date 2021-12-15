@@ -4,7 +4,7 @@
 \alias{read_data_entity_size}
 \title{Read data entity size}
 \usage{
-read_data_entity_size(packageId, entityId, tier = "production")
+read_data_entity_size(packageId, entityId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}

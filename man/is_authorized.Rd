@@ -4,7 +4,7 @@
 \alias{is_authorized}
 \title{Is authorized to read}
 \usage{
-is_authorized(resourceId, tier = "production")
+is_authorized(resourceId, env = "production")
 }
 \arguments{
 \item{resourceId}{(character) Resource identifier}

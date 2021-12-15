@@ -4,7 +4,7 @@
 \alias{read_metadata}
 \title{Read metadata}
 \usage{
-read_metadata(packageId, tier = "production")
+read_metadata(packageId, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}

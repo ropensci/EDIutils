@@ -34,7 +34,7 @@ NTL will be used as example throughout, change to different scope.
 
 ```r
 scope <- "knb-lter-ntl"
-identifiers <- list_data_package_identifiers(scope = scope, tier = "production")
+identifiers <- list_data_package_identifiers(scope = scope, env = "production")
 ```
 
 #### Query PASTA for the latest revision of each data package
@@ -48,7 +48,7 @@ for (i in 1:length(identifiers)) {
   revision <- list_data_package_revisions(scope = scope,
                                           identifier = identifiers[i],
                                           filter = "newest",
-                                          tier = "production")
+                                          env = "production")
   package_ids[i] <- paste(scope,identifiers[i],revision, sep = ".")
 }
 ```

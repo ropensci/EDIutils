@@ -14,9 +14,9 @@
 #' entityIds <- list_data_entities(packageId)
 #' read_data_entity_size(packageId, entityIds[1])
 #'
-read_data_entity_size <- function(packageId, entityId, tier = "production") {
+read_data_entity_size <- function(packageId, entityId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/data/size/eml/", 
+  url <- paste0(url_env(env), ".lternet.edu/package/data/size/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 entityId)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

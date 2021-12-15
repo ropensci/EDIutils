@@ -34,7 +34,7 @@ Get all identifiers for a certain scope
 
 ```r
 scope <- "edi"
-identifiers <- list_data_package_identifiers(scope = scope, tier = "production")
+identifiers <- list_data_package_identifiers(scope = scope, env = "production")
 ```
 
 Get all revisions for each identifer and retrieve journal citations for each. Citation information is connected to the specific revision of a dataset.
@@ -64,7 +64,7 @@ for (j in 1:length(identifiers)){
   revisions <- list_data_package_revisions(
     scope = scope,
     identifier = identifiers[j],
-    tier = "production"
+    env = "production"
   )
   
   for (i in 1:length(revisions)) {

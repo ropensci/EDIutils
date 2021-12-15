@@ -15,9 +15,9 @@
 #' is_authorized(resourceId)
 #' }
 #'
-is_authorized <- function(resourceId, tier = "production") {
+is_authorized <- function(resourceId, env = "production") {
   validate_arguments(x = as.list(environment()))
-  url <- paste0(url_env(tier), ".lternet.edu/package/authz?resourceId=", 
+  url <- paste0(url_env(env), ".lternet.edu/package/authz?resourceId=", 
                 resourceId)
   cookie <- bake_cookie()
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))

@@ -26,6 +26,6 @@ library(EDIutils)
 
 ## Gate Keeper
 
-## Tiers
+## Environments
 - Development, Staging, Production
 - Test in staging. Publish in production.

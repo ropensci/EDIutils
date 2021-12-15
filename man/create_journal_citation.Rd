@@ -10,7 +10,7 @@ create_journal_citation(
   articleUrl = NULL,
   articleTitle = NULL,
   journalTitle = NULL,
-  tier = "production"
+  env = "production"
 )
 }
 \arguments{

@@ -29,11 +29,11 @@ library(EDIutils)
 ## Authentication
 
 ## Evaluate Data Package
-- Tiers
+- Environments
 
 ### Quality Evaluation
 
 ### Quality Evaluation Report
 
 ## Upload Data Package
-- Tiers
+- Environments
