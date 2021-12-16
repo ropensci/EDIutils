@@ -8,17 +8,16 @@
 #' @export
 #' 
 #' @examples 
-#' 
 #' # For an EDI account
-#' userId <- "my_userid"
-#' ou <- "EDI"
-#' dn <- create_dn(userId, ou)
+#' dn <- create_dn(
+#'   userId = "my_userid", 
+#'   ou = "EDI")
 #' dn
 #' 
 #' # For an LTER account
-#' userId <- "my_userid"
-#' ou <- "LTER"
-#' dn <- create_dn(userId, ou)
+#' dn <- create_dn(
+#'   userId = "my_userid", 
+#'   ou = "LTER")
 #' dn
 #' 
 create_dn <- function(userId, ou = "EDI") {

@@ -14,14 +14,20 @@
 #' 
 #' @examples 
 #' \dontrun{
+#' 
 #' login()
 #' 
 #' # Evaluate data package
-#' eml <- "./data/edi.595.1.xml"
-#' transaction <- evaluate_data_package(eml, env = "staging")
+#' transaction <- evaluate_data_package(
+#'   eml = "./data/edi.595.1.xml",
+#'   env = "staging")
+#' transaction
+#' #> [1] "evaluate_163966785813042760"
 #' 
 #' # Check evaluation status
-#' status <- check_status_evaluate(transaction, env = "staging")
+#' status <- check_status_evaluate(
+#'   transaction = transaction, 
+#'   env = "staging")
 #' status
 #' #> [1] TRUE
 #' 

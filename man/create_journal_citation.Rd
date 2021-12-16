@@ -10,6 +10,7 @@ create_journal_citation(
   articleUrl = NULL,
   articleTitle = NULL,
   journalTitle = NULL,
+  relationType,
   env = "production"
 )
 }
@@ -23,6 +24,8 @@ create_journal_citation(
 \item{articleTitle}{(character) Article title}
 
 \item{journalTitle}{(character) Journal title}
+
+\item{relationType}{(character) Relation between citation and data package. Can be: "IsCitedBy" this data package is formally cited in the manuscript; "IsDescribedBy" - this data package is explicitly described within the manuscript; "IsReferencedBy" - this data package is implicitly described within the manuscript.}
 
 \item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
@@ -40,11 +43,24 @@ User authentication is required (see \code{login()})
 }
 \examples{
 \dontrun{
-res <- create_journal_citation(
+
+login()
+
+# Create journal citation
+journalCitationId <- create_journal_citation(
   packageId = "edi.17.1", 
   articleDoi = "https://doi.org/10.1890/11-1026.1",
   articleTitle = "Corridors promote fire via connectivity and edge effects",
-  journalTitle = "Ecological Applications")
+  journalTitle = "Ecological Applications",
+  relationType = "IsCitedBy")
+journalCitationId
+#> [1] 74
+
+# Delete journal citation
+delete_journal_citation(journalCitationId)
+#> [1] TRUE
+
+logout()
 }
 
 }

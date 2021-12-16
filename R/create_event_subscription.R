@@ -14,9 +14,21 @@
 #' 
 #' @examples 
 #' \dontrun{
-#' packageId <- "knb-lter-vcr.340.1"
-#' url <- "https://some.server.org"
-#' create_event_subscription(packageId, url)
+#' 
+#' login()
+#' 
+#' # Create subscription
+#' subscriptionId <- create_event_subscription(
+#'   packageId = "knb-lter-vcr.340.1", 
+#'   url = "https://my.webserver.org/")
+#' subscriptionId
+#' #> [1] 48
+#' 
+#' # Delete subscription
+#' delete_event_subscription(subscriptionId)
+#' #> [1] TRUE
+#' 
+#' logout()
 #' }
 #'
 create_event_subscription <- function(packageId, url, env = "production") {

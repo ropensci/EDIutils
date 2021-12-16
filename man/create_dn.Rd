@@ -18,17 +18,16 @@ create_dn(userId, ou = "EDI")
 Create a users distinguished name
 }
 \examples{
-
 # For an EDI account
-userId <- "my_userid"
-ou <- "EDI"
-dn <- create_dn(userId, ou)
+dn <- create_dn(
+  userId = "my_userid", 
+  ou = "EDI")
 dn
 
 # For an LTER account
-userId <- "my_userid"
-ou <- "LTER"
-dn <- create_dn(userId, ou)
+dn <- create_dn(
+  userId = "my_userid", 
+  ou = "LTER")
 dn
 
 }

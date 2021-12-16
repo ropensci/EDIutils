@@ -2,10 +2,8 @@ context("Create data package")
 
 testthat::test_that("Test attributes of returned object", {
   skip_if_logged_out()
-  # login() # Manually login in global environment
-  # test_path <- readClipboard() # Create global variable to dir containing test package
-  path <- test_path
   # Create data package
+  path <- test_path
   identifier <- create_reservation(scope = "edi", env = "staging")
   packageId <- paste0("edi.", identifier, ".1")
   source(system.file("/inst/extdata/test_pkg/test_pkg.R", package = "EDIutils"))
