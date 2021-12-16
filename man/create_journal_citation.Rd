@@ -52,12 +52,13 @@ journalCitationId <- create_journal_citation(
   articleDoi = "https://doi.org/10.1890/11-1026.1",
   articleTitle = "Corridors promote fire via connectivity and edge effects",
   journalTitle = "Ecological Applications",
-  relationType = "IsCitedBy")
+  relationType = "IsCitedBy",
+  env = "staging")
 journalCitationId
 #> [1] 74
 
 # Delete journal citation
-delete_journal_citation(journalCitationId)
+delete_journal_citation(journalCitationId, env = "staging")
 #> [1] TRUE
 
 logout()

@@ -22,8 +22,19 @@ User authentication is required (see \code{login()})
 }
 \examples{
 \dontrun{
+
 login()
-create_reservation("edi")
+
+# Create reservation
+identifier <- create_reservation(scope = "edi", env = "staging")
+identifier
+#> [1] 604
+
+# Delete reservation
+delete_reservation(scope = "edi", identifier = identifier, env = "staging")
+#> [1] 604
+
+logout()
 }
 
 }

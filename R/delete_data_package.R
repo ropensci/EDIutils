@@ -13,6 +13,31 @@
 #' @examples 
 #' \dontrun{
 #' 
+#' login()
+#' 
+#' # Create data package
+#' transaction <- create_data_package(
+#'  eml = "./data/edi.595.1.xml", 
+#'  env = "staging")
+#' transaction
+#' #> [1] "create_163966765080210573"
+#' 
+#' # Check creation status
+#' status <- check_status_create(
+#'  transaction = transaction, 
+#'  packageId = "edi.595.1", 
+#'  env = "staging")
+#' status
+#' #> [1] TRUE
+#' 
+#' # Delete data package
+#' delete_data_package(
+#'   scope = "edi", 
+#'   identifier = "595",
+#'   env = "staging")
+#' #> [1] TRUE
+#' 
+#' logout()
 #' }
 #'
 delete_data_package <- function(scope, identifier, env = "production") {

@@ -20,12 +20,13 @@
 #' # Create subscription
 #' subscriptionId <- create_event_subscription(
 #'   packageId = "knb-lter-vcr.340.1", 
-#'   url = "https://my.webserver.org/")
+#'   url = "https://my.webserver.org/",
+#'   env = "staging")
 #' subscriptionId
 #' #> [1] 48
 #' 
 #' # Delete subscription
-#' delete_event_subscription(subscriptionId)
+#' delete_event_subscription(subscriptionId, env = "staging")
 #' #> [1] TRUE
 #' 
 #' logout()
