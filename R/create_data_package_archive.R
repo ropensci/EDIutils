@@ -12,7 +12,22 @@
 #' @export
 #' 
 #' @examples 
-#' create_data_package_archive("knb-lter-sev.31999.1")
+#' \dontrun{
+#' 
+#' # Create zip archive
+#' packageId <- "knb-lter-sev.31999.1"
+#' transaction <- create_data_package_archive(packageId)
+#' 
+#' # Check creation status
+#' read_data_package_error(transaction)
+#' 
+#' # Download zip archive
+#' read_data_package_archive(packageId, transaction, path = "./data")
+#' #> |=============================================================| 100%
+#' dir("./data")
+#' #> [1] "knb-lter-sev.31999.1.zip"
+#' 
+#' }
 #'
 create_data_package_archive <- function(packageId, env = "production") {
   url <- paste0(base_url(env), "/package/archive/eml/", 

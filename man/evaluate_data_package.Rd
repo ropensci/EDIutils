@@ -34,8 +34,44 @@ User authentication is required (see \code{login()})
 }
 \examples{
 \dontrun{
-path <- "/Users/me/Documents/edi.468.1.xml"
-evaluate_data_package(path)
+login()
+
+# Evaluate data package
+eml <- "./data/edi.595.1.xml"
+transaction <- evaluate_data_package(eml, env = "staging")
+
+# Check evaluation status
+status <- check_status_evaluate(transaction, env = "staging")
+status
+#> [1] TRUE
+
+# Read evaluation report
+report <- read_evaluate_report(transaction, env = "staging")
+report
+#> {xml_document}
+#> <qualityReport schemaLocation="eml://ecoinformatics.org/qualityReport https://raw.githubusercontent.com/PASTAplus/PASTA/master#' /DataPackageManager/WebRoot/xml/qualityReportSchema.xsd" xmlns="eml://ecoinformatics.org/qualityReport" xmlns:qr="eml#' ://ecoinformatics.org/qualityReport" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+#> [1] <creationDate>2021-12-15T17:46:33</creationDate>
+#> [2] <packageId>edi.595.1</packageId>
+#> [3] <includeSystem>lter</includeSystem>
+#> [4] <includeSystem>knb</includeSystem>
+#> [5] <datasetReport>\n  <qualityCheck qualityType="metadata" system=" ...
+#> [6] <entityReport>\n  <entityName>data.txt</entityName>\n  <qualityC ...
+
+# Summarize evaluation report
+summarize_evaluate_report(transaction, env = "staging")
+#> ===================================================
+#>   EVALUATION REPORT
+#> ===================================================
+#>   
+#> PackageId: edi.595.1
+#> Report Date/Time: 2021-12-15T17:46:33
+#> Total Quality Checks: 29
+#> Valid: 21
+#> Info: 8
+#> Warn: 0
+#> Error: 0
+
+logout()
 }
 
 }

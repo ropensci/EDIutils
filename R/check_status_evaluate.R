@@ -15,12 +15,16 @@
 #' @examples 
 #' \dontrun{
 #' login()
+#' 
+#' # Evaluate data package
 #' eml <- "./data/edi.595.1.xml"
 #' transaction <- evaluate_data_package(eml, env = "staging")
-#' packageId <- "edi.595.1"
+#' 
+#' # Check evaluation status
 #' status <- check_status_evaluate(transaction, env = "staging")
 #' status
 #' #> [1] TRUE
+#' 
 #' logout()
 #' }
 #'

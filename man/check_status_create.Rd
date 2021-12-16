@@ -30,12 +30,17 @@ User authentication is required (see \code{login()})
 \examples{
 \dontrun{
 login()
+
+# Create data package
 eml <- "./data/edi.595.1.xml"
 transaction <- create_data_package(eml, env = "staging")
+
+# Check creation status
 packageId <- "edi.595.1"
 status <- check_status_create(transaction, packageId, env = "staging")
 status
 #> [1] TRUE
+
 logout()
 }
 

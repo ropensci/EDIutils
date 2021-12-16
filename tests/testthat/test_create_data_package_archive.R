@@ -1,7 +1,13 @@
 context("Create data package archive")
 
 testthat::test_that("Test attributes of returned object", {
-  res <- create_data_package_archive("knb-lter-sev.31999.1")
-  expect_equal(class(res), "character")
-  expect_true(length(res) > 0)
+  # Create zip archive
+  packageId <- "knb-lter-sev.31999.1"
+  transaction <- create_data_package_archive(packageId)
+  # Check creation status
+  read_data_package_error(transaction)
+  # Download zip archive
+  read_data_package_archive(packageId, transaction, path = tempdir())
+  archive <- paste0(packageId, ".zip")
+  expect_true(archive %in% dir(tempdir()))
 })

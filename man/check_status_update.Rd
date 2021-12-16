@@ -29,10 +29,14 @@ User authentication is required (see \code{login()})
 }
 \examples{
 \dontrun{
-path <- "/Users/me/Documents/edi.468.2.xml"
-transaction <- update_data_package(path)
-packageId <- "edi.468.2"
-check_status_update(transaction, packageId)
+login()
+eml <- "./data/edi.595.2.xml"
+transaction <- update_data_package(eml, env = "staging")
+packageId <- "edi.595.2"
+status <- check_status_update(transaction, packageId, env = "staging")
+status
+#> [1] TRUE
+logout()
 }
 
 }
