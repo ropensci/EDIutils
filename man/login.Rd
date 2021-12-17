@@ -14,7 +14,7 @@ login(userId = NULL, userPass = NULL, config = NULL)
 \item{config}{(character) Path to config.txt, which contains \code{userId} and \code{userPass} (see details below)}
 }
 \value{
-(file) A temporary (~10 hour) authentication token written to edi_token.txt within the session \code{tempdir()}.
+(character) A temporary (~10 hour) authentication token written to the system variable "EDI_TOKEN".
 }
 \description{
 Login to the EDI repository
@@ -23,8 +23,6 @@ Login to the EDI repository
 If \code{userId}, \code{userPass}, and \code{config} are NULL, the console will prompt for credentials.
 
 \code{config}: Supplying credentials in a file named config.txt facilitates authentication within automated/unassisted processes. Contents of this file should be new line separated and have the form "<argument> = <value>" (e.g. userId = myname).
-
-Security: Input user name and password are only held for the duration of this function call and are disposed of by \code{on.exit()}. The temporary encrypted token is written to file at the path defined by \code{tempdir()} and is removed at close of the users R session.
 }
 \note{
 Only works when authenticating with EDI credentials. Does not work for ORCiD, GitHub, or Google credentials.

@@ -1,6 +1,6 @@
 #' Logout of the EDI repository
 #'
-#' @details Removes the temporary authentication token from the path defined by \code{tempdir()}.
+#' @details Removes the temporary authentication token system variable "EDI_TOKEN".
 #' 
 #' @export
 #'
@@ -10,6 +10,5 @@
 #' }
 #' 
 logout <- function() {
-  token_file <- paste0(tempdir(), "/edi_token.txt")
-  invisible(suppressWarnings(file.remove(token_file)))
+  suppressWarnings(Sys.unsetenv("EDI_TOKEN"))
 }

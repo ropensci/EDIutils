@@ -4,7 +4,7 @@
 #' @param userPass (character) Password of \code{userId}
 #' @param config (character) Path to config.txt, which contains \code{userId} and \code{userPass} (see details below)
 #'
-#' @return (file) A temporary (~10 hour) authentication token written to edi_token.txt within the session \code{tempdir()}.
+#' @return (character) A temporary (~10 hour) authentication token written to the system variable "EDI_TOKEN".
 #' 
 #' @note Only works when authenticating with EDI credentials. Does not work for ORCiD, GitHub, or Google credentials.
 #' 
@@ -12,8 +12,6 @@
 #' If \code{userId}, \code{userPass}, and \code{config} are NULL, the console will prompt for credentials.
 #' 
 #' \code{config}: Supplying credentials in a file named config.txt facilitates authentication within automated/unassisted processes. Contents of this file should be new line separated and have the form "<argument> = <value>" (e.g. userId = myname).
-#' 
-#' Security: Input user name and password are only held for the duration of this function call and are disposed of by \code{on.exit()}. The temporary encrypted token is written to file at the path defined by \code{tempdir()} and is removed at close of the users R session.
 #' 
 #' @export
 #'
@@ -50,5 +48,5 @@ login <- function(userId = NULL, userPass = NULL, config = NULL) {
                     handle = httr::handle(""))
   httr::stop_for_status(resp)
   token <- httr::cookies(resp)$value
-  writeLines(token, paste0(tempdir(), "/edi_token.txt"))
+  Sys.setenv(EDI_TOKEN = token)
 }
