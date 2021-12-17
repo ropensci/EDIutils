@@ -18,10 +18,8 @@ get_journal_citation(journalCitationId, env = "production")
 Get journal citation
 }
 \examples{
-# Get first journal citation of data package edi.845.1
-journalCitationIds <- list_data_package_citations("edi.845.1")
-journalCitationId <- xml2::xml_text(
-  xml2::xml_find_first(citations, ".//journalCitationId"))
-get_journal_citation(journalCitationId)
+# Get citation
+journalCitation <- get_journal_citation(381)
+journalCitation
 
 }

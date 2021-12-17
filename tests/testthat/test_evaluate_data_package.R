@@ -19,6 +19,6 @@ testthat::test_that("Test attributes of returned object", {
   report <- read_evaluate_report(transaction, env = "staging")
   report
   # Summarize evaluation report
-  summarize_evaluate_report(transaction, env = "staging")
+  read_evaluate_report_summary(transaction, env = "staging")
   deleted <- delete_reservation("edi", identifier, env = "staging")
 })

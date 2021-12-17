@@ -26,7 +26,7 @@
 #' 
 #' 
 #' # Summarize report
-#' summarize_evaluate_report(transaction, env = "staging")
+#' read_evaluate_report_summary(transaction, env = "staging")
 #' #> ===================================================
 #' #>   EVALUATION REPORT
 #' #> ===================================================
@@ -43,9 +43,9 @@
 #' logout()
 #' }
 #' 
-summarize_evaluate_report <- function(transaction, 
-                                      with_exceptions = TRUE, 
-                                      env = "production") {
+read_evaluate_report_summary <- function(transaction, 
+                                         with_exceptions = TRUE, 
+                                         env = "production") {
   qualityReport <- read_evaluate_report(transaction, env = env)
   res <- report2char(qualityReport, full = FALSE, env = env)
   message(res)

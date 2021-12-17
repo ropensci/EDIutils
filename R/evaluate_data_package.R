@@ -8,7 +8,7 @@
 #' \itemize{
 #'   \item \code{check_status_evaluate()} to determine the operation status
 #'   \item \code{read_evaluate_report()} to read the evaluation report
-#'   \item \code{summarize_evaluate_report()} to summarize the evaluation report and raise exceptions
+#'   \item \code{read_evaluate_report_summary()} to summarize the evaluation report and raise exceptions
 #' }
 #' 
 #' @note User authentication is required (see \code{login()})
@@ -49,7 +49,7 @@
 #' #> [6] <entityReport>\n  <entityName>data.txt</entityName>\n  <qualityC ...
 #' 
 #' # Summarize evaluation report
-#' summarize_evaluate_report(transaction, env = "staging")
+#' read_evaluate_report_summary(transaction, env = "staging")
 #' #> ===================================================
 #' #>   EVALUATION REPORT
 #' #> ===================================================

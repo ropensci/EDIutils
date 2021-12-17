@@ -51,7 +51,9 @@ reference:
     - read_data_package_report
     - read_data_package_report_checksum
     - read_data_package_report_resource_metadata
+    - read_data_package_report_summary
     - read_evaluate_report
+    - read_evaluate_report_summary
     - read_metadata
     - read_metadata_dublin_core
     - read_metadata_checksum

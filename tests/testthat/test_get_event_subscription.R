@@ -13,35 +13,3 @@ testthat::test_that("Test attributes of returned object", {
   children_expected <- c("id", "creator", "packageId", "url")
   expect_true(all(children_found %in% children_expected))
 })
-
-
-#' #' \dontrun{
-#' 
-#' login()
-#' 
-#' # Query subscriptions
-#' 
-#' 
-#' 
-#' # Create subscription
-#' subscriptionId <- create_event_subscription(
-#'   packageId = "knb-lter-vcr.340.1", 
-#'   url = "https://my.webserver.org/",
-#'   env = "staging")
-#' subscriptionId
-#' #> [1] 48
-#' 
-#' # Get subscription
-#' subscriptions <- get_event_subscription(
-#'   subscriptionId = subscriptionId, 
-#'   env = "staging")
-#' subscriptions
-#' 
-#' xml2::xml_find_first(subscriptions, "subscription")
-#' 
-#' # Delete subscription
-#' delete_event_subscription(subscriptionId, env = "staging")
-#' #> [1] TRUE
-#' 
-#' logout()
-#' #' }

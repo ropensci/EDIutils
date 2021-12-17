@@ -17,9 +17,9 @@ testthat::test_that("Test attributes of returned object", {
   qualityReport <- read_evaluate_report(transaction, env = "staging")
   expect_true("xml_document" %in% class(qualityReport))
   # Read HTML
-  qualityReport <- read_evaluate_report(transaction, format = "html", env = "staging")
+  qualityReport <- read_evaluate_report(transaction, frmt = "html", env = "staging")
   expect_true("xml_document" %in% class(qualityReport))
   # Read char
-  qualityReport <- read_evaluate_report(transaction, format = "char", env = "staging")
+  qualityReport <- read_evaluate_report(transaction, frmt = "char", env = "staging")
   expect_type(qualityReport, "character")
 })

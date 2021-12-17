@@ -14,6 +14,6 @@ testthat::test_that("Test attributes of returned object", {
   res <- check_status_evaluate(transaction, env = "staging")
   expect_true(res)
   # Summarize report
-  expect_message(summarize_evaluate_report(transaction, env = "staging"))
+  expect_message(read_evaluate_report_summary(transaction, env = "staging"))
   deleted <- delete_reservation("edi", identifier, env = "staging")
 })

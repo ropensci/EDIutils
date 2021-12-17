@@ -10,10 +10,29 @@
 #' @export
 #' 
 #' @examples 
-#' packageId <- "knb-lter-vcr.340.1"
-#' url <- "https://some.server.org"
-#' subscriptionId <- create_event_subscription(packageId, url)
-#' get_event_subscription(subscriptionId)
+#' \dontrun{
+#' 
+#' login()
+#' 
+#' # Get subscription
+#' subscription <- get_event_subscription(
+#'   subscriptionId = 21, 
+#'   env = "staging")
+#' subscription
+#' #> {xml_document}
+#' #> <subscriptions>
+#' #> [1] <subscription type="eml">\n  <id>21</id>\n  <creator>uid=csmith, ...
+#' 
+#' xml2::xml_find_first(subscriptions, "subscription")
+#' #> {xml_node}
+#' #> <subscription type="eml">
+#' #> [1] <id>21</id>
+#' #> [2] <creator>uid=csmith,o=EDI,dc=edirepository,dc=org</creator>
+#' #> [3] <packageId>edi.94</packageId>
+#' #> [4] <url>https://regan.edirepository.org/ecocom-listener</url>
+#' 
+#' logout()
+#' }
 #'
 get_event_subscription <- function(subscriptionId, env = "production") {
   url <- paste0(base_url(env), "/package/event/eml/", 

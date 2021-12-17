@@ -1,7 +1,7 @@
 #' Read evaluate report
 #'
 #' @param transaction (character) Transaction identifier
-#' @param format (character) Format of the returned report. Can be: "xml", "html", or "char".
+#' @param frmt (character) Format of the returned report. Can be: "xml", "html", or "char".
 #' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
 #' @return (xml_document or html_document or character) The evaluate quality report document
@@ -39,7 +39,7 @@
 #' # Read as HTML
 #' qualityReport <- read_evaluate_report(
 #'   transaction = transaction, 
-#'   format = "html", 
+#'   frmt = "html", 
 #'   env = "staging")
 #' qualityReport
 #' #' {html_document}
@@ -49,7 +49,7 @@
 #' # Read as character
 #' qualityReport <- read_evaluate_report(
 #'   transaction = transaction, 
-#'   format = "char", 
+#'   frmt = "char", 
 #'   env = "staging")
 #' writeLines(qualityReport, "./data/report.txt"))
 #' 
@@ -57,12 +57,12 @@
 #' }
 #'
 read_evaluate_report <- function(transaction, 
-                                 format = "xml", 
+                                 frmt = "xml", 
                                  env = "production") {
   url <- paste0(base_url(env), "/package/evaluate/report/eml/",
                 transaction)
   cookie <- bake_cookie()
-  if (format == "html") {
+  if (frmt == "html") {
     resp <- httr::GET(url, 
                       set_user_agent(), 
                       cookie, 
@@ -71,16 +71,16 @@ read_evaluate_report <- function(transaction,
     res <- httr::content(resp, as = "text", encoding = "UTF-8")
     httr::stop_for_status(resp, res)
     return(xml2::read_html(res))
-  } else if (format %in% c("xml", "char")) {
+  } else if (frmt %in% c("xml", "char")) {
     resp <- httr::GET(url, 
                       set_user_agent(), 
                       cookie, 
                       handle = httr::handle(""))
     res <- httr::content(resp, as = "text", encoding = "UTF-8")
     httr::stop_for_status(resp, res)
-    if (format == "xml") {
+    if (frmt == "xml") {
       return(xml2::read_xml(res))
-    } else if (format == "char") {
+    } else if (frmt == "char") {
       char <- report2char(xml2::read_xml(res), env = env)
       return(char)
     }
