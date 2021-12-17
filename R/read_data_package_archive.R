@@ -34,7 +34,6 @@ read_data_package_archive <- function(packageId,
                                       transaction,
                                       path,
                                       env = "production") {
-  read_data_package_error(transaction, env)
   url <- paste0(base_url(env), "/package/archive/eml/",
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 transaction)

@@ -4,8 +4,6 @@ testthat::test_that("Test attributes of returned object", {
   # Create zip archive
   packageId <- "knb-lter-sev.31999.1"
   transaction <- create_data_package_archive(packageId)
-  # Check creation status
-  read_data_package_error(transaction)
   # Download zip archive
   read_data_package_archive(packageId, transaction, path = tempdir())
   archive <- paste0(packageId, ".zip")
