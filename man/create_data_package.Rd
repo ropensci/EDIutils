@@ -12,11 +12,7 @@ create_data_package(eml, env = "production")
 \item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-transaction (character) Transaction identifier. May be used in a subsequent call to:
-\itemize{
-  \item \code{check_status_create()} to determine the operation status
-  \item \code{read_data_package()} to obtain the data package resource map
-}
+transaction (character) Transaction identifier. May be used in a subsequent call to \code{check_status_create()} to determine the operation status
 }
 \description{
 Create data package

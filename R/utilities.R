@@ -25,13 +25,13 @@ bake_cookie <- function() {
 #' @param userId (character) EDI repository userId
 #' @param url (character) URL from which the EDI repository can download the test data.txt object. This URL cannot contain any redirects.
 #'
-#' @return Environmental variables \code{EDI_USERID = userId} and \code{EDI_URL = url}
+#' @return Environmental variables \code{EDI_USERID = userId} and \code{EDI_TEST_URL = url}
 #' 
 #' @details The results of this function are used to create a test EML file for create, update, and delete tests.
 #'
 config_test_eml <- function(userId, url) {
   Sys.setenv(EDI_USERID = userId)
-  Sys.setenv(EDI_URL = url)
+  Sys.setenv(EDI_TEST_URL = url)
 }
 
 
@@ -64,7 +64,7 @@ create_test_eml <- function(path, packageId) {
   xml2::xml_text(principal) <- dn
   # Add URL
   url <- xml2::xml_find_first(eml, ".//online/url")
-  xml2::xml_text(url) <- Sys.getenv("EDI_URL")
+  xml2::xml_text(url) <- Sys.getenv("EDI_TEST_URL")
   # Write file
   xml2::write_xml(eml, paste0(path, "/", packageId, ".xml"))
   dest <- paste0(path, "/", packageId, ".xml")
@@ -255,7 +255,7 @@ skip_if_logged_out <- function() {
 #' 
 skip_if_missing_eml_config <- function() {
   has_userid <- Sys.getenv("EDI_USERID") != ""
-  has_url <- Sys.getenv("EDI_URL") != ""
+  has_url <- Sys.getenv("EDI_TEST_URL") != ""
   if (has_userid & has_url) {
     return(invisible(TRUE))
   }

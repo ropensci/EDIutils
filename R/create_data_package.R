@@ -3,11 +3,7 @@
 #' @param eml (character) Full path to an EML file describing the data package to be created
 #' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
-#' @return transaction (character) Transaction identifier. May be used in a subsequent call to:
-#' \itemize{
-#'   \item \code{check_status_create()} to determine the operation status
-#'   \item \code{read_data_package()} to obtain the data package resource map
-#' }
+#' @return transaction (character) Transaction identifier. May be used in a subsequent call to \code{check_status_create()} to determine the operation status
 #' 
 #' @details Each data entity described in \code{eml} must be accompanied by a web accessible URL at the EML XPath ".//physical/distribution/online/url". The EDI data repository downloads the data entities via this URL. The URLs must be static and not have any redirects otherwise the data entities will not be downloaded.
 #' 

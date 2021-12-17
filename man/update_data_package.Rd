@@ -14,11 +14,7 @@ update_data_package(eml, useChecksum = FALSE, env = "production")
 \item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-transaction (character) Transaction identifier. May be used in a subsequent call to:
-\itemize{
-  \item \code{check_status_update()} to determine the operation status
-  \item \code{read_data_package()} to obtain the data package resource map
-}
+transaction (character) Transaction identifier. May be used in a subsequent call to \code{check_status_update()} to determine the operation status
 }
 \description{
 Update data package

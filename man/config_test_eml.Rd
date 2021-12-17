@@ -12,7 +12,7 @@ config_test_eml(userId, url)
 \item{url}{(character) URL from which the EDI repository can download the test data.txt object. This URL cannot contain any redirects.}
 }
 \value{
-Environmental variables \code{EDI_USERID = userId} and \code{EDI_URL = url}
+Environmental variables \code{EDI_USERID = userId} and \code{EDI_TEST_URL = url}
 }
 \description{
 Configure data package tests requiring a web accessible data object

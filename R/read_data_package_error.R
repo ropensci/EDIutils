@@ -34,7 +34,7 @@ read_data_package_error <- function(transaction, env = "production") {
   url <- paste0(base_url(env), "/package/error/eml/", transaction)
   cookie <- bake_cookie()
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
-  if (resp$status_code != "404") {
+  if (resp$status_code == "200") {
     res <- httr::content(resp, as = "text", encoding = "UTF-8")
     stop(res, call. = FALSE)
   }

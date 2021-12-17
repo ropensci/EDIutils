@@ -4,11 +4,7 @@
 #' @param useChecksum (logical) Use data entities from a previous version of the data package? See details below.
 #' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
-#' @return transaction (character) Transaction identifier. May be used in a subsequent call to:
-#' \itemize{
-#'   \item \code{check_status_update()} to determine the operation status
-#'   \item \code{read_data_package()} to obtain the data package resource map
-#' }
+#' @return transaction (character) Transaction identifier. May be used in a subsequent call to \code{check_status_update()} to determine the operation status
 #' 
 #' @details Each data entity described in \code{eml} must be accompanied by a web accessible URL at the XPath ".//physical/distribution/online/url". The EDI data repository uses these links to download the data entities. The URLs must be static and not have any redirects otherwise the data entities will not be downloadable.
 #' 

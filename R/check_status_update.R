@@ -41,26 +41,26 @@ check_status_update <- function(transaction, packageId, wait = TRUE, env = "prod
     while (TRUE) {
       Sys.sleep(2)
       read_data_package_error(transaction, env)
-      url = paste0(base_url(env), "/package/report/eml/",
-                   paste(parse_packageId(packageId), collapse = "/"))
+      url <- paste0(base_url(env), "/package/eml/",
+                    paste(parse_packageId(packageId), collapse = "/"))
       cookie <- bake_cookie()
       resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
-      res <- httr::content(resp, as = "text", encoding = "UTF-8")
-      httr::stop_for_status(resp, res)
+      # res <- httr::content(resp, as = "text", encoding = "UTF-8")
+      # httr::stop_for_status(resp, res)
       if (resp$status == "200") {
         return(TRUE)
       } else {
-        return(FALSE)
+        # return(FALSE)
       }
     }
   } else {
     read_data_package_error(transaction, env)
-    url = paste0(base_url(env), "/package/report/eml/",
-                 paste(parse_packageId(packageId), collapse = "/"))
+    url <- paste0(base_url(env), "/package/eml/",
+                  paste(parse_packageId(packageId), collapse = "/"))
     cookie <- bake_cookie()
     resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
-    res <- httr::content(resp, as = "text", encoding = "UTF-8")
-    httr::stop_for_status(resp, res)
+    # res <- httr::content(resp, as = "text", encoding = "UTF-8")
+    # httr::stop_for_status(resp, res)
     if (resp$status == "200") {
       return(TRUE)
     } else {
