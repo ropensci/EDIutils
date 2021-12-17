@@ -10,16 +10,13 @@
 #' @export
 #' 
 #' @examples 
-#' # All revisions
-#' list_data_package_revisions("knb-lter-arc", 20131)
+#' # List revisions
+#' revisions <- list_data_package_revisions("knb-lter-arc", 20131)
+#' revisions
 #' 
-#' # Newest revision
-#' list_data_package_revisions("knb-lter-arc", 20131, filter = "newest")
-#' 
-#' # Oldest revision
-#' list_data_package_revisions("knb-lter-arc", 20131, filter = "oldest")
-#' 
-list_data_package_revisions <- function(scope, identifier, filter = NULL, 
+list_data_package_revisions <- function(scope, 
+                                        identifier, 
+                                        filter = NULL, 
                                         env = "production") {
   url <- paste0(base_url(env), "/package/eml/",
                 paste(c(scope, as.character(identifier)), collapse = "/"))

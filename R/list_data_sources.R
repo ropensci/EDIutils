@@ -12,7 +12,12 @@
 #' @export
 #'
 #' @examples 
-#' list_data_sources("edi.275.4")
+#' # List sources
+#' dataSources <- list_data_sources("edi.275.4")
+#' dataSources
+#' 
+#' # Show first
+#' xml2::xml_find_first(dataSources, "dataSource")
 #'
 list_data_sources <- function(packageId, env = "production") {
   parts <- parse_packageId(packageId)

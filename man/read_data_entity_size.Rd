@@ -20,9 +20,14 @@ read_data_entity_size(packageId, entityId, env = "production")
 Read data entity size
 }
 \examples{
-# Get size of first data entity in data package "knb-lter-cdr.711.1
-packageId <- "knb-lter-cdr.711.1"
-entityIds <- list_data_entities(packageId)
-read_data_entity_size(packageId, entityIds[1])
+# List data entities
+entityIds <- list_data_entities(packageId = "knb-lter-cdr.711.1")
+entityIds
+
+# Read size
+size <- read_data_entity_size(
+  packageId = "knb-lter-cdr.711.1", 
+  entityId = entityIds)
+size
 
 }

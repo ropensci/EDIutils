@@ -8,7 +8,9 @@
 #' @export
 #' 
 #' @examples 
-#' read_data_package_report_checksum("knb-lter-luq.208.1")
+#' # Read report checksum
+#' checksum <- read_data_package_report_checksum(packageId = "knb-lter-luq.208.1")
+#' checksum
 #'
 read_data_package_report_checksum <- function(packageId, env = "production") {
   url <- paste0(base_url(env), "/package/report/checksum/eml/", 

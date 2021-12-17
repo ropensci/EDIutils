@@ -20,9 +20,14 @@ read_data_entity_resource_metadata(packageId, entityId, env = "production")
 Read data entity resource metadata
 }
 \examples{
-# Get resource metadata for the first data entity in "knb-lter-cce.310.1"
-packageId <- "knb-lter-cce.310.1"
-entityIds <- list_data_entities(packageId)
-read_data_entity_resource_metadata(packageId, entityIds[1])
+# List entities
+entityIds <- list_data_entities(packageId = "knb-lter-cce.310.1")
+head(entityIds)
+
+# Read resource metadata for first entity
+resourceMetadata <- read_data_entity_resource_metadata(
+  packageId = "knb-lter-cce.310.1", 
+  entityId = entityIds[1])
+resourceMetadata
 
 }

@@ -7,14 +7,9 @@
 #' @export
 #' 
 #' @examples 
-#' # All service methods in production
-#' list_service_methods()
-#' 
-#' # All service methods in staging
-#' list_service_methods("staging")
-#' 
-#' #' # All service methods in development
-#' list_service_methods("development")
+#' # All service methods
+#' services <- list_service_methods()
+#' services
 #'
 list_service_methods <- function(env = "production") {
   url <- paste0(base_url(env), "/package/service-methods")

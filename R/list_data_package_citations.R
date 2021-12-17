@@ -9,7 +9,12 @@
 #' @export
 #' 
 #' @examples 
-#' list_data_package_citations("edi.845.1")
+#' # List citations
+#' journalCitations <- list_data_package_citations("edi.845.1")
+#' journalCitations
+#' 
+#' # Show first
+#' xml2::xml_find_first(journalCitations, "journalCitation")
 #'
 list_data_package_citations <- function(packageId, 
                                         env = "production", 

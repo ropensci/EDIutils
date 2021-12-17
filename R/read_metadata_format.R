@@ -8,7 +8,9 @@
 #' @export
 #' 
 #' @examples 
-#' read_metadata_format("knb-lter-nwt.930.1")
+#' # Read format
+#' metadataFormat <- read_metadata_format("knb-lter-nwt.930.1")
+#' metadataFormat
 #'
 read_metadata_format <- function(packageId, env = "production"){
   url <- paste0(base_url(env), "/package/metadata/format/eml/", 

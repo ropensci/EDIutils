@@ -28,8 +28,18 @@
 #' @export
 #' 
 #' @examples 
-#' query <- "category=error&limit=5"
-#' get_audit_count(query)
+#' \dontrun{
+#' 
+#' login()
+#' 
+#' # Count the number of warnings issued between 2021-12-01 and 2021-12-05
+#' res <- get_audit_count(
+#'   query = "category=warn&fromTime=2021-12-01&toTime=2021-12-05")
+#' res
+#' #> [1] 10022
+#' 
+#' logout()
+#' }
 #'
 get_audit_count <- function(query, env = "production") {
   url <- paste0(base_url(env), "/audit/count?")

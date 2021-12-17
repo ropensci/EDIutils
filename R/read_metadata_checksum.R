@@ -8,7 +8,9 @@
 #' @export
 #' 
 #' @examples 
-#' read_metadata_checksum("knb-lter-ntl.409.1")
+#' # Read checksum
+#' checksum <- read_metadata_checksum("knb-lter-ntl.409.1")
+#' checksum
 #'
 read_metadata_checksum <- function(packageId, env = "production") {
   url <- paste0(base_url(env), "/package/metadata/checksum/eml/", 

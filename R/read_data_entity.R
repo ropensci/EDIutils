@@ -9,11 +9,17 @@
 #' @export
 #' 
 #' @examples
-#' # Get raw bytes of a .csv and use parser of choice
-#' packageId <- "edi.993.1"
-#' entityId <- list_data_entities(packageId)
-#' raw <- read_data_entity(packageId, entityId)
-#' data <- readr::read_csv(raw)
+#' # Get data entity
+#' entityId <- list_data_entities(packageId = "edi.993.1")
+#' entityId
+#' 
+#' # Read raw bytes
+#' raw <- read_data_entity(packageId = "edi.993.1", entityId = entityId)
+#' head(raw)
+#' 
+#' # Parse with .csv reader
+#' data <- readr::read_csv(file = raw)
+#' data
 #'
 read_data_entity <- function(packageId, entityId, env = "production") {
   url <- paste0(base_url(env), "/package/data/eml/", 

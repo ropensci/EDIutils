@@ -18,6 +18,8 @@ read_metadata_dublin_core(packageId, env = "production")
 Read metadata Dublin Core
 }
 \examples{
-read_metadata_dublin_core("knb-lter-nes.10.1")
+# Read dc metadata
+dc <- read_metadata_dublin_core("knb-lter-nes.10.1")
+dc
 
 }

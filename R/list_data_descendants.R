@@ -10,7 +10,12 @@
 #' @export
 #' 
 #' @examples 
-#' list_data_descendants("knb-lter-bnz.501.17")
+#' # List descendants
+#' dataDescendants <- list_data_descendants("knb-lter-bnz.501.17")
+#' dataDescendants
+#' 
+#' # Show first
+#' xml2::xml_find_first(dataDescendants, "dataDescendant")
 #'
 list_data_descendants <- function(packageId, env = "production") {
   url <- paste0(base_url(env), "/package/descendants/eml/",

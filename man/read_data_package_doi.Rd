@@ -18,6 +18,8 @@ read_data_package_doi(packageId, env = "production")
 Read data package Digital Object Identifier
 }
 \examples{
-read_data_package_doi("knb-lter-jrn.210548103.15")
+# Read package DOI
+doi <- read_data_package_doi(packageId = "knb-lter-jrn.210548103.15")
+doi
 
 }

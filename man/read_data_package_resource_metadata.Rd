@@ -18,6 +18,9 @@ read_data_package_resource_metadata(packageId, env = "production")
 Read data package resource metadata
 }
 \examples{
-
+# Read resource metadata
+resourceMetadata <- read_data_package_resource_metadata(
+  packageId = "edi.613.1")
+resourceMetadata
 
 }

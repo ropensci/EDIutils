@@ -2,17 +2,24 @@ context("Read evaluate report")
 
 testthat::test_that("Test attributes of returned object", {
   skip_if_logged_out()
-  path <- "/Users/csmith/Documents/EDI/datasets/pkg_ediutils_test/edi.468.1.xml"
-  transaction <- evaluate_data_package(path, env = "staging")
-  # As xml
-  res <- read_evaluate_report(transaction, env = "staging")
-  expect_true(all(class(res) %in% c("xml_document", "xml_node")))
-  found_children <- xml2::xml_name(xml2::xml_children(res))
-  expected_children <- c("creationDate", "packageId", "includeSystem", 
-                         "datasetReport", "entityReport")
-  expect_true(all(found_children %in% expected_children))
-  # As html
-  res <- read_evaluate_report(transaction, html = TRUE, env = "staging")
-  expect_true(all(class(res) %in% c("xml_document", "xml_node")))
-  expect_true("body" %in% xml2::xml_name(xml2::xml_children(res)))
+  # Evaluate data package
+  path <- test_path
+  identifier <- create_reservation(scope = "edi", env = "staging")
+  on.exit(delete_reservation("edi", identifier, env = "staging"))
+  packageId <- paste0("edi.", identifier, ".1")
+  source(system.file("/inst/extdata/test_pkg/test_pkg.R", package = "EDIutils"))
+  create_test_eml(test_path, packageId)
+  eml <- paste0(test_path, "/", packageId, ".xml")
+  transaction <- evaluate_data_package(eml, env = "staging")
+  res <- check_status_evaluate(transaction, env = "staging")
+  expect_true(res)
+  # Read XML
+  qualityReport <- read_evaluate_report(transaction, env = "staging")
+  expect_true("xml_document" %in% class(qualityReport))
+  # Read HTML
+  qualityReport <- read_evaluate_report(transaction, format = "html", env = "staging")
+  expect_true("xml_document" %in% class(qualityReport))
+  # Read char
+  qualityReport <- read_evaluate_report(transaction, format = "char", env = "staging")
+  expect_type(qualityReport, "character")
 })

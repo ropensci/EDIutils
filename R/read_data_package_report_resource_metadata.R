@@ -8,7 +8,10 @@
 #' @export
 #' 
 #' @examples 
-#' read_data_package_report_resource_metadata("knb-lter-mcm.9129.3")
+#' # Read resource metadata
+#' resourceMetadata <- read_data_package_report_resource_metadata(
+#'   packageId = "knb-lter-mcm.9129.3")
+#' resourceMetadata
 #'
 read_data_package_report_resource_metadata <- function(packageId, env = "production") {
   url <- paste0(base_url(env), "/package/rmd/eml/",

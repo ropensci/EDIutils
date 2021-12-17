@@ -8,8 +8,10 @@
 #' @export
 #' 
 #' @examples 
-#' principalOwner <- create_dn("csmith")
-#' list_principal_owner_citations(principalOwner)
+#' # List citations
+#' dn <- create_dn(userId = "FCE", ou = "EDI")
+#' journalCitations <- list_principal_owner_citations(principalOwner = dn)
+#' journalCitations
 #'
 list_principal_owner_citations <- function(principalOwner, env = "production") {
   url <- paste0(base_url(env), "/package/citations/eml/", 

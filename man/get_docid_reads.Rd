@@ -20,6 +20,12 @@ get_docid_reads(scope, identifier, env = "production")
 Get doc ID reads
 }
 \examples{
-get_docid_reads("knb-lter-sgs", "817")
+# Get all reads
+resourceReads <- get_docid_reads(scope = "knb-lter-sgs", identifier = 817)
+resourceReads
+
+# Get the first resource
+resource <- xml2::xml_find_first(resourceReads, ".//resource")
+resource
 
 }

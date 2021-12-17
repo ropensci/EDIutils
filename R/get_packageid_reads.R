@@ -8,7 +8,13 @@
 #' @export
 #' 
 #' @examples 
-#' get_packageid_reads("knb-lter-sgs.817.17")
+#' # Get packageId reads
+#' resourceReads <- get_packageid_reads("knb-lter-sgs.817.17")
+#' resourceReads
+#' 
+#' # Show first
+#' resource <- xml2::xml_find_first(resourceReads, "resource")
+#' resource
 #'
 get_packageid_reads <- function(packageId, env = "production") {
   url <- paste0(base_url(env), "/audit/reads/",

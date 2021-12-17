@@ -10,10 +10,12 @@
 #' 
 #' @examples 
 #' # Get resource map
-#' read_data_package("knb-lter-cwt.5026.13")
+#' resourceMap <- read_data_package(packageId = "knb-lter-cwt.5026.13")
+#' resourceMap
 #' 
 #' # Get resource map in ORE format
-#' read_data_package("knb-lter-cwt.5026.13", ore = TRUE)
+#' resourceMap <- read_data_package(packageId = "knb-lter-cwt.5026.13", ore = TRUE)
+#' resourceMap
 #'
 read_data_package <- function(packageId, ore = FALSE, env = "production") {
   url <- paste0(base_url(env), "/package/eml/",

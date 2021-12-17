@@ -9,10 +9,15 @@
 #' @export
 #' 
 #' @examples 
-#' # Get name of first data entity in data package "knb-lter-cap.691.2"
-#' packageId <- "knb-lter-cap.691.2"
-#' entityIds <- list_data_entities(packageId)
-#' read_data_entity_name(packageId, entityIds[1])
+#' # List entities
+#' entityIds <- list_data_entities(packageId = "knb-lter-cap.691.2")
+#' entityIds
+#' 
+#' # Read name
+#' entityName <- read_data_entity_name(
+#'   packageId = "knb-lter-cap.691.2", 
+#'   entityId = entityIds[1])
+#' entityName
 #'
 read_data_entity_name <- function(packageId, entityId, env = "production"){
   url <- paste0(base_url(env), "/package/name/eml/",

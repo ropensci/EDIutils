@@ -2,7 +2,7 @@ context("Get audit count")
 
 testthat::test_that("Test attributes of returned object", {
   skip_if_logged_out()
-  query <- "category=error&limit=5"
-  res <- get_audit_count(query, "staging")
-  expect_true(class(res) %in% "numeric")
+  res <- get_audit_count(
+    query = "category=warn&fromTime=2021-12-01&toTime=2021-12-05")
+  expect_type(res, "double")
 })

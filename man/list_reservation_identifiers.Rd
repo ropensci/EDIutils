@@ -18,6 +18,8 @@ list_reservation_identifiers(scope, env = "production")
 List reservation identifiers
 }
 \examples{
-list_reservation_identifiers("edi")
+# List reservations
+reservations <- list_reservation_identifiers(scope = "edi")
+reservations
 
 }

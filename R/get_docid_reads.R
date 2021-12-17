@@ -9,7 +9,13 @@
 #' @export
 #' 
 #' @examples 
-#' get_docid_reads("knb-lter-sgs", "817")
+#' # Get all reads
+#' resourceReads <- get_docid_reads(scope = "knb-lter-sgs", identifier = 817)
+#' resourceReads
+#' 
+#' # Get the first resource
+#' resource <- xml2::xml_find_first(resourceReads, ".//resource")
+#' resource
 #'
 get_docid_reads <- function(scope, identifier, env = "production") {
   url <- paste0(base_url(env), "/audit/reads/", scope, "/", identifier)

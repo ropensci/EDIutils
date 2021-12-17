@@ -12,16 +12,14 @@
 #' @export
 #' 
 #' @examples 
-#' # Changes occurring in January 2021 within the scope "knb-lter-hbr"
-#' list_recent_changes(
-#'   fromDate = "2021-01-01T00:00:00", 
-#'   toDate = "2021-02-01T00:00:00", 
-#'   scope = "knb-lter-hbr")
-#'   
 #' # Changes occurring in the first 3 days of 2021 for all scopes
-#' list_recent_changes(
-#'   fromDate = "2021-01-01T00:00:00", 
-#'   toDate = "2021-01-03T00:00:00")
+#' dataPackageChanges <- list_recent_changes(
+#'  fromDate = "2021-01-01T00:00:00", 
+#'  toDate = "2021-01-03T00:00:00")
+#' dataPackageChanges
+#' 
+#' # Show first
+#' xml2::xml_find_first(dataPackageChanges, "dataPackage")
 #'
 list_recent_changes <- function(fromDate = NULL, toDate = NULL, scope = NULL,
                                 env = "production") {

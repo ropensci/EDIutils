@@ -62,13 +62,11 @@ When constructing a query note that the 15403 data packages of the \href{https:/
 }
 \examples{
 # Search for data packages containing the term "air temperature"
-query <- 'q="air+temperature"&fl=*'
-search_data_packages(query)
+search_data_packages(query = 'q="air+temperature"&fl=*')
 
 # Search for data packages containing the term "air temperature" and returning 
 # only the packageid, title, and score of each match
-query <- 'q="air+temperature"&fl=packageid,title,score'
-search_data_packages(query)
+search_data_packages(query = 'q="air+temperature"&fl=packageid,title,score')
 
 # Search for data packages containing the term "air temperature", returning 
 # only the packageid, title, score, and excluding ecotrends and lter-landsat 

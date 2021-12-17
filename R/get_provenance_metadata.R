@@ -10,7 +10,8 @@
 #' @export
 #' 
 #' @examples 
-#' get_provenance_metadata("knb-lter-pal.309.1")
+#' methodStep <- get_provenance_metadata("knb-lter-pal.309.1")
+#' methodStep
 #'
 get_provenance_metadata <- function(packageId, env = "production") {
   url <- paste0(base_url(env), "/package/provenance/eml/",

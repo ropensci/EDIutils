@@ -16,13 +16,8 @@ list_deleted_data_packages(env = "production")
 List deleted data packages
 }
 \examples{
-# All packages deleted from production
-list_deleted_data_packages()
-
-# All packages deleted from staging
-list_deleted_data_packages("staging")
-
-# All packages deleted from development
-list_deleted_data_packages("development")
+# List deleted data packages
+deleted <- list_deleted_data_packages()
+head(deleted)
 
 }

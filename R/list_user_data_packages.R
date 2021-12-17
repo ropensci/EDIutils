@@ -10,9 +10,10 @@
 #' @export
 #' 
 #' @examples 
-#' # List all data packages uploaded by user "dbjourneynorth" who is apart of the "EDI" organizational unit
-#' dn <- create_dn("dbjourneynorth", "EDI")
-#' list_user_data_packages(dn)
+#' # List user data packages
+#' dn <- create_dn(userId = "dbjourneynorth")
+#' packageIds <- list_user_data_packages(dn)
+#' packageIds
 #' 
 list_user_data_packages <- function(dn, env = "production") {
   url <- paste0(base_url(env), "/package/user/", dn)

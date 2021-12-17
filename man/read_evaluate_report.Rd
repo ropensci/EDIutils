@@ -9,7 +9,7 @@ read_evaluate_report(transaction, format = "xml", env = "production")
 \arguments{
 \item{transaction}{(character) Transaction identifier}
 
-\item{format}{(character) Format of the returned report. Can be: "xml", "html", or "character".}
+\item{format}{(character) Format of the returned report. Can be: "xml", "html", or "char".}
 
 \item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
@@ -23,19 +23,49 @@ Read evaluate report
 User authentication is required (see \code{login()})
 }
 \examples{
+\dontrun{
+
+login()
+
 # Evaluate data package
-path <- "/Users/me/Documents/edi.468.1.xml"
-transaction <- evaluate_data_package(path)
+transaction <- evaluate_data_package(
+  eml = "./data/edi.595.1.xml",
+  env = "staging")
+transaction
+#> [1] "evaluate_163966785813042760"
 
-# Result in XML format
-qualityReport <- read_evaluate_report(transaction)
+# Read as XML
+qualityReport <- read_evaluate_report(
+  transaction = transaction, 
+  env = "staging")
+qualityReport
+#> {xml_document}
+#> <qualityReport schemaLocation="eml://ecoinformatics.org/qualityReport ...
+#> [1] <creationDate>2021-12-16T22:15:38</creationDate>
+#> [2] <packageId>edi.606.1</packageId>
+#> [3] <includeSystem>lter</includeSystem>
+#> [4] <includeSystem>knb</includeSystem>
+#> [5] <datasetReport>\n  <qualityCheck qualityType="metadata" system=" ...
+#> [6] <entityReport>\n  <entityName>data.txt</entityName>\n  <qualityC ...
 
-# Result in HTML format
-qualityReport <- read_evaluate_report(transaction, format = "html")
+# Read as HTML
+qualityReport <- read_evaluate_report(
+  transaction = transaction, 
+  format = "html", 
+  env = "staging")
+qualityReport
+#' {html_document}
+#' <html>
+#' [1] <body><table xmlns:qr="eml://ecoinformatics.org/qualityReport">< ...
 
-# Result as character string
-qualityReport <- read_evaluate_report(transaction, format = "character")
-message(qualityReport)
-writeLines(qualityReport, "/Users/me/Documents/report.txt"))
+# Read as character
+qualityReport <- read_evaluate_report(
+  transaction = transaction, 
+  format = "char", 
+  env = "staging")
+writeLines(qualityReport, "./data/report.txt"))
+
+logout()
+}
 
 }

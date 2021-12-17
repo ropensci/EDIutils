@@ -18,6 +18,7 @@ get_provenance_metadata(packageId, env = "production")
 Generates the provenance metadata of a source data package
 }
 \examples{
-get_provenance_metadata("knb-lter-pal.309.1")
+methodStep <- get_provenance_metadata("knb-lter-pal.309.1")
+methodStep
 
 }

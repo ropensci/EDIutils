@@ -3,7 +3,7 @@
 #' @param query (character) Query (see details below)
 #' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
-#' @return (xml_document) An XML list of zero or more audit records matching the query parameters as specified in the request.
+#' @return (xml_document) An XML list of zero or more audit records matching the query parameters as specified in the request (see details below).
 #' 
 #' @details Query parameters are specified as key=value pairs, multiple pairs must be delimited with ampersands (&), and only a single value should be specified for a particular key. The following query parameter keys are allowed:
 #' 
@@ -29,9 +29,38 @@
 #' 
 #' @examples 
 #' \dontrun{
-#' # Get all audit records for user "ecocomdp"
-#' query <- paste0("user=", create_dn("ecocomdp"))
-#' res <- get_audit_report(query)
+#'   
+#' login()
+#' 
+#' # Get audit report for data reads between 2021-12-01 and 2021-12-02
+#' auditReport <- get_audit_report(
+#'  query = "serviceMethod=readDataEntity&fromTime=2021-12-01&toTime=2021-12-02")
+#' auditReport
+#' #> [1] <auditRecord>\n  <oid>121606334</oid>\n  <entryTime>2021-12-01T ...
+#' #> [2] <auditRecord>\n  <oid>121606349</oid>\n  <entryTime>2021-12-01T ...
+#' #> [3] <auditRecord>\n  <oid>121606465</oid>\n  <entryTime>2021-12-01T ...
+#' #> [4] <auditRecord>\n  <oid>121606937</oid>\n  <entryTime>2021-12-01T ...
+#' #> [5] <auditRecord>\n  <oid>121607211</oid>\n  <entryTime>2021-12-01T ...
+#' #> ...
+#' 
+#' # Get the first audit record
+#' xml2::xml_find_first(auditReport, ".//auditRecord")
+#' #> {xml_node}
+#' #> <auditRecord>
+#' #> [1] <oid>121606334</oid>
+#' #> [2] <entryTime>2021-12-01T00:00:07</entryTime>
+#' #> [3] <category>warn</category>
+#' #> [4] <service>DataPackageManager-1.0</service>
+#' #> [5] <serviceMethod>readDataEntity</serviceMethod>
+#' #> [6] <responseStatus>401</responseStatus>
+#' #> [7] <resourceId/>
+#' #> [8] <user>robot</user>
+#' #> [9] <userAgent>null</userAgent>
+#' #> [10] <groups/>
+#' #> [11] <authSystem>https://pasta.edirepository.org/authentication</aut ...
+#' #> [12] <entryText>Robots are not authorized access to data objects. Ro ...
+#' 
+#' logout()
 #' }
 #'
 get_audit_report <- function(query, env = "production") {

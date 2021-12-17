@@ -12,9 +12,19 @@
 #' 
 #' @examples 
 #' \dontrun{
+#' 
 #' login()
-#' identifier <- create_reservation("edi")
-#' delete_reservation("edi", identifier)
+#' 
+#' # Create reservation
+#' identifier <- create_reservation(scope = "edi", env = "staging")
+#' identifier
+#' #> [1] 604
+#' 
+#' # Delete reservation
+#' delete_reservation(scope = "edi", identifier = identifier, env = "staging")
+#' #> [1] 604
+#' 
+#' logout()
 #' }
 #'
 delete_reservation <- function(scope, identifier, env = "production") {

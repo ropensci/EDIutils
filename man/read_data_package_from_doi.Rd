@@ -19,12 +19,14 @@ Read data package from Digital Object Identifier
 }
 \examples{
 # Get resource map
-read_data_package_from_doi(
-  doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25")
+resourceMap <- read_data_package_from_doi(
+ doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25")
+resourceMap
 
 # Get resource map in ORE format
-read_data_package_from_doi(
-  doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25", 
-  ore = TRUE)
+resourceMap <- read_data_package_from_doi(
+ doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25", 
+ ore = TRUE)
+resourceMap#' 
 
 }

@@ -7,7 +7,12 @@
 #' @export
 #' 
 #' @examples 
-#' get_event_subscription_schema()
+#' # Get schema
+#' schema <- get_event_subscription_schema()
+#' schema
+#' 
+#' # Show schema structure
+#' xml2::xml_structure(schema)
 #'
 get_event_subscription_schema <- function(env = "production") {
   url <- paste0(base_url(env), "/package/event/eml/schema")

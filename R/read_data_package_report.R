@@ -9,11 +9,9 @@
 #' @export
 #' 
 #' @examples 
-#' # Result in XML format
-#' read_data_package_report("knb-lter-knz.260.4")
-#' 
-#' # Result in HTML format
-#' read_data_package_report("knb-lter-knz.260.4", html = TRUE)
+#' # Read report
+#' qualityReport <- read_data_package_report(packageId = "knb-lter-knz.260.4")
+#' qualityReport
 #'
 read_data_package_report <- function(packageId, html = FALSE, 
                                      env = "production") {

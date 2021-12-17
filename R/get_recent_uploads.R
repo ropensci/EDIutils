@@ -18,8 +18,12 @@
 #' @export
 #' 
 #' @examples 
-#' query <- "serviceMethod=createDataPackage&limit=5"
-#' get_recent_uploads(query)
+#' # Get the 5 most recently created data packages
+#' auditReport <- get_recent_uploads(
+#'   query = "serviceMethod=createDataPackage&limit=5")
+#' 
+#' # Show the first
+#' xml2::xml_find_first(auditReport, "auditRecord")
 #'
 get_recent_uploads <- function(query, env = "production") {
   url <- paste0(base_url(env), "/audit/recent-uploads?")

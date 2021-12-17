@@ -8,7 +8,9 @@
 #' @export
 #' 
 #' @examples
-#' list_data_package_identifiers("knb-lter-ble")
+#' # List identifiers
+#' identifiers <- list_data_package_identifiers("knb-lter-ble")
+#' identifiers
 #' 
 list_data_package_identifiers <- function(scope, env = "production") {
   url <- paste0(base_url(env), "/package/eml/", scope)

@@ -18,6 +18,8 @@ list_data_package_identifiers(scope, env = "production")
 List data package identifiers
 }
 \examples{
-list_data_package_identifiers("knb-lter-ble")
+# List identifiers
+identifiers <- list_data_package_identifiers("knb-lter-ble")
+identifiers
 
 }

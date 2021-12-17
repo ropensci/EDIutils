@@ -18,6 +18,12 @@ get_packageid_reads(packageId, env = "production")
 Get package ID reads
 }
 \examples{
-get_packageid_reads("knb-lter-sgs.817.17")
+# Get packageId reads
+resourceReads <- get_packageid_reads("knb-lter-sgs.817.17")
+resourceReads
+
+# Show first
+resource <- xml2::xml_find_first(resourceReads, "resource")
+resource
 
 }

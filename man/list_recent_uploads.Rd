@@ -20,10 +20,11 @@ list_recent_uploads(type, limit = 5, env = "production")
 List recent uploads
 }
 \examples{
-# Get the 5 newest data packages
-list_recent_uploads("insert", 3)
+# Get the 3 newest revisions
+dataPackageUploads <- list_recent_uploads("update", 3)
+dataPackageUploads
 
-# Get the 5 newest revisions
-list_recent_uploads("update", 3)
+# Show first
+xml2::xml_find_first(dataPackageUploads, "dataPackage")
 
 }

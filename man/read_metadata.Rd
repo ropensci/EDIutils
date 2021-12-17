@@ -18,6 +18,8 @@ read_metadata(packageId, env = "production")
 Read metadata
 }
 \examples{
-read_metadata("edi.100.1")
+# Read metadata
+eml <- read_metadata("edi.100.1")
+eml
 
 }

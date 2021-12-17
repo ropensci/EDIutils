@@ -12,7 +12,7 @@ get_audit_record(oid, env = "production")
 \item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) An audit record
+(xml_document) An audit record with fields
 }
 \description{
 Get audit record
@@ -21,9 +21,34 @@ Get audit record
 User authentication is required (see \code{login()})
 }
 \examples{
-query <- "serviceMethod=createDataPackage&limit=5"
-recent_uploads <- get_recent_uploads(query)
-oid <- xml2::xml_text(xml2::xml_find_all(recent_uploads, ".//oid"))[1]
-get_audit_record(oid)
+\dontrun{
+
+login()
+
+# Get audit record
+auditRecord <- get_audit_record(oid = "121606334")
+auditRecord
+#> {xml_document}
+#> <auditReport>
+#>   [1] <auditRecord>\n  <oid>121606334</oid>\n  <entryTime>2021-12-01T0 ...
+
+xml2::xml_find_first(auditReport, ".//auditRecord")
+#> {xml_node}
+#> <auditRecord>
+#> [1] <oid>121606334</oid>
+#> [2] <entryTime>2021-12-01T00:00:07</entryTime>
+#> [3] <category>warn</category>
+#> [4] <service>DataPackageManager-1.0</service>
+#> [5] <serviceMethod>readDataEntity</serviceMethod>
+#> [6] <responseStatus>401</responseStatus>
+#> [7] <resourceId/>
+#> [8] <user>robot</user>
+#> [9] <userAgent>null</userAgent>
+#> [10] <groups/>
+#> [11] <authSystem>https://pasta.edirepository.org/authentication</aut ...
+#> [12] <entryText>Robots are not authorized access to data objects. Ro ...
+
+logout()
+}
 
 }

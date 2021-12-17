@@ -18,6 +18,8 @@ read_metadata_format(packageId, env = "production")
 Read metadata format
 }
 \examples{
-read_metadata_format("knb-lter-nwt.930.1")
+# Read format
+metadataFormat <- read_metadata_format("knb-lter-nwt.930.1")
+metadataFormat
 
 }

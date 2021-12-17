@@ -20,6 +20,11 @@ list_data_package_citations(packageId, env = "production", list_all = FALSE)
 List data package citations
 }
 \examples{
-list_data_package_citations("edi.845.1")
+# List citations
+journalCitations <- list_data_package_citations("edi.845.1")
+journalCitations
+
+# Show first
+xml2::xml_find_first(journalCitations, "journalCitation")
 
 }

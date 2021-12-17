@@ -30,8 +30,27 @@ Each data entity described in \code{eml} must be accompanied by a web accessible
 User authentication is required (see \code{login()})
 }
 \examples{
-path <- "/Users/me/Documents/edi.468.2.xml"
-update_data_package(path)
+\dontrun{
+
+login()
+
+# Update data package
+transaction <- update_data_package(
+  eml = "./data/edi.595.2.xml", 
+  env = "staging")
+transaction
+#> [1] "update_edi.595_163966788658131920"
+
+# Check update status
+status <- check_status_update(
+  transaction = transaction, 
+  packageId = "edi.595.2", 
+  env = "staging")
+status
+#> [1] TRUE
+
+logout()
+}
 
 
 }

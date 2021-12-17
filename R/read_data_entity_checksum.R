@@ -9,7 +9,15 @@
 #' @export
 #' 
 #' @examples 
-#' list_data_entities("knb-lter-ble.1.7")
+#' # List data entities
+#' entityIds <- list_data_entities(packageId = "knb-lter-ble.1.7")
+#' entityIds
+#' 
+#' # Read checksum
+#' checksum <- read_data_entity_checksum(
+#'   packageId = "knb-lter-ble.1.7", 
+#'   entityId = entityIds[1])
+#' checksum
 #' 
 read_data_entity_checksum <- function(packageId, entityId, env = "production") {
   pkg <- parse_packageId(packageId)

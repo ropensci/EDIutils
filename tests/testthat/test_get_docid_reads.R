@@ -9,3 +9,4 @@ testthat::test_that("Test attributes of returned object", {
                          "revision", "totalReads", "nonRobotReads")
   expect_true(all(children_found %in% children_expected))
 })
+ 

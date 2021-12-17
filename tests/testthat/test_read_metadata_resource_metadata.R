@@ -10,3 +10,10 @@ testthat::test_that("Test attributes of returned object", {
   children_found <- xml2::xml_name(xml2::xml_children(res))
   expect_true(all(children_found %in% children_expected))
 })
+
+
+
+# Read resource metadata
+resourceMetadata <- read_metadata_resource_metadata(
+  packageId = "knb-lter-pal.309.1")
+resourceMetadata

@@ -8,7 +8,10 @@
 #' @export
 #' 
 #' @examples 
-#' 
+#' # Read resource metadata
+#' resourceMetadata <- read_data_package_resource_metadata(
+#'   packageId = "edi.613.1")
+#' resourceMetadata
 #'
 read_data_package_resource_metadata <- function(packageId, 
                                                 env = "production") {

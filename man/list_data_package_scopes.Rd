@@ -16,13 +16,8 @@ list_data_package_scopes(env = "production")
 List data package scopes
 }
 \examples{
-# All scopes in production
-list_data_package_scopes()
-
-# All scopes in staging
-list_data_package_scopes("staging")
-
-#' # All scopes in development
-list_data_package_scopes("development")
+# List scopes
+scopes <- list_data_package_scopes()
+scopes
 
 }

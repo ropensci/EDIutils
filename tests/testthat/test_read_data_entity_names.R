@@ -7,7 +7,3 @@ testthat::test_that('Test attributes of returned object', {
   expect_true(all(names(res) %in% c("entityId", "entityName")))
   expect_true(nrow(res) > 1)
 })
-
-
-
-read_data_entity_names("knb-lter-cap.691.2")

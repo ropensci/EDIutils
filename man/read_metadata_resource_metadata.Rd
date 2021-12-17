@@ -18,6 +18,9 @@ read_metadata_resource_metadata(packageId, env = "production")
 Read metadata resource metadata
 }
 \examples{
-read_metadata_resource_metadata("knb-lter-pal.309.1")
+# Read resource metadata
+resourceMetadata <- read_metadata_resource_metadata(
+  packageId = "knb-lter-pal.309.1")
+resourceMetadata
 
 }

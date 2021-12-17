@@ -8,7 +8,8 @@
 #' @export
 #' 
 #' @examples
-#' list_data_entities("knb-lter-and.2726.6")
+#' entityIds <- list_data_entities("knb-lter-and.2732.7")
+#' entityIds
 #'
 list_data_entities <- function(packageId, env = "production") {
   url <- paste0(base_url(env), "/package/data/eml/",

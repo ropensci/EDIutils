@@ -18,6 +18,7 @@ list_data_entities(packageId, env = "production")
 List data entities
 }
 \examples{
-list_data_entities("knb-lter-and.2726.6")
+entityIds <- list_data_entities("knb-lter-and.2732.7")
+entityIds
 
 }

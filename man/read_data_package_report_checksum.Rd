@@ -18,6 +18,8 @@ read_data_package_report_checksum(packageId, env = "production")
 Read data package report checksum
 }
 \examples{
-read_data_package_report_checksum("knb-lter-luq.208.1")
+# Read report checksum
+checksum <- read_data_package_report_checksum(packageId = "knb-lter-luq.208.1")
+checksum
 
 }

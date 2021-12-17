@@ -18,6 +18,8 @@ read_data_entity_sizes(packageId, env = "production")
 Read data entity sizes
 }
 \examples{
-read_data_entity_sizes("knb-lter-cdr.711.1")
+# Read entity sizes
+sizes <- read_data_entity_sizes(packageId = "knb-lter-bnz.786.3")
+sizes
 
 }

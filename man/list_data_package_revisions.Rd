@@ -27,13 +27,8 @@ list_data_package_revisions(
 List data package revisions
 }
 \examples{
-# All revisions
-list_data_package_revisions("knb-lter-arc", 20131)
-
-# Newest revision
-list_data_package_revisions("knb-lter-arc", 20131, filter = "newest")
-
-# Oldest revision
-list_data_package_revisions("knb-lter-arc", 20131, filter = "oldest")
+# List revisions
+revisions <- list_data_package_revisions("knb-lter-arc", 20131)
+revisions
 
 }

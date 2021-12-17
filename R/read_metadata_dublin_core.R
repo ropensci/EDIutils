@@ -8,7 +8,9 @@
 #' @export
 #' 
 #' @examples 
-#' read_metadata_dublin_core("knb-lter-nes.10.1")
+#' # Read dc metadata
+#' dc <- read_metadata_dublin_core("knb-lter-nes.10.1")
+#' dc
 #'
 read_metadata_dublin_core <- function(packageId, env = "production") {
   url <- paste0(base_url(env), "/package/metadata/dc/",

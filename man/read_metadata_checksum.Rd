@@ -18,6 +18,8 @@ read_metadata_checksum(packageId, env = "production")
 Read metadata checksum
 }
 \examples{
-read_metadata_checksum("knb-lter-ntl.409.1")
+# Read checksum
+checksum <- read_metadata_checksum("knb-lter-ntl.409.1")
+checksum
 
 }

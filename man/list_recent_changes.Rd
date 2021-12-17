@@ -27,15 +27,13 @@ list_recent_changes(
 List all data package insert, update, and delete operations, optionally specifying the date and time to and/or from which the changes should be listed. An optional scope value can be specified to filter results for a particular data package scope.
 }
 \examples{
-# Changes occurring in January 2021 within the scope "knb-lter-hbr"
-list_recent_changes(
-  fromDate = "2021-01-01T00:00:00", 
-  toDate = "2021-02-01T00:00:00", 
-  scope = "knb-lter-hbr")
-  
 # Changes occurring in the first 3 days of 2021 for all scopes
-list_recent_changes(
-  fromDate = "2021-01-01T00:00:00", 
-  toDate = "2021-01-03T00:00:00")
+dataPackageChanges <- list_recent_changes(
+ fromDate = "2021-01-01T00:00:00", 
+ toDate = "2021-01-03T00:00:00")
+dataPackageChanges
+
+# Show first
+xml2::xml_find_first(dataPackageChanges, "dataPackage")
 
 }

@@ -18,7 +18,9 @@ list_principal_owner_citations(principalOwner, env = "production")
 List principal owner citations
 }
 \examples{
-principalOwner <- create_dn("csmith")
-list_principal_owner_citations(principalOwner)
+# List citations
+dn <- create_dn(userId = "FCE", ou = "EDI")
+journalCitations <- list_principal_owner_citations(principalOwner = dn)
+journalCitations
 
 }

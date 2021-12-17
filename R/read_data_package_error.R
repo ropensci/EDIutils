@@ -11,15 +11,23 @@
 #' 
 #' @examples 
 #' \dontrun{
-#' # Returns an error because of malformed packageId
-#' path <- "/Users/me/Documents/bad_id.xml"
-#' transaction <- evaluate_data_package(path)
+#' 
+#' # Create zip archive
+#' transaction <- create_data_package_archive(packageId = "knb-lter-sev.31999.1")
+#' transaction
+#' #> [1] "archive_knb-lter-sev.31999.1_16396683904724129"
+#' 
+#' # Check creation status
 #' read_data_package_error(transaction)
 #' 
-#' # Does not return an error
-#' path <- "/Users/me/Documents/edi.468.1.xml"
-#' transaction <- evaluate_data_package(path)
-#' read_data_package_error(transaction)
+#' # Download zip archive
+#' read_data_package_archive(
+#'   packageId = "knb-lter-sev.31999.1", 
+#'   transaction = transaction, 
+#'   path = "./data")
+#' #> |=============================================================| 100%
+#' dir("./data")
+#' #> [1] "knb-lter-sev.31999.1.zip"
 #' }
 #'
 read_data_package_error <- function(transaction, env = "production") {

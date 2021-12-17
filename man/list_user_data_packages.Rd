@@ -18,8 +18,9 @@ list_user_data_packages(dn, env = "production")
 List all data packages (including their revision values) uploaded to the repository by a particular user, specified by a distinguished name. Data packages that were uploaded by the specified user but have since been deleted are excluded from the list.
 }
 \examples{
-# List all data packages uploaded by user "dbjourneynorth" who is apart of the "EDI" organizational unit
-dn <- create_dn("dbjourneynorth", "EDI")
-list_user_data_packages(dn)
+# List user data packages
+dn <- create_dn(userId = "dbjourneynorth")
+packageIds <- list_user_data_packages(dn)
+packageIds
 
 }

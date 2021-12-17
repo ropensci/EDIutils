@@ -9,13 +9,15 @@
 #' 
 #' @examples
 #' # Get resource map
-#' read_data_package_from_doi(
-#'   doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25")
+#' resourceMap <- read_data_package_from_doi(
+#'  doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25")
+#' resourceMap
 #' 
 #' # Get resource map in ORE format
-#' read_data_package_from_doi(
-#'   doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25", 
-#'   ore = TRUE)
+#' resourceMap <- read_data_package_from_doi(
+#'  doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25", 
+#'  ore = TRUE)
+#' resourceMap#' 
 #'
 read_data_package_from_doi <- function(doi, ore = FALSE) {
   url <- paste0(base_url("production"), "/package/doi/", doi)
@@ -28,6 +30,6 @@ read_data_package_from_doi <- function(doi, ore = FALSE) {
   if (ore) {
     return(xml2::read_xml(res))
   } else {
-    return(text2char(xml2::read_xml(res)))
+    return(text2char(res))
   }
 }

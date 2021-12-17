@@ -34,6 +34,29 @@ If a query parameter is specified, and a subscription's respective attribute doe
 User authentication is required (see \code{login()})
 }
 \examples{
-query_event_subscriptions()
+\dontrun{
+
+login()
+
+# Query subscriptions
+subscriptions <- query_event_subscriptions(env = "staging")
+subscriptions
+#> {xml_document}
+#> <subscriptions>
+#> [1] <subscription type="eml">\n  <id>21</id>\n  <creator>uid=csmith, ...
+#> [2] <subscription type="eml">\n  <id>27</id>\n  <creator>uid=csmith, ...
+#> [3] <subscription type="eml">\n  <id>51</id>\n  <creator>uid=csmith, ...
+
+# Show first
+xml2::xml_find_first(subscriptions, "subscription")
+#> {xml_node}
+#> <subscription type="eml">
+#> [1] <id>21</id>
+#> [2] <creator>uid=csmith,o=EDI,dc=edirepository,dc=org</creator>
+#> [3] <packageId>edi.94</packageId>
+#> [4] <url>https://regan.edirepository.org/ecocom-listener</url>
+
+logout()
+}
 
 }

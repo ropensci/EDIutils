@@ -31,11 +31,12 @@ Only works when authenticating with EDI credentials. Does not work for ORCiD, Gi
 }
 \examples{
 \dontrun{
+
 # Login with arguments
-login("myname", "mysecret")
+login(userId = "myname", userPass = "mysecret")
 
 # Login with config.txt
-login("/Users/me/Documents/config.txt")
+login(config = "./data/config.txt")
 
 # Login at console
 login()

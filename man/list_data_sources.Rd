@@ -21,6 +21,11 @@ Data sources are data packages, or other online digital objects, that are known 
 Data sources can be either internal or external to the EDI data repository. Internal data sources include a packageId value and a URL to the source metadata. For data sources external to PASTA, the packageId element will be empty and a URL value may or not be documented.
 }
 \examples{
-list_data_sources("edi.275.4")
+# List sources
+dataSources <- list_data_sources("edi.275.4")
+dataSources
+
+# Show first
+xml2::xml_find_first(dataSources, "dataSource")
 
 }

@@ -7,7 +7,12 @@
 #' @export
 #' 
 #' @examples 
-#' list_active_reservations()
+#' # List reservations
+#' reservations <- list_active_reservations()
+#' reservations
+#' 
+#' # Show first
+#' xml2::xml_find_first(reservations, "reservation")
 #'
 list_active_reservations <- function(env = "production"){
   url <- paste0(base_url(env), "/package/reservations/eml")

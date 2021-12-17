@@ -8,7 +8,9 @@
 #' @export
 #' 
 #' @examples 
-#' list_reservation_identifiers("edi")
+#' # List reservations
+#' reservations <- list_reservation_identifiers(scope = "edi")
+#' reservations
 #'
 list_reservation_identifiers <- function(scope, env = "production") {
   url <- paste0(base_url(env), "/package/reservations/eml/", scope)

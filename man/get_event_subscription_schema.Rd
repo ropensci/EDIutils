@@ -16,6 +16,11 @@ get_event_subscription_schema(env = "production")
 Get event subscription schema
 }
 \examples{
-get_event_subscription_schema()
+# Get schema
+schema <- get_event_subscription_schema()
+schema
+
+# Show schema structure
+xml2::xml_structure(schema)
 
 }

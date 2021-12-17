@@ -16,6 +16,11 @@ list_active_reservations(env = "production")
 List active reservations
 }
 \examples{
-list_active_reservations()
+# List reservations
+reservations <- list_active_reservations()
+reservations
+
+# Show first
+xml2::xml_find_first(reservations, "reservation")
 
 }

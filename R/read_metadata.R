@@ -8,7 +8,9 @@
 #' @export
 #' 
 #' @examples 
-#' read_metadata("edi.100.1")
+#' # Read metadata
+#' eml <- read_metadata("edi.100.1")
+#' eml
 #'
 read_metadata <- function(packageId, env = "production") {
   url <- paste0(base_url(env), "/package/metadata/eml/",

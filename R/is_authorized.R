@@ -11,8 +11,24 @@
 #' 
 #' @examples 
 #' \dontrun{
-#' resourceId <- "https://pasta.lternet.edu/package/report/eml/knb-lter-sbc/6006/3"
+#' 
+#' login()
+#' 
+#' # Get the most recently created data package
+#' auditReport <- get_recent_uploads(
+#'   query = "serviceMethod=createDataPackage&limit=1")
+#' 
+#' # Get the resourceId
+#' resourceId <- xml2::xml_text(
+#'   xml2::xml_find_all(auditReport, ".//resourceId"))
+#' resourceId
+#' #> [1] "https://pasta.lternet.edu/package/eml/knb-lter-hbr/345/1"
+#' 
+#' # Check read authorization
 #' is_authorized(resourceId)
+#' #> [1] TRUE
+#' 
+#' logout()
 #' }
 #'
 is_authorized <- function(resourceId, env = "production") {

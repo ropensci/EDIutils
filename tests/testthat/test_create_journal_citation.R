@@ -10,6 +10,7 @@ testthat::test_that("Test attributes of returned object", {
     journalTitle = "Ecological Applications",
     relationType = "IsCitedBy",
     env = "staging")
-  on.exit(delete_journal_citation(journalCitationId, env = "staging"))
   expect_type(journalCitationId, "double")
+  res <- delete_journal_citation(journalCitationId, env = "staging")
+  expect_true(res)
 })

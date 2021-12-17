@@ -18,6 +18,11 @@ list_data_descendants(packageId, env = "production")
 Data descendants are data packages that are known to be derived, in whole or in part, from the specified source data package.
 }
 \examples{
-list_data_descendants("knb-lter-bnz.501.17")
+# List descendants
+dataDescendants <- list_data_descendants("knb-lter-bnz.501.17")
+dataDescendants
+
+# Show first
+xml2::xml_find_first(dataDescendants, "dataDescendant")
 
 }
