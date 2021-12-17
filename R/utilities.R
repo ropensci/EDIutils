@@ -3,15 +3,72 @@
 #' @return (request) The request object returned by \code{httr::set_cookies()} with the EDI repository authentication token baked in. Yum!
 #'
 bake_cookie <- function() {
-  token_file <- paste0(tempdir(), "/edi_token.txt")
-  if (!file.exists(token_file)) {
+  token <- Sys.getenv("EDI_TOKEN")
+  if (token == "") {
     stop("Authentication token not found. Run 'login()' then try again.", 
          call. = FALSE)
   }
-  token <- readLines(token_file, encoding = "UTF-8")
   cookie <- httr::set_cookies(`auth-token` = token)
   cookie$options$cookie <- curl::curl_unescape(cookie$options$cookie)
   return(cookie)
+}
+
+
+
+
+
+
+
+
+#' Configure data package tests requiring a web accessible data object
+#'
+#' @param userId (character) EDI repository userId
+#' @param url (character) URL from which the EDI repository can download the test data.txt object. This URL cannot contain any redirects.
+#'
+#' @return Environmental variables \code{EDI_USERID = userId} and \code{EDI_URL = url}
+#' 
+#' @details The results of this function are used to create a test EML file for create, update, and delete tests.
+#'
+config_test_eml <- function(userId, url) {
+  Sys.setenv(EDI_USERID = userId)
+  Sys.setenv(EDI_URL = url)
+}
+
+
+
+
+
+
+
+
+#' Create an EML file for testing create, update, delete operations
+#'
+#' @param path (character) Path to directory in which the test EML will be written to file
+#' @param packageId (character) Package identifier, of the form "scope.identifier.revision", for the new EML file
+#' 
+#' @return (character) Full path to EML file written by this function to \code{path}
+#' 
+#' @details Copies "eml.xml" at /inst/extdata, adds the userId, packageId, and URL, then writes to \code{paste0(path, "/", packageId, ".xml)}
+#' 
+#' @noRd
+#' 
+create_test_eml <- function(path, packageId) {
+  # Read EML template
+  eml <- system.file("extdata", "eml.xml", package = "EDIutils")
+  eml <- xml2::read_xml(eml)
+  # Add packageId
+  xml2::xml_attr(eml, "packageId") <- packageId
+  # Add principal
+  dn <- create_dn(Sys.getenv("EDI_USERID"))
+  principal <- xml2::xml_find_first(eml, ".//principal")
+  xml2::xml_text(principal) <- dn
+  # Add URL
+  url <- xml2::xml_find_first(eml, ".//online/url")
+  xml2::xml_text(url) <- Sys.getenv("EDI_URL")
+  # Write file
+  xml2::write_xml(eml, paste0(path, "/", packageId, ".xml"))
+  dest <- paste0(path, "/", packageId, ".xml")
+  return(dest)
 }
 
 
@@ -31,7 +88,6 @@ get_test_package <- function() {
   res <- paste(c("edi", id, rev), collapse = ".")
   return(res)
 }
-
 
 
 
@@ -180,10 +236,32 @@ set_user_agent <- function() {
 #' @details Facilitates testing of functions requiring authentication
 #' 
 skip_if_logged_out <- function() {
-  token_file <- paste0(tempdir(), "/edi_token.txt")
-  if (!file.exists(token_file)) {
-    skip("Not run when logged out")
+  if (Sys.getenv("EDI_TOKEN") != "") {
+    return(invisible(TRUE))
   }
+  testthat::skip("Not run when logged out. Login with 'login()'.")
+}
+
+
+
+
+
+
+
+
+#' Skip tests when EML configuration is missing
+#'
+#' @details Facilitates testing create, update, and delete for a test data package
+#' 
+skip_if_missing_eml_config <- function() {
+  has_userid <- Sys.getenv("EDI_USERID") != ""
+  has_url <- Sys.getenv("EDI_URL") != ""
+  if (has_userid & has_url) {
+    return(invisible(TRUE))
+  }
+  msg <- paste0("Not run when test EML config is missing. Set config with ",
+                "'config_test_eml()'.")
+  testthat::skip(msg)
 }
 
 
