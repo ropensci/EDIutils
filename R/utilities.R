@@ -20,14 +20,18 @@ bake_cookie <- function() {
 
 
 
-#' Configure data package tests requiring a web accessible data object
+#' Set environment variables for testing data package evaluation and upload
+#' 
+#' @description Testing data package evaluation and upload requires a web accessible data object, EML metadata describing the data object, and an EDI repository user account. Use of this function presupposes the data object has been stashed
 #'
 #' @param userId (character) EDI repository userId
 #' @param url (character) URL from which the EDI repository can download the test data.txt object. This URL cannot contain any redirects.
 #'
 #' @return Environmental variables \code{EDI_USERID = userId} and \code{EDI_TEST_URL = url}
 #' 
-#' @details The results of this function are used to create a test EML file for create, update, and delete tests.
+#' @details 
+#' 
+#' The results of this function are used to create a test EML file for create, update, and delete tests.
 #'
 config_test_eml <- function(userId, url) {
   Sys.setenv(EDI_USERID = userId)
@@ -46,7 +50,7 @@ config_test_eml <- function(userId, url) {
 #' @param path (character) Path to directory in which the test EML will be written to file
 #' @param packageId (character) Package identifier, of the form "scope.identifier.revision", for the new EML file
 #' 
-#' @return (character) Full path to EML file written by this function to \code{path}
+#' @return (character) Full path to EML file written by this function to \code{path}. Should be \code{tempdir()} if executed in a testthat context.
 #' 
 #' @details Copies "eml.xml" at /inst/extdata, adds the userId, packageId, and URL, then writes to \code{paste0(path, "/", packageId, ".xml)}
 #' 

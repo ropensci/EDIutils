@@ -2,7 +2,7 @@
 % Please edit documentation in R/utilities.R
 \name{config_test_eml}
 \alias{config_test_eml}
-\title{Configure data package tests requiring a web accessible data object}
+\title{Set environment variables for testing data package evaluation and upload}
 \usage{
 config_test_eml(userId, url)
 }
@@ -15,7 +15,7 @@ config_test_eml(userId, url)
 Environmental variables \code{EDI_USERID = userId} and \code{EDI_TEST_URL = url}
 }
 \description{
-Configure data package tests requiring a web accessible data object
+Testing data package evaluation and upload requires a web accessible data object, EML metadata describing the data object, and an EDI repository user account. Use of this function presupposes the data object has been stashed
 }
 \details{
 The results of this function are used to create a test EML file for create, update, and delete tests.

@@ -1,0 +1,91 @@
+---
+title: "Tests Requiring Authentication"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tests Requiring Authentication}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+_This vignette is for `EDIutils` maintainers and developers._
+
+Some tests require authentication and a minimal data package for evaluation and upload. This vignette demonstrates how to create and run these tests with `testthat`.
+
+```{r setup}
+library(EDIutils)
+```
+
+## Get an EDI User Account
+
+Request accounts via info@environmentaldatainitiative.org
+
+## Use the "staging" Environment!
+The EDI repository "staging" environment is a sandbox for testing data package rendering, etc. Do not use the "production" environment for testing. The "production" environment is where publication quality data are released.
+
+## Create Tests
+
+#### Requiring Authentication
+
+The first line of any test requiring authentication should include `skip_if_logged_out()`. This is an internal use only function located in R/utilities.R. Tests including this line will be skipped unless the R environment variable `EDI_TOKEN` is set. Use `login()` to set this variable.
+
+Example:
+```{r eval=FALSE}
+context("Create journal citation")
+
+testthat::test_that("Test attributes of returned object", {
+  skip_if_logged_out()
+  journalCitationId <- create_journal_citation(
+    packageId = get_test_package(), 
+    articleDoi = "10.1890/11-1026.1",
+    articleUrl = "https://doi.org/10.1890/11-1026.1",
+    articleTitle = "Corridors promote fire via connectivity and edge effects",
+    journalTitle = "Ecological Applications",
+    relationType = "IsCitedBy",
+    env = "staging")
+  expect_type(journalCitationId, "double")
+  res <- delete_journal_citation(journalCitationId, env = "staging")
+  expect_true(res)
+})
+```
+
+#### Requiring Data Package Evaluation or Upload
+
+If evaluation or upload of a data package is required by the test, then include a second line `skip_if_missing_eml_config()`. Tests including this line will be skipped unless the R environment variables `EDI_USERID` and `EDI_TEST_URL` are set. Use `config_test_eml()` to set these variables.
+
+To set up the minimal test data package:
+
+1. Copy the test data object at inst/extdata/data.txt to a web accessible location. The EDI repository will download this data object by it's URL. The URL cannot present any redirects or else the EDI repository will not have access.
+
+2. Add `create_test_eml()` to create an EML metadata file within the context of the test. Data packages require unique identifiers that often change from test to test.
+
+Example:
+```{r eval=FALSE}
+context("Evaluate data package")
+
+testthat::test_that("Test attributes of returned object", {
+  skip_if_logged_out()
+  skip_if_missing_eml_config()
+  # Create data package for evaluation
+  identifier <- create_reservation(scope = "edi", env = "staging")
+  packageId <- paste0("edi.", identifier, ".1")
+  eml <- create_test_eml(path = tempdir(), packageId = packageId)
+  on.exit(file.remove(eml), add = TRUE, after = FALSE)
+  # Evaluate
+  transaction <- evaluate_data_package(eml, env = "staging")
+  res <- check_status_evaluate(transaction, env = "staging")
+  expect_true(res)
+  # Read evaluation report
+  report <- read_evaluate_report(transaction, env = "staging")
+  expect_true("xml_document" %in% class(report))
+  delete_reservation("edi", identifier, env = "staging")
+})
+
+```
+
+## Run Tests
+
+1. Authenticate with `login()`
+
+2. Configure test data package with `config_test_eml()`
+
+3. Run test suite `devtools::test()`

@@ -137,5 +137,7 @@ navbar:
         href: articles/retrieve_dataset_citation_stats.html
       - text: Authentication
         href: articles/authentication.html
+      - text: Tests Requiring Authentication
+        href: articles/tests_requiring_authentication.html
     - text: News
       href: news/index.html
