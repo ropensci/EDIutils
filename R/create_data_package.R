@@ -21,12 +21,11 @@
 #'   eml = "./data/edi.595.1.xml", 
 #'   env = "staging")
 #' transaction
-#' #> [1] "create_163966765080210573"
+#' #> [1] "create_163966765080210573__edi.595.1"
 #' 
 #' # Check creation status
 #' status <- check_status_create(
 #'   transaction = transaction, 
-#'   packageId = "edi.595.1", 
 #'   env = "staging")
 #' status
 #' #> [1] TRUE
@@ -44,5 +43,7 @@ create_data_package <- function(eml, env = "production") {
                      body = httr::upload_file(eml))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
+  packageId <- tools::file_path_sans_ext(basename(eml))
+  res <- paste0(res, "__", packageId)
   return(res)
 }

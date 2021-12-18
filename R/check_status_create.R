@@ -1,7 +1,6 @@
 #' Check data package creation status
 #'
 #' @param transaction (character) Transaction identifier
-#' @param packageId (character) Data package identifier
 #' @param wait (logical) Wait for evaluation to complete? See details below.
 #' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
@@ -20,15 +19,14 @@
 #' 
 #' # Create data package
 #' transaction <- create_data_package(
-#'   eml = "./data/edi.595.1.xml",
+#'   eml = "./data/edi.595.1.xml", 
 #'   env = "staging")
 #' transaction
-#' #> [1] "create_163966765080210573"
+#' #> [1] "create_163966765080210573__edi.595.1"
 #' 
 #' # Check creation status
 #' status <- check_status_create(
 #'   transaction = transaction, 
-#'   packageId = "edi.595.1",
 #'   env = "staging")
 #' status
 #' #> [1] TRUE
@@ -36,40 +34,28 @@
 #' logout()
 #' }
 #'
-check_status_create <- function(transaction, 
-                                packageId, 
-                                wait = TRUE, 
-                                env = "production") {
-  browser()
-  url <- paste0(base_url(env), "/package/eml/",
-                paste(parse_packageId(packageId), collapse = "/"))
-  cookie <- bake_cookie()
-  resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
-  
-  if ((resp$status_code != 404) & (resp$status_code != 200)) {
-    res <- httr::content(resp, as = "text", encoding = "UTF-8")
-    httr::stop_for_status(resp, res)
-  }
-  
+check_status_create <- function(transaction, wait = TRUE, env = "production") {
+  packageId <- unlist(strsplit(transaction, "__"))[2]
+  transaction <- unlist(strsplit(transaction, "__"))[1]
   if (wait) {
     while (TRUE) {
       Sys.sleep(2)
       read_data_package_error(transaction, env)
-      url <- paste0(base_url(env), "/package/eml/",
+      url <- paste0(base_url(env), "/package/report/eml/",
                     paste(parse_packageId(packageId), collapse = "/"))
       cookie <- bake_cookie()
       resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
-      if (resp$status == "200") {
+      if (resp$status_code == "200") {
         return(TRUE)
       }
     }
   } else {
     read_data_package_error(transaction, env)
-    url <- paste0(base_url(env), "/package/eml/",
+    url <- paste0(base_url(env), "/package/report/eml/",
                   paste(parse_packageId(packageId), collapse = "/"))
     cookie <- bake_cookie()
     resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
-    if (resp$status == "200") {
+    if (resp$status_code == "200") {
       return(TRUE)
     } else {
       return(FALSE)

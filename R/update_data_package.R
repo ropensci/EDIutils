@@ -22,12 +22,11 @@
 #'   eml = "./data/edi.595.2.xml", 
 #'   env = "staging")
 #' transaction
-#' #> [1] "update_edi.595_163966788658131920"
+#' #> [1] "update_edi.595_163966788658131920__edi.595.2"
 #' 
 #' # Check update status
 #' status <- check_status_update(
 #'   transaction = transaction, 
-#'   packageId = "edi.595.2", 
 #'   env = "staging")
 #' status
 #' #> [1] TRUE
@@ -51,5 +50,7 @@ update_data_package <- function(eml, useChecksum = FALSE, env = "production"){
                     body = httr::upload_file(eml))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
+  packageId <- tools::file_path_sans_ext(basename(eml))
+  res <- paste0(res, "__", packageId)
   return(res)
 }

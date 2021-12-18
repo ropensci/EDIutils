@@ -35,12 +35,11 @@ transaction <- update_data_package(
   eml = "./data/edi.595.2.xml", 
   env = "staging")
 transaction
-#> [1] "update_edi.595_163966788658131920"
+#> [1] "update_edi.595_163966788658131920__edi.595.2"
 
 # Check update status
 status <- check_status_update(
   transaction = transaction, 
-  packageId = "edi.595.2", 
   env = "staging")
 status
 #> [1] TRUE

@@ -1,7 +1,6 @@
 #' Check data package update status
 #'
 #' @param transaction (character) Transaction identifier
-#' @param packageId (character) Data package identifier
 #' @param wait (logical) Wait for evaluation to complete? See details below.
 #' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
@@ -23,12 +22,11 @@
 #'   eml = "./data/edi.595.2.xml", 
 #'   env = "staging")
 #' transaction
-#' #> [1] "update_edi.595_163966788658131920"
+#' #> [1] "update_edi.595_163966788658131920__edi.595.2"
 #' 
 #' # Check update status
 #' status <- check_status_update(
 #'   transaction = transaction, 
-#'   packageId = "edi.595.2", 
 #'   env = "staging")
 #' status
 #' #> [1] TRUE
@@ -36,32 +34,28 @@
 #' logout()
 #' }
 #'
-check_status_update <- function(transaction, packageId, wait = TRUE, env = "production") {
+check_status_update <- function(transaction, wait = TRUE, env = "production") {
+  packageId <- unlist(strsplit(transaction, "__"))[2]
+  transaction <- unlist(strsplit(transaction, "__"))[1]
   if (wait) {
     while (TRUE) {
       Sys.sleep(2)
       read_data_package_error(transaction, env)
-      url <- paste0(base_url(env), "/package/eml/",
+      url <- paste0(base_url(env), "/package/report/eml/",
                     paste(parse_packageId(packageId), collapse = "/"))
       cookie <- bake_cookie()
       resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
-      # res <- httr::content(resp, as = "text", encoding = "UTF-8")
-      # httr::stop_for_status(resp, res)
-      if (resp$status == "200") {
+      if (resp$status_code == "200") {
         return(TRUE)
-      } else {
-        # return(FALSE)
       }
     }
   } else {
     read_data_package_error(transaction, env)
-    url <- paste0(base_url(env), "/package/eml/",
+    url <- paste0(base_url(env), "/package/report/eml/",
                   paste(parse_packageId(packageId), collapse = "/"))
     cookie <- bake_cookie()
     resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
-    # res <- httr::content(resp, as = "text", encoding = "UTF-8")
-    # httr::stop_for_status(resp, res)
-    if (resp$status == "200") {
+    if (resp$status_code == "200") {
       return(TRUE)
     } else {
       return(FALSE)

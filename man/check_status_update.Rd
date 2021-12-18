@@ -4,12 +4,10 @@
 \alias{check_status_update}
 \title{Check data package update status}
 \usage{
-check_status_update(transaction, packageId, wait = TRUE, env = "production")
+check_status_update(transaction, wait = TRUE, env = "production")
 }
 \arguments{
 \item{transaction}{(character) Transaction identifier}
-
-\item{packageId}{(character) Data package identifier}
 
 \item{wait}{(logical) Wait for evaluation to complete? See details below.}
 
@@ -37,12 +35,11 @@ transaction <- update_data_package(
   eml = "./data/edi.595.2.xml", 
   env = "staging")
 transaction
-#> [1] "update_edi.595_163966788658131920"
+#> [1] "update_edi.595_163966788658131920__edi.595.2"
 
 # Check update status
 status <- check_status_update(
   transaction = transaction, 
-  packageId = "edi.595.2", 
   env = "staging")
 status
 #> [1] TRUE

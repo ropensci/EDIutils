@@ -33,12 +33,11 @@ transaction <- create_data_package(
   eml = "./data/edi.595.1.xml", 
   env = "staging")
 transaction
-#> [1] "create_163966765080210573"
+#> [1] "create_163966765080210573__edi.595.1"
 
 # Check creation status
 status <- check_status_create(
   transaction = transaction, 
-  packageId = "edi.595.1", 
   env = "staging")
 status
 #> [1] TRUE
