@@ -6,5 +6,5 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^_pkgdown\.yml$
-^doc$
+^docs$
 ^cran-comments\.md$
