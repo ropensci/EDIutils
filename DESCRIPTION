@@ -7,12 +7,13 @@ Imports:
     curl,
     httr,
     xml2
-License: MIT License
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
+    readr,
     rmarkdown,
     roxygen2,
     testthat

@@ -1,7 +1,7 @@
 #' Delete event subscription
 #'
 #' @param subscriptionId (numeric) Event subscription identifier
-#' @param packageId (character) Data package identifier
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #' 
 #' @return (logical) TRUE if the event subscription was deleted
 #' 

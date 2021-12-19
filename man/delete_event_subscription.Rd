@@ -9,7 +9,7 @@ delete_event_subscription(subscriptionId, env = "production")
 \arguments{
 \item{subscriptionId}{(numeric) Event subscription identifier}
 
-\item{packageId}{(character) Data package identifier}
+\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
 (logical) TRUE if the event subscription was deleted

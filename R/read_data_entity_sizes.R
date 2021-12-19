@@ -18,7 +18,7 @@ read_data_entity_sizes <- function(packageId, env = "production") {
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
-  df <- read.csv(text = res, as.is = TRUE, header = FALSE)
+  df <- utils::read.csv(text = res, as.is = TRUE, header = FALSE)
   names(df) <- c("entityId", "size")
   return(df)
 }

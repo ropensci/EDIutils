@@ -297,7 +297,7 @@ skip_if_missing_eml_config <- function() {
 #' @noRd
 #' 
 text2char <- function(txt) {
-  res <- read.csv(
+  res <- utils::read.csv(
     text = txt, 
     as.is = TRUE, 
     colClasses = "character", 
