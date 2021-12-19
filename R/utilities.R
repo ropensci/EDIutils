@@ -1,6 +1,8 @@
 #' Create authentication cookie for EDI repository Gatekeeper
 #'
 #' @return (request) The request object returned by \code{httr::set_cookies()} with the EDI repository authentication token baked in. Yum!
+#' 
+#' @noRd
 #'
 bake_cookie <- function() {
   token <- Sys.getenv("EDI_TOKEN")
@@ -29,9 +31,9 @@ bake_cookie <- function() {
 #'
 #' @return Environmental variables \code{EDI_USERID = userId} and \code{EDI_TEST_URL = url}
 #' 
-#' @details 
+#' @details The results of this function are used to create a test EML file for create, update, and delete tests.
 #' 
-#' The results of this function are used to create a test EML file for create, update, and delete tests.
+#' @noRd
 #'
 config_test_eml <- function(userId, url) {
   Sys.setenv(EDI_USERID = userId)
@@ -86,6 +88,8 @@ create_test_eml <- function(path, packageId) {
 #' 
 #' @return (character) Data package ID of the form "scope.identifier.revision".
 #' 
+#' @noRd
+#' 
 get_test_package <- function() {
   id <- list_data_package_identifiers("edi", "staging")[1]
   rev <- list_data_package_revisions("edi", id, "newest", "staging")
@@ -104,6 +108,8 @@ get_test_package <- function() {
 #' @param package.id (character) Data packageId
 #'
 #' @return (list) Data package scope, identifier, and revision
+#' 
+#' @noRd
 #' 
 parse_packageId <- function(package.id) {
   parts <- unlist(strsplit(package.id, ".", fixed = TRUE))
@@ -224,6 +230,8 @@ report2char <- function(qualityReport, full = TRUE, env) {
 #' 
 #' @return (request) EDIutils user agent
 #' 
+#' @noRd
+#' 
 set_user_agent <- function() {
   res <- httr::user_agent("https://github.com/EDIorg/EDIutils")
   return(res)
@@ -238,6 +246,8 @@ set_user_agent <- function() {
 #' Skip tests when logged out
 #'
 #' @details Facilitates testing of functions requiring authentication
+#' 
+#' @noRd
 #' 
 skip_if_logged_out <- function() {
   if (Sys.getenv("EDI_TOKEN") != "") {
@@ -256,6 +266,8 @@ skip_if_logged_out <- function() {
 #' Skip tests when EML configuration is missing
 #'
 #' @details Facilitates testing create, update, and delete for a test data package
+#' 
+#' @noRd
 #' 
 skip_if_missing_eml_config <- function() {
   has_userid <- Sys.getenv("EDI_USERID") != ""
@@ -282,6 +294,8 @@ skip_if_missing_eml_config <- function() {
 #'
 #' @return (character) \code{txt} converted to character vector
 #' 
+#' @noRd
+#' 
 text2char <- function(txt) {
   res <- read.csv(
     text = txt, 
@@ -301,6 +315,8 @@ text2char <- function(txt) {
 #' Construct base URL of the EDI repository web services
 #'
 #' @param env (character) Data repository environment to perform the evaluation in. Can be: 'development', 'staging', 'production'.
+#' 
+#' @noRd
 #'
 base_url <- function(env){
   env <- tolower(env)
