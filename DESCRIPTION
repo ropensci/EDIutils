@@ -2,18 +2,19 @@ Package: EDIutils
 Title: An API Client for the Environmental Data Initiative Repository
 Version: 0.0.0.9000
 Authors@R: person("Colin", "Smith", email = "colin.smith@wisc.edu", role = c("aut", "cre"), comment = "https://orcid.org/0000-0003-2261-9931")
-Description: The EDI Data Repository (https://portal.edirepository.org/nis/home.jsp) is for the archive and reuse of ecological data, emphasizing data quality and information rich metadata. EDIutils includes functions to search the repository, retrieve metadata, download files, and more.
+Description: The EDI Data Repository (<https://portal.edirepository.org/nis/home.jsp>) is for the archive and reuse of ecological data, emphasizing data quality and information rich metadata. EDIutils includes functions to search the repository, retrieve metadata, download files, and more.
 Imports: 
-    curl (>= 3.0.0),
-    httr (>= 1.3.1),
-    xml2 (>= 1.1.1)
+    curl,
+    httr,
+    xml2
 License: MIT License
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
 Suggests: 
-    rmarkdown,
     knitr,
+    rmarkdown,
+    roxygen2,
     testthat
 URL: https://github.com/EDIorg/EDIutils, https://ediorg.github.io/EDIutils/
 BugReports: https://github.com/EDIorg/EDIutils/issues
