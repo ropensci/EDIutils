@@ -2,7 +2,7 @@
 title: "Repository Overview"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Overview of the EDI Repository}
+  %\VignetteIndexEntry{Repository Overview}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

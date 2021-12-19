@@ -29,15 +29,15 @@ login()
 
 # Evaluate data package
 transaction <- evaluate_data_package(
-  eml = "./data/edi.595.1.xml",
-  env = "staging")
+ eml = "./data/edi.595.1.xml",
+ env = "staging")
 transaction
 #> [1] "evaluate_163966785813042760"
 
 # Read as XML
 qualityReport <- read_evaluate_report(
-  transaction = transaction, 
-  env = "staging")
+ transaction = transaction, 
+ env = "staging")
 qualityReport
 #> {xml_document}
 #> <qualityReport schemaLocation="eml://ecoinformatics.org/qualityReport ...
@@ -50,20 +50,20 @@ qualityReport
 
 # Read as HTML
 qualityReport <- read_evaluate_report(
-  transaction = transaction, 
-  frmt = "html", 
-  env = "staging")
+ transaction = transaction, 
+ frmt = "html", 
+ env = "staging")
 qualityReport
-#' {html_document}
-#' <html>
-#' [1] <body><table xmlns:qr="eml://ecoinformatics.org/qualityReport">< ...
+#> {html_document}
+#> <html>
+#> [1] <body><table xmlns:qr="eml://ecoinformatics.org/qualityReport">< ...
 
 # Read as character
 qualityReport <- read_evaluate_report(
-  transaction = transaction, 
-  frmt = "char", 
-  env = "staging")
-writeLines(qualityReport, "./data/report.txt"))
+ transaction = transaction, 
+ frmt = "char", 
+ env = "staging")
+writeLines(qualityReport, "./data/report.txt")
 
 logout()
 }

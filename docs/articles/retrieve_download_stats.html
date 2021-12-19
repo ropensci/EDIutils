@@ -68,6 +68,9 @@
     <li>
       <a href="../articles/authentication.html">Authentication</a>
     </li>
+    <li>
+      <a href="../articles/tests_requiring_authentication.html">Tests Requiring Authentication</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -106,8 +109,8 @@
 
     
     
-<p>The EDIutils package provides R wrappers to the PASTA REST API functions.</p>
-<p>This vignette demonstrates how to query PASTA for dataset download statistics. These stats may be used in reports or further processed to understand data user behavior.</p>
+<p>The EDIutils package provides R wrappers to the EDI data repository REST API functions.</p>
+<p>This vignette demonstrates how to query the EDI repository for dataset download statistics. These stats may be used in reports or further processed to understand data user behavior.</p>
 <div id="set-up-the-r-environment" class="section level4">
 <h4 class="hasAnchor">
 <a href="#set-up-the-r-environment" class="anchor"></a>Set up the R environment</h4>
@@ -134,7 +137,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     date, intersect, setdiff, union</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
-<p>Several PASTA REST API functions return XML, <code>xml2</code> is a convenient package to extract desired information and to save returned EML files locally.</p>
+<p>Several EDI API functions return XML, <code>xml2</code> is a convenient package to extract desired information and to save returned EML files locally.</p>
 </div>
 <div id="get-the-audit-report-for-downloaded-data-entities" class="section level4">
 <h4 class="hasAnchor">

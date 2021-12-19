@@ -68,6 +68,9 @@
     <li>
       <a href="../articles/authentication.html">Authentication</a>
     </li>
+    <li>
+      <a href="../articles/tests_requiring_authentication.html">Tests Requiring Authentication</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -106,8 +109,8 @@
 
     
     
-<p>The EDIutils package provides R wrappers to the PASTA REST API functions.</p>
-<p>This vignette demonstrates how to query PASTA for the newest EML metadata for an LTER site using the scope or using a keyword. The EML files may then be used to analyze their content or update metadata.</p>
+<p>The EDIutils package provides R wrappers to the EDI data repository REST API functions.</p>
+<p>This vignette demonstrates how to query the EDI repository for the newest EML metadata for an LTER site using the scope or using a keyword. The EML files may then be used to analyze their content or update metadata.</p>
 <div id="set-up-the-r-environment" class="section level4">
 <h4 class="hasAnchor">
 <a href="#set-up-the-r-environment" class="anchor"></a>Set up the R environment</h4>
@@ -117,22 +120,22 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EDIorg/EDIutils">EDIutils</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://xml2.r-lib.org/">xml2</a></span><span class="op">)</span></code></pre></div>
-<p>Several PASTA REST API functions return XML, <code>xml2</code> is a convenient package to extract desired information and to save returned EML files locally.</p>
+<p>Several EDI API functions return XML, <code>xml2</code> is a convenient package to extract desired information and to save returned EML files locally.</p>
 </div>
 <div id="search-for-datasets-by-using-the-lter-site-scope" class="section level2">
 <h2 class="hasAnchor">
 <a href="#search-for-datasets-by-using-the-lter-site-scope" class="anchor"></a>Search for datasets by using the LTER site scope</h2>
 <p>NTL will be used as example throughout, change to different scope.</p>
-<div id="query-pasta-for-all-data-package-ids-in-a-certain-scope-" class="section level4">
+<div id="query-edi-for-all-data-package-ids-in-a-certain-scope-" class="section level4">
 <h4 class="hasAnchor">
-<a href="#query-pasta-for-all-data-package-ids-in-a-certain-scope-" class="anchor"></a>Query PASTA for all data package IDs in a certain scope.</h4>
+<a href="#query-edi-for-all-data-package-ids-in-a-certain-scope-" class="anchor"></a>Query EDI for all data package IDs in a certain scope.</h4>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">scope</span> <span class="op">&lt;-</span> <span class="st">"knb-lter-ntl"</span>
 <span class="va">identifiers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_data_package_identifiers.html">list_data_package_identifiers</a></span><span class="op">(</span>scope <span class="op">=</span> <span class="va">scope</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="query-pasta-for-the-latest-revision-of-each-data-package" class="section level4">
+<div id="query-edi-for-the-latest-revision-of-each-data-package" class="section level4">
 <h4 class="hasAnchor">
-<a href="#query-pasta-for-the-latest-revision-of-each-data-package" class="anchor"></a>Query PASTA for the latest revision of each data package</h4>
+<a href="#query-edi-for-the-latest-revision-of-each-data-package" class="anchor"></a>Query EDI for the latest revision of each data package</h4>
 <p>Build the correct metadata ID and save in a vector in the format of, e.g. knb-lter-ntl.1.52</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">package_ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">)</span>
@@ -149,9 +152,9 @@
 <h2 class="hasAnchor">
 <a href="#search-for-datasets-by-using-a-keyword" class="anchor"></a>Search for datasets by using a keyword</h2>
 <p>In this example the search is for the keyword “Trout Lake Station”.</p>
-<div id="query-pasta-for-data-packages-based-on-a-keyword" class="section level4">
+<div id="query-edi-for-data-packages-based-on-a-keyword" class="section level4">
 <h4 class="hasAnchor">
-<a href="#query-pasta-for-data-packages-based-on-a-keyword" class="anchor"></a>Query PASTA for data packages based on a keyword</h4>
+<a href="#query-edi-for-data-packages-based-on-a-keyword" class="anchor"></a>Query EDI for data packages based on a keyword</h4>
 <p>Determine how many datasets were found and set the return limits accordingly in the query parameters. Then search returns the latest package IDs as an XML file.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">query</span> <span class="op">&lt;-</span> <span class="st">'q=%22Trout+Lake+Station%22&amp;fl=packageid'</span>

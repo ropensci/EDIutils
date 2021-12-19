@@ -10,7 +10,9 @@ reference:
     - evaluate_data_package
     - create_data_package
     - update_data_package
-    - delete_data_package
+    - check_status_evaluate
+    - check_status_create
+    - check_status_update
     
   - title: Browse and Discovery
     desc: Describes web service methods for browsing and discovering data packages.
@@ -113,7 +115,12 @@ reference:
     - get_docid_reads
     - get_packageid_reads
     - get_recent_uploads
-    
+  
+  - title: Authentication
+    desc: Functions for handling repository authentication
+    contents:
+    - login
+    - logout
 
 navbar:
   title: ~
