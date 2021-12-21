@@ -1,7 +1,9 @@
 Package: EDIutils
 Title: An API Client for the Environmental Data Initiative Repository
 Version: 0.0.0.9000
-Authors@R: person("Colin", "Smith", email = "colin.smith@wisc.edu", role = c("aut", "cre"), comment = "https://orcid.org/0000-0003-2261-9931")
+Authors@R: 
+    c(person("Colin", "Smith", email = "colin.smith@wisc.edu", role = c("aut", "cre"), comment = "https://orcid.org/0000-0003-2261-9931"),
+    person("Corinna", "Gries", role = "ctb", comment = "0000-0002-9091-6543"))
 Description: The EDI Data Repository (<https://portal.edirepository.org/nis/home.jsp>) is for the archive and reuse of ecological data, emphasizing data quality and information rich metadata. EDIutils includes functions to search the repository, retrieve metadata, download files, and more.
 Imports: 
     curl,
