@@ -22,6 +22,62 @@ bake_cookie <- function() {
 
 
 
+#' Construct base URL of the EDI repository web services
+#'
+#' @param env (character) Data repository environment to perform the evaluation in. Can be: 'development', 'staging', 'production'.
+#' 
+#' @return (character) Base url
+#' 
+#' @noRd
+#'
+base_url <- function(env){
+  env <- tolower(env)
+  if (env == 'development'){
+    res <- 'https://pasta-d.lternet.edu'
+  } else if (env == 'staging'){
+    res <- 'https://pasta-s.lternet.edu'
+  } else if (env == 'production'){
+    res <- 'https://pasta.lternet.edu'
+  }
+  return(res)
+}
+
+
+
+
+
+
+
+
+#' Construct base URL of the EDI repository data portal
+#'
+#' @param env (character) Data repository environment to perform the evaluation in. Can be: 'development', 'staging', 'production'.
+#' 
+#' @return (character) Base url
+#' 
+#' @noRd
+#'
+base_url_portal <- function(env){
+  env <- tolower(env)
+  if (env == 'development'){
+    res <- 'https://portal-d.edirepository.org'
+  } else if (env == 'staging'){
+    res <- 'https://portal-s.edirepository.org'
+  } else if (env == 'production'){
+    res <- 'https://portal.edirepository.org'
+  }
+  return(res)
+}
+
+
+
+
+
+
+
+
+
+
 #' Set environment variables for testing data package evaluation and upload
 #' 
 #' @description Testing data package evaluation and upload requires a web accessible data object, EML metadata describing the data object, and an EDI repository user account. Use of this function presupposes the data object has been stashed
@@ -302,30 +358,5 @@ text2char <- function(txt) {
     as.is = TRUE, 
     colClasses = "character", 
     header = FALSE)[[1]]
-  return(res)
-}
-
-
-
-
-
-
-
-
-#' Construct base URL of the EDI repository web services
-#'
-#' @param env (character) Data repository environment to perform the evaluation in. Can be: 'development', 'staging', 'production'.
-#' 
-#' @noRd
-#'
-base_url <- function(env){
-  env <- tolower(env)
-  if (env == 'development'){
-    res <- 'https://pasta-d.lternet.edu'
-  } else if (env == 'staging'){
-    res <- 'https://pasta-s.lternet.edu'
-  } else if (env == 'production'){
-    res <- 'https://pasta.lternet.edu'
-  }
   return(res)
 }
