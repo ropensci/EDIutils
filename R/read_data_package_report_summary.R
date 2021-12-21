@@ -16,10 +16,8 @@ read_data_package_report_summary <- function(packageId,
                                              with_exceptions = TRUE, 
                                              env = "production") {
   qualityReport <- read_data_package_report(packageId, env = env)
-  res <- report2char(qualityReport, full = FALSE, env = env)[1]
-  res <- paste0(res, "Landing page: ", 
-                read_data_package_landing_page_url(packageId, env), "\n\n")
-  message(res)
+  res <- report2char(qualityReport, full = FALSE, env = env)
+  message(res[1])
   if (with_exceptions) {
     any_warn <- !grepl("Warn: 0", res[1])
     any_error <- !grepl("Error: 0", res[1])

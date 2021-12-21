@@ -47,10 +47,8 @@ read_evaluate_report_summary <- function(transaction,
                                          with_exceptions = TRUE, 
                                          env = "production") {
   qualityReport <- read_evaluate_report(transaction, env = env)
-  res <- report2char(qualityReport, full = FALSE, env = env)[1]
-  res <- paste0(res, "Landing page: ", 
-                read_data_package_landing_page_url(packageId, env), "\n\n")
-  message(res)
+  res <- report2char(qualityReport, full = FALSE, env = env)
+  message(res[1])
   if (with_exceptions) {
     any_warn <- !grepl("Warn: 0", res[1])
     any_error <- !grepl("Error: 0", res[1])
