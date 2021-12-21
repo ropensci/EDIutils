@@ -1,5 +1,10 @@
 # Contributing Guidelines
 
+## Scope
+
+1. Interface for all EDI data repository web services.
+2. Simplify common user tasks (e.g. publication, reuse, reporting).
+
 ## git structure
 
 The active branch is `development`. `development` is merged into `main` for releases. Please submit your pull requests to `development`.
@@ -28,8 +33,3 @@ take more than a few seconds to execute.
 
 Likewise, the README.md file in the base directory should not be edited directly. This file is created automatically from code that runs the examples shown, helping to ensure that they are functioning as advertised and consistent with the package README vignette. Instead, edit the `README.Rmd` source file `pkgdown::build_home()` to build
 the README.
-
-## General Development Goals & Guidelines
-
-1. Interface for all EDI data repository web services.
-2. Simplify common user tasks (e.g. publication, reuse, reporting).
