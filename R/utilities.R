@@ -180,6 +180,29 @@ parse_packageId <- function(package.id) {
 
 
 
+#' Read data package landing page URL
+#'
+#' @param packageId (character) Package identifier, of the form "scope.identifier.revision", for the new EML file
+#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
+#'
+#' @return (character) URL of \code{packageId} landing page in the EDI repository data portal
+#' 
+#' @noRd
+#'
+read_data_package_landing_page_url <- function(packageId, env = "production") {
+  parts <- parse_packageId(packageId)
+  res <- paste0(base_url_portal(env), "/nis/mapbrowse?scope=", parts$scope,
+                "&identifier=", parts$id, "&revision=", parts$rev)
+  return(res)
+}
+
+
+
+
+
+
+
+
 #' Parse the evaluate quality report to a character string
 #'
 #' @param qualityReport (xml_document) Evaluate quality report document
