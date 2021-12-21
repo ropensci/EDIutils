@@ -1,8 +1,8 @@
 ---
-title: "Publish Data"
+title: "Evaluate and Upload Data"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Publish Data}
+  %\VignetteIndexEntry{Evaluate and Upload Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

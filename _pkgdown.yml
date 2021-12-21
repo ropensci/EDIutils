@@ -130,20 +130,14 @@ navbar:
       href: reference/index.html
     - text: Articles
       menu:
-      - text: Repository Overview
-        href: articles/repository_overview.html
-      - text: Publish Data
+      - text: Search and Access Data
+        href: articles/search_and_access.html
+      - text: Evaluate and Upload Data
         href: articles/publish_data.html
-      - text: Download Data
-        href: articles/download_data.html
-      - text: Read Metadata
-        href: articles/read_eml_metadata.html
-      - text: Retrieve Citations
-        href: articles/retrieve_dataset_citation_stats.html
-      - text: Retrieve Downloads
-        href: articles/retrieve_dataset_citation_stats.html
-      - text: Authentication
-        href: articles/authentication.html
+      - text: Retrieve Download Metrics
+        href: articles/retrieve_downloads.html
+      - text: Retrieve Citation Metrics
+        href: articles/retrieve_citations.html
       - text: Tests Requiring Authentication
         href: articles/tests_requiring_authentication.html
     - text: News

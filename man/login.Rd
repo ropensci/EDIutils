@@ -39,14 +39,16 @@ If you may have shared your credentials, please contact EDI immediately at \emai
 \examples{
 \dontrun{
 
-# Login with arguments
-login(userId = "myname", userPass = "mysecret")
-
-# Login with config.txt
-login(config = "./data/config.txt")
-
-# Login at console
+# Interactively at the console
 login()
+#> User name: "my_name"
+#> User password: "my_secret"
+
+# Programmatically with function arguments
+login(userId = "my_name", userPass = "my_secret")
+
+# Programmatically with a file containing userId and userPass arguments
+login(config = "./data/config.txt")
 }
 
 }

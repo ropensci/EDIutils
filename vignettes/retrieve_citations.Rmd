@@ -1,10 +1,8 @@
 ---
-title: "Retrieving dataset citation stats"
-author: "Corinna Gries"
-date: "2021-11-05"
+title: "Retrieve Citation Metrics"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Retrieving dataset citation stats}
+  %\VignetteIndexEntry{Retrieve Citation Metrics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
