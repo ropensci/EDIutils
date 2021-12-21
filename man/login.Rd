@@ -7,7 +7,7 @@
 login(userId = NULL, userPass = NULL, config = NULL)
 }
 \arguments{
-\item{userId}{(character) User identifier of an EDI data repository account}
+\item{userId}{(character) User identifier of an EDI data repository account. If using}
 
 \item{userPass}{(character) Password of \code{userId}}
 
@@ -25,7 +25,16 @@ If \code{userId}, \code{userPass}, and \code{config} are NULL, the console will 
 \code{config}: Supplying credentials in a file named config.txt facilitates authentication within automated/unassisted processes. Contents of this file should be new line separated and have the form "<argument> = <value>" (e.g. userId = myname).
 }
 \note{
-Only works when authenticating with EDI credentials. Does not work for ORCiD, GitHub, or Google credentials.
+Only works when authenticating with EDI credentials. Does not work when authenticating with ORCiD, GitHub, or Google credentials.
+
+Be careful not to accidentally share your \code{userId} and \code{userPass}. Some tips to avoid this:
+\itemize{
+  \item Don't write code that explicitly lists your credentials.
+  \item Don't save your workspace when exiting an R session.
+  \item Do store your credentials as environmental variables and reference these.
+  \item Do use \code{config} but if using version control ensure the config.txt file is listed in your .gitignore.
+}
+If you may have shared your credentials, please contact EDI immediately at \email{support@environmentaldatainitiative.org}. They will be more than happy to reset your password.
 }
 \examples{
 \dontrun{
