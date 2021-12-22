@@ -7,18 +7,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+This vignette demonstrates how to query the EDI repository for data package download metrics. These stats may be used in reports or further processed to understand data user behavior.
 
-
-The EDIutils package provides R wrappers to the EDI data repository REST API functions. 
-
-This vignette demonstrates how to query the EDI repository for dataset download statistics. These stats may be used in reports or further processed to understand data user behavior.
-
-#### Set up the R environment
-
-```{r eval=FALSE}
-# This vignette uses a development version of EDIutils on the "cran" branch
-remotes::install_github("EDIorg/EDIutils", ref = "cran")
-```
+### Set up the R environment
 
 ```r
 library(EDIutils)
@@ -44,20 +35,17 @@ library(ggplot2)
 
 Several EDI API functions return XML, `xml2` is a convenient package to extract desired information and to save returned EML files locally.
 
+### Get the Audit Report for Downloaded Data Entities
 
-#### Get the audit report for downloaded data entities
-
-Accessing the audit report requires to be logged in with an EDI account. Google, git, or ORCID authentication will not work. The vignette accomplishes this with a .Renviron file in the project's root directory.
+Accessing the audit report requires authentication.
 
 In a text editor create the file `.Renviron` with the content:
 
+```{r eval=FALSE}
+login()
+#> User name: "my_name"
+#> User password: "my_secret"
 ```
-USERID=youruserid
-USERPW=yourpw
-
-```
-
-Then restart your R session as this file will only be loaded at startup.
 
 Setting the query parameters to get the desired audit report:
 
@@ -68,14 +56,10 @@ Setting the query parameters to get the desired audit report:
   - `toTime` (ISO time format) may be set as well
   - `limit` may be used to limit the number of records
   
-For more documentation see the [PASTA API Documentation](https://pasta.lternet.edu/audit/docs/api#GET%20:%20report)
+For more information on searchable fields see `get_audit_report()` documentation.
   
-The parameters need to be separated by an ampersand
-
-
-```r
-login(userId = Sys.getenv("USERID"), userPass = Sys.getenv("USERPW"))
-
+```{r eval=FALSE}
+# Construct the query
 query <- paste("category=info",
                "serviceMethod=readDataEntity",
                "resourceId=knb-lter-ntl",
@@ -83,15 +67,15 @@ query <- paste("category=info",
                "toTime=2021-10-19T00:00:00",
                sep = "&")
 
+# Get the report
 report_xml <- get_audit_report(query = query, env = "production")
 
 logout()
 ```
 
-#### Parse the returned XML
+### Parse the Report
 
 The returned XML has the format:
-
 
 ```xml
 <auditReport>
@@ -113,8 +97,7 @@ The returned XML has the format:
 
 ```
 
-Set up the data frame to hold date and packageID
-
+Set up the data frame to hold date and packageId
 
 ```r
 df_results <- data.frame(dl_date = as.Date(character()),
@@ -124,7 +107,7 @@ df_results <- data.frame(dl_date = as.Date(character()),
 ```
 
 
-Get the date and packageID
+Get the date and packageId
 
 
 ```r

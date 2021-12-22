@@ -7,32 +7,17 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
-
-The EDIutils package provides R wrappers to the EDI data repository API functions. 
-
 This vignette demonstrates how to query the EDI repository for journal articles that cite a certain dataset. These stats may be used in reports.
 
-#### Set up the R environment
-
-```{r eval=FALSE}
-# This vignette uses a development version of EDIutils on the "cran" branch
-remotes::install_github("EDIorg/EDIutils", ref = "cran")
-```
-
 ```r
+library(EDIutisl)
 library(EDIutils)
 library(xml2)
 ```
 
-
-Several EDI REST API functions return XML, `xml2` is a convenient package to extract desired information and to save returned EML files locally.
-
-
-#### Get the journal citation report for specific data packages
+### Get the Journal Citation Report for Specific Data Packages
 
 Get all identifiers for a certain scope
-
 
 ```r
 scope <- "edi"

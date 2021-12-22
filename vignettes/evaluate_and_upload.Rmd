@@ -18,24 +18,91 @@ knitr::opts_chunk$set(
 library(EDIutils)
 ```
 
+### Evaluate and Upload Data
+
+#### Create EML
+
+Evaluation and upload to the EDI repository requires data entities are described with EML metadata. There are many tools for creating EML, EDI supports two: [EMLassemblyline]() for programmatic workflows and [ezEML]() for a web form wizard.
+
+#### Authenticate
+
+Authentication is required by functions involving data evaluation and upload, audit report access, event notifications, and other account based features. Request an account with support@environmentaldatainitiative.org. There are three options for authenticating:
+
+```{r eval=FALSE}
+# Interactively at the console
+login()
+#> User name: "my_name"
+#> User password: "my_secret"
+
+# Programmatically with function arguments
+login(userId = "my_name", userPass = "my_secret")
+
+# Programmatically with a file containing userId and userPass arguments
+login(config = "./data/config.txt")
+```
+
+This function exchanges your credentials for a temporary authentication token (~10 hour) is written to the `EDI_USERID` system variable referenced by EDIutils functions.
+
+#### Evaluate
+
+Evaluation checks metadata accuracy and completeness. Use the "staging" environment (a sandbox test space) before publishing to "production".
+
+```{r eval=FALSE}
+
+# Evaluate data package
+transaction <- evaluate_data_package(
+ eml = "./data/edi.595.1.xml", 
+ env = "staging")
+transaction
+#> [1] "evaluate_163966785813042760"
+
+# Check status
+status <- check_status_evaluate(transaction, env = "staging")
+status
+#> [1] TRUE
+
+# Read the evaluation report
+report <- read_evaluate_report(transaction, frmt = "char", env = "staging")
+report
+```
 
 
-## Create Data Package
+#### Upload
 
-### What is a Data Package?
+Upload once errors and warnings are fixed. Use the "staging" environment to test rendering before uploading to "production".
 
-### Identifiers
+```{r eval=FALSE}
+# Create a new data package
+transaction <- create_data_package(
+ eml = "./data/edi.595.1.xml", 
+ env = "staging")
+transaction
+#> [1] "create_163966765080210573__edi.595.1"
 
-### Versioning
+# Check status
+status <- check_status_create(
+ transaction = transaction, 
+ env = "staging")
+status
+#> [1] TRUE
+```
 
-## Authentication
+#### Update
 
-## Evaluate Data Package
-- Environments
+Update is the same as upload, but with an incremented data package version number (e.g. edi.595.2 supersedes edi.595.1)
 
-### Quality Evaluation
-
-### Quality Evaluation Report
-
-## Upload Data Package
-- Environments
+```{r eval=FALSE}
+#' # Update data package
+#' transaction <- update_data_package(
+#'   eml = "./data/edi.595.2.xml", 
+#'   env = "staging")
+#' transaction
+#' #> [1] "update_edi.595_163966788658131920__edi.595.2"
+#' 
+#' # Check status
+#' status <- check_status_update(
+#'   transaction = transaction, 
+#'   env = "staging")
+#' status
+#' #> [1] TRUE
+```
