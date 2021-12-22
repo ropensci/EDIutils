@@ -34,7 +34,9 @@
 #' logout()
 #' }
 #'
-check_status_evaluate <- function(transaction, wait = TRUE, env = "production") {
+check_status_evaluate <- function(transaction, 
+                                  wait = TRUE, 
+                                  env = "production") {
   if (wait) {
     while (TRUE) {
       Sys.sleep(2)
@@ -42,8 +44,10 @@ check_status_evaluate <- function(transaction, wait = TRUE, env = "production") 
       url <- paste0(base_url(env), "/package/evaluate/report/eml/",
                     transaction)
       cookie <- bake_cookie()
-      resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
-      res <- httr::content(resp, as = "text", encoding = "UTF-8")
+      resp <- httr::GET(url, 
+                        set_user_agent(), 
+                        cookie, 
+                        handle = httr::handle(""))
       if (resp$status_code == "200") {
         return(TRUE)
       }

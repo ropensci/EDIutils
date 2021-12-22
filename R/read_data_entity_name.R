@@ -19,7 +19,7 @@
 #'   entityId = entityIds[1])
 #' entityName
 #'
-read_data_entity_name <- function(packageId, entityId, env = "production"){
+read_data_entity_name <- function(packageId, entityId, env = "production") {
   url <- paste0(base_url(env), "/package/name/eml/",
                 paste(parse_packageId(packageId), collapse = "/"), "/", 
                 entityId)

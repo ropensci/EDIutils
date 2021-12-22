@@ -12,7 +12,7 @@
 #' metadataFormat <- read_metadata_format("knb-lter-nwt.930.1")
 #' metadataFormat
 #'
-read_metadata_format <- function(packageId, env = "production"){
+read_metadata_format <- function(packageId, env = "production") {
   url <- paste0(base_url(env), "/package/metadata/format/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

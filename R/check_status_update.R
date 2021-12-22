@@ -44,7 +44,10 @@ check_status_update <- function(transaction, wait = TRUE, env = "production") {
       url <- paste0(base_url(env), "/package/report/eml/",
                     paste(parse_packageId(packageId), collapse = "/"))
       cookie <- bake_cookie()
-      resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
+      resp <- httr::GET(url, 
+                        set_user_agent(), 
+                        cookie, 
+                        handle = httr::handle(""))
       if (resp$status_code == "200") {
         return(TRUE)
       }
@@ -54,7 +57,10 @@ check_status_update <- function(transaction, wait = TRUE, env = "production") {
     url <- paste0(base_url(env), "/package/report/eml/",
                   paste(parse_packageId(packageId), collapse = "/"))
     cookie <- bake_cookie()
-    resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
+    resp <- httr::GET(url, 
+                      set_user_agent(), 
+                      cookie, 
+                      handle = httr::handle(""))
     if (resp$status_code == "200") {
       return(TRUE)
     } else {

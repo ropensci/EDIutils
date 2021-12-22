@@ -20,7 +20,6 @@
 #' xml2::xml_find_first(dataSources, "dataSource")
 #'
 list_data_sources <- function(packageId, env = "production") {
-  parts <- parse_packageId(packageId)
   url <- paste0(base_url(env), "/package/sources/eml/", 
                 paste(parse_packageId(packageId), collapse = "/"))
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

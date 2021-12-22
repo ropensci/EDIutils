@@ -14,7 +14,7 @@
 #' # Show first
 #' xml2::xml_find_first(reservations, "reservation")
 #'
-list_active_reservations <- function(env = "production"){
+list_active_reservations <- function(env = "production") {
   url <- paste0(base_url(env), "/package/reservations/eml")
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
