@@ -125,11 +125,15 @@ data
 
 ### Evaluate and Upload Data
 
-#### Create EML
+The EDI repository has a "staging" environment (a sandbox test space) to use before officially publishing in "production".
+
+#### Prerequisites
+
+##### Create EML
 
 Evaluation and upload to the EDI repository requires data entities are described with EML metadata. There are many tools for creating EML, EDI supports two: [EMLassemblyline]() for programmatic workflows and [ezEML]() for a web form wizard.
 
-#### Authenticate
+##### Authenticate
 
 Authentication is required by functions involving data evaluation and upload. Get an account from support@environmentaldatainitiative.org.
 
@@ -140,9 +144,20 @@ login()
 #> User password: "my_secret"
 ```
 
+##### Reserve Data Package ID
+
+Data package reservations prevent conflicting use of the same identifier. 
+
+```{r eval=FALSE}
+# Create reservation
+identifier <- create_reservation(scope = "edi", env = "staging")
+identifier
+#> [1] 595
+```
+
 #### Evaluate
 
-Evaluation checks metadata accuracy and completeness. Use the "staging" environment (a sandbox test space) before publishing to "production".
+Evaluation checks metadata accuracy and completeness.
 
 ```{r eval=FALSE}
 
@@ -166,7 +181,7 @@ report
 
 #### Upload
 
-Upload once errors and warnings are fixed. Use the "staging" environment to test rendering before uploading to "production".
+Upload once errors and warnings are fixed.
 
 ```{r eval=FALSE}
 # Create a new data package
@@ -184,25 +199,7 @@ status
 #> [1] TRUE
 ```
 
-#### Update
-
-Update is the same as upload, but with an incremented data package version number (e.g. edi.595.2 supersedes edi.595.1)
-
-```{r eval=FALSE}
-#' # Update data package
-#' transaction <- update_data_package(
-#'   eml = "./data/edi.595.2.xml", 
-#'   env = "staging")
-#' transaction
-#' #> [1] "update_edi.595_163966788658131920__edi.595.2"
-#' 
-#' # Check status
-#' status <- check_status_update(
-#'   transaction = transaction, 
-#'   env = "staging")
-#' status
-#' #> [1] TRUE
-```
+If everything looks good in the "staging" environment, and you're ready to publish, then repeat the above reservation and upload steps but this time in the "production" environment. 
 
 ## Getting help
 
