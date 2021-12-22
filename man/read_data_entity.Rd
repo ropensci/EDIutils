@@ -20,12 +20,12 @@ read_data_entity(packageId, entityId, env = "production")
 Read data entity
 }
 \examples{
-# Get data entity
-entityId <- list_data_entities(packageId = "edi.993.1")
-entityId
+# Read names and IDs of data entities in package "edi.1047.1"
+res <- read_data_entity_names(packageId = "edi.1047.1")
+res
 
-# Read raw bytes
-raw <- read_data_entity(packageId = "edi.993.1", entityId = entityId)
+# Read raw bytes of the 3rd data entity
+raw <- read_data_entity(packageId = "edi.1047.1", entityId = res$entityId[3])
 head(raw)
 
 # Parse with .csv reader
