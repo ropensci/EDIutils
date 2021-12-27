@@ -12,6 +12,9 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 [![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/master/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
 <!-- badges: end -->
 
+*NOTE: This version breaks back compatibility. Install the previous
+version from the `deprecated` branch:*
+
 A client for the Environmental Data Initiative repository REST API. The
 [EDI data repository](https://portal.edirepository.org/nis/home.jsp) is
 for publication and reuse of ecological data with emphasis on metadata
@@ -29,7 +32,7 @@ and upload new data, and assist with common data management tasks.
 
 ## Installation
 
-Get the latest development version:
+Get the latest version:
 
 ``` r
 # Requires the remotes package
@@ -60,10 +63,11 @@ package “edi.100” and has version “2”).
 
 ### Search and Access Data
 
-#### Search
-
 The repository search service is a standard deployment of Apache Solr
-and indexes select metadata fields of data package metadata.
+and indexes select metadata fields of data package metadata. For a list
+of searchable fields see `search_data_packages()`. For a browser based
+search experience, use the [EDI data
+portal](https://portal.edirepository.org/nis/advancedSearch.jsp).
 
 ``` r
 # List data packages containing the term "water temperature"
@@ -82,13 +86,6 @@ res
 #>  [9] <document>\n  <abstract>As part of the Long Term Ecologic ...
 #> [10] <document>\n  <abstract>Year 2016, continuous measurement ...
 ```
-
-For a list of searchable fields see `search_data_packages()`. For a
-browser based search experience, use the [EDI data
-portal](https://portal.edirepository.org/nis/advancedSearch.jsp) of the
-EDI data portal.
-
-#### Access
 
 Downloaded data objects in raw bytes and parse with your favorite
 reader.
@@ -135,22 +132,13 @@ data
 
 ### Evaluate and Upload Data
 
-The EDI repository has a “staging” environment (a sandbox test space) to
-use before officially publishing in “production”.
-
-#### Prerequisites
-
-##### Create EML
-
-Evaluation and upload to the EDI repository requires data entities are
-described with EML metadata. There are many tools for creating EML, EDI
-supports two: [EMLassemblyline]() for programmatic workflows and
-[ezEML]() for a web form wizard.
-
-##### Authenticate
+*The EDI repository has a “staging” environment to test the upload and
+rendering of new data packages before officially publishing in
+“production”.*
 
 Authentication is required by functions involving data evaluation and
-upload. Get an account from <support@environmentaldatainitiative.org>.
+upload. Submit account requests to
+<support@environmentaldatainitiative.org>.
 
 ``` r
 # Authenticate
@@ -158,8 +146,6 @@ login()
 #> User name: "my_name"
 #> User password: "my_secret"
 ```
-
-##### Reserve Data Package ID
 
 Data package reservations prevent conflicting use of the same
 identifier.
@@ -170,8 +156,6 @@ identifier <- create_reservation(scope = "edi", env = "staging")
 identifier
 #> [1] 595
 ```
-
-#### Evaluate
 
 Evaluation checks metadata accuracy and completeness.
 
@@ -193,8 +177,6 @@ status
 report <- read_evaluate_report(transaction, frmt = "char", env = "staging")
 report
 ```
-
-#### Upload
 
 Upload once errors and warnings are fixed.
 

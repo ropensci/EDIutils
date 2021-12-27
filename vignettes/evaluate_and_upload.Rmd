@@ -20,7 +20,7 @@ library(EDIutils)
 
 ### Evaluate and Upload Data
 
-The EDI repository has a "staging" environment (a sandbox test space) to use before publishing to "production".
+_The EDI repository has a "staging" environment to test the upload and rendering of new data packages before officially publishing in "production"._
 
 #### Prerequisites
 

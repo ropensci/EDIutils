@@ -22,6 +22,8 @@ knitr::opts_chunk$set(
 [![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/master/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
 <!-- badges: end -->
 
+_NOTE: This version breaks back compatibility. Install the previous version from the `deprecated` branch:_
+
 A client for the Environmental Data Initiative repository REST API. The [EDI data repository](https://portal.edirepository.org/nis/home.jsp) is for publication and reuse of ecological data with emphasis on metadata accuracy and completeness. It was developed in collaboration with the [US LTER Network](https://lternet.edu/) and is built upon the [PASTA+ software stack](https://pastaplus-core.readthedocs.io/en/latest/index.html#). EDIutils includes functions to search and access existing data, evaluate and upload new data, and assist with common data management tasks.
 
 - [Search and Access Data]()
@@ -31,7 +33,7 @@ A client for the Environmental Data Initiative repository REST API. The [EDI dat
 
 ## Installation
 
-Get the latest development version:
+Get the latest version:
 ```{r eval=FALSE}
 # Requires the remotes package
 install.packages("remotes")
@@ -53,9 +55,7 @@ The unit of publication is the data package. It contains one or more data object
 
 ### Search and Access Data
 
-#### Search
-
-The repository search service is a standard deployment of Apache Solr and indexes select metadata fields of data package metadata.
+The repository search service is a standard deployment of Apache Solr and indexes select metadata fields of data package metadata. For a list of searchable fields see `search_data_packages()`. For a browser based search experience, use the [EDI data portal](https://portal.edirepository.org/nis/advancedSearch.jsp).
 
 ```{r eval=FALSE}
 # List data packages containing the term "water temperature"
@@ -74,10 +74,6 @@ res
 #>  [9] <document>\n  <abstract>As part of the Long Term Ecologic ...
 #> [10] <document>\n  <abstract>Year 2016, continuous measurement ...
 ```
-
-For a list of searchable fields see `search_data_packages()`. For a browser based search experience, use the [EDI data portal](https://portal.edirepository.org/nis/advancedSearch.jsp) of the EDI data portal.
-
-#### Access
 
 Downloaded data objects in raw bytes and parse with your favorite reader.
 
@@ -123,17 +119,9 @@ data
 
 ### Evaluate and Upload Data
 
-The EDI repository has a "staging" environment (a sandbox test space) to use before officially publishing in "production".
+_The EDI repository has a "staging" environment to test the upload and rendering of new data packages before officially publishing in "production"._
 
-#### Prerequisites
-
-##### Create EML
-
-Evaluation and upload to the EDI repository requires data entities are described with EML metadata. There are many tools for creating EML, EDI supports two: [EMLassemblyline]() for programmatic workflows and [ezEML]() for a web form wizard.
-
-##### Authenticate
-
-Authentication is required by functions involving data evaluation and upload. Get an account from support@environmentaldatainitiative.org.
+Authentication is required by functions involving data evaluation and upload. Submit account requests to support@environmentaldatainitiative.org.
 
 ```{r eval=FALSE}
 # Authenticate
@@ -142,9 +130,7 @@ login()
 #> User password: "my_secret"
 ```
 
-##### Reserve Data Package ID
-
-Data package reservations prevent conflicting use of the same identifier. 
+Data package reservations prevent conflicting use of the same identifier.
 
 ```{r eval=FALSE}
 # Create reservation
@@ -152,8 +138,6 @@ identifier <- create_reservation(scope = "edi", env = "staging")
 identifier
 #> [1] 595
 ```
-
-#### Evaluate
 
 Evaluation checks metadata accuracy and completeness.
 
@@ -175,9 +159,6 @@ status
 report <- read_evaluate_report(transaction, frmt = "char", env = "staging")
 report
 ```
-
-
-#### Upload
 
 Upload once errors and warnings are fixed.
 
