@@ -22,9 +22,7 @@ knitr::opts_chunk$set(
 [![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/master/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
 <!-- badges: end -->
 
-_NOTE: This version breaks back compatibility. Install the previous version from the `deprecated` branch:_
-
-A client for the Environmental Data Initiative repository REST API. The [EDI data repository](https://portal.edirepository.org/nis/home.jsp) is for publication and reuse of ecological data with emphasis on metadata accuracy and completeness. It is built upon the [PASTA+ software stack](https://pastaplus-core.readthedocs.io/en/latest/index.html#) and was developed in collaboration with the [US LTER Network](https://lternet.edu/). EDIutils includes functions to search and access existing data, evaluate and upload new data, and assist other data management tasks common to repository users.
+A client for the Environmental Data Initiative repository REST API. The [EDI data repository](https://portal.edirepository.org/nis/home.jsp) is for publication and reuse of ecological data with emphasis on metadata accuracy and completeness. It was developed in collaboration with the [US LTER Network](https://lternet.edu/) and is built upon the [PASTA+ software stack](https://pastaplus-core.readthedocs.io/en/latest/index.html#). EDIutils includes functions to search and access existing data, evaluate and upload new data, and assist with common data management tasks.
 
 - [Search and Access Data]()
 - [Evaluate and Upload Data]()
@@ -51,7 +49,7 @@ remotes::install_github("EDIorg/EDIutils", ref = "deprecated")
 library(EDIutils)
 ```
 
-The unit of publication is the data package. It's an assemblage of [EML metadata](https://eml.ecoinformatics.org/), one or more data objects, a quality report, and a manifest. Data packages are immutable for reproducible research, and versionable for updates and improving data quality. Data package identifiers have the format "scope.identifier.revision" (e.g. edi.100.2; edi.100 has version 2), and are referenced by a DOI. 
+The unit of publication is the data package. It contains one or more data objects, an [EML metadata](https://eml.ecoinformatics.org/) record, a metadata quality report, and a manifest of contents. Data packages are immutable for reproducible research yet versionable, to allow updates and improved data quality through time. Each data package version is globally referenceable by a DOI and internally identifiable with an ID of the format "scope.identifier.revision" (e.g. "edi.100.2" is data package "edi.100" and has version "2").
 
 ### Search and Access Data
 

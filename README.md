@@ -12,18 +12,15 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 [![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/master/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
 <!-- badges: end -->
 
-*NOTE: This version breaks back compatibility. Install the previous
-version from the `deprecated` branch:*
-
 A client for the Environmental Data Initiative repository REST API. The
 [EDI data repository](https://portal.edirepository.org/nis/home.jsp) is
 for publication and reuse of ecological data with emphasis on metadata
-accuracy and completeness. It is built upon the [PASTA+ software
-stack](https://pastaplus-core.readthedocs.io/en/latest/index.html#) and
-was developed in collaboration with the [US LTER
-Network](https://lternet.edu/). EDIutils includes functions to search
-and access existing data, evaluate and upload new data, and assist other
-data management tasks common to repository users.
+accuracy and completeness. It was developed in collaboration with the
+[US LTER Network](https://lternet.edu/) and is built upon the [PASTA+
+software
+stack](https://pastaplus-core.readthedocs.io/en/latest/index.html#).
+EDIutils includes functions to search and access existing data, evaluate
+and upload new data, and assist with common data management tasks.
 
   - [Search and Access Data]()
   - [Evaluate and Upload Data]()
@@ -52,13 +49,14 @@ remotes::install_github("EDIorg/EDIutils", ref = "deprecated")
 library(EDIutils)
 ```
 
-The unit of publication is the data package. It’s an assemblage of [EML
-metadata](https://eml.ecoinformatics.org/), one or more data objects, a
-quality report, and a manifest. Data packages are immutable for
-reproducible research, and versionable for updates and improving data
-quality. Data package identifiers have the format
-“scope.identifier.revision” (e.g. edi.100.2; edi.100 has version 2),
-and are referenced by a DOI.
+The unit of publication is the data package. It contains one or more
+data objects, an [EML metadata](https://eml.ecoinformatics.org/) record,
+a metadata quality report, and a manifest of contents. Data packages are
+immutable for reproducible research yet versionable, to allow updates
+and improved data quality through time. Each data package version is
+globally referenceable by a DOI and internally identifiable with an ID
+of the format “scope.identifier.revision” (e.g. “edi.100.2” is data
+package “edi.100” and has version “2”).
 
 ### Search and Access Data
 
@@ -137,14 +135,19 @@ data
 
 ### Evaluate and Upload Data
 
-#### Create EML
+The EDI repository has a “staging” environment (a sandbox test space) to
+use before officially publishing in “production”.
+
+#### Prerequisites
+
+##### Create EML
 
 Evaluation and upload to the EDI repository requires data entities are
 described with EML metadata. There are many tools for creating EML, EDI
 supports two: [EMLassemblyline]() for programmatic workflows and
 [ezEML]() for a web form wizard.
 
-#### Authenticate
+##### Authenticate
 
 Authentication is required by functions involving data evaluation and
 upload. Get an account from <support@environmentaldatainitiative.org>.
@@ -156,23 +159,21 @@ login()
 #> User password: "my_secret"
 ```
 
-#### Reserve a Data Package ID
+##### Reserve Data Package ID
 
-Reservations prevent conflicting use of the same data package
-identifier. packageId’s are different betweeIt’s recommended to use the
-“staging” environment
+Data package reservations prevent conflicting use of the same
+identifier.
 
 ``` r
 # Create reservation
 identifier <- create_reservation(scope = "edi", env = "staging")
 identifier
-#> [1] 604
+#> [1] 595
 ```
 
 #### Evaluate
 
-Evaluation checks metadata accuracy and completeness. Use the “staging”
-environment (a sandbox test space) before publishing to “production”.
+Evaluation checks metadata accuracy and completeness.
 
 ``` r
 
@@ -195,8 +196,7 @@ report
 
 #### Upload
 
-Upload once errors and warnings are fixed. Use the “staging” environment
-to test rendering before uploading to “production”.
+Upload once errors and warnings are fixed.
 
 ``` r
 # Create a new data package
@@ -214,26 +214,9 @@ status
 #> [1] TRUE
 ```
 
-#### Update
-
-Update is the same as upload, but with an incremented data package
-version number (e.g. edi.595.2 supersedes edi.595.1)
-
-``` r
-#' # Update data package
-#' transaction <- update_data_package(
-#'   eml = "./data/edi.595.2.xml", 
-#'   env = "staging")
-#' transaction
-#' #> [1] "update_edi.595_163966788658131920__edi.595.2"
-#' 
-#' # Check status
-#' status <- check_status_update(
-#'   transaction = transaction, 
-#'   env = "staging")
-#' status
-#' #> [1] TRUE
-```
+If everything looks good in the “staging” environment, and you’re ready
+to publish, then repeat the above reservation and upload steps but this
+time in the “production” environment.
 
 ## Getting help
 
