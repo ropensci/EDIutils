@@ -26,7 +26,7 @@ The EDI repository has a "staging" environment (a sandbox test space) to use bef
 
 ##### Create EML
 
-Evaluation and upload to the EDI repository requires data entities are described with EML metadata. There are many tools for creating EML, EDI supports two: [EMLassemblyline]() for programmatic workflows and [ezEML]() for a web form wizard.
+Evaluation and upload to the EDI repository requires data entities are described with EML metadata. There are many tools for creating EML, EDI supports two: [EMLassemblyline](https://ediorg.github.io/EMLassemblyline/) for programmatic workflows and [ezEML](https://ezeml.edirepository.org/eml/de) for a web form wizard.
 
 ##### Authenticate
 
