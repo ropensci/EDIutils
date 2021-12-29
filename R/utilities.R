@@ -80,10 +80,10 @@ base_url_portal <- function(env){
 
 #' Set environment variables for testing data package evaluation and upload
 #' 
-#' @description Testing data package evaluation and upload requires a web accessible data object, EML metadata describing the data object, and an EDI repository user account. Use of this function presupposes the data object has been stashed
+#' @description Testing data package evaluation and upload requires a web accessible data entity, EML metadata describing the data entity, and an EDI repository user account. Use of this function presupposes the data entity has been stashed
 #'
 #' @param userId (character) EDI repository userId
-#' @param url (character) URL from which the EDI repository can download the test data.txt object. This URL cannot contain any redirects.
+#' @param url (character) URL from which the EDI repository can download the test data.txt entity. This URL cannot contain any redirects.
 #'
 #' @return Environmental variables \code{EDI_USERID = userId} and \code{EDI_TEST_URL = url}
 #' 

@@ -3,17 +3,14 @@
 
 # EDIutils
 
-<!-- badges: start -->
-
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![R-CMD-check](https://github.com/EDIorg/EDIutils/workflows/R-CMD-check/badge.svg)](https://github.com/EDIorg/EDIutils/actions)
-[![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/master/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
-<!-- badges: end -->
+    <!-- badges: start -->
+    [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+    [![R-CMD-check](https://github.com/EDIorg/EDIutils/workflows/R-CMD-check/badge.svg)](https://github.com/EDIorg/EDIutils/actions)
+    [![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/master/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
+    <!-- badges: end -->
 
 *NOTE: This version breaks back compatibility. Install the previous
-version from the `deprecated` branch:*
+version from the `deprecated` branch*
 
 A client for the Environmental Data Initiative repository REST API. The
 [EDI data repository](https://portal.edirepository.org/nis/home.jsp) is
@@ -23,7 +20,7 @@ accuracy and completeness. It was developed in collaboration with the
 software
 stack](https://pastaplus-core.readthedocs.io/en/latest/index.html#).
 EDIutils includes functions to search and access existing data, evaluate
-and upload new data, and assist with common data management tasks.
+and upload new data, and assist with related data management tasks.
 
   - [Search and Access Data]()
   - [Evaluate and Upload Data]()
@@ -53,13 +50,14 @@ library(EDIutils)
 ```
 
 The unit of publication is the data package. It contains one or more
-data objects, an [EML metadata](https://eml.ecoinformatics.org/) record,
-a metadata quality report, and a manifest of contents. Data packages are
-immutable for reproducible research yet versionable, to allow updates
-and improved data quality through time. Each data package version is
-globally referenceable by a DOI and internally identifiable with an ID
-of the format “scope.identifier.revision” (e.g. “edi.100.2” is data
-package “edi.100” and has version “2”).
+data entities (i.e. files) described with [EML
+metadata](https://eml.ecoinformatics.org/), a metadata quality report,
+and a manifest of package contents. Data packages are immutable for
+reproducible research, yet versionable to allow updates and improved
+data quality through time. Each version is assigned a DOI and a unique
+package ID of the form “scope.identifier.revision”. The “scope” is the
+organizational unit, “identifier” the series, and “revision” the version
+(e.g. “edi.100.2” is version “2” of data package “edi.100”).
 
 ### Search and Access Data
 
@@ -87,8 +85,8 @@ res
 #> [10] <document>\n  <abstract>Year 2016, continuous measurement ...
 ```
 
-Downloaded data objects in raw bytes and parse with your favorite
-reader.
+Data entities are downloaded in raw bytes and parsed by a reader
+function.
 
 ``` r
 # List data entities of data package edi.1047.1
@@ -103,12 +101,12 @@ res
 #> 6 58b9000439a5671ea7fe13212e889ba5 TrapEfficiencySummary.csv
 #> 7 86e61c1a501b7dcf0040d10e009bfd87        TrapOperations.csv
 
-# Read raw bytes of Steelhead.csv
+# Read raw bytes of the 4th data entity (i.e. Steelhead.csv)
 raw <- read_data_entity(packageId = "edi.1047.1", entityId = res$entityId[4])
 head(raw)
 #> [1] ef bb bf 44 61 74
 
-# Parse with .csv reader
+# Parse with a .csv reader
 data <- readr::read_csv(file = raw)
 data
 #> # A tibble: 2,926 x 14
@@ -133,8 +131,8 @@ data
 ### Evaluate and Upload Data
 
 *The EDI repository has a “staging” environment to test the upload and
-rendering of new data packages before officially publishing in
-“production”.*
+rendering of new data packages before publishing in the “production”
+environment.*
 
 Authentication is required by functions involving data evaluation and
 upload. Submit account requests to
@@ -151,7 +149,7 @@ Data package reservations prevent conflicting use of the same
 identifier.
 
 ``` r
-# Create reservation
+# Reserve a data package identifier
 identifier <- create_reservation(scope = "edi", env = "staging")
 identifier
 #> [1] 595
@@ -196,9 +194,9 @@ status
 #> [1] TRUE
 ```
 
-If everything looks good in the “staging” environment, and you’re ready
-to publish, then repeat the above reservation and upload steps but this
-time in the “production” environment.
+Once everything looks good in the “staging” environment, then repeat the
+above reservation and upload steps in the “production” environment where
+it will be assigned a DOI and offically published.
 
 ## Getting help
 

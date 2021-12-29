@@ -20,13 +20,9 @@ library(EDIutils)
 
 ### Evaluate and Upload Data
 
-_The EDI repository has a "staging" environment to test the upload and rendering of new data packages before officially publishing in "production"._
+_The EDI repository has a "staging" environment to test the upload and rendering of new data packages before publishing in the "production" environment._
 
-#### Prerequisites
-
-##### Create EML
-
-Evaluation and upload to the EDI repository requires data entities are described with EML metadata. There are many tools for creating EML, EDI supports two: [EMLassemblyline](https://ediorg.github.io/EMLassemblyline/) for programmatic workflows and [ezEML](https://ezeml.edirepository.org/eml/de) for a web form wizard.
+Evaluation and upload to the EDI repository requires data entities are described with EML metadata. There are many tools for creating EML, EDI supports two: the [EMLassemblyline](https://ediorg.github.io/EMLassemblyline/) R package for programmatic workflows, and the [ezEML](https://ezeml.edirepository.org/eml/de) web form wizard for interactive metadata generation. Research groups managing large volumes of metadata should consider the [LTER core-metabase]().
 
 ##### Authenticate
 
@@ -104,7 +100,7 @@ status
 
 #### Update
 
-Update is the same as upload, but with an incremented data package version number (e.g. edi.595.2 supersedes edi.595.1).
+Update is the same as upload, but with an incremented data package version number (e.g. "edi.595.1" is superseded by "edi.595.2").
 
 ```{r eval=FALSE}
 #' # Update data package
@@ -122,4 +118,4 @@ Update is the same as upload, but with an incremented data package version numbe
 #' #> [1] TRUE
 ```
 
-If everything looks good in the "staging" environment, and you're ready to publish, then repeat the above reservation and upload steps but this time in the "production" environment. 
+Once everything looks good in the "staging" environment, then repeat the above reservation and upload steps in the "production" environment where it will be assigned a DOI and officially published.

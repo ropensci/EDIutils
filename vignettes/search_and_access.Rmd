@@ -22,7 +22,7 @@ library(EDIutils)
 
 #### Search
 
-The repository search service is a standard deployment of Apache Solr and indexes select metadata fields of data package metadata. For a list of searchable fields see `search_data_packages()`. For a browser based search experience, use the [EDI data portal](https://portal.edirepository.org/nis/advancedSearch.jsp) of the EDI data portal.
+The repository search service is a standard deployment of Apache Solr and indexes select metadata fields of data package metadata. For a list of searchable fields see `search_data_packages()`. See the [Apache Solr Wiki](https://cwiki.apache.org/confluence/display/solr/) for more on constructing Solr queries. For a browser based search experience, use the [EDI data portal](https://portal.edirepository.org/nis/advancedSearch.jsp) of the EDI data portal.
 
 ```{r eval=FALSE}
 # List data packages containing the term "water temperature"
@@ -42,16 +42,27 @@ res
 #> [10] <document>\n  <abstract>Year 2016, continuous measurement ...
 ```
 
-Exclude landsat and ecotrends
+Results can be filtered to include only fields of interest.
 
-LTER sites publish data under unique scopes
+```{r eval=FALSE}
+# Search for data packages containing the term "water temperature" and returning 
+# only the packageid, title, and score of each match
+search_data_packages(query = 'q="water+temperature"&fl=packageid,title,score')
+```
 
-Other projects group with unique keywords
+When constructing a query note that the 15403 data packages of the [ecotrends](https://lternet.edu/the-ecotrends-project/) project and 10492 data packages of the [LTER Landsat](https://lternet.edu/lter-remote-sensing-and-geographic-information-system-data/) project, can be excluded from the returned results by including `&fq=-scope:(ecotrends+lter-landsat)` in the query string.
+
+```{r eval=FALSE}
+# Search for data packages containing the term "water temperature", returning 
+# only the packageid, title, score, and excluding ecotrends and lter-landsat 
+# scopes from the returned results
+query <- 'q="water+temperature"&fl=packageid,title,score&fq=-scope:(ecotrends+lter-landsat)'
+search_data_packages(query)
+```
 
 #### Access
 
-Downloaded data objects in raw bytes and parse with your favorite reader.
-_Demonstrate with diverse object data package (tables, spatial, unusual format)_
+Data entities are downloaded in raw bytes and parsed by a reader function.
 
 ```{r eval=FALSE}
 # List data entities of data package edi.1047.1
@@ -93,4 +104,3 @@ data
 #> #   CatchRaw.comments <chr>
 ```
 
-Physical descriptions of data entities help with reading less common structures ...
