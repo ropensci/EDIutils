@@ -9,7 +9,9 @@ create_dn(userId, ou = "EDI")
 \arguments{
 \item{userId}{(character) User identifier of an EDI data repository account}
 
-\item{ou}{(character) Organizational unit in which \code{userId} belongs. Can be "EDI" or "LTER". All \code{userId} issued after "2020-05-01" have \code{ou = "EDI"}.}
+\item{ou}{(character) Organizational unit in which \code{userId} belongs.
+Can be "EDI" or "LTER". All \code{userId} issued after "2020-05-01" have
+\code{ou = "EDI"}.}
 }
 \value{
 (character) Distinguished name
@@ -19,15 +21,10 @@ Create a users distinguished name
 }
 \examples{
 # For an EDI account
-dn <- create_dn(
-  userId = "my_userid", 
-  ou = "EDI")
+dn <- create_dn(userId = "my_userid", ou = "EDI")
 dn
 
 # For an LTER account
-dn <- create_dn(
-  userId = "my_userid", 
-  ou = "LTER")
+dn <- create_dn(userId = "my_userid", ou = "LTER")
 dn
-
 }

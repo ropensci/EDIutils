@@ -9,7 +9,8 @@ get_journal_citation(journalCitationId, env = "production")
 \arguments{
 \item{journalCitationId}{(numeric) Journal citation identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (xml_document) Journal citation
@@ -21,5 +22,4 @@ Get journal citation
 # Get citation
 journalCitation <- get_journal_citation(381)
 journalCitation
-
 }

@@ -9,12 +9,15 @@ read_evaluate_report(transaction, frmt = "xml", env = "production")
 \arguments{
 \item{transaction}{(character) Transaction identifier}
 
-\item{frmt}{(character) Format of the returned report. Can be: "xml", "html", or "char".}
+\item{frmt}{(character) Format of the returned report. Can be: "xml", "html",
+or "char".}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(xml_document or html_document or character) The evaluate quality report document
+(xml_document or html_document or character) The evaluate quality
+report document
 }
 \description{
 Read evaluate report
@@ -29,15 +32,17 @@ login()
 
 # Evaluate data package
 transaction <- evaluate_data_package(
- eml = "./data/edi.595.1.xml",
- env = "staging")
+  eml = "./data/edi.595.1.xml",
+  env = "staging"
+)
 transaction
 #> [1] "evaluate_163966785813042760"
 
 # Read as XML
 qualityReport <- read_evaluate_report(
- transaction = transaction, 
- env = "staging")
+  transaction = transaction,
+  env = "staging"
+)
 qualityReport
 #> {xml_document}
 #> <qualityReport schemaLocation="eml://ecoinformatics.org/qualityReport ...
@@ -50,9 +55,10 @@ qualityReport
 
 # Read as HTML
 qualityReport <- read_evaluate_report(
- transaction = transaction, 
- frmt = "html", 
- env = "staging")
+  transaction = transaction,
+  frmt = "html",
+  env = "staging"
+)
 qualityReport
 #> {html_document}
 #> <html>
@@ -60,9 +66,10 @@ qualityReport
 
 # Read as character
 qualityReport <- read_evaluate_report(
- transaction = transaction, 
- frmt = "char", 
- env = "staging")
+  transaction = transaction,
+  frmt = "char",
+  env = "staging"
+)
 writeLines(qualityReport, "./data/report.txt")
 
 logout()

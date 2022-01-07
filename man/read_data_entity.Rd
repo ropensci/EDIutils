@@ -11,10 +11,12 @@ read_data_entity(packageId, entityId, env = "production")
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(raw) Raw bytes (i.e. application/octet-stream) to be parsed by a reader function appropriate for the data type
+(raw) Raw bytes (i.e. application/octet-stream) to be parsed by a
+reader function appropriate for the data type
 }
 \description{
 Read data entity
@@ -31,5 +33,4 @@ head(raw)
 # Parse with .csv reader
 data <- readr::read_csv(file = raw)
 data
-
 }

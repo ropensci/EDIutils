@@ -7,20 +7,29 @@
 update_data_package(eml, useChecksum = FALSE, env = "production")
 }
 \arguments{
-\item{eml}{(character) Full path to an EML file describing the data package to be updated}
+\item{eml}{(character) Full path to an EML file describing the data package
+to be updated}
 
-\item{useChecksum}{(logical) Use data entities from a previous version of the data package? See details below.}
+\item{useChecksum}{(logical) Use data entities from a previous version of
+the data package? See details below.}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-transaction (character) Transaction identifier. May be used in a subsequent call to \code{check_status_update()} to determine the operation status
+transaction (character) Transaction identifier. May be used in a
+subsequent call to \code{check_status_update()} to determine the operation
+status
 }
 \description{
 Update data package
 }
 \details{
-Each data entity described in \code{eml} must be accompanied by a web accessible URL at the XPath ".//physical/distribution/online/url". The EDI data repository uses these links to download the data entities. The URLs must be static and not have any redirects otherwise the data entities will not be downloadable.
+Each data entity described in \code{eml} must be accompanied by a
+web accessible URL at the XPath ".//physical/distribution/online/url". The
+EDI data repository uses these links to download the data entities. The URLs
+must be static and not have any redirects otherwise the data entities will
+not be downloadable.
 }
 \note{
 User authentication is required (see \code{login()})
@@ -32,20 +41,21 @@ login()
 
 # Update data package
 transaction <- update_data_package(
-  eml = "./data/edi.595.2.xml", 
-  env = "staging")
+  eml = "./data/edi.595.2.xml",
+  env = "staging"
+)
 transaction
 #> [1] "update_edi.595_163966788658131920__edi.595.2"
 
 # Check update status
 status <- check_status_update(
-  transaction = transaction, 
-  env = "staging")
+  transaction = transaction,
+  env = "staging"
+)
 status
 #> [1] TRUE
 
 logout()
 }
-
 
 }

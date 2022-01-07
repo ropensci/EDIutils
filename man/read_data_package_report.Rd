@@ -9,9 +9,11 @@ read_data_package_report(packageId, frmt = "xml", env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{frmt}{(character) Format of the returned report. Can be: "xml", "html", or "char".}
+\item{frmt}{(character) Format of the returned report. Can be: "xml",
+"html", or "char".}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (xml_document) Data package report
@@ -25,11 +27,16 @@ qualityReport <- read_data_package_report("knb-lter-knz.260.4")
 qualityReport
 
 # Read as HTML
-qualityReport <- read_data_package_report("knb-lter-knz.260.4", frmt = "html")
+qualityReport <- read_data_package_report(
+  packageId = "knb-lter-knz.260.4",
+  frmt = "html"
+)
 qualityReport
 
 # Read as character
-qualityReport <- read_data_package_report("knb-lter-knz.260.4", frmt = "char")
+qualityReport <- read_data_package_report(
+  packageId = "knb-lter-knz.260.4",
+  frmt = "char"
+)
 # writeLines(qualityReport, "./data/report.txt"))
-
 }

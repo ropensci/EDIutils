@@ -7,10 +7,12 @@
 list_service_methods(env = "production")
 }
 \arguments{
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(character) A simple list of web service methods supported by the Data Package Manager web service
+(character) A simple list of web service methods supported by the
+Data Package Manager web service
 }
 \description{
 List service methods
@@ -19,5 +21,4 @@ List service methods
 # All service methods
 services <- list_service_methods()
 services
-
 }

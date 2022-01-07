@@ -7,10 +7,14 @@
 list_active_reservations(env = "production")
 }
 \arguments{
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(xml_document) The set of data package identifiers that users have actively reserved. Note that data package identifiers that have been successfully uploaded are no longer considered active reservations and thus are not included in this list.
+(xml_document) The set of data package identifiers that users have
+actively reserved. Note that data package identifiers that have been
+successfully uploaded are no longer considered active reservations and thus
+are not included in this list.
 }
 \description{
 List active reservations
@@ -22,5 +26,4 @@ reservations
 
 # Show first
 xml2::xml_find_first(reservations, "reservation")
-
 }

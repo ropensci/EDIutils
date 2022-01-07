@@ -9,7 +9,8 @@ delete_journal_citation(journalCitationId, env = "production")
 \arguments{
 \item{journalCitationId}{(numeric) Journal citation identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (logical) TRUE if deleted
@@ -27,12 +28,13 @@ login()
 
 # Create journal citation
 journalCitationId <- create_journal_citation(
-  packageId = "edi.17.1", 
+  packageId = "edi.17.1",
   articleDoi = "https://doi.org/10.1890/11-1026.1",
   articleTitle = "Corridors promote fire via connectivity and edge effects",
   journalTitle = "Ecological Applications",
   relationType = "IsCitedBy",
-  env = "staging")
+  env = "staging"
+)
 journalCitationId
 #> [1] 74
 

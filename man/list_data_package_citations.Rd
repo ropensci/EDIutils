@@ -9,7 +9,8 @@ list_data_package_citations(packageId, env = "production", list_all = FALSE)
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 
 \item{list_all}{(logical) Return all citations within a data package series?}
 }
@@ -26,5 +27,4 @@ journalCitations
 
 # Show first
 xml2::xml_find_first(journalCitations, "journalCitation")
-
 }

@@ -9,7 +9,8 @@ read_data_package_report_checksum(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (character) A 40 character SHA-1 checksum value for the report
@@ -19,7 +20,7 @@ Read data package report checksum
 }
 \examples{
 # Read report checksum
-checksum <- read_data_package_report_checksum(packageId = "knb-lter-luq.208.1")
+packageId <- "knb-lter-luq.208.1"
+checksum <- read_data_package_report_checksum(packageId)
 checksum
-
 }

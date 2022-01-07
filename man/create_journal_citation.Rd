@@ -17,17 +17,24 @@ create_journal_citation(
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{articleDoi}{(character) Article DOI. Required if \code{articleUrl} is missing.}
+\item{articleDoi}{(character) Article DOI. Required if \code{articleUrl} is
+missing.}
 
-\item{articleUrl}{(character) Article URL. Required if \code{articleDoi} is missing.}
+\item{articleUrl}{(character) Article URL. Required if \code{articleDoi} is
+missing.}
 
 \item{articleTitle}{(character) Article title}
 
 \item{journalTitle}{(character) Journal title}
 
-\item{relationType}{(character) Relation between citation and data package. Can be: "IsCitedBy" this data package is formally cited in the manuscript; "IsDescribedBy" - this data package is explicitly described within the manuscript; "IsReferencedBy" - this data package is implicitly described within the manuscript.}
+\item{relationType}{(character) Relation between citation and data package.
+Can be: "IsCitedBy" this data package is formally cited in the manuscript;
+"IsDescribedBy" - this data package is explicitly described within the
+manuscript; "IsReferencedBy" - this data package is implicitly described
+within the manuscript.}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (numeric) Journal citation identifier
@@ -48,12 +55,13 @@ login()
 
 # Create journal citation
 journalCitationId <- create_journal_citation(
-  packageId = "edi.17.1", 
+  packageId = "edi.17.1",
   articleDoi = "https://doi.org/10.1890/11-1026.1",
   articleTitle = "Corridors promote fire via connectivity and edge effects",
   journalTitle = "Ecological Applications",
   relationType = "IsCitedBy",
-  env = "staging")
+  env = "staging"
+)
 journalCitationId
 #> [1] 74
 

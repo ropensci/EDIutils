@@ -9,10 +9,12 @@ list_data_package_identifiers(scope, env = "production")
 \arguments{
 \item{scope}{(character) Scope of data package}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(numeric) Identifiers of data packages within a specified \code{scope}
+(numeric) Identifiers of data packages within a specified
+\code{scope}
 }
 \description{
 List data package identifiers
@@ -21,5 +23,4 @@ List data package identifiers
 # List identifiers
 identifiers <- list_data_package_identifiers("knb-lter-ble")
 identifiers
-
 }

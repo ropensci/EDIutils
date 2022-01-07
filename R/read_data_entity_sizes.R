@@ -1,20 +1,23 @@
 #' Read data entity sizes
 #'
 #' @param packageId (character) Data package identifier
-#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production",
+#' "staging", or "development".
 #'
-#' @return (data.frame) Size (in bytes) and identifiers of data entities in \code{packageId}
-#' 
+#' @return (data.frame) Size (in bytes) and identifiers of data entities in
+#' \code{packageId}
+#'
 #' @export
-#' 
+#'
 #' @examples
 #' # Read entity sizes
 #' sizes <- read_data_entity_sizes(packageId = "knb-lter-bnz.786.3")
 #' sizes
-#'
 read_data_entity_sizes <- function(packageId, env = "production") {
-  url <- paste0(base_url(env), "/package/data/size/eml/", 
-                paste(parse_packageId(packageId), collapse = "/"))
+  url <- paste0(
+    base_url(env), "/package/data/size/eml/",
+    paste(parse_packageId(packageId), collapse = "/")
+  )
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)

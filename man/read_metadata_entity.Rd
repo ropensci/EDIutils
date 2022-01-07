@@ -11,7 +11,8 @@ read_metadata_entity(packageId, entityId, env = "production")
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (xml_nodeset) The metadata of \code{entityId} in \code{packageId}
@@ -28,5 +29,4 @@ entities
 # Read metadata of the first entity
 meta <- read_metadata_entity(packageId, entityId = entities$entityId[1])
 meta
-
 }

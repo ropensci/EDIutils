@@ -9,10 +9,12 @@ get_packageid_reads(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(xml_document) Summary of all the successful reads (total reads and non-robot reads) of \code{packageId}
+(xml_document) Summary of all the successful reads (total reads and
+non-robot reads) of \code{packageId}
 }
 \description{
 Get package ID reads
@@ -25,5 +27,4 @@ resourceReads
 # Show first
 resource <- xml2::xml_find_first(resourceReads, "resource")
 resource
-
 }

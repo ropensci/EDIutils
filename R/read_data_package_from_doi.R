@@ -1,24 +1,29 @@
 #' Read data package from Digital Object Identifier
 #'
-#' @param doi (character) Digital Object Identifier of data package in the format "shoulder/pasta/md5"
-#' @param ore (logical) Return an OAI-ORE compliant resource map in RDF-XML format
+#' @param doi (character) Digital Object Identifier of data package in the
+#' format "shoulder/pasta/md5"
+#' @param ore (logical) Return an OAI-ORE compliant resource map in RDF-XML
+#' format
 #'
-#' @return (character or xml_document) A resource map with reference URLs to each of the metadata, data, and quality report resources that comprise the data package.
-#' 
+#' @return (character or xml_document) A resource map with reference URLs to
+#' each of the metadata, data, and quality report resources that comprise the
+#' data package.
+#'
 #' @export
-#' 
+#'
 #' @examples
 #' # Get resource map
 #' resourceMap <- read_data_package_from_doi(
-#'  doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25")
+#'   doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25"
+#' )
 #' resourceMap
-#' 
+#'
 #' # Get resource map in ORE format
 #' resourceMap <- read_data_package_from_doi(
-#'  doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25", 
-#'  ore = TRUE)
-#' resourceMap#' 
-#'
+#'   doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25",
+#'   ore = TRUE
+#' )
+#' resourceMap #'
 read_data_package_from_doi <- function(doi, ore = FALSE) {
   url <- paste0(base_url("production"), "/package/doi/", doi)
   if (ore) {

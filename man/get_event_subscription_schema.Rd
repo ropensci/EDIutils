@@ -7,10 +7,12 @@
 get_event_subscription_schema(env = "production")
 }
 \arguments{
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(xml_document) Schema for event subscription creation request entities
+(xml_document) Schema for event subscription creation request
+entities
 }
 \description{
 Get event subscription schema
@@ -22,5 +24,4 @@ schema
 
 # Show schema structure
 xml2::xml_structure(schema)
-
 }

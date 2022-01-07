@@ -9,16 +9,25 @@ query_event_subscriptions(query = NULL, env = "production")
 \arguments{
 \item{query}{(character) Query (see details below)}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(xml_document) A list of the subscriptions whose attributes match those specified in the query string (see details below). If a query string is omitted, all subscriptions in the subscription database will be returned for which the requesting user is authorized to read. If query parameters are included, they are used to filter that set of subscriptions based on their attributes.
+(xml_document) A list of the subscriptions whose attributes match
+those specified in the query string (see details below). If a query string
+is omitted, all subscriptions in the subscription database will be returned
+for which the requesting user is authorized to read. If query parameters are
+included, they are used to filter that set of subscriptions based on their
+attributes.
 }
 \description{
 Query event subscriptions
 }
 \details{
-Query parameters are specified as key=value pairs, multiple pairs must be delimited with ampersands (&), and only a single value should be specified for a particular key. The following query parameter keys are allowed:
+Query parameters are specified as key=value pairs, multiple pairs
+must be delimited with ampersands (&), and only a single value should be
+specified for a particular key. The following query parameter keys are
+allowed:
 
 \itemize{
   \item creator
@@ -28,7 +37,14 @@ Query parameters are specified as key=value pairs, multiple pairs must be delimi
   \item url
 }
 
-If a query parameter is specified, and a subscription's respective attribute does not match it, that subscription will not be included in the group of subscriptions returned. If scope, identifier, or revision are used, their values must together constitute a syntactically and semantically correct EML packageId (i.e. "scope.identifier.revision") - either partial or complete. If url is used, its value must not contain ampersands. Therefore, if a subscription's URL contains ampersands, it cannot be filtered based on its URL.
+If a query parameter is specified, and a subscription's respective attribute
+does not match it, that subscription will not be included in the group of
+subscriptions returned. If scope, identifier, or revision are used, their
+values must together constitute a syntactically and semantically correct EML
+packageId (i.e. "scope.identifier.revision") - either partial or complete.
+If url is used, its value must not contain ampersands. Therefore, if a
+subscription's URL contains ampersands, it cannot be filtered based on its
+URL.
 }
 \note{
 User authentication is required (see \code{login()})

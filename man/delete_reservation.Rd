@@ -11,7 +11,8 @@ delete_reservation(scope, identifier, env = "production")
 
 \item{identifier}{(numeric) Identifier of data package}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (numeric) The deleted reservation identifier value
@@ -20,7 +21,9 @@ delete_reservation(scope, identifier, env = "production")
 Delete reservation
 }
 \note{
-User authentication is required (see \code{login()}). The same user who originally authenticated to create the reservation must authenticate to delete it.
+User authentication is required (see \code{login()}). The same user
+who originally authenticated to create the reservation must authenticate to
+delete it.
 }
 \examples{
 \dontrun{

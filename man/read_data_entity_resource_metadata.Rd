@@ -11,10 +11,12 @@ read_data_entity_resource_metadata(packageId, entityId, env = "production")
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(xml_document) The resource metadata of \code{entityId} in \code{packageId}
+(xml_document) The resource metadata of \code{entityId} in
+\code{packageId}
 }
 \description{
 Read data entity resource metadata
@@ -26,8 +28,8 @@ head(entityIds)
 
 # Read resource metadata for first entity
 resourceMetadata <- read_data_entity_resource_metadata(
-  packageId = "knb-lter-cce.310.1", 
-  entityId = entityIds[1])
+  packageId = "knb-lter-cce.310.1",
+  entityId = entityIds[1]
+)
 resourceMetadata
-
 }

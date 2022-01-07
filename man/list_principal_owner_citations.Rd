@@ -7,12 +7,15 @@
 list_principal_owner_citations(principalOwner, env = "production")
 }
 \arguments{
-\item{principalOwner}{(character) Principal owner in the format returned by \code{construct_dn()}}
+\item{principalOwner}{(character) Principal owner in the format returned by
+\code{construct_dn()}}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(xml_document) Journal citations metadata for all entries owned by the specified principal owner
+(xml_document) Journal citations metadata for all entries owned by
+the specified principal owner
 }
 \description{
 List principal owner citations
@@ -22,5 +25,4 @@ List principal owner citations
 dn <- create_dn(userId = "FCE", ou = "EDI")
 journalCitations <- list_principal_owner_citations(principalOwner = dn)
 journalCitations
-
 }

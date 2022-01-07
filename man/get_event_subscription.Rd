@@ -9,7 +9,8 @@ get_event_subscription(subscriptionId, env = "production")
 \arguments{
 \item{subscriptionId}{(numeric) Event subscription identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (xml_document) Subscription metadata
@@ -27,8 +28,9 @@ login()
 
 # Get subscription
 subscription <- get_event_subscription(
-  subscriptionId = 21, 
-  env = "staging")
+  subscriptionId = 21,
+  env = "staging"
+)
 subscription
 #> {xml_document}
 #> <subscriptions>

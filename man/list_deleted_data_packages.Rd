@@ -7,10 +7,12 @@
 list_deleted_data_packages(env = "production")
 }
 \arguments{
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(character) All data packages (excluding revision values) that have been deleted from the data package registry.
+(character) All data packages (excluding revision values) that have
+been deleted from the data package registry.
 }
 \description{
 List deleted data packages
@@ -19,5 +21,4 @@ List deleted data packages
 # List deleted data packages
 deleted <- list_deleted_data_packages()
 head(deleted)
-
 }

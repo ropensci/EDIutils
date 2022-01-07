@@ -9,16 +9,21 @@ get_recent_uploads(query, env = "production")
 \arguments{
 \item{query}{(character) Query (see details below)}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(xml_document) A list of zero or more audit records of either recently inserted or recently updated data packages.
+(xml_document) A list of zero or more audit records of either
+recently inserted or recently updated data packages.
 }
 \description{
 Get recent uploads
 }
 \details{
-Query parameters are specified as key=value pairs, multiple pairs must be delimited with ampersands (&), and only a single value should be specified for a particular key. The following query parameter keys are allowed:
+Query parameters are specified as key=value pairs, multiple pairs
+must be delimited with ampersands (&), and only a single value should be
+specified for a particular key. The following query parameter keys are
+allowed:
 
 \itemize{
   \item serviceMethod - Can be: createDataPackage, updateDataPackage
@@ -26,14 +31,21 @@ Query parameters are specified as key=value pairs, multiple pairs must be delimi
   \item limit - A positive whole number
 }
 
-The query parameter serviceMethod should have the value "createDataPackage" (to retrieve recent inserts) or "updateDataPackage" (to retrieve recent updates). The query parameter fromTime is used to specify the date/time in the past that represents the oldest audit records that should be returned. Data packages uploaded prior to that time are not considered recent uploads and are thus filtered from the query results. The query parameter limit sets an upper limit on the number of audit records returned. For example, "limit=3".
+The query parameter serviceMethod should have the value "createDataPackage"
+(to retrieve recent inserts) or "updateDataPackage" (to retrieve recent
+updates). The query parameter fromTime is used to specify the date/time in
+the past that represents the oldest audit records that should be returned.
+Data packages uploaded prior to that time are not considered recent uploads
+and are thus filtered from the query results. The query parameter limit sets
+an upper limit on the number of audit records returned. For example,
+"limit=3".
 }
 \examples{
 # Get the 5 most recently created data packages
 auditReport <- get_recent_uploads(
-  query = "serviceMethod=createDataPackage&limit=5")
+  query = "serviceMethod=createDataPackage&limit=5"
+)
 
 # Show the first
 xml2::xml_find_first(auditReport, "auditRecord")
-
 }

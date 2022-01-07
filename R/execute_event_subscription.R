@@ -1,50 +1,59 @@
 #' Execute event subscription
 #'
 #' @param subscriptionId (numeric) Event subscription identifier
-#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production",
+#' "staging", or "development".
 #'
 #' @return (logical) TRUE if the event subscription was executed
-#'     
-#' @details Upon notification, the event manager queries its database for the subscription matching the specified subscriptionId. POST requests are then made (asynchronously) to the matching subscription.
-#' 
+#'
+#' @details Upon notification, the event manager queries its database for the
+#' subscription matching the specified subscriptionId. POST requests are then
+#' made (asynchronously) to the matching subscription.
+#'
 #' @note User authentication is required (see \code{login()})
-#' 
+#'
 #' @export
-#' 
-#' @examples 
+#'
+#' @examples
 #' \dontrun{
-#' 
+#'
 #' login()
-#' 
+#'
 #' # Create subscription
 #' subscriptionId <- create_event_subscription(
-#'  packageId = "knb-lter-vcr.340.1", 
-#'  url = "https://my.webserver.org/",
-#'  env = "staging")
+#'   packageId = "knb-lter-vcr.340.1",
+#'   url = "https://my.webserver.org/",
+#'   env = "staging"
+#' )
 #' subscriptionId
 #' #> [1] 48
-#' 
+#'
 #' # Execute subscription
 #' execute_event_subscription(
-#'   subscriptionId = subscriptionId, 
-#'   env = "staging")
+#'   subscriptionId = subscriptionId,
+#'   env = "staging"
+#' )
 #' #> [1] TRUE
-#' 
+#'
 #' # Delete subscription
 #' delete_event_subscription(subscriptionId, env = "staging")
 #' #> [1] TRUE
-#' 
+#'
 #' logout()
 #' }
 #'
 execute_event_subscription <- function(subscriptionId, env = "production") {
-  url <- paste0(base_url(env), "/package/event/eml/", 
-                subscriptionId)
+  url <- paste0(
+    base_url(env), "/package/event/eml/",
+    subscriptionId
+  )
   cookie <- bake_cookie()
-  resp <- httr::POST(url, 
-                     set_user_agent(), 
-                     cookie, 
-                     handle = httr::handle(""))
+  resp <- httr::POST(
+    url,
+    set_user_agent(),
+    cookie,
+    handle = httr::handle("")
+  )
   msg <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, msg)
   if (resp$status_code == "200") {

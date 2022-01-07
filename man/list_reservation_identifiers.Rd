@@ -9,10 +9,12 @@ list_reservation_identifiers(scope, env = "production")
 \arguments{
 \item{scope}{(character) Scope of data package}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(numeric) The set of identifiers for the specified \code{scope} that end users have actively reserved for future upload
+(numeric) The set of identifiers for the specified \code{scope} that
+end users have actively reserved for future upload
 }
 \description{
 List reservation identifiers
@@ -21,5 +23,4 @@ List reservation identifiers
 # List reservations
 reservations <- list_reservation_identifiers(scope = "edi")
 reservations
-
 }

@@ -9,7 +9,8 @@ read_metadata_checksum(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (character) A 40 character SHA-1 checksum value
@@ -21,5 +22,4 @@ Read metadata checksum
 # Read checksum
 checksum <- read_metadata_checksum("knb-lter-ntl.409.1")
 checksum
-
 }

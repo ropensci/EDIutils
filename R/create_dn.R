@@ -1,25 +1,22 @@
 #' Create a users distinguished name
 #'
 #' @param userId (character) User identifier of an EDI data repository account
-#' @param ou (character) Organizational unit in which \code{userId} belongs. Can be "EDI" or "LTER". All \code{userId} issued after "2020-05-01" have \code{ou = "EDI"}.
+#' @param ou (character) Organizational unit in which \code{userId} belongs.
+#' Can be "EDI" or "LTER". All \code{userId} issued after "2020-05-01" have
+#' \code{ou = "EDI"}.
 #'
 #' @return (character) Distinguished name
-#' 
+#'
 #' @export
-#' 
-#' @examples 
+#'
+#' @examples
 #' # For an EDI account
-#' dn <- create_dn(
-#'   userId = "my_userid", 
-#'   ou = "EDI")
+#' dn <- create_dn(userId = "my_userid", ou = "EDI")
 #' dn
-#' 
+#'
 #' # For an LTER account
-#' dn <- create_dn(
-#'   userId = "my_userid", 
-#'   ou = "LTER")
+#' dn <- create_dn(userId = "my_userid", ou = "LTER")
 #' dn
-#' 
 create_dn <- function(userId, ou = "EDI") {
   ou <- toupper(ou)
   res <- paste0("uid=", userId, ",o=", ou, ",")

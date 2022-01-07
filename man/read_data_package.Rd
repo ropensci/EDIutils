@@ -9,12 +9,16 @@ read_data_package(packageId, ore = FALSE, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{ore}{(logical) Return an OAI-ORE compliant resource map in RDF-XML format}
+\item{ore}{(logical) Return an OAI-ORE compliant resource map in RDF-XML
+format}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(character or xml_document) A resource map with reference URLs to each of the metadata, data, and quality report resources that comprise the \code{packageId}.
+(character or xml_document) A resource map with reference URLs to
+each of the metadata, data, and quality report resources that comprise the
+\code{packageId}.
 }
 \description{
 Read data package
@@ -25,7 +29,9 @@ resourceMap <- read_data_package(packageId = "knb-lter-cwt.5026.13")
 resourceMap
 
 # Get resource map in ORE format
-resourceMap <- read_data_package(packageId = "knb-lter-cwt.5026.13", ore = TRUE)
+resourceMap <- read_data_package(
+  packageId = "knb-lter-cwt.5026.13",
+  ore = TRUE
+)
 resourceMap
-
 }

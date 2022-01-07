@@ -7,18 +7,26 @@
 create_data_package(eml, env = "production")
 }
 \arguments{
-\item{eml}{(character) Full path to an EML file describing the data package to be created}
+\item{eml}{(character) Full path to an EML file describing the data package
+to be created}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-transaction (character) Transaction identifier. May be used in a subsequent call to \code{check_status_create()} to determine the operation status
+transaction (character) Transaction identifier. May be used in a
+subsequent call to \code{check_status_create()} to determine the operation
+status
 }
 \description{
 Create data package
 }
 \details{
-Each data entity described in \code{eml} must be accompanied by a web accessible URL at the EML XPath ".//physical/distribution/online/url". The EDI data repository downloads the data entities via this URL. The URLs must be static and not have any redirects otherwise the data entities will not be downloaded.
+Each data entity described in \code{eml} must be accompanied by a
+web accessible URL at the EML XPath ".//physical/distribution/online/url".
+The EDI data repository downloads the data entities via this URL. The URLs
+must be static and not have any redirects otherwise the data entities will
+not be downloaded.
 }
 \note{
 User authentication is required (see \code{login()})
@@ -30,15 +38,17 @@ login()
 
 # Create data package
 transaction <- create_data_package(
-  eml = "./data/edi.595.1.xml", 
-  env = "staging")
+  eml = "./data/edi.595.1.xml",
+  env = "staging"
+)
 transaction
 #> [1] "create_163966765080210573__edi.595.1"
 
 # Check creation status
 status <- check_status_create(
-  transaction = transaction, 
-  env = "staging")
+  transaction = transaction,
+  env = "staging"
+)
 status
 #> [1] TRUE
 

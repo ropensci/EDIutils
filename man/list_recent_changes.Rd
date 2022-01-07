@@ -18,22 +18,27 @@ list_recent_changes(
 
 \item{scope}{(character) Scope of data package}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(xml_document) Recent changes and their corresponding packageId, scope, identifier, revision, principal, doi, serviceMethod, and date.
+(xml_document) Recent changes and their corresponding packageId,
+scope, identifier, revision, principal, doi, serviceMethod, and date.
 }
 \description{
-List all data package insert, update, and delete operations, optionally specifying the date and time to and/or from which the changes should be listed. An optional scope value can be specified to filter results for a particular data package scope.
+List all data package insert, update, and delete operations,
+optionally specifying the date and time to and/or from which the changes
+should be listed. An optional scope value can be specified to filter results
+for a particular data package scope.
 }
 \examples{
 # Changes occurring in the first 3 days of 2021 for all scopes
 dataPackageChanges <- list_recent_changes(
- fromDate = "2021-01-01T00:00:00", 
- toDate = "2021-01-03T00:00:00")
+  fromDate = "2021-01-01T00:00:00",
+  toDate = "2021-01-03T00:00:00"
+)
 dataPackageChanges
 
 # Show first
 xml2::xml_find_first(dataPackageChanges, "dataPackage")
-
 }

@@ -11,7 +11,8 @@ create_event_subscription(packageId, url, env = "production")
 
 \item{url}{(character) Where the event notification will be sent}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (numeric) Event subscription identifier
@@ -22,7 +23,10 @@ Create event subscription
 \note{
 User authentication is required (see \code{login()})
 
- The \code{url} must have "http" as its scheme and must be able to receive POST requests with MIME type text/plain. Additionally, because the \code{url} will be passed in an XML body, some characters must be escaped, such as ampersands from & to &amp;.
+The \code{url} must have "http" as its scheme and must be able to receive
+POST requests with MIME type text/plain. Additionally, because the
+\code{url} will be passed in an XML body, some characters must be escaped,
+such as ampersands from & to &amp;.
 }
 \examples{
 \dontrun{
@@ -31,16 +35,15 @@ login()
 
 # Create subscription
 subscriptionId <- create_event_subscription(
- packageId = "knb-lter-vcr.340.1", 
- url = "https://my.webserver.org/",
- env = "staging")
+  packageId = "knb-lter-vcr.340.1",
+  url = "https://my.webserver.org/",
+  env = "staging"
+)
 subscriptionId
 #> [1] 48
 
 # Execute subscription
-execute_event_subscription(
-  subscriptionId = subscriptionId, 
-  env = "staging")
+execute_event_subscription(subscriptionId, env = "staging")
 #> [1] TRUE
 
 # Delete subscription

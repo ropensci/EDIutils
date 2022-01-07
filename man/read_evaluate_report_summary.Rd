@@ -13,12 +13,16 @@ read_evaluate_report_summary(
 \arguments{
 \item{transaction}{(character) Transaction identifier}
 
-\item{with_exceptions}{(logical) Convert quality report warnings and errors to R warnings and errors}
+\item{with_exceptions}{(logical) Convert quality report warnings and errors
+to R warnings and errors}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(message/warning/error) A message listing the total number of checks resulting in valid, info, warn, and error status. Exceptions are raised if warnings and errors are found and \code{with_exceptions} is TRUE.
+(message/warning/error) A message listing the total number of checks
+resulting in valid, info, warn, and error status. Exceptions are raised if
+warnings and errors are found and \code{with_exceptions} is TRUE.
 }
 \description{
 Summarize the evaluate quality report
@@ -37,7 +41,8 @@ login()
 # Evaluate data package
 transaction <- evaluate_data_package(
   eml = "./data/edi.595.1.xml",
-  env = "staging")
+  env = "staging"
+)
 transaction
 #> [1] "evaluate_163966785813042760"
 
@@ -47,7 +52,7 @@ read_evaluate_report_summary(transaction, env = "staging")
 #> ===================================================
 #>   EVALUATION REPORT
 #> ===================================================
-#>   
+#>
 #> PackageId: edi.595.1
 #> Report Date/Time: 2021-12-16T22:49:25
 #> Total Quality Checks: 29

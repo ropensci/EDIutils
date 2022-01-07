@@ -2,27 +2,30 @@
 #'
 #' @param packageId (character) Data package identifier
 #' @param entityId (character) Data entity identifier
-#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
-#' 
+#' @param env (character) Repository environment. Can be: "production",
+#' "staging", or "development".
+#'
 #' @return (numeric) Size, in bytes, of \code{entityId} in \code{packageId}
-#' 
+#'
 #' @export
-#' 
-#' @examples 
+#'
+#' @examples
 #' # List data entities
 #' entityIds <- list_data_entities(packageId = "knb-lter-cdr.711.1")
 #' entityIds
-#' 
+#'
 #' # Read size
 #' size <- read_data_entity_size(
-#'   packageId = "knb-lter-cdr.711.1", 
-#'   entityId = entityIds)
+#'   packageId = "knb-lter-cdr.711.1",
+#'   entityId = entityIds
+#' )
 #' size
-#'
 read_data_entity_size <- function(packageId, entityId, env = "production") {
-  url <- paste0(base_url(env), "/package/data/size/eml/", 
-                paste(parse_packageId(packageId), collapse = "/"), "/", 
-                entityId)
+  url <- paste0(
+    base_url(env), "/package/data/size/eml/",
+    paste(parse_packageId(packageId), collapse = "/"), "/",
+    entityId
+  )
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)

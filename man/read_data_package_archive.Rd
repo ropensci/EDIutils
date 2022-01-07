@@ -13,10 +13,12 @@ read_data_package_archive(packageId, transaction, path, env = "production")
 
 \item{path}{(character) Path of directory in which the result will be written}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(.zip file) The data package archive of \code{packageId} requested by \code{transaction}
+(.zip file) The data package archive of \code{packageId} requested
+by \code{transaction}
 }
 \description{
 Read data package archive
@@ -25,7 +27,8 @@ Read data package archive
 \dontrun{
 
 # Create zip archive
-transaction <- create_data_package_archive(packageId = "knb-lter-sev.31999.1")
+packageId <- "knb-lter-sev.31999.1"
+transaction <- create_data_package_archive(packageId)
 transaction
 #> [1] "archive_knb-lter-sev.31999.1_16396683904724129"
 
@@ -33,10 +36,7 @@ transaction
 read_data_package_error(transaction)
 
 # Download zip archive
-read_data_package_archive(
-  packageId = "knb-lter-sev.31999.1", 
-  transaction = transaction, 
-  path = "./data")
+read_data_package_archive(packageId, transaction, path = "./data")
 #> |=============================================================| 100\%
 dir("./data")
 #> [1] "knb-lter-sev.31999.1.zip"

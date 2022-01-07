@@ -9,7 +9,8 @@ list_data_entities(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (character) Identifiers for all data entities in \code{packageId}
@@ -20,5 +21,4 @@ List data entities
 \examples{
 entityIds <- list_data_entities("knb-lter-and.2732.7")
 entityIds
-
 }

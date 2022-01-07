@@ -9,10 +9,12 @@ create_data_package_archive(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-transaction (character) Transaction identifier. May be used in a subsequent call to:
+transaction (character) Transaction identifier. May be used in a
+subsequent call to:
 \itemize{
   \item \code{read_data_package_error()} to determine the operation status
   \item \code{read_data_package_archive()} to obtain the Zip archive
@@ -25,7 +27,8 @@ Create data package archive (zip)
 \dontrun{
 
 # Create zip archive
-transaction <- create_data_package_archive(packageId = "knb-lter-sev.31999.1")
+packageId <- "knb-lter-sev.31999.1"
+transaction <- create_data_package_archive(packageId)
 transaction
 #> [1] "archive_knb-lter-sev.31999.1_16396683904724129"
 
@@ -33,10 +36,7 @@ transaction
 read_data_package_error(transaction)
 
 # Download zip archive
-read_data_package_archive(
-  packageId = "knb-lter-sev.31999.1", 
-  transaction = transaction, 
-  path = "./data")
+read_data_package_archive(packageId, transaction, path = "./data")
 #> |=============================================================| 100\%
 dir("./data")
 #> [1] "knb-lter-sev.31999.1.zip"

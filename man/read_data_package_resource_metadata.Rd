@@ -9,7 +9,8 @@ read_data_package_resource_metadata(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (xml_document) Resource metadata of \code{packageId}
@@ -20,7 +21,7 @@ Read data package resource metadata
 \examples{
 # Read resource metadata
 resourceMetadata <- read_data_package_resource_metadata(
-  packageId = "edi.613.1")
+  packageId = "edi.613.1"
+)
 resourceMetadata
-
 }

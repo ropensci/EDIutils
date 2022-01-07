@@ -13,12 +13,16 @@ read_data_package_report_summary(
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{with_exceptions}{(logical) Convert quality report warnings and errors to R warnings and errors}
+\item{with_exceptions}{(logical) Convert quality report warnings and errors
+to R warnings and errors}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(message/warning/error) A message listing the total number of checks resulting in valid, info, warn, and error status. Exceptions are raised if warnings and errors are found and \code{with_exceptions} is TRUE.
+(message/warning/error) A message listing the total number of checks
+resulting in valid, info, warn, and error status. Exceptions are raised if
+warnings and errors are found and \code{with_exceptions} is TRUE.
 }
 \description{
 Summarize the data package quality report
@@ -26,5 +30,4 @@ Summarize the data package quality report
 \examples{
 # Read report summary
 read_data_package_report_summary("knb-lter-knz.260.4")
-
 }

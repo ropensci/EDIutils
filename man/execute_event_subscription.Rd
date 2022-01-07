@@ -9,7 +9,8 @@ execute_event_subscription(subscriptionId, env = "production")
 \arguments{
 \item{subscriptionId}{(numeric) Event subscription identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (logical) TRUE if the event subscription was executed
@@ -18,7 +19,9 @@ execute_event_subscription(subscriptionId, env = "production")
 Execute event subscription
 }
 \details{
-Upon notification, the event manager queries its database for the subscription matching the specified subscriptionId. POST requests are then made (asynchronously) to the matching subscription.
+Upon notification, the event manager queries its database for the
+subscription matching the specified subscriptionId. POST requests are then
+made (asynchronously) to the matching subscription.
 }
 \note{
 User authentication is required (see \code{login()})
@@ -30,16 +33,18 @@ login()
 
 # Create subscription
 subscriptionId <- create_event_subscription(
- packageId = "knb-lter-vcr.340.1", 
- url = "https://my.webserver.org/",
- env = "staging")
+  packageId = "knb-lter-vcr.340.1",
+  url = "https://my.webserver.org/",
+  env = "staging"
+)
 subscriptionId
 #> [1] 48
 
 # Execute subscription
 execute_event_subscription(
-  subscriptionId = subscriptionId, 
-  env = "staging")
+  subscriptionId = subscriptionId,
+  env = "staging"
+)
 #> [1] TRUE
 
 # Delete subscription

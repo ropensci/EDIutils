@@ -9,7 +9,8 @@ read_metadata_format(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (character) Metadata format type
@@ -21,5 +22,4 @@ Read metadata format
 # Read format
 metadataFormat <- read_metadata_format("knb-lter-nwt.930.1")
 metadataFormat
-
 }

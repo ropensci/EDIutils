@@ -11,10 +11,12 @@ read_data_entity_checksum(packageId, entityId, env = "production")
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(character) A 40-character SHA-1 checksum value of \code{entityId} in \code{packageId}
+(character) A 40-character SHA-1 checksum value of \code{entityId}
+in \code{packageId}
 }
 \description{
 Read data entity checksum
@@ -26,8 +28,8 @@ entityIds
 
 # Read checksum
 checksum <- read_data_entity_checksum(
-  packageId = "knb-lter-ble.1.7", 
-  entityId = entityIds[1])
+  packageId = "knb-lter-ble.1.7",
+  entityId = entityIds[1]
+)
 checksum
-
 }

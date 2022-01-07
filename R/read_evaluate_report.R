@@ -1,31 +1,36 @@
 #' Read evaluate report
 #'
 #' @param transaction (character) Transaction identifier
-#' @param frmt (character) Format of the returned report. Can be: "xml", "html", or "char".
-#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
+#' @param frmt (character) Format of the returned report. Can be: "xml", "html",
+#' or "char".
+#' @param env (character) Repository environment. Can be: "production",
+#' "staging", or "development".
 #'
-#' @return (xml_document or html_document or character) The evaluate quality report document
-#' 
+#' @return (xml_document or html_document or character) The evaluate quality
+#' report document
+#'
 #' @note User authentication is required (see \code{login()})
-#' 
+#'
 #' @export
-#' 
-#' @examples 
+#'
+#' @examples
 #' \dontrun{
-#' 
+#'
 #' login()
-#' 
+#'
 #' # Evaluate data package
 #' transaction <- evaluate_data_package(
-#'  eml = "./data/edi.595.1.xml",
-#'  env = "staging")
+#'   eml = "./data/edi.595.1.xml",
+#'   env = "staging"
+#' )
 #' transaction
 #' #> [1] "evaluate_163966785813042760"
-#' 
+#'
 #' # Read as XML
 #' qualityReport <- read_evaluate_report(
-#'  transaction = transaction, 
-#'  env = "staging")
+#'   transaction = transaction,
+#'   env = "staging"
+#' )
 #' qualityReport
 #' #> {xml_document}
 #' #> <qualityReport schemaLocation="eml://ecoinformatics.org/qualityReport ...
@@ -35,47 +40,55 @@
 #' #> [4] <includeSystem>knb</includeSystem>
 #' #> [5] <datasetReport>\n  <qualityCheck qualityType="metadata" system=" ...
 #' #> [6] <entityReport>\n  <entityName>data.txt</entityName>\n  <qualityC ...
-#' 
+#'
 #' # Read as HTML
 #' qualityReport <- read_evaluate_report(
-#'  transaction = transaction, 
-#'  frmt = "html", 
-#'  env = "staging")
+#'   transaction = transaction,
+#'   frmt = "html",
+#'   env = "staging"
+#' )
 #' qualityReport
 #' #> {html_document}
 #' #> <html>
 #' #> [1] <body><table xmlns:qr="eml://ecoinformatics.org/qualityReport">< ...
-#' 
+#'
 #' # Read as character
 #' qualityReport <- read_evaluate_report(
-#'  transaction = transaction, 
-#'  frmt = "char", 
-#'  env = "staging")
+#'   transaction = transaction,
+#'   frmt = "char",
+#'   env = "staging"
+#' )
 #' writeLines(qualityReport, "./data/report.txt")
-#' 
+#'
 #' logout()
 #' }
 #'
-read_evaluate_report <- function(transaction, 
-                                 frmt = "xml", 
+read_evaluate_report <- function(transaction,
+                                 frmt = "xml",
                                  env = "production") {
-  url <- paste0(base_url(env), "/package/evaluate/report/eml/",
-                transaction)
+  url <- paste0(
+    base_url(env), "/package/evaluate/report/eml/",
+    transaction
+  )
   cookie <- bake_cookie()
   if (frmt == "html") {
-    resp <- httr::GET(url, 
-                      set_user_agent(), 
-                      cookie, 
-                      httr::accept("text/html"), 
-                      handle = httr::handle(""))
+    resp <- httr::GET(
+      url,
+      set_user_agent(),
+      cookie,
+      httr::accept("text/html"),
+      handle = httr::handle("")
+    )
     res <- httr::content(resp, as = "text", encoding = "UTF-8")
     httr::stop_for_status(resp, res)
     return(xml2::read_html(res))
   } else if (frmt %in% c("xml", "char")) {
-    resp <- httr::GET(url, 
-                      set_user_agent(), 
-                      cookie, 
-                      handle = httr::handle(""))
+    resp <- httr::GET(
+      url,
+      set_user_agent(),
+      cookie,
+      handle = httr::handle("")
+    )
     res <- httr::content(resp, as = "text", encoding = "UTF-8")
     httr::stop_for_status(resp, res)
     if (frmt == "xml") {

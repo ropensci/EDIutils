@@ -9,7 +9,8 @@ search_data_packages(query, env = "production")
 \arguments{
 \item{query}{(character) Query (see details below)}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (xml_document) Search results containing the fields:
@@ -27,9 +28,9 @@ search_data_packages(query, env = "production")
   \item responsibleParties
   \item scope
   \item site
-  \item taxonomic            
+  \item taxonomic
   \item title
-  \item authors              
+  \item authors
   \item spatialCoverage
   \item sources
   \item keywords
@@ -39,10 +40,13 @@ search_data_packages(query, env = "production")
 }
 }
 \description{
-Searches data packages in the EDI data repository using the specified Solr query.
+Searches data packages in the EDI data repository using the
+specified Solr query.
 }
 \details{
-Documents in the EDI data repository Solr index can be discovered based on metadata values stored in the following list of searchable fields (not all EML content is queryable):
+Documents in the EDI data repository Solr index can be discovered
+based on metadata values stored in the following list of searchable fields
+(not all EML content is queryable):
 
 Single-value fields:
 \itemize{
@@ -75,27 +79,34 @@ Multi-value fields:
   \item timescale
 }
 
-\code{query} parser: The optimal query parser (defType=edismax) is added to every query.
+\code{query} parser: The optimal query parser (defType=edismax) is added to
+every query.
 
-See \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr Wiki} for how to construct a Solr query.
+See \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr
+Wiki} for how to construct a Solr query.
 }
 \note{
-Only the newest version of data packages are searchable, older versions are not.
+Only the newest version of data packages are searchable, older
+versions are not.
 
-When constructing a query note that the 15403 data packages of the \href{https://lternet.edu/the-ecotrends-project/}{ecotrends} project and 10492 data packages of the \href{https://lternet.edu/lter-remote-sensing-and-geographic-information-system-data/}{LTER Landsat} project, can be excluded from the returned results by including \code{&fq=-scope:(ecotrends+lter-landsat)} in the query string.
+When constructing a query note that the 15403 data packages of the
+\href{https://lternet.edu/the-ecotrends-project/}{ecotrends} project and
+10492 data packages of the
+\href{https://lternet.edu/lter-remote-sensing-and-geographic-information-system-data/}{LTER Landsat}
+project, can be excluded from the returned results by including
+\code{&fq=-scope:(ecotrends+lter-landsat)} in the query string.
 }
 \examples{
 # Search for data packages containing the term "air temperature"
 search_data_packages(query = 'q="air+temperature"&fl=*')
 
-# Search for data packages containing the term "air temperature" and returning 
-# only the packageid, title, and score of each match
+# Search for data packages containing the term "air temperature" and
+# returning only the packageid, title, and score of each match
 search_data_packages(query = 'q="air+temperature"&fl=packageid,title,score')
 
-# Search for data packages containing the term "air temperature", returning 
-# only the packageid, title, score, and excluding ecotrends and lter-landsat 
+# Search for data packages containing the term "air temperature", returning
+# only the packageid, title, score, and excluding ecotrends and lter-landsat
 # scopes from the returned results
 query <- 'q="air+temperature"&fl=packageid,title,score&fq=-scope:(ecotrends+lter-landsat)'
 search_data_packages(query)
-
 }

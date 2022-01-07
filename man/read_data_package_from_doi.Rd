@@ -7,12 +7,16 @@
 read_data_package_from_doi(doi, ore = FALSE)
 }
 \arguments{
-\item{doi}{(character) Digital Object Identifier of data package in the format "shoulder/pasta/md5"}
+\item{doi}{(character) Digital Object Identifier of data package in the
+format "shoulder/pasta/md5"}
 
-\item{ore}{(logical) Return an OAI-ORE compliant resource map in RDF-XML format}
+\item{ore}{(logical) Return an OAI-ORE compliant resource map in RDF-XML
+format}
 }
 \value{
-(character or xml_document) A resource map with reference URLs to each of the metadata, data, and quality report resources that comprise the data package.
+(character or xml_document) A resource map with reference URLs to
+each of the metadata, data, and quality report resources that comprise the
+data package.
 }
 \description{
 Read data package from Digital Object Identifier
@@ -20,13 +24,14 @@ Read data package from Digital Object Identifier
 \examples{
 # Get resource map
 resourceMap <- read_data_package_from_doi(
- doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25")
+  doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25"
+)
 resourceMap
 
 # Get resource map in ORE format
 resourceMap <- read_data_package_from_doi(
- doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25", 
- ore = TRUE)
-resourceMap#' 
-
+  doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25",
+  ore = TRUE
+)
+resourceMap #'
 }

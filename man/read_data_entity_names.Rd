@@ -9,15 +9,16 @@ read_data_entity_names(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(data.frame) Names and identifiers of all data entities in \code{packageId}
+(data.frame) Names and identifiers of all data entities in
+\code{packageId}
 }
 \description{
 Read data entity names
 }
 \examples{
 read_data_entity_names("knb-lter-cap.691.2")
-
 }

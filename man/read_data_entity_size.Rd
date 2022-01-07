@@ -11,7 +11,8 @@ read_data_entity_size(packageId, entityId, env = "production")
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (numeric) Size, in bytes, of \code{entityId} in \code{packageId}
@@ -26,8 +27,8 @@ entityIds
 
 # Read size
 size <- read_data_entity_size(
-  packageId = "knb-lter-cdr.711.1", 
-  entityId = entityIds)
+  packageId = "knb-lter-cdr.711.1",
+  entityId = entityIds
+)
 size
-
 }

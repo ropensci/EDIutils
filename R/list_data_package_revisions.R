@@ -3,23 +3,26 @@
 #' @param scope (character) Scope of data package
 #' @param identifier (numeric) Identifier of data package
 #' @param filter (character) Filter results by "newest" or "oldest"
-#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production",
+#' "staging", or "development".
 #'
-#' @return (numeric) Revisions of a data package within a specified \code{scope} and \code{identifier}
-#' 
+#' @return (numeric) Revisions of a data package within a specified
+#' \code{scope} and \code{identifier}
+#'
 #' @export
-#' 
-#' @examples 
+#'
+#' @examples
 #' # List revisions
 #' revisions <- list_data_package_revisions("knb-lter-arc", 20131)
 #' revisions
-#' 
-list_data_package_revisions <- function(scope, 
-                                        identifier, 
-                                        filter = NULL, 
+list_data_package_revisions <- function(scope,
+                                        identifier,
+                                        filter = NULL,
                                         env = "production") {
-  url <- paste0(base_url(env), "/package/eml/",
-                paste(c(scope, as.character(identifier)), collapse = "/"))
+  url <- paste0(
+    base_url(env), "/package/eml/",
+    paste(c(scope, as.character(identifier)), collapse = "/")
+  )
   if (!is.null(filter)) {
     url <- paste0(url, "?filter=", filter)
   }

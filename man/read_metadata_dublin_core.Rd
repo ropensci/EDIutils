@@ -9,7 +9,8 @@ read_metadata_dublin_core(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (xml_document) Dublin Core metadata
@@ -21,5 +22,4 @@ Read metadata Dublin Core
 # Read dc metadata
 dc <- read_metadata_dublin_core("knb-lter-nes.10.1")
 dc
-
 }

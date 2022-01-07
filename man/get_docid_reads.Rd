@@ -11,10 +11,13 @@ get_docid_reads(scope, identifier, env = "production")
 
 \item{identifier}{(numeric) Identifier of data package}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(xml_document) Summary of all the successful reads (total reads and non-robot reads) for all the resources of a given \code{scope} and \code{identifier}.
+(xml_document) Summary of all the successful reads (total reads and
+non-robot reads) for all the resources of a given \code{scope} and
+\code{identifier}.
 }
 \description{
 Get doc ID reads
@@ -27,5 +30,4 @@ resourceReads
 # Get the first resource
 resource <- xml2::xml_find_first(resourceReads, ".//resource")
 resource
-
 }

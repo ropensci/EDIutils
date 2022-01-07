@@ -9,7 +9,8 @@ read_metadata(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (xml_document) EML metadata document
@@ -21,5 +22,4 @@ Read metadata
 # Read metadata
 eml <- read_metadata("edi.100.1")
 eml
-
 }

@@ -1,16 +1,17 @@
 #' List service methods
 #'
-#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production",
+#' "staging", or "development".
 #'
-#' @return (character) A simple list of web service methods supported by the Data Package Manager web service
-#' 
+#' @return (character) A simple list of web service methods supported by the
+#' Data Package Manager web service
+#'
 #' @export
-#' 
-#' @examples 
+#'
+#' @examples
 #' # All service methods
 #' services <- list_service_methods()
 #' services
-#'
 list_service_methods <- function(env = "production") {
   url <- paste0(base_url(env), "/package/service-methods")
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

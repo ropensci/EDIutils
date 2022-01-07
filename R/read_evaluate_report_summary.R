@@ -1,36 +1,41 @@
 #' Summarize the evaluate quality report
-#' 
-#' @param transaction (character) Transaction identifier
-#' @param with_exceptions (logical) Convert quality report warnings and errors to R warnings and errors
-#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'
-#' @return (message/warning/error) A message listing the total number of checks resulting in valid, info, warn, and error status. Exceptions are raised if warnings and errors are found and \code{with_exceptions} is TRUE.
-#' 
+#' @param transaction (character) Transaction identifier
+#' @param with_exceptions (logical) Convert quality report warnings and errors
+#' to R warnings and errors
+#' @param env (character) Repository environment. Can be: "production",
+#' "staging", or "development".
+#'
+#' @return (message/warning/error) A message listing the total number of checks
+#' resulting in valid, info, warn, and error status. Exceptions are raised if
+#' warnings and errors are found and \code{with_exceptions} is TRUE.
+#'
 #' @details Get \code{transaction} from \code{evaluate_data_package()}
-#' 
+#'
 #' @note User authentication is required (see \code{login()})
-#' 
+#'
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' 
+#'
 #' login()
-#' 
+#'
 #' # Evaluate data package
 #' transaction <- evaluate_data_package(
 #'   eml = "./data/edi.595.1.xml",
-#'   env = "staging")
+#'   env = "staging"
+#' )
 #' transaction
 #' #> [1] "evaluate_163966785813042760"
-#' 
-#' 
+#'
+#'
 #' # Summarize report
 #' read_evaluate_report_summary(transaction, env = "staging")
 #' #> ===================================================
 #' #>   EVALUATION REPORT
 #' #> ===================================================
-#' #>   
+#' #>
 #' #> PackageId: edi.595.1
 #' #> Report Date/Time: 2021-12-16T22:49:25
 #' #> Total Quality Checks: 29
@@ -38,13 +43,13 @@
 #' #> Info: 8
 #' #> Warn: 0
 #' #> Error: 0
-#' 
-#' 
+#'
+#'
 #' logout()
 #' }
-#' 
-read_evaluate_report_summary <- function(transaction, 
-                                         with_exceptions = TRUE, 
+#'
+read_evaluate_report_summary <- function(transaction,
+                                         with_exceptions = TRUE,
                                          env = "production") {
   qualityReport <- read_evaluate_report(transaction, env = env)
   res <- report2char(qualityReport, full = FALSE, env = env)

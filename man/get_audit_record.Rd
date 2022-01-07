@@ -9,7 +9,8 @@ get_audit_record(oid, env = "production")
 \arguments{
 \item{oid}{(numeric) Audit identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (xml_document) An audit record with fields
@@ -30,7 +31,7 @@ auditRecord <- get_audit_record(oid = "121606334")
 auditRecord
 #> {xml_document}
 #> <auditReport>
-#>   [1] <auditRecord>\n  <oid>121606334</oid>\n  <entryTime>2021-12-01T0 ...
+#>   [1] <auditRecord>\n  <oid>121606334</oid>\n  <entryTime>2021-12-01T ...
 
 xml2::xml_find_first(auditReport, ".//auditRecord")
 #> {xml_node}

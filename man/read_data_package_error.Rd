@@ -9,10 +9,13 @@ read_data_package_error(transaction, env = "production")
 \arguments{
 \item{transaction}{(character) Transaction identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-An error is returned if an error occurred while processing the request, otherwise \code{NULL} is returned if no error was encountered or if processing is still underway.
+An error is returned if an error occurred while processing the
+request, otherwise \code{NULL} is returned if no error was encountered or if
+processing is still underway.
 }
 \description{
 Read data package error
@@ -24,7 +27,8 @@ User authentication is required (see \code{login()})
 \dontrun{
 
 # Create zip archive
-transaction <- create_data_package_archive(packageId = "knb-lter-sev.31999.1")
+packageId <- "knb-lter-sev.31999.1"
+transaction <- create_data_package_archive(packageId)
 transaction
 #> [1] "archive_knb-lter-sev.31999.1_16396683904724129"
 
@@ -32,10 +36,7 @@ transaction
 read_data_package_error(transaction)
 
 # Download zip archive
-read_data_package_archive(
-  packageId = "knb-lter-sev.31999.1", 
-  transaction = transaction, 
-  path = "./data")
+read_data_package_archive(packageId, transaction, path = "./data")
 #> |=============================================================| 100\%
 dir("./data")
 #> [1] "knb-lter-sev.31999.1.zip"

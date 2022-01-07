@@ -18,10 +18,12 @@ list_data_package_revisions(
 
 \item{filter}{(character) Filter results by "newest" or "oldest"}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(numeric) Revisions of a data package within a specified \code{scope} and \code{identifier}
+(numeric) Revisions of a data package within a specified
+\code{scope} and \code{identifier}
 }
 \description{
 List data package revisions
@@ -30,5 +32,4 @@ List data package revisions
 # List revisions
 revisions <- list_data_package_revisions("knb-lter-arc", 20131)
 revisions
-
 }

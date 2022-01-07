@@ -9,10 +9,12 @@ read_data_package_doi(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(character) The canonical Digital Object Identifier for \code{packageId}
+(character) The canonical Digital Object Identifier for
+\code{packageId}
 }
 \description{
 Read data package Digital Object Identifier
@@ -21,5 +23,4 @@ Read data package Digital Object Identifier
 # Read package DOI
 doi <- read_data_package_doi(packageId = "knb-lter-jrn.210548103.15")
 doi
-
 }

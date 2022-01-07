@@ -7,7 +7,8 @@
 list_data_package_scopes(env = "production")
 }
 \arguments{
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (numeric) Scopes within a specified \code{env}
@@ -19,5 +20,4 @@ List data package scopes
 # List scopes
 scopes <- list_data_package_scopes()
 scopes
-
 }

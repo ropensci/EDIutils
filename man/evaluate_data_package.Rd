@@ -7,27 +7,45 @@
 evaluate_data_package(eml, useChecksum = FALSE, env = "production")
 }
 \arguments{
-\item{eml}{(character) Full path to an EML file describing the data package to be evaluated}
+\item{eml}{(character) Full path to an EML file describing the data package
+to be evaluated}
 
-\item{useChecksum}{(logical) Use data entities from a previous version of the data package? See details below.}
+\item{useChecksum}{(logical) Use data entities from a previous version of
+the data package? See details below.}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-transaction (character) Transaction identifier. May be used in a subsequent call to:
+transaction (character) Transaction identifier. May be used in a
+subsequent call to:
 \itemize{
   \item \code{check_status_evaluate()} to determine the operation status
   \item \code{read_evaluate_report()} to read the evaluation report
-  \item \code{read_evaluate_report_summary()} to summarize the evaluation report and raise exceptions
+  \item \code{read_evaluate_report_summary()} to summarize the evaluation
+  report and raise exceptions
 }
 }
 \description{
 Evaluate data package
 }
 \details{
-Each data entity described in \code{eml} must be accompanied by a web accessible URL at the EML XPath ".//physical/distribution/online/url". The EDI data repository downloads the data entities via this URL. The URLs must be static and not have any redirects otherwise the data entities will not be downloaded.
+Each data entity described in \code{eml} must be accompanied by a
+web accessible URL at the EML XPath ".//physical/distribution/online/url".
+The EDI data repository downloads the data entities via this URL. The URLs
+must be static and not have any redirects otherwise the data entities will
+not be downloaded.
 
-An optional query parameter, "useChecksum", can be appended to the URL. When specified, the useChecksum query parameter directs the repository to determine whether it can use an existing copy of a data entity from a previous revision of the data package based on matching a metadata-documented checksum value (MD5 or SHA-1) to the checksum of the existing copy. If a match is found, the repository will skip the upload of the data entity from the remote URL and instead use its matching copy. Specifying "useChecksum" can save time by eliminating data uploads, but clients should take care to ensure that metadata-documented checksum values are accurate and up to date.
+An optional query parameter, "useChecksum", can be appended to the URL. When
+specified, the useChecksum query parameter directs the repository to
+determine whether it can use an existing copy of a data entity from a
+previous revision of the data package based on matching a
+metadata-documented checksum value (MD5 or SHA-1) to the checksum of the
+existing copy. If a match is found, the repository will skip the upload of
+the data entity from the remote URL and instead use its matching copy.
+Specifying "useChecksum" can save time by eliminating data uploads, but
+clients should take care to ensure that metadata-documented checksum values
+are accurate and up to date.
 }
 \note{
 User authentication is required (see \code{login()})
@@ -38,8 +56,9 @@ User authentication is required (see \code{login()})
 login()
 
 transaction <- evaluate_data_package(
-  eml = "./data/edi.595.1.xml", 
-  env = "staging")
+  eml = "./data/edi.595.1.xml",
+  env = "staging"
+)
 transaction
 #> [1] "evaluate_163966785813042760"
 
@@ -65,7 +84,7 @@ read_evaluate_report_summary(transaction, env = "staging")
 #> ===================================================
 #>   EVALUATION REPORT
 #> ===================================================
-#>   
+#>
 #> PackageId: edi.595.1
 #> Report Date/Time: 2021-12-15T17:46:33
 #> Total Quality Checks: 29

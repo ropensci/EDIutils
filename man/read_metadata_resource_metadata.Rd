@@ -9,10 +9,12 @@ read_metadata_resource_metadata(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(xml_document) Resource metadata for the data package metadata resource
+(xml_document) Resource metadata for the data package metadata
+resource
 }
 \description{
 Read metadata resource metadata
@@ -20,7 +22,7 @@ Read metadata resource metadata
 \examples{
 # Read resource metadata
 resourceMetadata <- read_metadata_resource_metadata(
-  packageId = "knb-lter-pal.309.1")
+  packageId = "knb-lter-pal.309.1"
+)
 resourceMetadata
-
 }

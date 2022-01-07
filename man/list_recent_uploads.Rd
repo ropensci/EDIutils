@@ -11,7 +11,8 @@ list_recent_uploads(type, limit = 5, env = "production")
 
 \item{limit}{(numeric) Maximum number of results to return}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (xml_document) Data package uploads
@@ -26,5 +27,4 @@ dataPackageUploads
 
 # Show first
 xml2::xml_find_first(dataPackageUploads, "dataPackage")
-
 }

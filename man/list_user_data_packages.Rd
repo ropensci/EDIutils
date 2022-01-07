@@ -7,20 +7,24 @@
 list_user_data_packages(dn, env = "production")
 }
 \arguments{
-\item{dn}{(character) Distinguished name of user. Create with \code{create_dn()}.}
+\item{dn}{(character) Distinguished name of user. Create with
+\code{create_dn()}.}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (character) Data package identifiers belonging to a \code{dn}
 }
 \description{
-List all data packages (including their revision values) uploaded to the repository by a particular user, specified by a distinguished name. Data packages that were uploaded by the specified user but have since been deleted are excluded from the list.
+List all data packages (including their revision values)
+uploaded to the repository by a particular user, specified by a
+distinguished name. Data packages that were uploaded by the specified user
+but have since been deleted are excluded from the list.
 }
 \examples{
 # List user data packages
 dn <- create_dn(userId = "dbjourneynorth")
 packageIds <- list_user_data_packages(dn)
 packageIds
-
 }

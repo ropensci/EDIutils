@@ -1,27 +1,34 @@
 #' List recent changes
 #'
-#' @description List all data package insert, update, and delete operations, optionally specifying the date and time to and/or from which the changes should be listed. An optional scope value can be specified to filter results for a particular data package scope.
+#' @description List all data package insert, update, and delete operations,
+#' optionally specifying the date and time to and/or from which the changes
+#' should be listed. An optional scope value can be specified to filter results
+#' for a particular data package scope.
 #'
 #' @param fromDate (character) Start date in the format "YYYY-MM-DDThh:mm:ss"
 #' @param toDate (character) End date in the format "YYYY-MM-DDThh:mm:ss"
 #' @param scope (character) Scope of data package
-#' @param env (character) Repository environment. Can be: "production", "staging", or "development".
+#' @param env (character) Repository environment. Can be: "production",
+#' "staging", or "development".
 #'
-#' @return (xml_document) Recent changes and their corresponding packageId, scope, identifier, revision, principal, doi, serviceMethod, and date.
-#' 
+#' @return (xml_document) Recent changes and their corresponding packageId,
+#' scope, identifier, revision, principal, doi, serviceMethod, and date.
+#'
 #' @export
-#' 
-#' @examples 
+#'
+#' @examples
 #' # Changes occurring in the first 3 days of 2021 for all scopes
 #' dataPackageChanges <- list_recent_changes(
-#'  fromDate = "2021-01-01T00:00:00", 
-#'  toDate = "2021-01-03T00:00:00")
+#'   fromDate = "2021-01-01T00:00:00",
+#'   toDate = "2021-01-03T00:00:00"
+#' )
 #' dataPackageChanges
-#' 
+#'
 #' # Show first
 #' xml2::xml_find_first(dataPackageChanges, "dataPackage")
-#'
-list_recent_changes <- function(fromDate = NULL, toDate = NULL, scope = NULL,
+list_recent_changes <- function(fromDate = NULL,
+                                toDate = NULL,
+                                scope = NULL,
                                 env = "production") {
   url <- paste0(base_url(env), "/package/changes/eml")
   if (any(c(!is.null(fromDate), !is.null(toDate), !is.null(scope)))) {

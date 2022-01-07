@@ -11,7 +11,8 @@ read_data_entity_name(packageId, entityId, env = "production")
 
 \item{entityId}{(character) Data entity identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (character) Name of \code{entityId} in \code{packageId}
@@ -26,8 +27,8 @@ entityIds
 
 # Read name
 entityName <- read_data_entity_name(
-  packageId = "knb-lter-cap.691.2", 
-  entityId = entityIds[1])
+  packageId = "knb-lter-cap.691.2",
+  entityId = entityIds[1]
+)
 entityName
-
 }

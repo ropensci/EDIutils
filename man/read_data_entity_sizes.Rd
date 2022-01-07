@@ -9,10 +9,12 @@ read_data_entity_sizes(packageId, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
-(data.frame) Size (in bytes) and identifiers of data entities in \code{packageId}
+(data.frame) Size (in bytes) and identifiers of data entities in
+\code{packageId}
 }
 \description{
 Read data entity sizes
@@ -21,5 +23,4 @@ Read data entity sizes
 # Read entity sizes
 sizes <- read_data_entity_sizes(packageId = "knb-lter-bnz.786.3")
 sizes
-
 }
