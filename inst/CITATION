@@ -6,11 +6,9 @@ note <- sprintf("R package version %s", meta$Version)
 bibentry(bibtype = "Manual",
          title = "{EDIutils}: An API Client for the Environmental Data Initiative Repository in R",
          author = c(person("Colin", "Smith")),
-         year = year,
-         note = note,
-         doi = "TBD",
-	 url = "TBD")
+         year = 2022,
+         url = "https://github.com/EDIorg/EDIutils")
 
  textVersion = paste0("Colin A Smith, (", year, ").",
   " EDIutils: An API Client for the Environmental Data Initiative Repository in R. ",
-  note, ". DOI: TBD. TBD")
+  url)
