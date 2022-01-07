@@ -22,3 +22,4 @@ Suggests:
 URL: https://github.com/EDIorg/EDIutils, https://ediorg.github.io/EDIutils/
 BugReports: https://github.com/EDIorg/EDIutils/issues
 VignetteBuilder: knitr
+Language: en-US
