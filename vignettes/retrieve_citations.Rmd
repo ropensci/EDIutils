@@ -15,7 +15,7 @@ library(EDIutils)
 library(xml2)
 ```
 
-### Get the Journal Citation Report for Specific Data Packages
+## Get the Journal Citation Report for Specific Data Packages
 
 Get all identifiers for a certain scope
 

@@ -3,14 +3,14 @@
 
 # EDIutils
 
-    <!-- badges: start -->
-    [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-    [![R-CMD-check](https://github.com/EDIorg/EDIutils/workflows/R-CMD-check/badge.svg)](https://github.com/EDIorg/EDIutils/actions)
-    [![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/master/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
-    <!-- badges: end -->
+<!-- badges: start -->
 
-*NOTE: This version breaks back compatibility. Install the previous
-version from the `deprecated` branch*
+[![Project Status: WIP – Initial development is in progress, but there
+has not yet been a stable, usable release suitable for the
+public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![R-CMD-check](https://github.com/EDIorg/EDIutils/workflows/R-CMD-check/badge.svg)](https://github.com/EDIorg/EDIutils/actions)
+[![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/master/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
+<!-- badges: end -->
 
 A client for the Environmental Data Initiative repository REST API. The
 [EDI data repository](https://portal.edirepository.org/nis/home.jsp) is
@@ -22,10 +22,14 @@ stack](https://pastaplus-core.readthedocs.io/en/latest/index.html#).
 EDIutils includes functions to search and access existing data, evaluate
 and upload new data, and assist with related data management tasks.
 
-  - [Search and Access Data]()
-  - [Evaluate and Upload Data]()
-  - [Retrieve Download Metrics]()
-  - [Retrieve Citation Metrics]()
+-   [Search and Access
+    Data](https://ediorg.github.io/EDIutils/articles/search_and_access.html)
+-   [Evaluate and Upload
+    Data](https://ediorg.github.io/EDIutils/articles/evaluate_and_upload.html)
+-   [Retrieve Download
+    Metrics](https://ediorg.github.io/EDIutils/articles/retrieve_downloads.html)
+-   [Retrieve Citation
+    Metrics](https://ediorg.github.io/EDIutils/articles/retrieve_citations.html)
 
 ## Installation
 
@@ -37,7 +41,7 @@ install.packages("remotes")
 remotes::install_github("EDIorg/EDIutils")
 ```
 
-Get version 1.6.1 (deprecated):
+Get version 1.6.1, the previous major release now deprecated:
 
 ``` r
 remotes::install_github("EDIorg/EDIutils", ref = "deprecated")
@@ -101,7 +105,7 @@ res
 #> 6 58b9000439a5671ea7fe13212e889ba5 TrapEfficiencySummary.csv
 #> 7 86e61c1a501b7dcf0040d10e009bfd87        TrapOperations.csv
 
-# Read raw bytes of the 4th data entity (i.e. Steelhead.csv)
+# Read raw bytes of Steelhead.csv (i.e. the 4th data entity)
 raw <- read_data_entity(packageId = "edi.1047.1", entityId = res$entityId[4])
 head(raw)
 #> [1] ef bb bf 44 61 74
@@ -130,12 +134,12 @@ data
 
 ### Evaluate and Upload Data
 
-*The EDI repository has a “staging” environment to test the upload and
-rendering of new data packages before publishing in the “production”
-environment.*
-
+The repository has a
+“[staging](https://portal-s.edirepository.org/nis/home.jsp)” environment
+to test the upload and rendering of new data packages before publishing
+to “[production](https://portal.edirepository.org/nis/home.jsp)”.
 Authentication is required by functions involving data evaluation and
-upload. Submit account requests to
+upload. Request an account from
 <support@environmentaldatainitiative.org>.
 
 ``` r
@@ -155,10 +159,9 @@ identifier
 #> [1] 595
 ```
 
-Evaluation checks metadata accuracy and completeness.
+Evaluation checks for metadata accuracy and completeness.
 
 ``` r
-
 # Evaluate data package
 transaction <- evaluate_data_package(
  eml = "./data/edi.595.1.xml", 
@@ -173,10 +176,46 @@ status
 
 # Read the evaluation report
 report <- read_evaluate_report(transaction, frmt = "char", env = "staging")
-report
+message(report)
+#> ===================================================
+#>   EVALUATION REPORT
+#> ===================================================
+#>   
+#> PackageId: edi.595.1
+#> Report Date/Time: 2021-12-16T08:17:40
+#> Total Quality Checks: 29
+#> Valid: 21
+#> Info: 8
+#> Warn: 0
+#> Error: 0
+#> 
+#> ---------------------------------------------------
+#>   DATASET REPORT
+#> ---------------------------------------------------
+#>   
+#> IDENTIFIER: packageIdPattern
+#> NAME: packageId pattern matches "scope.identifier.revision"
+#> DESCRIPTION: Check against LTER requirements for scope.identifier.revision
+#> EXPECTED: 'scope.n.m', where 'n' and 'm' are integers and 'scope' is one ...
+#> FOUND: edi.595.1
+#> STATUS: valid
+#> EXPLANATION: 
+#> SUGGESTION: 
+#> REFERENCE: 
+#> 
+#> IDENTIFIER: emlVersion
+#> NAME: EML version 2.1.0 or beyond
+#> DESCRIPTION: Check the EML document declaration for version 2.1.0 or higher
+#> EXPECTED: eml://ecoinformatics.org/eml-2.1.0 or higher
+#> FOUND: https://eml.ecoinformatics.org/eml-2.2.0
+#> STATUS: valid
+#> EXPLANATION: Validity of this quality report is dependent on this check ...
+#> SUGGESTION: 
+#> REFERENCE: 
+#> ...
 ```
 
-Upload once errors and warnings are fixed.
+Upload after errors and warnings are fixed.
 
 ``` r
 # Create a new data package
@@ -195,8 +234,8 @@ status
 ```
 
 Once everything looks good in the “staging” environment, then repeat the
-above reservation and upload steps in the “production” environment where
-it will be assigned a DOI and offically published.
+above reservation and upload step in the “production” environment where
+it will be assigned a DOI and published.
 
 ## Getting help
 
@@ -206,11 +245,11 @@ filing bug reports, please include a minimal reproducible example.
 
 ## Contributing
 
-Community contributions are welcome\! Please reference our [contributing
+Community contributions are welcome! Please reference our [contributing
 guidelines](https://github.com/EDIorg/EDIutils/blob/master/CONTRIBUTING.md)
 for details.
 
------
+------------------------------------------------------------------------
 
 Please note that this package is released with a [Contributor Code of
 Conduct](https://ropensci.org/code-of-conduct/). By contributing to this

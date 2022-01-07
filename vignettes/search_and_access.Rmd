@@ -18,54 +18,184 @@ knitr::opts_chunk$set(
 library(EDIutils)
 ```
 
-### Search and Access Data
+## Search
 
-#### Search
+The repository search service is a standard deployment of Apache Solr and indexes select metadata fields of data packages. Some of the possible motivations for using the search API include:
 
-The repository search service is a standard deployment of Apache Solr and indexes select metadata fields of data package metadata. For a list of searchable fields see `search_data_packages()`. See the [Apache Solr Wiki](https://cwiki.apache.org/confluence/display/solr/) for more on constructing Solr queries. For a browser based search experience, use the [EDI data portal](https://portal.edirepository.org/nis/advancedSearch.jsp) of the EDI data portal.
+* Building a custom search interface that offers some feature not found in the EDI data portal (e.g. build a query interface where the search results are always restricted to a particular research project).
 
-```{r eval=FALSE}
-# List data packages containing the term "water temperature"
-res <- search_data_packages(query = 'q="water+temperature"&fl=*')
-res
-#> {xml_document}
-#> <resultset numFound="768" start="0" rows="10">
-#>  [1] <document>\n  <abstract>This data set contains water leve ...
-#>  [2] <document>\n  <abstract>This data set contains water leve ...
-#>  [3] <document>\n  <abstract>The second instrumented buoy on S ...
-#>  [4] <document>\n  <abstract>Water temperature was measured on ...
-#>  [5] <document>\n  <abstract>Profiles of water and sediment te ...
-#>  [6] <document>\n  <abstract>Time series at 5 minute intervals ...
-#>  [7] <document>\n  <abstract>Time series at 5 minute intervals ...
-#>  [8] <document>\n  <abstract>Time series at 5 minute intervals ...
-#>  [9] <document>\n  <abstract>As part of the Long Term Ecologic ...
-#> [10] <document>\n  <abstract>Year 2016, continuous measurement ...
-```
+* Building a local data catalog. In this case we are constructing the query in our program and displaying a table of matching documents for our local site including things like title, authors, keywords, and perhaps the abstract. 
+
+* Mining data where EML metadata is the data to be mined, processed, or analyzed in some way.
+
+* Increased efficiency in that using the search API is often faster than relying on the data portal where the results are displayed in HTML and paged 10 documents at a time.
+
+For a list of searchable fields see `search_data_packages()`. For more on constructing Solr queries see the [Apache Solr Wiki](https://cwiki.apache.org/confluence/display/solr/). For a browser based search experience use the [EDI data portal](https://portal.edirepository.org/nis/advancedSearch.jsp).
 
 Results can be filtered to include only fields of interest.
 
 ```{r eval=FALSE}
-# Search for data packages containing the term "water temperature" and returning 
-# only the packageid, title, and score of each match
-search_data_packages(query = 'q="water+temperature"&fl=packageid,title,score')
+# Match all documents with keywords "disturbance" and return only their IDs
+res <- search_data_packages(query = 'q=keyword:disturbance&fl=id')
+res
+#> {xml_document}
+#> <resultset numFound="12845" start="0" rows="10">
+#>   [1] <document>\n  <id>knb-lter-luq.197</id>\n</document>
+#>   [2] <document>\n  <id>knb-lter-and.3982</id>\n</document>
+#>   [3] <document>\n  <id>knb-lter-luq.169</id>\n</document>
+#>   [4] <document>\n  <id>knb-lter-and.3983</id>\n</document>
+#>   [5] <document>\n  <id>knb-lter-arc.10435</id>\n</document>
+#>   [6] <document>\n  <id>knb-lter-arc.10436</id>\n</document>
+#>   [7] <document>\n  <id>knb-lter-arc.10450</id>\n</document>
+#>   [8] <document>\n  <id>knb-lter-arc.10451</id>\n</document>
+#>   [9] <document>\n  <id>knb-lter-arc.10452</id>\n</document>
+#>   [10] <document>\n  <id>knb-lter-arc.10453</id>\n</document>
 ```
 
 When constructing a query note that the 15403 data packages of the [ecotrends](https://lternet.edu/the-ecotrends-project/) project and 10492 data packages of the [LTER Landsat](https://lternet.edu/lter-remote-sensing-and-geographic-information-system-data/) project, can be excluded from the returned results by including `&fq=-scope:(ecotrends+lter-landsat)` in the query string.
 
 ```{r eval=FALSE}
-# Search for data packages containing the term "water temperature", returning 
-# only the packageid, title, score, and excluding ecotrends and lter-landsat 
-# scopes from the returned results
-query <- 'q="water+temperature"&fl=packageid,title,score&fq=-scope:(ecotrends+lter-landsat)'
-search_data_packages(query)
+# Match all documents with keywords "disturbance", excluding ecotrends and 
+# lter-landsat scopes from the returned results
+query <- 'q=keyword:disturbance&fl=packageid&fq=-scope:(ecotrends+lter-landsat)'
+res <- search_data_packages(query)
+res
+#> {xml_document}
+#> <resultset numFound="12841" start="0" rows="10">
+#>   [1] <document>\n  <packageid>knb-lter-luq.197.62</packageid>\n</document>
+#>   [2] <document>\n  <packageid>knb-lter-and.3982.7</packageid>\n</document>
+#>   [3] <document>\n  <packageid>knb-lter-luq.169.65</packageid>\n</document>
+#>   [4] <document>\n  <packageid>knb-lter-and.3983.4</packageid>\n</document>
+#>   [5] <document>\n  <packageid>knb-lter-arc.10435.4</packageid>\n</document>
+#>   [6] <document>\n  <packageid>knb-lter-arc.10436.4</packageid>\n</document>
+#>   [7] <document>\n  <packageid>knb-lter-arc.10450.4</packageid>\n</document>
+#>   [8] <document>\n  <packageid>knb-lter-arc.10451.4</packageid>\n</document>
+#>   [9] <document>\n  <packageid>knb-lter-arc.10452.4</packageid>\n</document>
+#>   [10] <document>\n  <packageid>knb-lter-arc.10453.4</packageid>\n</document>
 ```
 
-#### Access
-
-Data entities are downloaded in raw bytes and parsed by a reader function.
+Use wild cards operators to match anything and control the number of returned results.
 
 ```{r eval=FALSE}
-# List data entities of data package edi.1047.1
+# Match anything, display all fields, limit to only one document
+res <- search_data_packages(query = 'q=*&fl=*&rows=1')
+res
+#> {xml_document}
+#> <resultset numFound="44907" start="0" rows="1">
+#>   [1] <document>\n  <abstract>The EcoTrends project was established in ...
+```
+
+Use scope, keyword, and author fields to get all data packages belonging to a research site, organization, or author.
+
+```{r eval=FALSE}
+# Find all FCE LTER data packages, displaying the package id, title, and DOI
+query <- 'q=scope:knb-lter-fce&fl=packageid,title,doi&rows=100'
+res <- search_data_packages(query)
+res
+#> {xml_document}
+#> <resultset numFound="183" start="0" rows="100">
+#>   [1] <document>\n  <packageid>knb-lter-fce.1076.4</packageid>\n  <title> ...
+#>   [2] <document>\n  <packageid>knb-lter-fce.1077.3</packageid>\n  <title> ...
+#>   [3] <document>\n  <packageid>knb-lter-fce.1078.3</packageid>\n  <title> ...
+#>   [4] <document>\n  <packageid>knb-lter-fce.1081.3</packageid>\n  <title> ...
+#>   [5] <document>\n  <packageid>knb-lter-fce.1085.3</packageid>\n  <title> ...
+#>   [6] <document>\n  <packageid>knb-lter-fce.1087.4</packageid>\n  <title> ...
+#>   [7] <document>\n  <packageid>knb-lter-fce.1088.3</packageid>\n  <title> ...
+#>   [8] <document>\n  <packageid>knb-lter-fce.1089.3</packageid>\n  <title> ...
+#>   [9] <document>\n  <packageid>knb-lter-fce.1090.3</packageid>\n  <title> ...
+#>   [10] <document>\n  <packageid>knb-lter-fce.1091.3</packageid>\n  <title> ...
+#> ...
+
+# Non-LTER projects publish under the "edi" scope and group data packages by a 
+# unique keyword. Find all data packages belonging to the Interagency 
+# Ecological Program
+query <- 'q=scope:edi+AND+keyword:"Interagency+Ecological+Program"&fl=*'
+res <- search_data_packages(query)
+res
+#> {xml_document}
+#> <resultset numFound="22" start="0" rows="10">
+#>   [1] <document>\n  <abstract>The U.S. Fish and Wildlife Service (USFWS) ...
+#>   [2] <document>\n  <abstract>The Suisun Marsh Salinity Control Gates ...
+#>   [3] <document>\n  <abstract>Natural history museum specimen are ...
+#>   [4] <document>\n  <abstract>Dissolved oxygen levels in the Stockton Deep ...
+#>   [5] <document>\n  <abstract>Projected temperature increases due to global ...
+#>   [6] <document>\n  <abstract>The Interagency Ecological Program San ...
+#>   [7] <document>\n  <abstract>The Interagency Ecological Program San ...
+#>   [8] <document>\n  <abstract>The Fish Restoration Program Monitoring Team ...
+#>   [9] <document>\n  <abstract>The Interagency Ecological Program San ...
+#>   [10] <document>\n  <abstract>The upper San Francisco Estuary is an inland ...
+
+# Query on author
+query <- 'q=author:duane+costa&fq=author:costa&fl=id,title,author,score'
+res <- search_data_packages(query)
+res
+#> {xml_document}
+#> <resultset numFound="5" start="0" rows="10">
+#>   [1] <document>\n  <id>knb-lter-vcr.147</id>\n  <title>Keywords and Terms ...
+#>   [2] <document>\n  <id>knb-lter-nwk.4</id>\n  <title>EML congruence checker ...
+#>   [3] <document>\n  <id>knb-lter-nwk.3</id>\n  <title>Congruence checks for ...
+#>   [4] <document>\n  <id>edi.638</id>\n  <title>Stream temperatures in the ...
+#>   [5] <document>\n  <id>knb-lter-hfr.104</id>\n  <title>Adult Population ...
+```
+
+Queries can be complex.
+
+```{r eval=FALSE}
+# Query on subject "Primary Production" OR subject "plant". Note that 'subject'
+# is an aggregation of several other fields containing searchable text: 
+# 'author', 'organization', 'title', 'keyword', and 'abstract' fields rolled
+# together into a single searchable field.
+query <- paste0('q=subject:("Primary+Production")+OR+subject:plant&fq=',
+                '-scope:ecotrends&fq=-scope:lter-landsat*&fl=id,packageid,',
+                'title,author,organization,pubdate,coordinates')
+res <- search_data_packages(query)
+res
+#> {xml_document}
+#> <resultset numFound="2679" start="0" rows="10">
+#>   [1] <document>\n  <id>knb-lter-sev.298</id>\n  <packageid>knb-lter- ...
+#>   [2] <document>\n  <id>knb-lter-sev.206</id>\n  <packageid>knb-lter- ...
+#>   [3] <document>\n  <id>knb-lter-ntl.72</id>\n  <packageid>knb-lter-n ...
+#>   [4] <document>\n  <id>knb-lter-kbs.19</id>\n  <packageid>knb-lter-k ...
+#>   [5] <document>\n  <id>knb-lter-sev.186</id>\n  <packageid>knb-lter- ...
+#>   [6] <document>\n  <id>knb-lter-sev.205</id>\n  <packageid>knb-lter- ...
+#>   [7] <document>\n  <id>knb-lter-sev.182</id>\n  <packageid>knb-lter- ...
+#>   [8] <document>\n  <id>knb-lter-sev.290</id>\n  <packageid>knb-lter- ...
+#>   [9] <document>\n  <id>knb-lter-sev.289</id>\n  <packageid>knb-lter- ...
+#>   [10] <document>\n  <id>knb-lter-sev.155</id>\n  <packageid>knb-lter- ...
+
+```
+
+An alternative method for searching and retrieving metadata is the "list and read" method. It involves listing data package identifiers of interest, then read the corresponding metadata of those data packages one at a time, parsing and extracting whatever metadata from them that you're interested in searching or doing additional processing on. Although this sounds like more work than using the search API, and in fact it generally is, there are some use cases where this might be the preferred approach. For example this list and read method allows access to previous versions of a data package, whereas the search API only provides access to the most recent version, and this method provides access to all EML content, not just indexed fields.
+
+## Access
+
+The EDI data repository provides open access to archived data as packages. Packages can be downloaded in .zip format or their individual data entities downloaded as raw bytes or files. Entities with a common format can be parsed simply by most readers, more complex formats require metadata about the entity to be properly handled.
+
+Downloading a data package archive (.zip) requires a data package ID.
+
+```{r eval=FALSE}
+# Request a zip archive
+transaction <- create_data_package_archive(packageId = "edi.1047.1")
+transaction
+#> [1] "archive_edi.1047.1_14896683904724129"
+
+# Check status of the request (no response indicates success)
+read_data_package_error(transaction)
+
+# Download to path
+read_data_package_archive(
+  packageId = "edi.1047.1", 
+  transaction = transaction, 
+  path = "./data")
+#> |=============================================================| 100%
+dir("./data")
+#> [1] ""edi.1047.1.zip"
+```
+
+Entities are accessible as raw bytes (or files) and parsed by a reader function.
+
+```{r eval=FALSE}
+# List data entities of a data package
 res <- read_data_entity_names(packageId = "edi.1047.1")
 res
 #>                           entityId                entityName
@@ -77,12 +207,14 @@ res
 #> 6 58b9000439a5671ea7fe13212e889ba5 TrapEfficiencySummary.csv
 #> 7 86e61c1a501b7dcf0040d10e009bfd87        TrapOperations.csv
 
-# Read raw bytes of Steelhead.csv
-raw <- read_data_entity(packageId = "edi.1047.1", entityId = res$entityId[4])
+# Download Steelhead.csv in raw bytes. Use the entityName and entityID as keys.
+entityName <- "Steelhead.csv"
+entityId <- res$entityId[res$entityName == entityName]
+raw <- read_data_entity(packageId = "edi.1047.1", entityId)
 head(raw)
 #> [1] ef bb bf 44 61 74
 
-# Parse with .csv reader
+# Simple formats are simply parsed
 data <- readr::read_csv(file = raw)
 data
 #> # A tibble: 2,926 x 14
@@ -102,5 +234,14 @@ data
 #> #   lifeStage <chr>, forkLength <dbl>, weight <dbl>, n <dbl>,
 #> #   mort <chr>, fishOrigin <chr>, markType <chr>,
 #> #   CatchRaw.comments <chr>
+
+# Complex formats require physical metadata
+library(xml2)
+eml <- read_metadata("edi.1047.1")
+physical <- get_physical(eml, entityId)
+
+
+
+# Check quality report
 ```
 

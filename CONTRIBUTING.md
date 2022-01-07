@@ -2,7 +2,7 @@
 
 ## Scope
 
-1. Interface for all EDI data repository web services.
+1. Support for all EDI data repository web services.
 2. Simplify common user tasks (e.g. publication, reuse, reporting).
 
 ## git structure

@@ -105,6 +105,7 @@ reference:
     - create_dn
     - create_data_package_archive
     - is_authorized
+    - get_physical
     
   - title: Audit Manager Services
     desc: The Audit Manager web service allows other PASTA web services to create, and users to access, PASTA audit logs.

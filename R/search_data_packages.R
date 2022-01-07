@@ -5,7 +5,31 @@
 #' @param query (character) Query (see details below)
 #' @param env (character) Repository environment. Can be: "production", "staging", or "development".
 #'     
-#' @return (xml_document) Search results
+#' @return (xml_document) Search results containing the fields:
+#' \itemize{
+#'   \item abstract
+#'   \item begindate
+#'   \item doi
+#'   \item enddate
+#'   \item funding
+#'   \item geographicdescription
+#'   \item id
+#'   \item methods
+#'   \item packageid
+#'   \item pubdate
+#'   \item responsibleParties
+#'   \item scope
+#'   \item site
+#'   \item taxonomic            
+#'   \item title
+#'   \item authors              
+#'   \item spatialCoverage
+#'   \item sources
+#'   \item keywords
+#'   \item organizations
+#'   \item singledates
+#'   \item timescales
+#' }
 #' 
 #' @note Only the newest version of data packages are searchable, older versions are not.
 #' 

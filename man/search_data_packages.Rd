@@ -12,7 +12,31 @@ search_data_packages(query, env = "production")
 \item{env}{(character) Repository environment. Can be: "production", "staging", or "development".}
 }
 \value{
-(xml_document) Search results
+(xml_document) Search results containing the fields:
+\itemize{
+  \item abstract
+  \item begindate
+  \item doi
+  \item enddate
+  \item funding
+  \item geographicdescription
+  \item id
+  \item methods
+  \item packageid
+  \item pubdate
+  \item responsibleParties
+  \item scope
+  \item site
+  \item taxonomic            
+  \item title
+  \item authors              
+  \item spatialCoverage
+  \item sources
+  \item keywords
+  \item organizations
+  \item singledates
+  \item timescales
+}
 }
 \description{
 Searches data packages in the EDI data repository using the specified Solr query.

@@ -9,7 +9,7 @@ vignette: >
 
 This vignette demonstrates how to query the EDI repository for data package download metrics. These stats may be used in reports or further processed to understand data user behavior.
 
-### Set up the R environment
+## Set up the R environment
 
 ```r
 library(EDIutils)
@@ -35,7 +35,7 @@ library(ggplot2)
 
 Several EDI API functions return XML, `xml2` is a convenient package to extract desired information and to save returned EML files locally.
 
-### Get the Audit Report for Downloaded Data Entities
+## Get the Audit Report for Downloaded Data Entities
 
 Accessing the audit report requires authentication.
 
