@@ -169,13 +169,18 @@ An alternative method for searching and retrieving metadata is the "list and rea
 
 ## Access
 
-The EDI data repository provides open access to archived data as packages. Packages can be downloaded in .zip format or their individual data entities downloaded as raw bytes or files. Entities with a common format can be parsed simply by most readers, more complex formats require metadata about the entity to be properly handled.
+The EDI data repository provides open access to archived data as packages. Packages can be downloaded in .zip format or their individual data entities downloaded as raw bytes and files. Entities with a common format can be parsed simply by most readers while more complex formats need metadata to help with parsing.
+
+```{r eval=FALSE}
+# A data package
+packageId <- "edi.1047.1"
+```
 
 Downloading a data package archive (.zip) requires a data package ID.
 
 ```{r eval=FALSE}
 # Request a zip archive
-transaction <- create_data_package_archive(packageId = "edi.1047.1")
+transaction <- create_data_package_archive(packageId)
 transaction
 #> [1] "archive_edi.1047.1_14896683904724129"
 
@@ -183,20 +188,17 @@ transaction
 read_data_package_error(transaction)
 
 # Download to path
-read_data_package_archive(
-  packageId = "edi.1047.1", 
-  transaction = transaction, 
-  path = "./data")
+read_data_package_archive(packageId, transaction, path = "./data")
 #> |=============================================================| 100%
 dir("./data")
 #> [1] ""edi.1047.1.zip"
 ```
 
-Entities are accessible as raw bytes (or files) and parsed by a reader function.
+Downloading an individual data entity requires the entity ID.
 
 ```{r eval=FALSE}
-# List data entities of a data package
-res <- read_data_entity_names(packageId = "edi.1047.1")
+# List data entities of the data package
+res <- read_data_entity_names(packageId)
 res
 #>                           entityId                entityName
 #> 1 3abac5f99ecc1585879178a355176f6d        Environmentals.csv
@@ -210,11 +212,15 @@ res
 # Download Steelhead.csv in raw bytes. Use the entityName and entityID as keys.
 entityName <- "Steelhead.csv"
 entityId <- res$entityId[res$entityName == entityName]
-raw <- read_data_entity(packageId = "edi.1047.1", entityId)
+raw <- read_data_entity(packageId, entityId)
 head(raw)
 #> [1] ef bb bf 44 61 74
+```
 
-# Simple formats are simply parsed
+Common formats are easily parsed.
+
+```{r eval=FALSE}
+# These data have a common format are simply parsed
 data <- readr::read_csv(file = raw)
 data
 #> # A tibble: 2,926 x 14
@@ -234,14 +240,37 @@ data
 #> #   lifeStage <chr>, forkLength <dbl>, weight <dbl>, n <dbl>,
 #> #   mort <chr>, fishOrigin <chr>, markType <chr>,
 #> #   CatchRaw.comments <chr>
-
-# Complex formats require physical metadata
-library(xml2)
-eml <- read_metadata("edi.1047.1")
-physical <- get_physical(eml, entityId)
-
-
-
-# Check quality report
 ```
 
+Less common formats require metadata for parsing. This metadata is listed under the "physical" node of a data entities EML.
+
+```{r eval=FALSE}
+# Read the same data entity but using the physical metadata
+library(xml2)
+eml <- read_metadata(packageId)
+meta <- read_metadata_entity(packageId, entityId)
+fieldDelimiter <- xml_text(xml_find_first(meta, ".//physical//fieldDelimiter"))
+numHeaderLines <- xml_double(xml_find_first(meta, ".//physical//numHeaderLines"))
+data <- readr::read_delim(
+  file = raw, 
+  delim = fieldDelimiter, 
+  skip = numHeaderLines-1)
+data
+#> # A tibble: 2,926 x 14
+#>    Date   trapVisitID subSiteName catchRawID releaseID commonName 
+#>    <chr>        <dbl> <chr>            <dbl>     <dbl> <chr>      
+#>  1 1/12/~         326 North Chan~      32123         0 Steelhead ~
+#>  2 1/14/~         336 North Chan~      33980         0 Steelhead ~
+#>  3 1/15/~         337 North Chan~      32683         0 Steelhead ~
+#>  4 1/16/~         339 North Chan~      32971         0 Steelhead ~
+#>  5 1/17/~         341 North Chan~      33104         0 Steelhead ~
+#>  6 1/18/~         342 North Chan~      33304         0 Steelhead ~
+#>  7 1/19/~         343 North Chan~      33432         0 Steelhead ~
+#>  8 1/21/~         349 North Chan~      34083         0 Steelhead ~
+#>  9 1/21/~         349 North Chan~      34084         0 Steelhead ~
+#> 10 1/23/~         351 North Chan~      34384         0 Steelhead ~
+#> # ... with 2,916 more rows, and 8 more variables:
+#> #   lifeStage <chr>, forkLength <dbl>, weight <dbl>, n <dbl>,
+#> #   mort <chr>, fishOrigin <chr>, markType <chr>,
+#> #   CatchRaw.comments <chr>
+```
