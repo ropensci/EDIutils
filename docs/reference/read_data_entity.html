@@ -89,25 +89,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/repository_overview.html">Repository Overview</a>
+      <a href="../articles/search_and_access.html">Search and Access Data</a>
     </li>
     <li>
-      <a href="../articles/publish_data.html">Publish Data</a>
+      <a href="../articles/publish_data.html">Evaluate and Upload Data</a>
     </li>
     <li>
-      <a href="../articles/download_data.html">Download Data</a>
+      <a href="../articles/retrieve_downloads.html">Retrieve Download Metrics</a>
     </li>
     <li>
-      <a href="../articles/read_eml_metadata.html">Read Metadata</a>
-    </li>
-    <li>
-      <a href="../articles/retrieve_dataset_citation_stats.html">Retrieve Citations</a>
-    </li>
-    <li>
-      <a href="../articles/retrieve_dataset_citation_stats.html">Retrieve Downloads</a>
-    </li>
-    <li>
-      <a href="../articles/authentication.html">Authentication</a>
+      <a href="../articles/retrieve_citations.html">Retrieve Citation Metrics</a>
     </li>
     <li>
       <a href="../articles/tests_requiring_authentication.html">Tests Requiring Authentication</a>
@@ -171,13 +162,13 @@
     <p>(raw) Raw bytes (i.e. application/octet-stream) to be parsed by a reader function appropriate for the data type</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Get data entity</span>
-<span class='va'>entityId</span> <span class='op'>&lt;-</span> <span class='fu'><a href='list_data_entities.html'>list_data_entities</a></span><span class='op'>(</span>packageId <span class='op'>=</span> <span class='st'>"edi.993.1"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in list_data_entities(packageId = "edi.993.1"): could not find function "list_data_entities"</span></div><div class='input'><span class='va'>entityId</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'entityId' not found</span></div><div class='input'>
-<span class='co'># Read raw bytes</span>
-<span class='va'>raw</span> <span class='op'>&lt;-</span> <span class='fu'>read_data_entity</span><span class='op'>(</span>packageId <span class='op'>=</span> <span class='st'>"edi.993.1"</span>, entityId <span class='op'>=</span> <span class='va'>entityId</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in read_data_entity(packageId = "edi.993.1", entityId = entityId): could not find function "read_data_entity"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>raw</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'># Read names and IDs of data entities in package "edi.1047.1"</span>
+<span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_data_entity_names.html'>read_data_entity_names</a></span><span class='op'>(</span>packageId <span class='op'>=</span> <span class='st'>"edi.1047.1"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in read_data_entity_names(packageId = "edi.1047.1"): could not find function "read_data_entity_names"</span></div><div class='input'><span class='va'>res</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'res' not found</span></div><div class='input'>
+<span class='co'># Read raw bytes of the 3rd data entity</span>
+<span class='va'>raw</span> <span class='op'>&lt;-</span> <span class='fu'>read_data_entity</span><span class='op'>(</span>packageId <span class='op'>=</span> <span class='st'>"edi.1047.1"</span>, entityId <span class='op'>=</span> <span class='va'>res</span><span class='op'>$</span><span class='va'>entityId</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in read_data_entity(packageId = "edi.1047.1", entityId = res$entityId[3]): could not find function "read_data_entity"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>raw</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;                                   
 #&gt; 1 function (length = 0L)          
 #&gt; 2 .Internal(vector("raw", length))</div><div class='input'>
@@ -371,7 +362,7 @@
 #&gt;     }
 #&gt;     invisible(names)
 #&gt; }
-#&gt; &lt;bytecode: 0x0000000027f45130&gt;
+#&gt; &lt;bytecode: 0x0000000014175808&gt;
 #&gt; &lt;environment: namespace:utils&gt;</div><div class='input'>
 </div></pre>
   </div>

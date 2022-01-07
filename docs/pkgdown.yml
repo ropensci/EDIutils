@@ -2,14 +2,10 @@ pandoc: 2.11.4
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  authentication: authentication.html
-  download_data: download_data.html
-  glossary: glossary.html
-  publish_data: publish_data.html
-  read_eml_metadata: read_eml_metadata.html
-  repository_overview: repository_overview.html
-  retrieve_dataset_citation_stats: retrieve_dataset_citation_stats.html
-  retrieve_download_stats: retrieve_download_stats.html
+  evaluate_and_upload: evaluate_and_upload.html
+  retrieve_citations: retrieve_citations.html
+  retrieve_downloads: retrieve_downloads.html
+  search_and_access: search_and_access.html
   tests_requiring_authentication: tests_requiring_authentication.html
-last_built: 2021-12-19T20:42Z
+last_built: 2022-01-07T16:34Z
 

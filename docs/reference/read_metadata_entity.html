@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Login to the EDI repository — login • EDIutils</title>
+<title>Read data entity metadata — read_metadata_entity • EDIutils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Login to the EDI repository — login" />
-<meta property="og:description" content="Login to the EDI repository" />
+<meta property="og:title" content="Read data entity metadata — read_metadata_entity" />
+<meta property="og:description" content="Read data entity metadata" />
 
 
 
@@ -129,66 +129,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Login to the EDI repository</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/login.R'><code>R/login.R</code></a></small>
-    <div class="hidden name"><code>login.Rd</code></div>
+    <h1>Read data entity metadata</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/R/read_metadata_entity.R'><code>R/read_metadata_entity.R</code></a></small>
+    <div class="hidden name"><code>read_metadata_entity.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Login to the EDI repository</p>
+    <p>Read data entity metadata</p>
     </div>
 
-    <pre class="usage"><span class='fu'>login</span><span class='op'>(</span>userId <span class='op'>=</span> <span class='cn'>NULL</span>, userPass <span class='op'>=</span> <span class='cn'>NULL</span>, config <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>read_metadata_entity</span><span class='op'>(</span><span class='va'>packageId</span>, <span class='va'>entityId</span>, env <span class='op'>=</span> <span class='st'>"production"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>userId</th>
-      <td><p>(character) User identifier of an EDI data repository account. If using</p></td>
+      <th>packageId</th>
+      <td><p>(character) Data package identifier</p></td>
     </tr>
     <tr>
-      <th>userPass</th>
-      <td><p>(character) Password of <code>userId</code></p></td>
+      <th>entityId</th>
+      <td><p>(character) Data entity identifier</p></td>
     </tr>
     <tr>
-      <th>config</th>
-      <td><p>(character) Path to config.txt, which contains <code>userId</code> and <code>userPass</code> (see details below)</p></td>
+      <th>env</th>
+      <td><p>(character) Repository environment. Can be: "production", "staging", or "development".</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(character) A temporary (~10 hour) authentication token written to the system variable "EDI_TOKEN".</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>If <code>userId</code>, <code>userPass</code>, and <code>config</code> are NULL, the console will prompt for credentials.</p>
-<p><code>config</code>: Supplying credentials in a file named config.txt facilitates authentication within automated/unassisted processes. Contents of this file should be new line separated and have the form "&lt;argument&gt; = &lt;value&gt;" (e.g. userId = myname).</p>
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>Only works when authenticating with EDI credentials. Does not work when authenticating with ORCiD, GitHub, or Google credentials.</p>
-<p>Be careful not to accidentally share your <code>userId</code> and <code>userPass</code>. Some tips to avoid this:</p><ul>
-<li><p>Don't write code that explicitly lists your credentials.</p></li>
-<li><p>Don't save your workspace when exiting an R session.</p></li>
-<li><p>Do store your credentials as environmental variables and reference these.</p></li>
-<li><p>Do use <code>config</code> but if using version control ensure the config.txt file is listed in your .gitignore.</p></li>
-</ul><p>If you may have shared your credentials, please contact EDI immediately at <a href='mailto:support@environmentaldatainitiative.org'>support@environmentaldatainitiative.org</a>. They will be more than happy to reset your password.</p>
+    <p>(xml_nodeset) The metadata of <code>entityId</code> in <code>packageId</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-
-<span class='co'># Interactively at the console</span>
-<span class='fu'>login</span><span class='op'>(</span><span class='op'>)</span>
-<span class='co'>#&gt; User name: "my_name"</span>
-<span class='co'>#&gt; User password: "my_secret"</span>
-
-<span class='co'># Programmatically with function arguments</span>
-<span class='fu'>login</span><span class='op'>(</span>userId <span class='op'>=</span> <span class='st'>"my_name"</span>, userPass <span class='op'>=</span> <span class='st'>"my_secret"</span><span class='op'>)</span>
-
-<span class='co'># Programmatically with a file containing userId and userPass arguments</span>
-<span class='fu'>login</span><span class='op'>(</span>config <span class='op'>=</span> <span class='st'>"./data/config.txt"</span><span class='op'>)</span>
-<span class='op'>}</span>
-
+    <pre class="examples"><div class='input'><span class='co'># Read entity names and IDs</span>
+<span class='va'>packageId</span> <span class='op'>&lt;-</span> <span class='st'>"knb-lter-cap.691.2"</span>
+<span class='va'>entities</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_data_entity_names.html'>read_data_entity_names</a></span><span class='op'>(</span><span class='va'>packageId</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in read_data_entity_names(packageId): could not find function "read_data_entity_names"</span></div><div class='input'><span class='va'>entities</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'entities' not found</span></div><div class='input'>
+<span class='co'># Read metadata of the first entity</span>
+<span class='va'>meta</span> <span class='op'>&lt;-</span> <span class='fu'>read_metadata_entity</span><span class='op'>(</span><span class='va'>packageId</span>, entityId <span class='op'>=</span> <span class='va'>entities</span><span class='op'>$</span><span class='va'>entityId</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in read_metadata_entity(packageId, entityId = entities$entityId[1]): could not find function "read_metadata_entity"</span></div><div class='input'><span class='va'>meta</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'meta' not found</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
