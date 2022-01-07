@@ -17,8 +17,9 @@ This is my first submission
 * New submission
 
 * Possibly mis-spelled words in DESCRIPTION:
-  EDI (5:18)
-  EDIutils (5:193)
+  EDI (7:86)
+  EDIutils (7:444)
+  LTER (7:407)
   
   These are not a misspelled words.
 
