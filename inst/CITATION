@@ -2,13 +2,15 @@ citHeader("To cite EDIutils in publications use:")
 
 year <- sub("-.*", "", meta$Date)
 note <- sprintf("R package version %s", meta$Version)
+url <- "https://github.com/EDIorg/EDIutils"
 
 bibentry(bibtype = "Manual",
          title = "{EDIutils}: An API Client for the Environmental Data Initiative Repository in R",
          author = c(person("Colin", "Smith")),
-         year = 2022,
-         url = "https://github.com/EDIorg/EDIutils")
+         year = year,
+         url = url)
 
- textVersion = paste0("Colin A Smith, (", year, ").",
-  " EDIutils: An API Client for the Environmental Data Initiative Repository in R. ",
-  url)
+textVersion <- paste0(
+  "Colin A Smith, (", year, "). EDIutils: An API Client for the Environmental ",
+  "Data Initiative Repository in R. ", url
+)
