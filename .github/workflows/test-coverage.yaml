@@ -1,14 +1,19 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/master/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
-on:
-  push:
-    # branches: [main, master]
-    branches: [cran]
-  pull_request:
-    # branches: [main, master]
-    branches: [cran]
 
 name: test-coverage
+
+on:
+  workflow_run:
+    workflow: ["R-CMD-check"]
+    branches: [cran]
+    types: [completed]
+  # push:
+  #   # branches: [main, master]
+  #   branches: [cran]
+  # pull_request:
+  #   # branches: [main, master]
+  #   branches: [cran]
 
 jobs:
   test-coverage:
