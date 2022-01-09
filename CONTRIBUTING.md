@@ -15,7 +15,7 @@ This repository is structured as a standard R package following the conventions 
 
 ## Code
 
-All code for this package is found in `R/`. All functions should be thoroughly documented with `roxygen2`. Code should conform to the rOpenSci [Style guide](https://github.com/ropensci/onboarding/blob/master/packaging_guide.md).
+All code for this package is found in `R/`. All functions should be thoroughly documented with `roxygen2`. All new code should follow the [tidyverse style guide](https://style.tidyverse.org/) and can be applied with the  [styler](https://cran.r-project.org/web/packages/styler/index.html) and [lintr](https://cran.r-project.org/web/packages/lintr/index.html) packages.
 
 ## Testing
 
