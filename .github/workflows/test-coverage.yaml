@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      EDI_TOKEN: ${{ secrets.EDI_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
