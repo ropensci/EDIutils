@@ -5,7 +5,7 @@ name: test-coverage
 
 on:
   workflow_run:
-    workflow: ["R-CMD-check"]
+    workflows: ["R-CMD-check"]
     branches: [cran]
     types: [completed]
   # push:
