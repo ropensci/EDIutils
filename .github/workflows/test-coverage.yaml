@@ -4,16 +4,12 @@
 name: test-coverage
 
 on:
-  workflow_run:
-    workflows: ["R-CMD-check"]
+  push:
+    # branches: [main, master]
     branches: [cran]
-    types: [completed]
-  # push:
-  #   # branches: [main, master]
-  #   branches: [cran]
-  # pull_request:
-  #   # branches: [main, master]
-  #   branches: [cran]
+  pull_request:
+    # branches: [main, master]
+    branches: [cran]
 
 jobs:
   test-coverage:
