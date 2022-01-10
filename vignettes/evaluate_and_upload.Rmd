@@ -1,0 +1,155 @@
+---
+title: "Evaluate and Upload Data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Evaluate and Upload Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+_The EDI data repository has a "[staging](https://portal-s.edirepository.org/nis/home.jsp)" environment to test the upload and rendering of new data packages before publishing to "[production](https://portal.edirepository.org/nis/home.jsp)". These environments are functionally equivalent but the contained values are independent. For example, a data package identifier reserved by a user in "staging" will not work in "production" and vise versa._
+
+```{r setup}
+library(EDIutils)
+```
+
+Evaluation and upload to the repository requires data entities are described with EML metadata. There are many tools for creating EML, EDI supports two: the [EMLassemblyline](https://ediorg.github.io/EMLassemblyline/) R package for programmatic workflows, and the [ezEML](https://ezeml.edirepository.org/eml/) web form wizard. Research groups managing large volumes of metadata may want to consider the [LTER core-metabase](https://github.com/lter/LTER-core-metabase).
+
+## Authenticate
+
+Authentication is required by functions involving data evaluation and upload, audit report access, event notifications, and other account based features. Request an account from support@environmentaldatainitiative.org. There are three options for authenticating:
+
+```{r eval=FALSE}
+# Interactively at the console
+login()
+#> User name: "my_name"
+#> User password: "my_secret"
+
+# Programmatically with function arguments
+login(userId = "my_name", userPass = "my_secret")
+
+# Programmatically with a file containing userId and userPass arguments
+login(config = "./data/config.txt")
+```
+
+The `login()` function exchanges credentials for a temporary (~10 hour) authentication token, which is written to the `EDI_TOKEN` environment variable referenced by EDIutils functions requiring authentication.
+
+## Reserve a Data Package ID
+
+Data package reservations prevent conflicting use of the same identifier.
+
+```{r eval=FALSE}
+# Create reservation
+identifier <- create_reservation(scope = "edi", env = "staging")
+identifier
+#> [1] 595
+```
+
+## Evaluate
+
+Evaluation checks for metadata accuracy and completeness.
+
+```{r eval=FALSE}
+
+# Evaluate data package
+transaction <- evaluate_data_package(
+ eml = "./data/edi.595.1.xml", 
+ env = "staging")
+transaction
+#> [1] "evaluate_163966785813042760"
+
+# Check status
+status <- check_status_evaluate(transaction, env = "staging")
+status
+#> [1] TRUE
+
+# Read the evaluation report
+report <- read_evaluate_report(transaction, frmt = "char", env = "staging")
+message(report)
+#> ===================================================
+#>   EVALUATION REPORT
+#> ===================================================
+#>   
+#> PackageId: edi.595.1
+#> Report Date/Time: 2021-12-16T08:17:40
+#> Total Quality Checks: 29
+#> Valid: 21
+#> Info: 8
+#> Warn: 0
+#> Error: 0
+#> 
+#> ---------------------------------------------------
+#>   DATASET REPORT
+#> ---------------------------------------------------
+#>   
+#> IDENTIFIER: packageIdPattern
+#> NAME: packageId pattern matches "scope.identifier.revision"
+#> DESCRIPTION: Check against LTER requirements for scope.identifier.revision
+#> EXPECTED: 'scope.n.m', where 'n' and 'm' are integers and 'scope' is one ...
+#> FOUND: edi.595.1
+#> STATUS: valid
+#> EXPLANATION: 
+#> SUGGESTION: 
+#> REFERENCE: 
+#> 
+#> IDENTIFIER: emlVersion
+#> NAME: EML version 2.1.0 or beyond
+#> DESCRIPTION: Check the EML document declaration for version 2.1.0 or higher
+#> EXPECTED: eml://ecoinformatics.org/eml-2.1.0 or higher
+#> FOUND: https://eml.ecoinformatics.org/eml-2.2.0
+#> STATUS: valid
+#> EXPLANATION: Validity of this quality report is dependent on this check ...
+#> SUGGESTION: 
+#> REFERENCE: 
+#> ...
+```
+
+
+## Upload
+
+Upload after errors and warnings are fixed.
+
+```{r eval=FALSE}
+# Create a new data package
+transaction <- create_data_package(
+ eml = "./data/edi.595.1.xml", 
+ env = "staging")
+transaction
+#> [1] "create_163966765080210573__edi.595.1"
+
+# Check status
+status <- check_status_create(
+ transaction = transaction, 
+ env = "staging")
+status
+#> [1] TRUE
+```
+
+#### Update
+
+Update is the same as upload, but with an incremented data package version number (e.g. "edi.595.2" supersedes "edi.595.1").
+
+```{r eval=FALSE}
+#' # Update data package
+#' transaction <- update_data_package(
+#'   eml = "./data/edi.595.2.xml", 
+#'   env = "staging")
+#' transaction
+#' #> [1] "update_edi.595_163966788658131920__edi.595.2"
+#' 
+#' # Check status
+#' status <- check_status_update(
+#'   transaction = transaction, 
+#'   env = "staging")
+#' status
+#' #> [1] TRUE
+```
+
+Once everything looks good in the "staging" environment, then repeat the above reservation and upload steps in the "production" environment where the data package will be assigned a DOI and made discoverable with other published data.

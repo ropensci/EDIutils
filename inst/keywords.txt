@@ -1,7 +1,0 @@
-keyword	keywordThesaurus
-peatland	
-bogs	
-peat	
-vascular plants	
-mosses	
-decomposition	
