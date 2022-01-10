@@ -145,20 +145,33 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>env</th>
-      <td><p>(character) Repository environment. Can be: "production", "staging", or "development".</p></td>
+      <td><p>(character) Repository environment. Can be: "production",
+"staging", or "development".</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>(numeric) Scopes within a specified <code>env</code></p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Listing: 
+<code><a href='list_data_descendants.html'>list_data_descendants</a>()</code>,
+<code><a href='list_data_entities.html'>list_data_entities</a>()</code>,
+<code><a href='list_data_package_identifiers.html'>list_data_package_identifiers</a>()</code>,
+<code><a href='list_data_package_revisions.html'>list_data_package_revisions</a>()</code>,
+<code><a href='list_data_sources.html'>list_data_sources</a>()</code>,
+<code><a href='list_deleted_data_packages.html'>list_deleted_data_packages</a>()</code>,
+<code><a href='list_recent_changes.html'>list_recent_changes</a>()</code>,
+<code><a href='list_recent_uploads.html'>list_recent_uploads</a>()</code>,
+<code><a href='list_service_methods.html'>list_service_methods</a>()</code>,
+<code><a href='list_user_data_packages.html'>list_user_data_packages</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># List scopes</span>
 <span class='va'>scopes</span> <span class='op'>&lt;-</span> <span class='fu'>list_data_package_scopes</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='error'>Error in list_data_package_scopes(): could not find function "list_data_package_scopes"</span></div><div class='input'><span class='va'>scopes</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'scopes' not found</span></div><div class='input'>
-</div></pre>
+</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'scopes' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

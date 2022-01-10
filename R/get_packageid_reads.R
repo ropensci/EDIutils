@@ -6,6 +6,8 @@
 #'
 #' @return (xml_document) Summary of all the successful reads (total reads and
 #' non-robot reads) of \code{packageId}
+#' 
+#' @family Audit Manager Services
 #'
 #' @export
 #'

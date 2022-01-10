@@ -83,6 +83,8 @@
 #'
 #' See \href{https://cwiki.apache.org/confluence/display/solr/}{Apache Solr
 #' Wiki} for how to construct a Solr query.
+#' 
+#' @family Browse and Discovery
 #'
 #' @export
 #'

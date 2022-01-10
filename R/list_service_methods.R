@@ -5,6 +5,8 @@
 #'
 #' @return (character) A simple list of web service methods supported by the
 #' Data Package Manager web service
+#' 
+#' @family Listing
 #'
 #' @export
 #'

@@ -43,3 +43,9 @@ dir("./data")
 }
 
 }
+\seealso{
+Other Miscellaneous: 
+\code{\link{create_dn}()},
+\code{\link{is_authorized}()}
+}
+\concept{Miscellaneous}

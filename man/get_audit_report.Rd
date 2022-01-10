@@ -94,3 +94,12 @@ logout()
 }
 
 }
+\seealso{
+Other Audit Manager Services: 
+\code{\link{get_audit_count}()},
+\code{\link{get_audit_record}()},
+\code{\link{get_docid_reads}()},
+\code{\link{get_packageid_reads}()},
+\code{\link{get_recent_uploads}()}
+}
+\concept{Audit Manager Services}

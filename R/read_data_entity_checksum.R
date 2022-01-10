@@ -7,6 +7,8 @@
 #'
 #' @return (character) A 40-character SHA-1 checksum value of \code{entityId}
 #' in \code{packageId}
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

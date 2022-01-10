@@ -6,6 +6,8 @@
 #'
 #' @return (character) The canonical Digital Object Identifier for
 #' \code{packageId}
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

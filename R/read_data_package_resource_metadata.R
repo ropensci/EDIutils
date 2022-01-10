@@ -5,6 +5,8 @@
 #' "staging", or "development".
 #'
 #' @return (xml_document) Resource metadata of \code{packageId}
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

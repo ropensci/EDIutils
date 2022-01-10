@@ -10,6 +10,8 @@
 #' report document
 #'
 #' @note User authentication is required (see \code{login()})
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

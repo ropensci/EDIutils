@@ -43,3 +43,10 @@ logout()
 }
 
 }
+\seealso{
+Other Identifier Reservations: 
+\code{\link{create_reservation}()},
+\code{\link{list_active_reservations}()},
+\code{\link{list_reservation_identifiers}()}
+}
+\concept{Identifier Reservations}

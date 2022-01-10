@@ -26,6 +26,8 @@
 #' and are thus filtered from the query results. The query parameter limit sets
 #' an upper limit on the number of audit records returned. For example,
 #' "limit=3".
+#' 
+#' @family Audit Manager Services
 #'
 #' @export
 #'

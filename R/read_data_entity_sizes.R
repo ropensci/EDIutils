@@ -6,6 +6,8 @@
 #'
 #' @return (data.frame) Size (in bytes) and identifiers of data entities in
 #' \code{packageId}
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

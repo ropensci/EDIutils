@@ -6,6 +6,8 @@
 #' "staging", or "development".
 #'
 #' @return (numeric) Size, in bytes, of \code{entityId} in \code{packageId}
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

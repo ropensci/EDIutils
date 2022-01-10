@@ -13,6 +13,8 @@
 #'
 #' @return (xml_document) Recent changes and their corresponding packageId,
 #' scope, identifier, revision, principal, doi, serviceMethod, and date.
+#' 
+#' @family Listing
 #'
 #' @export
 #'

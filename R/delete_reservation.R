@@ -10,6 +10,8 @@
 #' delete it.
 #'
 #' @return (numeric) The deleted reservation identifier value
+#' 
+#' @family Identifier Reservations
 #'
 #' @export
 #'

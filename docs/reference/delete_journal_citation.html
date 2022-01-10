@@ -149,7 +149,8 @@
     </tr>
     <tr>
       <th>env</th>
-      <td><p>(character) Repository environment. Can be: "production", "staging", or "development".</p></td>
+      <td><p>(character) Repository environment. Can be: "production",
+"staging", or "development".</p></td>
     </tr>
     </table>
 
@@ -159,6 +160,13 @@
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>User authentication is required (see <code><a href='login.html'>login()</a></code>)</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Journal Citations: 
+<code><a href='create_journal_citation.html'>create_journal_citation</a>()</code>,
+<code><a href='get_journal_citation.html'>get_journal_citation</a>()</code>,
+<code><a href='list_data_package_citations.html'>list_data_package_citations</a>()</code>,
+<code><a href='list_principal_owner_citations.html'>list_principal_owner_citations</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
@@ -167,12 +175,13 @@
 
 <span class='co'># Create journal citation</span>
 <span class='va'>journalCitationId</span> <span class='op'>&lt;-</span> <span class='fu'><a href='create_journal_citation.html'>create_journal_citation</a></span><span class='op'>(</span>
-  packageId <span class='op'>=</span> <span class='st'>"edi.17.1"</span>, 
+  packageId <span class='op'>=</span> <span class='st'>"edi.17.1"</span>,
   articleDoi <span class='op'>=</span> <span class='st'>"https://doi.org/10.1890/11-1026.1"</span>,
   articleTitle <span class='op'>=</span> <span class='st'>"Corridors promote fire via connectivity and edge effects"</span>,
   journalTitle <span class='op'>=</span> <span class='st'>"Ecological Applications"</span>,
   relationType <span class='op'>=</span> <span class='st'>"IsCitedBy"</span>,
-  env <span class='op'>=</span> <span class='st'>"staging"</span><span class='op'>)</span>
+  env <span class='op'>=</span> <span class='st'>"staging"</span>
+<span class='op'>)</span>
 <span class='va'>journalCitationId</span>
 <span class='co'>#&gt; [1] 74</span>
 

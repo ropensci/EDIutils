@@ -5,6 +5,8 @@
 #' "staging", or "development".
 #'
 #' @return (xml_document) Journal citation
+#' 
+#' @family Journal Citations
 #'
 #' @export
 #'

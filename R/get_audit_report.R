@@ -42,6 +42,8 @@
 #' resourceId value contains the substring "knb-lter-and/2719/6".
 #'
 #' @note User authentication is required (see \code{login()})
+#' 
+#' @family Audit Manager Services
 #'
 #' @export
 #'

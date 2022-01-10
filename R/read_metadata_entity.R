@@ -6,6 +6,8 @@
 #' "staging", or "development".
 #'
 #' @return (xml_nodeset) The metadata of \code{entityId} in \code{packageId}
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

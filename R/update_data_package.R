@@ -18,6 +18,8 @@
 #' not be downloadable.
 #'
 #' @note User authentication is required (see \code{login()})
+#' 
+#' @family Evaluation and Upload
 #'
 #' @export
 #'

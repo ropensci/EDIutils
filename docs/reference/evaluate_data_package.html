@@ -145,33 +145,59 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>eml</th>
-      <td><p>(character) Full path to an EML file describing the data package to be evaluated</p></td>
+      <td><p>(character) Full path to an EML file describing the data package
+to be evaluated</p></td>
     </tr>
     <tr>
       <th>useChecksum</th>
-      <td><p>(logical) Use data entities from a previous version of the data package? See details below.</p></td>
+      <td><p>(logical) Use data entities from a previous version of
+the data package? See details below.</p></td>
     </tr>
     <tr>
       <th>env</th>
-      <td><p>(character) Repository environment. Can be: "production", "staging", or "development".</p></td>
+      <td><p>(character) Repository environment. Can be: "production",
+"staging", or "development".</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>transaction (character) Transaction identifier. May be used in a subsequent call to:</p><ul>
+    <p>transaction (character) Transaction identifier. May be used in a
+subsequent call to:</p><ul>
 <li><p><code><a href='check_status_evaluate.html'>check_status_evaluate()</a></code> to determine the operation status</p></li>
 <li><p><code><a href='read_evaluate_report.html'>read_evaluate_report()</a></code> to read the evaluation report</p></li>
-<li><p><code><a href='read_evaluate_report_summary.html'>read_evaluate_report_summary()</a></code> to summarize the evaluation report and raise exceptions</p></li>
+<li><p><code><a href='read_evaluate_report_summary.html'>read_evaluate_report_summary()</a></code> to summarize the evaluation
+  report and raise exceptions</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Each data entity described in <code>eml</code> must be accompanied by a web accessible URL at the EML XPath ".//physical/distribution/online/url". The EDI data repository downloads the data entities via this URL. The URLs must be static and not have any redirects otherwise the data entities will not be downloaded.</p>
-<p>An optional query parameter, "useChecksum", can be appended to the URL. When specified, the useChecksum query parameter directs the repository to determine whether it can use an existing copy of a data entity from a previous revision of the data package based on matching a metadata-documented checksum value (MD5 or SHA-1) to the checksum of the existing copy. If a match is found, the repository will skip the upload of the data entity from the remote URL and instead use its matching copy. Specifying "useChecksum" can save time by eliminating data uploads, but clients should take care to ensure that metadata-documented checksum values are accurate and up to date.</p>
+    <p>Each data entity described in <code>eml</code> must be accompanied by a
+web accessible URL at the EML XPath ".//physical/distribution/online/url".
+The EDI data repository downloads the data entities via this URL. The URLs
+must be static and not have any redirects otherwise the data entities will
+not be downloaded.</p>
+<p>An optional query parameter, "useChecksum", can be appended to the URL. When
+specified, the useChecksum query parameter directs the repository to
+determine whether it can use an existing copy of a data entity from a
+previous revision of the data package based on matching a
+metadata-documented checksum value (MD5 or SHA-1) to the checksum of the
+existing copy. If a match is found, the repository will skip the upload of
+the data entity from the remote URL and instead use its matching copy.
+Specifying "useChecksum" can save time by eliminating data uploads, but
+clients should take care to ensure that metadata-documented checksum values
+are accurate and up to date.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>User authentication is required (see <code><a href='login.html'>login()</a></code>)</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Evaluation and Upload: 
+<code><a href='check_status_create.html'>check_status_create</a>()</code>,
+<code><a href='check_status_evaluate.html'>check_status_evaluate</a>()</code>,
+<code><a href='check_status_update.html'>check_status_update</a>()</code>,
+<code><a href='create_data_package.html'>create_data_package</a>()</code>,
+<code><a href='update_data_package.html'>update_data_package</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
@@ -179,8 +205,9 @@
 <span class='fu'><a href='login.html'>login</a></span><span class='op'>(</span><span class='op'>)</span>
 
 <span class='va'>transaction</span> <span class='op'>&lt;-</span> <span class='fu'>evaluate_data_package</span><span class='op'>(</span>
-  eml <span class='op'>=</span> <span class='st'>"./data/edi.595.1.xml"</span>, 
-  env <span class='op'>=</span> <span class='st'>"staging"</span><span class='op'>)</span>
+  eml <span class='op'>=</span> <span class='st'>"./data/edi.595.1.xml"</span>,
+  env <span class='op'>=</span> <span class='st'>"staging"</span>
+<span class='op'>)</span>
 <span class='va'>transaction</span>
 <span class='co'>#&gt; [1] "evaluate_163966785813042760"</span>
 
@@ -206,7 +233,7 @@
 <span class='co'>#&gt; ===================================================</span>
 <span class='co'>#&gt;   EVALUATION REPORT</span>
 <span class='co'>#&gt; ===================================================</span>
-<span class='co'>#&gt;   </span>
+<span class='co'>#&gt;</span>
 <span class='co'>#&gt; PackageId: edi.595.1</span>
 <span class='co'>#&gt; Report Date/Time: 2021-12-15T17:46:33</span>
 <span class='co'>#&gt; Total Quality Checks: 29</span>

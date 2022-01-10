@@ -6,6 +6,8 @@
 #' \code{ou = "EDI"}.
 #'
 #' @return (character) Distinguished name
+#' 
+#' @family Miscellaneous
 #'
 #' @export
 #'

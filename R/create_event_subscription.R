@@ -13,6 +13,8 @@
 #' POST requests with MIME type text/plain. Additionally, because the
 #' \code{url} will be passed in an XML body, some characters must be escaped,
 #' such as ampersands from & to &amp;.
+#' 
+#' @family Event Notifications
 #'
 #' @export
 #'

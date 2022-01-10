@@ -23,3 +23,11 @@ Get journal citation
 journalCitation <- get_journal_citation(381)
 journalCitation
 }
+\seealso{
+Other Journal Citations: 
+\code{\link{create_journal_citation}()},
+\code{\link{delete_journal_citation}()},
+\code{\link{list_data_package_citations}()},
+\code{\link{list_principal_owner_citations}()}
+}
+\concept{Journal Citations}

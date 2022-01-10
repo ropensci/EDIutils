@@ -6,6 +6,8 @@
 #'
 #' @return (numeric) Identifiers of data packages within a specified
 #' \code{scope}
+#' 
+#' @family Listing
 #'
 #' @export
 #'

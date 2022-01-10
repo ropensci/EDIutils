@@ -149,20 +149,27 @@
     </tr>
     <tr>
       <th>env</th>
-      <td><p>(character) Repository environment. Can be: "production", "staging", or "development".</p></td>
+      <td><p>(character) Repository environment. Can be: "production",
+"staging", or "development".</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(numeric) The set of identifiers for the specified <code>scope</code> that end users have actively reserved for future upload</p>
+    <p>(numeric) The set of identifiers for the specified <code>scope</code> that
+end users have actively reserved for future upload</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Identifier Reservations: 
+<code><a href='create_reservation.html'>create_reservation</a>()</code>,
+<code><a href='delete_reservation.html'>delete_reservation</a>()</code>,
+<code><a href='list_active_reservations.html'>list_active_reservations</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># List reservations</span>
 <span class='va'>reservations</span> <span class='op'>&lt;-</span> <span class='fu'>list_reservation_identifiers</span><span class='op'>(</span>scope <span class='op'>=</span> <span class='st'>"edi"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='error'>Error in list_reservation_identifiers(scope = "edi"): could not find function "list_reservation_identifiers"</span></div><div class='input'><span class='va'>reservations</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'reservations' not found</span></div><div class='input'>
-</div></pre>
+</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'reservations' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

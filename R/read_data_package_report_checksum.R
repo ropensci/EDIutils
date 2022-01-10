@@ -5,6 +5,8 @@
 #' "staging", or "development".
 #'
 #' @return (character) A 40 character SHA-1 checksum value for the report
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

@@ -24,3 +24,10 @@ List reservation identifiers
 reservations <- list_reservation_identifiers(scope = "edi")
 reservations
 }
+\seealso{
+Other Identifier Reservations: 
+\code{\link{create_reservation}()},
+\code{\link{delete_reservation}()},
+\code{\link{list_active_reservations}()}
+}
+\concept{Identifier Reservations}

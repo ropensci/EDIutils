@@ -149,13 +149,23 @@
     </tr>
     <tr>
       <th>env</th>
-      <td><p>(character) Repository environment. Can be: "production", "staging", or "development".</p></td>
+      <td><p>(character) Repository environment. Can be: "production",
+"staging", or "development".</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(xml_document) Summary of all the successful reads (total reads and non-robot reads) of <code>packageId</code></p>
+    <p>(xml_document) Summary of all the successful reads (total reads and
+non-robot reads) of <code>packageId</code></p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Audit Manager Services: 
+<code><a href='get_audit_count.html'>get_audit_count</a>()</code>,
+<code><a href='get_audit_record.html'>get_audit_record</a>()</code>,
+<code><a href='get_audit_report.html'>get_audit_report</a>()</code>,
+<code><a href='get_docid_reads.html'>get_docid_reads</a>()</code>,
+<code><a href='get_recent_uploads.html'>get_recent_uploads</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Get packageId reads</span>
@@ -165,8 +175,7 @@
 <span class='co'># Show first</span>
 <span class='va'>resource</span> <span class='op'>&lt;-</span> <span class='fu'>xml2</span><span class='fu'>::</span><span class='fu'><a href='http://xml2.r-lib.org/reference/xml_find_all.html'>xml_find_first</a></span><span class='op'>(</span><span class='va'>resourceReads</span>, <span class='st'>"resource"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='error'>Error in xml2::xml_find_first(resourceReads, "resource"): object 'resourceReads' not found</span></div><div class='input'><span class='va'>resource</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'resource' not found</span></div><div class='input'>
-</div></pre>
+</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'resource' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

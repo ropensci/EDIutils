@@ -19,3 +19,8 @@ logout()
 }
 
 }
+\seealso{
+Other Authentication: 
+\code{\link{login}()}
+}
+\concept{Authentication}

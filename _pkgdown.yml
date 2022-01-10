@@ -7,121 +7,62 @@ reference:
   - title: Evaluation and Upload
     desc: Describes web service methods for evaluating and uploading data packages.
     contents:
-    - evaluate_data_package
-    - create_data_package
-    - update_data_package
-    - check_status_evaluate
-    - check_status_create
-    - check_status_update
+    - has_concept("Evaluation and Upload")
     
   - title: Browse and Discovery
     desc: Describes web service methods for browsing and discovering data packages.
     contents:
-    - search_data_packages
+    - has_concept("Browse and Discovery")
     
   - title: Listing
     desc: Describes web service methods for listing data packages.
     contents:
-    - list_data_entities
-    - list_data_descendants
-    - list_data_sources
-    - list_data_package_identifiers
-    - list_data_package_revisions
-    - list_data_package_scopes
-    - list_user_data_packages
-    - list_deleted_data_packages
-    - list_service_methods
-    - list_recent_changes
-    - list_recent_uploads
+    - has_concept("Listing")
     
   - title: Accessing
     desc: Describes web service methods for accessing data package resources such as data, metadata, and reports.
     contents:
-    - read_data_entity
-    - read_data_entity_checksum
-    - read_data_entity_name
-    - read_data_entity_names
-    - read_data_entity_resource_metadata
-    - read_data_entity_size
-    - read_data_entity_sizes
-    - read_data_package
-    - read_data_package_from_doi
-    - read_data_package_archive
-    - read_data_package_doi
-    - read_data_package_error
-    - read_data_package_resource_metadata
-    - read_data_package_report
-    - read_data_package_report_checksum
-    - read_data_package_report_resource_metadata
-    - read_data_package_report_summary
-    - read_evaluate_report
-    - read_evaluate_report_summary
-    - read_metadata
-    - read_metadata_dublin_core
-    - read_metadata_checksum
-    - read_metadata_entity
-    - read_metadata_format
-    - read_metadata_resource_metadata
+    - has_concept("Accessing")
     
   - title: Provenance
     desc: Describes web service methods for tracking and generating provenance metadata.
     contents:
-    - get_provenance_metadata
+    - has_concept("Provenance")
     
   - title: Event Notifications
     desc: Describes web service methods for subscribing to and receiving data package event notifications.
     contents: 
-    - create_event_subscription
-    - delete_event_subscription
-    - execute_event_subscription
-    - query_event_subscriptions
-    - get_event_subscription
-    - get_event_subscription_schema
+    - has_concept("Event Notifications")
     
   - title: Identifier Reservations
     desc: Web service methods whereby an end user may reserve data package identifiers for future upload to PASTA.
     contents:
-    - create_reservation
-    - delete_reservation
-    - list_active_reservations
-    - list_reservation_identifiers
+    - has_concept("Identifier Reservations")
     
   - title: Journal Citations
     desc: Web service methods for creating, reading, and deleting journal citation entries associated with data packages.
     contents:
-    - create_journal_citation
-    - delete_journal_citation
-    - get_journal_citation
-    - list_data_package_citations
-    - list_principal_owner_citations
+    - has_concept("Journal Citations")
     
   - title: System Monitoring
     desc: Web service methods for monitoring the state of data packages being processed in PASTA.
     contents:
-    - list_working_on
+    - has_concept("System Monitoring")
     
   - title: Miscellaneous
     desc: Additional web service methods for working with data packages.
     contents:
-    - create_dn
-    - create_data_package_archive
-    - is_authorized
+    - has_concept("Miscellaneous")
     
   - title: Audit Manager Services
     desc: The Audit Manager web service allows other PASTA web services to create, and users to access, PASTA audit logs.
     contents: 
-    - get_audit_record
-    - get_audit_report
-    - get_audit_count
-    - get_docid_reads
-    - get_packageid_reads
-    - get_recent_uploads
+    - has_concept("Audit Manager Services")
   
   - title: Authentication
     desc: Functions for handling repository authentication
     contents:
-    - login
-    - logout
+    - has_concept("Authentication")
 
 navbar:
   title: ~

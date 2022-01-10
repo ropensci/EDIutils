@@ -7,6 +7,8 @@
 #' "staging", or "development".
 #'
 #' @return (xml_document) Data package report
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

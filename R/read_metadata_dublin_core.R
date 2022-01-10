@@ -5,6 +5,8 @@
 #' "staging", or "development".
 #'
 #' @return (xml_document) Dublin Core metadata
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

@@ -8,6 +8,8 @@
 #' @return (xml_document) Summary of all the successful reads (total reads and
 #' non-robot reads) for all the resources of a given \code{scope} and
 #' \code{identifier}.
+#' 
+#' @family Audit Manager Services
 #'
 #' @export
 #'

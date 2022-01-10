@@ -5,6 +5,8 @@
 #'
 #' @return (xml_document) Schema for event subscription creation request
 #' entities
+#' 
+#' @family Event Notifications
 #'
 #' @export
 #'

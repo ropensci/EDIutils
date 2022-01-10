@@ -34,6 +34,8 @@
 #' Specifying "useChecksum" can save time by eliminating data uploads, but
 #' clients should take care to ensure that metadata-documented checksum values
 #' are accurate and up to date.
+#' 
+#' @family Evaluation and Upload
 #'
 #' @export
 #'

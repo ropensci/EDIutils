@@ -7,6 +7,8 @@
 #'
 #' @return (xml_document) Journal citations metadata for all entries owned by
 #' the specified principal owner
+#' 
+#' @family Journal Citations
 #'
 #' @export
 #'

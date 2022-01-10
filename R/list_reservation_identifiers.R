@@ -6,6 +6,8 @@
 #'
 #' @return (numeric) The set of identifiers for the specified \code{scope} that
 #' end users have actively reserved for future upload
+#' 
+#' @family Identifier Reservations
 #'
 #' @export
 #'

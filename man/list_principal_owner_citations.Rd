@@ -26,3 +26,11 @@ dn <- create_dn(userId = "FCE", ou = "EDI")
 journalCitations <- list_principal_owner_citations(principalOwner = dn)
 journalCitations
 }
+\seealso{
+Other Journal Citations: 
+\code{\link{create_journal_citation}()},
+\code{\link{delete_journal_citation}()},
+\code{\link{get_journal_citation}()},
+\code{\link{list_data_package_citations}()}
+}
+\concept{Journal Citations}

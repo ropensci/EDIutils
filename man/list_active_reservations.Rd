@@ -27,3 +27,10 @@ reservations
 # Show first
 xml2::xml_find_first(reservations, "reservation")
 }
+\seealso{
+Other Identifier Reservations: 
+\code{\link{create_reservation}()},
+\code{\link{delete_reservation}()},
+\code{\link{list_reservation_identifiers}()}
+}
+\concept{Identifier Reservations}

@@ -7,6 +7,8 @@
 #'
 #' @return (xml_document) The resource metadata of \code{entityId} in
 #' \code{packageId}
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

@@ -5,10 +5,10 @@ name: test-coverage
 
 on:
   push:
-    # branches: [main, master]
+    # branches: [main, master, development]
     branches: [cran]
   pull_request:
-    # branches: [main, master]
+    # branches: [main, master, development]
     branches: [cran]
 
 jobs:

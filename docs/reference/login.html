@@ -145,7 +145,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>userId</th>
-      <td><p>(character) User identifier of an EDI data repository account. If using</p></td>
+      <td><p>(character) User identifier of an EDI data repository account.
+If using</p></td>
     </tr>
     <tr>
       <th>userPass</th>
@@ -153,26 +154,41 @@
     </tr>
     <tr>
       <th>config</th>
-      <td><p>(character) Path to config.txt, which contains <code>userId</code> and <code>userPass</code> (see details below)</p></td>
+      <td><p>(character) Path to config.txt, which contains <code>userId</code>
+and <code>userPass</code> (see details below)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(character) A temporary (~10 hour) authentication token written to the system variable "EDI_TOKEN".</p>
+    <p>(character) A temporary (~10 hour) authentication token written to
+the system variable "EDI_TOKEN".</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>If <code>userId</code>, <code>userPass</code>, and <code>config</code> are NULL, the console will prompt for credentials.</p>
-<p><code>config</code>: Supplying credentials in a file named config.txt facilitates authentication within automated/unassisted processes. Contents of this file should be new line separated and have the form "&lt;argument&gt; = &lt;value&gt;" (e.g. userId = myname).</p>
+    <p>If <code>userId</code>, <code>userPass</code>, and <code>config</code> are NULL, the console
+will prompt for credentials.</p>
+<p><code>config</code>: Supplying credentials in a file named config.txt facilitates
+authentication within automated/unassisted processes. Contents of this file
+should be new line separated and have the form "&lt;argument&gt; = &lt;value&gt;" (e.g.
+userId = myname).</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Only works when authenticating with EDI credentials. Does not work when authenticating with ORCiD, GitHub, or Google credentials.</p>
-<p>Be careful not to accidentally share your <code>userId</code> and <code>userPass</code>. Some tips to avoid this:</p><ul>
+    <p>Only works when authenticating with EDI credentials. Does not work
+when authenticating with ORCiD, GitHub, or Google credentials.</p>
+<p>Be careful not to accidentally share your <code>userId</code> and <code>userPass</code>.
+Some tips to avoid this:</p><ul>
 <li><p>Don't write code that explicitly lists your credentials.</p></li>
 <li><p>Don't save your workspace when exiting an R session.</p></li>
-<li><p>Do store your credentials as environmental variables and reference these.</p></li>
-<li><p>Do use <code>config</code> but if using version control ensure the config.txt file is listed in your .gitignore.</p></li>
-</ul><p>If you may have shared your credentials, please contact EDI immediately at <a href='mailto:support@environmentaldatainitiative.org'>support@environmentaldatainitiative.org</a>. They will be more than happy to reset your password.</p>
+<li><p>Do store your credentials as environmental variables and reference
+  these.</p></li>
+<li><p>Do use <code>config</code> but if using version control ensure the
+  config.txt file is listed in your .gitignore.</p></li>
+</ul><p>If you may have shared your credentials, please reset your password at
+<a href='https://dashboard.edirepository.org/dashboard/auth/reset_password_init'>https://dashboard.edirepository.org/dashboard/auth/reset_password_init</a>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Authentication: 
+<code><a href='logout.html'>logout</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>

@@ -7,6 +7,8 @@
 #' @return (xml_document) An audit record with fields
 #'
 #' @note User authentication is required (see \code{login()})
+#' 
+#' @family Audit Manager Services
 #'
 #' @export
 #'

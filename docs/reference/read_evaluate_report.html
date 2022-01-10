@@ -149,20 +149,50 @@
     </tr>
     <tr>
       <th>frmt</th>
-      <td><p>(character) Format of the returned report. Can be: "xml", "html", or "char".</p></td>
+      <td><p>(character) Format of the returned report. Can be: "xml", "html",
+or "char".</p></td>
     </tr>
     <tr>
       <th>env</th>
-      <td><p>(character) Repository environment. Can be: "production", "staging", or "development".</p></td>
+      <td><p>(character) Repository environment. Can be: "production",
+"staging", or "development".</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(xml_document or html_document or character) The evaluate quality report document</p>
+    <p>(xml_document or html_document or character) The evaluate quality
+report document</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>User authentication is required (see <code><a href='login.html'>login()</a></code>)</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Accessing: 
+<code><a href='read_data_entity_checksum.html'>read_data_entity_checksum</a>()</code>,
+<code><a href='read_data_entity_names.html'>read_data_entity_names</a>()</code>,
+<code><a href='read_data_entity_name.html'>read_data_entity_name</a>()</code>,
+<code><a href='read_data_entity_resource_metadata.html'>read_data_entity_resource_metadata</a>()</code>,
+<code><a href='read_data_entity_sizes.html'>read_data_entity_sizes</a>()</code>,
+<code><a href='read_data_entity_size.html'>read_data_entity_size</a>()</code>,
+<code><a href='read_data_entity.html'>read_data_entity</a>()</code>,
+<code><a href='read_data_package_archive.html'>read_data_package_archive</a>()</code>,
+<code><a href='read_data_package_doi.html'>read_data_package_doi</a>()</code>,
+<code><a href='read_data_package_error.html'>read_data_package_error</a>()</code>,
+<code><a href='read_data_package_from_doi.html'>read_data_package_from_doi</a>()</code>,
+<code><a href='read_data_package_report_checksum.html'>read_data_package_report_checksum</a>()</code>,
+<code><a href='read_data_package_report_resource_metadata.html'>read_data_package_report_resource_metadata</a>()</code>,
+<code><a href='read_data_package_report_summary.html'>read_data_package_report_summary</a>()</code>,
+<code><a href='read_data_package_report.html'>read_data_package_report</a>()</code>,
+<code><a href='read_data_package_resource_metadata.html'>read_data_package_resource_metadata</a>()</code>,
+<code><a href='read_data_package.html'>read_data_package</a>()</code>,
+<code><a href='read_evaluate_report_summary.html'>read_evaluate_report_summary</a>()</code>,
+<code><a href='read_metadata_checksum.html'>read_metadata_checksum</a>()</code>,
+<code><a href='read_metadata_dublin_core.html'>read_metadata_dublin_core</a>()</code>,
+<code><a href='read_metadata_entity.html'>read_metadata_entity</a>()</code>,
+<code><a href='read_metadata_format.html'>read_metadata_format</a>()</code>,
+<code><a href='read_metadata_resource_metadata.html'>read_metadata_resource_metadata</a>()</code>,
+<code><a href='read_metadata.html'>read_metadata</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
@@ -171,15 +201,17 @@
 
 <span class='co'># Evaluate data package</span>
 <span class='va'>transaction</span> <span class='op'>&lt;-</span> <span class='fu'><a href='evaluate_data_package.html'>evaluate_data_package</a></span><span class='op'>(</span>
- eml <span class='op'>=</span> <span class='st'>"./data/edi.595.1.xml"</span>,
- env <span class='op'>=</span> <span class='st'>"staging"</span><span class='op'>)</span>
+  eml <span class='op'>=</span> <span class='st'>"./data/edi.595.1.xml"</span>,
+  env <span class='op'>=</span> <span class='st'>"staging"</span>
+<span class='op'>)</span>
 <span class='va'>transaction</span>
 <span class='co'>#&gt; [1] "evaluate_163966785813042760"</span>
 
 <span class='co'># Read as XML</span>
 <span class='va'>qualityReport</span> <span class='op'>&lt;-</span> <span class='fu'>read_evaluate_report</span><span class='op'>(</span>
- transaction <span class='op'>=</span> <span class='va'>transaction</span>, 
- env <span class='op'>=</span> <span class='st'>"staging"</span><span class='op'>)</span>
+  transaction <span class='op'>=</span> <span class='va'>transaction</span>,
+  env <span class='op'>=</span> <span class='st'>"staging"</span>
+<span class='op'>)</span>
 <span class='va'>qualityReport</span>
 <span class='co'>#&gt; {xml_document}</span>
 <span class='co'>#&gt; &lt;qualityReport schemaLocation="eml://ecoinformatics.org/qualityReport ...</span>
@@ -192,9 +224,10 @@
 
 <span class='co'># Read as HTML</span>
 <span class='va'>qualityReport</span> <span class='op'>&lt;-</span> <span class='fu'>read_evaluate_report</span><span class='op'>(</span>
- transaction <span class='op'>=</span> <span class='va'>transaction</span>, 
- frmt <span class='op'>=</span> <span class='st'>"html"</span>, 
- env <span class='op'>=</span> <span class='st'>"staging"</span><span class='op'>)</span>
+  transaction <span class='op'>=</span> <span class='va'>transaction</span>,
+  frmt <span class='op'>=</span> <span class='st'>"html"</span>,
+  env <span class='op'>=</span> <span class='st'>"staging"</span>
+<span class='op'>)</span>
 <span class='va'>qualityReport</span>
 <span class='co'>#&gt; {html_document}</span>
 <span class='co'>#&gt; &lt;html&gt;</span>
@@ -202,9 +235,10 @@
 
 <span class='co'># Read as character</span>
 <span class='va'>qualityReport</span> <span class='op'>&lt;-</span> <span class='fu'>read_evaluate_report</span><span class='op'>(</span>
- transaction <span class='op'>=</span> <span class='va'>transaction</span>, 
- frmt <span class='op'>=</span> <span class='st'>"char"</span>, 
- env <span class='op'>=</span> <span class='st'>"staging"</span><span class='op'>)</span>
+  transaction <span class='op'>=</span> <span class='va'>transaction</span>,
+  frmt <span class='op'>=</span> <span class='st'>"char"</span>,
+  env <span class='op'>=</span> <span class='st'>"staging"</span>
+<span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span><span class='op'>(</span><span class='va'>qualityReport</span>, <span class='st'>"./data/report.txt"</span><span class='op'>)</span>
 
 <span class='fu'><a href='logout.html'>logout</a></span><span class='op'>(</span><span class='op'>)</span>

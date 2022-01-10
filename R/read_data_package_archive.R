@@ -8,6 +8,8 @@
 #'
 #' @return (.zip file) The data package archive of \code{packageId} requested
 #' by \code{transaction}
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

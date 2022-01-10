@@ -7,6 +7,8 @@
 #' @return (xml_document) Subscription metadata
 #'
 #' @note User authentication is required (see \code{login()})
+#' 
+#' @family Event Notifications
 #'
 #' @export
 #'

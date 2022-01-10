@@ -6,6 +6,8 @@
 #' @param list_all (logical) Return all citations within a data package series?
 #'
 #' @return (xml_document) A list of journal citations
+#' 
+#' @family Journal Citations
 #'
 #' @export
 #'

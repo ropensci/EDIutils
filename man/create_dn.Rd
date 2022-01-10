@@ -28,3 +28,9 @@ dn
 dn <- create_dn(userId = "my_userid", ou = "LTER")
 dn
 }
+\seealso{
+Other Miscellaneous: 
+\code{\link{create_data_package_archive}()},
+\code{\link{is_authorized}()}
+}
+\concept{Miscellaneous}

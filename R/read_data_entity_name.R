@@ -6,6 +6,8 @@
 #' "staging", or "development".
 #'
 #' @return (character) Name of \code{entityId} in \code{packageId}
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

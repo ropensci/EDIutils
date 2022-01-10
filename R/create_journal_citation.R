@@ -20,6 +20,8 @@
 #' @details Creates a new journal citation entry in the EDI data repository
 #'
 #' @note User authentication is required (see \code{login()})
+#' 
+#' @family Journal Citations
 #'
 #' @export
 #'

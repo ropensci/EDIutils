@@ -13,6 +13,8 @@
 #' @details Get \code{transaction} from \code{evaluate_data_package()}
 #'
 #' @note User authentication is required (see \code{login()})
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

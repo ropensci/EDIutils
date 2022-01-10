@@ -6,6 +6,8 @@
 #'
 #' @return (xml_document) Resource metadata for the data package metadata
 #' resource
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

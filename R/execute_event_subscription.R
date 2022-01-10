@@ -11,6 +11,8 @@
 #' made (asynchronously) to the matching subscription.
 #'
 #' @note User authentication is required (see \code{login()})
+#' 
+#' @family Event Notifications
 #'
 #' @export
 #'

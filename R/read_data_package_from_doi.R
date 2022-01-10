@@ -8,6 +8,8 @@
 #' @return (character or xml_document) A resource map with reference URLs to
 #' each of the metadata, data, and quality report resources that comprise the
 #' data package.
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

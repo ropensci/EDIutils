@@ -10,6 +10,8 @@
 #'   \item \code{read_data_package_error()} to determine the operation status
 #'   \item \code{read_data_package_archive()} to obtain the Zip archive
 #' }
+#' 
+#' @family Miscellaneous
 #'
 #' @export
 #'

@@ -34,6 +34,8 @@
 #' URL.
 #'
 #' @note User authentication is required (see \code{login()})
+#' 
+#' @family Event Notifications
 #'
 #' @export
 #'

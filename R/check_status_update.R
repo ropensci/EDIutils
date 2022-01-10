@@ -14,6 +14,8 @@
 #' checking every 2 seconds for the completed evaluation report. If
 #' \code{wait = FALSE}, then the function will only check once and return the
 #' result.
+#' 
+#' @family Evaluation and Upload
 #'
 #' @export
 #'

@@ -6,6 +6,8 @@
 #'
 #' @return (data.frame) Names and identifiers of all data entities in
 #' \code{packageId}
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

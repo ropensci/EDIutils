@@ -7,6 +7,8 @@
 #' @return (logical) TRUE if deleted
 #'
 #' @note User authentication is required (see \code{login()})
+#' 
+#' @family Journal Citations
 #'
 #' @export
 #'

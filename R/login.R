@@ -34,6 +34,8 @@
 #' authentication within automated/unassisted processes. Contents of this file
 #' should be new line separated and have the form "<argument> = <value>" (e.g.
 #' userId = myname).
+#' 
+#' @family Authentication
 #'
 #' @export
 #'

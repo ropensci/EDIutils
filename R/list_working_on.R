@@ -7,6 +7,8 @@
 #' currently working on inserting or updating. Note that data packages
 #' currently being evaluated by the EDI repository are not included in the
 #' list.
+#' 
+#' @family System Monitoring
 #'
 #' @export
 #'

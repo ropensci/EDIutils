@@ -9,6 +9,8 @@
 #' @return (message/warning/error) A message listing the total number of checks
 #' resulting in valid, info, warn, and error status. Exceptions are raised if
 #' warnings and errors are found and \code{with_exceptions} is TRUE.
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

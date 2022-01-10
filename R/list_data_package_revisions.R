@@ -8,6 +8,8 @@
 #'
 #' @return (numeric) Revisions of a data package within a specified
 #' \code{scope} and \code{identifier}
+#' 
+#' @family Listing
 #'
 #' @export
 #'

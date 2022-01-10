@@ -24,3 +24,4 @@ Generates the provenance metadata of a source data package
 methodStep <- get_provenance_metadata("knb-lter-pal.309.1")
 methodStep
 }
+\concept{Provenance}

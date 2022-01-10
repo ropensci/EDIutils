@@ -5,6 +5,8 @@
 #' "staging", or "development".
 #'
 #' @return (character) Metadata format type
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

@@ -145,13 +145,23 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>env</th>
-      <td><p>(character) Repository environment. Can be: "production", "staging", or "development".</p></td>
+      <td><p>(character) Repository environment. Can be: "production",
+"staging", or "development".</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(xml_document) Schema for event subscription creation request entities</p>
+    <p>(xml_document) Schema for event subscription creation request
+entities</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Event Notifications: 
+<code><a href='create_event_subscription.html'>create_event_subscription</a>()</code>,
+<code><a href='delete_event_subscription.html'>delete_event_subscription</a>()</code>,
+<code><a href='execute_event_subscription.html'>execute_event_subscription</a>()</code>,
+<code><a href='get_event_subscription.html'>get_event_subscription</a>()</code>,
+<code><a href='query_event_subscriptions.html'>query_event_subscriptions</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Get schema</span>
@@ -160,8 +170,7 @@
 </div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'schema' not found</span></div><div class='input'>
 <span class='co'># Show schema structure</span>
 <span class='fu'>xml2</span><span class='fu'>::</span><span class='fu'><a href='http://xml2.r-lib.org/reference/xml_structure.html'>xml_structure</a></span><span class='op'>(</span><span class='va'>schema</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in tree_structure(x, indent = indent, html = FALSE, file = file): object 'schema' not found</span></div><div class='input'>
-</div></pre>
+</div><div class='output co'>#&gt; <span class='error'>Error in tree_structure(x, indent = indent, html = FALSE, file = file): object 'schema' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

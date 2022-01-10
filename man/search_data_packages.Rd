@@ -110,3 +110,4 @@ search_data_packages(query = 'q="air+temperature"&fl=packageid,title,score')
 query <- 'q="air+temperature"&fl=packageid,title,score&fq=-scope:(ecotrends+lter-landsat)'
 search_data_packages(query)
 }
+\concept{Browse and Discovery}

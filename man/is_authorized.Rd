@@ -47,3 +47,9 @@ logout()
 }
 
 }
+\seealso{
+Other Miscellaneous: 
+\code{\link{create_data_package_archive}()},
+\code{\link{create_dn}()}
+}
+\concept{Miscellaneous}

@@ -5,6 +5,8 @@
 #'
 #' @return (character) All data packages (excluding revision values) that have
 #' been deleted from the data package registry.
+#' 
+#' @family Listing
 #'
 #' @export
 #'

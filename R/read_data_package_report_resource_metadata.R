@@ -5,6 +5,8 @@
 #' "staging", or "development".
 #'
 #' @return (xml_document) Report resource metadata
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

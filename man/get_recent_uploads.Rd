@@ -49,3 +49,12 @@ auditReport <- get_recent_uploads(
 # Show the first
 xml2::xml_find_first(auditReport, "auditRecord")
 }
+\seealso{
+Other Audit Manager Services: 
+\code{\link{get_audit_count}()},
+\code{\link{get_audit_record}()},
+\code{\link{get_audit_report}()},
+\code{\link{get_docid_reads}()},
+\code{\link{get_packageid_reads}()}
+}
+\concept{Audit Manager Services}

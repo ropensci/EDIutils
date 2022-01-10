@@ -27,3 +27,17 @@ dataDescendants
 # Show first
 xml2::xml_find_first(dataDescendants, "dataDescendant")
 }
+\seealso{
+Other Listing: 
+\code{\link{list_data_entities}()},
+\code{\link{list_data_package_identifiers}()},
+\code{\link{list_data_package_revisions}()},
+\code{\link{list_data_package_scopes}()},
+\code{\link{list_data_sources}()},
+\code{\link{list_deleted_data_packages}()},
+\code{\link{list_recent_changes}()},
+\code{\link{list_recent_uploads}()},
+\code{\link{list_service_methods}()},
+\code{\link{list_user_data_packages}()}
+}
+\concept{Listing}

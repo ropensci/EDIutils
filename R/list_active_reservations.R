@@ -7,6 +7,8 @@
 #' actively reserved. Note that data package identifiers that have been
 #' successfully uploaded are no longer considered active reservations and thus
 #' are not included in this list.
+#' 
+#' @family Identifier Reservations
 #'
 #' @export
 #'

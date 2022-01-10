@@ -149,16 +149,25 @@
     </tr>
     <tr>
       <th>env</th>
-      <td><p>(character) Repository environment. Can be: "production", "staging", or "development".</p></td>
+      <td><p>(character) Repository environment. Can be: "production",
+"staging", or "development".</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(xml_document) A list of the subscriptions whose attributes match those specified in the query string (see details below). If a query string is omitted, all subscriptions in the subscription database will be returned for which the requesting user is authorized to read. If query parameters are included, they are used to filter that set of subscriptions based on their attributes.</p>
+    <p>(xml_document) A list of the subscriptions whose attributes match
+those specified in the query string (see details below). If a query string
+is omitted, all subscriptions in the subscription database will be returned
+for which the requesting user is authorized to read. If query parameters are
+included, they are used to filter that set of subscriptions based on their
+attributes.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Query parameters are specified as key=value pairs, multiple pairs must be delimited with ampersands (&amp;), and only a single value should be specified for a particular key. The following query parameter keys are allowed:</p>
+    <p>Query parameters are specified as key=value pairs, multiple pairs
+must be delimited with ampersands (&amp;), and only a single value should be
+specified for a particular key. The following query parameter keys are
+allowed:</p>
 <ul>
 <li><p>creator</p></li>
 <li><p>scope</p></li>
@@ -167,10 +176,25 @@
 <li><p>url</p></li>
 </ul>
 
-<p>If a query parameter is specified, and a subscription's respective attribute does not match it, that subscription will not be included in the group of subscriptions returned. If scope, identifier, or revision are used, their values must together constitute a syntactically and semantically correct EML packageId (i.e. "scope.identifier.revision") - either partial or complete. If url is used, its value must not contain ampersands. Therefore, if a subscription's URL contains ampersands, it cannot be filtered based on its URL.</p>
+<p>If a query parameter is specified, and a subscription's respective attribute
+does not match it, that subscription will not be included in the group of
+subscriptions returned. If scope, identifier, or revision are used, their
+values must together constitute a syntactically and semantically correct EML
+packageId (i.e. "scope.identifier.revision") - either partial or complete.
+If url is used, its value must not contain ampersands. Therefore, if a
+subscription's URL contains ampersands, it cannot be filtered based on its
+URL.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>User authentication is required (see <code><a href='login.html'>login()</a></code>)</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Event Notifications: 
+<code><a href='create_event_subscription.html'>create_event_subscription</a>()</code>,
+<code><a href='delete_event_subscription.html'>delete_event_subscription</a>()</code>,
+<code><a href='execute_event_subscription.html'>execute_event_subscription</a>()</code>,
+<code><a href='get_event_subscription_schema.html'>get_event_subscription_schema</a>()</code>,
+<code><a href='get_event_subscription.html'>get_event_subscription</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>

@@ -8,6 +8,8 @@
 #' "staging", or "development".
 #'
 #' @return (xml_document) Descendants of \code{packageId}
+#' 
+#' @family Listing
 #'
 #' @export
 #'

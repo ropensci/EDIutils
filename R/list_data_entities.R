@@ -5,6 +5,8 @@
 #' "staging", or "development".
 #'
 #' @return (character) Identifiers for all data entities in \code{packageId}
+#' 
+#' @family Listing
 #'
 #' @export
 #'

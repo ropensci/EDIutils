@@ -149,19 +149,21 @@
     </tr>
     <tr>
       <th>env</th>
-      <td><p>(character) Repository environment. Can be: "production", "staging", or "development".</p></td>
+      <td><p>(character) Repository environment. Can be: "production",
+"staging", or "development".</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(xml_document) Provenance metadata of <code>packageId</code>, representing a &lt;methodStep&gt; element that can be inserted into the &lt;methods&gt; section of a dependent data package</p>
+    <p>(xml_document) Provenance metadata of <code>packageId</code>, representing
+a &lt;methodStep&gt; element that can be inserted into the &lt;methods&gt; section of a
+dependent data package</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>methodStep</span> <span class='op'>&lt;-</span> <span class='fu'>get_provenance_metadata</span><span class='op'>(</span><span class='st'>"knb-lter-pal.309.1"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='error'>Error in get_provenance_metadata("knb-lter-pal.309.1"): could not find function "get_provenance_metadata"</span></div><div class='input'><span class='va'>methodStep</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'methodStep' not found</span></div><div class='input'>
-</div></pre>
+</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'methodStep' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

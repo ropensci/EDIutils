@@ -40,7 +40,10 @@
 
 
 <meta property="og:title" content="List recent changes — list_recent_changes" />
-<meta property="og:description" content="List all data package insert, update, and delete operations, optionally specifying the date and time to and/or from which the changes should be listed. An optional scope value can be specified to filter results for a particular data package scope." />
+<meta property="og:description" content="List all data package insert, update, and delete operations,
+optionally specifying the date and time to and/or from which the changes
+should be listed. An optional scope value can be specified to filter results
+for a particular data package scope." />
 
 
 
@@ -135,7 +138,10 @@
     </div>
 
     <div class="ref-description">
-    <p>List all data package insert, update, and delete operations, optionally specifying the date and time to and/or from which the changes should be listed. An optional scope value can be specified to filter results for a particular data package scope.</p>
+    <p>List all data package insert, update, and delete operations,
+optionally specifying the date and time to and/or from which the changes
+should be listed. An optional scope value can be specified to filter results
+for a particular data package scope.</p>
     </div>
 
     <pre class="usage"><span class='fu'>list_recent_changes</span><span class='op'>(</span>
@@ -162,25 +168,40 @@
     </tr>
     <tr>
       <th>env</th>
-      <td><p>(character) Repository environment. Can be: "production", "staging", or "development".</p></td>
+      <td><p>(character) Repository environment. Can be: "production",
+"staging", or "development".</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>(xml_document) Recent changes and their corresponding packageId, scope, identifier, revision, principal, doi, serviceMethod, and date.</p>
+    <p>(xml_document) Recent changes and their corresponding packageId,
+scope, identifier, revision, principal, doi, serviceMethod, and date.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Listing: 
+<code><a href='list_data_descendants.html'>list_data_descendants</a>()</code>,
+<code><a href='list_data_entities.html'>list_data_entities</a>()</code>,
+<code><a href='list_data_package_identifiers.html'>list_data_package_identifiers</a>()</code>,
+<code><a href='list_data_package_revisions.html'>list_data_package_revisions</a>()</code>,
+<code><a href='list_data_package_scopes.html'>list_data_package_scopes</a>()</code>,
+<code><a href='list_data_sources.html'>list_data_sources</a>()</code>,
+<code><a href='list_deleted_data_packages.html'>list_deleted_data_packages</a>()</code>,
+<code><a href='list_recent_uploads.html'>list_recent_uploads</a>()</code>,
+<code><a href='list_service_methods.html'>list_service_methods</a>()</code>,
+<code><a href='list_user_data_packages.html'>list_user_data_packages</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Changes occurring in the first 3 days of 2021 for all scopes</span>
 <span class='va'>dataPackageChanges</span> <span class='op'>&lt;-</span> <span class='fu'>list_recent_changes</span><span class='op'>(</span>
- fromDate <span class='op'>=</span> <span class='st'>"2021-01-01T00:00:00"</span>, 
- toDate <span class='op'>=</span> <span class='st'>"2021-01-03T00:00:00"</span><span class='op'>)</span>
+  fromDate <span class='op'>=</span> <span class='st'>"2021-01-01T00:00:00"</span>,
+  toDate <span class='op'>=</span> <span class='st'>"2021-01-03T00:00:00"</span>
+<span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='error'>Error in list_recent_changes(fromDate = "2021-01-01T00:00:00", toDate = "2021-01-03T00:00:00"): could not find function "list_recent_changes"</span></div><div class='input'><span class='va'>dataPackageChanges</span>
 </div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'dataPackageChanges' not found</span></div><div class='input'>
 <span class='co'># Show first</span>
 <span class='fu'>xml2</span><span class='fu'>::</span><span class='fu'><a href='http://xml2.r-lib.org/reference/xml_find_all.html'>xml_find_first</a></span><span class='op'>(</span><span class='va'>dataPackageChanges</span>, <span class='st'>"dataPackage"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in xml2::xml_find_first(dataPackageChanges, "dataPackage"): object 'dataPackageChanges' not found</span></div><div class='input'>
-</div></pre>
+</div><div class='output co'>#&gt; <span class='error'>Error in xml2::xml_find_first(dataPackageChanges, "dataPackage"): object 'dataPackageChanges' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

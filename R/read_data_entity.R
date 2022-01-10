@@ -7,6 +7,8 @@
 #'
 #' @return (raw) Raw bytes (i.e. application/octet-stream) to be parsed by a
 #' reader function appropriate for the data type
+#' 
+#' @family Accessing
 #'
 #' @export
 #'

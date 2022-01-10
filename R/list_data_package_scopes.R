@@ -4,6 +4,8 @@
 #' "staging", or "development".
 #'
 #' @return (numeric) Scopes within a specified \code{env}
+#' 
+#' @family Listing
 #'
 #' @export
 #'

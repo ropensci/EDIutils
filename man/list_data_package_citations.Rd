@@ -28,3 +28,11 @@ journalCitations
 # Show first
 xml2::xml_find_first(journalCitations, "journalCitation")
 }
+\seealso{
+Other Journal Citations: 
+\code{\link{create_journal_citation}()},
+\code{\link{delete_journal_citation}()},
+\code{\link{get_journal_citation}()},
+\code{\link{list_principal_owner_citations}()}
+}
+\concept{Journal Citations}

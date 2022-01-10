@@ -8,6 +8,8 @@
 #' specified resource
 #'
 #' @note User authentication is required (see \code{login()})
+#' 
+#' @family Miscellaneous
 #'
 #' @export
 #'

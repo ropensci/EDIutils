@@ -9,6 +9,8 @@
 #' @return (numeric) Identifier of reserved data package
 #'
 #' @note User authentication is required (see \code{login()})
+#' 
+#' @family Identifier Reservations
 #'
 #' @export
 #'

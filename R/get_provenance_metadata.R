@@ -9,6 +9,8 @@
 #' @return (xml_document) Provenance metadata of \code{packageId}, representing
 #' a <methodStep> element that can be inserted into the <methods> section of a
 #' dependent data package
+#' 
+#' @family Provenance
 #'
 #' @export
 #'

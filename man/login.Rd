@@ -64,3 +64,8 @@ login(config = "./data/config.txt")
 }
 
 }
+\seealso{
+Other Authentication: 
+\code{\link{logout}()}
+}
+\concept{Authentication}

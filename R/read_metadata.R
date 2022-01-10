@@ -5,6 +5,8 @@
 #' "staging", or "development".
 #'
 #' @return (xml_document) EML metadata document
+#' 
+#' @family Accessing
 #'
 #' @export
 #'
