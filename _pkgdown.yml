@@ -1,34 +1,86 @@
+title: EDIutils
+
+template:
+  bootswatch: spacelab
+
 reference:
-  - title: EDI API
-    desc: Functions for interacting with the Data Package and Audit Manager APIs
+  - title: Evaluation and Upload
+    desc: Describes web service methods for evaluating and uploading data packages.
     contents:
-    - starts_with("api_")
-  - title: Read data
-    desc: Functions that read data entities into R based on their EML descriptions
-    contents:
-    - read_tables
-  - title: Compare objects
-    desc: Sometimes it's useful to know if a data package component has changed between versions
-    contents:
-    - compare_eml
-    - compare_tables
-  - title: Helper functions
-    desc: Helper functions to EDI R libraries
-    contents:
-    - create_provenance_metadata
-    - detect_delimeter
-    - detect_os
-    - get_eml_attribute
-    - get_eol
-    - replace_missing_value_codes
-    - validate_arguments
-    - validate_fields
-    - validate_file_names
-    - validate_keywords
-    - validate_path
-    - view_unit_dictionary
-  - title: Controlled Vocabulary
-    desc: Functions for interacting with controlled vocabulary APIs
-    contents:
-    - starts_with("vocab_")
+    - has_concept("Evaluation and Upload")
     
+  - title: Browse and Discovery
+    desc: Describes web service methods for browsing and discovering data packages.
+    contents:
+    - has_concept("Browse and Discovery")
+    
+  - title: Listing
+    desc: Describes web service methods for listing data packages.
+    contents:
+    - has_concept("Listing")
+    
+  - title: Accessing
+    desc: Describes web service methods for accessing data package resources such as data, metadata, and reports.
+    contents:
+    - has_concept("Accessing")
+    
+  - title: Provenance
+    desc: Describes web service methods for tracking and generating provenance metadata.
+    contents:
+    - has_concept("Provenance")
+    
+  - title: Event Notifications
+    desc: Describes web service methods for subscribing to and receiving data package event notifications.
+    contents: 
+    - has_concept("Event Notifications")
+    
+  - title: Identifier Reservations
+    desc: Web service methods whereby an end user may reserve data package identifiers for future upload to PASTA.
+    contents:
+    - has_concept("Identifier Reservations")
+    
+  - title: Journal Citations
+    desc: Web service methods for creating, reading, and deleting journal citation entries associated with data packages.
+    contents:
+    - has_concept("Journal Citations")
+    
+  - title: System Monitoring
+    desc: Web service methods for monitoring the state of data packages being processed in PASTA.
+    contents:
+    - has_concept("System Monitoring")
+    
+  - title: Miscellaneous
+    desc: Additional web service methods for working with data packages.
+    contents:
+    - has_concept("Miscellaneous")
+    
+  - title: Audit Manager Services
+    desc: The Audit Manager web service allows other PASTA web services to create, and users to access, PASTA audit logs.
+    contents: 
+    - has_concept("Audit Manager Services")
+  
+  - title: Authentication
+    desc: Functions for handling repository authentication
+    contents:
+    - has_concept("Authentication")
+
+navbar:
+  title: ~
+  type: default
+  left:
+    - text: Functions
+      href: reference/index.html
+    - text: Articles
+      menu:
+      - text: Search and Access Data
+        href: articles/search_and_access.html
+      - text: Evaluate and Upload Data
+        href: articles/publish_data.html
+      - text: Retrieve Download Metrics
+        href: articles/retrieve_downloads.html
+      - text: Retrieve Citation Metrics
+        href: articles/retrieve_citations.html
+      - text: Tests Requiring Authentication
+        href: articles/tests_requiring_authentication.html
+    - text: News
+      href: news/index.html
