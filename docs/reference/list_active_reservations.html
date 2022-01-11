@@ -108,6 +108,9 @@
 <li>
   <a href="../news/index.html">News</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -147,6 +150,10 @@
       <th>env</th>
       <td><p>(character) Repository environment. Can be: "production",
 "staging", or "development".</p></td>
+    </tr>
+    <tr>
+      <th>evironment</th>
+      <td><p>(character) Repository environment in which the L0 and L1 exist. Some repositories have development, staging, and production environments which are distinct from one another. This argument allows execution for the <code>update_L1</code> workflow within the context of one of these environments. Default is "production".</p></td>
     </tr>
     </table>
 
