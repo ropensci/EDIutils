@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![R-CMD-check](https://github.com/EDIorg/EDIutils/workflows/R-CMD-check/badge.svg)](https://github.com/EDIorg/EDIutils/actions)
-[![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/master/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
+[![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/main/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=main)
 <!-- badges: end -->
 
 A client for the Environmental Data Initiative repository REST API. The [EDI data repository](https://portal.edirepository.org/nis/home.jsp) is for publication and reuse of ecological data with emphasis on metadata accuracy and completeness. It was developed in collaboration with the [US LTER Network](https://lternet.edu/) and is built upon the [PASTA+ software stack](https://pastaplus-core.readthedocs.io/en/latest/index.html#). EDIutils includes functions to search and access existing data, evaluate and upload new data, and assist with related data management tasks.
