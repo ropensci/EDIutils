@@ -10,7 +10,6 @@ vignette: >
 This vignette demonstrates how to query the EDI repository for journal articles that cite a certain dataset. These stats may be used in reports.
 
 ```r
-library(EDIutisl)
 library(EDIutils)
 library(xml2)
 ```
