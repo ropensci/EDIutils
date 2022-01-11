@@ -144,7 +144,7 @@
       "sameAs": "https://CRAN.R-project.org/package=xml2"
     }
   ],
-  "readme": "https://github.com/EDIorg/EDIutils/blob/master/README.md",
+  "readme": "https://github.com/EDIorg/EDIutils/blob/main/README.md",
   "fileSize": "324.284KB",
   "contIntegration": ["https://github.com/EDIorg/EDIutils/actions", "https://codecov.io/github/EDIorg/EDIutils?branch=master"],
   "relatedLink": "https://ediorg.github.io/EDIutils/",
