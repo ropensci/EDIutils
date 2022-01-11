@@ -16,6 +16,9 @@ This is my first submission
 
 * New submission
 
+* Version contains large components (0.0.0.9000)
+  This version is under development
+
 * Possibly mis-spelled words in DESCRIPTION:
   EDI (7:86)
   EDIutils (7:444)
