@@ -193,15 +193,34 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># List entities</span>
 <span class='va'>entityIds</span> <span class='op'>&lt;-</span> <span class='fu'><a href='list_data_entities.html'>list_data_entities</a></span><span class='op'>(</span>packageId <span class='op'>=</span> <span class='st'>"knb-lter-cce.310.1"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in list_data_entities(packageId = "knb-lter-cce.310.1"): could not find function "list_data_entities"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>entityIds</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in head(entityIds): object 'entityIds' not found</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>entityIds</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "4aaaff61e0d316130be0b445d3013877" "088775341e7fb65206af8c9e67d076e2"
+#&gt; [3] "6982dd80cba66470c49a2f3dc0f82459" "782fbaa20ea62987c838378e9eadcfa6"
+#&gt; [5] "ae8ecd148df1275b30358577d0fa6b4a" "a53b312efe0a176fdfc74ab7ccb0916b"</div><div class='input'>
 <span class='co'># Read resource metadata for first entity</span>
 <span class='va'>resourceMetadata</span> <span class='op'>&lt;-</span> <span class='fu'>read_data_entity_resource_metadata</span><span class='op'>(</span>
   packageId <span class='op'>=</span> <span class='st'>"knb-lter-cce.310.1"</span>,
   entityId <span class='op'>=</span> <span class='va'>entityIds</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in read_data_entity_resource_metadata(packageId = "knb-lter-cce.310.1",     entityId = entityIds[1]): could not find function "read_data_entity_resource_metadata"</span></div><div class='input'><span class='va'>resourceMetadata</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'resourceMetadata' not found</span></div></pre>
+<span class='va'>resourceMetadata</span>
+</div><div class='output co'>#&gt; {xml_document}
+#&gt; &lt;resourceMetadata&gt;
+#&gt;  [1] &lt;dataFormat&gt;NetCDF (gzipped tar archive)&lt;/dataFormat&gt;
+#&gt;  [2] &lt;dateCreated&gt;2021-08-13 11:23:40.81&lt;/dateCreated&gt;
+#&gt;  [3] &lt;entityId&gt;4aaaff61e0d316130be0b445d3013877&lt;/entityId&gt;
+#&gt;  [4] &lt;entityName&gt;water_age_CCE_1994.tar&lt;/entityName&gt;
+#&gt;  [5] &lt;fileName&gt;water_age_CCE_1994.tar.gz&lt;/fileName&gt;
+#&gt;  [6] &lt;identifier&gt;310&lt;/identifier&gt;
+#&gt;  [7] &lt;md5Checksum&gt;8b22bf5c72c405aab93e44a6aa5b7d79&lt;/md5Checksum&gt;
+#&gt;  [8] &lt;packageId&gt;knb-lter-cce.310.1&lt;/packageId&gt;
+#&gt;  [9] &lt;principalOwner&gt;uid=EDI,o=EDI,dc=edirepository,dc=org&lt;/principalOwner&gt;
+#&gt; [10] &lt;resourceId&gt;https://pasta.lternet.edu/package/data/eml/knb-lter-cce/310/ ...
+#&gt; [11] &lt;resourceLocation&gt;/pasta/data1&lt;/resourceLocation&gt;
+#&gt; [12] &lt;resourceSize&gt;322263158&lt;/resourceSize&gt;
+#&gt; [13] &lt;resourceType&gt;data&lt;/resourceType&gt;
+#&gt; [14] &lt;revision&gt;1&lt;/revision&gt;
+#&gt; [15] &lt;scope&gt;knb-lter-cce&lt;/scope&gt;
+#&gt; [16] &lt;sha1Checksum&gt;bccdcfef105aa7b787db1fd940ad8ea2a5d04295&lt;/sha1Checksum&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

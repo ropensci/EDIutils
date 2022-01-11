@@ -108,9 +108,6 @@
 <li>
   <a href="../news/index.html">News</a>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -165,8 +162,11 @@ dependent data package</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>methodStep</span> <span class='op'>&lt;-</span> <span class='fu'>get_provenance_metadata</span><span class='op'>(</span><span class='st'>"knb-lter-pal.309.1"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in get_provenance_metadata("knb-lter-pal.309.1"): could not find function "get_provenance_metadata"</span></div><div class='input'><span class='va'>methodStep</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'methodStep' not found</span></div></pre>
+<span class='va'>methodStep</span>
+</div><div class='output co'>#&gt; {xml_document}
+#&gt; &lt;methodStep&gt;
+#&gt; [1] &lt;description&gt;\n  &lt;para&gt;This method step describes provenance-based metada ...
+#&gt; [2] &lt;dataSource&gt;\n  &lt;title&gt;Stable isotope composition (d18O) of seawater from ...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

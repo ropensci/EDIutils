@@ -108,9 +108,6 @@
 <li>
   <a href="../news/index.html">News</a>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -171,8 +168,20 @@ end users have actively reserved for future upload</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># List reservations</span>
 <span class='va'>reservations</span> <span class='op'>&lt;-</span> <span class='fu'>list_reservation_identifiers</span><span class='op'>(</span>scope <span class='op'>=</span> <span class='st'>"edi"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in list_reservation_identifiers(scope = "edi"): could not find function "list_reservation_identifiers"</span></div><div class='input'><span class='va'>reservations</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'reservations' not found</span></div></pre>
+<span class='va'>reservations</span>
+</div><div class='output co'>#&gt;   [1]   11  130  131  132  142  152  154  156  158  159  161  162  171  172  173
+#&gt;  [16]  174  175  177  178  180  182  183  185  196  203  204  205  209  211  212
+#&gt;  [31]  245  249  266  288  293  294  297  298  300  301  304  310  315  360  429
+#&gt;  [46]  431  432  433  434  446  449  483  485  501  518  526  528  550  564  578
+#&gt;  [61]  579  586  588  589  604  630  636  639  655  656  657  658  659  660  661
+#&gt;  [76]  662  663  664  665  666  667  668  669  670  671  672  673  674  675  676
+#&gt;  [91]  678  680  681  683  684  685  686  687  689  690  693  697  717  718  719
+#&gt; [106]  720  721  727  728  729  741  750  757  758  761  762  763  764  765  766
+#&gt; [121]  767  768  769  770  771  772  773  774  775  776  777  778  779  780  781
+#&gt; [136]  782  783  784  785  786  787  788  789  790  791  792  793  794  795  796
+#&gt; [151]  797  798  799  800  801  802  803  804  805  806  807  808  809  810  811
+#&gt; [166]  812  813  814  815  816  819  823  830  835  844  847  856  883  891  899
+#&gt; [181]  957  961  977  990 1002 1014 1021 1040 1042 1048 1060 1061</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

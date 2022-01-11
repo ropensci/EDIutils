@@ -193,206 +193,46 @@ reader function appropriate for the data type</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Read names and IDs of data entities in package "edi.1047.1"</span>
 <span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_data_entity_names.html'>read_data_entity_names</a></span><span class='op'>(</span>packageId <span class='op'>=</span> <span class='st'>"edi.1047.1"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in read_data_entity_names(packageId = "edi.1047.1"): could not find function "read_data_entity_names"</span></div><div class='input'><span class='va'>res</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'res' not found</span></div><div class='input'>
+<span class='va'>res</span>
+</div><div class='output co'>#&gt;                           entityId                entityName
+#&gt; 1 3abac5f99ecc1585879178a355176f6d        Environmentals.csv
+#&gt; 2 f6bfa89b48ced8292840e53567cbf0c8               ByCatch.csv
+#&gt; 3 c75642ddccb4301327b4b1a86bdee906               Chinook.csv
+#&gt; 4 2c9ee86cc3f3ffc729c5f18bfe0a2a1d             Steelhead.csv
+#&gt; 5 785690848dd20f4910637250cdc96819 TrapEfficiencyRelease.csv
+#&gt; 6 58b9000439a5671ea7fe13212e889ba5 TrapEfficiencySummary.csv
+#&gt; 7 86e61c1a501b7dcf0040d10e009bfd87        TrapOperations.csv</div><div class='input'>
 <span class='co'># Read raw bytes of the 3rd data entity</span>
 <span class='va'>raw</span> <span class='op'>&lt;-</span> <span class='fu'>read_data_entity</span><span class='op'>(</span>packageId <span class='op'>=</span> <span class='st'>"edi.1047.1"</span>, entityId <span class='op'>=</span> <span class='va'>res</span><span class='op'>$</span><span class='va'>entityId</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in read_data_entity(packageId = "edi.1047.1", entityId = res$entityId[3]): could not find function "read_data_entity"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>raw</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                                   
-#&gt; 1 function (length = 0L)          
-#&gt; 2 .Internal(vector("raw", length))</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>raw</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] ef bb bf 44 61 74</div><div class='input'>
 <span class='co'># Parse with .csv reader</span>
 <span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span>file <span class='op'>=</span> <span class='va'>raw</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in (function (con, what, n = 1L, size = NA_integer_, signed = TRUE,     endian = .Platform$endian) {    if (!endian %in% c("big", "little", "swap"))         stop("invalid 'endian' argument")    if (is.character(con)) {        con &lt;- file(con, "rb")        on.exit(close(con))    }    swap &lt;- endian != .Platform$endian    if (!is.character(what) || is.na(what) || length(what) !=         1L || !any(what == c("numeric", "double", "integer",         "int", "logical", "complex", "character", "raw")))         what &lt;- typeof(what)    .Internal(readBin(con, what, n, size, signed, swap))})(0L, raw(0), 131071L): can only read from a binary connection</span></div><div class='input'><span class='va'>data</span>
-</div><div class='output co'>#&gt; function (..., list = character(), package = NULL, lib.loc = NULL, 
-#&gt;     verbose = getOption("verbose"), envir = .GlobalEnv, overwrite = TRUE) 
-#&gt; {
-#&gt;     fileExt &lt;- function(x) {
-#&gt;         db &lt;- grepl("\\.[^.]+\\.(gz|bz2|xz)$", x)
-#&gt;         ans &lt;- sub(".*\\.", "", x)
-#&gt;         ans[db] &lt;- sub(".*\\.([^.]+\\.)(gz|bz2|xz)$", "\\1\\2", 
-#&gt;             x[db])
-#&gt;         ans
-#&gt;     }
-#&gt;     my_read_table &lt;- function(...) {
-#&gt;         lcc &lt;- Sys.getlocale("LC_COLLATE")
-#&gt;         on.exit(Sys.setlocale("LC_COLLATE", lcc))
-#&gt;         Sys.setlocale("LC_COLLATE", "C")
-#&gt;         read.table(...)
-#&gt;     }
-#&gt;     names &lt;- c(as.character(substitute(list(...))[-1L]), list)
-#&gt;     if (!is.null(package)) {
-#&gt;         if (!is.character(package)) 
-#&gt;             stop("'package' must be a character string or NULL")
-#&gt;         if (FALSE) {
-#&gt;             if (any(package %in% "base")) 
-#&gt;                 warning("datasets have been moved from package 'base' to package 'datasets'")
-#&gt;             if (any(package %in% "stats")) 
-#&gt;                 warning("datasets have been moved from package 'stats' to package 'datasets'")
-#&gt;             package[package %in% c("base", "stats")] &lt;- "datasets"
-#&gt;         }
-#&gt;     }
-#&gt;     paths &lt;- find.package(package, lib.loc, verbose = verbose)
-#&gt;     if (is.null(lib.loc)) 
-#&gt;         paths &lt;- c(path.package(package, TRUE), if (!length(package)) getwd(), 
-#&gt;             paths)
-#&gt;     paths &lt;- unique(normalizePath(paths[file.exists(paths)]))
-#&gt;     paths &lt;- paths[dir.exists(file.path(paths, "data"))]
-#&gt;     dataExts &lt;- tools:::.make_file_exts("data")
-#&gt;     if (length(names) == 0L) {
-#&gt;         db &lt;- matrix(character(), nrow = 0L, ncol = 4L)
-#&gt;         for (path in paths) {
-#&gt;             entries &lt;- NULL
-#&gt;             packageName &lt;- if (file_test("-f", file.path(path, 
-#&gt;                 "DESCRIPTION"))) 
-#&gt;                 basename(path)
-#&gt;             else "."
-#&gt;             if (file_test("-f", INDEX &lt;- file.path(path, "Meta", 
-#&gt;                 "data.rds"))) {
-#&gt;                 entries &lt;- readRDS(INDEX)
-#&gt;             }
-#&gt;             else {
-#&gt;                 dataDir &lt;- file.path(path, "data")
-#&gt;                 entries &lt;- tools::list_files_with_type(dataDir, 
-#&gt;                   "data")
-#&gt;                 if (length(entries)) {
-#&gt;                   entries &lt;- unique(tools::file_path_sans_ext(basename(entries)))
-#&gt;                   entries &lt;- cbind(entries, "")
-#&gt;                 }
-#&gt;             }
-#&gt;             if (NROW(entries)) {
-#&gt;                 if (is.matrix(entries) &amp;&amp; ncol(entries) == 2L) 
-#&gt;                   db &lt;- rbind(db, cbind(packageName, dirname(path), 
-#&gt;                     entries))
-#&gt;                 else warning(gettextf("data index for package %s is invalid and will be ignored", 
-#&gt;                   sQuote(packageName)), domain = NA, call. = FALSE)
-#&gt;             }
-#&gt;         }
-#&gt;         colnames(db) &lt;- c("Package", "LibPath", "Item", "Title")
-#&gt;         footer &lt;- if (missing(package)) 
-#&gt;             paste0("Use ", sQuote(paste("data(package =", ".packages(all.available = TRUE))")), 
-#&gt;                 "\n", "to list the data sets in all *available* packages.")
-#&gt;         else NULL
-#&gt;         y &lt;- list(title = "Data sets", header = NULL, results = db, 
-#&gt;             footer = footer)
-#&gt;         class(y) &lt;- "packageIQR"
-#&gt;         return(y)
-#&gt;     }
-#&gt;     paths &lt;- file.path(paths, "data")
-#&gt;     for (name in names) {
-#&gt;         found &lt;- FALSE
-#&gt;         for (p in paths) {
-#&gt;             tmp_env &lt;- if (overwrite) 
-#&gt;                 envir
-#&gt;             else new.env()
-#&gt;             if (file_test("-f", file.path(p, "Rdata.rds"))) {
-#&gt;                 rds &lt;- readRDS(file.path(p, "Rdata.rds"))
-#&gt;                 if (name %in% names(rds)) {
-#&gt;                   found &lt;- TRUE
-#&gt;                   if (verbose) 
-#&gt;                     message(sprintf("name=%s:\t found in Rdata.rds", 
-#&gt;                       name), domain = NA)
-#&gt;                   thispkg &lt;- sub(".*/([^/]*)/data$", "\\1", p)
-#&gt;                   thispkg &lt;- sub("_.*$", "", thispkg)
-#&gt;                   thispkg &lt;- paste0("package:", thispkg)
-#&gt;                   objs &lt;- rds[[name]]
-#&gt;                   lazyLoad(file.path(p, "Rdata"), envir = tmp_env, 
-#&gt;                     filter = function(x) x %in% objs)
-#&gt;                   break
-#&gt;                 }
-#&gt;                 else if (verbose) 
-#&gt;                   message(sprintf("name=%s:\t NOT found in names() of Rdata.rds, i.e.,\n\t%s\n", 
-#&gt;                     name, paste(names(rds), collapse = ",")), 
-#&gt;                     domain = NA)
-#&gt;             }
-#&gt;             if (file_test("-f", file.path(p, "Rdata.zip"))) {
-#&gt;                 warning("zipped data found for package ", sQuote(basename(dirname(p))), 
-#&gt;                   ".\nThat is defunct, so please re-install the package.", 
-#&gt;                   domain = NA)
-#&gt;                 if (file_test("-f", fp &lt;- file.path(p, "filelist"))) 
-#&gt;                   files &lt;- file.path(p, scan(fp, what = "", quiet = TRUE))
-#&gt;                 else {
-#&gt;                   warning(gettextf("file 'filelist' is missing for directory %s", 
-#&gt;                     sQuote(p)), domain = NA)
-#&gt;                   next
-#&gt;                 }
-#&gt;             }
-#&gt;             else {
-#&gt;                 files &lt;- list.files(p, full.names = TRUE)
-#&gt;             }
-#&gt;             files &lt;- files[grep(name, files, fixed = TRUE)]
-#&gt;             if (length(files) &gt; 1L) {
-#&gt;                 o &lt;- match(fileExt(files), dataExts, nomatch = 100L)
-#&gt;                 paths0 &lt;- dirname(files)
-#&gt;                 paths0 &lt;- factor(paths0, levels = unique(paths0))
-#&gt;                 files &lt;- files[order(paths0, o)]
-#&gt;             }
-#&gt;             if (length(files)) {
-#&gt;                 for (file in files) {
-#&gt;                   if (verbose) 
-#&gt;                     message("name=", name, ":\t file= ...", .Platform$file.sep, 
-#&gt;                       basename(file), "::\t", appendLF = FALSE, 
-#&gt;                       domain = NA)
-#&gt;                   ext &lt;- fileExt(file)
-#&gt;                   if (basename(file) != paste0(name, ".", ext)) 
-#&gt;                     found &lt;- FALSE
-#&gt;                   else {
-#&gt;                     found &lt;- TRUE
-#&gt;                     zfile &lt;- file
-#&gt;                     zipname &lt;- file.path(dirname(file), "Rdata.zip")
-#&gt;                     if (file.exists(zipname)) {
-#&gt;                       Rdatadir &lt;- tempfile("Rdata")
-#&gt;                       dir.create(Rdatadir, showWarnings = FALSE)
-#&gt;                       topic &lt;- basename(file)
-#&gt;                       rc &lt;- .External(C_unzip, zipname, topic, 
-#&gt;                         Rdatadir, FALSE, TRUE, FALSE, FALSE)
-#&gt;                       if (rc == 0L) 
-#&gt;                         zfile &lt;- file.path(Rdatadir, topic)
-#&gt;                     }
-#&gt;                     if (zfile != file) 
-#&gt;                       on.exit(unlink(zfile))
-#&gt;                     switch(ext, R = , r = {
-#&gt;                       library("utils")
-#&gt;                       sys.source(zfile, chdir = TRUE, envir = tmp_env)
-#&gt;                     }, RData = , rdata = , rda = load(zfile, 
-#&gt;                       envir = tmp_env), TXT = , txt = , tab = , 
-#&gt;                       tab.gz = , tab.bz2 = , tab.xz = , txt.gz = , 
-#&gt;                       txt.bz2 = , txt.xz = assign(name, my_read_table(zfile, 
-#&gt;                         header = TRUE, as.is = FALSE), envir = tmp_env), 
-#&gt;                       CSV = , csv = , csv.gz = , csv.bz2 = , 
-#&gt;                       csv.xz = assign(name, my_read_table(zfile, 
-#&gt;                         header = TRUE, sep = ";", as.is = FALSE), 
-#&gt;                         envir = tmp_env), found &lt;- FALSE)
-#&gt;                   }
-#&gt;                   if (found) 
-#&gt;                     break
-#&gt;                 }
-#&gt;                 if (verbose) 
-#&gt;                   message(if (!found) 
-#&gt;                     "*NOT* ", "found", domain = NA)
-#&gt;             }
-#&gt;             if (found) 
-#&gt;                 break
-#&gt;         }
-#&gt;         if (!found) {
-#&gt;             warning(gettextf("data set %s not found", sQuote(name)), 
-#&gt;                 domain = NA)
-#&gt;         }
-#&gt;         else if (!overwrite) {
-#&gt;             for (o in ls(envir = tmp_env, all.names = TRUE)) {
-#&gt;                 if (exists(o, envir = envir, inherits = FALSE)) 
-#&gt;                   warning(gettextf("an object named %s already exists and will not be overwritten", 
-#&gt;                     sQuote(o)))
-#&gt;                 else assign(o, get(o, envir = tmp_env, inherits = FALSE), 
-#&gt;                   envir = envir)
-#&gt;             }
-#&gt;             rm(tmp_env)
-#&gt;         }
-#&gt;     }
-#&gt;     invisible(names)
-#&gt; }
-#&gt; &lt;bytecode: 0x000000002801b5e8&gt;
-#&gt; &lt;environment: namespace:utils&gt;</div></pre>
+</div><div class='output co'>#&gt; <span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>3.00B</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>?</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>11.53MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>32.74MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>11.67MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>32.92MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>11.80MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>33.11MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>11.93MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>33.38MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>12.06MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>33.66MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>12.19MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>33.83MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>12.32MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>34.01MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>12.45MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>34.28MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>12.58MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>34.45MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>12.71MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>34.71MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>12.84MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>34.88MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>12.98MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>35.14MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>13.11MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>35.40MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>13.24MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>35.56MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>13.37MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>35.72MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>13.50MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>35.98MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>13.63MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>36.13MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>13.76MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>36.38MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>13.89MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>36.64MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>14.02MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>36.79MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>14.16MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>37.03MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>14.29MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>37.18MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>14.42MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>37.43MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>14.55MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>37.57MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>14.68MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>37.81MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>14.81MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>37.96MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>14.94MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>38.19MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>15.07MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>38.43MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>15.20MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>38.57MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>15.34MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>38.80MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>15.47MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>39.07MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>15.60MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>39.40MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>15.73MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>39.73MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>15.86MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>40.06MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>15.99MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>40.39MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>16.12MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>40.72MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>16.25MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>41.05MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>16.38MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>41.38MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>16.51MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>41.71MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>16.65MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>42.04MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>16.78MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>40.77MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>16.91MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>41.09MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>17.04MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>41.40MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>17.17MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>41.72MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>17.30MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>42.04MB/s</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>17.41MB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>42.31MB/s</span>                                                                              <span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>2.15GB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>2.15GB/s</span>                                                                              </div><div class='output co'>#&gt; <span class='warning'>Warning: One or more parsing issues, see `problems()` for details</span></div><div class='output co'>#&gt; <span class='message'><span style='font-weight: bold;'>Rows: </span><span style='color: #0000BB;'>105325</span> <span style='font-weight: bold;'>Columns: </span><span style='color: #0000BB;'>20</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>--</span> <span style='font-weight: bold;'>Column specification</span> <span style='color: #00BBBB;'>--------------------------------------------------------</span></span>
+#&gt; <span class='message'><span style='font-weight: bold;'>Delimiter:</span> ","</span>
+#&gt; <span class='message'><span style='color: #BB0000;'>chr</span> (12): Date, subSiteName, commonName, atCaptureRun, finalRun, finalRunMet...</span>
+#&gt; <span class='message'><span style='color: #00BB00;'>dbl</span>  (7): trapVisitID, catchRawID, releaseID, n, forkLength, weight, specime...</span>
+#&gt; <span class='message'><span style='color: #BBBB00;'>lgl</span>  (1): Specimen.comments</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'><span style='color: #00BBBB;'>i</span> Use <span style='color: #C6C6C6; background-color: #262626;'>`spec()`</span> to retrieve the full column specification for this data.</span>
+#&gt; <span class='message'><span style='color: #00BBBB;'>i</span> Specify the column types or set <span style='color: #C6C6C6; background-color: #262626;'>`show_col_types = FALSE`</span> to quiet this message.</span></div><div class='input'><span class='va'>data</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 105,325 x 20</span>
+#&gt;    Date          trapVisitID subSiteName   catchRawID releaseID commonName     n
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> 1/8/2014 0:00         330 North Channe~      <span style='text-decoration: underline;'>32</span>409         0 Chinook s~     1
+#&gt; <span style='color: #BCBCBC;'> 2</span> 1/8/2014 0:00         330 North Channe~      <span style='text-decoration: underline;'>32</span>412         0 Chinook s~     1
+#&gt; <span style='color: #BCBCBC;'> 3</span> 1/8/2014 0:00         330 North Channe~      <span style='text-decoration: underline;'>32</span>410         0 Chinook s~     1
+#&gt; <span style='color: #BCBCBC;'> 4</span> 1/8/2014 0:00         330 North Channe~      <span style='text-decoration: underline;'>32</span>408         0 Chinook s~     1
+#&gt; <span style='color: #BCBCBC;'> 5</span> 1/8/2014 0:00         330 North Channe~      <span style='text-decoration: underline;'>32</span>406         0 Chinook s~     1
+#&gt; <span style='color: #BCBCBC;'> 6</span> 1/8/2014 0:00         322 North Channe~      <span style='text-decoration: underline;'>31</span>958         0 Chinook s~     1
+#&gt; <span style='color: #BCBCBC;'> 7</span> 1/8/2014 0:00         322 North Channe~      <span style='text-decoration: underline;'>31</span>975         0 Chinook s~     1
+#&gt; <span style='color: #BCBCBC;'> 8</span> 1/8/2014 0:00         322 North Channe~      <span style='text-decoration: underline;'>31</span>974         0 Chinook s~     1
+#&gt; <span style='color: #BCBCBC;'> 9</span> 1/8/2014 0:00         322 North Channe~      <span style='text-decoration: underline;'>31</span>973         0 Chinook s~     1
+#&gt; <span style='color: #BCBCBC;'>10</span> 1/8/2014 0:00         322 North Channe~      <span style='text-decoration: underline;'>31</span>972         0 Chinook s~     1
+#&gt; <span style='color: #949494;'># ... with 105,315 more rows, and 13 more variables: atCaptureRun &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   finalRun &lt;chr&gt;, finalRunMethod &lt;chr&gt;, lifeStage &lt;chr&gt;, forkLength &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   weight &lt;dbl&gt;, mort &lt;chr&gt;, fishOrigin &lt;chr&gt;, markType &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   CatchRaw.comments &lt;chr&gt;, specimenTypeID &lt;dbl&gt;, physicalSpecimenCode &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   Specimen.comments &lt;lgl&gt;</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

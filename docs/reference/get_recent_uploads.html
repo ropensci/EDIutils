@@ -192,10 +192,23 @@ an upper limit on the number of audit records returned. For example,
 <span class='va'>auditReport</span> <span class='op'>&lt;-</span> <span class='fu'>get_recent_uploads</span><span class='op'>(</span>
   query <span class='op'>=</span> <span class='st'>"serviceMethod=createDataPackage&amp;limit=5"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in get_recent_uploads(query = "serviceMethod=createDataPackage&amp;limit=5"): could not find function "get_recent_uploads"</span></div><div class='input'>
+
 <span class='co'># Show the first</span>
 <span class='fu'>xml2</span><span class='fu'>::</span><span class='fu'><a href='http://xml2.r-lib.org/reference/xml_find_all.html'>xml_find_first</a></span><span class='op'>(</span><span class='va'>auditReport</span>, <span class='st'>"auditRecord"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in xml2::xml_find_first(auditReport, "auditRecord"): object 'auditReport' not found</span></div></pre>
+</div><div class='output co'>#&gt; {xml_node}
+#&gt; &lt;auditRecord&gt;
+#&gt;  [1] &lt;oid&gt;127322125&lt;/oid&gt;
+#&gt;  [2] &lt;entryTime&gt;2022-01-10T12:04:12&lt;/entryTime&gt;
+#&gt;  [3] &lt;category&gt;info&lt;/category&gt;
+#&gt;  [4] &lt;service&gt;DataPackageManager-1.0&lt;/service&gt;
+#&gt;  [5] &lt;serviceMethod&gt;createDataPackage&lt;/serviceMethod&gt;
+#&gt;  [6] &lt;responseStatus&gt;200&lt;/responseStatus&gt;
+#&gt;  [7] &lt;resourceId&gt;https://pasta.lternet.edu/package/eml/knb-lter-fce/1236/1&lt;/r ...
+#&gt;  [8] &lt;user&gt;uid=FCE,o=EDI,dc=edirepository,dc=org&lt;/user&gt;
+#&gt;  [9] &lt;userAgent&gt;null&lt;/userAgent&gt;
+#&gt; [10] &lt;groups&gt;authenticated,vetted&lt;/groups&gt;
+#&gt; [11] &lt;authSystem&gt;https://pasta.edirepository.org/authentication&lt;/authSystem&gt;
+#&gt; [12] &lt;entryText/&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

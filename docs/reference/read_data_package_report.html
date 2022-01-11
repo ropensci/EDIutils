@@ -193,21 +193,43 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Read as XML</span>
 <span class='va'>qualityReport</span> <span class='op'>&lt;-</span> <span class='fu'>read_data_package_report</span><span class='op'>(</span><span class='st'>"knb-lter-knz.260.4"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in read_data_package_report("knb-lter-knz.260.4"): could not find function "read_data_package_report"</span></div><div class='input'><span class='va'>qualityReport</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'qualityReport' not found</span></div><div class='input'>
+<span class='va'>qualityReport</span>
+</div><div class='output co'>#&gt; {xml_document}
+#&gt; &lt;qualityReport schemaLocation="eml://ecoinformatics.org/qualityReport https://raw.githubusercontent.com/PASTAplus/PASTA/master/DataPackageManager/WebRoot/xml/qualityReportSchema.xsd" xmlns="eml://ecoinformatics.org/qualityReport" xmlns:qr="eml://ecoinformatics.org/qualityReport" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+#&gt;  [1] &lt;creationDate&gt;2020-02-04T16:38:38&lt;/creationDate&gt;
+#&gt;  [2] &lt;packageId&gt;knb-lter-knz.260.4&lt;/packageId&gt;
+#&gt;  [3] &lt;includeSystem&gt;lter&lt;/includeSystem&gt;
+#&gt;  [4] &lt;includeSystem&gt;knb&lt;/includeSystem&gt;
+#&gt;  [5] &lt;datasetReport&gt;\n  &lt;qualityCheck qualityType="metadata" system="lter" st ...
+#&gt;  [6] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS600&lt;/entityName&gt;\n  &lt;qualityCheck quali ...
+#&gt;  [7] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS600&lt;/entityName&gt;\n  &lt;qualityCheck qu ...
+#&gt;  [8] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS605&lt;/entityName&gt;\n  &lt;qualityCheck quali ...
+#&gt;  [9] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS605&lt;/entityName&gt;\n  &lt;qualityCheck qu ...
+#&gt; [10] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS610&lt;/entityName&gt;\n  &lt;qualityCheck quali ...
+#&gt; [11] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS610&lt;/entityName&gt;\n  &lt;qualityCheck qu ...
+#&gt; [12] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS615&lt;/entityName&gt;\n  &lt;qualityCheck quali ...
+#&gt; [13] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS615&lt;/entityName&gt;\n  &lt;qualityCheck qu ...
+#&gt; [14] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS620&lt;/entityName&gt;\n  &lt;qualityCheck quali ...
+#&gt; [15] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS620&lt;/entityName&gt;\n  &lt;qualityCheck qu ...
+#&gt; [16] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS630&lt;/entityName&gt;\n  &lt;qualityCheck quali ...
+#&gt; [17] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS630&lt;/entityName&gt;\n  &lt;qualityCheck qu ...
+#&gt; [18] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS635&lt;/entityName&gt;\n  &lt;qualityCheck quali ...
+#&gt; [19] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS635&lt;/entityName&gt;\n  &lt;qualityCheck qu ...</div><div class='input'>
 <span class='co'># Read as HTML</span>
 <span class='va'>qualityReport</span> <span class='op'>&lt;-</span> <span class='fu'>read_data_package_report</span><span class='op'>(</span>
   packageId <span class='op'>=</span> <span class='st'>"knb-lter-knz.260.4"</span>,
   frmt <span class='op'>=</span> <span class='st'>"html"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in read_data_package_report(packageId = "knb-lter-knz.260.4", frmt = "html"): could not find function "read_data_package_report"</span></div><div class='input'><span class='va'>qualityReport</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'qualityReport' not found</span></div><div class='input'>
+<span class='va'>qualityReport</span>
+</div><div class='output co'>#&gt; {html_document}
+#&gt; &lt;html&gt;
+#&gt; [1] &lt;body&gt;&lt;table xmlns:qr="eml://ecoinformatics.org/qualityReport"&gt;&lt;tbody&gt;\n&lt; ...</div><div class='input'>
 <span class='co'># Read as character</span>
 <span class='va'>qualityReport</span> <span class='op'>&lt;-</span> <span class='fu'>read_data_package_report</span><span class='op'>(</span>
   packageId <span class='op'>=</span> <span class='st'>"knb-lter-knz.260.4"</span>,
   frmt <span class='op'>=</span> <span class='st'>"char"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in read_data_package_report(packageId = "knb-lter-knz.260.4", frmt = "char"): could not find function "read_data_package_report"</span></div><div class='input'><span class='co'># writeLines(qualityReport, "./data/report.txt"))</span>
+<span class='co'># writeLines(qualityReport, "./data/report.txt"))</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

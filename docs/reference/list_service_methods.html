@@ -108,9 +108,6 @@
 <li>
   <a href="../news/index.html">News</a>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -174,8 +171,40 @@ Data Package Manager web service</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># All service methods</span>
 <span class='va'>services</span> <span class='op'>&lt;-</span> <span class='fu'>list_service_methods</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in list_service_methods(): could not find function "list_service_methods"</span></div><div class='input'><span class='va'>services</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'services' not found</span></div></pre>
+<span class='va'>services</span>
+</div><div class='output co'>#&gt;  [1] "appendProvenance"              "createDataPackage"            
+#&gt;  [3] "createDataPackageArchive"      "createReservation"            
+#&gt;  [5] "deleteReservation"             "deleteDataPackage"            
+#&gt;  [7] "evaluateDataPackage"           "getProvenanceMetadata"        
+#&gt;  [9] "isAuthorized"                  "listActiveReservations"       
+#&gt; [11] "listDataEntities"              "listDataDescendants"          
+#&gt; [13] "listDataSources"               "listRecentChanges"            
+#&gt; [15] "listDataPackageIdentifiers"    "listDataPackageRevisions"     
+#&gt; [17] "listDataPackageScopes"         "listDeletedDataPackages"      
+#&gt; [19] "listRecentUploads"             "listReservationIdentifiers"   
+#&gt; [21] "listServiceMethods"            "listUserDataPackages"         
+#&gt; [23] "listWorkingOn"                 "readDataEntity"               
+#&gt; [25] "readDataEntityAcl"             "readDataEntityRmd"            
+#&gt; [27] "readDataEntityChecksum"        "readDataEntityDoi"            
+#&gt; [29] "readDataEntityName"            "readDataEntityNames"          
+#&gt; [31] "readDataEntitySize"            "readDataEntitySizes"          
+#&gt; [33] "readDataPackage"               "readDataPackageAcl"           
+#&gt; [35] "readDataPackageRmd"            "readDataPackageArchive"       
+#&gt; [37] "readDataPackageDoi"            "readDataPackageError"         
+#&gt; [39] "readDataPackageFromDoi"        "readDataPackageReport"        
+#&gt; [41] "readDataPackageReportAcl"      "readDataPackageReportRmd"     
+#&gt; [43] "readDataPackageReportChecksum" "readDataPackageReportDoi"     
+#&gt; [45] "readEvaluateReport"            "readMetadata"                 
+#&gt; [47] "readMetadataDublinCore"        "readMetadataAcl"              
+#&gt; [49] "readMetadataRmd"               "readMetadataChecksum"         
+#&gt; [51] "readMetadataDoi"               "readMetadataFormat"           
+#&gt; [53] "searchDataPackages"            "updateDataPackage"            
+#&gt; [55] "createSubscription"            "deleteSubscription"           
+#&gt; [57] "executeSubscription"           "getMatchingSubscriptions"     
+#&gt; [59] "getSubscriptionWithId"         "notifyOfEvent"                
+#&gt; [61] "createJournalCitation"         "deleteJournalCitation"        
+#&gt; [63] "getCitationWithId"             "listDataPackageCitations"     
+#&gt; [65] "listPrincipalOwnerCitations"  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

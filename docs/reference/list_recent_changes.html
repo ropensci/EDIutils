@@ -197,11 +197,24 @@ scope, identifier, revision, principal, doi, serviceMethod, and date.</p>
   fromDate <span class='op'>=</span> <span class='st'>"2021-01-01T00:00:00"</span>,
   toDate <span class='op'>=</span> <span class='st'>"2021-01-03T00:00:00"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in list_recent_changes(fromDate = "2021-01-01T00:00:00", toDate = "2021-01-03T00:00:00"): could not find function "list_recent_changes"</span></div><div class='input'><span class='va'>dataPackageChanges</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'dataPackageChanges' not found</span></div><div class='input'>
+<span class='va'>dataPackageChanges</span>
+</div><div class='output co'>#&gt; {xml_document}
+#&gt; &lt;dataPackageChanges&gt;
+#&gt; [1] &lt;dataPackage&gt;\n  &lt;packageId&gt;edi.398.5&lt;/packageId&gt;\n  &lt;scope&gt;edi&lt;/scope&gt;\n ...
+#&gt; [2] &lt;dataPackage&gt;\n  &lt;packageId&gt;edi.398.6&lt;/packageId&gt;\n  &lt;scope&gt;edi&lt;/scope&gt;\n ...
+#&gt; [3] &lt;dataPackage&gt;\n  &lt;packageId&gt;knb-lter-sbc.6006.2&lt;/packageId&gt;\n  &lt;scope&gt;knb ...</div><div class='input'>
 <span class='co'># Show first</span>
 <span class='fu'>xml2</span><span class='fu'>::</span><span class='fu'><a href='http://xml2.r-lib.org/reference/xml_find_all.html'>xml_find_first</a></span><span class='op'>(</span><span class='va'>dataPackageChanges</span>, <span class='st'>"dataPackage"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in xml2::xml_find_first(dataPackageChanges, "dataPackage"): object 'dataPackageChanges' not found</span></div></pre>
+</div><div class='output co'>#&gt; {xml_node}
+#&gt; &lt;dataPackage&gt;
+#&gt; [1] &lt;packageId&gt;edi.398.5&lt;/packageId&gt;
+#&gt; [2] &lt;scope&gt;edi&lt;/scope&gt;
+#&gt; [3] &lt;identifier&gt;398&lt;/identifier&gt;
+#&gt; [4] &lt;revision&gt;5&lt;/revision&gt;
+#&gt; [5] &lt;principal&gt;uid=mohonkpreserve,o=EDI,dc=edirepository,dc=org&lt;/principal&gt;
+#&gt; [6] &lt;doi&gt;doi:10.6073/pasta/f999c0007dccf4ffc0b25746ff66fee2&lt;/doi&gt;
+#&gt; [7] &lt;serviceMethod&gt;updateDataPackage&lt;/serviceMethod&gt;
+#&gt; [8] &lt;date&gt;2021-01-02T17:04:44.12&lt;/date&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

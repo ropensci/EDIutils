@@ -109,9 +109,6 @@ derived, in whole or in part, from the specified source data package." />
 <li>
   <a href="../news/index.html">News</a>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -179,11 +176,22 @@ derived, in whole or in part, from the specified source data package.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># List descendants</span>
 <span class='va'>dataDescendants</span> <span class='op'>&lt;-</span> <span class='fu'>list_data_descendants</span><span class='op'>(</span><span class='st'>"knb-lter-bnz.501.17"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in list_data_descendants("knb-lter-bnz.501.17"): could not find function "list_data_descendants"</span></div><div class='input'><span class='va'>dataDescendants</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'dataDescendants' not found</span></div><div class='input'>
+<span class='va'>dataDescendants</span>
+</div><div class='output co'>#&gt; {xml_document}
+#&gt; &lt;dataDescendants&gt;
+#&gt; [1] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.1&lt;/packageId&gt;\n  &lt;title&gt;&amp;amp;#xa;  ...
+#&gt; [2] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.2&lt;/packageId&gt;\n  &lt;title&gt;&amp;amp;#xa;  ...
+#&gt; [3] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.3&lt;/packageId&gt;\n  &lt;title&gt;&amp;amp;#xa;  ...
+#&gt; [4] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.4&lt;/packageId&gt;\n  &lt;title&gt;&amp;amp;#xa;  ...
+#&gt; [5] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.5&lt;/packageId&gt;\n  &lt;title&gt;&amp;amp;#xa;  ...
+#&gt; [6] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.6&lt;/packageId&gt;\n  &lt;title&gt;Eight Mile ...</div><div class='input'>
 <span class='co'># Show first</span>
 <span class='fu'>xml2</span><span class='fu'>::</span><span class='fu'><a href='http://xml2.r-lib.org/reference/xml_find_all.html'>xml_find_first</a></span><span class='op'>(</span><span class='va'>dataDescendants</span>, <span class='st'>"dataDescendant"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in xml2::xml_find_first(dataDescendants, "dataDescendant"): object 'dataDescendants' not found</span></div></pre>
+</div><div class='output co'>#&gt; {xml_node}
+#&gt; &lt;dataDescendant&gt;
+#&gt; [1] &lt;packageId&gt;edi.275.1&lt;/packageId&gt;
+#&gt; [2] &lt;title&gt;&amp;amp;#xa;      Eight Mile Lake Research Watershed&amp;amp;#x2c; Carbon ...
+#&gt; [3] &lt;url&gt;https://pasta.lternet.edu/package/metadata/eml/edi/275/1&lt;/url&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
