@@ -38,11 +38,6 @@ install.packages("remotes")
 remotes::install_github("EDIorg/EDIutils")
 ```
 
-Get version 1.6.1, the previous major release now deprecated:
-```{r eval=FALSE}
-remotes::install_github("EDIorg/EDIutils", ref = "deprecated")
-```
-
 ## Getting Started
 
 ```{r eval=FALSE}
