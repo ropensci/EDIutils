@@ -38,6 +38,11 @@ install.packages("remotes")
 remotes::install_github("EDIorg/EDIutils")
 ```
 
+Get the development version:
+```{r eval=FALSE}
+remotes::install_github("EDIorg/EDIutils", ref = "development")
+```
+
 ## Getting Started
 
 ```{r eval=FALSE}
