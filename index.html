@@ -109,21 +109,18 @@
 <code class="sourceCode R"><span class="co"># Requires the remotes package</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"EDIorg/EDIutils"</span><span class="op">)</span></code></pre></div>
-<p>Get version 1.6.1, the previous major release now deprecated:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"EDIorg/EDIutils"</span>, ref <span class="op">=</span> <span class="st">"deprecated"</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EDIorg/EDIutils" class="external-link">EDIutils</a></span><span class="op">)</span></code></pre></div>
 <p>The unit of publication is the data package. It contains one or more data entities (i.e. files) described with <a href="https://eml.ecoinformatics.org/" class="external-link">EML metadata</a>, a metadata quality report, and a manifest of package contents. Data packages are immutable for reproducible research, yet versionable to allow updates and improved data quality through time. Each version is assigned a DOI and a unique package ID of the form “scope.identifier.revision”. The “scope” is the organizational unit, “identifier” the series, and “revision” the version (e.g. “edi.100.2” is version “2” of data package “edi.100”).</p>
 <div class="section level3">
 <h3 id="search-and-access-data">Search and Access Data<a class="anchor" aria-label="anchor" href="#search-and-access-data"></a>
 </h3>
 <p>The repository search service is a standard deployment of Apache Solr and indexes select metadata fields of data package metadata. For a list of searchable fields see <code><a href="reference/search_data_packages.html">search_data_packages()</a></code>. For a browser based search experience, use the <a href="https://portal.edirepository.org/nis/advancedSearch.jsp" class="external-link">EDI data portal</a>.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># List data packages containing the term "water temperature"</span>
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span>query <span class="op">=</span> <span class="st">'q="water+temperature"&amp;fl=*'</span><span class="op">)</span>
 <span class="va">res</span>
@@ -140,7 +137,7 @@
 <span class="co">#&gt;  [9] &lt;document&gt;\n  &lt;abstract&gt;As part of the Long Term Ecologic ...</span>
 <span class="co">#&gt; [10] &lt;document&gt;\n  &lt;abstract&gt;Year 2016, continuous measurement ...</span></code></pre></div>
 <p>Data entities are downloaded in raw bytes and parsed by a reader function.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># List data entities of data package edi.1047.1</span>
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_data_entity_names.html">read_data_entity_names</a></span><span class="op">(</span>packageId <span class="op">=</span> <span class="st">"edi.1047.1"</span><span class="op">)</span>
 <span class="va">res</span>
@@ -182,20 +179,20 @@
 <div class="section level3">
 <h3 id="evaluate-and-upload-data">Evaluate and Upload Data<a class="anchor" aria-label="anchor" href="#evaluate-and-upload-data"></a>
 </h3>
-<p>The repository has a “<a href="https://portal-s.edirepository.org/nis/home.jsp" class="external-link">staging</a>” environment to test the upload and rendering of new data packages before publishing to “<a href="https://portal.edirepository.org/nis/home.jsp" class="external-link">production</a>”. Authentication is required by functions involving data evaluation and upload. Request an account from <a href="mailto:support@environmentaldatainitiative.org" class="email">support@environmentaldatainitiative.org</a>.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<p>The EDI data repository has a “<a href="https://portal-s.edirepository.org/nis/home.jsp" class="external-link">staging</a>” environment to test the upload and rendering of new data packages before publishing to “<a href="https://portal.edirepository.org/nis/home.jsp" class="external-link">production</a>”. Authentication is required by functions involving data evaluation and upload. Request an account from <a href="mailto:support@environmentaldatainitiative.org" class="email">support@environmentaldatainitiative.org</a>.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Authenticate</span>
 <span class="fu"><a href="reference/login.html">login</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; User name: "my_name"</span>
 <span class="co">#&gt; User password: "my_secret"</span></code></pre></div>
 <p>Data package reservations prevent conflicting use of the same identifier.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Reserve a data package identifier</span>
 <span class="va">identifier</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_reservation.html">create_reservation</a></span><span class="op">(</span>scope <span class="op">=</span> <span class="st">"edi"</span>, env <span class="op">=</span> <span class="st">"staging"</span><span class="op">)</span>
 <span class="va">identifier</span>
 <span class="co">#&gt; [1] 595</span></code></pre></div>
 <p>Evaluation checks for metadata accuracy and completeness.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Evaluate data package</span>
 <span class="va">transaction</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/evaluate_data_package.html">evaluate_data_package</a></span><span class="op">(</span>
  eml <span class="op">=</span> <span class="st">"./data/edi.595.1.xml"</span>, 
@@ -248,7 +245,7 @@
 <span class="co">#&gt; REFERENCE: </span>
 <span class="co">#&gt; ...</span></code></pre></div>
 <p>Upload after errors and warnings are fixed.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Create a new data package</span>
 <span class="va">transaction</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/create_data_package.html">create_data_package</a></span><span class="op">(</span>
  eml <span class="op">=</span> <span class="st">"./data/edi.595.1.xml"</span>, 
@@ -262,7 +259,7 @@
  env <span class="op">=</span> <span class="st">"staging"</span><span class="op">)</span>
 <span class="va">status</span>
 <span class="co">#&gt; [1] TRUE</span></code></pre></div>
-<p>Once everything looks good in the “staging” environment, then repeat the above reservation and upload step in the “production” environment where it will be assigned a DOI and published.</p>
+<p>Once everything looks good in the “staging” environment, then repeat the above reservation and upload steps in the “production” environment where the data package will be assigned a DOI and made discoverable with other published data.</p>
 </div>
 </div>
 <div class="section level2">
@@ -324,7 +321,7 @@
 <ul class="list-unstyled">
 <li><a href="https://www.repostatus.org/#wip" class="external-link"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></li>
 <li><a href="https://github.com/EDIorg/EDIutils/actions" class="external-link"><img src="https://github.com/EDIorg/EDIutils/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://codecov.io/github/EDIorg/EDIutils?branch=master" class="external-link"><img src="https://codecov.io/gh/EDIorg/EDIutils/branch/master/graph/badge.svg" alt="codecov.io"></a></li>
+<li><a href="https://codecov.io/github/EDIorg/EDIutils?branch=main" class="external-link"><img src="https://codecov.io/gh/EDIorg/EDIutils/branch/main/graph/badge.svg" alt="codecov.io"></a></li>
 </ul>
 </div>
 
