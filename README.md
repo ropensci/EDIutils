@@ -9,7 +9,7 @@
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![R-CMD-check](https://github.com/EDIorg/EDIutils/workflows/R-CMD-check/badge.svg)](https://github.com/EDIorg/EDIutils/actions)
-[![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/master/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=master)
+[![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/main/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=main)
 <!-- badges: end -->
 
 A client for the Environmental Data Initiative repository REST API. The
@@ -39,12 +39,6 @@ Get the latest version:
 # Requires the remotes package
 install.packages("remotes")
 remotes::install_github("EDIorg/EDIutils")
-```
-
-Get version 1.6.1, the previous major release now deprecated:
-
-``` r
-remotes::install_github("EDIorg/EDIutils", ref = "deprecated")
 ```
 
 ## Getting Started
@@ -134,7 +128,7 @@ data
 
 ### Evaluate and Upload Data
 
-The repository has a
+The EDI data repository has a
 “[staging](https://portal-s.edirepository.org/nis/home.jsp)” environment
 to test the upload and rendering of new data packages before publishing
 to “[production](https://portal.edirepository.org/nis/home.jsp)”.
@@ -234,8 +228,9 @@ status
 ```
 
 Once everything looks good in the “staging” environment, then repeat the
-above reservation and upload step in the “production” environment where
-it will be assigned a DOI and published.
+above reservation and upload steps in the “production” environment where
+the data package will be assigned a DOI and made discoverable with other
+published data.
 
 ## Getting help
 
