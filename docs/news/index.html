@@ -71,20 +71,41 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
      
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/search_and_access.html">Search and Access Data</a>
+    </li>
+    <li>
+      <a href="../articles/publish_data.html">Evaluate and Upload Data</a>
+    </li>
+    <li>
+      <a href="../articles/retrieve_downloads.html">Retrieve Download Metrics</a>
+    </li>
+    <li>
+      <a href="../articles/retrieve_citations.html">Retrieve Citation Metrics</a>
+    </li>
+    <li>
+      <a href="../articles/tests_requiring_authentication.html">Tests Requiring Authentication</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../news/index.html">News</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -114,40 +135,12 @@
       <small>Source: <a href='https://github.com/EDIorg/EDIutils/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="ediutils-161" class="section level1">
-<h1 class="page-header" data-toc-text="1.6.1">
-<a href="#ediutils-161" class="anchor"></a>EDIutils 1.6.1</h1>
-<div id="bug-fix" class="section level3">
-<h3 class="hasAnchor">
-<a href="#bug-fix" class="anchor"></a>Bug fix</h3>
-<ul>
-<li>
-<strong>read_tables():</strong> Columnn names beginning with an underscore (e.g. "_2_5_mm“) were being prefixed with”X" (e.g. “X_2_5_mm”). This is no longer occuring.</li>
-</ul>
-</div>
-</div>
-    <div id="ediutils-160" class="section level1">
-<h1 class="page-header" data-toc-text="1.6.0">
-<a href="#ediutils-160" class="anchor"></a>EDIutils 1.6.0</h1>
-<div id="enhancement" class="section level3">
-<h3 class="hasAnchor">
-<a href="#enhancement" class="anchor"></a>Enhancement</h3>
-<ul>
-<li>
-<strong>read_tables():</strong> Remove leading and trailing white space from character fields when <code>strip.white = TRUE</code>, even when quoted.</li>
-</ul>
-</div>
-</div>
-    <div id="ediutils-150" class="section level1">
-<h1 class="page-header" data-toc-text="1.5.0">
-<a href="#ediutils-150" class="anchor"></a>EDIutils 1.5.0</h1>
-<div id="enhancement-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#enhancement-1" class="anchor"></a>Enhancement</h3>
-<ul>
-<li><p><strong>read_tables():</strong> New arguments to control file parsing: <code>strip.white</code> strips leading and trailing whitespaces of unquoted fields, <code>na.strings</code> allows specification of strings to be interpreted as NA, <code>convert.missing.value</code> converts all missing value codes specified in the EML metadata (e.g. “-99999”, “NaN”, “Not measured”) to NA, <code>add.units</code> adds a variable’s unit of measurement to the table in a separate column. Default settings read tables in their original published form.</p></li>
-<li><p><strong>replace_missing_value_codes():</strong> This function will be deprecated in favor of <code><a href="../reference/read_tables.html">read_tables(..., convert.missing.value)</a></code>, but will persist in the meantime with a deprecation notice.</p></li>
-</ul>
+    <div id="ediutils-0009000" class="section level1">
+<h1 class="page-header" data-toc-text="0.0.0.9000">
+<a href="#ediutils-0009000" class="anchor"></a>EDIutils 0.0.0.9000</h1>
+<div id="submitting-to-ropensci" class="section level2">
+<h2 class="hasAnchor">
+<a href="#submitting-to-ropensci" class="anchor"></a>Submitting to rOpenSci</h2>
 </div>
 </div>
   </div>

@@ -71,20 +71,41 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
+  <a href="reference/index.html">Functions</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
      
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="articles/search_and_access.html">Search and Access Data</a>
+    </li>
+    <li>
+      <a href="articles/publish_data.html">Evaluate and Upload Data</a>
+    </li>
+    <li>
+      <a href="articles/retrieve_downloads.html">Retrieve Download Metrics</a>
+    </li>
+    <li>
+      <a href="articles/retrieve_citations.html">Retrieve Citation Metrics</a>
+    </li>
+    <li>
+      <a href="articles/tests_requiring_authentication.html">Tests Requiring Authentication</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="news/index.html">News</a>
 </li>
 <li>
   <a href="news/index.html">Changelog</a>
@@ -115,45 +136,41 @@
 
 <div id="contributing-guidelines" class="section level1">
 
+<div id="scope" class="section level2">
+<h2 class="hasAnchor">
+<a href="#scope" class="anchor"></a>Scope</h2>
+<ol>
+<li>Support for all EDI data repository web services.</li>
+<li>Simplify common user tasks (e.g. publication, reuse, reporting).</li>
+</ol>
+</div>
 <div id="git-structure" class="section level2">
 <h2 class="hasAnchor">
 <a href="#git-structure" class="anchor"></a>git structure</h2>
-<p>The active branch is <code>development</code>. <code>development</code> is merged into <code>master</code> for releases. Please submit your pull requests to <code>development</code>.</p>
+<p>The active branch is <code>development</code>. <code>development</code> is merged into <code>main</code> for releases. Please submit your pull requests to <code>development</code>.</p>
 </div>
 <div id="repository-structure" class="section level2">
 <h2 class="hasAnchor">
 <a href="#repository-structure" class="anchor"></a>Repository structure</h2>
-<p>This repository is structured as a standard R package following the conventions outlined in the <a href="http://cran.r-project.org/doc/manuals/R-exts.html">Writing R extensions</a> manual. A few additional files are provided that are not part of the built R package and are listed in <code>.Rbuildignore</code>, such as <code>.travis.yml</code>, which is used for continuous testing and integration.</p>
+<p>This repository is structured as a standard R package following the conventions outlined in the <a href="http://cran.r-project.org/doc/manuals/R-exts.html">Writing R extensions</a> manual. A few additional files are provided that are not part of the built R package and are listed in <code>.Rbuildignore</code>.</p>
 </div>
 <div id="code" class="section level2">
 <h2 class="hasAnchor">
 <a href="#code" class="anchor"></a>Code</h2>
-<p>All code for this package is found in <code>R/</code>. All functions should be thoroughly documented with <code>roxygen2</code> notation; see Documentation. Code should conform to the rOpenSci <a href="https://github.com/ropensci/onboarding/blob/master/packaging_guide.md">Style guide</a>.</p>
+<p>All code for this package is found in <code>R/</code>. All functions should be thoroughly documented with <code>roxygen2</code>. All new code should follow the <a href="https://style.tidyverse.org/">tidyverse style guide</a> and can be applied with the <a href="https://cran.r-project.org/web/packages/styler/index.html">styler</a> and <a href="https://cran.r-project.org/web/packages/lintr/index.html">lintr</a> packages.</p>
 </div>
 <div id="testing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#testing" class="anchor"></a>Testing</h2>
-<p>Any new feature or bug-fix should include a unit-test demonstrating the change. Unit tests follow the <code>testthat</code> framework with files in <code>tests/testthat</code>. Please make sure that the testing suite passes before issuing a pull request. This can be done by running <code><a href="https://rdrr.io/r/utils/PkgUtils.html">check()</a></code> from the <code>devtools</code> package, which will also check for consistent documentation, etc.</p>
-<p>This package uses the <a href="https://github.com/craigcitro/r-travis">travis</a> continuous testing mechanism for R to ensure that the test suite is run on each push to Github. An icon at the top of the README.md indicates whether or not the tests are currently passing.</p>
+<p>Any new feature or bug-fix should include a unit-test demonstrating the change. Unit tests follow the <code>testthat</code> framework with files in <code>tests/testthat</code>. Please make sure that the testing suite passes before issuing a pull request. This can be done by running <code><a href="https://devtools.r-lib.org/reference/check.html">devtools::check()</a></code>, which will also check for consistent documentation, etc.</p>
+<p>Some tests require authentication and a minimal data package. See the vignette “Tests Requiring Authentication” for details.</p>
+<p>This package uses <a href="https://github.com/features/actions">GitHub Actions</a> continuous testing mechanism for R to ensure that the test suite is run on each push to Github. An icon at the top of the README.md indicates whether or not the tests are currently passing.</p>
 </div>
 <div id="documentation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#documentation" class="anchor"></a>Documentation</h2>
-<p>All of the function documentation is generated automatically. Please do not edit any of the documentation files in <code>man/</code> or the <code>NAMESPACE</code>. Instead, construct the appropriate <a href="https://github.com/klutometis/roxygen">roxygen2</a> documentation in the function files in <code>R/</code> themselves. The documentation is then generated by running the <code>document()</code> function from the <code>devtools</code> package. Please consult the <a href="http://adv-r.had.co.nz/">Advanced R programming</a> guide if this workflow is unfamiliar to you. Note that functions should include examples in the documentation. Please use <code>\dontrun</code> for examples that take more than a few seconds to execute or require an internet connection.</p>
-<p>Likewise, the README.md file in the base directory should not be edited directly. This file is created automatically from code that runs the examples shown, helping to ensure that they are functioning as advertised and consistent with the package README vignette. Instead, edit the <code>README.Rmd</code> source file in <code>manuscripts</code> and run <code>make</code> to build the README.</p>
-</div>
-<div id="general-development-goals--guidelines" class="section level2">
-<h2 class="hasAnchor">
-<a href="#general-development-goals--guidelines" class="anchor"></a>General Development Goals &amp; Guidelines</h2>
-<ol>
-<li>Wrapper functions for the <a href="https://pastaplus-core.readthedocs.io/en/latest/">PASTA+ API</a>
-</li>
-</ol>
-</div>
-<div id="attribution" class="section level2">
-<h2 class="hasAnchor">
-<a href="#attribution" class="anchor"></a>Attribution</h2>
-<p>These contributing guidelines are based on those of the <a href="https://github.com/ropensci/EML/blob/master/CONTRIBUTING.md">rOpenSci EML project</a>.</p>
+<p>All of the function documentation is generated automatically. Please do not edit any of the documentation files in <code>man/</code> or the <code>NAMESPACE</code>. Instead, construct the appropriate <a href="https://cran.r-project.org/web/packages/roxygen2/index.html">roxygen2</a> documentation in the function files in <code>R/</code> themselves. The documentation is then generated by running the <code><a href="https://devtools.r-lib.org/reference/document.html">devtools::document()</a></code>. Please consult the <a href="http://adv-r.had.co.nz/">Advanced R programming</a> guide if this workflow is unfamiliar to you. Note that functions should include examples in the documentation. Please use <code>\dontrun</code> for examples that take more than a few seconds to execute.</p>
+<p>Likewise, the README.md file in the base directory should not be edited directly. This file is created automatically from code that runs the examples shown, helping to ensure that they are functioning as advertised and consistent with the package README vignette. Instead, edit the <code>README.Rmd</code> source file <code><a href="https://pkgdown.r-lib.org/reference/build_home.html">pkgdown::build_home()</a></code> to build the README.</p>
 </div>
 </div>
 

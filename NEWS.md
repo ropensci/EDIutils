@@ -1,20 +1,7 @@
-# EDIutils 1.6.1
+# EDIutils 0.0.0.9000
 
-### Bug fix
+EDIutils has undergone a major refactor for submission to rOpenSci and CRAN. This new and improved version covers the full data repository REST API, handles authentication more securely, better matches API call and result syntax, improves documentation, and opens the door for development of wrapper functions to support common data management tasks. In the process of this refactor the function names and call patterns have changed and several functions supporting other EDI R packages have been removed, thereby creating back compatibility breaking changes with the previous major release (version 1.6.1). The previous version will be available until 2022-06-01 on the `deprecated` branch. Install the previous version with:
 
-* __read_tables():__ Columnn names beginning with an underscore (e.g. "_2_5_mm") were being prefixed with "X" (e.g. "X_2_5_mm"). This is no longer occuring.
-
-# EDIutils 1.6.0
-
-### Enhancement
-
-* __read_tables():__ Remove leading and trailing white space from character fields when `strip.white = TRUE`, even when quoted.
-
-# EDIutils 1.5.0
-
-### Enhancement
-
-* __read_tables():__ New arguments to control file parsing: `strip.white` strips leading and trailing whitespaces of unquoted fields, `na.strings` allows specification of strings to be interpreted as NA, `convert.missing.value` converts all missing value codes specified in the EML metadata (e.g. "-99999", "NaN", "Not measured") to NA, `add.units` adds a variable's unit of measurement to the table in a separate column. Default settings read tables in their original published form.
-
-* __replace_missing_value_codes():__ This function will be deprecated in favor of `read_tables(..., convert.missing.value)`, but will persist in the meantime with a deprecation notice.
-
+```
+remotes::install_github("EDIorg/EDIutils", ref = "deprecated")
+```
