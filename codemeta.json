@@ -5,11 +5,11 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "EDIutils",
-  "description": "The EDI Data Repository (https://portal.edirepository.org/nis/home.jsp) is for the archive and reuse of ecological data, emphasizing data quality and information rich metadata. EDIutils includes functions to search the repository, retrieve metadata, download files, and more.",
+  "description": "A client for the Environmental Data Initiative repository REST API. The EDI data repository <https://portal.edirepository.org/nis/home.jsp> is for publication and reuse of ecological data with emphasis on metadata accuracy and completeness. It is built upon the PASTA+ software stack <https://pastaplus-core.readthedocs.io/en/latest/index.html#> and was developed in collaboration with the US LTER Network <https://lternet.edu/>. EDIutils includes functions to search and access existing data, evaluate and upload new data, and assist other data management tasks common to repository users.",
   "name": "EDIutils: An API Client for the Environmental Data Initiative Repository",
   "codeRepository": "https://github.com/EDIorg/EDIutils",
   "issueTracker": "https://github.com/EDIorg/EDIutils/issues",
-  "license": "MIT License",
+  "license": "https://spdx.org/licenses/MIT",
   "version": "0.0.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
@@ -26,7 +26,13 @@
       "@id": "https://orcid.org/0000-0003-2261-9931"
     }
   ],
-  "contributor": {},
+  "contributor": [
+    {
+      "@type": "Person",
+      "givenName": "Corinna",
+      "familyName": "Gries"
+    }
+  ],
   "copyrightHolder": {},
   "funder": {},
   "maintainer": [
@@ -41,6 +47,30 @@
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "readr",
+      "name": "readr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=readr"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "rmarkdown",
       "name": "rmarkdown",
       "provider": {
@@ -53,15 +83,15 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "knitr",
-      "name": "knitr",
+      "identifier": "roxygen2",
+      "name": "roxygen2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=knitr"
+      "sameAs": "https://CRAN.R-project.org/package=roxygen2"
     },
     {
       "@type": "SoftwareApplication",
@@ -81,7 +111,6 @@
       "@type": "SoftwareApplication",
       "identifier": "curl",
       "name": "curl",
-      "version": ">= 3.0.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -94,7 +123,6 @@
       "@type": "SoftwareApplication",
       "identifier": "httr",
       "name": "httr",
-      "version": ">= 1.3.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -107,7 +135,6 @@
       "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
-      "version": ">= 1.1.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -118,8 +145,23 @@
     }
   ],
   "readme": "https://github.com/EDIorg/EDIutils/blob/master/README.md",
-  "fileSize": "451.476KB",
-  "contIntegration": "https://codecov.io/github/EDIorg/EDIutils?branch=master",
+  "fileSize": "324.284KB",
+  "contIntegration": ["https://github.com/EDIorg/EDIutils/actions", "https://codecov.io/github/EDIorg/EDIutils?branch=master"],
   "relatedLink": "https://ediorg.github.io/EDIutils/",
-  "releaseNotes": "https://github.com/EDIorg/EDIutils/blob/master/NEWS.md"
+  "releaseNotes": "https://github.com/EDIorg/EDIutils/blob/master/NEWS.md",
+  "developmentStatus": "https://www.repostatus.org/#wip",
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Colin",
+          "familyName": "Smith"
+        }
+      ],
+      "name": "{EDIutils}: An API Client for the Environmental Data Initiative Repository in R",
+      "url": "https://github.com/EDIorg/EDIutils"
+    }
+  ]
 }
