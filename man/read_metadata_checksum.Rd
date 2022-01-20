@@ -19,9 +19,13 @@ read_metadata_checksum(packageId, env = "production")
 Read metadata checksum
 }
 \examples{
+\dontrun{
+
 # Read checksum
 checksum <- read_metadata_checksum("knb-lter-ntl.409.1")
 checksum
+#> [1] "c89d0ac740f65ef599c6a90619221441e20b8b6e"
+}
 }
 \seealso{
 Other Accessing: 

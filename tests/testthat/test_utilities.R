@@ -31,3 +31,55 @@ testthat::test_that('Landing page URLs are constructed', {
   res <- read_data_package_landing_page_url("edi.100.1")
   expect_true(class(res) == "character")
 })
+
+
+
+
+testthat::test_that("bake_cookie() works", {
+  token <- Sys.getenv("EDI_TOKEN")
+  Sys.setenv(EDI_TOKEN = "foobar")
+  res <- bake_cookie()
+  expect_equal(class(res), "request")
+  Sys.setenv(EDI_TOKEN = token)
+})
+
+
+
+testthat::test_that("create_test_eml() works", {
+  path <- create_test_eml(tempdir(), "edi.1.1")
+  expect_true(file.exists(path))
+})
+
+
+
+testthat::test_that("parsePackageId() works", {
+  res <- parse_packageId("edi.1.1")
+  expect_equal(res$scope, "edi")
+  expect_equal(res$id, "1")
+  expect_equal(res$rev, "1")
+})
+
+
+
+testthat::test_that("report2char() works", {
+  transaction <- "evaluate_163966785813042760"
+  vcr::use_cassette("report2char", {
+    qualityReport <- read_evaluate_report(transaction, env = "staging")
+  })
+  res <- report2char(qualityReport, env = "staging")
+  expect_true(class(res) == "character")
+})
+
+
+
+testthat::test_that("set_user_agent() works", {
+  res <- set_user_agent()
+  expect_equal(class(res), "request")
+})
+
+
+
+testthat::test_that("text2char() works", {
+  res <- text2char("text\ntext\n")
+  expect_length(res, 2)
+})

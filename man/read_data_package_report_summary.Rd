@@ -28,8 +28,26 @@ warnings and errors are found and \code{with_exceptions} is TRUE.
 Summarize the data package quality report
 }
 \examples{
+\dontrun{
+
 # Read report summary
 read_data_package_report_summary("knb-lter-knz.260.4")
+#> ===================================================
+#>   EVALUATION REPORT
+#> ===================================================
+#>   
+#> PackageId: knb-lter-knz.260.4
+#> Report Date/Time: 2020-02-04T16:38:38
+#> Total Quality Checks: 213
+#> Valid: 139
+#> Info: 73
+#> Warn: 1
+#> Error: 0
+#> 
+#> 
+#> Warning message:
+#> One or more quality checks resulted in 'warn' 
+}
 }
 \seealso{
 Other Accessing: 

@@ -1,5 +1,7 @@
 context("Login")
 
-testthat::test_that("Test attributes of returned object", {
-  expect_error(login("test", "test"))
+testthat::test_that("login() works", {
+  vcr::use_cassette("login", {
+    expect_error(login("test", "test"))
+  })
 })

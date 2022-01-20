@@ -11,9 +11,16 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' 
 #' # Read metadata
 #' eml <- read_metadata("edi.100.1")
 #' eml
+#' #> {xml_document}
+#' #> <eml packageId="edi.100.1" system="https://pasta.edirepository.org"   ...
+#' #> [1] <access authSystem="https://pasta.edirepository.org/authenticatio ...
+#' #> [2] <dataset>\n  <alternateIdentifier system="https://doi.org">doi:10 ...
+#' }
 read_metadata <- function(packageId, env = "production") {
   url <- paste0(
     base_url(env), "/package/metadata/eml/",

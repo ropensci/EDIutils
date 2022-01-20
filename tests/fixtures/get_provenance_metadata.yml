@@ -1,0 +1,110 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/provenance/eml/knb-lter-pal/309/1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 16:32:11 GMT
+      content-type: application/xml
+      content-length: '3602'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <methodStep>
+        <description>
+        <para>This method step describes provenance-based metadata as specified in the LTER EML Best Practices.</para>
+        <para>This provenance metadata does not contain entity specific information.</para>
+        </description>
+        <dataSource>
+        <title>Stable isotope composition (d18O) of seawater from stations in the Palmer LTER Study Site</title>
+        <creator>
+              <individualName>
+                <givenName>Mike</givenName>
+                <surName>Meredith</surName>
+              </individualName>
+              <organizationName>British Antarctic Survey</organizationName>
+              <positionName>Principal Investigator</positionName>
+              <address>
+                <deliveryPoint>High Cross, Madingley Road</deliveryPoint>
+                <city>Cambridge</city>
+                <postalCode>CB3 0ET</postalCode>
+                <country>United Kingdom</country>
+              </address>
+              <phone phonetype="voice">44 (0)1223 221400</phone>
+              <electronicMailAddress>mmm@bas.ac.uk</electronicMailAddress>
+              <onlineUrl>https://www.bas.ac.uk/profile/mmm/</onlineUrl>
+              <userId directory="https://orcid.org">0000-0002-7342-7756</userId>
+            </creator>
+        <creator>
+              <individualName>
+                <givenName>Hugh</givenName>
+                <surName>Ducklow</surName>
+              </individualName>
+              <organizationName>Lamont Doherty Earth Observatory</organizationName>
+              <positionName>Principal Investigator</positionName>
+              <address>
+                <deliveryPoint>208 Geoscience 61 Route 9W - PO Box 1000</deliveryPoint>
+                <city>Palisades</city>
+                <administrativeArea>NY</administrativeArea>
+                <postalCode>10964-8000</postalCode>
+              </address>
+              <electronicMailAddress>hducklow@ldeo.columbia.edu</electronicMailAddress>
+              <onlineUrl>https://www.ldeo.columbia.edu/user/hducklow</onlineUrl>
+              <userId directory="https://orcid.org">0000-0001-9480-2183</userId>
+            </creator>
+        <creator>
+              <individualName>
+                <givenName>Melanie</givenName>
+                <surName>Leng</surName>
+              </individualName>
+              <organizationName>British Geological Survey</organizationName>
+              <address>
+                <deliveryPoint>Sutton Bonington Campus</deliveryPoint>
+                <deliveryPoint>Sutton Bonington</deliveryPoint>
+                <city>Leicestershire</city>
+                <postalCode>LE12 5RD</postalCode>
+                <country>United Kingdom</country>
+              </address>
+              <phone phonetype="voice">0115 93 63515</phone>
+              <electronicMailAddress>Melanie.Leng@nottingham.ac.uk</electronicMailAddress>
+              <onlineUrl>https://www.nottingham.ac.uk/biosciences/people/melanie.leng</onlineUrl>
+              <userId directory="https://orcid.org">0000-0003-1115-5166</userId>
+            </creator>
+        <distribution>
+        <online>
+        <onlineDescription>This online link references an EML document that describes data used in the creation of this derivative data package.</onlineDescription>
+        <url function="information">https://pasta.lternet.edu/package/metadata/eml/knb-lter-pal/309/1</url>
+        </online>
+        </distribution>
+        <contact>
+              <organizationName>Palmer Station Antarctica LTER</organizationName>
+              <positionName>PAL LTER Information Manager</positionName>
+              <address>
+                <deliveryPoint>almer Station Antarctica LTER Office208 Geoscience61 Route 9W - PO Box 1000</deliveryPoint>
+                <city>Palisades</city>
+                <administrativeArea>New York</administrativeArea>
+                <postalCode>10964-8000</postalCode>
+                <country>USA</country>
+              </address>
+              <electronicMailAddress>pallter.im@gmail.com</electronicMailAddress>
+              <onlineUrl>https://pal.lternet.edu/</onlineUrl>
+            </contact>
+        </dataSource>
+        </methodStep>
+  recorded_at: 2022-01-18 16:32:11 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

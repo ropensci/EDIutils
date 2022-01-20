@@ -1,6 +1,6 @@
 context("Create journal citation")
 
-testthat::test_that("Test attributes of returned object", {
+testthat::test_that("create_journal_citation() works", {
   skip_if_logged_out()
   journalCitationId <- create_journal_citation(
     packageId = get_test_package(), 

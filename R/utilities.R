@@ -355,7 +355,8 @@ set_user_agent <- function() {
 #' @noRd
 #'
 skip_if_logged_out <- function() {
-  if (Sys.getenv("EDI_TOKEN") != "") {
+  if ((Sys.getenv("EDI_TOKEN") != "") & 
+      (Sys.getenv("EDI_TOKEN") != "foobar")) {
     return(invisible(TRUE))
   }
   testthat::skip("Not run when logged out. Login with 'login()'.")

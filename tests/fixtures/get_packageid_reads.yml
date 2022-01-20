@@ -1,0 +1,68 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/audit/reads/knb-lter-sgs/817/17
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 16:22:41 GMT
+      content-type: application/xml
+      content-length: '1531'
+      connection: keep-alive
+      cache-control: no-cache
+      web-service: AuditManager-0.1
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <resourceReads>
+            <resource>
+                <resourceId>https://pasta.lternet.edu/package/metadata/eml/knb-lter-sgs/817/17</resourceId>
+                <resourceType>metadata</resourceType>
+                <scope>knb-lter-sgs</scope>
+                <identifier>817</identifier>
+                <revision>17</revision>
+                <totalReads>535</totalReads>
+                <nonRobotReads>518</nonRobotReads>
+            </resource>
+            <resource>
+                <resourceId>https://pasta.lternet.edu/package/eml/knb-lter-sgs/817/17</resourceId>
+                <resourceType>dataPackage</resourceType>
+                <scope>knb-lter-sgs</scope>
+                <identifier>817</identifier>
+                <revision>17</revision>
+                <totalReads>407</totalReads>
+                <nonRobotReads>394</nonRobotReads>
+            </resource>
+            <resource>
+                <resourceId>https://pasta.lternet.edu/package/report/eml/knb-lter-sgs/817/17</resourceId>
+                <resourceType>report</resourceType>
+                <scope>knb-lter-sgs</scope>
+                <identifier>817</identifier>
+                <revision>17</revision>
+                <totalReads>13</totalReads>
+                <nonRobotReads>11</nonRobotReads>
+            </resource>
+            <resource>
+                <resourceId>https://pasta.lternet.edu/package/data/eml/knb-lter-sgs/817/17/7c1ee60c37b60b35f05c94475c070750</resourceId>
+                <resourceType>data</resourceType>
+                <scope>knb-lter-sgs</scope>
+                <identifier>817</identifier>
+                <revision>17</revision>
+                <totalReads>47</totalReads>
+                <nonRobotReads>47</nonRobotReads>
+            </resource>
+        </resourceReads>
+  recorded_at: 2022-01-18 16:22:41 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

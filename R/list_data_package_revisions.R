@@ -14,9 +14,13 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' 
 #' # List revisions
 #' revisions <- list_data_package_revisions("knb-lter-arc", 20131)
 #' revisions
+#' #> [1] 1 2
+#' }
 list_data_package_revisions <- function(scope,
                                         identifier,
                                         filter = NULL,

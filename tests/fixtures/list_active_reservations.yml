@@ -1,0 +1,35 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta-s.lternet.edu/package/reservations/eml
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 16:51:27 GMT
+      content-type: application/xml
+      transfer-encoding: chunked
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        <reservations>
+          <reservation>
+            <docid>edi.106</docid>
+            <principal>uid=user10,o=EDI,dc=edirepository,dc=org</principal>
+            <dateReserved>2017-11-16 12:36:03.024</dateReserved>
+          </reservation>
+        </reservations>
+  recorded_at: 2022-01-18 16:51:27 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

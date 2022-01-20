@@ -19,12 +19,23 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' 
 #' # List sources
 #' dataSources <- list_data_sources("edi.275.4")
 #' dataSources
-#'
+#' #> {xml_document}
+#' #> <dataSources>
+#' #> [1] <dataSource>\n  <packageId>knb-lter-bnz.501.17</packageId>\n  <ti ...
+#' 
 #' # Show first
 #' xml2::xml_find_first(dataSources, "dataSource")
+#' #> {xml_node}
+#' #> <dataSource>
+#' #> [1] <packageId>knb-lter-bnz.501.17</packageId>
+#' #> [2] <title>Eight Mile Lake Research Watershed&amp;#x2c; Carbon in Per ...
+#' #> [3] <url>https://pasta.lternet.edu/package/metadata/eml/knb-lter-bnz/ ...
+#' }
 list_data_sources <- function(packageId, env = "production") {
   url <- paste0(
     base_url(env), "/package/sources/eml/",

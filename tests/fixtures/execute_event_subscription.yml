@@ -1,0 +1,27 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://pasta-s.lternet.edu/package/event/eml/270
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Content-Type: ''
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 02:35:52 GMT
+      content-length: '0'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2022-01-18 02:35:52 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

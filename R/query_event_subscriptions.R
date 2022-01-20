@@ -45,7 +45,8 @@
 #' login()
 #'
 #' # Query subscriptions
-#' subscriptions <- query_event_subscriptions(env = "staging")
+#' query <- "scope=edi"
+#' subscriptions <- query_event_subscriptions(query, env = "staging")
 #' subscriptions
 #' #> {xml_document}
 #' #> <subscriptions>

@@ -13,6 +13,8 @@
 #' @examples
 #' entityIds <- list_data_entities("knb-lter-and.2732.7")
 #' entityIds
+#' #> [1] "0464a1d9262fc6e609cb0b24adb7e5ba"
+#' #> [2] "cc3ade83d3655edd2ca674721a52ef46"
 list_data_entities <- function(packageId, env = "production") {
   url <- paste0(
     base_url(env), "/package/data/eml/",

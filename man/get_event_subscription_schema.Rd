@@ -18,12 +18,25 @@ entities
 Get event subscription schema
 }
 \examples{
+\dontrun{
+
 # Get schema
 schema <- get_event_subscription_schema()
 schema
+#> {xml_document}
+#> <schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+#> [1] <xs:element name="subscription">\n  <xs:complexType>\n    <xs:    ...
 
 # Show schema structure
 xml2::xml_structure(schema)
+#> <schema [xmlns:xs]>
+#>   <element [name]>
+#>     <complexType>
+#>       <all>
+#>         <element [name, type, minOccurs, maxOccurs]>
+#>         <element [name, type, minOccurs, maxOccurs]>
+#>       <attribute [name, type, use, fixed]>
+}
 }
 \seealso{
 Other Event Notifications: 

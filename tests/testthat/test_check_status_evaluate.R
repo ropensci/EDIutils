@@ -1,7 +1,9 @@
 context("Check status evaluate")
 
-testthat::test_that("Test attributes of returned object", {
-  skip_if_logged_out()
+testthat::test_that("check_status_evaluate() works", {
   transaction <- "evaluate_163966785813042760"
-  expect_true(check_status_evaluate(transaction, wait = FALSE, env = "staging"))
+  vcr::use_cassette("check_status_evaluate", {
+    res <- check_status_evaluate(transaction, wait = FALSE, env = "staging")
+  })
+  expect_true(res)
 })

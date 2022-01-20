@@ -20,6 +20,11 @@ list.
 List working on
 }
 \examples{
+\dontrun{
+
 list_working_on()
+#> {xml_document}
+#> <workingOn>
+}
 }
 \concept{System Monitoring}

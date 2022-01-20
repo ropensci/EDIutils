@@ -1,0 +1,59 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/audit/report?serviceMethod=readDataEntity&fromTime=2021-12-01&toTime=2021-12-02&limit=2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 05:32:47 GMT
+      content-type: application/xml
+      content-length: '1401'
+      connection: keep-alive
+      cache-control: no-cache
+      web-service: AuditManager-0.1
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        <auditReport>
+        <auditRecord>
+          <oid>121606334</oid>
+          <entryTime>2021-12-01T00:00:07</entryTime>
+          <category>warn</category>
+          <service>DataPackageManager-1.0</service>
+          <serviceMethod>readDataEntity</serviceMethod>
+          <responseStatus>401</responseStatus>
+          <resourceId></resourceId>
+          <user>robot</user>
+          <userAgent>null</userAgent>
+          <groups></groups>
+          <authSystem>https://pasta.edirepository.org/authentication</authSystem>
+          <entryText>Robots are not authorized access to data objects&#x2e; Robot detected&#x3a; Mozilla&#x2f;5&#x2e;0 &#x28;compatible&#x3b; SemrushBot&#x2f;7&#x7e;bl&#x3b; &#x2b;http&#x3a;&#x2f;&#x2f;www&#x2e;semrush&#x2e;com&#x2f;bot&#x2e;html&#x29;</entryText>
+        </auditRecord>
+        <auditRecord>
+          <oid>121606349</oid>
+          <entryTime>2021-12-01T00:00:21</entryTime>
+          <category>warn</category>
+          <service>DataPackageManager-1.0</service>
+          <serviceMethod>readDataEntity</serviceMethod>
+          <responseStatus>401</responseStatus>
+          <resourceId></resourceId>
+          <user>robot</user>
+          <userAgent>null</userAgent>
+          <groups></groups>
+          <authSystem>https://pasta.edirepository.org/authentication</authSystem>
+          <entryText>Robots are not authorized access to data objects&#x2e; Robot detected&#x3a; Mozilla&#x2f;5&#x2e;0 &#x28;compatible&#x3b; SemrushBot&#x2f;7&#x7e;bl&#x3b; &#x2b;http&#x3a;&#x2f;&#x2f;www&#x2e;semrush&#x2e;com&#x2f;bot&#x2e;html&#x29;</entryText>
+        </auditRecord>
+        </auditReport>
+  recorded_at: 2022-01-18 05:32:47 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

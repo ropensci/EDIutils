@@ -19,9 +19,16 @@ read_metadata_dublin_core(packageId, env = "production")
 Read metadata Dublin Core
 }
 \examples{
+\dontrun{
+
 # Read dc metadata
 dc <- read_metadata_dublin_core("knb-lter-nes.10.1")
 dc
+#> {xml_document}
+#> <dc schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http: ...
+#> [1] <dc:type/>
+#> [2] <dc:identifier/>
+}
 }
 \seealso{
 Other Accessing: 

@@ -23,10 +23,14 @@ distinguished name. Data packages that were uploaded by the specified user
 but have since been deleted are excluded from the list.
 }
 \examples{
+\dontrun{
+
 # List user data packages
 dn <- create_dn(userId = "dbjourneynorth")
 packageIds <- list_user_data_packages(dn)
 packageIds
+#> [1] "edi.948.1" "edi.949.1"
+}
 }
 \seealso{
 Other Listing: 

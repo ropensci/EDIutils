@@ -19,15 +19,33 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' 
 #' # Changes occurring in the first 3 days of 2021 for all scopes
 #' dataPackageChanges <- list_recent_changes(
-#'   fromDate = "2021-01-01T00:00:00",
-#'   toDate = "2021-01-03T00:00:00"
+#'  fromDate = "2021-01-01T00:00:00",
+#'  toDate = "2021-01-03T00:00:00"
 #' )
 #' dataPackageChanges
-#'
+#' #> {xml_document}
+#' #> <dataPackageChanges>
+#' #> [1] <dataPackage>\n  <packageId>edi.398.5</packageId>\n  <scope>edi</ ...
+#' #> [2] <dataPackage>\n  <packageId>edi.398.6</packageId>\n  <scope>edi</ ...
+#' #> [3] <dataPackage>\n  <packageId>knb-lter-sbc.6006.2</packageId>\n  <s ...
+#' 
 #' # Show first
 #' xml2::xml_find_first(dataPackageChanges, "dataPackage")
+#' #> {xml_node}
+#' #> <dataPackage>
+#' #> [1] <packageId>edi.398.5</packageId>
+#' #> [2] <scope>edi</scope>
+#' #> [3] <identifier>398</identifier>
+#' #> [4] <revision>5</revision>
+#' #> [5] <principal>uid=mohonkpreserve,o=EDI,dc=edirepository,dc=org</prin ...
+#' #> [6] <doi>doi:10.6073/pasta/f999c0007dccf4ffc0b25746ff66fee2</doi>
+#' #> [7] <serviceMethod>updateDataPackage</serviceMethod>
+#' #> [8] <date>2021-01-02T17:04:44.12</date>
+#' }
 list_recent_changes <- function(fromDate = NULL,
                                 toDate = NULL,
                                 scope = NULL,

@@ -1,0 +1,151 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/data/eml/edi/1047/1/58b9000439a5671ea7fe13212e889ba5
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 21:44:44 GMT
+      content-type: text/csv
+      content-length: '9544'
+      connection: keep-alive
+      content-disposition: attachment; filename=TrapEfficiencySummary.csv
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: "﻿releaseID,releaseTime,targetSiteName,markedTaxon,testDays,nReleased,nRecaptured,includeTest,includeTestComments,Release.comments\r\n282,5/19/2014
+        20:02,American River at Watt Avenue,Steelhead / rainbow trout,4,455,15,No,NA,Total
+        recaps = 15. The purpose of this release was to determine the catchability
+        of Nimbus Hatchery's YOY Steelhead by rotary screw traps.\r\n283,5/19/2014
+        19:50,American River at Watt Avenue,Steelhead / rainbow trout,4,492,26,No,NA,Total
+        recaps = 26. The purpose of this release was to determine the catchability
+        of Nimbus Hatchery's YOY Steelhead by rotary screw traps.\r\n323,5/11/2020
+        19:00,American River at Watt Avenue,Chinook salmon,4,687,24,Yes,NA,NA\r\n322,4/30/2020
+        15:05,American River at Watt Avenue,Chinook salmon,6,674,13,Yes,NA,\"Marking
+        Notes:\r\n# marked: 696 \r\n# of marking mortalities: 1 (5 injured and released)\r\n#
+        of successfully marked fish: 690\r\n\r\nHolding Temperature: 15.4 C\r\n\r\nRelease
+        Notes:\r\n# of successfully marked fish: 678 (12 shedded tags)\r\n# of holding
+        mortalities: 4 (2 holding,\"\r\n321,4/15/2020 19:24,American River at Watt
+        Avenue,Chinook salmon,7,270,18,Yes,NA,\"Marking Notes: \r\nAll fish marked
+        between 36-79 mm - high rate of injury due to lack of experience with VIE
+        tagging. Water temperatures were also relatively higher, making fish recovery
+        more of a challenge. Ice was used and will be mandatory for normal proc\"\r\n320,3/19/2020
+        19:00,American River at Watt Avenue,Chinook salmon,7,1586,241,Yes,NA,\"- Used
+        3 capsules of BBY dye. Mixed the dye in vials before adding to the cooler.\r\n\r\n-
+        Monitored fish reaction to dye as well as temperature and D.O.\r\n\r\n- Drained
+        and diluted water in cooler. Removed struggling fish into recovery buckets
+        (believe solution was\"\r\n319,2/13/2020 18:03,American River at Watt Avenue,Chinook
+        salmon,7,2204,342,Yes,NA,\"Released in net fulls across the width of the river.\r\n\r\nCould
+        not get passed last riffle without going on plane, 1800 cfs.\r\n\r\n53 less
+        fish after holding time. Miss count / Escaping?\r\n\r\nRelease Site Temp:
+        11.5˚ C\r\n\r\nTotal Recaps: 342\"\r\n318,2/4/2020 18:12,American River at
+        Watt Avenue,Chinook salmon,7,1716,234,Yes,NA,\"Released in net fulls across
+        the width of the river.\r\n\r\nOnly 64 fish from release group were measured
+        due to light constraints.\r\n\r\nMarked fish were released on downstream side
+        of riffles (0.5 mi upriver from screwtrap instead of typical 0.8 mi upriver
+        from sc\"\r\n317,4/29/2019 19:39,American River at Watt Avenue,Chinook salmon,1,1891,17,No,Test
+        included in trial due to the limited number of trials in 2019 and the relatively
+        high number of recaptures caught on the first day.,\"Net fulls of fish distributed
+        across width of river via boat\r\n\r\nTotal recaps: 17\r\n\r\n\"\r\n316,4/17/2019
+        18:15,American River at Watt Avenue,Chinook salmon,7,1310,6,Yes,NA,\"Net fulls
+        of fish distributed by boat across the river.\r\n\r\nRelease site temperature:
+        13.4° C\r\n\r\nTotal recaps: 6\"\r\n315,4/2/2019 18:24,American River at
+        Watt Avenue,Chinook salmon,2,1169,0,No,Test not included in analyses due to
+        limited length of trial and zero recaptures.,\"Netfulls of fish released from
+        boat across the river.\r\n\r\nRelease site temperature: 11.5° C\r\n\r\nTotal
+        Recaps: 0\r\n\r\nDue to an increase in discharge from Nimbus hatchery, traps
+        had to be pulled after the second sampling day of the trial began.\"\r\n314,3/20/2019
+        16:51,American River at Watt Avenue,Chinook salmon,7,599,6,Yes,NA,\"480 fish
+        held in live car from 3/19/19\r\n134 added on 3/20/19\r\n12 released. Total
+        fish marked = 602\r\n\r\nNet fulls of fish released from boat across the river.\r\n\r\nRelease
+        site temperature 10.8° C\r\n\r\nTotal recaps: 6\"\r\n308,4/18/2018 19:02,American
+        River at Watt Avenue,Chinook salmon,11,909,30,Yes,NA,NA\r\n307,4/3/2018 18:55,American
+        River at Watt Avenue,Chinook salmon,2,969,13,No,Traps had to be pulled after
+        two days due to a significant flow increase.,\"36 fish marked unsuccessfully\r\n\r\nRelease
+        site temperature 11.9° C\r\n\r\nTraps were lifted on 4/05/2018 due to increasing
+        flows\"\r\n306,3/6/2018 17:55,American River at Watt Avenue,Chinook salmon,7,1090,104,Yes,NA,Released
+        near storm drain discharge above Watt ave.\r\n305,1/31/2018 17:42,American
+        River at Watt Avenue,Chinook salmon,7,2126,173,Yes,NA,\"Total Recaps: 173\r\n\r\n1,115
+        fish held over from 1/30/18, 1014  fish from 1/31/18\"\r\n304,1/17/2018 16:55,American
+        River at Watt Avenue,Chinook salmon,7,1139,108,Yes,NA,\"Total Recaps: 108\r\n\r\n634
+        fish held over from 1/16/18, 523 fish from 1/17/18\r\n\r\n\"\r\n303,5/15/2017
+        19:51,American River at Watt Avenue,Chinook salmon,5,931,16,Yes,NA,\"Total
+        Recaps: 16\r\nRelease site temp: 14.2 degrees C\"\r\n302,5/1/2017 20:11,American
+        River at Watt Avenue,Chinook salmon,10,979,7,Yes,NA,\"Total Recaps: 7 (2 recaptured
+        on 5/10/17 and 5/11/17)\r\nRelease site temp: 14.2 degrees C\"\r\n301,4/17/2017
+        19:35,American River at Watt Avenue,Chinook salmon,4,1000,13,No,Traps had
+        to be raised after the trap visit on the 2nd day of the trial due to high
+        flows.,\"Total Recaps: 13 (Plus 1 recaptured on 5/4/17)\r\nRelease site temp:
+        11.2 degrees C\"\r\n300,4/3/2017 19:20,American River at Watt Avenue,Chinook
+        salmon,4,995,21,Yes,NA,\"Total Recaps: 21\r\nRelease site temp: 11.7 degrees
+        C\r\n\"\r\n299,3/15/2017 19:30,American River at Watt Avenue,Chinook salmon,7,958,10,Yes,NA,\"Total
+        Recaps: 10\r\n\r\n728 fish held over from 3/13/2017, 262 fish from 3/14/2017.\"\r\n298,3/24/2016
+        19:11,American River at Watt Avenue,Chinook salmon,7,2427,65,Yes,NA,\"Release
+        site temp: 12.9 degrees C\r\nTotal Recaps: 65\"\r\n297,3/5/2016 17:32,American
+        River at Watt Avenue,Chinook salmon,3,1312,6,No,Traps 8.1 and 8.2 sinking
+        partially on second day of test; fish and recaptures not enumerated.,\"Release
+        site temp: 11.1 degrees C\r\nTotal Recaps: 6\"\r\n296,2/26/2016 18:10,American
+        River at Watt Avenue,Chinook salmon,7,1671,62,Yes,NA,\"Release site temp:
+        not recorded\r\nTotal Recaps: 62\"\r\n295,2/17/2016 17:47,American River at
+        Watt Avenue,Chinook salmon,7,586,33,Yes,NA,\"Release site temp: not recorded\r\nTotal
+        Recaps: 33\"\r\n294,5/18/2015 20:13,American River at Watt Avenue,Chinook
+        salmon,4,952,73,Yes,NA,\"Release site temp: 18.4 degrees C\r\nTotal recaps:
+        73\"\r\n293,5/4/2015 20:00,American River at Watt Avenue,Chinook salmon,4,995,75,Yes,NA,\"Release
+        site temp: 18.4 degrees C\r\nTotal recaps: 75\"\r\n292,4/13/2015 19:39,American
+        River at Watt Avenue,Chinook salmon,4,999,78,Yes,NA,\"Release site temp: not
+        recorded\r\nTotal recaps: 78\"\r\n291,3/30/2015 19:27,American River at Watt
+        Avenue,Chinook salmon,10,1000,228,Yes,NA,\"Release site temp: 16.9 degrees
+        C\r\nTotal recaps: 228\"\r\n290,3/11/2015 18:58,American River at Watt Avenue,Chinook
+        salmon,7,245,34,Yes,NA,\"Release site temp: 13.1 degrees C\r\nTotal recaps:
+        34\"\r\n289,3/4/2015 18:00,American River at Watt Avenue,Chinook salmon,7,2983,725,Yes,NA,\"Release
+        site temp: 13.1 degrees C\r\nTotal recaps: 725\"\r\n288,2/25/2015 17:47,American
+        River at Watt Avenue,Chinook salmon,7,2963,701,Yes,NA,\"Release site temp:
+        12.6 degrees C\r\nTotal recaps: 701\"\r\n287,2/18/2015 17:48,American River
+        at Watt Avenue,Chinook salmon,7,2938,561,Yes,NA,\"Release site temp: 12.5
+        degrees C\r\nTotal recaps: 561\"\r\n286,2/11/2015 17:35,American River at
+        Watt Avenue,Chinook salmon,7,2956,530,Yes,NA,\"Release site temp: 12.5 degrees
+        C\r\nTotal recaps: 530\"\r\n285,2/4/2015 17:28,American River at Watt Avenue,Chinook
+        salmon,7,2962,553,Yes,NA,\"Release site temp: 11.8 degrees C\r\nTotal recaps:
+        553\"\r\n284,1/28/2015 17:21,American River at Watt Avenue,Chinook salmon,7,510,112,Yes,NA,\"Release
+        site temp: 11.2 degrees C\r\nTotal recaps:112\"\r\n281,5/12/2014 20:05,American
+        River at Watt Avenue,Chinook salmon,4,999,280,Yes,NA,Total recaps = 280\r\n280,5/5/2014
+        20:00,American River at Watt Avenue,Chinook salmon,4,992,222,Yes,NA,Total
+        recaps = 222\r\n279,4/22/2014 18:50,American River at Watt Avenue,Chinook
+        salmon,4,993,47,Yes,NA,Total recaps = 47\r\n278,4/14/2014 19:45,American River
+        at Watt Avenue,Chinook salmon,4,700,146,Yes,NA,Total recaps = 146\r\n276,3/20/2014
+        19:00,American River at Watt Avenue,Chinook salmon,7,896,219,Yes,NA,\"FLs
+        from traps 8.1 and 8.2 on 3/19/2014\r\n\r\nTotal recaps = 219\"\r\n277,3/20/2014
+        19:00,American River at Watt Avenue,Chinook salmon,7,88,17,Yes,NA,\"Photonic
+        marked fish added to the release of BBY stained fish.  100 FLs were taken
+        from trap 8.1 for photonic marking training.\r\n\r\nTotal recaps = 17\"\r\n275,3/13/2014
+        19:00,American River at Watt Avenue,Chinook salmon,7,1726,347,Yes,NA,\"FLs
+        from 8.2 3/11/2014 and 8.1 3/12/2014\r\n\r\nTotal recaps = 347\"\r\n274,3/6/2014
+        17:50,American River at Watt Avenue,Chinook salmon,7,1910,264,Yes,NA,\"FLs
+        from 8.1 3/5/2014 and 8.2 3/5/2014\r\n\r\nTotal recaps = 264\"\r\n273,2/27/2014
+        17:50,American River at Watt Avenue,Chinook salmon,7,1870,494,Yes,NA,\"FLs
+        from 8.1 2/25-26/2014\r\n\r\nTotal recaps = 494\"\r\n272,2/20/2014 17:50,American
+        River at Watt Avenue,Chinook salmon,7,3970,958,Yes,NA,\"FLs from 8.1 2/19/2014
+        and 8.2 2/19/2014\r\n\r\nTotal recaps = 958\"\r\n271,2/13/2014 17:45,American
+        River at Watt Avenue,Chinook salmon,7,3980,1360,Yes,NA,\"FLs from 8.1 2/12/2014
+        and 8.2 2/12/2014\r\n\r\nTotal recaps = 1360\"\r\n270,2/6/2014 17:30,American
+        River at Watt Avenue,Chinook salmon,7,684,106,Yes,NA,\"FLs from 8.1 2/4-5/2014
+        and 8.2 2/4-5/2014\r\n\r\nTotal recaps = 106\"\r\n269,1/30/2014 17:25,American
+        River at Watt Avenue,Chinook salmon,7,673,121,Yes,NA,\"FLs from 8.1 1/28-29/2014
+        and 8.2 1/28-29/2014\r\n\r\nTotal recaps = 121\"\r\n268,1/23/2014 17:25,American
+        River at Watt Avenue,Chinook salmon,7,856,188,Yes,NA,\"FL's from 8.1 1/21-22/2014
+        and 8.2 1/21-22/2014\r\n\r\nTotal recaps = 188\"\r\n267,1/17/2014 17:10,American
+        River at Watt Avenue,Chinook salmon,6,398,104,Yes,NA,\"FL's from 8.1 on 1/15-16/2014
+        and 8.2 1/15-16/2014\r\n\r\nTotal recaps = 104\"\r\n"
+  recorded_at: 2022-01-18 21:44:44 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

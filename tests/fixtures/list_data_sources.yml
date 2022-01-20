@@ -1,0 +1,36 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/sources/eml/edi/275/4
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 19:12:08 GMT
+      content-type: application/xml
+      content-length: '537'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <dataSources>
+            <dataSource>
+                <packageId>knb-lter-bnz.501.17</packageId>
+                <title>Eight Mile Lake Research Watershed&#x26;&#x23;x2c&#x3b; Carbon in Permafrost Experimental Heating Research &#x26;&#x23;x28&#x3b;CiPEHR&#x26;&#x23;x29&#x3b;&#x26;&#x23;x3a&#x3b; Aboveground plant biomass&#x26;&#x23;x2c&#x3b; 2009&#x26;&#x23;x2d&#x3b;2017&#x26;&#x23;x2e&#x3b;</title>
+                <url>https://pasta.lternet.edu/package/metadata/eml/knb-lter-bnz/501/17</url>
+            </dataSource>
+        </dataSources>
+  recorded_at: 2022-01-18 19:12:08 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

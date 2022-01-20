@@ -41,13 +41,30 @@ an upper limit on the number of audit records returned. For example,
 "limit=3".
 }
 \examples{
+\dontrun{
+
 # Get the 5 most recently created data packages
 auditReport <- get_recent_uploads(
-  query = "serviceMethod=createDataPackage&limit=5"
+ query = "serviceMethod=createDataPackage&limit=5"
 )
 
 # Show the first
 xml2::xml_find_first(auditReport, "auditRecord")
+#> {xml_node}
+#> <auditRecord>
+#>  [1] <oid>128171587</oid>
+#>  [2] <entryTime>2022-01-18T08:41:39</entryTime>
+#>  [3] <category>info</category>
+#>  [4] <service>DataPackageManager-1.0</service>
+#>  [5] <serviceMethod>createDataPackage</serviceMethod>
+#>  [6] <responseStatus>200</responseStatus>
+#>  [7] <resourceId>https://pasta.lternet.edu/package/eml/edi/1064/1</re ...
+#>  [8] <user>uid=kzollovenecek,o=EDI,dc=edirepository,dc=org</user>
+#>  [9] <userAgent>null</userAgent>
+#> [10] <groups>authenticated,vetted</groups>
+#> [11] <authSystem>https://pasta.edirepository.org/authentication</auth ...
+#> [12] <entryText/>
+}
 }
 \seealso{
 Other Audit Manager Services: 

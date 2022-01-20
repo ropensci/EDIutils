@@ -1,0 +1,43 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/rmd/eml/edi/613/1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Wed, 19 Jan 2022 00:38:24 GMT
+      content-type: application/xml
+      content-length: '610'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <resourceMetadata>
+            <dateCreated>2021-06-08 18:02:43.361</dateCreated>
+            <doi>doi:10.6073/pasta/47d7cb6d374b6662cce98e42122169f8</doi>
+            <entityId>null</entityId>
+            <entityName>null</entityName>
+            <fileName>null</fileName>
+            <identifier>613</identifier>
+            <packageId>edi.613.1</packageId>
+            <principalOwner>uid=EDI,o=EDI,dc=edirepository,dc=org</principalOwner>
+            <resourceId>https://pasta.lternet.edu/package/eml/edi/613/1</resourceId>
+            <resourceType>dataPackage</resourceType>
+            <revision>1</revision>
+            <scope>edi</scope>
+        </resourceMetadata>
+  recorded_at: 2022-01-19 00:38:24 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

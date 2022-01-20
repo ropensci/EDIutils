@@ -1,0 +1,114 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/search/eml?defType=edismax&q=%22air+temperature%22&fl=*
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Wed, 19 Jan 2022 01:38:19 GMT
+      content-type: application/xml
+      transfer-encoding: chunked
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: "<resultset numFound='1347' start='0' rows='10'>\n    <document>\n        <abstract>This
+        project contains data collected from sites located on the campus of Mars Hill
+        University in Mars Hill, NC. Weather data includes measurements of air temperature,
+        relative humidity, wind speed and direction, precipitation, and photosynthetically
+        active solar radiation. Soil moisture, soil temperature, and air temperature
+        data were measured at two forested locations. At each forested location, eight
+        soil moisture sensors were installed in transects radiating NE, NW, SE, and
+        SW from the datalogger. Sensors were installed approximately 20m and 40m along
+        the transect. Measurements were taken every minute and hourly and daily data
+        values recorded.</abstract>\n        <begindate>2004-11-09</begindate>\n        <doi>doi:10.6073/pasta/ef073af5a58c7e2290ffc49b64c54a57</doi>\n
+        \       <enddate>2018-01-25</enddate>\n        <funding>This material is based
+        upon work supported by the National Science Foundation under grant numbers
+        DEB-0823293, DEB-9632854 and DEB-0218001. Any opinions, findings, conclusions,
+        or recommendations expressed in the material are those of the author(s) and
+        do not necessarily reflect the views of the National Science Foundation.</funding>\n
+        \       <geographicdescription></geographicdescription>\n        <id>knb-lter-cwt.4038</id>\n
+        \       <methods>Photosynthetically Active Radiation\n            Photosynthetically
+        Active Radiation is measured using a LiCor LI-190SB sensor installed approximately
+        one meter above ground.\n          \n        \n        LiCOR 190- SB Photosynthetically
+        Active Radiation meter\n      \n      \n        \n          \n            Reference
+        Air Temperature\n            Reference air temperature is measured using a
+        Campbell Scientific CR10XTCR thermocouple located inside the enclosure.\n
+        \         \n        \n      \n      \n        \n          \n            Relative
+        Humidity\n            Relative humiditiy was measured using a Vaisala HMP45C
+        sensor. Beginning in 2013, RH was measured using a Campbell Scientific HC2S3
+        sensor\n          \n        \n        Vaisala HMP45C\n      \n      \n        \n
+        \         \n            Soil Moisture Content\n            Soil moisture content
+        is measured using Campbell Scientific CS616 Soil Moisture probes tha tare
+        inserted at the ground surface.\n          \n        \n      \n      \n        \n
+        \         \n            Soil Temperature\n            Soil temperature was
+        measured using thermocouples made from Omega type-T 20 gauge SLE thermocouple
+        wire. Sensors are installed approximately 10cm below the ground surface.  Beginning
+        in 2013, soil temperature measurements were taken with a Campbell Scientific
+        model 107 temp. probe\n          \n        \n        Omega type T 24 gauge
+        thermocouple sensor\n      \n      \n        \n          \n            Station
+        control and data recording\n            Station sensors were controlled and
+        all data was recorded using a Campbell Scientific CR10X datalogger, until
+        2013 when Campbell Scientific CR1000 dataloggers were installed.\n          \n
+        \       \n        Campbell Scientific CR10X\n      \n      \n        \n          \n
+        \           Air Temperature- Open Site\n            Air temperature  is measured
+        using Campbell Scientific HMP45C sensor. Sensor is installed approximately
+        one meter above ground. Beginning in 2013, air temp. was measured using a
+        Campbell Scientific HC2S3 sensor\n          \n        \n        Vaisala HMP45C\n
+        \     \n      \n        \n          \n            Air Temperature- President
+        House, Maint. Facility\n            Air temperature at these sites is measured
+        using thermocouples created from Omega type-T 20 gauge SLE thermocouple wire.
+        Sensors are installed approximately one meter above ground.  Beginning in
+        2013, air temperature measurements were taken with a Campbell Scientific model
+        107 temp. probe\n          \n        \n        Omega type T 24 gauge thermocouple
+        sensor\n      \n      \n        \n          \n            \n              \n
+        \               \n                  2004-11-09\n                \n                \n
+        \                 2018-01-25\n                \n              \n            \n
+        \         \n        \n        \n          \n            Mars Hill Weather
+        Stations\n            The weather station site is located at an elevation
+        of 709 meters.\n            The Open area weather station consisted of 3 poles
+        located near the greenhouse at the facilities maintenance area.  All sensors
+        were located between 1.5 to 2 meters above ground.\n            Measurements
+        were taken every minute and hourly and daily data values recorded.\n          \n
+        \         \n            Mars Hill Terrestrial Microclimate\n            The
+        Facilities Maintenace and President&apos;s House microclimate sites are both
+        located under the forest canopy at elevations of 700m and 745m, respectively.\n
+        \           The Microclimate stations had eight soil moisture sensors installed
+        in transects radiating NE, NW, SE, and SW from the datalogger. Sensors were
+        installed approximately 20m and 40m along the transect. Air temperature was
+        measured 1 meter above ground at the datalogger enclosure.\n            Measurements
+        were taken every minute and hourly and daily data values recorded.\n          \n
+        \       \n        \n          4038.kml</methods>\n        <packageid>knb-lter-cwt.4038.19</packageid>\n
+        \       <pubdate>2013</pubdate>\n        <responsibleParties>Coweeta Long
+        Term Ecological Research Program\nMars Hill University\nPearson, Scott M</responsibleParties>\n
+        \       <scope>knb-lter-cwt</scope>\n        <site>cwt</site>\n        <taxonomic></taxonomic>\n
+        \       <title>Weather and Terrestrial Microclimate Measurements from sites
+        located at Mars Hill University</title>\n        <authors>\n            <author>Pearson,
+        Scott M</author>\n        </authors>\n        <spatialCoverage>\n        </spatialCoverage>\n
+        \       <sources>\n        </sources>\n        <keywords>\n            <keyword>Mars
+        Hill</keyword>\n            <keyword>North Carolina</keyword>\n            <keyword>Coweeta
+        Hydrologic Laboratory</keyword>\n            <keyword>North Carolina</keyword>\n
+        \           <keyword>USA</keyword>\n            <keyword>CWT</keyword>\n            <keyword>LTER</keyword>\n
+        \           <keyword>air temperature</keyword>\n            <keyword>climate</keyword>\n
+        \           <keyword>microclimate</keyword>\n            <keyword>relative
+        humidity</keyword>\n            <keyword>soil moisture</keyword>\n            <keyword>soil
+        temperature</keyword>\n            <keyword>soil water content</keyword>\n
+        \           <keyword>solar radiation</keyword>\n            <keyword>weather</keyword>\n
+        \           <keyword>Inorganic Fluxes</keyword>\n        </keywords>\n        <organizations>\n
+        \           <organization>Coweeta Long Term Ecological Research Program</organization>\n
+        \           <organization>Mars Hill University</organization>\n        </organizations>\n
+        \       <singledates>\n        </singledates>\n        <timescales>\n        </timescales>\n
+        \   </document>\n</resultset>\n"
+  recorded_at: 2022-01-19 01:38:19 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

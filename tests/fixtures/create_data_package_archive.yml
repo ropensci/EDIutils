@@ -1,0 +1,29 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://pasta.lternet.edu/package/archive/eml/knb-lter-sev/31999/1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Content-Type: ''
+  response:
+    status:
+      status_code: 202
+      category: Success
+      reason: Accepted
+      message: 'Success: (202) Accepted'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 04:17:04 GMT
+      content-type: text/plain
+      content-length: '47'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: archive_knb-lter-sev.31999.1_164247942484434343
+  recorded_at: 2022-01-18 04:17:04 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

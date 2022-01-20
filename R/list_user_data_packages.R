@@ -17,10 +17,14 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' 
 #' # List user data packages
 #' dn <- create_dn(userId = "dbjourneynorth")
 #' packageIds <- list_user_data_packages(dn)
 #' packageIds
+#' #> [1] "edi.948.1" "edi.949.1"
+#' }
 list_user_data_packages <- function(dn, env = "production") {
   url <- paste0(base_url(env), "/package/user/", dn)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

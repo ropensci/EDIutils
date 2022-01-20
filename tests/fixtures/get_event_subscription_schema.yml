@@ -1,0 +1,33 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/event/eml/schema
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 16:00:07 GMT
+      content-type: application/xml
+      content-length: '505'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n\n
+        \ <xs:element name=\"subscription\">\n    <xs:complexType>\n      <xs:all>\n\n
+        \       <xs:element name=\"packageId\" type=\"xs:string\" \n                    minOccurs=\"1\"
+        maxOccurs=\"1\"/>\n\n        <xs:element name=\"url\" type=\"xs:string\" minOccurs=\"1\"
+        maxOccurs=\"1\"/>\n        \n      </xs:all>\n      <xs:attribute name=\"type\"
+        type=\"xs:string\" use=\"required\" fixed=\"eml\"/>\n    </xs:complexType>\n
+        \ </xs:element>\n</xs:schema>"
+  recorded_at: 2022-01-18 16:00:08 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

@@ -15,8 +15,15 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' 
 #' methodStep <- get_provenance_metadata("knb-lter-pal.309.1")
 #' methodStep
+#' #> {xml_document}
+#' #> <methodStep>
+#' #> [1] <description>\n  <para>This method step describes provenance-based ...
+#' #> [2] <dataSource>\n  <title>Stable isotope composition (d18O) of seawat ...
+#' }
 get_provenance_metadata <- function(packageId, env = "production") {
   url <- paste0(
     base_url(env), "/package/provenance/eml/",

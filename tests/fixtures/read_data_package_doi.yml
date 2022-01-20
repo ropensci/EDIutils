@@ -1,0 +1,28 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/doi/eml/knb-lter-jrn/210548103/15
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 23:45:32 GMT
+      content-type: text/plain
+      content-length: '50'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: doi:10.6073/pasta/c80c0c03d22791524d4b870d2193c843
+  recorded_at: 2022-01-18 23:45:32 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

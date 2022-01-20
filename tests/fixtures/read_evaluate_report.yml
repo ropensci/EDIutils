@@ -1,0 +1,31 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta-s.lternet.edu/package/evaluate/report/eml/evaluate_163966785813042760
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Wed, 19 Jan 2022 00:45:14 GMT
+      content-type: application/xml
+      content-length: '21892'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<qr:qualityReport\n  xmlns=\"eml://ecoinformatics.org/qualityReport\"\n
+        \ xmlns:qr=\"eml://ecoinformatics.org/qualityReport\"\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n
+        \ xsi:schemaLocation=\"eml://ecoinformatics.org/qualityReport https://raw.githubusercontent.com/PASTAplus/PASTA/master/DataPackageManager/WebRoot/xml/qualityReportSchema.xsd\"\n
+        \ >\n  <creationDate>2021-12-16T08:17:40</creationDate>\n</qr:qualityReport>\n"
+  recorded_at: 2022-01-19 00:45:14 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

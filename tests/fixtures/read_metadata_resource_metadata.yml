@@ -1,0 +1,45 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/metadata/rmd/eml/knb-lter-pal/309/1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Wed, 19 Jan 2022 01:28:16 GMT
+      content-type: application/xml
+      content-length: '856'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <resourceMetadata>
+            <dateCreated>2021-04-14 13:52:16.027</dateCreated>
+            <entityId>null</entityId>
+            <entityName>null</entityName>
+            <fileName>Level-1-EML.xml</fileName>
+            <formatType>https://eml.ecoinformatics.org/eml-2.2.0                                                            </formatType>
+            <identifier>309</identifier>
+            <md5Checksum>e1cbd509d73797dd4b23f0d30c30548d</md5Checksum>
+            <packageId>knb-lter-pal.309.1</packageId>
+            <principalOwner>uid=PAL,o=EDI,dc=edirepository,dc=org</principalOwner>
+            <resourceId>https://pasta.lternet.edu/package/metadata/eml/knb-lter-pal/309/1</resourceId>
+            <resourceType>metadata</resourceType>
+            <revision>1</revision>
+            <scope>knb-lter-pal</scope>
+            <sha1Checksum>b3cf11fa06b72514a3e7483fdf28dfeb70e2f1de</sha1Checksum>
+        </resourceMetadata>
+  recorded_at: 2022-01-19 01:28:16 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

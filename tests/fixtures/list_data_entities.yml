@@ -1,0 +1,28 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/data/eml/edi/993/1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 21:29:59 GMT
+      content-type: text/plain
+      content-length: '32'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: ce801a7c5e1d54f894aa117005a5c283
+  recorded_at: 2022-01-18 21:29:59 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

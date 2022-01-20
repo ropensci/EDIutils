@@ -19,9 +19,13 @@ read_metadata_format(packageId, env = "production")
 Read metadata format
 }
 \examples{
+\dontrun{
+
 # Read format
 metadataFormat <- read_metadata_format("knb-lter-nwt.930.1")
 metadataFormat
+#> [1] "eml://ecoinformatics.org/eml-2.1.1"
+}
 }
 \seealso{
 Other Accessing: 

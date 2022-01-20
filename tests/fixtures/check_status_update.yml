@@ -1,0 +1,58 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta-s.lternet.edu/package/error/eml/create_163966765080210573
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 404
+      category: Client error
+      reason: Not Found
+      message: 'Client error: (404) Not Found'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Wed, 19 Jan 2022 01:59:06 GMT
+      content-type: text/plain
+      content-length: '59'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: The error file create_163966765080210573.txt was not found!
+  recorded_at: 2022-01-19 01:59:07 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://pasta-s.lternet.edu/package/report/eml/edi/595/1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Wed, 19 Jan 2022 01:59:07 GMT
+      content-type: application/xml
+      content-length: '22126'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<qr:qualityReport\n  xmlns=\"eml://ecoinformatics.org/qualityReport\"\n
+        \ xmlns:qr=\"eml://ecoinformatics.org/qualityReport\"\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n
+        \ xsi:schemaLocation=\"eml://ecoinformatics.org/qualityReport https://raw.githubusercontent.com/PASTAplus/PASTA/master/DataPackageManager/WebRoot/xml/qualityReportSchema.xsd\"\n
+        \ >\n</qr:qualityReport>\n"
+  recorded_at: 2022-01-19 01:59:07 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

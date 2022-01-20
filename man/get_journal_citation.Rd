@@ -19,9 +19,23 @@ get_journal_citation(journalCitationId, env = "production")
 Get journal citation
 }
 \examples{
+\dontrun{
+
 # Get citation
 journalCitation <- get_journal_citation(381)
 journalCitation
+#> {xml_document}
+#> <journalCitation>
+#> [1] <journalCitationId>381</journalCitationId>
+#> [2] <packageId>edi.845.1</packageId>
+#> [3] <principalOwner>uid=csmith,o=EDI,dc=edirepository,dc=org</principa ...
+#> [4] <dateCreated>2021-05-27T13:23:14.981</dateCreated>
+#> [5] <articleDoi>https://doi.org/10.1016/j.scitotenv.2021.148033</artic ...
+#> [6] <articleTitle>Bioturbation frequency alters methane emissions from ...
+#> [7] <articleUrl>https://doi.org/10.1016/j.scitotenv.2021.148033</artic ...
+#> [8] <journalTitle>Science of the Total Environment</journalTitle>
+#> [9] <relationType>IsCitedBy</relationType>
+}
 }
 \seealso{
 Other Journal Citations: 

@@ -1,0 +1,27 @@
+http_interactions:
+- request:
+    method: delete
+    uri: https://pasta-s.lternet.edu/package/citation/eml/183
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Content-Type: ''
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 03:32:59 GMT
+      content-length: '0'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2022-01-18 03:32:59 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

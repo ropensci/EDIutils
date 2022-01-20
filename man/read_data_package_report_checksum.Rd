@@ -19,10 +19,14 @@ read_data_package_report_checksum(packageId, env = "production")
 Read data package report checksum
 }
 \examples{
+\dontrun{
+
 # Read report checksum
 packageId <- "knb-lter-luq.208.1"
 checksum <- read_data_package_report_checksum(packageId)
 checksum
+#> "980dbf3f3cdb7395933b711b005722033bdcd12f"
+}
 }
 \seealso{
 Other Accessing: 

@@ -1,0 +1,177 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/report/eml/knb-lter-knz/260/4
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Wed, 19 Jan 2022 00:24:18 GMT
+      content-type: application/xml
+      content-length: '169774'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<qr:qualityReport\n  xmlns=\"eml://ecoinformatics.org/qualityReport\"\n
+        \ xmlns:qr=\"eml://ecoinformatics.org/qualityReport\"\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n
+        \ xsi:schemaLocation=\"eml://ecoinformatics.org/qualityReport https://raw.githubusercontent.com/PASTAplus/PASTA/master/DataPackageManager/WebRoot/xml/qualityReportSchema.xsd\"\n
+        \ >\n  <creationDate>2020-02-04T16:38:38</creationDate>\n  <packageId>knb-lter-knz.260.4</packageId>\n
+        \ <includeSystem>lter</includeSystem>\n  <includeSystem>knb</includeSystem>\n
+        \ <datasetReport>\n    <qualityCheck qualityType=\"metadata\" system=\"lter\"
+        statusType=\"error\" >\n      <identifier>packageIdPattern</identifier>\n
+        \     <name>packageId pattern matches \"scope.identifier.revision\"</name>\n
+        \     <description>Check against LTER requirements for scope.identifier.revision</description>\n
+        \     <expected>'scope.n.m', where 'n' and 'm' are integers and 'scope' is
+        one of an allowed set of values</expected>\n      <found>knb-lter-knz.260.4</found>\n
+        \     <status>valid</status>\n      <explanation></explanation>\n      <suggestion></suggestion>\n
+        \     <reference></reference>\n    </qualityCheck>\n    <qualityCheck qualityType=\"metadata\"
+        system=\"lter\" statusType=\"error\" >\n      <identifier>emlVersion</identifier>\n
+        \     <name>EML version 2.1.0 or beyond</name>\n      <description>Check the
+        EML document declaration for version 2.1.0 or higher</description>\n      <expected>eml://ecoinformatics.org/eml-2.1.0
+        or higher</expected>\n      <found>eml://ecoinformatics.org/eml-2.1.0</found>\n
+        \     <status>valid</status>\n      <explanation>Validity of this quality
+        report is dependent on this check being valid.</explanation>\n      <suggestion></suggestion>\n
+        \     <reference></reference>\n    </qualityCheck>\n    <qualityCheck qualityType=\"metadata\"
+        system=\"knb\" statusType=\"error\" >\n      <identifier>schemaValid</identifier>\n
+        \     <name>Document is schema-valid EML</name>\n      <description>Check
+        document schema validity</description>\n      <expected>schema-valid</expected>\n
+        \     <found>Document validated for namespace: 'eml://ecoinformatics.org/eml-2.1.0'</found>\n
+        \     <status>valid</status>\n      <explanation>Validity of this quality
+        report is dependent on this check being valid.</explanation>\n      <suggestion></suggestion>\n
+        \     <reference></reference>\n    </qualityCheck>\n    <qualityCheck qualityType=\"metadata\"
+        system=\"knb\" statusType=\"error\" >\n      <identifier>parserValid</identifier>\n
+        \     <name>Document is EML parser-valid</name>\n      <description>Check
+        document using the EML IDs and references parser</description>\n      <expected>Validates
+        with the EML IDs and references parser</expected>\n      <found>EML IDs and
+        references parser succeeded</found>\n      <status>valid</status>\n      <explanation>Validity
+        of this quality report is dependent on this check being valid.</explanation>\n
+        \     <suggestion></suggestion>\n      <reference></reference>\n    </qualityCheck>\n
+        \   <qualityCheck qualityType=\"metadata\" system=\"lter\" statusType=\"error\"
+        >\n      <identifier>schemaValidDereferenced</identifier>\n      <name>Dereferenced
+        document is schema-valid EML</name>\n      <description>References are dereferenced,
+        and the resulting file validated</description>\n      <expected>schema-valid</expected>\n
+        \     <found>Dereferenced document validated for namespace: 'eml://ecoinformatics.org/eml-2.1.0'</found>\n
+        \     <status>valid</status>\n      <explanation>Validity of this quality
+        report is dependent on this check being valid.</explanation>\n      <suggestion></suggestion>\n
+        \     <reference></reference>\n    </qualityCheck>\n    <qualityCheck qualityType=\"metadata\"
+        system=\"lter\" statusType=\"warn\" >\n      <identifier>keywordPresent</identifier>\n
+        \     <name>keyword element is present</name>\n      <description>Checks to
+        see if at least one keyword is present</description>\n      <expected>Presence
+        of one or more keyword elements</expected>\n      <found>26 'keyword' element(s)
+        found</found>\n      <status>valid</status>\n      <explanation></explanation>\n
+        \     <suggestion></suggestion>\n      <reference></reference>\n    </qualityCheck>\n
+        \   <qualityCheck qualityType=\"metadata\" system=\"lter\" statusType=\"warn\"
+        >\n      <identifier>methodsElementPresent</identifier>\n      <name>A 'methods'
+        element is present</name>\n      <description>All datasets should contain
+        a 'methods' element, at a minimum a link to a separate methods doc.</description>\n
+        \     <expected>presence of 'methods' at one or more xpaths.</expected>\n
+        \     <found>1 'methods' element(s) found</found>\n      <status>valid</status>\n
+        \     <explanation></explanation>\n      <suggestion></suggestion>\n      <reference>EML
+        Best Practices, p. 28</reference>\n    </qualityCheck>\n    <qualityCheck
+        qualityType=\"metadata\" system=\"lter\" statusType=\"warn\" >\n      <identifier>coveragePresent</identifier>\n
+        \     <name>coverage element is present</name>\n      <description>At least
+        one coverage element should be present in a dataset.</description>\n      <expected>At
+        least one of geographicCoverage, taxonomicCoverage, or temporalCoverage is
+        present in the EML.</expected>\n      <found>1 'coverage' element(s) found</found>\n
+        \     <status>valid</status>\n      <explanation></explanation>\n      <suggestion></suggestion>\n
+        \     <reference></reference>\n    </qualityCheck>\n    <qualityCheck qualityType=\"metadata\"
+        system=\"lter\" statusType=\"info\" >\n      <identifier>geographicCoveragePresent</identifier>\n
+        \     <name>geographicCoverage is present</name>\n      <description>Check
+        that geographicCoverage exists in EML at the dataset level, or at least one
+        entity's level, or at least one attribute's level.</description>\n      <expected>geographicCoverage
+        at least at the dataset level.</expected>\n      <found>1 'geographicCoverage'
+        element(s) found</found>\n      <status>info</status>\n      <explanation>Many
+        but not all datasets are appropriate to have spatial coverage.</explanation>\n
+        \     <suggestion>If sampling EML is used within methods, does that obviate
+        geographicCoverage? Or should those sites be repeated or referenced?</suggestion>\n
+        \     <reference>EML Best Practices v.2, p. 22-23. \"One geographicCoverage
+        element should be included, whose boundingCoordinates describe the extent
+        of the data....Additional geographicCoverage elements may be entered at the
+        dataset level if there are significant distances between study sites and it
+        would be confusing if they were grouped into one bounding box.\" 6 decimal
+        places.</reference>\n    </qualityCheck>\n    <qualityCheck qualityType=\"metadata\"
+        system=\"lter\" statusType=\"info\" >\n      <identifier>taxonomicCoveragePresent</identifier>\n
+        \     <name>taxonomicCoverage is present</name>\n      <description>Check
+        that taxonomicCoverage exists in EML at the dataset level, or at least one
+        entity's level, or at least one attribute's level.</description>\n      <expected>taxonomicCoverage
+        at least at the dataset level.</expected>\n      <found>0 'taxonomicCoverage'
+        element(s) found</found>\n      <status>info</status>\n      <explanation>Only
+        when taxa are pertinent to the dataset will they have taxonomicCoverage.</explanation>\n
+        \     <suggestion>Could search title, abstract, keywords for any taxonomic
+        name (huge). Could search keywordType=\"taxonomic\".</suggestion>\n      <reference>EML
+        Best Practices v.2, p. 25</reference>\n    </qualityCheck>\n    <qualityCheck
+        qualityType=\"metadata\" system=\"lter\" statusType=\"info\" >\n      <identifier>temporalCoveragePresent</identifier>\n
+        \     <name>temporalCoverage is present</name>\n      <description>Check that
+        temporalCoverage exists in EML at the dataset level, or at least one entity's
+        level, or at least one attribute's level.</description>\n      <expected>temporalCoverage
+        at least at the dataset level.</expected>\n      <found>1 'temporalCoverage'
+        element(s) found</found>\n      <status>info</status>\n      <explanation>LTER
+        wants to search datasets by time; the best place to search is the dataset
+        level temporal coverage.</explanation>\n      <suggestion>Most datasets have
+        a temporal range.</suggestion>\n      <reference>EML Best Practices v.2, p.
+        24</reference>\n    </qualityCheck>\n    <qualityCheck qualityType=\"metadata\"
+        system=\"lter\" statusType=\"error\" >\n      <identifier>pastaDoiAbsent</identifier>\n
+        \     <name>An alternateIdentifier with a DOI system attribute that looks
+        like it is generated by PASTA should not be present</name>\n      <description>Reject
+        the data package if it contains an alternateIdentifier DOI that looks like
+        PASTA generated it.</description>\n      <expected>No PASTA DOIs are expected
+        to be found in the uploaded data package</expected>\n      <found>No PASTA
+        DOI alternateIdentifier elements found</found>\n      <status>valid</status>\n
+        \     <explanation>PASTA DOI values might appear in an uploaded data package
+        (by various mechanisms). PASTA will assign a DOI after the upload has completed
+        successfully, so an initial one should not be there.</explanation>\n      <suggestion></suggestion>\n
+        \     <reference></reference>\n    </qualityCheck>\n    <qualityCheck qualityType=\"metadata\"
+        system=\"lter\" statusType=\"warn\" >\n      <identifier>titleLength</identifier>\n
+        \     <name>Dataset title length is at 5 least words.</name>\n      <description>If
+        the title is shorter than 5 words, it might be insufficient. Title word count
+        between 7 and 20 including prepositions and numbers.</description>\n      <expected>Between
+        7 and 20 words</expected>\n      <found>11 words found.</found>\n      <status>valid</status>\n
+        \     <explanation></explanation>\n      <suggestion></suggestion>\n      <reference>EML
+        Best Practices, v.2, p. 13</reference>\n    </qualityCheck>\n    <qualityCheck
+        qualityType=\"metadata\" system=\"lter\" statusType=\"warn\" >\n      <identifier>fundingPresence</identifier>\n
+        \     <name>check to see if funding element is present</name>\n      <description>Checks
+        to see if the funding element is included.</description>\n      <expected>the
+        funding element is expected to be included</expected>\n      <found>funding
+        not found</found>\n      <status>warn</status>\n      <explanation>Searches
+        will want to display datasets by funder or grant id.</explanation>\n      <suggestion>Include
+        the funding source, please.</suggestion>\n      <reference></reference>\n
+        \   </qualityCheck>\n    <qualityCheck qualityType=\"metadata\" system=\"lter\"
+        statusType=\"warn\" >\n      <identifier>pubDatePresent</identifier>\n      <name>'pubDate'
+        element is present</name>\n      <description>Check for presence of the pubDate
+        element</description>\n      <expected>The date that the dataset was submitted
+        for publication in PASTA must be included.\n            (The EML schema does
+        not require this element, but when present, it does constrain its\n            format
+        to YYYY-MM-DD or just YYYY. Citation format uses only the YYYY portion even
+        if a\n            full date is entered.)  \n      </expected>\n      <found>2019-12-30</found>\n
+        \     <status>valid</status>\n      <explanation></explanation>\n      <suggestion></suggestion>\n
+        \     <reference>EML Best Practices v.2, p. 17</reference>\n    </qualityCheck>\n
+        \   <qualityCheck qualityType=\"metadata\" system=\"lter\" statusType=\"warn\"
+        >\n      <identifier>datasetAbstractLength</identifier>\n      <name>Dataset
+        abstract element is a minimum of 20 words</name>\n      <description>Check
+        the length of a dataset abstract and warn if less than 20 words.</description>\n
+        \     <expected>An abstract is 20 words or more.</expected>\n      <found>181
+        words found.</found>\n      <status>valid</status>\n      <explanation></explanation>\n
+        \     <suggestion></suggestion>\n      <reference>EML Best Practices</reference>\n
+        \   </qualityCheck>\n    <qualityCheck qualityType=\"metadata\" system=\"lter\"
+        statusType=\"error\" >\n      <identifier>duplicateEntityName</identifier>\n
+        \     <name>There are no duplicate entity names</name>\n      <description>Checks
+        that content is not duplicated by other entityName elements in the document</description>\n
+        \     <expected>entityName is not a duplicate within the document</expected>\n
+        \     <found>No duplicates found</found>\n      <status>valid</status>\n      <explanation>Data
+        Manager requires a non-empty, non-duplicate entityName value for every entity</explanation>\n
+        \     <suggestion>Declare a non-empty entityName and ensure that there are
+        no duplicate entityName values in the document</suggestion>\n      <reference></reference>\n
+        \   </qualityCheck>\n  </datasetReport>\n  <entityReport>\n</entityReport>\n</qr:qualityReport>\n"
+  recorded_at: 2022-01-19 00:24:18 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

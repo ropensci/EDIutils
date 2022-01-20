@@ -1,25 +1,28 @@
 context("Read evaluate report")
 
-testthat::test_that("Test attributes of returned object", {
-  skip_if_logged_out()
-  skip_if_missing_eml_config()
-  # Create package
-  identifier <- create_reservation(scope = "edi", env = "staging")
-  on.exit(delete_reservation("edi", identifier, env = "staging"), add = TRUE, after = FALSE)
-  packageId <- paste0("edi.", identifier, ".1")
-  eml <- create_test_eml(path = tempdir(), packageId = packageId)
-  on.exit(file.remove(eml), add = TRUE, after = FALSE)
-  # Evaluate
-  transaction <- evaluate_data_package(eml, env = "staging")
-  res <- check_status_evaluate(transaction, env = "staging")
-  expect_true(res)
+testthat::test_that("read_evaluate_report() works", {
+  transaction <- "evaluate_163966785813042760"
   # Read XML
-  qualityReport <- read_evaluate_report(transaction, env = "staging")
+  vcr::use_cassette("read_evaluate_report", {
+    qualityReport <- read_evaluate_report(transaction, env = "staging")
+  })
   expect_true("xml_document" %in% class(qualityReport))
   # Read HTML
-  qualityReport <- read_evaluate_report(transaction, frmt = "html", env = "staging")
+  vcr::use_cassette("read_evaluate_report_html", {
+    qualityReport <- read_evaluate_report(
+      transaction, 
+      frmt = "html", 
+      env = "staging"
+    )
+  })
   expect_true("xml_document" %in% class(qualityReport))
   # Read char
-  qualityReport <- read_evaluate_report(transaction, frmt = "char", env = "staging")
+  vcr::use_cassette("read_evaluate_report_char", {
+    qualityReport <- read_evaluate_report(
+      transaction, 
+      frmt = "char", 
+      env = "staging"
+    )
+  })
   expect_type(qualityReport, "character")
 })

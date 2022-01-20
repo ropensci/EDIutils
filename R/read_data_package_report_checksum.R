@@ -11,10 +11,14 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' 
 #' # Read report checksum
 #' packageId <- "knb-lter-luq.208.1"
 #' checksum <- read_data_package_report_checksum(packageId)
 #' checksum
+#' #> "980dbf3f3cdb7395933b711b005722033bdcd12f"
+#' }
 read_data_package_report_checksum <- function(packageId, env = "production") {
   url <- paste0(
     base_url(env), "/package/report/checksum/eml/",

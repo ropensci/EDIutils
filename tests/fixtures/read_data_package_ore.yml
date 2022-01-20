@@ -1,0 +1,85 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/eml/knb-lter-cwt/5026/13?ore
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 01:40:07 GMT
+      content-type: application/rdf+xml
+      content-length: '4150'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <rdf:RDF
+           xmlns:cito="http://purl.org/spar/cito/"
+           xmlns:dc="http://purl.org/dc/elements/1.1/"
+           xmlns:dcterms="http://purl.org/dc/terms/"
+           xmlns:foaf="http://xmlns.com/foaf/0.1/"
+           xmlns:ore="http://www.openarchives.org/ore/terms/"
+           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           xmlns:rdfs1="http://www.w3.org/2001/01/rdf-schema#"
+        >
+          <rdf:Description rdf:about="https://pasta.lternet.edu/package/eml/knb-lter-cwt/5026/13">
+            <rdf:type rdf:resource="http://www.openarchives.org/ore/terms/ResourceMap"/>
+            <dcterms:created>2020-05-05T16:33:46.75</dcterms:created>
+            <dcterms:modified>2020-05-05T16:33:46.75</dcterms:modified>
+            <dcterms:creator rdf:resource="http://environmentaldatainitiative.org"/>
+            <ore:describes rdf:resource="https://pasta.lternet.edu/package/eml/knb-lter-cwt/5026/13#aggregation"/>
+            <dcterms:identifier>doi:10.6073/pasta/2f2300df5d984581895216fcd96cff08</dcterms:identifier>
+            <dc:format>application/rdf+xml</dc:format>
+          </rdf:Description>
+          <rdf:Description rdf:about="https://pasta.lternet.edu/package/eml/knb-lter-cwt/5026/13#aggregation">
+            <rdf:type rdf:resource="http://www.openarchives.org/ore/terms/Aggregation"/>
+            <ore:aggregates rdf:resource="https://pasta.lternet.edu/package/eml/metadata/knb-lter-cwt/5026/13"/>
+            <ore:aggregates rdf:resource="https://pasta.lternet.edu/package/eml/data/knb-lter-cwt/5026/13/7abb4028c288b4570dcb637f04ddda2b"/>
+            <ore:aggregates rdf:resource="https://pasta.lternet.edu/package/eml/data/knb-lter-cwt/5026/13/95d85c2a592f8b8113fe4286082fb347"/>
+            <ore:aggregates rdf:resource="https://pasta.lternet.edu/package/eml/report/knb-lter-cwt/5026/13"/>
+          </rdf:Description>
+          <rdf:Description rdf:about="https://pasta.lternet.edu/package/eml/metadata/knb-lter-cwt/5026/13">
+            <dcterms:identifier>https://pasta.lternet.edu/package/eml/metadata/knb-lter-cwt/5026/13</dcterms:identifier>
+            <cito:documents rdf:resource="https://pasta.lternet.edu/package/eml/data/knb-lter-cwt/5026/13/7abb4028c288b4570dcb637f04ddda2b"/>
+            <cito:documents rdf:resource="https://pasta.lternet.edu/package/eml/data/knb-lter-cwt/5026/13/95d85c2a592f8b8113fe4286082fb347"/>
+            <cito:isSupportedBy rdf:resource="https://pasta.lternet.edu/package/eml/report/knb-lter-cwt/5026/13"/>
+          </rdf:Description>
+          <rdf:Description rdf:about="https://pasta.lternet.edu/package/eml/data/knb-lter-cwt/5026/13/7abb4028c288b4570dcb637f04ddda2b">
+            <dcterms:identifier>https://pasta.lternet.edu/package/eml/data/knb-lter-cwt/5026/13/7abb4028c288b4570dcb637f04ddda2b</dcterms:identifier>
+            <cito:isDocumentedBy rdf:resource="https://pasta.lternet.edu/package/eml/metadata/knb-lter-cwt/5026/13"/>
+          </rdf:Description>
+          <rdf:Description rdf:about="https://pasta.lternet.edu/package/eml/data/knb-lter-cwt/5026/13/95d85c2a592f8b8113fe4286082fb347">
+            <dcterms:identifier>https://pasta.lternet.edu/package/eml/data/knb-lter-cwt/5026/13/95d85c2a592f8b8113fe4286082fb347</dcterms:identifier>
+            <cito:isDocumentedBy rdf:resource="https://pasta.lternet.edu/package/eml/metadata/knb-lter-cwt/5026/13"/>
+          </rdf:Description>
+          <rdf:Description rdf:about="https://pasta.lternet.edu/package/eml/report/knb-lter-cwt/5026/13">
+            <dcterms:identifier>https://pasta.lternet.edu/package/eml/report/knb-lter-cwt/5026/13</dcterms:identifier>
+            <cito:supports rdf:resource="https://pasta.lternet.edu/package/eml/metadata/knb-lter-cwt/5026/13"/>
+          </rdf:Description>
+          <rdf:Description rdf:about="http://environmentaldatainitiative.org">
+            <foaf:name>Environmental Data Initiative</foaf:name>
+            <foaf:mbox>info@environmentaldatainitiative.org</foaf:mbox>
+          </rdf:Description>
+          <rdf:Description rdf:about="http://www.openarchives.org/ore/terms/ResourceMap">
+            <rdfs1:label>ResourceMap</rdfs1:label>
+            <rdfs1:isDefinedBy>http://www.openarchives.org/ore/terms/</rdfs1:isDefinedBy>
+          </rdf:Description>
+          <rdf:Description rdf:about="http://www.openarchives.org/ore/terms/Aggregation">
+            <rdfs1:label>Aggregation</rdfs1:label>
+            <rdfs1:isDefinedBy>http://www.openarchives.org/ore/terms/</rdfs1:isDefinedBy>
+          </rdf:Description>
+        </rdf:RDF>
+  recorded_at: 2022-01-18 01:40:07 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

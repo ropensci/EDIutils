@@ -18,9 +18,13 @@ been deleted from the data package registry.
 List deleted data packages
 }
 \examples{
+\dontrun{
+
 # List deleted data packages
 deleted <- list_deleted_data_packages()
 head(deleted)
+#> [1] "edi.10"  "edi.222" "edi.419" "edi.511" "edi.857" "edi.878"
+}
 }
 \seealso{
 Other Listing: 

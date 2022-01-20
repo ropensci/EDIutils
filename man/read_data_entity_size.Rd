@@ -21,16 +21,21 @@ read_data_entity_size(packageId, entityId, env = "production")
 Read data entity size
 }
 \examples{
+\dontrun{
+
 # List data entities
 entityIds <- list_data_entities(packageId = "knb-lter-cdr.711.1")
 entityIds
+#> [1] "c61703839eac9a641ea0c3c69dc3345b"
 
 # Read size
 size <- read_data_entity_size(
-  packageId = "knb-lter-cdr.711.1",
-  entityId = entityIds
+ packageId = "knb-lter-cdr.711.1",
+ entityId = entityIds
 )
 size
+#> [1] 707094
+}
 }
 \seealso{
 Other Accessing: 

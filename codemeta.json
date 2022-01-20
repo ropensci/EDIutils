@@ -10,7 +10,7 @@
   "codeRepository": "https://github.com/EDIorg/EDIutils",
   "issueTracker": "https://github.com/EDIorg/EDIutils/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.0.0.9000",
+  "version": "0.0.0.9001",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -68,6 +68,19 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=readr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "vcr",
+      "name": "vcr",
+      "version": ">= 0.6.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=vcr"
     },
     {
       "@type": "SoftwareApplication",
@@ -145,8 +158,8 @@
     }
   ],
   "readme": "https://github.com/EDIorg/EDIutils/blob/main/README.md",
-  "fileSize": "324.284KB",
-  "contIntegration": ["https://github.com/EDIorg/EDIutils/actions", "https://codecov.io/github/EDIorg/EDIutils?branch=master"],
+  "fileSize": "643.658KB",
+  "contIntegration": ["https://github.com/EDIorg/EDIutils/actions", "https://codecov.io/github/EDIorg/EDIutils?branch=main"],
   "relatedLink": "https://ediorg.github.io/EDIutils/",
   "releaseNotes": "https://github.com/EDIorg/EDIutils/blob/master/NEWS.md",
   "developmentStatus": "https://www.repostatus.org/#wip",

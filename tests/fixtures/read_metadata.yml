@@ -1,0 +1,37 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/metadata/eml/edi/100/1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Wed, 19 Jan 2022 00:59:09 GMT
+      content-type: application/xml
+      content-length: '26977'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<eml:eml packageId=\"edi.100.1\"
+        system=\"https://pasta.edirepository.org\"\n  xmlns:eml=\"eml://ecoinformatics.org/eml-2.1.1\"\n
+        \ xmlns:stmml=\"http://www.xml-cml.org/schema/stmml_1.1\"\n  xmlns:xs=\"http://www.w3.org/2001/XMLSchema\"\n
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"eml://ecoinformatics.org/eml-2.1.1
+        \ http://nis.lternet.edu/schemas/EML/eml-2.1.1/eml.xsd\">\n  <access authSystem=\"https://pasta.edirepository.org/authentication\"\n
+        \   order=\"allowFirst\" scope=\"document\" system=\"https://pasta.edirepository.org\">\n
+        \   <allow>\n      <principal>uid=EDI,o=LTER,dc=ecoinformatics,dc=org</principal>\n
+        \     <permission>all</permission>\n    </allow>\n    <allow>\n      <principal>uid=csmith,o=LTER,dc=ecoinformatics,dc=org</principal>\n
+        \     <permission>all</permission>\n    </allow>\n    <allow>\n      <principal>public</principal>\n
+        \     <permission>read</permission>\n    </allow>\n  </access>\n  <dataset>\n</dataset>\n</eml:eml>\n"
+  recorded_at: 2022-01-19 00:59:10 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

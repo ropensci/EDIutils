@@ -13,7 +13,12 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' 
 #' list_working_on()
+#' #> {xml_document}
+#' #> <workingOn>
+#' }
 list_working_on <- function(env = "production") {
   url <- paste0(base_url(env), "/package/workingon/eml")
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))

@@ -1,0 +1,36 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/descendants/eml/knb-lter-bnz/501/17
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 16:55:14 GMT
+      content-type: application/xml
+      content-length: '3563'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <dataDescendants>
+            <dataDescendant>
+                <packageId>edi.275.1</packageId>
+                <title>&#x26;&#x23;xa&#x3b;      Eight Mile Lake Research Watershed&#x26;&#x23;x2c&#x3b; Carbon in Permafrost Experimental Heating Research &#x26;&#x23;x28&#x3b;CiPEHR&#x26;&#x23;x29&#x3b;&#x26;&#x23;x3a&#x3b; Aboveground plant biomass&#x26;&#x23;x2c&#x3b; 2009&#x26;&#x23;x2d&#x3b;2017&#x26;&#x23;x2e&#x3b; &#x26;&#x23;x28&#x3b;Reformatted to ecocomDP Design Pattern&#x26;&#x23;x29&#x3b;&#x26;&#x23;xa&#x3b;    </title>
+                <url>https://pasta.lternet.edu/package/metadata/eml/edi/275/1</url>
+            </dataDescendant>
+        </dataDescendants>
+  recorded_at: 2022-01-18 16:55:14 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

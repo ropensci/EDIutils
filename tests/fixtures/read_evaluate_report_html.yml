@@ -1,0 +1,29 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta-s.lternet.edu/package/evaluate/report/eml/evaluate_163966785813042760
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: text/html
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Wed, 19 Jan 2022 00:45:14 GMT
+      content-type: text/html
+      transfer-encoding: chunked
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+      content-encoding: gzip
+    body:
+      encoding: UTF-8
+      file: no
+      string: "<table xmlns:qr=\"eml://ecoinformatics.org/qualityReport\">\n<tbody>\n</tbody>\n</table>\n"
+  recorded_at: 2022-01-19 00:45:14 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

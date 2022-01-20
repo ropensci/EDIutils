@@ -1,0 +1,42 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/citations/eml/edi/845/1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 16:08:50 GMT
+      content-type: application/xml
+      content-length: '700'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <journalCitations>
+        <journalCitation>
+            <journalCitationId>381</journalCitationId>
+            <packageId>edi.845.1</packageId>
+            <principalOwner>uid=csmith,o=EDI,dc=edirepository,dc=org</principalOwner>
+            <dateCreated>2021-05-27T13:23:14.981</dateCreated>
+            <articleDoi>https://doi.org/10.1016/j.scitotenv.2021.148033</articleDoi>
+            <articleTitle>Bioturbation frequency alters methane emissions from reservoir sediments</articleTitle>
+            <articleUrl>https://doi.org/10.1016/j.scitotenv.2021.148033</articleUrl>
+            <journalTitle>Science of the Total Environment</journalTitle>
+            <relationType>IsCitedBy</relationType>
+        </journalCitation>
+        </journalCitations>
+  recorded_at: 2022-01-18 16:08:50 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

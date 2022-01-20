@@ -1,0 +1,28 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/name/eml/knb-lter-cap/691/2/f6e4efd0b04aea3860724824ca05c5dd
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 23:20:13 GMT
+      content-type: text/plain
+      content-length: '51'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: 691_arthropods_00742cd00ab0d3d02337e28d1c919654.csv
+  recorded_at: 2022-01-18 23:20:13 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

@@ -14,8 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      EDI_TOKEN: ${{ secrets.EDI_TOKEN }}
+      EDI_USER: ${{ secrets.EDI_USER }}
+      EDI_PASS: ${{ secrets.EDI_PASS }}
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN}}
+      VCR_TURN_OFF: true
 
     steps:
       - uses: actions/checkout@v2

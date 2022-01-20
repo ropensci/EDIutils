@@ -1,0 +1,29 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/audit/count?category=warn&fromTime=2021-12-01&toTime=2021-12-05
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 04:23:02 GMT
+      content-type: text/plain
+      content-length: '5'
+      connection: keep-alive
+      cache-control: no-cache
+      web-service: AuditManager-0.1
+    body:
+      encoding: UTF-8
+      file: no
+      string: '10022'
+  recorded_at: 2022-01-18 04:23:02 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

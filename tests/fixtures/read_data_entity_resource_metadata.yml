@@ -1,0 +1,47 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/data/rmd/eml/knb-lter-cce/310/1/4aaaff61e0d316130be0b445d3013877
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 23:30:42 GMT
+      content-type: application/xml
+      content-length: '961'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <resourceMetadata>
+            <dataFormat>NetCDF (gzipped tar archive)</dataFormat>
+            <dateCreated>2021-08-13 11:23:40.81</dateCreated>
+            <entityId>4aaaff61e0d316130be0b445d3013877</entityId>
+            <entityName>water_age_CCE_1994.tar</entityName>
+            <fileName>water_age_CCE_1994.tar.gz</fileName>
+            <identifier>310</identifier>
+            <md5Checksum>8b22bf5c72c405aab93e44a6aa5b7d79</md5Checksum>
+            <packageId>knb-lter-cce.310.1</packageId>
+            <principalOwner>uid=EDI,o=EDI,dc=edirepository,dc=org</principalOwner>
+            <resourceId>https://pasta.lternet.edu/package/data/eml/knb-lter-cce/310/1/4aaaff61e0d316130be0b445d3013877</resourceId>
+            <resourceLocation>/pasta/data1</resourceLocation>
+            <resourceSize>322263158</resourceSize>
+            <resourceType>data</resourceType>
+            <revision>1</revision>
+            <scope>knb-lter-cce</scope>
+            <sha1Checksum>bccdcfef105aa7b787db1fd940ad8ea2a5d04295</sha1Checksum>
+        </resourceMetadata>
+  recorded_at: 2022-01-18 23:30:42 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

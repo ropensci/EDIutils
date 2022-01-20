@@ -22,18 +22,35 @@ data package.
 Read data package from Digital Object Identifier
 }
 \examples{
+\dontrun{
+
 # Get resource map
 resourceMap <- read_data_package_from_doi(
-  doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25"
+ doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25"
 )
 resourceMap
+#> [1] "https://pasta.lternet.edu/package/data/eml/knb-lter-fce/1233/2/5 ...
+#> [2] "https://pasta.lternet.edu/package/metadata/eml/knb-lter-fce/1233/2"
+#> [3] "https://pasta.lternet.edu/package/report/eml/knb-lter-fce/1233/2"
+#> [4] "https://pasta.lternet.edu/package/eml/knb-lter-fce/1233/2"
 
 # Get resource map in ORE format
 resourceMap <- read_data_package_from_doi(
-  doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25",
-  ore = TRUE
+ doi = "doi:10.6073/pasta/b202c11db7c64943f6b4ed9f8c17fb25",
+ ore = TRUE
 )
-resourceMap #'
+resourceMap
+#> {xml_document}
+#> <RDF xmlns:cito="http://purl.org/spar/cito/" xmlns:dc="http://purl.or ...
+#> [1] <rdf:Description rdf:about="https://pasta.lternet.edu/package/eml ...
+#> [2] <rdf:Description rdf:about="https://pasta.lternet.edu/package/eml ...
+#> [3] <rdf:Description rdf:about="https://pasta.lternet.edu/package/eml ...
+#> [4] <rdf:Description rdf:about="https://pasta.lternet.edu/package/eml ...
+#> [5] <rdf:Description rdf:about="https://pasta.lternet.edu/package/eml ...
+#> [6] <rdf:Description rdf:about="http://environmentaldatainitiative.or ...
+#> [7] <rdf:Description rdf:about="http://www.openarchives.org/ore/terms ...
+#> [8] <rdf:Description rdf:about="http://www.openarchives.org/ore/terms ...
+}
 }
 \seealso{
 Other Accessing: 

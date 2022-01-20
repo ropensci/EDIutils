@@ -21,12 +21,30 @@ list_recent_uploads(type, limit = 5, env = "production")
 List recent uploads
 }
 \examples{
+\dontrun{
+
 # Get the 3 newest revisions
 dataPackageUploads <- list_recent_uploads("update", 3)
 dataPackageUploads
+#> {xml_document}
+#> <dataPackageUploads>
+#> [1] <dataPackage>\n  <packageId>knb-lter-hbr.106.3</packageId>\n  <sc ...
+#> [2] <dataPackage>\n  <packageId>knb-lter-hbr.105.3</packageId>\n  <sc ...
+#> [3] <dataPackage>\n  <packageId>knb-lter-hbr.104.3</packageId>\n  <sc ...
 
 # Show first
 xml2::xml_find_first(dataPackageUploads, "dataPackage")
+#> {xml_node}
+#> <dataPackage>
+#> [1] <packageId>knb-lter-hbr.106.3</packageId>
+#> [2] <scope>knb-lter-hbr</scope>
+#> [3] <identifier>106</identifier>
+#> [4] <revision>3</revision>
+#> [5] <principal>uid=HBR,o=EDI,dc=edirepository,dc=org</principal>
+#> [6] <doi/>
+#> [7] <serviceMethod>updateDataPackage</serviceMethod>
+#> [8] <date>2022-01-17 12:49:00</date>#> 
+}
 }
 \seealso{
 Other Listing: 

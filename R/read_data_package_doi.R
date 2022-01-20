@@ -12,9 +12,13 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' 
 #' # Read package DOI
 #' doi <- read_data_package_doi(packageId = "knb-lter-jrn.210548103.15")
 #' doi
+#' #> [1] "doi:10.6073/pasta/c80c0c03d22791524d4b870d2193c843"
+#' }
 read_data_package_doi <- function(packageId, env = "production") {
   url <- paste0(
     base_url(env), "/package/doi/eml/",

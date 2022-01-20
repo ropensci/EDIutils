@@ -1,0 +1,29 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://pasta-s.lternet.edu/package/reservations/eml/edi
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Content-Type: ''
+  response:
+    status:
+      status_code: 201
+      category: Success
+      reason: Created
+      message: 'Success: (201) Created'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Wed, 19 Jan 2022 18:43:56 GMT
+      content-type: application/json
+      content-length: '3'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: '731'
+  recorded_at: 2022-01-19 18:43:56 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

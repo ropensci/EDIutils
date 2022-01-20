@@ -1,0 +1,177 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/metadata/eml/knb-lter-cap/691/2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Wed, 19 Jan 2022 01:18:31 GMT
+      content-type: application/xml
+      content-length: '150681'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<eml:eml packageId=\"knb-lter-cap.691.2\"
+        scope=\"system\"\n  system=\"https://pasta.edirepository.org\"\n  xmlns:eml=\"https://eml.ecoinformatics.org/eml-2.2.0\"\n
+        \ xmlns:stmml=\"http://www.xml-cml.org/schema/stmml-1.2\"\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n
+        \   xsi:schemaLocation=\"https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd\">\n
+        \ <access\n    authSystem=\"https://pasta.edirepository.org/authentication\"\n
+        \   order=\"allowFirst\" scope=\"document\"\n      system=\"https://pasta.edirepository.org\">\n
+        \   <allow>\n      <principal>uid=CAP,o=EDI,dc=edirepository,dc=org</principal>\n
+        \     <permission>all</permission>\n    </allow>\n    <allow>\n      <principal>public</principal>\n
+        \     <permission>read</permission>\n    </allow>\n  </access>\n  <dataset>\n<dataTable\n          id=\"691_arthropods_00742cd00ab0d3d02337e28d1c919654.csv\">\n
+        \     <entityName>691_arthropods_00742cd00ab0d3d02337e28d1c919654.csv</entityName>\n
+        \     <entityDescription>ground arthropod capture data in the vicinity of
+        the Phoenix-Mesa Gateway Airport, Mesa, Arizona, USA</entityDescription>\n
+        \     <physical>\n        <objectName>691_arthropods_00742cd00ab0d3d02337e28d1c919654.csv</objectName>\n
+        \       <size\n          unit=\"bytes\">128321</size>\n        <authentication\n
+        \             method=\"MD5\">00742cd00ab0d3d02337e28d1c919654</authentication>\n
+        \       <dataFormat>\n          <textFormat>\n            <numHeaderLines>1</numHeaderLines>\n
+        \           <recordDelimiter>\\r\\n</recordDelimiter>\n            <attributeOrientation>column</attributeOrientation>\n
+        \           <simpleDelimited>\n              <fieldDelimiter>,</fieldDelimiter>\n
+        \             <quoteCharacter>\"</quoteCharacter>\n            </simpleDelimited>\n
+        \         </textFormat>\n        </dataFormat>\n        <distribution>\n          <online>\n
+        \           <url\n                    function=\"download\">https://pasta.lternet.edu/package/data/eml/knb-lter-cap/691/2/f6e4efd0b04aea3860724824ca05c5dd</url>\n
+        \         </online>\n        </distribution>\n      </physical>\n      <coverage>\n
+        \       <temporalCoverage>\n          <rangeOfDates>\n            <beginDate>\n
+        \             <calendarDate>2010-10-12</calendarDate>\n            </beginDate>\n
+        \           <endDate>\n              <calendarDate>2019-11-19</calendarDate>\n
+        \           </endDate>\n          </rangeOfDates>\n        </temporalCoverage>\n
+        \     </coverage>\n      <attributeList>\n        <attribute>\n          <attributeName>Date</attributeName>\n
+        \         <attributeDefinition>date of observation</attributeDefinition>\n
+        \         <storageType>date</storageType>\n          <measurementScale>\n
+        \           <dateTime>\n              <formatString>YYYY-MM-DD</formatString>\n
+        \             <dateTimeDomain/>\n            </dateTime>\n          </measurementScale>\n
+        \       </attribute>\n        <attribute>\n          <attributeName>Site</attributeName>\n
+        \         <attributeDefinition>sampling site: one of three sites each with
+        two trap arrays</attributeDefinition>\n          <storageType>string</storageType>\n
+        \         <measurementScale>\n            <nominal>\n              <nonNumericDomain>\n
+        \               <enumeratedDomain>\n                  <codeDefinition>\n                    <code>GWA1</code>\n
+        \                   <definition>Gateway 1</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>GWA2</code>\n
+        \                   <definition>Gateway 2</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>GWA3</code>\n
+        \                   <definition>Gateway 3</definition>\n                  </codeDefinition>\n
+        \               </enumeratedDomain>\n              </nonNumericDomain>\n            </nominal>\n
+        \         </measurementScale>\n        </attribute>\n        <attribute>\n
+        \         <attributeName>Array</attributeName>\n          <attributeDefinition>trap
+        array replicate</attributeDefinition>\n          <storageType>string</storageType>\n
+        \         <measurementScale>\n            <nominal>\n              <nonNumericDomain>\n
+        \               <enumeratedDomain>\n                  <codeDefinition>\n                    <code>1</code>\n
+        \                   <definition>array ID 1</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>2</code>\n                    <definition>array
+        ID 2</definition>\n                  </codeDefinition>\n                </enumeratedDomain>\n
+        \             </nonNumericDomain>\n            </nominal>\n          </measurementScale>\n
+        \       </attribute>\n        <attribute>\n          <attributeName>Trap</attributeName>\n
+        \         <attributeDefinition>identifier indicating location and type of
+        trap</attributeDefinition>\n          <storageType>string</storageType>\n
+        \         <measurementScale>\n            <nominal>\n              <nonNumericDomain>\n
+        \               <textDomain>\n                  <definition>identifier indicating
+        location and type of trap</definition>\n                </textDomain>\n              </nonNumericDomain>\n
+        \           </nominal>\n          </measurementScale>\n          <missingValueCode>\n
+        \           <code>NA</code>\n            <codeExplanation>missing value</codeExplanation>\n
+        \         </missingValueCode>\n        </attribute>\n        <attribute>\n
+        \         <attributeName>Predator</attributeName>\n          <attributeDefinition>identifier
+        indicating whether a predator was present in the trap that may prey upon other
+        organisms</attributeDefinition>\n          <storageType>string</storageType>\n
+        \         <measurementScale>\n            <nominal>\n              <nonNumericDomain>\n
+        \               <enumeratedDomain>\n                  <codeDefinition>\n                    <code>N</code>\n
+        \                   <definition>there was not a vertebrate in the trap at
+        the time of collection</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>Y</code>\n                    <definition>there
+        was a vertebrate present in the trap at the time of collection (could be a
+        mammal, reptile, or anuran)</definition>\n                  </codeDefinition>\n
+        \               </enumeratedDomain>\n              </nonNumericDomain>\n            </nominal>\n
+        \         </measurementScale>\n        </attribute>\n        <attribute>\n
+        \         <attributeName>Notes</attributeName>\n          <attributeDefinition>notes
+        about the observation</attributeDefinition>\n          <storageType>string</storageType>\n
+        \         <measurementScale>\n            <nominal>\n              <nonNumericDomain>\n
+        \               <textDomain>\n                  <definition>notes about the
+        observation</definition>\n                </textDomain>\n              </nonNumericDomain>\n
+        \           </nominal>\n          </measurementScale>\n          <missingValueCode>\n
+        \           <code>NA</code>\n            <codeExplanation>missing value</codeExplanation>\n
+        \         </missingValueCode>\n        </attribute>\n        <attribute>\n
+        \         <attributeName>taxon</attributeName>\n          <attributeDefinition>arthropod
+        taxon</attributeDefinition>\n          <storageType>string</storageType>\n
+        \         <measurementScale>\n            <nominal>\n              <nonNumericDomain>\n
+        \               <enumeratedDomain>\n                  <codeDefinition>\n                    <code>ARAN</code>\n
+        \                   <definition>Araneae</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>AUCH</code>\n
+        \                   <definition>Auchenorhyncha</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>BLAT</code>\n
+        \                   <definition>Blattaria</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>CHIL</code>\n
+        \                   <definition>Chilopoda</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>COLE</code>\n
+        \                   <definition>Coleoptera</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>CRUS</code>\n
+        \                   <definition>Crustacea</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>DERM</code>\n
+        \                   <definition>Dermaptera</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>DIPT</code>\n
+        \                   <definition>Diptera</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>HETE</code>\n
+        \                   <definition>Heteroptera</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>HYMA</code>\n
+        \                   <definition>Hymenoptera (ants)</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>HYMB</code>\n
+        \                   <definition>Hymenoptera (bees; wasps)</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>LEPI</code>\n
+        \                   <definition>Lepidoptera</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>MANT</code>\n
+        \                   <definition>Mantodea</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>NEUR</code>\n
+        \                   <definition>Neuroptera</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>ORTH</code>\n
+        \                   <definition>Orthoptera</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>PSUE</code>\n
+        \                   <definition>Pseudoscorpionida</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>SCOR</code>\n
+        \                   <definition>Scorpiones</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>SOLI</code>\n
+        \                   <definition>Solifugae</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>THYS</code>\n
+        \                   <definition>Thysanura</definition>\n                  </codeDefinition>\n
+        \                 <codeDefinition>\n                    <code>UNKI</code>\n
+        \                   <definition>unidentified</definition>\n                  </codeDefinition>\n
+        \               </enumeratedDomain>\n              </nonNumericDomain>\n            </nominal>\n
+        \         </measurementScale>\n        </attribute>\n        <attribute>\n
+        \         <attributeName>count</attributeName>\n          <attributeDefinition>number
+        of arthropods</attributeDefinition>\n          <storageType>float</storageType>\n
+        \         <measurementScale>\n            <ratio>\n              <unit>\n
+        \               <standardUnit>number</standardUnit>\n              </unit>\n
+        \             <numericDomain>\n                <numberType>natural</numberType>\n
+        \               <bounds>\n                  <minimum\n                    exclusive=\"false\">1</minimum>\n
+        \                 <maximum\n      exclusive=\"false\">100</maximum>\n                </bounds>\n
+        \             </numericDomain>\n            </ratio>\n          </measurementScale>\n
+        \       </attribute>\n      </attributeList>\n      <numberOfRecords>2790</numberOfRecords>\n
+        \   </dataTable>\n<literatureCited>\n
+        \     <citation\n        id=\"https://doi.org/10.1002/wsb.322\">\n        <bibtex>@article{Bateman_2013,\n\tdoi
+        = {10.1002/wsb.322},\n\turl = {https://doi.org/10.1002%2Fwsb.322},\n\tyear
+        = 2013,\n\tmonth = {aug},\n\tpublisher = {Wiley},\n\tvolume = {37},\n\tnumber
+        = {4},\n\tpages = {838--845},\n\tauthor = {Heather L. Bateman and Timothy
+        E. Lindquist and Richard Whitehouse and Maria M. Gonzalez},\n\ttitle = {Mobile
+        application for wildlife capture-mark-recapture data collection and query},\n\tjournal
+        = {Wildlife Society Bulletin}\n}</bibtex>\n      </citation>\n      <citation
+        id=\"https://doi.org/10.1111/j.1469-1795.2011.00517.x\">\n        <bibtex>@article{Bateman_2012,\n\tdoi
+        = {10.1111/j.1469-1795.2011.00517.x},\n\turl = {https://doi.org/10.1111%2Fj.1469-1795.2011.00517.x},\n\tyear
+        = 2012,\n\tmonth = {jan},\n\tpublisher = {Wiley},\n\tvolume = {15},\n\tnumber
+        = {3},\n\tpages = {294--304},\n\tauthor = {H. L. Bateman and S. M. Ostoja},\n\teditor
+        = {Steve Redpath and Francesco Ficetola},\n\ttitle = {Invasive woody plants
+        affect the composition of native lizard and small mammal communities in riparian
+        woodlands},\n\tjournal = {Animal Conservation}\n}</bibtex>\n      </citation>\n
+        \   </literatureCited>\n  </dataset>\n</eml:eml>\n"
+  recorded_at: 2022-01-19 01:18:31 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

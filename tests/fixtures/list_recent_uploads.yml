@@ -1,0 +1,40 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://pasta.lternet.edu/package/uploads/eml?type=update&limit=5
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Tue, 18 Jan 2022 20:25:58 GMT
+      content-type: application/xml
+      content-length: '1753'
+      connection: keep-alive
+      web-service: DataPackageManager-1.0
+    body:
+      encoding: UTF-8
+      file: no
+      string: |
+        <dataPackageUploads>
+          <dataPackage>
+            <packageId>knb-lter-hbr.106.3</packageId>
+            <scope>knb-lter-hbr</scope>
+            <identifier>106</identifier>
+            <revision>3</revision>
+            <principal>uid=HBR,o=EDI,dc=edirepository,dc=org</principal>
+            <doi></doi>
+            <serviceMethod>updateDataPackage</serviceMethod>
+            <date>2022-01-17 12:49:00</date>
+          </dataPackage>
+        </dataPackageUploads>
+  recorded_at: 2022-01-18 20:25:58 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
