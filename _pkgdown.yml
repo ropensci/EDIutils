@@ -75,7 +75,7 @@ navbar:
       - text: Search and Access Data
         href: articles/search_and_access.html
       - text: Evaluate and Upload Data
-        href: articles/publish_data.html
+        href: articles/evaluate_and_upload.html
       - text: Retrieve Download Metrics
         href: articles/retrieve_downloads.html
       - text: Retrieve Citation Metrics
