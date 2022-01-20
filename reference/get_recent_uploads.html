@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -121,27 +121,30 @@ an upper limit on the number of audit records returned. For example,
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Get the 5 most recently created data packages</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Get the 5 most recently created data packages</span></span>
 <span class="r-in"><span class="va">auditReport</span> <span class="op">&lt;-</span> <span class="fu">get_recent_uploads</span><span class="op">(</span></span>
-<span class="r-in">  query <span class="op">=</span> <span class="st">"serviceMethod=createDataPackage&amp;limit=5"</span></span>
+<span class="r-in"> query <span class="op">=</span> <span class="st">"serviceMethod=createDataPackage&amp;limit=5"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Show the first</span></span>
 <span class="r-in"><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">auditReport</span>, <span class="st">"auditRecord"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_node}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;auditRecord&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] &lt;oid&gt;127322125&lt;/oid&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] &lt;entryTime&gt;2022-01-10T12:04:12&lt;/entryTime&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] &lt;category&gt;info&lt;/category&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] &lt;service&gt;DataPackageManager-1.0&lt;/service&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] &lt;serviceMethod&gt;createDataPackage&lt;/serviceMethod&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] &lt;responseStatus&gt;200&lt;/responseStatus&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] &lt;resourceId&gt;https://pasta.lternet.edu/package/eml/knb-lter-fce/1236/1&lt;/r ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] &lt;user&gt;uid=FCE,o=EDI,dc=edirepository,dc=org&lt;/user&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] &lt;userAgent&gt;null&lt;/userAgent&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] &lt;groups&gt;authenticated,vetted&lt;/groups&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] &lt;authSystem&gt;https://pasta.edirepository.org/authentication&lt;/authSystem&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] &lt;entryText/&gt;</span>
+<span class="r-in"><span class="co">#&gt; {xml_node}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;auditRecord&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [1] &lt;oid&gt;128171587&lt;/oid&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [2] &lt;entryTime&gt;2022-01-18T08:41:39&lt;/entryTime&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [3] &lt;category&gt;info&lt;/category&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [4] &lt;service&gt;DataPackageManager-1.0&lt;/service&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [5] &lt;serviceMethod&gt;createDataPackage&lt;/serviceMethod&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [6] &lt;responseStatus&gt;200&lt;/responseStatus&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [7] &lt;resourceId&gt;https://pasta.lternet.edu/package/eml/edi/1064/1&lt;/re ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [8] &lt;user&gt;uid=kzollovenecek,o=EDI,dc=edirepository,dc=org&lt;/user&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [9] &lt;userAgent&gt;null&lt;/userAgent&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [10] &lt;groups&gt;authenticated,vetted&lt;/groups&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [11] &lt;authSystem&gt;https://pasta.edirepository.org/authentication&lt;/auth ...</span></span>
+<span class="r-in"><span class="co">#&gt; [12] &lt;entryText/&gt;</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -156,7 +159,7 @@ an upper limit on the number of audit records returned. For example,
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

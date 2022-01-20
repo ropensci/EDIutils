@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -124,47 +124,42 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Read as XML</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Read as XML</span></span>
 <span class="r-in"><span class="va">qualityReport</span> <span class="op">&lt;-</span> <span class="fu">read_data_package_report</span><span class="op">(</span><span class="st">"knb-lter-knz.260.4"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">qualityReport</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;qualityReport schemaLocation="eml://ecoinformatics.org/qualityReport https://raw.githubusercontent.com/PASTAplus/PASTA/master/DataPackageManager/WebRoot/xml/qualityReportSchema.xsd" xmlns="eml://ecoinformatics.org/qualityReport" xmlns:qr="eml://ecoinformatics.org/qualityReport" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] &lt;creationDate&gt;2020-02-04T16:38:38&lt;/creationDate&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] &lt;packageId&gt;knb-lter-knz.260.4&lt;/packageId&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] &lt;includeSystem&gt;lter&lt;/includeSystem&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] &lt;includeSystem&gt;knb&lt;/includeSystem&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] &lt;datasetReport&gt;\n  &lt;qualityCheck qualityType="metadata" system="lter" st ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS600&lt;/entityName&gt;\n  &lt;qualityCheck quali ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS600&lt;/entityName&gt;\n  &lt;qualityCheck qu ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS605&lt;/entityName&gt;\n  &lt;qualityCheck quali ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS605&lt;/entityName&gt;\n  &lt;qualityCheck qu ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS610&lt;/entityName&gt;\n  &lt;qualityCheck quali ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS610&lt;/entityName&gt;\n  &lt;qualityCheck qu ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS615&lt;/entityName&gt;\n  &lt;qualityCheck quali ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS615&lt;/entityName&gt;\n  &lt;qualityCheck qu ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS620&lt;/entityName&gt;\n  &lt;qualityCheck quali ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS620&lt;/entityName&gt;\n  &lt;qualityCheck qu ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS630&lt;/entityName&gt;\n  &lt;qualityCheck quali ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS630&lt;/entityName&gt;\n  &lt;qualityCheck qu ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [18] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS635&lt;/entityName&gt;\n  &lt;qualityCheck quali ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS635&lt;/entityName&gt;\n  &lt;qualityCheck qu ...</span>
+<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;qualityReport schemaLocation="eml://ecoinformatics.org/qualityReport ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [1] &lt;creationDate&gt;2020-02-04T16:38:38&lt;/creationDate&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [2] &lt;packageId&gt;knb-lter-knz.260.4&lt;/packageId&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [3] &lt;includeSystem&gt;lter&lt;/includeSystem&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [4] &lt;includeSystem&gt;knb&lt;/includeSystem&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [5] &lt;datasetReport&gt;\n  &lt;qualityCheck qualityType="metadata" system=" ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [6] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS600&lt;/entityName&gt;\n  &lt;qualityChe ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [7] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS600&lt;/entityName&gt;\n  &lt;quality ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [8] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS605&lt;/entityName&gt;\n  &lt;qualityChe ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [9] &lt;entityReport&gt;\n  &lt;entityName&gt;KMZGIS605&lt;/entityName&gt;\n  &lt;quality ...</span></span>
+<span class="r-in"><span class="co">#&gt; [10] &lt;entityReport&gt;\n  &lt;entityName&gt;GIS610&lt;/entityName&gt;\n  &lt;qualityChe ...</span></span>
+<span class="r-in"><span class="co">#&gt; ...</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Read as HTML</span></span>
 <span class="r-in"><span class="va">qualityReport</span> <span class="op">&lt;-</span> <span class="fu">read_data_package_report</span><span class="op">(</span></span>
-<span class="r-in">  packageId <span class="op">=</span> <span class="st">"knb-lter-knz.260.4"</span>,</span>
-<span class="r-in">  frmt <span class="op">=</span> <span class="st">"html"</span></span>
+<span class="r-in"> packageId <span class="op">=</span> <span class="st">"knb-lter-knz.260.4"</span>,</span>
+<span class="r-in"> frmt <span class="op">=</span> <span class="st">"html"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">qualityReport</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {html_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;html&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;body&gt;&lt;table xmlns:qr="eml://ecoinformatics.org/qualityReport"&gt;&lt;tbody&gt;\n&lt; ...</span>
+<span class="r-in"><span class="co">#&gt; {html_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;html&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;body&gt;&lt;table xmlns:qr="eml://ecoinformatics.org/qualityReport"&gt;&lt;t ...</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Read as character</span></span>
 <span class="r-in"><span class="va">qualityReport</span> <span class="op">&lt;-</span> <span class="fu">read_data_package_report</span><span class="op">(</span></span>
-<span class="r-in">  packageId <span class="op">=</span> <span class="st">"knb-lter-knz.260.4"</span>,</span>
-<span class="r-in">  frmt <span class="op">=</span> <span class="st">"char"</span></span>
+<span class="r-in"> packageId <span class="op">=</span> <span class="st">"knb-lter-knz.260.4"</span>,</span>
+<span class="r-in"> frmt <span class="op">=</span> <span class="st">"char"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="co"># writeLines(qualityReport, "./data/report.txt"))</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -179,7 +174,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -121,13 +121,16 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Read metadata</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Read metadata</span></span>
 <span class="r-in"><span class="va">eml</span> <span class="op">&lt;-</span> <span class="fu">read_metadata</span><span class="op">(</span><span class="st">"edi.100.1"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">eml</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;eml packageId="edi.100.1" system="https://pasta.edirepository.org" schemaLocation="eml://ecoinformatics.org/eml-2.1.1  http://nis.lternet.edu/schemas/EML/eml-2.1.1/eml.xsd" xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:stmml="http://www.xml-cml.org/schema/stmml_1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;access authSystem="https://pasta.edirepository.org/authentication" order ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] &lt;dataset&gt;\n  &lt;alternateIdentifier system="https://doi.org"&gt;doi:10.6073/pa ...</span>
+<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;eml packageId="edi.100.1" system="https://pasta.edirepository.org"   ...</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;access authSystem="https://pasta.edirepository.org/authenticatio ...</span></span>
+<span class="r-in"><span class="co">#&gt; [2] &lt;dataset&gt;\n  &lt;alternateIdentifier system="https://doi.org"&gt;doi:10 ...</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -142,7 +145,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

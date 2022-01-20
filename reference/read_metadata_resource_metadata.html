@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -122,27 +122,30 @@ resource</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Read resource metadata</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Read resource metadata</span></span>
 <span class="r-in"><span class="va">resourceMetadata</span> <span class="op">&lt;-</span> <span class="fu">read_metadata_resource_metadata</span><span class="op">(</span></span>
-<span class="r-in">  packageId <span class="op">=</span> <span class="st">"knb-lter-pal.309.1"</span></span>
+<span class="r-in"> packageId <span class="op">=</span> <span class="st">"knb-lter-pal.309.1"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">resourceMetadata</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;resourceMetadata&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] &lt;dateCreated&gt;2021-04-14 13:52:16.027&lt;/dateCreated&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] &lt;entityId&gt;null&lt;/entityId&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] &lt;entityName&gt;null&lt;/entityName&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] &lt;fileName&gt;Level-1-EML.xml&lt;/fileName&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] &lt;formatType&gt;https://eml.ecoinformatics.org/eml-2.2.0                     ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] &lt;identifier&gt;309&lt;/identifier&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] &lt;md5Checksum&gt;e1cbd509d73797dd4b23f0d30c30548d&lt;/md5Checksum&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] &lt;packageId&gt;knb-lter-pal.309.1&lt;/packageId&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] &lt;principalOwner&gt;uid=PAL,o=EDI,dc=edirepository,dc=org&lt;/principalOwner&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] &lt;resourceId&gt;https://pasta.lternet.edu/package/metadata/eml/knb-lter-pal/ ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] &lt;resourceType&gt;metadata&lt;/resourceType&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] &lt;revision&gt;1&lt;/revision&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] &lt;scope&gt;knb-lter-pal&lt;/scope&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] &lt;sha1Checksum&gt;b3cf11fa06b72514a3e7483fdf28dfeb70e2f1de&lt;/sha1Checksum&gt;</span>
+<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;resourceMetadata&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [1] &lt;dateCreated&gt;2021-04-14 13:52:16.027&lt;/dateCreated&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [2] &lt;entityId&gt;null&lt;/entityId&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [3] &lt;entityName&gt;null&lt;/entityName&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [4] &lt;fileName&gt;Level-1-EML.xml&lt;/fileName&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [5] &lt;formatType&gt;https://eml.ecoinformatics.org/eml-2.2.0             ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [6] &lt;identifier&gt;309&lt;/identifier&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [7] &lt;md5Checksum&gt;e1cbd509d73797dd4b23f0d30c30548d&lt;/md5Checksum&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [8] &lt;packageId&gt;knb-lter-pal.309.1&lt;/packageId&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [9] &lt;principalOwner&gt;uid=PAL,o=EDI,dc=edirepository,dc=org&lt;/principal ...</span></span>
+<span class="r-in"><span class="co">#&gt; [10] &lt;resourceId&gt;https://pasta.lternet.edu/package/metadata/eml/knb-l ...</span></span>
+<span class="r-in"><span class="co">#&gt; [11] &lt;resourceType&gt;metadata&lt;/resourceType&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [12] &lt;revision&gt;1&lt;/revision&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [13] &lt;scope&gt;knb-lter-pal&lt;/scope&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [14] &lt;sha1Checksum&gt;b3cf11fa06b72514a3e7483fdf28dfeb70e2f1de&lt;/sha1Chec ...</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -157,7 +160,7 @@ resource</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

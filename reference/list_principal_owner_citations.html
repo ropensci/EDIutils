@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -103,33 +103,25 @@ the specified principal owner</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># List citations</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># List citations</span></span>
 <span class="r-in"><span class="va">dn</span> <span class="op">&lt;-</span> <span class="fu"><a href="create_dn.html">create_dn</a></span><span class="op">(</span>userId <span class="op">=</span> <span class="st">"FCE"</span>, ou <span class="op">=</span> <span class="st">"EDI"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">journalCitations</span> <span class="op">&lt;-</span> <span class="fu">list_principal_owner_citations</span><span class="op">(</span>principalOwner <span class="op">=</span> <span class="va">dn</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">journalCitations</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;journalCitations&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;80&lt;/journalCitationId&gt;\n  &lt;packa ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;81&lt;/journalCitationId&gt;\n  &lt;packa ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;205&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;207&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;220&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;221&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;222&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;422&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;423&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;424&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;425&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;426&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;427&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;428&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;429&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;430&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;431&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [18] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;432&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;433&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [20] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;434&lt;/journalCitationId&gt;\n  &lt;pack ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ...</span>
+<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;journalCitations&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [1] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;80&lt;/journalCitationId&gt;\n ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [2] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;81&lt;/journalCitationId&gt;\n ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [3] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;205&lt;/journalCitationId&gt;\ ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [4] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;207&lt;/journalCitationId&gt;\ ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [5] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;220&lt;/journalCitationId&gt;\ ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [6] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;221&lt;/journalCitationId&gt;\ ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [7] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;222&lt;/journalCitationId&gt;\ ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [8] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;422&lt;/journalCitationId&gt;\ ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [9] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;423&lt;/journalCitationId&gt;\ ...</span></span>
+<span class="r-in"><span class="co">#&gt; [10] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;424&lt;/journalCitationId&gt;\ ...</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -144,7 +136,7 @@ the specified principal owner</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

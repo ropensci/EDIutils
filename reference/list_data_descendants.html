@@ -18,7 +18,7 @@ derived, in whole or in part, from the specified source data package."><!-- math
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -109,25 +109,28 @@ derived, in whole or in part, from the specified source data package.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># List descendants</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># List descendants</span></span>
 <span class="r-in"><span class="va">dataDescendants</span> <span class="op">&lt;-</span> <span class="fu">list_data_descendants</span><span class="op">(</span><span class="st">"knb-lter-bnz.501.17"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">dataDescendants</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;dataDescendants&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.1&lt;/packageId&gt;\n  &lt;title&gt;&amp;amp;#xa;  ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.2&lt;/packageId&gt;\n  &lt;title&gt;&amp;amp;#xa;  ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.3&lt;/packageId&gt;\n  &lt;title&gt;&amp;amp;#xa;  ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.4&lt;/packageId&gt;\n  &lt;title&gt;&amp;amp;#xa;  ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.5&lt;/packageId&gt;\n  &lt;title&gt;&amp;amp;#xa;  ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [6] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.6&lt;/packageId&gt;\n  &lt;title&gt;Eight Mile ...</span>
+<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;dataDescendants&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.1&lt;/packageId&gt;\n  &lt;title&gt;&amp;a ...</span></span>
+<span class="r-in"><span class="co">#&gt; [2] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.2&lt;/packageId&gt;\n  &lt;title&gt;&amp;a ...</span></span>
+<span class="r-in"><span class="co">#&gt; [3] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.3&lt;/packageId&gt;\n  &lt;title&gt;&amp;a ...</span></span>
+<span class="r-in"><span class="co">#&gt; [4] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.4&lt;/packageId&gt;\n  &lt;title&gt;&amp;a ...</span></span>
+<span class="r-in"><span class="co">#&gt; [5] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.5&lt;/packageId&gt;\n  &lt;title&gt;&amp;a ...</span></span>
+<span class="r-in"><span class="co">#&gt; [6] &lt;dataDescendant&gt;\n  &lt;packageId&gt;edi.275.6&lt;/packageId&gt;\n  &lt;title&gt;Ei ...</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Show first</span></span>
 <span class="r-in"><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">dataDescendants</span>, <span class="st">"dataDescendant"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_node}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;dataDescendant&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;packageId&gt;edi.275.1&lt;/packageId&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] &lt;title&gt;&amp;amp;#xa;      Eight Mile Lake Research Watershed&amp;amp;#x2c; Carbon ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] &lt;url&gt;https://pasta.lternet.edu/package/metadata/eml/edi/275/1&lt;/url&gt;</span>
+<span class="r-in"><span class="co">#&gt; {xml_node}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;dataDescendant&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;packageId&gt;edi.275.1&lt;/packageId&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [2] &lt;title&gt;&amp;amp;#xa;      Eight Mile Lake Research Watershed&amp;amp;#x2c ...</span></span>
+<span class="r-in"><span class="co">#&gt; [3] &lt;url&gt;https://pasta.lternet.edu/package/metadata/eml/edi/275/1&lt;/url&gt;</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -142,7 +145,7 @@ derived, in whole or in part, from the specified source data package.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

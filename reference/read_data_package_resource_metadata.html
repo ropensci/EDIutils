@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -121,25 +121,28 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Read resource metadata</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Read resource metadata</span></span>
 <span class="r-in"><span class="va">resourceMetadata</span> <span class="op">&lt;-</span> <span class="fu">read_data_package_resource_metadata</span><span class="op">(</span></span>
-<span class="r-in">  packageId <span class="op">=</span> <span class="st">"edi.613.1"</span></span>
+<span class="r-in"> packageId <span class="op">=</span> <span class="st">"edi.613.1"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">resourceMetadata</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;resourceMetadata&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] &lt;dateCreated&gt;2021-06-08 18:02:43.361&lt;/dateCreated&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] &lt;doi&gt;doi:10.6073/pasta/47d7cb6d374b6662cce98e42122169f8&lt;/doi&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] &lt;entityId&gt;null&lt;/entityId&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] &lt;entityName&gt;null&lt;/entityName&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] &lt;fileName&gt;null&lt;/fileName&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] &lt;identifier&gt;613&lt;/identifier&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] &lt;packageId&gt;edi.613.1&lt;/packageId&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] &lt;principalOwner&gt;uid=EDI,o=EDI,dc=edirepository,dc=org&lt;/principalOwner&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] &lt;resourceId&gt;https://pasta.lternet.edu/package/eml/edi/613/1&lt;/resourceId&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] &lt;resourceType&gt;dataPackage&lt;/resourceType&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] &lt;revision&gt;1&lt;/revision&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] &lt;scope&gt;edi&lt;/scope&gt;</span>
+<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;resourceMetadata&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [1] &lt;dateCreated&gt;2021-06-08 18:02:43.361&lt;/dateCreated&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [2] &lt;doi&gt;doi:10.6073/pasta/47d7cb6d374b6662cce98e42122169f8&lt;/doi&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [3] &lt;entityId&gt;null&lt;/entityId&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [4] &lt;entityName&gt;null&lt;/entityName&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [5] &lt;fileName&gt;null&lt;/fileName&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [6] &lt;identifier&gt;613&lt;/identifier&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [7] &lt;packageId&gt;edi.613.1&lt;/packageId&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [8] &lt;principalOwner&gt;uid=EDI,o=EDI,dc=edirepository,dc=org&lt;/principal ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [9] &lt;resourceId&gt;https://pasta.lternet.edu/package/eml/edi/613/1&lt;/res ...</span></span>
+<span class="r-in"><span class="co">#&gt; [10] &lt;resourceType&gt;dataPackage&lt;/resourceType&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [11] &lt;revision&gt;1&lt;/revision&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [12] &lt;scope&gt;edi&lt;/scope&gt;</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -154,7 +157,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

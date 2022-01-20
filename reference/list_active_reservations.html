@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -101,40 +101,33 @@ are not included in this list.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># List reservations</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># List reservations</span></span>
 <span class="r-in"><span class="va">reservations</span> <span class="op">&lt;-</span> <span class="fu">list_active_reservations</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">reservations</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;reservations&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] &lt;reservation&gt;\n  &lt;docid&gt;edi.11&lt;/docid&gt;\n  &lt;principal&gt;uid=NTL,o=LTER,dc=e ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] &lt;reservation&gt;\n  &lt;docid&gt;edi.130&lt;/docid&gt;\n  &lt;principal&gt;uid=user23,o=EDI,d ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] &lt;reservation&gt;\n  &lt;docid&gt;edi.131&lt;/docid&gt;\n  &lt;principal&gt;uid=user20,o=EDI,d ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] &lt;reservation&gt;\n  &lt;docid&gt;edi.132&lt;/docid&gt;\n  &lt;principal&gt;uid=chase,o=EDI,dc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] &lt;reservation&gt;\n  &lt;docid&gt;edi.142&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] &lt;reservation&gt;\n  &lt;docid&gt;edi.152&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] &lt;reservation&gt;\n  &lt;docid&gt;edi.154&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] &lt;reservation&gt;\n  &lt;docid&gt;edi.156&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] &lt;reservation&gt;\n  &lt;docid&gt;edi.158&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] &lt;reservation&gt;\n  &lt;docid&gt;edi.159&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] &lt;reservation&gt;\n  &lt;docid&gt;edi.161&lt;/docid&gt;\n  &lt;principal&gt;uid=jtallant,o=EDI ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] &lt;reservation&gt;\n  &lt;docid&gt;edi.162&lt;/docid&gt;\n  &lt;principal&gt;uid=jtallant,o=EDI ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] &lt;reservation&gt;\n  &lt;docid&gt;edi.171&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] &lt;reservation&gt;\n  &lt;docid&gt;edi.172&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] &lt;reservation&gt;\n  &lt;docid&gt;edi.173&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] &lt;reservation&gt;\n  &lt;docid&gt;edi.174&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] &lt;reservation&gt;\n  &lt;docid&gt;edi.175&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [18] &lt;reservation&gt;\n  &lt;docid&gt;edi.177&lt;/docid&gt;\n  &lt;principal&gt;uid=jtallant,o=EDI ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] &lt;reservation&gt;\n  &lt;docid&gt;edi.178&lt;/docid&gt;\n  &lt;principal&gt;uid=EDI,o=EDI,dc=e ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [20] &lt;reservation&gt;\n  &lt;docid&gt;edi.180&lt;/docid&gt;\n  &lt;principal&gt;uid=EDI,o=EDI,dc=e ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ...</span>
+<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;reservations&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [1] &lt;reservation&gt;\n  &lt;docid&gt;edi.11&lt;/docid&gt;\n  &lt;principal&gt;uid=NTL,o=L ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [2] &lt;reservation&gt;\n  &lt;docid&gt;edi.130&lt;/docid&gt;\n  &lt;principal&gt;uid=user23 ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [3] &lt;reservation&gt;\n  &lt;docid&gt;edi.131&lt;/docid&gt;\n  &lt;principal&gt;uid=user20 ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [4] &lt;reservation&gt;\n  &lt;docid&gt;edi.132&lt;/docid&gt;\n  &lt;principal&gt;uid=chase, ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [5] &lt;reservation&gt;\n  &lt;docid&gt;edi.142&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [6] &lt;reservation&gt;\n  &lt;docid&gt;edi.152&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [7] &lt;reservation&gt;\n  &lt;docid&gt;edi.154&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [8] &lt;reservation&gt;\n  &lt;docid&gt;edi.156&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span></span>
+<span class="r-in"><span class="co">#&gt;  [9] &lt;reservation&gt;\n  &lt;docid&gt;edi.158&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span></span>
+<span class="r-in"><span class="co">#&gt; [10] &lt;reservation&gt;\n  &lt;docid&gt;edi.159&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span></span>
+<span class="r-in"><span class="co">#&gt; ...</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Show first</span></span>
 <span class="r-in"><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">reservations</span>, <span class="st">"reservation"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_node}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;reservation&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;docid&gt;edi.11&lt;/docid&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] &lt;principal&gt;uid=NTL,o=LTER,dc=ecoinformatics,dc=org&lt;/principal&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] &lt;dateReserved&gt;2017-03-02 15:02:28.899&lt;/dateReserved&gt;</span>
+<span class="r-in"><span class="co">#&gt; {xml_node}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;reservation&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;docid&gt;edi.11&lt;/docid&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [2] &lt;principal&gt;uid=NTL,o=LTER,dc=ecoinformatics,dc=org&lt;/principal&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [3] &lt;dateReserved&gt;2017-03-02 15:02:28.899&lt;/dateReserved&gt;</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -149,7 +142,7 @@ are not included in this list.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

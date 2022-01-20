@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -106,42 +106,45 @@ Data Package Manager web service</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># All service methods</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># All service methods</span></span>
 <span class="r-in"><span class="va">services</span> <span class="op">&lt;-</span> <span class="fu">list_service_methods</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">services</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "appendProvenance"              "createDataPackage"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "createDataPackageArchive"      "createReservation"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "deleteReservation"             "deleteDataPackage"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "evaluateDataPackage"           "getProvenanceMetadata"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "isAuthorized"                  "listActiveReservations"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "listDataEntities"              "listDataDescendants"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "listDataSources"               "listRecentChanges"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "listDataPackageIdentifiers"    "listDataPackageRevisions"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "listDataPackageScopes"         "listDeletedDataPackages"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "listRecentUploads"             "listReservationIdentifiers"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "listServiceMethods"            "listUserDataPackages"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "listWorkingOn"                 "readDataEntity"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "readDataEntityAcl"             "readDataEntityRmd"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "readDataEntityChecksum"        "readDataEntityDoi"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "readDataEntityName"            "readDataEntityNames"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "readDataEntitySize"            "readDataEntitySizes"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "readDataPackage"               "readDataPackageAcl"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "readDataPackageRmd"            "readDataPackageArchive"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "readDataPackageDoi"            "readDataPackageError"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "readDataPackageFromDoi"        "readDataPackageReport"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "readDataPackageReportAcl"      "readDataPackageReportRmd"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "readDataPackageReportChecksum" "readDataPackageReportDoi"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "readEvaluateReport"            "readMetadata"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "readMetadataDublinCore"        "readMetadataAcl"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "readMetadataRmd"               "readMetadataChecksum"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "readMetadataDoi"               "readMetadataFormat"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "searchDataPackages"            "updateDataPackage"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "createSubscription"            "deleteSubscription"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "executeSubscription"           "getMatchingSubscriptions"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [59] "getSubscriptionWithId"         "notifyOfEvent"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [61] "createJournalCitation"         "deleteJournalCitation"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [63] "getCitationWithId"             "listDataPackageCitations"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [65] "listPrincipalOwnerCitations"  </span>
+<span class="r-in"><span class="co">#&gt;  [1] "appendProvenance"              "createDataPackage"            </span></span>
+<span class="r-in"><span class="co">#&gt;  [3] "createDataPackageArchive"      "createReservation"            </span></span>
+<span class="r-in"><span class="co">#&gt;  [5] "deleteReservation"             "deleteDataPackage"            </span></span>
+<span class="r-in"><span class="co">#&gt;  [7] "evaluateDataPackage"           "getProvenanceMetadata"        </span></span>
+<span class="r-in"><span class="co">#&gt;  [9] "isAuthorized"                  "listActiveReservations"       </span></span>
+<span class="r-in"><span class="co">#&gt; [11] "listDataEntities"              "listDataDescendants"          </span></span>
+<span class="r-in"><span class="co">#&gt; [13] "listDataSources"               "listRecentChanges"            </span></span>
+<span class="r-in"><span class="co">#&gt; [15] "listDataPackageIdentifiers"    "listDataPackageRevisions"     </span></span>
+<span class="r-in"><span class="co">#&gt; [17] "listDataPackageScopes"         "listDeletedDataPackages"      </span></span>
+<span class="r-in"><span class="co">#&gt; [19] "listRecentUploads"             "listReservationIdentifiers"   </span></span>
+<span class="r-in"><span class="co">#&gt; [21] "listServiceMethods"            "listUserDataPackages"         </span></span>
+<span class="r-in"><span class="co">#&gt; [23] "listWorkingOn"                 "readDataEntity"               </span></span>
+<span class="r-in"><span class="co">#&gt; [25] "readDataEntityAcl"             "readDataEntityRmd"            </span></span>
+<span class="r-in"><span class="co">#&gt; [27] "readDataEntityChecksum"        "readDataEntityDoi"            </span></span>
+<span class="r-in"><span class="co">#&gt; [29] "readDataEntityName"            "readDataEntityNames"          </span></span>
+<span class="r-in"><span class="co">#&gt; [31] "readDataEntitySize"            "readDataEntitySizes"          </span></span>
+<span class="r-in"><span class="co">#&gt; [33] "readDataPackage"               "readDataPackageAcl"           </span></span>
+<span class="r-in"><span class="co">#&gt; [35] "readDataPackageRmd"            "readDataPackageArchive"       </span></span>
+<span class="r-in"><span class="co">#&gt; [37] "readDataPackageDoi"            "readDataPackageError"         </span></span>
+<span class="r-in"><span class="co">#&gt; [39] "readDataPackageFromDoi"        "readDataPackageReport"        </span></span>
+<span class="r-in"><span class="co">#&gt; [41] "readDataPackageReportAcl"      "readDataPackageReportRmd"     </span></span>
+<span class="r-in"><span class="co">#&gt; [43] "readDataPackageReportChecksum" "readDataPackageReportDoi"     </span></span>
+<span class="r-in"><span class="co">#&gt; [45] "readEvaluateReport"            "readMetadata"                 </span></span>
+<span class="r-in"><span class="co">#&gt; [47] "readMetadataDublinCore"        "readMetadataAcl"              </span></span>
+<span class="r-in"><span class="co">#&gt; [49] "readMetadataRmd"               "readMetadataChecksum"         </span></span>
+<span class="r-in"><span class="co">#&gt; [51] "readMetadataDoi"               "readMetadataFormat"           </span></span>
+<span class="r-in"><span class="co">#&gt; [53] "searchDataPackages"            "updateDataPackage"            </span></span>
+<span class="r-in"><span class="co">#&gt; [55] "createSubscription"            "deleteSubscription"           </span></span>
+<span class="r-in"><span class="co">#&gt; [57] "executeSubscription"           "getMatchingSubscriptions"     </span></span>
+<span class="r-in"><span class="co">#&gt; [59] "getSubscriptionWithId"         "notifyOfEvent"                </span></span>
+<span class="r-in"><span class="co">#&gt; [61] "createJournalCitation"         "deleteJournalCitation"        </span></span>
+<span class="r-in"><span class="co">#&gt; [63] "getCitationWithId"             "listDataPackageCitations"     </span></span>
+<span class="r-in"><span class="co">#&gt; [65] "listPrincipalOwnerCitations"  </span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -156,7 +159,7 @@ Data Package Manager web service</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

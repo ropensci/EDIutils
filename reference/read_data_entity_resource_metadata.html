@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -124,37 +124,43 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># List entities</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># List entities</span></span>
 <span class="r-in"><span class="va">entityIds</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_data_entities.html">list_data_entities</a></span><span class="op">(</span>packageId <span class="op">=</span> <span class="st">"knb-lter-cce.310.1"</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">entityIds</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "4aaaff61e0d316130be0b445d3013877" "088775341e7fb65206af8c9e67d076e2"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "6982dd80cba66470c49a2f3dc0f82459" "782fbaa20ea62987c838378e9eadcfa6"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "ae8ecd148df1275b30358577d0fa6b4a" "a53b312efe0a176fdfc74ab7ccb0916b"</span>
+<span class="r-in"><span class="co">#&gt; [1] "4aaaff61e0d316130be0b445d3013877"</span></span>
+<span class="r-in"><span class="co">#&gt; [2] "088775341e7fb65206af8c9e67d076e2"</span></span>
+<span class="r-in"><span class="co">#&gt; [3] "6982dd80cba66470c49a2f3dc0f82459"</span></span>
+<span class="r-in"><span class="co">#&gt; [4] "782fbaa20ea62987c838378e9eadcfa6"</span></span>
+<span class="r-in"><span class="co">#&gt; [5] "ae8ecd148df1275b30358577d0fa6b4a"</span></span>
+<span class="r-in"><span class="co">#&gt; [6] "a53b312efe0a176fdfc74ab7ccb0916b"</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Read resource metadata for first entity</span></span>
 <span class="r-in"><span class="va">resourceMetadata</span> <span class="op">&lt;-</span> <span class="fu">read_data_entity_resource_metadata</span><span class="op">(</span></span>
-<span class="r-in">  packageId <span class="op">=</span> <span class="st">"knb-lter-cce.310.1"</span>,</span>
-<span class="r-in">  entityId <span class="op">=</span> <span class="va">entityIds</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span class="r-in"> packageId <span class="op">=</span> <span class="st">"knb-lter-cce.310.1"</span>,</span>
+<span class="r-in"> entityId <span class="op">=</span> <span class="va">entityIds</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">resourceMetadata</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;resourceMetadata&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] &lt;dataFormat&gt;NetCDF (gzipped tar archive)&lt;/dataFormat&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] &lt;dateCreated&gt;2021-08-13 11:23:40.81&lt;/dateCreated&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] &lt;entityId&gt;4aaaff61e0d316130be0b445d3013877&lt;/entityId&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] &lt;entityName&gt;water_age_CCE_1994.tar&lt;/entityName&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] &lt;fileName&gt;water_age_CCE_1994.tar.gz&lt;/fileName&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] &lt;identifier&gt;310&lt;/identifier&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] &lt;md5Checksum&gt;8b22bf5c72c405aab93e44a6aa5b7d79&lt;/md5Checksum&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] &lt;packageId&gt;knb-lter-cce.310.1&lt;/packageId&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] &lt;principalOwner&gt;uid=EDI,o=EDI,dc=edirepository,dc=org&lt;/principalOwner&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] &lt;resourceId&gt;https://pasta.lternet.edu/package/data/eml/knb-lter-cce/310/ ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] &lt;resourceLocation&gt;/pasta/data1&lt;/resourceLocation&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] &lt;resourceSize&gt;322263158&lt;/resourceSize&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] &lt;resourceType&gt;data&lt;/resourceType&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] &lt;revision&gt;1&lt;/revision&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] &lt;scope&gt;knb-lter-cce&lt;/scope&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] &lt;sha1Checksum&gt;bccdcfef105aa7b787db1fd940ad8ea2a5d04295&lt;/sha1Checksum&gt;</span>
+<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;resourceMetadata&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [1] &lt;dataFormat&gt;NetCDF (gzipped tar archive)&lt;/dataFormat&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [2] &lt;dateCreated&gt;2021-08-13 11:23:40.81&lt;/dateCreated&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [3] &lt;entityId&gt;4aaaff61e0d316130be0b445d3013877&lt;/entityId&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [4] &lt;entityName&gt;water_age_CCE_1994.tar&lt;/entityName&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [5] &lt;fileName&gt;water_age_CCE_1994.tar.gz&lt;/fileName&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [6] &lt;identifier&gt;310&lt;/identifier&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [7] &lt;md5Checksum&gt;8b22bf5c72c405aab93e44a6aa5b7d79&lt;/md5Checksum&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [8] &lt;packageId&gt;knb-lter-cce.310.1&lt;/packageId&gt;</span></span>
+<span class="r-in"><span class="co">#&gt;  [9] &lt;principalOwner&gt;uid=EDI,o=EDI,dc=edirepository,dc=org&lt;/principal ...</span></span>
+<span class="r-in"><span class="co">#&gt; [10] &lt;resourceId&gt;https://pasta.lternet.edu/package/data/eml/knb-lter- ...</span></span>
+<span class="r-in"><span class="co">#&gt; [11] &lt;resourceLocation&gt;/pasta/data1&lt;/resourceLocation&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [12] &lt;resourceSize&gt;322263158&lt;/resourceSize&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [13] &lt;resourceType&gt;data&lt;/resourceType&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [14] &lt;revision&gt;1&lt;/revision&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [15] &lt;scope&gt;knb-lter-cce&lt;/scope&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [16] &lt;sha1Checksum&gt;bccdcfef105aa7b787db1fd940ad8ea2a5d04295&lt;/sha1Chec ...</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -169,7 +175,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -103,28 +103,31 @@ non-robot reads) of <code>packageId</code></p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Get packageId reads</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Get packageId reads</span></span>
 <span class="r-in"><span class="va">resourceReads</span> <span class="op">&lt;-</span> <span class="fu">get_packageid_reads</span><span class="op">(</span><span class="st">"knb-lter-sgs.817.17"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">resourceReads</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;resourceReads&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;resource&gt;\n  &lt;resourceId&gt;https://pasta.lternet.edu/package/metadata/eml/ ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] &lt;resource&gt;\n  &lt;resourceId&gt;https://pasta.lternet.edu/package/eml/knb-lter- ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] &lt;resource&gt;\n  &lt;resourceId&gt;https://pasta.lternet.edu/package/report/eml/kn ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] &lt;resource&gt;\n  &lt;resourceId&gt;https://pasta.lternet.edu/package/data/eml/knb- ...</span>
+<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;resourceReads&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;resource&gt;\n  &lt;resourceId&gt;https://pasta.lternet.edu/package/metada ...</span></span>
+<span class="r-in"><span class="co">#&gt; [2] &lt;resource&gt;\n  &lt;resourceId&gt;https://pasta.lternet.edu/package/eml/kn ...</span></span>
+<span class="r-in"><span class="co">#&gt; [3] &lt;resource&gt;\n  &lt;resourceId&gt;https://pasta.lternet.edu/package/report ...</span></span>
+<span class="r-in"><span class="co">#&gt; [4] &lt;resource&gt;\n  &lt;resourceId&gt;https://pasta.lternet.edu/package/data/e ...</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Show first</span></span>
 <span class="r-in"><span class="va">resource</span> <span class="op">&lt;-</span> <span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">resourceReads</span>, <span class="st">"resource"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">resource</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_node}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;resource&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;resourceId&gt;https://pasta.lternet.edu/package/metadata/eml/knb-lter-sgs/8 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] &lt;resourceType&gt;metadata&lt;/resourceType&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] &lt;scope&gt;knb-lter-sgs&lt;/scope&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] &lt;identifier&gt;817&lt;/identifier&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5] &lt;revision&gt;17&lt;/revision&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [6] &lt;totalReads&gt;534&lt;/totalReads&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [7] &lt;nonRobotReads&gt;517&lt;/nonRobotReads&gt;</span>
+<span class="r-in"><span class="co">#&gt; {xml_node}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;resource&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;resourceId&gt;https://pasta.lternet.edu/package/metadata/eml/knb-lte ...</span></span>
+<span class="r-in"><span class="co">#&gt; [2] &lt;resourceType&gt;metadata&lt;/resourceType&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [3] &lt;scope&gt;knb-lter-sgs&lt;/scope&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [4] &lt;identifier&gt;817&lt;/identifier&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [5] &lt;revision&gt;17&lt;/revision&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [6] &lt;totalReads&gt;535&lt;/totalReads&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [7] &lt;nonRobotReads&gt;518&lt;/nonRobotReads&gt;</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -139,7 +142,7 @@ non-robot reads) of <code>packageId</code></p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

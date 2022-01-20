@@ -20,7 +20,7 @@ for a particular data package scope."><!-- mathjax --><script src="https://cdnjs
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -123,30 +123,33 @@ scope, identifier, revision, principal, doi, serviceMethod, and date.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Changes occurring in the first 3 days of 2021 for all scopes</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Changes occurring in the first 3 days of 2021 for all scopes</span></span>
 <span class="r-in"><span class="va">dataPackageChanges</span> <span class="op">&lt;-</span> <span class="fu">list_recent_changes</span><span class="op">(</span></span>
-<span class="r-in">  fromDate <span class="op">=</span> <span class="st">"2021-01-01T00:00:00"</span>,</span>
-<span class="r-in">  toDate <span class="op">=</span> <span class="st">"2021-01-03T00:00:00"</span></span>
+<span class="r-in"> fromDate <span class="op">=</span> <span class="st">"2021-01-01T00:00:00"</span>,</span>
+<span class="r-in"> toDate <span class="op">=</span> <span class="st">"2021-01-03T00:00:00"</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">dataPackageChanges</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;dataPackageChanges&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;dataPackage&gt;\n  &lt;packageId&gt;edi.398.5&lt;/packageId&gt;\n  &lt;scope&gt;edi&lt;/scope&gt;\n ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] &lt;dataPackage&gt;\n  &lt;packageId&gt;edi.398.6&lt;/packageId&gt;\n  &lt;scope&gt;edi&lt;/scope&gt;\n ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] &lt;dataPackage&gt;\n  &lt;packageId&gt;knb-lter-sbc.6006.2&lt;/packageId&gt;\n  &lt;scope&gt;knb ...</span>
+<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;dataPackageChanges&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;dataPackage&gt;\n  &lt;packageId&gt;edi.398.5&lt;/packageId&gt;\n  &lt;scope&gt;edi&lt;/ ...</span></span>
+<span class="r-in"><span class="co">#&gt; [2] &lt;dataPackage&gt;\n  &lt;packageId&gt;edi.398.6&lt;/packageId&gt;\n  &lt;scope&gt;edi&lt;/ ...</span></span>
+<span class="r-in"><span class="co">#&gt; [3] &lt;dataPackage&gt;\n  &lt;packageId&gt;knb-lter-sbc.6006.2&lt;/packageId&gt;\n  &lt;s ...</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Show first</span></span>
 <span class="r-in"><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">dataPackageChanges</span>, <span class="st">"dataPackage"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_node}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;dataPackage&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;packageId&gt;edi.398.5&lt;/packageId&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] &lt;scope&gt;edi&lt;/scope&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] &lt;identifier&gt;398&lt;/identifier&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] &lt;revision&gt;5&lt;/revision&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5] &lt;principal&gt;uid=mohonkpreserve,o=EDI,dc=edirepository,dc=org&lt;/principal&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [6] &lt;doi&gt;doi:10.6073/pasta/f999c0007dccf4ffc0b25746ff66fee2&lt;/doi&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [7] &lt;serviceMethod&gt;updateDataPackage&lt;/serviceMethod&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8] &lt;date&gt;2021-01-02T17:04:44.12&lt;/date&gt;</span>
+<span class="r-in"><span class="co">#&gt; {xml_node}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;dataPackage&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;packageId&gt;edi.398.5&lt;/packageId&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [2] &lt;scope&gt;edi&lt;/scope&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [3] &lt;identifier&gt;398&lt;/identifier&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [4] &lt;revision&gt;5&lt;/revision&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [5] &lt;principal&gt;uid=mohonkpreserve,o=EDI,dc=edirepository,dc=org&lt;/prin ...</span></span>
+<span class="r-in"><span class="co">#&gt; [6] &lt;doi&gt;doi:10.6073/pasta/f999c0007dccf4ffc0b25746ff66fee2&lt;/doi&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [7] &lt;serviceMethod&gt;updateDataPackage&lt;/serviceMethod&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [8] &lt;date&gt;2021-01-02T17:04:44.12&lt;/date&gt;</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -161,7 +164,7 @@ scope, identifier, revision, principal, doi, serviceMethod, and date.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

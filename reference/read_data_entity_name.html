@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -123,19 +123,23 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># List entities</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># List entities</span></span>
 <span class="r-in"><span class="va">entityIds</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_data_entities.html">list_data_entities</a></span><span class="op">(</span>packageId <span class="op">=</span> <span class="st">"knb-lter-cap.691.2"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">entityIds</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "f6e4efd0b04aea3860724824ca05c5dd" "d2263480e75cc7888b41928602cda4c6"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "d5cb83e4556408e48f636157e4dee49e"</span>
+<span class="r-in"><span class="co">#&gt; [1] "f6e4efd0b04aea3860724824ca05c5dd"</span></span>
+<span class="r-in"><span class="co">#&gt; [2] "d2263480e75cc7888b41928602cda4c6"</span></span>
+<span class="r-in"><span class="co">#&gt; [3] "d5cb83e4556408e48f636157e4dee49e"</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Read name</span></span>
 <span class="r-in"><span class="va">entityName</span> <span class="op">&lt;-</span> <span class="fu">read_data_entity_name</span><span class="op">(</span></span>
-<span class="r-in">  packageId <span class="op">=</span> <span class="st">"knb-lter-cap.691.2"</span>,</span>
-<span class="r-in">  entityId <span class="op">=</span> <span class="va">entityIds</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span class="r-in"> packageId <span class="op">=</span> <span class="st">"knb-lter-cap.691.2"</span>,</span>
+<span class="r-in"> entityId <span class="op">=</span> <span class="va">entityIds</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">entityName</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "691_arthropods_00742cd00ab0d3d02337e28d1c919654.csv"</span>
+<span class="r-in"><span class="co">#&gt; [1] "691_arthropods_00742cd00ab0d3d02337e28d1c919654.csv"</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -150,7 +154,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

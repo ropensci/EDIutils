@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -126,32 +126,34 @@ each of the metadata, data, and quality report resources that comprise the
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Get resource map</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"><span class="co"># Get resource map</span></span>
 <span class="r-in"><span class="va">resourceMap</span> <span class="op">&lt;-</span> <span class="fu">read_data_package</span><span class="op">(</span>packageId <span class="op">=</span> <span class="st">"knb-lter-cwt.5026.13"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">resourceMap</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://pasta.lternet.edu/package/data/eml/knb-lter-cwt/5026/13/7abb4028c288b4570dcb637f04ddda2b"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "https://pasta.lternet.edu/package/data/eml/knb-lter-cwt/5026/13/95d85c2a592f8b8113fe4286082fb347"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "https://pasta.lternet.edu/package/metadata/eml/knb-lter-cwt/5026/13"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "https://pasta.lternet.edu/package/report/eml/knb-lter-cwt/5026/13"                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "https://pasta.lternet.edu/package/eml/knb-lter-cwt/5026/13"                                      </span>
+<span class="r-in"><span class="co">#&gt; [1] "https://pasta.lternet.edu/package/data/eml/knb-lter-cwt/5026/13/ ...</span></span>
+<span class="r-in"><span class="co">#&gt; [2] "https://pasta.lternet.edu/package/data/eml/knb-lter-cwt/5026/13/ ...</span></span>
+<span class="r-in"><span class="co">#&gt; [3] "https://pasta.lternet.edu/package/metadata/eml/knb-lter-cwt/5026 ...</span></span>
+<span class="r-in"><span class="co">#&gt; [4] "https://pasta.lternet.edu/package/report/eml/knb-lter-cwt/5026/1 ...</span></span>
+<span class="r-in"><span class="co">#&gt; [5] "https://pasta.lternet.edu/package/eml/knb-lter-cwt/5026/13" </span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Get resource map in ORE format</span></span>
 <span class="r-in"><span class="va">resourceMap</span> <span class="op">&lt;-</span> <span class="fu">read_data_package</span><span class="op">(</span></span>
-<span class="r-in">  packageId <span class="op">=</span> <span class="st">"knb-lter-cwt.5026.13"</span>,</span>
-<span class="r-in">  ore <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span class="r-in"> packageId <span class="op">=</span> <span class="st">"knb-lter-cwt.5026.13"</span>,</span>
+<span class="r-in"> ore <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">resourceMap</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;RDF xmlns:cito="http://purl.org/spar/cito/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:ore="http://www.openarchives.org/ore/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs1="http://www.w3.org/2001/01/rdf-schema#"&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;rdf:Description rdf:about="https://pasta.lternet.edu/package/eml/knb-lte ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] &lt;rdf:Description rdf:about="https://pasta.lternet.edu/package/eml/knb-lte ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] &lt;rdf:Description rdf:about="https://pasta.lternet.edu/package/eml/metadat ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] &lt;rdf:Description rdf:about="https://pasta.lternet.edu/package/eml/data/kn ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5] &lt;rdf:Description rdf:about="https://pasta.lternet.edu/package/eml/data/kn ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [6] &lt;rdf:Description rdf:about="https://pasta.lternet.edu/package/eml/report/ ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [7] &lt;rdf:Description rdf:about="http://environmentaldatainitiative.org"&gt;\n  &lt; ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8] &lt;rdf:Description rdf:about="http://www.openarchives.org/ore/terms/Resourc ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] &lt;rdf:Description rdf:about="http://www.openarchives.org/ore/terms/Aggrega ...</span>
+<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;RDF xmlns:cito="http://purl.org/spar/cito/" xmlns:dc="http://purl.or ...</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;rdf:Description rdf:about="https://pasta.lternet.edu/package/eml ...</span></span>
+<span class="r-in"><span class="co">#&gt; [2] &lt;rdf:Description rdf:about="https://pasta.lternet.edu/package/eml ...</span></span>
+<span class="r-in"><span class="co">#&gt; [3] &lt;rdf:Description rdf:about="https://pasta.lternet.edu/package/eml ...</span></span>
+<span class="r-in"><span class="co">#&gt; [4] &lt;rdf:Description rdf:about="https://pasta.lternet.edu/package/eml ...</span></span>
+<span class="r-in"><span class="co">#&gt; [5] &lt;rdf:Description rdf:about="https://pasta.lternet.edu/package/eml ...</span></span>
+<span class="r-in"><span class="co">#&gt; [6] &lt;rdf:Description rdf:about="https://pasta.lternet.edu/package/eml ...</span></span>
+<span class="r-in"><span class="co">#&gt; [7] &lt;rdf:Description rdf:about="http://environmentaldatainitiative.or ...</span></span>
+<span class="r-in"><span class="co">#&gt; [8] &lt;rdf:Description rdf:about="http://www.openarchives.org/ore/terms ...</span></span>
+<span class="r-in"><span class="co">#&gt; [9] &lt;rdf:Description rdf:about="http://www.openarchives.org/ore/terms ...</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -166,7 +168,7 @@ each of the metadata, data, and quality report resources that comprise the
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

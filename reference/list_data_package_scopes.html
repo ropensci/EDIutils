@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -105,22 +105,25 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># List scopes</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># List scopes</span></span>
 <span class="r-in"><span class="va">scopes</span> <span class="op">&lt;-</span> <span class="fu">list_data_package_scopes</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">scopes</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ecotrends"           "edi"                 "knb-lter-and"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "knb-lter-arc"        "knb-lter-bes"        "knb-lter-ble"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "knb-lter-bnz"        "knb-lter-cap"        "knb-lter-cce"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "knb-lter-cdr"        "knb-lter-cwt"        "knb-lter-fce"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "knb-lter-gce"        "knb-lter-hbr"        "knb-lter-hfr"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "knb-lter-jrn"        "knb-lter-kbs"        "knb-lter-knz"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "knb-lter-luq"        "knb-lter-mcm"        "knb-lter-mcr"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "knb-lter-nes"        "knb-lter-nin"        "knb-lter-ntl"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "knb-lter-nwk"        "knb-lter-nwt"        "knb-lter-pal"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "knb-lter-pie"        "knb-lter-sbc"        "knb-lter-sev"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "knb-lter-sgs"        "knb-lter-vcr"        "lter-landsat"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "lter-landsat-ledaps" "msb-cap"             "msb-paleon"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "msb-tempbiodev"     </span>
+<span class="r-in"><span class="co">#&gt;  [1] "ecotrends"           "edi"                 "knb-lter-and"       </span></span>
+<span class="r-in"><span class="co">#&gt;  [4] "knb-lter-arc"        "knb-lter-bes"        "knb-lter-ble"       </span></span>
+<span class="r-in"><span class="co">#&gt;  [7] "knb-lter-bnz"        "knb-lter-cap"        "knb-lter-cce"       </span></span>
+<span class="r-in"><span class="co">#&gt; [10] "knb-lter-cdr"        "knb-lter-cwt"        "knb-lter-fce"       </span></span>
+<span class="r-in"><span class="co">#&gt; [13] "knb-lter-gce"        "knb-lter-hbr"        "knb-lter-hfr"       </span></span>
+<span class="r-in"><span class="co">#&gt; [16] "knb-lter-jrn"        "knb-lter-kbs"        "knb-lter-knz"       </span></span>
+<span class="r-in"><span class="co">#&gt; [19] "knb-lter-luq"        "knb-lter-mcm"        "knb-lter-mcr"       </span></span>
+<span class="r-in"><span class="co">#&gt; [22] "knb-lter-nes"        "knb-lter-nin"        "knb-lter-ntl"       </span></span>
+<span class="r-in"><span class="co">#&gt; [25] "knb-lter-nwk"        "knb-lter-nwt"        "knb-lter-pal"       </span></span>
+<span class="r-in"><span class="co">#&gt; [28] "knb-lter-pie"        "knb-lter-sbc"        "knb-lter-sev"       </span></span>
+<span class="r-in"><span class="co">#&gt; [31] "knb-lter-sgs"        "knb-lter-vcr"        "lter-landsat"       </span></span>
+<span class="r-in"><span class="co">#&gt; [34] "lter-landsat-ledaps" "msb-cap"             "msb-paleon"         </span></span>
+<span class="r-in"><span class="co">#&gt; [37] "msb-tempbiodev"   </span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -135,7 +138,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

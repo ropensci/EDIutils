@@ -18,7 +18,7 @@ objects, that are known to be inputs to the specified derived data package."><!-
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -116,20 +116,23 @@ will be empty and a URL value may or not be documented.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># List sources</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># List sources</span></span>
 <span class="r-in"><span class="va">dataSources</span> <span class="op">&lt;-</span> <span class="fu">list_data_sources</span><span class="op">(</span><span class="st">"edi.275.4"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">dataSources</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_document}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;dataSources&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;dataSource&gt;\n  &lt;packageId&gt;knb-lter-bnz.501.17&lt;/packageId&gt;\n  &lt;title&gt;Eigh ...</span>
+<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;dataSources&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;dataSource&gt;\n  &lt;packageId&gt;knb-lter-bnz.501.17&lt;/packageId&gt;\n  &lt;ti ...</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Show first</span></span>
 <span class="r-in"><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">dataSources</span>, <span class="st">"dataSource"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_node}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;dataSource&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;packageId&gt;knb-lter-bnz.501.17&lt;/packageId&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] &lt;title&gt;Eight Mile Lake Research Watershed&amp;amp;#x2c; Carbon in Permafrost  ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] &lt;url&gt;https://pasta.lternet.edu/package/metadata/eml/knb-lter-bnz/501/17&lt;/ ...</span>
+<span class="r-in"><span class="co">#&gt; {xml_node}</span></span>
+<span class="r-in"><span class="co">#&gt; &lt;dataSource&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;packageId&gt;knb-lter-bnz.501.17&lt;/packageId&gt;</span></span>
+<span class="r-in"><span class="co">#&gt; [2] &lt;title&gt;Eight Mile Lake Research Watershed&amp;amp;#x2c; Carbon in Per ...</span></span>
+<span class="r-in"><span class="co">#&gt; [3] &lt;url&gt;https://pasta.lternet.edu/package/metadata/eml/knb-lter-bnz/ ...</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -144,7 +147,7 @@ will be empty and a URL value may or not be documented.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

@@ -20,7 +20,7 @@ but have since been deleted are excluded from the list."><!-- mathjax --><script
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -114,11 +114,14 @@ but have since been deleted are excluded from the list.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># List user data packages</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># List user data packages</span></span>
 <span class="r-in"><span class="va">dn</span> <span class="op">&lt;-</span> <span class="fu"><a href="create_dn.html">create_dn</a></span><span class="op">(</span>userId <span class="op">=</span> <span class="st">"dbjourneynorth"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">packageIds</span> <span class="op">&lt;-</span> <span class="fu">list_user_data_packages</span><span class="op">(</span><span class="va">dn</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">packageIds</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "edi.948.1" "edi.949.1"</span>
+<span class="r-in"><span class="co">#&gt; [1] "edi.948.1" "edi.949.1"</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -133,7 +136,7 @@ but have since been deleted are excluded from the list.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

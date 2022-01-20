@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
       </span>
     </div>
 
@@ -123,24 +123,27 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Read entity names and IDs</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Read entity names and IDs</span></span>
 <span class="r-in"><span class="va">packageId</span> <span class="op">&lt;-</span> <span class="st">"knb-lter-cap.691.2"</span></span>
 <span class="r-in"><span class="va">entities</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_data_entity_names.html">read_data_entity_names</a></span><span class="op">(</span><span class="va">packageId</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">entities</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                           entityId</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 f6e4efd0b04aea3860724824ca05c5dd</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 d2263480e75cc7888b41928602cda4c6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 d5cb83e4556408e48f636157e4dee49e</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 entityName</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1      691_arthropods_00742cd00ab0d3d02337e28d1c919654.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        691_captures_e5f57a98ae0b7941b10d4a600645495a.csv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 691_sampling_events_e8d76d7e76385e4ae84bcafb754d0093.csv</span>
+<span class="r-in"><span class="co">#&gt;                           entityId</span></span>
+<span class="r-in"><span class="co">#&gt; 1 f6e4efd0b04aea3860724824ca05c5dd</span></span>
+<span class="r-in"><span class="co">#&gt; 2 d2263480e75cc7888b41928602cda4c6</span></span>
+<span class="r-in"><span class="co">#&gt; 3 d5cb83e4556408e48f636157e4dee49e</span></span>
+<span class="r-in"><span class="co">#&gt;                                                 entityName</span></span>
+<span class="r-in"><span class="co">#&gt; 1      691_arthropods_00742cd00ab0d3d02337e28d1c919654.csv</span></span>
+<span class="r-in"><span class="co">#&gt; 2        691_captures_e5f57a98ae0b7941b10d4a600645495a.csv</span></span>
+<span class="r-in"><span class="co">#&gt; 3 691_sampling_events_e8d76d7e76385e4ae84bcafb754d0093.csv</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Read metadata of the first entity</span></span>
 <span class="r-in"><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu">read_metadata_entity</span><span class="op">(</span><span class="va">packageId</span>, entityId <span class="op">=</span> <span class="va">entities</span><span class="op">$</span><span class="va">entityId</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">meta</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {xml_nodeset (1)}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;dataTable id="691_arthropods_00742cd00ab0d3d02337e28d1c919654.csv"&gt;\n  &lt; ...</span>
+<span class="r-in"><span class="co">#&gt; {xml_nodeset (1)}</span></span>
+<span class="r-in"><span class="co">#&gt; [1] &lt;dataTable id="691_arthropods_00742cd00ab0d3d02337e28d1c919654.cs ...</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -155,7 +158,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>
