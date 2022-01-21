@@ -2,9 +2,9 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [main, development]
+    branches: development
   pull_request:
-    branches: [main, development]
+    branches: development
 
 name: R-CMD-check
 
@@ -56,3 +56,28 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
+          
+  test-coverage:
+    needs: R-CMD-check
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      EDI_USER: ${{ secrets.EDI_USER }}
+      EDI_PASS: ${{ secrets.EDI_PASS }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      VCR_TURN_OFF: true
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: covr
+
+      - name: Test coverage
+        run: covr::codecov()
+        shell: Rscript {0}
