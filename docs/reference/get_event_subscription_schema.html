@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
       </span>
     </div>
 
@@ -92,7 +92,7 @@
       <a href="../articles/search_and_access.html">Search and Access Data</a>
     </li>
     <li>
-      <a href="../articles/publish_data.html">Evaluate and Upload Data</a>
+      <a href="../articles/evaluate_and_upload.html">Evaluate and Upload Data</a>
     </li>
     <li>
       <a href="../articles/retrieve_downloads.html">Retrieve Download Metrics</a>
@@ -164,21 +164,26 @@ entities</p>
 <code><a href='query_event_subscriptions.html'>query_event_subscriptions</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Get schema</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='co'># Get schema</span>
 <span class='va'>schema</span> <span class='op'>&lt;-</span> <span class='fu'>get_event_subscription_schema</span><span class='op'>(</span><span class='op'>)</span>
 <span class='va'>schema</span>
-</div><div class='output co'>#&gt; {xml_document}
-#&gt; &lt;schema xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
-#&gt; [1] &lt;xs:element name="subscription"&gt;\n  &lt;xs:complexType&gt;\n    &lt;xs:all&gt;\n      ...</div><div class='input'>
+<span class='co'>#&gt; {xml_document}</span>
+<span class='co'>#&gt; &lt;schema xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;</span>
+<span class='co'>#&gt; [1] &lt;xs:element name="subscription"&gt;\n  &lt;xs:complexType&gt;\n    &lt;xs:    ...</span>
+
 <span class='co'># Show schema structure</span>
 <span class='fu'>xml2</span><span class='fu'>::</span><span class='fu'><a href='http://xml2.r-lib.org/reference/xml_structure.html'>xml_structure</a></span><span class='op'>(</span><span class='va'>schema</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;schema [xmlns:xs]&gt;
-#&gt;   &lt;element [name]&gt;
-#&gt;     &lt;complexType&gt;
-#&gt;       &lt;all&gt;
-#&gt;         &lt;element [name, type, minOccurs, maxOccurs]&gt;
-#&gt;         &lt;element [name, type, minOccurs, maxOccurs]&gt;
-#&gt;       &lt;attribute [name, type, use, fixed]&gt;</div></pre>
+<span class='co'>#&gt; &lt;schema [xmlns:xs]&gt;</span>
+<span class='co'>#&gt;   &lt;element [name]&gt;</span>
+<span class='co'>#&gt;     &lt;complexType&gt;</span>
+<span class='co'>#&gt;       &lt;all&gt;</span>
+<span class='co'>#&gt;         &lt;element [name, type, minOccurs, maxOccurs]&gt;</span>
+<span class='co'>#&gt;         &lt;element [name, type, minOccurs, maxOccurs]&gt;</span>
+<span class='co'>#&gt;       &lt;attribute [name, type, use, fixed]&gt;</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

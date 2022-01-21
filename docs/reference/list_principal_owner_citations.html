@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
       </span>
     </div>
 
@@ -92,7 +92,7 @@
       <a href="../articles/search_and_access.html">Search and Access Data</a>
     </li>
     <li>
-      <a href="../articles/publish_data.html">Evaluate and Upload Data</a>
+      <a href="../articles/evaluate_and_upload.html">Evaluate and Upload Data</a>
     </li>
     <li>
       <a href="../articles/retrieve_downloads.html">Retrieve Download Metrics</a>
@@ -168,33 +168,26 @@ the specified principal owner</p>
 <code><a href='list_data_package_citations.html'>list_data_package_citations</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># List citations</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='co'># List citations</span>
 <span class='va'>dn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='create_dn.html'>create_dn</a></span><span class='op'>(</span>userId <span class='op'>=</span> <span class='st'>"FCE"</span>, ou <span class='op'>=</span> <span class='st'>"EDI"</span><span class='op'>)</span>
 <span class='va'>journalCitations</span> <span class='op'>&lt;-</span> <span class='fu'>list_principal_owner_citations</span><span class='op'>(</span>principalOwner <span class='op'>=</span> <span class='va'>dn</span><span class='op'>)</span>
 <span class='va'>journalCitations</span>
-</div><div class='output co'>#&gt; {xml_document}
-#&gt; &lt;journalCitations&gt;
-#&gt;  [1] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;80&lt;/journalCitationId&gt;\n  &lt;packa ...
-#&gt;  [2] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;81&lt;/journalCitationId&gt;\n  &lt;packa ...
-#&gt;  [3] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;205&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt;  [4] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;207&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt;  [5] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;220&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt;  [6] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;221&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt;  [7] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;222&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt;  [8] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;422&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt;  [9] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;423&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt; [10] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;424&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt; [11] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;425&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt; [12] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;426&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt; [13] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;427&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt; [14] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;428&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt; [15] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;429&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt; [16] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;430&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt; [17] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;431&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt; [18] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;432&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt; [19] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;433&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt; [20] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;434&lt;/journalCitationId&gt;\n  &lt;pack ...
-#&gt; ...</div></pre>
+<span class='co'>#&gt; {xml_document}</span>
+<span class='co'>#&gt; &lt;journalCitations&gt;</span>
+<span class='co'>#&gt;  [1] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;80&lt;/journalCitationId&gt;\n ...</span>
+<span class='co'>#&gt;  [2] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;81&lt;/journalCitationId&gt;\n ...</span>
+<span class='co'>#&gt;  [3] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;205&lt;/journalCitationId&gt;\ ...</span>
+<span class='co'>#&gt;  [4] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;207&lt;/journalCitationId&gt;\ ...</span>
+<span class='co'>#&gt;  [5] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;220&lt;/journalCitationId&gt;\ ...</span>
+<span class='co'>#&gt;  [6] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;221&lt;/journalCitationId&gt;\ ...</span>
+<span class='co'>#&gt;  [7] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;222&lt;/journalCitationId&gt;\ ...</span>
+<span class='co'>#&gt;  [8] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;422&lt;/journalCitationId&gt;\ ...</span>
+<span class='co'>#&gt;  [9] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;423&lt;/journalCitationId&gt;\ ...</span>
+<span class='co'>#&gt; [10] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;424&lt;/journalCitationId&gt;\ ...</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
       </span>
     </div>
 
@@ -92,7 +92,7 @@
       <a href="../articles/search_and_access.html">Search and Access Data</a>
     </li>
     <li>
-      <a href="../articles/publish_data.html">Evaluate and Upload Data</a>
+      <a href="../articles/evaluate_and_upload.html">Evaluate and Upload Data</a>
     </li>
     <li>
       <a href="../articles/retrieve_downloads.html">Retrieve Download Metrics</a>
@@ -187,15 +187,19 @@
 <code><a href='read_metadata.html'>read_metadata</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>read_data_entity_names</span><span class='op'>(</span><span class='st'>"knb-lter-cap.691.2"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                           entityId
-#&gt; 1 f6e4efd0b04aea3860724824ca05c5dd
-#&gt; 2 d2263480e75cc7888b41928602cda4c6
-#&gt; 3 d5cb83e4556408e48f636157e4dee49e
-#&gt;                                                 entityName
-#&gt; 1      691_arthropods_00742cd00ab0d3d02337e28d1c919654.csv
-#&gt; 2        691_captures_e5f57a98ae0b7941b10d4a600645495a.csv
-#&gt; 3 691_sampling_events_e8d76d7e76385e4ae84bcafb754d0093.csv</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='fu'>read_data_entity_names</span><span class='op'>(</span><span class='st'>"knb-lter-cap.691.2"</span><span class='op'>)</span>
+<span class='co'>#&gt;                           entityId</span>
+<span class='co'>#&gt; 1 f6e4efd0b04aea3860724824ca05c5dd</span>
+<span class='co'>#&gt; 2 d2263480e75cc7888b41928602cda4c6</span>
+<span class='co'>#&gt; 3 d5cb83e4556408e48f636157e4dee49e</span>
+<span class='co'>#&gt;                                                 entityName</span>
+<span class='co'>#&gt; 1      691_arthropods_00742cd00ab0d3d02337e28d1c919654.csv</span>
+<span class='co'>#&gt; 2        691_captures_e5f57a98ae0b7941b10d4a600645495a.csv</span>
+<span class='co'>#&gt; 3 691_sampling_events_e8d76d7e76385e4ae84bcafb754d0093.csv</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

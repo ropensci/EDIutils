@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
       </span>
     </div>
 
@@ -92,7 +92,7 @@
       <a href="../articles/search_and_access.html">Search and Access Data</a>
     </li>
     <li>
-      <a href="../articles/publish_data.html">Evaluate and Upload Data</a>
+      <a href="../articles/evaluate_and_upload.html">Evaluate and Upload Data</a>
     </li>
     <li>
       <a href="../articles/retrieve_downloads.html">Retrieve Download Metrics</a>
@@ -191,48 +191,49 @@ reader function appropriate for the data type</p>
 <code><a href='read_metadata.html'>read_metadata</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Read names and IDs of data entities in package "edi.1047.1"</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='co'># Read names and IDs of data entities in package "edi.1047.1"</span>
 <span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_data_entity_names.html'>read_data_entity_names</a></span><span class='op'>(</span>packageId <span class='op'>=</span> <span class='st'>"edi.1047.1"</span><span class='op'>)</span>
 <span class='va'>res</span>
-</div><div class='output co'>#&gt;                           entityId                entityName
-#&gt; 1 3abac5f99ecc1585879178a355176f6d        Environmentals.csv
-#&gt; 2 f6bfa89b48ced8292840e53567cbf0c8               ByCatch.csv
-#&gt; 3 c75642ddccb4301327b4b1a86bdee906               Chinook.csv
-#&gt; 4 2c9ee86cc3f3ffc729c5f18bfe0a2a1d             Steelhead.csv
-#&gt; 5 785690848dd20f4910637250cdc96819 TrapEfficiencyRelease.csv
-#&gt; 6 58b9000439a5671ea7fe13212e889ba5 TrapEfficiencySummary.csv
-#&gt; 7 86e61c1a501b7dcf0040d10e009bfd87        TrapOperations.csv</div><div class='input'>
+<span class='co'>#&gt;                           entityId                entityName</span>
+<span class='co'>#&gt; 1 3abac5f99ecc1585879178a355176f6d        Environmentals.csv</span>
+<span class='co'>#&gt; 2 f6bfa89b48ced8292840e53567cbf0c8               ByCatch.csv</span>
+<span class='co'>#&gt; 3 c75642ddccb4301327b4b1a86bdee906               Chinook.csv</span>
+<span class='co'>#&gt; 4 2c9ee86cc3f3ffc729c5f18bfe0a2a1d             Steelhead.csv</span>
+<span class='co'>#&gt; 5 785690848dd20f4910637250cdc96819 TrapEfficiencyRelease.csv</span>
+<span class='co'>#&gt; 6 58b9000439a5671ea7fe13212e889ba5 TrapEfficiencySummary.csv</span>
+<span class='co'>#&gt; 7 86e61c1a501b7dcf0040d10e009bfd87        TrapOperations.csv</span>
+
 <span class='co'># Read raw bytes of the 3rd data entity</span>
 <span class='va'>raw</span> <span class='op'>&lt;-</span> <span class='fu'>read_data_entity</span><span class='op'>(</span>packageId <span class='op'>=</span> <span class='st'>"edi.1047.1"</span>, entityId <span class='op'>=</span> <span class='va'>res</span><span class='op'>$</span><span class='va'>entityId</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>raw</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] ef bb bf 44 61 74</div><div class='input'>
+<span class='co'>#&gt; [1] ef bb bf 44 61 74</span>
+
 <span class='co'># Parse with .csv reader</span>
 <span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span>file <span class='op'>=</span> <span class='va'>raw</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>3.00B</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>?</span><span style='font-weight: bold;'>indexed</span> <span style='color: #00BB00;'>2.15GB</span> in <span style='color: #00BBBB;'> 0s</span>, <span style='color: #00BB00;'>2.15GB/s</span>                                                                              </div><div class='output co'>#&gt; <span class='warning'>Warning: One or more parsing issues, see `problems()` for details</span></div><div class='output co'>#&gt; <span class='message'><span style='font-weight: bold;'>Rows: </span><span style='color: #0000BB;'>105325</span> <span style='font-weight: bold;'>Columns: </span><span style='color: #0000BB;'>20</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>--</span> <span style='font-weight: bold;'>Column specification</span> <span style='color: #00BBBB;'>--------------------------------------------------------</span></span>
-#&gt; <span class='message'><span style='font-weight: bold;'>Delimiter:</span> ","</span>
-#&gt; <span class='message'><span style='color: #BB0000;'>chr</span> (12): Date, subSiteName, commonName, atCaptureRun, finalRun, finalRunMet...</span>
-#&gt; <span class='message'><span style='color: #00BB00;'>dbl</span>  (7): trapVisitID, catchRawID, releaseID, n, forkLength, weight, specime...</span>
-#&gt; <span class='message'><span style='color: #BBBB00;'>lgl</span>  (1): Specimen.comments</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'><span style='color: #00BBBB;'>i</span> Use <span style='color: #C6C6C6; background-color: #262626;'>`spec()`</span> to retrieve the full column specification for this data.</span>
-#&gt; <span class='message'><span style='color: #00BBBB;'>i</span> Specify the column types or set <span style='color: #C6C6C6; background-color: #262626;'>`show_col_types = FALSE`</span> to quiet this message.</span></div><div class='input'><span class='va'>data</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 105,325 x 20</span>
-#&gt;    Date          trapVisitID subSiteName   catchRawID releaseID commonName     n
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> 1/8/2014 0:00         330 North Channe~      <span style='text-decoration: underline;'>32</span>409         0 Chinook s~     1
-#&gt; <span style='color: #BCBCBC;'> 2</span> 1/8/2014 0:00         330 North Channe~      <span style='text-decoration: underline;'>32</span>412         0 Chinook s~     1
-#&gt; <span style='color: #BCBCBC;'> 3</span> 1/8/2014 0:00         330 North Channe~      <span style='text-decoration: underline;'>32</span>410         0 Chinook s~     1
-#&gt; <span style='color: #BCBCBC;'> 4</span> 1/8/2014 0:00         330 North Channe~      <span style='text-decoration: underline;'>32</span>408         0 Chinook s~     1
-#&gt; <span style='color: #BCBCBC;'> 5</span> 1/8/2014 0:00         330 North Channe~      <span style='text-decoration: underline;'>32</span>406         0 Chinook s~     1
-#&gt; <span style='color: #BCBCBC;'> 6</span> 1/8/2014 0:00         322 North Channe~      <span style='text-decoration: underline;'>31</span>958         0 Chinook s~     1
-#&gt; <span style='color: #BCBCBC;'> 7</span> 1/8/2014 0:00         322 North Channe~      <span style='text-decoration: underline;'>31</span>975         0 Chinook s~     1
-#&gt; <span style='color: #BCBCBC;'> 8</span> 1/8/2014 0:00         322 North Channe~      <span style='text-decoration: underline;'>31</span>974         0 Chinook s~     1
-#&gt; <span style='color: #BCBCBC;'> 9</span> 1/8/2014 0:00         322 North Channe~      <span style='text-decoration: underline;'>31</span>973         0 Chinook s~     1
-#&gt; <span style='color: #BCBCBC;'>10</span> 1/8/2014 0:00         322 North Channe~      <span style='text-decoration: underline;'>31</span>972         0 Chinook s~     1
-#&gt; <span style='color: #949494;'># ... with 105,315 more rows, and 13 more variables: atCaptureRun &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   finalRun &lt;chr&gt;, finalRunMethod &lt;chr&gt;, lifeStage &lt;chr&gt;, forkLength &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   weight &lt;dbl&gt;, mort &lt;chr&gt;, fishOrigin &lt;chr&gt;, markType &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   CatchRaw.comments &lt;chr&gt;, specimenTypeID &lt;dbl&gt;, physicalSpecimenCode &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   Specimen.comments &lt;lgl&gt;</span></div></pre>
+<span class='va'>data</span>
+<span class='co'>#&gt; # A tibble: 105,325 x 20</span>
+<span class='co'>#&gt; Date   trapVisitID subSiteName  catchRawID releaseID commonName     n</span>
+<span class='co'>#&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;</span>
+<span class='co'>#&gt;   1 1/8/2~         330 North Chann~      32409         0 Chinook s~     1</span>
+<span class='co'>#&gt; 2 1/8/2~         330 North Chann~      32412         0 Chinook s~     1</span>
+<span class='co'>#&gt; 3 1/8/2~         330 North Chann~      32410         0 Chinook s~     1</span>
+<span class='co'>#&gt; 4 1/8/2~         330 North Chann~      32408         0 Chinook s~     1</span>
+<span class='co'>#&gt; 5 1/8/2~         330 North Chann~      32406         0 Chinook s~     1</span>
+<span class='co'>#&gt; 6 1/8/2~         322 North Chann~      31958         0 Chinook s~     1</span>
+<span class='co'>#&gt; 7 1/8/2~         322 North Chann~      31975         0 Chinook s~     1</span>
+<span class='co'>#&gt; 8 1/8/2~         322 North Chann~      31974         0 Chinook s~     1</span>
+<span class='co'>#&gt; 9 1/8/2~         322 North Chann~      31973         0 Chinook s~     1</span>
+<span class='co'>#&gt; 10 1/8/2~         322 North Chann~      31972         0 Chinook s~     1</span>
+<span class='co'>#&gt; # ... with 105,315 more rows, and 13 more variables:</span>
+<span class='co'>#&gt; #   atCaptureRun &lt;chr&gt;, finalRun &lt;chr&gt;, finalRunMethod &lt;chr&gt;,</span>
+<span class='co'>#&gt; #   lifeStage &lt;chr&gt;, forkLength &lt;dbl&gt;, weight &lt;dbl&gt;, mort &lt;chr&gt;,</span>
+<span class='co'>#&gt; #   fishOrigin &lt;chr&gt;, markType &lt;chr&gt;, CatchRaw.comments &lt;chr&gt;,</span>
+<span class='co'>#&gt; #   specimenTypeID &lt;dbl&gt;, physicalSpecimenCode &lt;chr&gt;,</span>
+<span class='co'>#&gt; #   Specimen.comments &lt;lgl&gt;</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
       </span>
     </div>
 
@@ -92,7 +92,7 @@
       <a href="../articles/search_and_access.html">Search and Access Data</a>
     </li>
     <li>
-      <a href="../articles/publish_data.html">Evaluate and Upload Data</a>
+      <a href="../articles/evaluate_and_upload.html">Evaluate and Upload Data</a>
     </li>
     <li>
       <a href="../articles/retrieve_downloads.html">Retrieve Download Metrics</a>
@@ -187,15 +187,19 @@
 <code><a href='read_metadata.html'>read_metadata</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Read entity sizes</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='co'># Read entity sizes</span>
 <span class='va'>sizes</span> <span class='op'>&lt;-</span> <span class='fu'>read_data_entity_sizes</span><span class='op'>(</span>packageId <span class='op'>=</span> <span class='st'>"knb-lter-bnz.786.3"</span><span class='op'>)</span>
 <span class='va'>sizes</span>
-</div><div class='output co'>#&gt;                           entityId   size
-#&gt; 1 66bf513405f7799c35f24e4b33f7d835  19513
-#&gt; 2 33d2d8cedeea9d5dbefc973680d4557e  26429
-#&gt; 3 197b0d4372ecabd697cfd5ff1157e41b   2295
-#&gt; 4 bb8cdcf1d6f06f61007620bfa5333f2a 123366
-#&gt; 5 0916ac12f9896c35a27ea156c653718e  46475</div></pre>
+<span class='co'>#&gt;                           entityId   size</span>
+<span class='co'>#&gt; 1 66bf513405f7799c35f24e4b33f7d835  19513</span>
+<span class='co'>#&gt; 2 33d2d8cedeea9d5dbefc973680d4557e  26429</span>
+<span class='co'>#&gt; 3 197b0d4372ecabd697cfd5ff1157e41b   2295</span>
+<span class='co'>#&gt; 4 bb8cdcf1d6f06f61007620bfa5333f2a 123366</span>
+<span class='co'>#&gt; 5 0916ac12f9896c35a27ea156c653718e  46475</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

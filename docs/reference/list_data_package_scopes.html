@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
       </span>
     </div>
 
@@ -92,7 +92,7 @@
       <a href="../articles/search_and_access.html">Search and Access Data</a>
     </li>
     <li>
-      <a href="../articles/publish_data.html">Evaluate and Upload Data</a>
+      <a href="../articles/evaluate_and_upload.html">Evaluate and Upload Data</a>
     </li>
     <li>
       <a href="../articles/retrieve_downloads.html">Retrieve Download Metrics</a>
@@ -168,22 +168,26 @@
 <code><a href='list_user_data_packages.html'>list_user_data_packages</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># List scopes</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='co'># List scopes</span>
 <span class='va'>scopes</span> <span class='op'>&lt;-</span> <span class='fu'>list_data_package_scopes</span><span class='op'>(</span><span class='op'>)</span>
 <span class='va'>scopes</span>
-</div><div class='output co'>#&gt;  [1] "ecotrends"           "edi"                 "knb-lter-and"       
-#&gt;  [4] "knb-lter-arc"        "knb-lter-bes"        "knb-lter-ble"       
-#&gt;  [7] "knb-lter-bnz"        "knb-lter-cap"        "knb-lter-cce"       
-#&gt; [10] "knb-lter-cdr"        "knb-lter-cwt"        "knb-lter-fce"       
-#&gt; [13] "knb-lter-gce"        "knb-lter-hbr"        "knb-lter-hfr"       
-#&gt; [16] "knb-lter-jrn"        "knb-lter-kbs"        "knb-lter-knz"       
-#&gt; [19] "knb-lter-luq"        "knb-lter-mcm"        "knb-lter-mcr"       
-#&gt; [22] "knb-lter-nes"        "knb-lter-nin"        "knb-lter-ntl"       
-#&gt; [25] "knb-lter-nwk"        "knb-lter-nwt"        "knb-lter-pal"       
-#&gt; [28] "knb-lter-pie"        "knb-lter-sbc"        "knb-lter-sev"       
-#&gt; [31] "knb-lter-sgs"        "knb-lter-vcr"        "lter-landsat"       
-#&gt; [34] "lter-landsat-ledaps" "msb-cap"             "msb-paleon"         
-#&gt; [37] "msb-tempbiodev"     </div></pre>
+<span class='co'>#&gt;  [1] "ecotrends"           "edi"                 "knb-lter-and"       </span>
+<span class='co'>#&gt;  [4] "knb-lter-arc"        "knb-lter-bes"        "knb-lter-ble"       </span>
+<span class='co'>#&gt;  [7] "knb-lter-bnz"        "knb-lter-cap"        "knb-lter-cce"       </span>
+<span class='co'>#&gt; [10] "knb-lter-cdr"        "knb-lter-cwt"        "knb-lter-fce"       </span>
+<span class='co'>#&gt; [13] "knb-lter-gce"        "knb-lter-hbr"        "knb-lter-hfr"       </span>
+<span class='co'>#&gt; [16] "knb-lter-jrn"        "knb-lter-kbs"        "knb-lter-knz"       </span>
+<span class='co'>#&gt; [19] "knb-lter-luq"        "knb-lter-mcm"        "knb-lter-mcr"       </span>
+<span class='co'>#&gt; [22] "knb-lter-nes"        "knb-lter-nin"        "knb-lter-ntl"       </span>
+<span class='co'>#&gt; [25] "knb-lter-nwk"        "knb-lter-nwt"        "knb-lter-pal"       </span>
+<span class='co'>#&gt; [28] "knb-lter-pie"        "knb-lter-sbc"        "knb-lter-sev"       </span>
+<span class='co'>#&gt; [31] "knb-lter-sgs"        "knb-lter-vcr"        "lter-landsat"       </span>
+<span class='co'>#&gt; [34] "lter-landsat-ledaps" "msb-cap"             "msb-paleon"         </span>
+<span class='co'>#&gt; [37] "msb-tempbiodev"   </span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

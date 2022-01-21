@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
       </span>
     </div>
 
@@ -92,7 +92,7 @@
       <a href="../articles/search_and_access.html">Search and Access Data</a>
     </li>
     <li>
-      <a href="../articles/publish_data.html">Evaluate and Upload Data</a>
+      <a href="../articles/evaluate_and_upload.html">Evaluate and Upload Data</a>
     </li>
     <li>
       <a href="../articles/retrieve_downloads.html">Retrieve Download Metrics</a>
@@ -164,39 +164,34 @@ are not included in this list.</p>
 <code><a href='list_reservation_identifiers.html'>list_reservation_identifiers</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># List reservations</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='co'># List reservations</span>
 <span class='va'>reservations</span> <span class='op'>&lt;-</span> <span class='fu'>list_active_reservations</span><span class='op'>(</span><span class='op'>)</span>
 <span class='va'>reservations</span>
-</div><div class='output co'>#&gt; {xml_document}
-#&gt; &lt;reservations&gt;
-#&gt;  [1] &lt;reservation&gt;\n  &lt;docid&gt;edi.11&lt;/docid&gt;\n  &lt;principal&gt;uid=NTL,o=LTER,dc=e ...
-#&gt;  [2] &lt;reservation&gt;\n  &lt;docid&gt;edi.130&lt;/docid&gt;\n  &lt;principal&gt;uid=user23,o=EDI,d ...
-#&gt;  [3] &lt;reservation&gt;\n  &lt;docid&gt;edi.131&lt;/docid&gt;\n  &lt;principal&gt;uid=user20,o=EDI,d ...
-#&gt;  [4] &lt;reservation&gt;\n  &lt;docid&gt;edi.132&lt;/docid&gt;\n  &lt;principal&gt;uid=chase,o=EDI,dc ...
-#&gt;  [5] &lt;reservation&gt;\n  &lt;docid&gt;edi.142&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...
-#&gt;  [6] &lt;reservation&gt;\n  &lt;docid&gt;edi.152&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...
-#&gt;  [7] &lt;reservation&gt;\n  &lt;docid&gt;edi.154&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...
-#&gt;  [8] &lt;reservation&gt;\n  &lt;docid&gt;edi.156&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...
-#&gt;  [9] &lt;reservation&gt;\n  &lt;docid&gt;edi.158&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...
-#&gt; [10] &lt;reservation&gt;\n  &lt;docid&gt;edi.159&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...
-#&gt; [11] &lt;reservation&gt;\n  &lt;docid&gt;edi.161&lt;/docid&gt;\n  &lt;principal&gt;uid=jtallant,o=EDI ...
-#&gt; [12] &lt;reservation&gt;\n  &lt;docid&gt;edi.162&lt;/docid&gt;\n  &lt;principal&gt;uid=jtallant,o=EDI ...
-#&gt; [13] &lt;reservation&gt;\n  &lt;docid&gt;edi.171&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...
-#&gt; [14] &lt;reservation&gt;\n  &lt;docid&gt;edi.172&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...
-#&gt; [15] &lt;reservation&gt;\n  &lt;docid&gt;edi.173&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...
-#&gt; [16] &lt;reservation&gt;\n  &lt;docid&gt;edi.174&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...
-#&gt; [17] &lt;reservation&gt;\n  &lt;docid&gt;edi.175&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall,o=EDI,dc ...
-#&gt; [18] &lt;reservation&gt;\n  &lt;docid&gt;edi.177&lt;/docid&gt;\n  &lt;principal&gt;uid=jtallant,o=EDI ...
-#&gt; [19] &lt;reservation&gt;\n  &lt;docid&gt;edi.178&lt;/docid&gt;\n  &lt;principal&gt;uid=EDI,o=EDI,dc=e ...
-#&gt; [20] &lt;reservation&gt;\n  &lt;docid&gt;edi.180&lt;/docid&gt;\n  &lt;principal&gt;uid=EDI,o=EDI,dc=e ...
-#&gt; ...</div><div class='input'>
+<span class='co'>#&gt; {xml_document}</span>
+<span class='co'>#&gt; &lt;reservations&gt;</span>
+<span class='co'>#&gt;  [1] &lt;reservation&gt;\n  &lt;docid&gt;edi.11&lt;/docid&gt;\n  &lt;principal&gt;uid=NTL,o=L ...</span>
+<span class='co'>#&gt;  [2] &lt;reservation&gt;\n  &lt;docid&gt;edi.130&lt;/docid&gt;\n  &lt;principal&gt;uid=user23 ...</span>
+<span class='co'>#&gt;  [3] &lt;reservation&gt;\n  &lt;docid&gt;edi.131&lt;/docid&gt;\n  &lt;principal&gt;uid=user20 ...</span>
+<span class='co'>#&gt;  [4] &lt;reservation&gt;\n  &lt;docid&gt;edi.132&lt;/docid&gt;\n  &lt;principal&gt;uid=chase, ...</span>
+<span class='co'>#&gt;  [5] &lt;reservation&gt;\n  &lt;docid&gt;edi.142&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span>
+<span class='co'>#&gt;  [6] &lt;reservation&gt;\n  &lt;docid&gt;edi.152&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span>
+<span class='co'>#&gt;  [7] &lt;reservation&gt;\n  &lt;docid&gt;edi.154&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span>
+<span class='co'>#&gt;  [8] &lt;reservation&gt;\n  &lt;docid&gt;edi.156&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span>
+<span class='co'>#&gt;  [9] &lt;reservation&gt;\n  &lt;docid&gt;edi.158&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span>
+<span class='co'>#&gt; [10] &lt;reservation&gt;\n  &lt;docid&gt;edi.159&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span>
+<span class='co'>#&gt; ...</span>
+
 <span class='co'># Show first</span>
 <span class='fu'>xml2</span><span class='fu'>::</span><span class='fu'><a href='http://xml2.r-lib.org/reference/xml_find_all.html'>xml_find_first</a></span><span class='op'>(</span><span class='va'>reservations</span>, <span class='st'>"reservation"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; {xml_node}
-#&gt; &lt;reservation&gt;
-#&gt; [1] &lt;docid&gt;edi.11&lt;/docid&gt;
-#&gt; [2] &lt;principal&gt;uid=NTL,o=LTER,dc=ecoinformatics,dc=org&lt;/principal&gt;
-#&gt; [3] &lt;dateReserved&gt;2017-03-02 15:02:28.899&lt;/dateReserved&gt;</div></pre>
+<span class='co'>#&gt; {xml_node}</span>
+<span class='co'>#&gt; &lt;reservation&gt;</span>
+<span class='co'>#&gt; [1] &lt;docid&gt;edi.11&lt;/docid&gt;</span>
+<span class='co'>#&gt; [2] &lt;principal&gt;uid=NTL,o=LTER,dc=ecoinformatics,dc=org&lt;/principal&gt;</span>
+<span class='co'>#&gt; [3] &lt;dateReserved&gt;2017-03-02 15:02:28.899&lt;/dateReserved&gt;</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
       </span>
     </div>
 
@@ -92,7 +92,7 @@
       <a href="../articles/search_and_access.html">Search and Access Data</a>
     </li>
     <li>
-      <a href="../articles/publish_data.html">Evaluate and Upload Data</a>
+      <a href="../articles/evaluate_and_upload.html">Evaluate and Upload Data</a>
     </li>
     <li>
       <a href="../articles/retrieve_downloads.html">Retrieve Download Metrics</a>
@@ -170,25 +170,30 @@
 <code><a href='list_principal_owner_citations.html'>list_principal_owner_citations</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># List citations</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+<span class='co'># List citations</span>
 <span class='va'>journalCitations</span> <span class='op'>&lt;-</span> <span class='fu'>list_data_package_citations</span><span class='op'>(</span><span class='st'>"edi.845.1"</span><span class='op'>)</span>
 <span class='va'>journalCitations</span>
-</div><div class='output co'>#&gt; {xml_document}
-#&gt; &lt;journalCitations&gt;
-#&gt; [1] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;381&lt;/journalCitationId&gt;\n  &lt;packa ...</div><div class='input'>
+<span class='co'>#&gt; {xml_document}</span>
+<span class='co'>#&gt; &lt;journalCitations&gt;</span>
+<span class='co'>#&gt; [1] &lt;journalCitation&gt;\n  &lt;journalCitationId&gt;381&lt;/journalCitationId&gt;\n  ...</span>
+
 <span class='co'># Show first</span>
 <span class='fu'>xml2</span><span class='fu'>::</span><span class='fu'><a href='http://xml2.r-lib.org/reference/xml_find_all.html'>xml_find_first</a></span><span class='op'>(</span><span class='va'>journalCitations</span>, <span class='st'>"journalCitation"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; {xml_node}
-#&gt; &lt;journalCitation&gt;
-#&gt; [1] &lt;journalCitationId&gt;381&lt;/journalCitationId&gt;
-#&gt; [2] &lt;packageId&gt;edi.845.1&lt;/packageId&gt;
-#&gt; [3] &lt;principalOwner&gt;uid=csmith,o=EDI,dc=edirepository,dc=org&lt;/principalOwner&gt;
-#&gt; [4] &lt;dateCreated&gt;2021-05-27T13:23:14.981&lt;/dateCreated&gt;
-#&gt; [5] &lt;articleDoi&gt;https://doi.org/10.1016/j.scitotenv.2021.148033&lt;/articleDoi&gt;
-#&gt; [6] &lt;articleTitle&gt;Bioturbation frequency alters methane emissions from reserv ...
-#&gt; [7] &lt;articleUrl&gt;https://doi.org/10.1016/j.scitotenv.2021.148033&lt;/articleUrl&gt;
-#&gt; [8] &lt;journalTitle&gt;Science of the Total Environment&lt;/journalTitle&gt;
-#&gt; [9] &lt;relationType&gt;IsCitedBy&lt;/relationType&gt;</div></pre>
+<span class='co'>#&gt; {xml_node}</span>
+<span class='co'>#&gt; &lt;journalCitation&gt;</span>
+<span class='co'>#&gt; [1] &lt;journalCitationId&gt;381&lt;/journalCitationId&gt;</span>
+<span class='co'>#&gt; [2] &lt;packageId&gt;edi.845.1&lt;/packageId&gt;</span>
+<span class='co'>#&gt; [3] &lt;principalOwner&gt;uid=csmith,o=EDI,dc=edirepository,dc=org&lt;/principa ...</span>
+<span class='co'>#&gt; [4] &lt;dateCreated&gt;2021-05-27T13:23:14.981&lt;/dateCreated&gt;</span>
+<span class='co'>#&gt; [5] &lt;articleDoi&gt;https://doi.org/10.1016/j.scitotenv.2021.148033&lt;/artic ...</span>
+<span class='co'>#&gt; [6] &lt;articleTitle&gt;Bioturbation frequency alters methane emissions from ...</span>
+<span class='co'>#&gt; [7] &lt;articleUrl&gt;https://doi.org/10.1016/j.scitotenv.2021.148033&lt;/artic ...</span>
+<span class='co'>#&gt; [8] &lt;journalTitle&gt;Science of the Total Environment&lt;/journalTitle&gt;</span>
+<span class='co'>#&gt; [9] &lt;relationType&gt;IsCitedBy&lt;/relationType&gt;</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
