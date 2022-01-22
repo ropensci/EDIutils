@@ -10,6 +10,8 @@ has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![R-CMD-check](https://github.com/EDIorg/EDIutils/workflows/R-CMD-check/badge.svg)](https://github.com/EDIorg/EDIutils/actions)
 [![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/main/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=main)
+[![Status at rOpenSci Software Peer
+Review](https://badges.ropensci.org/498_status.svg)](https://github.com/ropensci/software-review/issues/498)
 <!-- badges: end -->
 
 A client for the Environmental Data Initiative repository REST API. The
