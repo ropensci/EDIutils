@@ -19,10 +19,13 @@ list_data_entities(packageId, env = "production")
 List data entities
 }
 \examples{
+\dontrun{
+
 entityIds <- list_data_entities("knb-lter-and.2732.7")
 entityIds
 #> [1] "0464a1d9262fc6e609cb0b24adb7e5ba"
 #> [2] "cc3ade83d3655edd2ca674721a52ef46"
+}
 }
 \seealso{
 Other Listing: 
