@@ -63,6 +63,7 @@ Other Accessing:
 \code{\link{read_data_entity_size}()},
 \code{\link{read_data_entity}()},
 \code{\link{read_data_package_archive}()},
+\code{\link{read_data_package_citation}()},
 \code{\link{read_data_package_doi}()},
 \code{\link{read_data_package_error}()},
 \code{\link{read_data_package_from_doi}()},
