@@ -8,6 +8,7 @@ Description: A client for the Environmental Data Initiative repository REST API.
 Imports: 
     curl,
     httr,
+    jsonlite,
     xml2
 License: MIT + file LICENSE
 Encoding: UTF-8

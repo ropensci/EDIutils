@@ -1,0 +1,40 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://cite.edirepository.org/cite/edi.460.1?env=production&style=ESIP&access
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: nginx/1.14.0 (Ubuntu)
+      date: Thu, 03 Mar 2022 23:05:59 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '388'
+      connection: keep-alive
+      access-control-allow-origin: '*'
+      access-control-allow-methods: GET, POST, OPTIONS
+      access-control-allow-headers: DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range
+      access-control-expose-headers: Content-Length,Content-Range
+    body:
+      encoding: UTF-8
+      file: no
+      string: |-
+        {
+          "authors": "Armitage, A.R., C.A. Weaver, J.S. Kominoski, and S.C. Pennings.",
+          "pub_year": "2020.",
+          "title": "Hurricane Harvey: Coastal wetland plant responses and recovery in Texas: 2014-2019",
+          "version": "ver 1.",
+          "publisher": "Environmental Data Initiative.",
+          "doi": "https://doi.org/10.6073/pasta/e288ccaf55afceecc29bdf0a341248d6.",
+          "accessed": "Accessed 2022-03-03."
+        }
+  recorded_at: 2022-03-03 23:05:59 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
