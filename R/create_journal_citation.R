@@ -33,7 +33,7 @@
 #' # Create journal citation
 #' journalCitationId <- create_journal_citation(
 #'   packageId = "edi.17.1",
-#'   articleDoi = "https://doi.org/10.1890/11-1026.1",
+#'   articleDoi = "10.1890/11-1026.1",
 #'   articleTitle = "Corridors promote fire via connectivity and edge effects",
 #'   journalTitle = "Ecological Applications",
 #'   relationType = "IsCitedBy",
