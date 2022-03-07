@@ -26,25 +26,25 @@ User authentication is required (see \code{login()})
 
 login()
 
-# Get audit record
-auditRecord <- get_audit_record(oid = "121606334")
-auditRecord
+# Get audit report
+auditReport <- get_audit_record(oid = "121606334")
+auditReport
 #> {xml_document}
 #> <auditReport>
-#>   [1] <auditRecord>\n  <oid>121606334</oid>\n  <entryTime>2021-12-01T ...
+#>  [1] <auditRecord>\n  <oid>121606334</oid>\n  <entryTime>2021-12-01T ...
 
 xml2::xml_find_first(auditReport, ".//auditRecord")
 #> {xml_node}
 #> <auditRecord>
-#> [1] <oid>121606334</oid>
-#> [2] <entryTime>2021-12-01T00:00:07</entryTime>
-#> [3] <category>warn</category>
-#> [4] <service>DataPackageManager-1.0</service>
-#> [5] <serviceMethod>readDataEntity</serviceMethod>
-#> [6] <responseStatus>401</responseStatus>
-#> [7] <resourceId/>
-#> [8] <user>robot</user>
-#> [9] <userAgent>null</userAgent>
+#>  [1] <oid>121606334</oid>
+#>  [2] <entryTime>2021-12-01T00:00:07</entryTime>
+#>  [3] <category>warn</category>
+#>  [4] <service>DataPackageManager-1.0</service>
+#>  [5] <serviceMethod>readDataEntity</serviceMethod>
+#>  [6] <responseStatus>401</responseStatus>
+#>  [7] <resourceId/>
+#>  [8] <user>robot</user>
+#>  [9] <userAgent>Mozilla/5.0 (compatible; SemrushBot/7~bl; +http://ww ...
 #> [10] <groups/>
 #> [11] <authSystem>https://pasta.edirepository.org/authentication</aut ...
 #> [12] <entryText>Robots are not authorized access to data objects. Ro ...
