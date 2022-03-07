@@ -1,7 +1,7 @@
 #' List principal owner citations
 #'
 #' @param principalOwner (character) Principal owner in the format returned by
-#' \code{construct_dn()}
+#' \code{create_dn()}
 #' @param env (character) Repository environment. Can be: "production",
 #' "staging", or "development".
 #'

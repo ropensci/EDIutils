@@ -8,7 +8,7 @@ list_principal_owner_citations(principalOwner, env = "production")
 }
 \arguments{
 \item{principalOwner}{(character) Principal owner in the format returned by
-\code{construct_dn()}}
+\code{create_dn()}}
 
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
