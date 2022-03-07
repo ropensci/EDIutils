@@ -3,7 +3,7 @@ Title: An API Client for the Environmental Data Initiative Repository
 Version: 0.0.0.9001
 Authors@R: 
     c(person("Colin", "Smith", email = "colin.smith@wisc.edu", role = c("aut", "cre"), comment = "https://orcid.org/0000-0003-2261-9931"),
-    person("Corinna", "Gries", role = "ctb", comment = "0000-0002-9091-6543"))
+    person("Corinna", "Gries", role = "ctb", comment = "https://orcid.org/0000-0002-9091-6543"))
 Description: A client for the Environmental Data Initiative repository REST API. The EDI data repository <https://portal.edirepository.org/nis/home.jsp> is for publication and reuse of ecological data with emphasis on metadata accuracy and completeness. It is built upon the PASTA+ software stack <https://pastaplus-core.readthedocs.io/en/latest/index.html#> and was developed in collaboration with the US LTER Network <https://lternet.edu/>. EDIutils includes functions to search and access existing data, evaluate and upload new data, and assist other data management tasks common to repository users.
 Imports: 
     curl,
