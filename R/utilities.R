@@ -415,3 +415,40 @@ text2char <- function(txt) {
   )[[1]]
   return(res)
 }
+
+
+
+
+
+
+
+
+#' Convert xml to data.frame
+#'
+#' @param xml (xml_document) XML document returned by \code{xml2::read_xml()}
+#'
+#' @return (data.frame) \code{xml} as a data.frame
+#' 
+#' @note Only supports XML documents with one or two layers of nesting.
+#' 
+#' @noRd
+#' 
+xml2df <- function(xml) {
+  node2df <- function(x) {
+    chldrn <- xml2::xml_children(x)
+    nms <- xml2::xml_name(chldrn, )
+    vals <- xml2::xml_text(chldrn)
+    names(vals) <- nms
+    res <- data.frame(as.list(vals))
+    return(res)
+  }
+  is_nested <- any(xml2::xml_length(xml2::xml_children(xml)) > 0)
+  if (is_nested) {
+    chldrn <- xml2::xml_children(xml)
+    lst <- lapply(chldrn, node2df)
+    res <- do.call("rbind", lst)
+  } else {
+    res <- node2df(xml)
+  }
+  return(res)
+}
