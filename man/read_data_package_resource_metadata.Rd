@@ -4,16 +4,23 @@
 \alias{read_data_package_resource_metadata}
 \title{Read data package resource metadata}
 \usage{
-read_data_package_resource_metadata(packageId, env = "production")
+read_data_package_resource_metadata(
+  packageId,
+  as = "data.frame",
+  env = "production"
+)
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
+
+\item{as}{(character) Format of the returned object. Can be: "data.frame" 
+or "xml".}
 
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(xml_document) Resource metadata of \code{packageId}
+(data.frame or xml_document) Resource metadata of \code{packageId}
 }
 \description{
 Read data package resource metadata
@@ -25,21 +32,6 @@ Read data package resource metadata
 resourceMetadata <- read_data_package_resource_metadata(
  packageId = "edi.613.1"
 )
-resourceMetadata
-#> {xml_document}
-#> <resourceMetadata>
-#>  [1] <dateCreated>2021-06-08 18:02:43.361</dateCreated>
-#>  [2] <doi>doi:10.6073/pasta/47d7cb6d374b6662cce98e42122169f8</doi>
-#>  [3] <entityId>null</entityId>
-#>  [4] <entityName>null</entityName>
-#>  [5] <fileName>null</fileName>
-#>  [6] <identifier>613</identifier>
-#>  [7] <packageId>edi.613.1</packageId>
-#>  [8] <principalOwner>uid=EDI,o=EDI,dc=edirepository,dc=org</principal ...
-#>  [9] <resourceId>https://pasta.lternet.edu/package/eml/edi/613/1</res ...
-#> [10] <resourceType>dataPackage</resourceType>
-#> [11] <revision>1</revision>
-#> [12] <scope>edi</scope>
 }
 }
 \seealso{

@@ -12,7 +12,7 @@ testthat::test_that("read_data_package_report() works", {
   expect_true(all(found_children %in% expected_children))
   # As html
   vcr::use_cassette("read_data_package_report_html", {
-    res <- read_data_package_report("knb-lter-knz.260.4", frmt = "html")
+    res <- read_data_package_report("knb-lter-knz.260.4", as = "html")
   })
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))
   expect_true("body" %in% xml2::xml_name(xml2::xml_children(res)))
@@ -20,7 +20,7 @@ testthat::test_that("read_data_package_report() works", {
   vcr::use_cassette("read_data_package_report_char", {
     qualityReport <- read_data_package_report(
       packageId = "knb-lter-knz.260.4", 
-      frmt = "char")
+      as = "char")
   })
   expect_type(qualityReport, "character")
 })

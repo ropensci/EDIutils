@@ -4,12 +4,12 @@
 \alias{read_evaluate_report}
 \title{Read evaluate report}
 \usage{
-read_evaluate_report(transaction, frmt = "xml", env = "production")
+read_evaluate_report(transaction, as = "xml", env = "production")
 }
 \arguments{
 \item{transaction}{(character) Transaction identifier}
 
-\item{frmt}{(character) Format of the returned report. Can be: "xml", "html",
+\item{as}{(character) Format of the returned report. Can be: "xml", "html",
 or "char".}
 
 \item{env}{(character) Repository environment. Can be: "production",
@@ -56,7 +56,7 @@ qualityReport
 # Read as HTML
 qualityReport <- read_evaluate_report(
   transaction = transaction,
-  frmt = "html",
+  as = "html",
   env = "staging"
 )
 qualityReport
@@ -67,7 +67,7 @@ qualityReport
 # Read as character
 qualityReport <- read_evaluate_report(
   transaction = transaction,
-  frmt = "char",
+  as = "char",
   env = "staging"
 )
 writeLines(qualityReport, "./data/report.txt")

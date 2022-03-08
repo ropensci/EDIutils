@@ -1,10 +1,12 @@
 #' Get journal citation
 #'
 #' @param journalCitationId (numeric) Journal citation identifier
+#' @param as (character) Format of the returned object. Can be: "data.frame" 
+#' or "xml".
 #' @param env (character) Repository environment. Can be: "production",
 #' "staging", or "development".
 #'
-#' @return (xml_document) Journal citation
+#' @return (data.frame or xml_document) Journal citation
 #' 
 #' @family Journal Citations
 #'
@@ -15,20 +17,10 @@
 #' 
 #' # Get citation
 #' journalCitation <- get_journal_citation(381)
-#' journalCitation
-#' #> {xml_document}
-#' #> <journalCitation>
-#' #> [1] <journalCitationId>381</journalCitationId>
-#' #> [2] <packageId>edi.845.1</packageId>
-#' #> [3] <principalOwner>uid=csmith,o=EDI,dc=edirepository,dc=org</principa ...
-#' #> [4] <dateCreated>2021-05-27T13:23:14.981</dateCreated>
-#' #> [5] <articleDoi>https://doi.org/10.1016/j.scitotenv.2021.148033</artic ...
-#' #> [6] <articleTitle>Bioturbation frequency alters methane emissions from ...
-#' #> [7] <articleUrl>https://doi.org/10.1016/j.scitotenv.2021.148033</artic ...
-#' #> [8] <journalTitle>Science of the Total Environment</journalTitle>
-#' #> [9] <relationType>IsCitedBy</relationType>
 #' }
-get_journal_citation <- function(journalCitationId, env = "production") {
+get_journal_citation <- function(journalCitationId, 
+                                 as = "data.frame",
+                                 env = "production") {
   url <- paste0(
     base_url(env), "/package/citation/eml/",
     journalCitationId
@@ -36,5 +28,6 @@ get_journal_citation <- function(journalCitationId, env = "production") {
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
-  return(xml2::read_xml(res))
+  res <- xml2::read_xml(res)
+  ifelse(as == "data.frame", return(xml2df(res)), return(res))
 }

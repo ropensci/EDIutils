@@ -8,7 +8,7 @@
 #' @param ignore (character) Ignore individuals, organizations, or positions in 
 #' the author list. Can be: "INDIVIDUALS", "ORGANIZATIONS", or "POSITIONS". See 
 #' details below.
-#' @param frmt (character) Format of the returned citation. Can be: "char", 
+#' @param as (character) Format of the returned citation. Can be: "char", 
 #' "html", "json".
 #' @param env (character) Repository environment. Can be: "production",
 #' "staging", or "development".
@@ -107,7 +107,7 @@
 #' #> [1] "Armitage AR, Weaver CA, Kominoski JS, and Pennings SC (2020) Hur..."
 #' 
 #' # Retrieve "ESIP" stylized citation (default) in HTML format
-#' citation <- read_data_package_citation(packageId, frmt = "html")
+#' citation <- read_data_package_citation(packageId, as = "html")
 #' citation
 #' #> {html_document}
 #' #> <html>
@@ -124,7 +124,7 @@ read_data_package_citation <- function(packageId,
                                        access = TRUE,
                                        style = "ESIP",
                                        ignore = NULL,
-                                       frmt = "char",
+                                       as = "char",
                                        env = "production") {
   # Build query
   url <- paste0("https://cite.edirepository.org/cite/", packageId, "?")
@@ -137,7 +137,7 @@ read_data_package_citation <- function(packageId,
     url <- paste0(url, "&access")
   }
   # Place request
-  if (frmt == "char") {
+  if (as == "char") {
     resp <- httr::GET(
       url,
       set_user_agent(),
@@ -147,7 +147,7 @@ read_data_package_citation <- function(packageId,
     res <- httr::content(resp, as = "text", encoding = "UTF-8")
     httr::stop_for_status(resp, res)
     return(res)
-  } else if (frmt == "html") {
+  } else if (as == "html") {
     resp <- httr::GET(
       url,
       set_user_agent(),
@@ -157,7 +157,7 @@ read_data_package_citation <- function(packageId,
     res <- httr::content(resp, as = "text", encoding = "UTF-8")
     httr::stop_for_status(resp, res)
     return(xml2::read_html(res))
-  } else if (frmt == "json") {
+  } else if (as == "json") {
     resp <- httr::GET(
       url,
       set_user_agent(),

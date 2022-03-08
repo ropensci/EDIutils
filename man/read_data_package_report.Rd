@@ -4,12 +4,12 @@
 \alias{read_data_package_report}
 \title{Read data package report}
 \usage{
-read_data_package_report(packageId, frmt = "xml", env = "production")
+read_data_package_report(packageId, as = "xml", env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{frmt}{(character) Format of the returned report. Can be: "xml",
+\item{as}{(character) Format of the returned report. Can be: "xml",
 "html", or "char".}
 
 \item{env}{(character) Repository environment. Can be: "production",
@@ -44,7 +44,7 @@ qualityReport
 # Read as HTML
 qualityReport <- read_data_package_report(
  packageId = "knb-lter-knz.260.4",
- frmt = "html"
+ as = "html"
 )
 qualityReport
 #> {html_document}
@@ -54,7 +54,7 @@ qualityReport
 # Read as character
 qualityReport <- read_data_package_report(
  packageId = "knb-lter-knz.260.4",
- frmt = "char"
+ as = "char"
 )
 # writeLines(qualityReport, "./data/report.txt"))
 }

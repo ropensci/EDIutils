@@ -1,15 +1,17 @@
 #' Query event subscriptions
 #'
 #' @param query (character) Query (see details below)
+#' @param as (character) Format of the returned object. Can be: "data.frame" 
+#' or "xml".
 #' @param env (character) Repository environment. Can be: "production",
 #' "staging", or "development".
 #'
-#' @return (xml_document) A list of the subscriptions whose attributes match
-#' those specified in the query string (see details below). If a query string
-#' is omitted, all subscriptions in the subscription database will be returned
-#' for which the requesting user is authorized to read. If query parameters are
-#' included, they are used to filter that set of subscriptions based on their
-#' attributes.
+#' @return (data.frame or xml_document) A list of the subscriptions whose 
+#' attributes match those specified in the query string (see details below). 
+#' If a query string is omitted, all subscriptions in the subscription database 
+#' will be returned for which the requesting user is authorized to read. If 
+#' query parameters are included, they are used to filter that set of 
+#' subscriptions based on their attributes.
 #'
 #' @details Query parameters are specified as key=value pairs, multiple pairs
 #' must be delimited with ampersands (&), and only a single value should be
@@ -47,26 +49,13 @@
 #' # Query subscriptions
 #' query <- "scope=edi"
 #' subscriptions <- query_event_subscriptions(query, env = "staging")
-#' subscriptions
-#' #> {xml_document}
-#' #> <subscriptions>
-#' #> [1] <subscription type="eml">\n  <id>21</id>\n  <creator>uid=csmith, ...
-#' #> [2] <subscription type="eml">\n  <id>27</id>\n  <creator>uid=csmith, ...
-#' #> [3] <subscription type="eml">\n  <id>51</id>\n  <creator>uid=csmith, ...
-#'
-#' # Show first
-#' xml2::xml_find_first(subscriptions, "subscription")
-#' #> {xml_node}
-#' #> <subscription type="eml">
-#' #> [1] <id>21</id>
-#' #> [2] <creator>uid=csmith,o=EDI,dc=edirepository,dc=org</creator>
-#' #> [3] <packageId>edi.94</packageId>
-#' #> [4] <url>https://regan.edirepository.org/ecocom-listener</url>
 #'
 #' logout()
 #' }
 #'
-query_event_subscriptions <- function(query = NULL, env = "production") {
+query_event_subscriptions <- function(query = NULL, 
+                                      as = "data.frame", 
+                                      env = "production") {
   url <- paste0(base_url(env), "/package/event/eml?")
   if (!is.null(query)) {
     url <- paste0(url, query)
@@ -75,5 +64,6 @@ query_event_subscriptions <- function(query = NULL, env = "production") {
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
-  return(xml2::read_xml(res))
+  res <- xml2::read_xml(res)
+  ifelse(as == "data.frame", return(xml2df(res)), return(res))
 }

@@ -4,16 +4,19 @@
 \alias{get_event_subscription}
 \title{Get event subscription}
 \usage{
-get_event_subscription(subscriptionId, env = "production")
+get_event_subscription(subscriptionId, as = "data.frame", env = "production")
 }
 \arguments{
 \item{subscriptionId}{(numeric) Event subscription identifier}
+
+\item{as}{(character) Format of the returned object. Can be: "data.frame" 
+or "xml".}
 
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(xml_document) Subscription metadata
+(data.frame or xml_document) Subscription metadata
 }
 \description{
 Get event subscription
@@ -31,18 +34,6 @@ subscription <- get_event_subscription(
   subscriptionId = 21,
   env = "staging"
 )
-subscription
-#> {xml_document}
-#> <subscriptions>
-#> [1] <subscription type="eml">\n  <id>21</id>\n  <creator>uid=csmith, ...
-
-xml2::xml_find_first(subscriptions, "subscription")
-#> {xml_node}
-#> <subscription type="eml">
-#> [1] <id>21</id>
-#> [2] <creator>uid=csmith,o=EDI,dc=edirepository,dc=org</creator>
-#> [3] <packageId>edi.94</packageId>
-#> [4] <url>https://regan.edirepository.org/ecocom-listener</url>
 
 logout()
 }

@@ -4,21 +4,24 @@
 \alias{query_event_subscriptions}
 \title{Query event subscriptions}
 \usage{
-query_event_subscriptions(query = NULL, env = "production")
+query_event_subscriptions(query = NULL, as = "data.frame", env = "production")
 }
 \arguments{
 \item{query}{(character) Query (see details below)}
+
+\item{as}{(character) Format of the returned object. Can be: "data.frame" 
+or "xml".}
 
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(xml_document) A list of the subscriptions whose attributes match
-those specified in the query string (see details below). If a query string
-is omitted, all subscriptions in the subscription database will be returned
-for which the requesting user is authorized to read. If query parameters are
-included, they are used to filter that set of subscriptions based on their
-attributes.
+(data.frame or xml_document) A list of the subscriptions whose 
+attributes match those specified in the query string (see details below). 
+If a query string is omitted, all subscriptions in the subscription database 
+will be returned for which the requesting user is authorized to read. If 
+query parameters are included, they are used to filter that set of 
+subscriptions based on their attributes.
 }
 \description{
 Query event subscriptions
@@ -57,21 +60,6 @@ login()
 # Query subscriptions
 query <- "scope=edi"
 subscriptions <- query_event_subscriptions(query, env = "staging")
-subscriptions
-#> {xml_document}
-#> <subscriptions>
-#> [1] <subscription type="eml">\n  <id>21</id>\n  <creator>uid=csmith, ...
-#> [2] <subscription type="eml">\n  <id>27</id>\n  <creator>uid=csmith, ...
-#> [3] <subscription type="eml">\n  <id>51</id>\n  <creator>uid=csmith, ...
-
-# Show first
-xml2::xml_find_first(subscriptions, "subscription")
-#> {xml_node}
-#> <subscription type="eml">
-#> [1] <id>21</id>
-#> [2] <creator>uid=csmith,o=EDI,dc=edirepository,dc=org</creator>
-#> [3] <packageId>edi.94</packageId>
-#> [4] <url>https://regan.edirepository.org/ecocom-listener</url>
 
 logout()
 }

@@ -4,7 +4,7 @@ testthat::test_that("get_audit_report() works", {
   query <- paste0("serviceMethod=readDataEntity&fromTime=2021-12-01&toTime=",
                   "2021-12-02&limit=2")
   vcr::use_cassette("get_audit_report", {
-    auditReport <- get_audit_report(query)
+    auditReport <- get_audit_report(query, as = "xml")
   })
   expect_true("xml_document" %in% class(auditReport))
   expect_true("auditRecord" %in% 

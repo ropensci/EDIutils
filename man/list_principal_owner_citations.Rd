@@ -4,18 +4,25 @@
 \alias{list_principal_owner_citations}
 \title{List principal owner citations}
 \usage{
-list_principal_owner_citations(principalOwner, env = "production")
+list_principal_owner_citations(
+  principalOwner,
+  as = "data.frame",
+  env = "production"
+)
 }
 \arguments{
 \item{principalOwner}{(character) Principal owner in the format returned by
 \code{create_dn()}}
 
+\item{as}{(character) Format of the returned object. Can be: "data.frame" 
+or "xml".}
+
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(xml_document) Journal citations metadata for all entries owned by
-the specified principal owner
+(data.frame or xml_document) Journal citations metadata for all 
+entries owned by the specified principal owner
 }
 \description{
 List principal owner citations
@@ -26,19 +33,6 @@ List principal owner citations
 # List citations
 dn <- create_dn(userId = "FCE", ou = "EDI")
 journalCitations <- list_principal_owner_citations(principalOwner = dn)
-journalCitations
-#> {xml_document}
-#> <journalCitations>
-#>  [1] <journalCitation>\n  <journalCitationId>80</journalCitationId>\n ...
-#>  [2] <journalCitation>\n  <journalCitationId>81</journalCitationId>\n ...
-#>  [3] <journalCitation>\n  <journalCitationId>205</journalCitationId>\ ...
-#>  [4] <journalCitation>\n  <journalCitationId>207</journalCitationId>\ ...
-#>  [5] <journalCitation>\n  <journalCitationId>220</journalCitationId>\ ...
-#>  [6] <journalCitation>\n  <journalCitationId>221</journalCitationId>\ ...
-#>  [7] <journalCitation>\n  <journalCitationId>222</journalCitationId>\ ...
-#>  [8] <journalCitation>\n  <journalCitationId>422</journalCitationId>\ ...
-#>  [9] <journalCitation>\n  <journalCitationId>423</journalCitationId>\ ...
-#> [10] <journalCitation>\n  <journalCitationId>424</journalCitationId>\ ...
 }
 }
 \seealso{
