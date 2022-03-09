@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -75,7 +75,12 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">read_data_entity_resource_metadata</span><span class="op">(</span><span class="va">packageId</span>, <span class="va">entityId</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">read_data_entity_resource_metadata</span><span class="op">(</span>
+  <span class="va">packageId</span>,
+  <span class="va">entityId</span>,
+  as <span class="op">=</span> <span class="st">"data.frame"</span>,
+  env <span class="op">=</span> <span class="st">"production"</span>
+<span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -84,14 +89,17 @@
 <dd><p>(character) Data package identifier</p></dd>
 <dt>entityId</dt>
 <dd><p>(character) Data entity identifier</p></dd>
+<dt>as</dt>
+<dd><p>(character) Format of the returned object. Can be: "data.frame" 
+or "xml".</p></dd>
 <dt>env</dt>
 <dd><p>(character) Repository environment. Can be: "production",
 "staging", or "development".</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>(xml_document) The resource metadata of <code>entityId</code> in
-<code>packageId</code></p>
+    <p>(data.frame or xml_document) The resource metadata of 
+<code>entityId</code> in <code>packageId</code></p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -103,6 +111,7 @@
 <code><a href="read_data_entity_size.html">read_data_entity_size</a>()</code>,
 <code><a href="read_data_entity.html">read_data_entity</a>()</code>,
 <code><a href="read_data_package_archive.html">read_data_package_archive</a>()</code>,
+<code><a href="read_data_package_citation.html">read_data_package_citation</a>()</code>,
 <code><a href="read_data_package_doi.html">read_data_package_doi</a>()</code>,
 <code><a href="read_data_package_error.html">read_data_package_error</a>()</code>,
 <code><a href="read_data_package_from_doi.html">read_data_package_from_doi</a>()</code>,
@@ -141,25 +150,6 @@
 <span class="r-in"> packageId <span class="op">=</span> <span class="st">"knb-lter-cce.310.1"</span>,</span>
 <span class="r-in"> entityId <span class="op">=</span> <span class="va">entityIds</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">resourceMetadata</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;resourceMetadata&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [1] &lt;dataFormat&gt;NetCDF (gzipped tar archive)&lt;/dataFormat&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [2] &lt;dateCreated&gt;2021-08-13 11:23:40.81&lt;/dateCreated&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [3] &lt;entityId&gt;4aaaff61e0d316130be0b445d3013877&lt;/entityId&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [4] &lt;entityName&gt;water_age_CCE_1994.tar&lt;/entityName&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [5] &lt;fileName&gt;water_age_CCE_1994.tar.gz&lt;/fileName&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [6] &lt;identifier&gt;310&lt;/identifier&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [7] &lt;md5Checksum&gt;8b22bf5c72c405aab93e44a6aa5b7d79&lt;/md5Checksum&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [8] &lt;packageId&gt;knb-lter-cce.310.1&lt;/packageId&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [9] &lt;principalOwner&gt;uid=EDI,o=EDI,dc=edirepository,dc=org&lt;/principal ...</span></span>
-<span class="r-in"><span class="co">#&gt; [10] &lt;resourceId&gt;https://pasta.lternet.edu/package/data/eml/knb-lter- ...</span></span>
-<span class="r-in"><span class="co">#&gt; [11] &lt;resourceLocation&gt;/pasta/data1&lt;/resourceLocation&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [12] &lt;resourceSize&gt;322263158&lt;/resourceSize&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [13] &lt;resourceType&gt;data&lt;/resourceType&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [14] &lt;revision&gt;1&lt;/revision&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [15] &lt;scope&gt;knb-lter-cce&lt;/scope&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [16] &lt;sha1Checksum&gt;bccdcfef105aa7b787db1fd940ad8ea2a5d04295&lt;/sha1Chec ...</span></span>
 <span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>

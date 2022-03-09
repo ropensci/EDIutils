@@ -18,7 +18,7 @@ objects, that are known to be inputs to the specified derived data package."><!-
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
@@ -27,7 +27,7 @@ objects, that are known to be inputs to the specified derived data package."><!-
   <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -77,20 +77,23 @@ objects, that are known to be inputs to the specified derived data package.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">list_data_sources</span><span class="op">(</span><span class="va">packageId</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">list_data_sources</span><span class="op">(</span><span class="va">packageId</span>, as <span class="op">=</span> <span class="st">"data.frame"</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>packageId</dt>
 <dd><p>(character) Data package identifier</p></dd>
+<dt>as</dt>
+<dd><p>(character) Format of the returned object. Can be: "data.frame" 
+or "xml".</p></dd>
 <dt>env</dt>
 <dd><p>(character) Repository environment. Can be: "production",
 "staging", or "development".</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>(xml_document) Data sources to <code>packageId</code></p>
+    <p>(data.frame or xml_document) Data sources to <code>packageId</code></p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -120,18 +123,6 @@ will be empty and a URL value may or not be documented.</p>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># List sources</span></span>
 <span class="r-in"><span class="va">dataSources</span> <span class="op">&lt;-</span> <span class="fu">list_data_sources</span><span class="op">(</span><span class="st">"edi.275.4"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">dataSources</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;dataSources&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [1] &lt;dataSource&gt;\n  &lt;packageId&gt;knb-lter-bnz.501.17&lt;/packageId&gt;\n  &lt;ti ...</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Show first</span></span>
-<span class="r-in"><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">dataSources</span>, <span class="st">"dataSource"</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_node}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;dataSource&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [1] &lt;packageId&gt;knb-lter-bnz.501.17&lt;/packageId&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [2] &lt;title&gt;Eight Mile Lake Research Watershed&amp;amp;#x2c; Carbon in Per ...</span></span>
-<span class="r-in"><span class="co">#&gt; [3] &lt;url&gt;https://pasta.lternet.edu/package/metadata/eml/knb-lter-bnz/ ...</span></span>
 <span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -75,14 +75,14 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">read_evaluate_report</span><span class="op">(</span><span class="va">transaction</span>, frmt <span class="op">=</span> <span class="st">"xml"</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">read_evaluate_report</span><span class="op">(</span><span class="va">transaction</span>, as <span class="op">=</span> <span class="st">"xml"</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>transaction</dt>
 <dd><p>(character) Transaction identifier</p></dd>
-<dt>frmt</dt>
+<dt>as</dt>
 <dd><p>(character) Format of the returned report. Can be: "xml", "html",
 or "char".</p></dd>
 <dt>env</dt>
@@ -109,6 +109,7 @@ report document</p>
 <code><a href="read_data_entity_size.html">read_data_entity_size</a>()</code>,
 <code><a href="read_data_entity.html">read_data_entity</a>()</code>,
 <code><a href="read_data_package_archive.html">read_data_package_archive</a>()</code>,
+<code><a href="read_data_package_citation.html">read_data_package_citation</a>()</code>,
 <code><a href="read_data_package_doi.html">read_data_package_doi</a>()</code>,
 <code><a href="read_data_package_error.html">read_data_package_error</a>()</code>,
 <code><a href="read_data_package_from_doi.html">read_data_package_from_doi</a>()</code>,
@@ -141,6 +142,22 @@ report document</p>
 <span class="r-in"><span class="va">transaction</span></span>
 <span class="r-in"><span class="co">#&gt; [1] "evaluate_163966785813042760"</span></span>
 <span class="r-in"></span>
+<span class="r-in"><span class="co"># Read as HTML and write to file for a web browser view</span></span>
+<span class="r-in"><span class="va">qualityReport</span> <span class="op">&lt;-</span> <span class="fu">read_evaluate_report</span><span class="op">(</span></span>
+<span class="r-in">  transaction <span class="op">=</span> <span class="va">transaction</span>,</span>
+<span class="r-in">  as <span class="op">=</span> <span class="st">"html"</span>,</span>
+<span class="r-in">  env <span class="op">=</span> <span class="st">"staging"</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="va">qualityReport</span>, <span class="st">"./data/report.html"</span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Read as character and write to file for browsing</span></span>
+<span class="r-in"><span class="va">qualityReport</span> <span class="op">&lt;-</span> <span class="fu">read_evaluate_report</span><span class="op">(</span></span>
+<span class="r-in">  transaction <span class="op">=</span> <span class="va">transaction</span>,</span>
+<span class="r-in">  as <span class="op">=</span> <span class="st">"char"</span>,</span>
+<span class="r-in">  env <span class="op">=</span> <span class="st">"staging"</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="va">qualityReport</span>, <span class="st">"./data/report.txt"</span><span class="op">)</span></span>
+<span class="r-in"></span>
 <span class="r-in"><span class="co"># Read as XML</span></span>
 <span class="r-in"><span class="va">qualityReport</span> <span class="op">&lt;-</span> <span class="fu">read_evaluate_report</span><span class="op">(</span></span>
 <span class="r-in">  transaction <span class="op">=</span> <span class="va">transaction</span>,</span>
@@ -155,25 +172,6 @@ report document</p>
 <span class="r-in"><span class="co">#&gt; [4] &lt;includeSystem&gt;knb&lt;/includeSystem&gt;</span></span>
 <span class="r-in"><span class="co">#&gt; [5] &lt;datasetReport&gt;\n  &lt;qualityCheck qualityType="metadata" system=" ...</span></span>
 <span class="r-in"><span class="co">#&gt; [6] &lt;entityReport&gt;\n  &lt;entityName&gt;data.txt&lt;/entityName&gt;\n  &lt;qualityC ...</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Read as HTML</span></span>
-<span class="r-in"><span class="va">qualityReport</span> <span class="op">&lt;-</span> <span class="fu">read_evaluate_report</span><span class="op">(</span></span>
-<span class="r-in">  transaction <span class="op">=</span> <span class="va">transaction</span>,</span>
-<span class="r-in">  frmt <span class="op">=</span> <span class="st">"html"</span>,</span>
-<span class="r-in">  env <span class="op">=</span> <span class="st">"staging"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">qualityReport</span></span>
-<span class="r-in"><span class="co">#&gt; {html_document}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;html&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [1] &lt;body&gt;&lt;table xmlns:qr="eml://ecoinformatics.org/qualityReport"&gt;&lt; ...</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Read as character</span></span>
-<span class="r-in"><span class="va">qualityReport</span> <span class="op">&lt;-</span> <span class="fu">read_evaluate_report</span><span class="op">(</span></span>
-<span class="r-in">  transaction <span class="op">=</span> <span class="va">transaction</span>,</span>
-<span class="r-in">  frmt <span class="op">=</span> <span class="st">"char"</span>,</span>
-<span class="r-in">  env <span class="op">=</span> <span class="st">"staging"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="va">qualityReport</span>, <span class="st">"./data/report.txt"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="logout.html">logout</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>

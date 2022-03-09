@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -75,21 +75,24 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">list_active_reservations</span><span class="op">(</span>env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">list_active_reservations</span><span class="op">(</span>as <span class="op">=</span> <span class="st">"data.frame"</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>env</dt>
+    <dl><dt>as</dt>
+<dd><p>(character) Format of the returned object. Can be: "data.frame" 
+or "xml".</p></dd>
+<dt>env</dt>
 <dd><p>(character) Repository environment. Can be: "production",
 "staging", or "development".</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>(xml_document) The set of data package identifiers that users have
-actively reserved. Note that data package identifiers that have been
-successfully uploaded are no longer considered active reservations and thus
-are not included in this list.</p>
+    <p>(data.frame or xml_document) The set of data package identifiers 
+that users have actively reserved. Note that data package identifiers that 
+have been successfully uploaded are no longer considered active reservations 
+and thus are not included in this list.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -105,28 +108,6 @@ are not included in this list.</p>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># List reservations</span></span>
 <span class="r-in"><span class="va">reservations</span> <span class="op">&lt;-</span> <span class="fu">list_active_reservations</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">reservations</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;reservations&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [1] &lt;reservation&gt;\n  &lt;docid&gt;edi.11&lt;/docid&gt;\n  &lt;principal&gt;uid=NTL,o=L ...</span></span>
-<span class="r-in"><span class="co">#&gt;  [2] &lt;reservation&gt;\n  &lt;docid&gt;edi.130&lt;/docid&gt;\n  &lt;principal&gt;uid=user23 ...</span></span>
-<span class="r-in"><span class="co">#&gt;  [3] &lt;reservation&gt;\n  &lt;docid&gt;edi.131&lt;/docid&gt;\n  &lt;principal&gt;uid=user20 ...</span></span>
-<span class="r-in"><span class="co">#&gt;  [4] &lt;reservation&gt;\n  &lt;docid&gt;edi.132&lt;/docid&gt;\n  &lt;principal&gt;uid=chase, ...</span></span>
-<span class="r-in"><span class="co">#&gt;  [5] &lt;reservation&gt;\n  &lt;docid&gt;edi.142&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span></span>
-<span class="r-in"><span class="co">#&gt;  [6] &lt;reservation&gt;\n  &lt;docid&gt;edi.152&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span></span>
-<span class="r-in"><span class="co">#&gt;  [7] &lt;reservation&gt;\n  &lt;docid&gt;edi.154&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span></span>
-<span class="r-in"><span class="co">#&gt;  [8] &lt;reservation&gt;\n  &lt;docid&gt;edi.156&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span></span>
-<span class="r-in"><span class="co">#&gt;  [9] &lt;reservation&gt;\n  &lt;docid&gt;edi.158&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span></span>
-<span class="r-in"><span class="co">#&gt; [10] &lt;reservation&gt;\n  &lt;docid&gt;edi.159&lt;/docid&gt;\n  &lt;principal&gt;uid=ahall, ...</span></span>
-<span class="r-in"><span class="co">#&gt; ...</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Show first</span></span>
-<span class="r-in"><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">reservations</span>, <span class="st">"reservation"</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_node}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;reservation&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [1] &lt;docid&gt;edi.11&lt;/docid&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [2] &lt;principal&gt;uid=NTL,o=LTER,dc=ecoinformatics,dc=org&lt;/principal&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [3] &lt;dateReserved&gt;2017-03-02 15:02:28.899&lt;/dateReserved&gt;</span></span>
 <span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>

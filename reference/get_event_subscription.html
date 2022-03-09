@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -75,20 +75,23 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_event_subscription</span><span class="op">(</span><span class="va">subscriptionId</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_event_subscription</span><span class="op">(</span><span class="va">subscriptionId</span>, as <span class="op">=</span> <span class="st">"data.frame"</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>subscriptionId</dt>
 <dd><p>(numeric) Event subscription identifier</p></dd>
+<dt>as</dt>
+<dd><p>(character) Format of the returned object. Can be: "data.frame" 
+or "xml".</p></dd>
 <dt>env</dt>
 <dd><p>(character) Repository environment. Can be: "production",
 "staging", or "development".</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>(xml_document) Subscription metadata</p>
+    <p>(data.frame or xml_document) Subscription metadata</p>
     </div>
     <div id="note">
     <h2>Note</h2>
@@ -115,18 +118,6 @@
 <span class="r-in">  subscriptionId <span class="op">=</span> <span class="fl">21</span>,</span>
 <span class="r-in">  env <span class="op">=</span> <span class="st">"staging"</span></span>
 <span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">subscription</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;subscriptions&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [1] &lt;subscription type="eml"&gt;\n  &lt;id&gt;21&lt;/id&gt;\n  &lt;creator&gt;uid=csmith, ...</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">subscriptions</span>, <span class="st">"subscription"</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_node}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;subscription type="eml"&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [1] &lt;id&gt;21&lt;/id&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [2] &lt;creator&gt;uid=csmith,o=EDI,dc=edirepository,dc=org&lt;/creator&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [3] &lt;packageId&gt;edi.94&lt;/packageId&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [4] &lt;url&gt;https://regan.edirepository.org/ecocom-listener&lt;/url&gt;</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="logout.html">logout</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -75,20 +75,23 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_audit_record</span><span class="op">(</span><span class="va">oid</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_audit_record</span><span class="op">(</span><span class="va">oid</span>, as <span class="op">=</span> <span class="st">"data.frame"</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>oid</dt>
 <dd><p>(numeric) Audit identifier</p></dd>
+<dt>as</dt>
+<dd><p>(character) Format of the returned object. Can be: "data.frame" 
+or "xml".</p></dd>
 <dt>env</dt>
 <dd><p>(character) Repository environment. Can be: "production",
 "staging", or "development".</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>(xml_document) An audit record with fields</p>
+    <p>(data.frame or xml_document) An audit record</p>
     </div>
     <div id="note">
     <h2>Note</h2>
@@ -110,28 +113,8 @@
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="login.html">login</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># Get audit record</span></span>
-<span class="r-in"><span class="va">auditRecord</span> <span class="op">&lt;-</span> <span class="fu">get_audit_record</span><span class="op">(</span>oid <span class="op">=</span> <span class="st">"121606334"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">auditRecord</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;auditReport&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;   [1] &lt;auditRecord&gt;\n  &lt;oid&gt;121606334&lt;/oid&gt;\n  &lt;entryTime&gt;2021-12-01T ...</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">auditReport</span>, <span class="st">".//auditRecord"</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_node}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;auditRecord&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [1] &lt;oid&gt;121606334&lt;/oid&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [2] &lt;entryTime&gt;2021-12-01T00:00:07&lt;/entryTime&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [3] &lt;category&gt;warn&lt;/category&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [4] &lt;service&gt;DataPackageManager-1.0&lt;/service&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [5] &lt;serviceMethod&gt;readDataEntity&lt;/serviceMethod&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [6] &lt;responseStatus&gt;401&lt;/responseStatus&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [7] &lt;resourceId/&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [8] &lt;user&gt;robot&lt;/user&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [9] &lt;userAgent&gt;null&lt;/userAgent&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [10] &lt;groups/&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [11] &lt;authSystem&gt;https://pasta.edirepository.org/authentication&lt;/aut ...</span></span>
-<span class="r-in"><span class="co">#&gt; [12] &lt;entryText&gt;Robots are not authorized access to data objects. Ro ...</span></span>
+<span class="r-in"><span class="co"># Get audit report</span></span>
+<span class="r-in"><span class="va">auditReport</span> <span class="op">&lt;-</span> <span class="fu">get_audit_record</span><span class="op">(</span>oid <span class="op">=</span> <span class="st">"121606334"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="logout.html">logout</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>

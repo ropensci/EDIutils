@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -75,21 +75,24 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_recent_uploads</span><span class="op">(</span><span class="va">query</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_recent_uploads</span><span class="op">(</span><span class="va">query</span>, as <span class="op">=</span> <span class="st">"data.frame"</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>query</dt>
 <dd><p>(character) Query (see details below)</p></dd>
+<dt>as</dt>
+<dd><p>(character) Format of the returned object. Can be: "data.frame" 
+or "xml".</p></dd>
 <dt>env</dt>
 <dd><p>(character) Repository environment. Can be: "production",
 "staging", or "development".</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>(xml_document) A list of zero or more audit records of either
-recently inserted or recently updated data packages.</p>
+    <p>(data.frame or xml_document) A list of zero or more audit records 
+of either recently inserted or recently updated data packages.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -127,23 +130,6 @@ an upper limit on the number of audit records returned. For example,
 <span class="r-in"><span class="va">auditReport</span> <span class="op">&lt;-</span> <span class="fu">get_recent_uploads</span><span class="op">(</span></span>
 <span class="r-in"> query <span class="op">=</span> <span class="st">"serviceMethod=createDataPackage&amp;limit=5"</span></span>
 <span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Show the first</span></span>
-<span class="r-in"><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">auditReport</span>, <span class="st">"auditRecord"</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_node}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;auditRecord&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [1] &lt;oid&gt;128171587&lt;/oid&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [2] &lt;entryTime&gt;2022-01-18T08:41:39&lt;/entryTime&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [3] &lt;category&gt;info&lt;/category&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [4] &lt;service&gt;DataPackageManager-1.0&lt;/service&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [5] &lt;serviceMethod&gt;createDataPackage&lt;/serviceMethod&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [6] &lt;responseStatus&gt;200&lt;/responseStatus&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [7] &lt;resourceId&gt;https://pasta.lternet.edu/package/eml/edi/1064/1&lt;/re ...</span></span>
-<span class="r-in"><span class="co">#&gt;  [8] &lt;user&gt;uid=kzollovenecek,o=EDI,dc=edirepository,dc=org&lt;/user&gt;</span></span>
-<span class="r-in"><span class="co">#&gt;  [9] &lt;userAgent&gt;null&lt;/userAgent&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [10] &lt;groups&gt;authenticated,vetted&lt;/groups&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [11] &lt;authSystem&gt;https://pasta.edirepository.org/authentication&lt;/auth ...</span></span>
-<span class="r-in"><span class="co">#&gt; [12] &lt;entryText/&gt;</span></span>
 <span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -75,20 +75,23 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_journal_citation</span><span class="op">(</span><span class="va">journalCitationId</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_journal_citation</span><span class="op">(</span><span class="va">journalCitationId</span>, as <span class="op">=</span> <span class="st">"data.frame"</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>journalCitationId</dt>
 <dd><p>(numeric) Journal citation identifier</p></dd>
+<dt>as</dt>
+<dd><p>(character) Format of the returned object. Can be: "data.frame" 
+or "xml".</p></dd>
 <dt>env</dt>
 <dd><p>(character) Repository environment. Can be: "production",
 "staging", or "development".</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>(xml_document) Journal citation</p>
+    <p>(data.frame or xml_document) Journal citation</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -105,18 +108,6 @@
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Get citation</span></span>
 <span class="r-in"><span class="va">journalCitation</span> <span class="op">&lt;-</span> <span class="fu">get_journal_citation</span><span class="op">(</span><span class="fl">381</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">journalCitation</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;journalCitation&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [1] &lt;journalCitationId&gt;381&lt;/journalCitationId&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [2] &lt;packageId&gt;edi.845.1&lt;/packageId&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [3] &lt;principalOwner&gt;uid=csmith,o=EDI,dc=edirepository,dc=org&lt;/principa ...</span></span>
-<span class="r-in"><span class="co">#&gt; [4] &lt;dateCreated&gt;2021-05-27T13:23:14.981&lt;/dateCreated&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [5] &lt;articleDoi&gt;https://doi.org/10.1016/j.scitotenv.2021.148033&lt;/artic ...</span></span>
-<span class="r-in"><span class="co">#&gt; [6] &lt;articleTitle&gt;Bioturbation frequency alters methane emissions from ...</span></span>
-<span class="r-in"><span class="co">#&gt; [7] &lt;articleUrl&gt;https://doi.org/10.1016/j.scitotenv.2021.148033&lt;/artic ...</span></span>
-<span class="r-in"><span class="co">#&gt; [8] &lt;journalTitle&gt;Science of the Total Environment&lt;/journalTitle&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [9] &lt;relationType&gt;IsCitedBy&lt;/relationType&gt;</span></span>
 <span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>

@@ -20,7 +20,7 @@ for a particular data package scope."><!-- mathjax --><script src="https://cdnjs
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
@@ -29,7 +29,7 @@ for a particular data package scope."><!-- mathjax --><script src="https://cdnjs
   <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -85,6 +85,7 @@ for a particular data package scope.</p>
   fromDate <span class="op">=</span> <span class="cn">NULL</span>,
   toDate <span class="op">=</span> <span class="cn">NULL</span>,
   scope <span class="op">=</span> <span class="cn">NULL</span>,
+  as <span class="op">=</span> <span class="st">"data.frame"</span>,
   env <span class="op">=</span> <span class="st">"production"</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -97,14 +98,18 @@ for a particular data package scope.</p>
 <dd><p>(character) End date in the format "YYYY-MM-DDThh:mm:ss"</p></dd>
 <dt>scope</dt>
 <dd><p>(character) Scope of data package</p></dd>
+<dt>as</dt>
+<dd><p>(character) Format of the returned object. Can be: "data.frame" 
+or "xml".</p></dd>
 <dt>env</dt>
 <dd><p>(character) Repository environment. Can be: "production",
 "staging", or "development".</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>(xml_document) Recent changes and their corresponding packageId,
-scope, identifier, revision, principal, doi, serviceMethod, and date.</p>
+    <p>(data.frame or xml_document) Recent changes and their corresponding 
+packageId, scope, identifier, revision, principal, doi, serviceMethod, and 
+date.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -130,25 +135,6 @@ scope, identifier, revision, principal, doi, serviceMethod, and date.</p>
 <span class="r-in"> fromDate <span class="op">=</span> <span class="st">"2021-01-01T00:00:00"</span>,</span>
 <span class="r-in"> toDate <span class="op">=</span> <span class="st">"2021-01-03T00:00:00"</span></span>
 <span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">dataPackageChanges</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_document}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;dataPackageChanges&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [1] &lt;dataPackage&gt;\n  &lt;packageId&gt;edi.398.5&lt;/packageId&gt;\n  &lt;scope&gt;edi&lt;/ ...</span></span>
-<span class="r-in"><span class="co">#&gt; [2] &lt;dataPackage&gt;\n  &lt;packageId&gt;edi.398.6&lt;/packageId&gt;\n  &lt;scope&gt;edi&lt;/ ...</span></span>
-<span class="r-in"><span class="co">#&gt; [3] &lt;dataPackage&gt;\n  &lt;packageId&gt;knb-lter-sbc.6006.2&lt;/packageId&gt;\n  &lt;s ...</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Show first</span></span>
-<span class="r-in"><span class="fu">xml2</span><span class="fu">::</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">dataPackageChanges</span>, <span class="st">"dataPackage"</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">#&gt; {xml_node}</span></span>
-<span class="r-in"><span class="co">#&gt; &lt;dataPackage&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [1] &lt;packageId&gt;edi.398.5&lt;/packageId&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [2] &lt;scope&gt;edi&lt;/scope&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [3] &lt;identifier&gt;398&lt;/identifier&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [4] &lt;revision&gt;5&lt;/revision&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [5] &lt;principal&gt;uid=mohonkpreserve,o=EDI,dc=edirepository,dc=org&lt;/prin ...</span></span>
-<span class="r-in"><span class="co">#&gt; [6] &lt;doi&gt;doi:10.6073/pasta/f999c0007dccf4ffc0b25746ff66fee2&lt;/doi&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [7] &lt;serviceMethod&gt;updateDataPackage&lt;/serviceMethod&gt;</span></span>
-<span class="r-in"><span class="co">#&gt; [8] &lt;date&gt;2021-01-02T17:04:44.12&lt;/date&gt;</span></span>
 <span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
