@@ -89,12 +89,13 @@ testthat::test_that("text2char() works", {
 testthat::test_that("xml2df() works", {
   # One level of nesting
   resourceMetadata <- read_data_package_report_resource_metadata(
-    packageId = "knb-lter-mcm.9129.3"
+    packageId = "knb-lter-mcm.9129.3", 
+    as = "xml"
   )
   res <- xml2df(resourceMetadata)
   expect_equal(class(res), "data.frame")
   # Two levels of nesting
-  dataDescendants <- list_data_descendants("knb-lter-bnz.501.17")
+  dataDescendants <- list_data_descendants("knb-lter-bnz.501.17", as = "xml")
   res <- xml2df(dataDescendants)
   expect_equal(class(res), "data.frame")
 })
