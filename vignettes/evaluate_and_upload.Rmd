@@ -186,9 +186,9 @@ status
 #> [1] TRUE
 ```
 
-#### Update
+## Update
 
-Update is the same as upload, but with an incremented data package version number (e.g. "edi.595.2" supersedes "edi.595.1").
+Update is the same as upload, but with an incremented data package version number (e.g. "edi.595.2" supersedes "edi.595.1"). _NOTE: The new identifier must be added to the "packageId" element in the EML and as the new EML file name._
 
 ```{r eval=FALSE}
 #' # Update data package
