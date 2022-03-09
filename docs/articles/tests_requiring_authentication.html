@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
@@ -41,7 +43,7 @@
   <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -70,7 +72,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EDIorg/EDIutils/">
+  <a href="https://github.com/EDIorg/EDIutils/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -85,13 +87,13 @@
 
       
 
-      </header><script src="tests_requiring_authentication_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Tests Requiring Authentication</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EDIorg/EDIutils/blob/master/vignettes/tests_requiring_authentication.Rmd"><code>vignettes/tests_requiring_authentication.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EDIorg/EDIutils/blob/HEAD/vignettes/tests_requiring_authentication.Rmd" class="external-link"><code>vignettes/tests_requiring_authentication.Rmd</code></a></small>
       <div class="hidden name"><code>tests_requiring_authentication.Rmd</code></div>
 
     </div>
@@ -101,29 +103,29 @@
 <p><em>This vignette is for <code>EDIutils</code> maintainers and developers.</em></p>
 <p>Some tests require authentication and a minimal data package for evaluation and upload. This vignette demonstrates how to create and run these tests with <code>testthat</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EDIorg/EDIutils">EDIutils</a></span><span class="op">)</span></code></pre></div>
-<div id="get-an-edi-user-account" class="section level2">
-<h2 class="hasAnchor">
-<a href="#get-an-edi-user-account" class="anchor"></a>Get an EDI User Account</h2>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EDIorg/EDIutils" class="external-link">EDIutils</a></span><span class="op">)</span></code></pre></div>
+<div class="section level2">
+<h2 id="get-an-edi-user-account">Get an EDI User Account<a class="anchor" aria-label="anchor" href="#get-an-edi-user-account"></a>
+</h2>
 <p>Request accounts via <a href="mailto:info@environmentaldatainitiative.org" class="email">info@environmentaldatainitiative.org</a></p>
 </div>
-<div id="use-the-staging-environment" class="section level2">
-<h2 class="hasAnchor">
-<a href="#use-the-staging-environment" class="anchor"></a>Use the “staging” Environment!</h2>
+<div class="section level2">
+<h2 id="use-the-staging-environment">Use the “staging” Environment!<a class="anchor" aria-label="anchor" href="#use-the-staging-environment"></a>
+</h2>
 <p>The EDI repository “staging” environment is a sandbox for testing data package rendering, etc. Do not use the “production” environment for testing. The “production” environment is where publication quality data are released.</p>
 </div>
-<div id="create-tests" class="section level2">
-<h2 class="hasAnchor">
-<a href="#create-tests" class="anchor"></a>Create Tests</h2>
-<div id="requiring-authentication" class="section level4">
-<h4 class="hasAnchor">
-<a href="#requiring-authentication" class="anchor"></a>Requiring Authentication</h4>
+<div class="section level2">
+<h2 id="create-tests">Create Tests<a class="anchor" aria-label="anchor" href="#create-tests"></a>
+</h2>
+<div class="section level4">
+<h4 id="requiring-authentication">Requiring Authentication<a class="anchor" aria-label="anchor" href="#requiring-authentication"></a>
+</h4>
 <p>The first line of any test requiring authentication should include <code>skip_if_logged_out()</code>. This is an internal use only function located in R/utilities.R. Tests including this line will be skipped unless the R environment variable <code>EDI_TOKEN</code> is set. Use <code><a href="../reference/login.html">login()</a></code> to set this variable.</p>
 <p>Example:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">context</a></span><span class="op">(</span><span class="st">"Create journal citation"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">context</a></span><span class="op">(</span><span class="st">"Create journal citation"</span><span class="op">)</span>
 
-<span class="fu">testthat</span><span class="fu">::</span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"Test attributes of returned object"</span>, <span class="op">{</span>
+<span class="fu">testthat</span><span class="fu">::</span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"Test attributes of returned object"</span>, <span class="op">{</span>
   <span class="fu">skip_if_logged_out</span><span class="op">(</span><span class="op">)</span>
   <span class="va">journalCitationId</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_journal_citation.html">create_journal_citation</a></span><span class="op">(</span>
     packageId <span class="op">=</span> <span class="fu">get_test_package</span><span class="op">(</span><span class="op">)</span>, 
@@ -138,9 +140,9 @@
   <span class="fu">expect_true</span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="requiring-data-package-evaluation-or-upload" class="section level4">
-<h4 class="hasAnchor">
-<a href="#requiring-data-package-evaluation-or-upload" class="anchor"></a>Requiring Data Package Evaluation or Upload</h4>
+<div class="section level4">
+<h4 id="requiring-data-package-evaluation-or-upload">Requiring Data Package Evaluation or Upload<a class="anchor" aria-label="anchor" href="#requiring-data-package-evaluation-or-upload"></a>
+</h4>
 <p>If evaluation or upload of a data package is required by the test, then include a second line <code>skip_if_missing_eml_config()</code>. Tests including this line will be skipped unless the R environment variables <code>EDI_USERID</code> and <code>EDI_TEST_URL</code> are set. Use <code>config_test_eml()</code> to set these variables.</p>
 <p>To set up the minimal test data package:</p>
 <ol style="list-style-type: decimal">
@@ -149,34 +151,34 @@
 </ol>
 <p>Example:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">context</a></span><span class="op">(</span><span class="st">"Evaluate data package"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">context</a></span><span class="op">(</span><span class="st">"Evaluate data package"</span><span class="op">)</span>
 
-<span class="fu">testthat</span><span class="fu">::</span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span><span class="op">(</span><span class="st">"Test attributes of returned object"</span>, <span class="op">{</span>
+<span class="fu">testthat</span><span class="fu">::</span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"Test attributes of returned object"</span>, <span class="op">{</span>
   <span class="fu">skip_if_logged_out</span><span class="op">(</span><span class="op">)</span>
   <span class="fu">skip_if_missing_eml_config</span><span class="op">(</span><span class="op">)</span>
   <span class="co"># Create data package for evaluation</span>
   <span class="va">identifier</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_reservation.html">create_reservation</a></span><span class="op">(</span>scope <span class="op">=</span> <span class="st">"edi"</span>, env <span class="op">=</span> <span class="st">"staging"</span><span class="op">)</span>
-  <span class="va">packageId</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"edi."</span>, <span class="va">identifier</span>, <span class="st">".1"</span><span class="op">)</span>
-  <span class="va">eml</span> <span class="op">&lt;-</span> <span class="fu">create_test_eml</span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span>, packageId <span class="op">=</span> <span class="va">packageId</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html">on.exit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span><span class="op">(</span><span class="va">eml</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, after <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+  <span class="va">packageId</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"edi."</span>, <span class="va">identifier</span>, <span class="st">".1"</span><span class="op">)</span>
+  <span class="va">eml</span> <span class="op">&lt;-</span> <span class="fu">create_test_eml</span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, packageId <span class="op">=</span> <span class="va">packageId</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">eml</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, after <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
   <span class="co"># Evaluate</span>
   <span class="va">transaction</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/evaluate_data_package.html">evaluate_data_package</a></span><span class="op">(</span><span class="va">eml</span>, env <span class="op">=</span> <span class="st">"staging"</span><span class="op">)</span>
   <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/check_status_evaluate.html">check_status_evaluate</a></span><span class="op">(</span><span class="va">transaction</span>, env <span class="op">=</span> <span class="st">"staging"</span><span class="op">)</span>
   <span class="fu">expect_true</span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
   <span class="co"># Read evaluation report</span>
   <span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_evaluate_report.html">read_evaluate_report</a></span><span class="op">(</span><span class="va">transaction</span>, env <span class="op">=</span> <span class="st">"staging"</span><span class="op">)</span>
-  <span class="fu">expect_true</span><span class="op">(</span><span class="st">"xml_document"</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">expect_true</span><span class="op">(</span><span class="st">"xml_document"</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span><span class="op">)</span>
   <span class="fu"><a href="../reference/delete_reservation.html">delete_reservation</a></span><span class="op">(</span><span class="st">"edi"</span>, <span class="va">identifier</span>, env <span class="op">=</span> <span class="st">"staging"</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="run-tests" class="section level2">
-<h2 class="hasAnchor">
-<a href="#run-tests" class="anchor"></a>Run Tests</h2>
+<div class="section level2">
+<h2 id="run-tests">Run Tests<a class="anchor" aria-label="anchor" href="#run-tests"></a>
+</h2>
 <ol style="list-style-type: decimal">
 <li><p>Authenticate with <code><a href="../reference/login.html">login()</a></code></p></li>
 <li><p>Configure test data package with <code>config_test_eml()</code></p></li>
-<li><p>Run test suite <code><a href="https://devtools.r-lib.org/reference/test.html">devtools::test()</a></code></p></li>
+<li><p>Run test suite <code><a href="https://devtools.r-lib.org/reference/test.html" class="external-link">devtools::test()</a></code></p></li>
 </ol>
 </div>
   </div>
@@ -192,11 +194,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Colin Smith.</p>
+  <p></p>
+<p>Developed by Colin Smith.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -204,6 +208,8 @@
 
   
 
+
+  
 
   </body>
 </html>

@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
@@ -41,7 +43,7 @@
   <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -70,7 +72,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EDIorg/EDIutils/">
+  <a href="https://github.com/EDIorg/EDIutils/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -85,13 +87,13 @@
 
       
 
-      </header><script src="search_and_access_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Search and Access Data</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EDIorg/EDIutils/blob/master/vignettes/search_and_access.Rmd"><code>vignettes/search_and_access.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EDIorg/EDIutils/blob/HEAD/vignettes/search_and_access.Rmd" class="external-link"><code>vignettes/search_and_access.Rmd</code></a></small>
       <div class="hidden name"><code>search_and_access.Rmd</code></div>
 
     </div>
@@ -99,10 +101,10 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EDIorg/EDIutils">EDIutils</a></span><span class="op">)</span></code></pre></div>
-<div id="search" class="section level2">
-<h2 class="hasAnchor">
-<a href="#search" class="anchor"></a>Search</h2>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EDIorg/EDIutils" class="external-link">EDIutils</a></span><span class="op">)</span></code></pre></div>
+<div class="section level2">
+<h2 id="search">Search<a class="anchor" aria-label="anchor" href="#search"></a>
+</h2>
 <p>The repository search service is a standard deployment of Apache Solr and indexes select metadata fields of data packages. Some of the possible motivations for using the search API include:</p>
 <ul>
 <li><p>Building a custom search interface that offers some feature not found in the EDI data portal (e.g. build a query interface where the search results are always restricted to a particular research project).</p></li>
@@ -110,129 +112,45 @@
 <li><p>Mining data where EML metadata is the data to be mined, processed, or analyzed in some way.</p></li>
 <li><p>Increased efficiency in that using the search API is often faster than relying on the data portal where the results are displayed in HTML and paged 10 documents at a time.</p></li>
 </ul>
-<p>For a list of searchable fields see <code><a href="../reference/search_data_packages.html">search_data_packages()</a></code>. For more on constructing Solr queries see the <a href="https://cwiki.apache.org/confluence/display/solr/">Apache Solr Wiki</a>. For a browser based search experience use the <a href="https://portal.edirepository.org/nis/advancedSearch.jsp">EDI data portal</a>.</p>
+<p>For a list of searchable fields see <code><a href="../reference/search_data_packages.html">search_data_packages()</a></code>. For more on constructing Solr queries see the <a href="https://cwiki.apache.org/confluence/display/solr/" class="external-link">Apache Solr Wiki</a>. For a browser based search experience use the <a href="https://portal.edirepository.org/nis/advancedSearch.jsp" class="external-link">EDI data portal</a>.</p>
 <p>Results can be filtered to include only fields of interest.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Match all documents with keywords "disturbance" and return only their IDs</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span>query <span class="op">=</span> <span class="st">'q=keyword:disturbance&amp;fl=id'</span><span class="op">)</span>
-<span class="va">res</span>
-<span class="co">#&gt; {xml_document}</span>
-<span class="co">#&gt; &lt;resultset numFound="12845" start="0" rows="10"&gt;</span>
-<span class="co">#&gt;   [1] &lt;document&gt;\n  &lt;id&gt;knb-lter-luq.197&lt;/id&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [2] &lt;document&gt;\n  &lt;id&gt;knb-lter-and.3982&lt;/id&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [3] &lt;document&gt;\n  &lt;id&gt;knb-lter-luq.169&lt;/id&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [4] &lt;document&gt;\n  &lt;id&gt;knb-lter-and.3983&lt;/id&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [5] &lt;document&gt;\n  &lt;id&gt;knb-lter-arc.10435&lt;/id&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [6] &lt;document&gt;\n  &lt;id&gt;knb-lter-arc.10436&lt;/id&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [7] &lt;document&gt;\n  &lt;id&gt;knb-lter-arc.10450&lt;/id&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [8] &lt;document&gt;\n  &lt;id&gt;knb-lter-arc.10451&lt;/id&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [9] &lt;document&gt;\n  &lt;id&gt;knb-lter-arc.10452&lt;/id&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [10] &lt;document&gt;\n  &lt;id&gt;knb-lter-arc.10453&lt;/id&gt;\n&lt;/document&gt;</span></code></pre></div>
-<p>When constructing a query note that the 15403 data packages of the <a href="https://lternet.edu/the-ecotrends-project/">ecotrends</a> project and 10492 data packages of the <a href="https://lternet.edu/lter-remote-sensing-and-geographic-information-system-data/">LTER Landsat</a> project, can be excluded from the returned results by including <code>&amp;fq=-scope:(ecotrends+lter-landsat)</code> in the query string.</p>
+<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span>query <span class="op">=</span> <span class="st">'q=keyword:disturbance&amp;fl=id'</span><span class="op">)</span></code></pre></div>
+<p>When constructing a query note that the 15403 data packages of the <a href="https://lternet.edu/the-ecotrends-project/" class="external-link">ecotrends</a> project and 10492 data packages of the <a href="https://lternet.edu/lter-remote-sensing-and-geographic-information-system-data/" class="external-link">LTER Landsat</a> project, can be excluded from the returned results by including <code>&amp;fq=-scope:(ecotrends+lter-landsat)</code> in the query string.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Match all documents with keywords "disturbance", excluding ecotrends and </span>
 <span class="co"># lter-landsat scopes from the returned results</span>
 <span class="va">query</span> <span class="op">&lt;-</span> <span class="st">'q=keyword:disturbance&amp;fl=packageid&amp;fq=-scope:(ecotrends+lter-landsat)'</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span>
-<span class="va">res</span>
-<span class="co">#&gt; {xml_document}</span>
-<span class="co">#&gt; &lt;resultset numFound="12841" start="0" rows="10"&gt;</span>
-<span class="co">#&gt;   [1] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-luq.197.62&lt;/packageid&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [2] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-and.3982.7&lt;/packageid&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [3] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-luq.169.65&lt;/packageid&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [4] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-and.3983.4&lt;/packageid&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [5] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-arc.10435.4&lt;/packageid&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [6] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-arc.10436.4&lt;/packageid&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [7] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-arc.10450.4&lt;/packageid&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [8] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-arc.10451.4&lt;/packageid&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [9] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-arc.10452.4&lt;/packageid&gt;\n&lt;/document&gt;</span>
-<span class="co">#&gt;   [10] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-arc.10453.4&lt;/packageid&gt;\n&lt;/document&gt;</span></code></pre></div>
+<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span></code></pre></div>
 <p>Use wild cards operators to match anything and control the number of returned results.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Match anything, display all fields, limit to only one document</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span>query <span class="op">=</span> <span class="st">'q=*&amp;fl=*&amp;rows=1'</span><span class="op">)</span>
-<span class="va">res</span>
-<span class="co">#&gt; {xml_document}</span>
-<span class="co">#&gt; &lt;resultset numFound="44907" start="0" rows="1"&gt;</span>
-<span class="co">#&gt;   [1] &lt;document&gt;\n  &lt;abstract&gt;The EcoTrends project was established in ...</span></code></pre></div>
+<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span>query <span class="op">=</span> <span class="st">'q=*&amp;fl=*&amp;rows=1'</span><span class="op">)</span></code></pre></div>
 <p>Use scope, keyword, and author fields to get all data packages belonging to a research site, organization, or author.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Find all FCE LTER data packages, displaying the package id, title, and DOI</span>
 <span class="va">query</span> <span class="op">&lt;-</span> <span class="st">'q=scope:knb-lter-fce&amp;fl=packageid,title,doi&amp;rows=100'</span>
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span>
-<span class="va">res</span>
-<span class="co">#&gt; {xml_document}</span>
-<span class="co">#&gt; &lt;resultset numFound="183" start="0" rows="100"&gt;</span>
-<span class="co">#&gt;   [1] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-fce.1076.4&lt;/packageid&gt;\n  &lt;title&gt; ...</span>
-<span class="co">#&gt;   [2] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-fce.1077.3&lt;/packageid&gt;\n  &lt;title&gt; ...</span>
-<span class="co">#&gt;   [3] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-fce.1078.3&lt;/packageid&gt;\n  &lt;title&gt; ...</span>
-<span class="co">#&gt;   [4] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-fce.1081.3&lt;/packageid&gt;\n  &lt;title&gt; ...</span>
-<span class="co">#&gt;   [5] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-fce.1085.3&lt;/packageid&gt;\n  &lt;title&gt; ...</span>
-<span class="co">#&gt;   [6] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-fce.1087.4&lt;/packageid&gt;\n  &lt;title&gt; ...</span>
-<span class="co">#&gt;   [7] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-fce.1088.3&lt;/packageid&gt;\n  &lt;title&gt; ...</span>
-<span class="co">#&gt;   [8] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-fce.1089.3&lt;/packageid&gt;\n  &lt;title&gt; ...</span>
-<span class="co">#&gt;   [9] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-fce.1090.3&lt;/packageid&gt;\n  &lt;title&gt; ...</span>
-<span class="co">#&gt;   [10] &lt;document&gt;\n  &lt;packageid&gt;knb-lter-fce.1091.3&lt;/packageid&gt;\n  &lt;title&gt; ...</span>
-<span class="co">#&gt; ...</span>
-
-<span class="co"># Non-LTER projects publish under the "edi" scope and group data packages by a </span>
-<span class="co"># unique keyword. Find all data packages belonging to the Interagency </span>
-<span class="co"># Ecological Program</span>
-<span class="va">query</span> <span class="op">&lt;-</span> <span class="st">'q=scope:edi+AND+keyword:"Interagency+Ecological+Program"&amp;fl=*'</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span>
-<span class="va">res</span>
-<span class="co">#&gt; {xml_document}</span>
-<span class="co">#&gt; &lt;resultset numFound="22" start="0" rows="10"&gt;</span>
-<span class="co">#&gt;   [1] &lt;document&gt;\n  &lt;abstract&gt;The U.S. Fish and Wildlife Service (USFWS) ...</span>
-<span class="co">#&gt;   [2] &lt;document&gt;\n  &lt;abstract&gt;The Suisun Marsh Salinity Control Gates ...</span>
-<span class="co">#&gt;   [3] &lt;document&gt;\n  &lt;abstract&gt;Natural history museum specimen are ...</span>
-<span class="co">#&gt;   [4] &lt;document&gt;\n  &lt;abstract&gt;Dissolved oxygen levels in the Stockton Deep ...</span>
-<span class="co">#&gt;   [5] &lt;document&gt;\n  &lt;abstract&gt;Projected temperature increases due to global ...</span>
-<span class="co">#&gt;   [6] &lt;document&gt;\n  &lt;abstract&gt;The Interagency Ecological Program San ...</span>
-<span class="co">#&gt;   [7] &lt;document&gt;\n  &lt;abstract&gt;The Interagency Ecological Program San ...</span>
-<span class="co">#&gt;   [8] &lt;document&gt;\n  &lt;abstract&gt;The Fish Restoration Program Monitoring Team ...</span>
-<span class="co">#&gt;   [9] &lt;document&gt;\n  &lt;abstract&gt;The Interagency Ecological Program San ...</span>
-<span class="co">#&gt;   [10] &lt;document&gt;\n  &lt;abstract&gt;The upper San Francisco Estuary is an inland ...</span>
 
 <span class="co"># Query on author</span>
 <span class="va">query</span> <span class="op">&lt;-</span> <span class="st">'q=author:duane+costa&amp;fq=author:costa&amp;fl=id,title,author,score'</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span>
-<span class="va">res</span>
-<span class="co">#&gt; {xml_document}</span>
-<span class="co">#&gt; &lt;resultset numFound="5" start="0" rows="10"&gt;</span>
-<span class="co">#&gt;   [1] &lt;document&gt;\n  &lt;id&gt;knb-lter-vcr.147&lt;/id&gt;\n  &lt;title&gt;Keywords and Terms ...</span>
-<span class="co">#&gt;   [2] &lt;document&gt;\n  &lt;id&gt;knb-lter-nwk.4&lt;/id&gt;\n  &lt;title&gt;EML congruence checker ...</span>
-<span class="co">#&gt;   [3] &lt;document&gt;\n  &lt;id&gt;knb-lter-nwk.3&lt;/id&gt;\n  &lt;title&gt;Congruence checks for ...</span>
-<span class="co">#&gt;   [4] &lt;document&gt;\n  &lt;id&gt;edi.638&lt;/id&gt;\n  &lt;title&gt;Stream temperatures in the ...</span>
-<span class="co">#&gt;   [5] &lt;document&gt;\n  &lt;id&gt;knb-lter-hfr.104&lt;/id&gt;\n  &lt;title&gt;Adult Population ...</span></code></pre></div>
+<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span></code></pre></div>
 <p>Queries can be complex.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Query on subject "Primary Production" OR subject "plant". Note that 'subject'</span>
 <span class="co"># is an aggregation of several other fields containing searchable text: </span>
 <span class="co"># 'author', 'organization', 'title', 'keyword', and 'abstract' fields rolled</span>
 <span class="co"># together into a single searchable field.</span>
-<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">'q=subject:("Primary+Production")+OR+subject:plant&amp;fq='</span>,
+<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">'q=subject:("Primary+Production")+OR+subject:plant&amp;fq='</span>,
                 <span class="st">'-scope:ecotrends&amp;fq=-scope:lter-landsat*&amp;fl=id,packageid,'</span>,
                 <span class="st">'title,author,organization,pubdate,coordinates'</span><span class="op">)</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span>
-<span class="va">res</span>
-<span class="co">#&gt; {xml_document}</span>
-<span class="co">#&gt; &lt;resultset numFound="2679" start="0" rows="10"&gt;</span>
-<span class="co">#&gt;   [1] &lt;document&gt;\n  &lt;id&gt;knb-lter-sev.298&lt;/id&gt;\n  &lt;packageid&gt;knb-lter- ...</span>
-<span class="co">#&gt;   [2] &lt;document&gt;\n  &lt;id&gt;knb-lter-sev.206&lt;/id&gt;\n  &lt;packageid&gt;knb-lter- ...</span>
-<span class="co">#&gt;   [3] &lt;document&gt;\n  &lt;id&gt;knb-lter-ntl.72&lt;/id&gt;\n  &lt;packageid&gt;knb-lter-n ...</span>
-<span class="co">#&gt;   [4] &lt;document&gt;\n  &lt;id&gt;knb-lter-kbs.19&lt;/id&gt;\n  &lt;packageid&gt;knb-lter-k ...</span>
-<span class="co">#&gt;   [5] &lt;document&gt;\n  &lt;id&gt;knb-lter-sev.186&lt;/id&gt;\n  &lt;packageid&gt;knb-lter- ...</span>
-<span class="co">#&gt;   [6] &lt;document&gt;\n  &lt;id&gt;knb-lter-sev.205&lt;/id&gt;\n  &lt;packageid&gt;knb-lter- ...</span>
-<span class="co">#&gt;   [7] &lt;document&gt;\n  &lt;id&gt;knb-lter-sev.182&lt;/id&gt;\n  &lt;packageid&gt;knb-lter- ...</span>
-<span class="co">#&gt;   [8] &lt;document&gt;\n  &lt;id&gt;knb-lter-sev.290&lt;/id&gt;\n  &lt;packageid&gt;knb-lter- ...</span>
-<span class="co">#&gt;   [9] &lt;document&gt;\n  &lt;id&gt;knb-lter-sev.289&lt;/id&gt;\n  &lt;packageid&gt;knb-lter- ...</span>
-<span class="co">#&gt;   [10] &lt;document&gt;\n  &lt;id&gt;knb-lter-sev.155&lt;/id&gt;\n  &lt;packageid&gt;knb-lter- ...</span></code></pre></div>
+<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/search_data_packages.html">search_data_packages</a></span><span class="op">(</span><span class="va">query</span><span class="op">)</span></code></pre></div>
 <p>An alternative method for searching and retrieving metadata is the “list and read” method. It involves listing data package identifiers of interest, then read the corresponding metadata of those data packages one at a time, parsing and extracting whatever metadata from them that you’re interested in searching or doing additional processing on. Although this sounds like more work than using the search API, and in fact it generally is, there are some use cases where this might be the preferred approach. For example this list and read method allows access to previous versions of a data package, whereas the search API only provides access to the most recent version, and this method provides access to all EML content, not just indexed fields.</p>
 </div>
-<div id="access" class="section level2">
-<h2 class="hasAnchor">
-<a href="#access" class="anchor"></a>Access</h2>
+<div class="section level2">
+<h2 id="access">Access<a class="anchor" aria-label="anchor" href="#access"></a>
+</h2>
 <p>The EDI data repository provides open access to archived data as packages. Packages can be downloaded in .zip format or their individual data entities downloaded as raw bytes and files. Entities with a common format can be parsed simply by most readers while more complex formats need metadata to help with parsing.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># A data package</span>
@@ -250,7 +168,7 @@
 <span class="co"># Download to path</span>
 <span class="fu"><a href="../reference/read_data_package_archive.html">read_data_package_archive</a></span><span class="op">(</span><span class="va">packageId</span>, <span class="va">transaction</span>, path <span class="op">=</span> <span class="st">"./data"</span><span class="op">)</span>
 <span class="co">#&gt; |=============================================================| 100%</span>
-<span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="st">"./data"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">dir</a></span><span class="op">(</span><span class="st">"./data"</span><span class="op">)</span>
 <span class="co">#&gt; [1] ""edi.1047.1.zip"</span></code></pre></div>
 <p>Downloading an individual data entity requires the entity ID.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -270,12 +188,12 @@
 <span class="va">entityName</span> <span class="op">&lt;-</span> <span class="st">"Steelhead.csv"</span>
 <span class="va">entityId</span> <span class="op">&lt;-</span> <span class="va">res</span><span class="op">$</span><span class="va">entityId</span><span class="op">[</span><span class="va">res</span><span class="op">$</span><span class="va">entityName</span> <span class="op">==</span> <span class="va">entityName</span><span class="op">]</span>
 <span class="va">raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_data_entity.html">read_data_entity</a></span><span class="op">(</span><span class="va">packageId</span>, <span class="va">entityId</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">raw</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">raw</span><span class="op">)</span>
 <span class="co">#&gt; [1] ef bb bf 44 61 74</span></code></pre></div>
 <p>Common formats are easily parsed.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># These data have a common format are simply parsed</span>
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">raw</span><span class="op">)</span>
+<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">raw</span><span class="op">)</span>
 <span class="va">data</span>
 <span class="co">#&gt; # A tibble: 2,926 x 14</span>
 <span class="co">#&gt;    Date   trapVisitID subSiteName catchRawID releaseID commonName </span>
@@ -295,14 +213,15 @@
 <span class="co">#&gt; #   mort &lt;chr&gt;, fishOrigin &lt;chr&gt;, markType &lt;chr&gt;,</span>
 <span class="co">#&gt; #   CatchRaw.comments &lt;chr&gt;</span></code></pre></div>
 <p>Less common formats require metadata for parsing. This metadata is listed under the “physical” node of a data entities EML.</p>
+<p><em>See the <a href="https://cran.r-project.org/web/packages/emld/index.html" class="external-link">emld</a> library for more on working with EML as a list or JSON-LD. See the <a href="https://cran.r-project.org/web/packages/xml2/index.html" class="external-link">xml2</a> library for working with EML as XML.</em></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Read the same data entity but using the physical metadata</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://xml2.r-lib.org/">xml2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://xml2.r-lib.org/" class="external-link">xml2</a></span><span class="op">)</span>
 <span class="va">eml</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_metadata.html">read_metadata</a></span><span class="op">(</span><span class="va">packageId</span><span class="op">)</span>
 <span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_metadata_entity.html">read_metadata_entity</a></span><span class="op">(</span><span class="va">packageId</span>, <span class="va">entityId</span><span class="op">)</span>
-<span class="va">fieldDelimiter</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/xml_text.html">xml_text</a></span><span class="op">(</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html">xml_find_first</a></span><span class="op">(</span><span class="va">meta</span>, <span class="st">".//physical//fieldDelimiter"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">numHeaderLines</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/xml_text.html">xml_double</a></span><span class="op">(</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html">xml_find_first</a></span><span class="op">(</span><span class="va">meta</span>, <span class="st">".//physical//numHeaderLines"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span><span class="op">(</span>
+<span class="va">fieldDelimiter</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/xml_text.html" class="external-link">xml_text</a></span><span class="op">(</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">meta</span>, <span class="st">".//physical//fieldDelimiter"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">numHeaderLines</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/xml_text.html" class="external-link">xml_double</a></span><span class="op">(</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_first</a></span><span class="op">(</span><span class="va">meta</span>, <span class="st">".//physical//numHeaderLines"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_delim</a></span><span class="op">(</span>
   file <span class="op">=</span> <span class="va">raw</span>, 
   delim <span class="op">=</span> <span class="va">fieldDelimiter</span>, 
   skip <span class="op">=</span> <span class="va">numHeaderLines</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>
@@ -338,11 +257,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Colin Smith.</p>
+  <p></p>
+<p>Developed by Colin Smith.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -350,6 +271,8 @@
 
   
 
+
+  
 
   </body>
 </html>

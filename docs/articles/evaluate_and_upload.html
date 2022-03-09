@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
       </span>
     </div>
 
@@ -41,7 +43,7 @@
   <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -70,7 +72,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EDIorg/EDIutils/">
+  <a href="https://github.com/EDIorg/EDIutils/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -85,26 +87,26 @@
 
       
 
-      </header><script src="evaluate_and_upload_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Evaluate and Upload Data</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EDIorg/EDIutils/blob/master/vignettes/evaluate_and_upload.Rmd"><code>vignettes/evaluate_and_upload.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EDIorg/EDIutils/blob/HEAD/vignettes/evaluate_and_upload.Rmd" class="external-link"><code>vignettes/evaluate_and_upload.Rmd</code></a></small>
       <div class="hidden name"><code>evaluate_and_upload.Rmd</code></div>
 
     </div>
 
     
     
-<p><em>The EDI data repository has a “<a href="https://portal-s.edirepository.org/nis/home.jsp">staging</a>” environment to test the upload and rendering of new data packages before publishing to “<a href="https://portal.edirepository.org/nis/home.jsp">production</a>”. These environments are functionally equivalent but the contained values are independent. For example, a data package identifier reserved by a user in “staging” will not work in “production” and vise versa.</em></p>
+<p><em>The EDI data repository has a “<a href="https://portal-s.edirepository.org/nis/home.jsp" class="external-link">staging</a>” environment to test the upload and rendering of new data packages before publishing to “<a href="https://portal.edirepository.org/nis/home.jsp" class="external-link">production</a>”. These environments are functionally equivalent but the contained values are independent. For example, a data package identifier reserved by a user in “staging” will not work in “production” and vise versa.</em></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EDIorg/EDIutils">EDIutils</a></span><span class="op">)</span></code></pre></div>
-<p>Evaluation and upload to the repository requires data entities are described with EML metadata. There are many tools for creating EML, EDI supports two: the <a href="https://ediorg.github.io/EMLassemblyline/">EMLassemblyline</a> R package for programmatic workflows, and the <a href="https://ezeml.edirepository.org/eml/">ezEML</a> web form wizard. Research groups managing large volumes of metadata may want to consider the <a href="https://github.com/lter/LTER-core-metabase">LTER core-metabase</a>.</p>
-<div id="authenticate" class="section level2">
-<h2 class="hasAnchor">
-<a href="#authenticate" class="anchor"></a>Authenticate</h2>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EDIorg/EDIutils" class="external-link">EDIutils</a></span><span class="op">)</span></code></pre></div>
+<p>Evaluation and upload to the repository requires data entities are described with EML metadata. There are many tools for creating EML, EDI supports two: the <a href="https://ediorg.github.io/EMLassemblyline/" class="external-link">EMLassemblyline</a> R package for programmatic workflows, and the <a href="https://ezeml.edirepository.org/eml/" class="external-link">ezEML</a> web form wizard. Research groups managing large volumes of metadata may want to consider the <a href="https://github.com/lter/LTER-core-metabase" class="external-link">LTER core-metabase</a>.</p>
+<div class="section level2">
+<h2 id="authenticate">Authenticate<a class="anchor" aria-label="anchor" href="#authenticate"></a>
+</h2>
 <p>Authentication is required by functions involving data evaluation and upload, audit report access, event notifications, and other account based features. Request an account from <a href="mailto:support@environmentaldatainitiative.org" class="email">support@environmentaldatainitiative.org</a>. There are three options for authenticating:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Interactively at the console</span>
@@ -119,9 +121,9 @@
 <span class="fu"><a href="../reference/login.html">login</a></span><span class="op">(</span>config <span class="op">=</span> <span class="st">"./data/config.txt"</span><span class="op">)</span></code></pre></div>
 <p>The <code><a href="../reference/login.html">login()</a></code> function exchanges credentials for a temporary (~10 hour) authentication token, which is written to the <code>EDI_TOKEN</code> environment variable referenced by EDIutils functions requiring authentication.</p>
 </div>
-<div id="reserve-a-data-package-id" class="section level2">
-<h2 class="hasAnchor">
-<a href="#reserve-a-data-package-id" class="anchor"></a>Reserve a Data Package ID</h2>
+<div class="section level2">
+<h2 id="reserve-a-data-package-id">Reserve a Data Package ID<a class="anchor" aria-label="anchor" href="#reserve-a-data-package-id"></a>
+</h2>
 <p>Data package reservations prevent conflicting use of the same identifier.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Create reservation</span>
@@ -129,9 +131,9 @@
 <span class="va">identifier</span>
 <span class="co">#&gt; [1] 595</span></code></pre></div>
 </div>
-<div id="evaluate" class="section level2">
-<h2 class="hasAnchor">
-<a href="#evaluate" class="anchor"></a>Evaluate</h2>
+<div class="section level2">
+<h2 id="evaluate">Evaluate<a class="anchor" aria-label="anchor" href="#evaluate"></a>
+</h2>
 <p>Evaluation checks for metadata accuracy and completeness.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -145,11 +147,46 @@
 <span class="co"># Check status</span>
 <span class="va">status</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/check_status_evaluate.html">check_status_evaluate</a></span><span class="op">(</span><span class="va">transaction</span>, env <span class="op">=</span> <span class="st">"staging"</span><span class="op">)</span>
 <span class="va">status</span>
-<span class="co">#&gt; [1] TRUE</span>
-
-<span class="co"># Read the evaluation report</span>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="interpreting-the-evaluation-report">Interpreting the Evaluation Report<a class="anchor" aria-label="anchor" href="#interpreting-the-evaluation-report"></a>
+</h2>
+<div class="section level3">
+<h3 id="report-summary">Report Summary<a class="anchor" aria-label="anchor" href="#report-summary"></a>
+</h3>
+<p>The evaluation report summary provides a quick look at the data package evaluation results. Specifically, the total number of checks run and how many of these checks resulted in statuses of “valid”, “info”, “warn”, or “error”.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Summarize report</span>
+<span class="fu"><a href="../reference/read_evaluate_report_summary.html">read_evaluate_report_summary</a></span><span class="op">(</span><span class="va">transaction</span>, env <span class="op">=</span> <span class="st">"staging"</span><span class="op">)</span>
+<span class="co">#&gt; ===================================================</span>
+<span class="co">#&gt;   EVALUATION REPORT</span>
+<span class="co">#&gt; ===================================================</span>
+<span class="co">#&gt;</span>
+<span class="co">#&gt; PackageId: edi.595.1</span>
+<span class="co">#&gt; Report Date/Time: 2021-12-16T22:49:25</span>
+<span class="co">#&gt; Total Quality Checks: 29</span>
+<span class="co">#&gt; Valid: 21</span>
+<span class="co">#&gt; Info: 8</span>
+<span class="co">#&gt; Warn: 0</span>
+<span class="co">#&gt; Error: 0</span></code></pre></div>
+<p>The meaning of these status messages:</p>
+<ul>
+<li>Valid - The result of the quality check matches the expectation.</li>
+<li>Info - The result of the quality check may or may not match the expectation, but since the expectation is not required, information is returned instead of a Warn or Error.</li>
+<li>Warn - The result of the quality check does not match the expectation. A match is not explicitly required to publish the data package, but strongly recommended.</li>
+<li>Error - The result of the quality check does not match the expectation. A match is required before the data package can be published.</li>
+</ul>
+<p>Any evaluation check that results in a warning or error status should be resolved before moving ahead (note that errors must be corrected). Resolve problems with the data and metadata and repeat the evaluation process until all errors (and preferably all warnings) are resolved.</p>
+</div>
+<div class="section level3">
+<h3 id="full-report">Full Report<a class="anchor" aria-label="anchor" href="#full-report"></a>
+</h3>
+<p>The full evaluation report provides detailed information on each check and some diagnostics to help resolve issues. The full report can be printed to the console or written to file as plain text or as html to be viewed in a web browser (recommended). See <code><a href="../reference/read_evaluate_report.html">?read_evaluate_report</a></code> for details.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Read the evaluation report</span>
 <span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_evaluate_report.html">read_evaluate_report</a></span><span class="op">(</span><span class="va">transaction</span>, frmt <span class="op">=</span> <span class="st">"char"</span>, env <span class="op">=</span> <span class="st">"staging"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span>
 <span class="co">#&gt; ===================================================</span>
 <span class="co">#&gt;   EVALUATION REPORT</span>
 <span class="co">#&gt; ===================================================</span>
@@ -186,12 +223,29 @@
 <span class="co">#&gt; SUGGESTION: </span>
 <span class="co">#&gt; REFERENCE: </span>
 <span class="co">#&gt; ...</span></code></pre></div>
+<p>The Evaluation Report is broken into multiple parts, always starting with the Dataset Report, and followed by an Entity Report for each entity (data object/file) included in the data package. These are differentiated by header lines with the Entity Name and Identifier.</p>
+<p>The Dataset and Entity Reports share the same layout:</p>
+<ul>
+<li># - The number of the quality check</li>
+<li>Identifier - The identifier of the quality check</li>
+<li>Status - The status of the result of the quality check</li>
+<li>Quality Check - Describes the type of the quality check (data, metadata, or congruency), the system (knb, lter), and the status that results on failure</li>
+<li>Name - The name of the quality check</li>
+<li>Description - Brief description of the quality check</li>
+<li>Expected - The result that the quality check is expecting</li>
+<li>Found - The actual result of the quality check</li>
+<li>Explanation - Additional information describing the rationale of the quality check</li>
+<li>Suggestion - Potential data package improvements to implement to pass the quality check</li>
+<li>Reference - Source of the rationale for the quality check or where to find more information</li>
+</ul>
+<p>Parse through the document and address any errors or warnings (denoted by the Error and Warn labels). To understand why a quality check failed, first read the Name and Description of the quality check to determine what was being tested and how the test was being conducted. Then, compare the Expected result to what was Found. If it is still not clear what caused the failure, try to gain additional insight from the Explanation, Suggestion, and Reference fields, or contact the EDI Data Curation Team for clarification (<a href="mailto:info@environmentaldatainitiative.org" class="email">info@environmentaldatainitiative.org</a>).</p>
 </div>
-<div id="upload" class="section level2">
-<h2 class="hasAnchor">
-<a href="#upload" class="anchor"></a>Upload</h2>
+</div>
+<div class="section level2">
+<h2 id="upload">Upload<a class="anchor" aria-label="anchor" href="#upload"></a>
+</h2>
 <p>Upload after errors and warnings are fixed.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Create a new data package</span>
 <span class="va">transaction</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_data_package.html">create_data_package</a></span><span class="op">(</span>
  eml <span class="op">=</span> <span class="st">"./data/edi.595.1.xml"</span>, 
@@ -205,11 +259,12 @@
  env <span class="op">=</span> <span class="st">"staging"</span><span class="op">)</span>
 <span class="va">status</span>
 <span class="co">#&gt; [1] TRUE</span></code></pre></div>
-<div id="update" class="section level4">
-<h4 class="hasAnchor">
-<a href="#update" class="anchor"></a>Update</h4>
-<p>Update is the same as upload, but with an incremented data package version number (e.g. “edi.595.2” supersedes “edi.595.1”).</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+</div>
+<div class="section level2">
+<h2 id="update">Update<a class="anchor" aria-label="anchor" href="#update"></a>
+</h2>
+<p>Update is the same as upload, but with an incremented data package version number (e.g. “edi.595.2” supersedes “edi.595.1”). <em>NOTE: The new identifier must be added to the “packageId” element in the EML and as the new EML file name.</em></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' # Update data package</span>
 <span class="co">#' transaction &lt;- update_data_package(</span>
 <span class="co">#'   eml = "./data/edi.595.2.xml", </span>
@@ -225,7 +280,6 @@
 <span class="co">#' #&gt; [1] TRUE</span></code></pre></div>
 <p>Once everything looks good in the “staging” environment, then repeat the above reservation and upload steps in the “production” environment where the data package will be assigned a DOI and made discoverable with other published data.</p>
 </div>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -239,11 +293,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Colin Smith.</p>
+  <p></p>
+<p>Developed by Colin Smith.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -251,6 +307,8 @@
 
   
 
+
+  
 
   </body>
 </html>
