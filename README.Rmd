@@ -52,6 +52,13 @@ library(EDIutils)
 
 The unit of publication is the data package. It contains one or more data entities (i.e. files) described with [EML metadata](https://eml.ecoinformatics.org/), a metadata quality report, and a manifest of package contents. Data packages are immutable for reproducible research, yet versionable to allow updates and improved data quality through time. Each version is assigned a DOI and a unique package ID of the form "scope.identifier.revision". The "scope" is the organizational unit, "identifier" the series, and "revision" the version (e.g. "edi.100.2" is version "2" of data package "edi.100").
 
+### Authentication
+
+Authentication is required by data evaluation and upload functions, and to 
+access user audit logs and services. Contact EDI for an account 
+<support@environmentaldatainitiative.org>. Authenticate with `login()` 
+function.
+
 ### Search and Access Data
 
 The repository search service is a standard deployment of Apache Solr and indexes select metadata fields of data package metadata. For a list of searchable fields see `search_data_packages()`. For a browser based search experience, use the [EDI data portal](https://portal.edirepository.org/nis/advancedSearch.jsp).
