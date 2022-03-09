@@ -65,6 +65,13 @@ package ID of the form “scope.identifier.revision”. The “scope” is the
 organizational unit, “identifier” the series, and “revision” the version
 (e.g. “edi.100.2” is version “2” of data package “edi.100”).
 
+### Authentication
+
+Authentication is required by data evaluation and upload functions, and
+to access user audit logs and services. Contact EDI for an account
+<support@environmentaldatainitiative.org>. Authenticate with `login()`
+function.
+
 ### Search and Access Data
 
 The repository search service is a standard deployment of Apache Solr
@@ -76,19 +83,18 @@ portal](https://portal.edirepository.org/nis/advancedSearch.jsp).
 ``` r
 # List data packages containing the term "water temperature"
 res <- search_data_packages(query = 'q="water+temperature"&fl=*')
-res
-#> {xml_document}
-#> <resultset numFound="768" start="0" rows="10">
-#>  [1] <document>\n  <abstract>This data set contains water leve ...
-#>  [2] <document>\n  <abstract>This data set contains water leve ...
-#>  [3] <document>\n  <abstract>The second instrumented buoy on S ...
-#>  [4] <document>\n  <abstract>Water temperature was measured on ...
-#>  [5] <document>\n  <abstract>Profiles of water and sediment te ...
-#>  [6] <document>\n  <abstract>Time series at 5 minute intervals ...
-#>  [7] <document>\n  <abstract>Time series at 5 minute intervals ...
-#>  [8] <document>\n  <abstract>Time series at 5 minute intervals ...
-#>  [9] <document>\n  <abstract>As part of the Long Term Ecologic ...
-#> [10] <document>\n  <abstract>Year 2016, continuous measurement ...
+colnames(res)
+#>  [1] "abstract"              "begindate"             "doi"                  
+#>  [4] "enddate"               "funding"               "geographicdescription"
+#>  [7] "id"                    "methods"               "packageid"            
+#> [10] "pubdate"               "responsibleParties"    "scope"                
+#> [13] "site"                  "taxonomic"             "title"                
+#> [16] "authors"               "spatialCoverage"       "sources"              
+#> [19] "keywords"              "organizations"         "singledates"          
+#> [22] "timescales"
+
+nrow(res)
+#> [1] 798
 ```
 
 Data entities are downloaded in raw bytes and parsed by a reader

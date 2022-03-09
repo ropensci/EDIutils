@@ -1,3 +1,7 @@
+# EDIutils 0.0.0.9002
+
+Implemented reviewer recommendations (see https://github.com/ropensci/software-review/issues/498)
+
 # EDIutils 0.0.0.9001
 
 Implement rOpenSci http testing recommendations
