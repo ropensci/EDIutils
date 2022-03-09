@@ -8,7 +8,13 @@
 #'
 #' @return (xml_document) Provenance metadata of \code{packageId}, representing
 #' a <methodStep> element that can be inserted into the <methods> section of a
-#' dependent data package
+#' dependent data package. 
+#' 
+#' See the 
+#' \href{https://cran.r-project.org/web/packages/emld/index.html}{emld} library 
+#' for more on working with EML as a list or JSON-LD. See the 
+#' \href{https://cran.r-project.org/web/packages/xml2/index.html}{xml2} library 
+#' for working with EML as XML.
 #' 
 #' @family Provenance
 #'
