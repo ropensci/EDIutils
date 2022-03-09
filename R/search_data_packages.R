@@ -52,15 +52,15 @@
 #' Single-value fields:
 #' \itemize{
 #'   \item abstract
-#'   \item begindate
+#'   \item begindate - In ISO format (YYYY-MM-DDThh:mm:ss)
 #'   \item doi
-#'   \item enddate
+#'   \item enddate - In ISO format (YYYY-MM-DDThh:mm:ss)
 #'   \item funding
 #'   \item geographicdescription
 #'   \item id
 #'   \item methods
-#'   \item packageid
-#'   \item pubdate
+#'   \item packageid - Data Id in "scope.identifier.revision" format 
+#'   \item pubdate - In ISO format (YYYY-MM-DDThh:mm:ss)
 #'   \item responsibleParties
 #'   \item scope
 #'   \item singledate
@@ -72,7 +72,9 @@
 #' Multi-value fields:
 #' \itemize{
 #'   \item author
-#'   \item coordinates
+#'   \item coordinates - Use \code{"IsWithin(West+East+North+South)"} where each 
+#'   cardinal direction is in decimal degrees with South of the equator as
+#'   negative and East of the prime meridian positive.
 #'   \item keyword
 #'   \item organization
 #'   \item projectTitle
