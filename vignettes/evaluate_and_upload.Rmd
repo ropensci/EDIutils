@@ -108,7 +108,7 @@ The full evaluation report provides detailed information on each check and some 
 
 ```{r, eval=FALSE}
 # Read the evaluation report
-report <- read_evaluate_report(transaction, frmt = "char", env = "staging")
+report <- read_evaluate_report(transaction, as = "char", env = "staging")
 message(report)
 #> ===================================================
 #>   EVALUATION REPORT
