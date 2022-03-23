@@ -11,18 +11,17 @@ This vignette demonstrates how to query the EDI repository for data package down
 
 ## Introduction to Download reports
 
-The PASTA Audit service collects information about user-related events that occur in PASTA, including data entity downloads. This information is stored in the Audit Manager's event database and which can be accessed through the `get_audit_report` command and returns an XML document composed of individual event audit records. Understanding this information is critical to determine the meaning of these events.
+The PASTA Audit service collects information about user-related events that occur in PASTA, including data entity downloads. This information is stored in the Audit Manager's event database and which can be accessed through the `get_audit_report` command and returns a data frame composed of individual event audit records. Understanding this information is critical to determine the meaning of these events.
 
 Attention needs to be paid to the `user` field, which can be `public` or `robot`. It is also important to know that the `userAgent` field is not required and a user agent can define its own text string to insert or leave blank. However, the `userAgent` provides a lot of interesting information. E.g., it allows a good estimate of downloads being initiated manually through a web browser (e.g., records starting with `Mozilla`) and downloads initiated programmatically (e.g., MATLAB, RStudio, etc.). The user agent `DataONE`, however, is the exception and appears to generate download reports that currently cannot be traced to actual, user generated entity downloads. They should be carefully inspected and cross checked with downloads reported for datasets on the DataONE search interface or filtered out as they seem to include internal management related data access. 
 
-Audit reports query a large database containing millions of records and may take some time to generate. In addition, a report containing a lot of audit records will create a large XML output, which may be slow to completely download and locally manage. It is best to use query parameters to limit requests.
+Audit reports query a large database containing millions of records and may take some time to generate. In addition, a report containing a lot of audit records will create a large output, which may be slow to completely download and locally manage. It is best to use query parameters to limit requests.
 
 ## Set up the R environment
 
 
 ```r
 library(EDIutils)
-library(xml2)
 library(stringr)
 library(dplyr)
 library(tidyr)
@@ -30,8 +29,6 @@ library(ggplot2)
 library(lubridate)
 ```
 
-
-Several EDI API functions return XML, `xml2` is a convenient package to extract desired information and to save returned EML files locally.
 
 ## Get the Audit Report for Downloaded Data Entities
 
@@ -66,50 +63,9 @@ query <- paste("category=info",
                sep = "&")
 
 # Get the report
-report_xml <- get_audit_report(query = query, env = "production")
+df_report <- get_audit_report(query = query, as = 'data.frame', env = "production")
 
 logout()
-```
-
-### Parse the Report
-
-The returned XML has the format:
-
-```xml
-<auditRecord>
-    <oid>115951546</oid>
-    <entryTime>2021-10-18T09:27:52</entryTime>
-    <category>info</category>
-    <service>DataPackageManager-1.0</service>
-    <serviceMethod>readDataEntity</serviceMethod>
-    <responseStatus>200</responseStatus>
-    <resourceId>https://pasta.lternet.edu/package/data/eml/knb-lter-ntl/387/1/c472d5a7ac8a89a12100792e9b5705d3</resourceId>
-    <user>public</user>
-    <userAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:95.0) Gecko/20100101 Firefox/95.0</userAgent>
-    <groups/>
-    <authSystem>https://pasta.edirepository.org/authentication</authSystem>
-    <entryText>Entity Name: EDI_Data_Metadata_JumpingWorms.csv; Object Name: EDI_Data_Metadata_JumpingWorms.csv; Data Format: text/csv</entryText>
-</auditRecord>
-```
-
-Read the desired information from the XML file
-
-
-```r
-download_date_time <- xml_text(xml_find_all(report_xml, "//entryTime"))
-download_data_entity <- xml_text(xml_find_all(report_xml, "//resourceId"))
-download_user <- xml_text(xml_find_all(report_xml, "//user"))
-download_user_agent <- xml_text(xml_find_all(report_xml, "//userAgent"))
-```
-
-Turn the vectors of information into a data frame
-
-
-```r
-df_raw_results <- data.frame(dl_date_time = download_date_time,
-                         dl_entity = download_data_entity,
-                         dl_user = download_user,
-                         dl_user_agent = download_user_agent)
 ```
 
 Filter the records and parse the entityID into scope, datasetID, and version. Here robot and DataONE downloads records are filtered out.
@@ -117,12 +73,12 @@ Filter the records and parse the entityID into scope, datasetID, and version. He
 
 
 ```r
-df_results <- df_raw_results %>%
-  filter(dl_user != 'robot') %>%
-  filter(dl_user_agent != 'DataONE-Python/3.4.7 +http://dataone.org/') %>%
-  filter(nchar(dl_entity) >0) %>%
-  separate(dl_date_time, into = c("dl_date", NA), sep = "T") %>%
-  separate(dl_entity, into = c(NA,NA,NA,NA,NA,NA,"dl_scope", "dl_datasetID", "dl_revision", NA), sep = "/")
+df_results <- df_report %>%
+  filter(user != 'robot') %>%
+  filter(userAgent != 'DataONE-Python/3.4.7 +http://dataone.org/') %>%
+  filter(nchar(resourceId) >0) %>%
+  separate(entryTime, into = c("date", NA), sep = "T") %>%
+  separate(resourceId, into = c(NA,NA,NA,NA,NA,NA,"scope", "datasetID", "revision", NA), sep = "/")
 ```
 
 Group and count downloads for each data package for the entire time period
@@ -131,7 +87,7 @@ Group and count downloads for each data package for the entire time period
 
 ```r
 df_downloads <- df_results %>%
-  group_by(dl_datasetID) %>%
+  group_by(datasetID) %>%
   summarise(n = n())
 ```
 
@@ -141,8 +97,8 @@ Or count downloads per month
 
 ```r
 df_downloads_per_month <- df_results %>%
-  mutate(dl_month = month(dl_date)) %>% 
-  group_by(dl_month) %>%
+  mutate(month = month(date)) %>% 
+  group_by(month) %>%
   summarise(n = n())
 ```
 
@@ -152,11 +108,11 @@ And graph the daily downloads
 
 ```r
 df_downloads_daily <- df_results %>%
-  group_by(dl_date) %>%
-  arrange(dl_date) %>%
+  group_by(date) %>%
+  arrange(date) %>%
   summarise(n = n())
 
-ggplot(df_downloads_daily, aes(x=dl_date, y=n, group = 1)) +
+ggplot(df_downloads_daily, aes(x=date, y=n, group = 1)) +
   geom_line() +
   labs(y = "Number of Downloaded Entities", 
               title = "Daily Downloads") +
@@ -165,7 +121,6 @@ ggplot(df_downloads_daily, aes(x=dl_date, y=n, group = 1)) +
         axis.line = element_line(colour = "black"),
         panel.background = element_rect(fill = "white"))
 ```
-
 
 <img src="daily_downloads-1.png"title="plot of chunk daily_downloads" alt="plot of chunk daily_downloads" width="50%" />
 
