@@ -1,11 +1,13 @@
 #' Get recent uploads
 #'
 #' @param query (character) Query (see details below)
+#' @param as (character) Format of the returned object. Can be: "data.frame" 
+#' or "xml".
 #' @param env (character) Repository environment. Can be: "production",
 #' "staging", or "development".
 #'
-#' @return (xml_document) A list of zero or more audit records of either
-#' recently inserted or recently updated data packages.
+#' @return (data.frame or xml_document) A list of zero or more audit records 
+#' of either recently inserted or recently updated data packages.
 #'
 #' @details Query parameters are specified as key=value pairs, multiple pairs
 #' must be delimited with ampersands (&), and only a single value should be
@@ -38,25 +40,8 @@
 #' auditReport <- get_recent_uploads(
 #'  query = "serviceMethod=createDataPackage&limit=5"
 #' )
-#' 
-#' # Show the first
-#' xml2::xml_find_first(auditReport, "auditRecord")
-#' #> {xml_node}
-#' #> <auditRecord>
-#' #>  [1] <oid>128171587</oid>
-#' #>  [2] <entryTime>2022-01-18T08:41:39</entryTime>
-#' #>  [3] <category>info</category>
-#' #>  [4] <service>DataPackageManager-1.0</service>
-#' #>  [5] <serviceMethod>createDataPackage</serviceMethod>
-#' #>  [6] <responseStatus>200</responseStatus>
-#' #>  [7] <resourceId>https://pasta.lternet.edu/package/eml/edi/1064/1</re ...
-#' #>  [8] <user>uid=kzollovenecek,o=EDI,dc=edirepository,dc=org</user>
-#' #>  [9] <userAgent>null</userAgent>
-#' #> [10] <groups>authenticated,vetted</groups>
-#' #> [11] <authSystem>https://pasta.edirepository.org/authentication</auth ...
-#' #> [12] <entryText/>
 #' }
-get_recent_uploads <- function(query, env = "production") {
+get_recent_uploads <- function(query, as = "data.frame", env = "production") {
   url <- paste0(base_url(env), "/audit/recent-uploads?")
   if (!is.null(query)) {
     url <- paste0(url, query)
@@ -68,5 +53,6 @@ get_recent_uploads <- function(query, env = "production") {
   )
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
-  return(xml2::read_xml(res))
+  res <- xml2::read_xml(res)
+  ifelse(as == "data.frame", return(xml2df(res)), return(res))
 }

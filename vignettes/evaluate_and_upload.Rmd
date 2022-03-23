@@ -69,9 +69,46 @@ transaction
 status <- check_status_evaluate(transaction, env = "staging")
 status
 #> [1] TRUE
+```
 
+## Interpreting the Evaluation Report
+
+### Report Summary
+
+The evaluation report summary provides a quick look at the data package evaluation results. Specifically, the total number of checks run and how many of these checks resulted in statuses of "valid", "info", "warn", or "error". 
+
+```{r eval=FALSE}
+# Summarize report
+read_evaluate_report_summary(transaction, env = "staging")
+#> ===================================================
+#>   EVALUATION REPORT
+#> ===================================================
+#>
+#> PackageId: edi.595.1
+#> Report Date/Time: 2021-12-16T22:49:25
+#> Total Quality Checks: 29
+#> Valid: 21
+#> Info: 8
+#> Warn: 0
+#> Error: 0
+```
+
+The meaning of these status messages:
+
+* Valid - The result of the quality check matches the expectation.
+* Info - The result of the quality check may or may not match the expectation, but since the expectation is not required, information is returned instead of a Warn or Error.
+* Warn - The result of the quality check does not match the expectation. A match is not explicitly required to publish the data package, but strongly recommended.
+* Error - The result of the quality check does not match the expectation. A match is required before the data package can be published.
+
+Any evaluation check that results in a warning or error status should be resolved before moving ahead (note that errors must be corrected). Resolve problems with the data and metadata and repeat the evaluation process until all errors (and preferably all warnings) are resolved.
+
+### Full Report
+
+The full evaluation report provides detailed information on each check and some diagnostics to help resolve issues. The full report can be printed to the console or written to file as plain text or as html to be viewed in a web browser (recommended). See `?read_evaluate_report` for details.
+
+```{r, eval=FALSE}
 # Read the evaluation report
-report <- read_evaluate_report(transaction, frmt = "char", env = "staging")
+report <- read_evaluate_report(transaction, as = "char", env = "staging")
 message(report)
 #> ===================================================
 #>   EVALUATION REPORT
@@ -111,6 +148,23 @@ message(report)
 #> ...
 ```
 
+The Evaluation Report is broken into multiple parts, always starting with the Dataset Report, and followed by an Entity Report for each entity (data object/file) included in the data package. These are differentiated by header lines with the Entity Name and Identifier.
+
+The Dataset and Entity Reports share the same layout:
+
+* \# - The number of the quality check
+* Identifier - The identifier of the quality check
+* Status - The status of the result of the quality check
+* Quality Check - Describes the type of the quality check (data, metadata, or congruency), the system (knb, lter), and the status that results on failure
+* Name - The name of the quality check
+* Description - Brief description of the quality check
+* Expected - The result that the quality check is expecting
+* Found - The actual result of the quality check
+* Explanation - Additional information describing the rationale of the quality check
+* Suggestion - Potential data package improvements to implement to pass the quality check
+* Reference - Source of the rationale for the quality check or where to find more information
+
+Parse through the document and address any errors or warnings (denoted by the Error and Warn labels). To understand why a quality check failed, first read the Name and Description of the quality check to determine what was being tested and how the test was being conducted. Then, compare the Expected result to what was Found. If it is still not clear what caused the failure, try to gain additional insight from the Explanation, Suggestion, and Reference fields, or contact the EDI Data Curation Team for clarification (info@environmentaldatainitiative.org).
 
 ## Upload
 
@@ -132,9 +186,9 @@ status
 #> [1] TRUE
 ```
 
-#### Update
+## Update
 
-Update is the same as upload, but with an incremented data package version number (e.g. "edi.595.2" supersedes "edi.595.1").
+Update is the same as upload, but with an incremented data package version number (e.g. "edi.595.2" supersedes "edi.595.1"). _NOTE: The new identifier must be added to the "packageId" element in the EML and as the new EML file name._
 
 ```{r eval=FALSE}
 #' # Update data package

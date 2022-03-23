@@ -4,17 +4,18 @@
 \alias{read_data_package_doi}
 \title{Read data package Digital Object Identifier}
 \usage{
-read_data_package_doi(packageId, env = "production")
+read_data_package_doi(packageId, as_url = FALSE, env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
+
+\item{as_url}{(logical) Returns the DOI as a URL if TRUE.}
 
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(character) The canonical Digital Object Identifier for
-\code{packageId}
+(character) The Digital Object Identifier for \code{packageId}
 }
 \description{
 Read data package Digital Object Identifier
@@ -23,9 +24,14 @@ Read data package Digital Object Identifier
 \dontrun{
 
 # Read package DOI
-doi <- read_data_package_doi(packageId = "knb-lter-jrn.210548103.15")
+doi <- read_data_package_doi("knb-lter-jrn.210548103.15")
 doi
 #> [1] "doi:10.6073/pasta/c80c0c03d22791524d4b870d2193c843"
+
+# Read package DOI as URL
+doi <- read_data_package_doi("knb-lter-jrn.210548103.15", as_url = TRUE)
+doi
+#> [1] "https://doi.org/10.6073/pasta/c80c0c03d22791524d4b870d2193c843"
 }
 }
 \seealso{

@@ -4,16 +4,19 @@
 \alias{list_data_sources}
 \title{List data sources}
 \usage{
-list_data_sources(packageId, env = "production")
+list_data_sources(packageId, as = "data.frame", env = "production")
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
+
+\item{as}{(character) Format of the returned object. Can be: "data.frame" 
+or "xml".}
 
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(xml_document) Data sources to \code{packageId}
+(data.frame or xml_document) Data sources to \code{packageId}
 }
 \description{
 Data sources are data packages, or other online digital
@@ -30,18 +33,6 @@ will be empty and a URL value may or not be documented.
 
 # List sources
 dataSources <- list_data_sources("edi.275.4")
-dataSources
-#> {xml_document}
-#> <dataSources>
-#> [1] <dataSource>\n  <packageId>knb-lter-bnz.501.17</packageId>\n  <ti ...
-
-# Show first
-xml2::xml_find_first(dataSources, "dataSource")
-#> {xml_node}
-#> <dataSource>
-#> [1] <packageId>knb-lter-bnz.501.17</packageId>
-#> [2] <title>Eight Mile Lake Research Watershed&amp;#x2c; Carbon in Per ...
-#> [3] <url>https://pasta.lternet.edu/package/metadata/eml/knb-lter-bnz/ ...
 }
 }
 \seealso{

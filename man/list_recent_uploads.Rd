@@ -4,18 +4,21 @@
 \alias{list_recent_uploads}
 \title{List recent uploads}
 \usage{
-list_recent_uploads(type, limit = 5, env = "production")
+list_recent_uploads(type, limit = 5, as = "data.frame", env = "production")
 }
 \arguments{
 \item{type}{(character) Upload type. Can be: "insert" or "update".}
 
 \item{limit}{(numeric) Maximum number of results to return}
 
+\item{as}{(character) Format of the returned object. Can be: "data.frame" 
+or "xml".}
+
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(xml_document) Data package uploads
+(data.frame or xml_document) Data package uploads
 }
 \description{
 List recent uploads
@@ -25,25 +28,6 @@ List recent uploads
 
 # Get the 3 newest revisions
 dataPackageUploads <- list_recent_uploads("update", 3)
-dataPackageUploads
-#> {xml_document}
-#> <dataPackageUploads>
-#> [1] <dataPackage>\n  <packageId>knb-lter-hbr.106.3</packageId>\n  <sc ...
-#> [2] <dataPackage>\n  <packageId>knb-lter-hbr.105.3</packageId>\n  <sc ...
-#> [3] <dataPackage>\n  <packageId>knb-lter-hbr.104.3</packageId>\n  <sc ...
-
-# Show first
-xml2::xml_find_first(dataPackageUploads, "dataPackage")
-#> {xml_node}
-#> <dataPackage>
-#> [1] <packageId>knb-lter-hbr.106.3</packageId>
-#> [2] <scope>knb-lter-hbr</scope>
-#> [3] <identifier>106</identifier>
-#> [4] <revision>3</revision>
-#> [5] <principal>uid=HBR,o=EDI,dc=edirepository,dc=org</principal>
-#> [6] <doi/>
-#> [7] <serviceMethod>updateDataPackage</serviceMethod>
-#> [8] <date>2022-01-17 12:49:00</date>#> 
 }
 }
 \seealso{

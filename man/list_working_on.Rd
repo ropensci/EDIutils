@@ -4,17 +4,20 @@
 \alias{list_working_on}
 \title{List working on}
 \usage{
-list_working_on(env = "production")
+list_working_on(as = "data.frame", env = "production")
 }
 \arguments{
+\item{as}{(character) Format of the returned object. Can be: "data.frame" 
+or "xml".}
+
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(xml_document) The set of data packages the EDI repository is
-currently working on inserting or updating. Note that data packages
-currently being evaluated by the EDI repository are not included in the
-list.
+(data.frame or xml_document) The set of data packages the EDI 
+repository is currently working on inserting or updating. Note that data 
+packages currently being evaluated by the EDI repository are not included in 
+the list.
 }
 \description{
 List working on
@@ -23,8 +26,6 @@ List working on
 \dontrun{
 
 list_working_on()
-#> {xml_document}
-#> <workingOn>
 }
 }
 \concept{System Monitoring}

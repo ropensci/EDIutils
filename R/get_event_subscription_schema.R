@@ -4,7 +4,11 @@
 #' "staging", or "development".
 #'
 #' @return (xml_document) Schema for event subscription creation request
-#' entities
+#' entities.
+#' 
+#' See the 
+#' \href{https://cran.r-project.org/web/packages/xml2/index.html}{xml2} library 
+#' for more on working with XML.
 #' 
 #' @family Event Notifications
 #'

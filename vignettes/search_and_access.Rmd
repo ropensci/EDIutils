@@ -37,19 +37,6 @@ Results can be filtered to include only fields of interest.
 ```{r eval=FALSE}
 # Match all documents with keywords "disturbance" and return only their IDs
 res <- search_data_packages(query = 'q=keyword:disturbance&fl=id')
-res
-#> {xml_document}
-#> <resultset numFound="12845" start="0" rows="10">
-#>   [1] <document>\n  <id>knb-lter-luq.197</id>\n</document>
-#>   [2] <document>\n  <id>knb-lter-and.3982</id>\n</document>
-#>   [3] <document>\n  <id>knb-lter-luq.169</id>\n</document>
-#>   [4] <document>\n  <id>knb-lter-and.3983</id>\n</document>
-#>   [5] <document>\n  <id>knb-lter-arc.10435</id>\n</document>
-#>   [6] <document>\n  <id>knb-lter-arc.10436</id>\n</document>
-#>   [7] <document>\n  <id>knb-lter-arc.10450</id>\n</document>
-#>   [8] <document>\n  <id>knb-lter-arc.10451</id>\n</document>
-#>   [9] <document>\n  <id>knb-lter-arc.10452</id>\n</document>
-#>   [10] <document>\n  <id>knb-lter-arc.10453</id>\n</document>
 ```
 
 When constructing a query note that the 15403 data packages of the [ecotrends](https://lternet.edu/the-ecotrends-project/) project and 10492 data packages of the [LTER Landsat](https://lternet.edu/lter-remote-sensing-and-geographic-information-system-data/) project, can be excluded from the returned results by including `&fq=-scope:(ecotrends+lter-landsat)` in the query string.
@@ -59,19 +46,6 @@ When constructing a query note that the 15403 data packages of the [ecotrends](h
 # lter-landsat scopes from the returned results
 query <- 'q=keyword:disturbance&fl=packageid&fq=-scope:(ecotrends+lter-landsat)'
 res <- search_data_packages(query)
-res
-#> {xml_document}
-#> <resultset numFound="12841" start="0" rows="10">
-#>   [1] <document>\n  <packageid>knb-lter-luq.197.62</packageid>\n</document>
-#>   [2] <document>\n  <packageid>knb-lter-and.3982.7</packageid>\n</document>
-#>   [3] <document>\n  <packageid>knb-lter-luq.169.65</packageid>\n</document>
-#>   [4] <document>\n  <packageid>knb-lter-and.3983.4</packageid>\n</document>
-#>   [5] <document>\n  <packageid>knb-lter-arc.10435.4</packageid>\n</document>
-#>   [6] <document>\n  <packageid>knb-lter-arc.10436.4</packageid>\n</document>
-#>   [7] <document>\n  <packageid>knb-lter-arc.10450.4</packageid>\n</document>
-#>   [8] <document>\n  <packageid>knb-lter-arc.10451.4</packageid>\n</document>
-#>   [9] <document>\n  <packageid>knb-lter-arc.10452.4</packageid>\n</document>
-#>   [10] <document>\n  <packageid>knb-lter-arc.10453.4</packageid>\n</document>
 ```
 
 Use wild cards operators to match anything and control the number of returned results.
@@ -79,10 +53,6 @@ Use wild cards operators to match anything and control the number of returned re
 ```{r eval=FALSE}
 # Match anything, display all fields, limit to only one document
 res <- search_data_packages(query = 'q=*&fl=*&rows=1')
-res
-#> {xml_document}
-#> <resultset numFound="44907" start="0" rows="1">
-#>   [1] <document>\n  <abstract>The EcoTrends project was established in ...
 ```
 
 Use scope, keyword, and author fields to get all data packages belonging to a research site, organization, or author.
@@ -91,51 +61,10 @@ Use scope, keyword, and author fields to get all data packages belonging to a re
 # Find all FCE LTER data packages, displaying the package id, title, and DOI
 query <- 'q=scope:knb-lter-fce&fl=packageid,title,doi&rows=100'
 res <- search_data_packages(query)
-res
-#> {xml_document}
-#> <resultset numFound="183" start="0" rows="100">
-#>   [1] <document>\n  <packageid>knb-lter-fce.1076.4</packageid>\n  <title> ...
-#>   [2] <document>\n  <packageid>knb-lter-fce.1077.3</packageid>\n  <title> ...
-#>   [3] <document>\n  <packageid>knb-lter-fce.1078.3</packageid>\n  <title> ...
-#>   [4] <document>\n  <packageid>knb-lter-fce.1081.3</packageid>\n  <title> ...
-#>   [5] <document>\n  <packageid>knb-lter-fce.1085.3</packageid>\n  <title> ...
-#>   [6] <document>\n  <packageid>knb-lter-fce.1087.4</packageid>\n  <title> ...
-#>   [7] <document>\n  <packageid>knb-lter-fce.1088.3</packageid>\n  <title> ...
-#>   [8] <document>\n  <packageid>knb-lter-fce.1089.3</packageid>\n  <title> ...
-#>   [9] <document>\n  <packageid>knb-lter-fce.1090.3</packageid>\n  <title> ...
-#>   [10] <document>\n  <packageid>knb-lter-fce.1091.3</packageid>\n  <title> ...
-#> ...
-
-# Non-LTER projects publish under the "edi" scope and group data packages by a 
-# unique keyword. Find all data packages belonging to the Interagency 
-# Ecological Program
-query <- 'q=scope:edi+AND+keyword:"Interagency+Ecological+Program"&fl=*'
-res <- search_data_packages(query)
-res
-#> {xml_document}
-#> <resultset numFound="22" start="0" rows="10">
-#>   [1] <document>\n  <abstract>The U.S. Fish and Wildlife Service (USFWS) ...
-#>   [2] <document>\n  <abstract>The Suisun Marsh Salinity Control Gates ...
-#>   [3] <document>\n  <abstract>Natural history museum specimen are ...
-#>   [4] <document>\n  <abstract>Dissolved oxygen levels in the Stockton Deep ...
-#>   [5] <document>\n  <abstract>Projected temperature increases due to global ...
-#>   [6] <document>\n  <abstract>The Interagency Ecological Program San ...
-#>   [7] <document>\n  <abstract>The Interagency Ecological Program San ...
-#>   [8] <document>\n  <abstract>The Fish Restoration Program Monitoring Team ...
-#>   [9] <document>\n  <abstract>The Interagency Ecological Program San ...
-#>   [10] <document>\n  <abstract>The upper San Francisco Estuary is an inland ...
 
 # Query on author
 query <- 'q=author:duane+costa&fq=author:costa&fl=id,title,author,score'
 res <- search_data_packages(query)
-res
-#> {xml_document}
-#> <resultset numFound="5" start="0" rows="10">
-#>   [1] <document>\n  <id>knb-lter-vcr.147</id>\n  <title>Keywords and Terms ...
-#>   [2] <document>\n  <id>knb-lter-nwk.4</id>\n  <title>EML congruence checker ...
-#>   [3] <document>\n  <id>knb-lter-nwk.3</id>\n  <title>Congruence checks for ...
-#>   [4] <document>\n  <id>edi.638</id>\n  <title>Stream temperatures in the ...
-#>   [5] <document>\n  <id>knb-lter-hfr.104</id>\n  <title>Adult Population ...
 ```
 
 Queries can be complex.
@@ -149,20 +78,6 @@ query <- paste0('q=subject:("Primary+Production")+OR+subject:plant&fq=',
                 '-scope:ecotrends&fq=-scope:lter-landsat*&fl=id,packageid,',
                 'title,author,organization,pubdate,coordinates')
 res <- search_data_packages(query)
-res
-#> {xml_document}
-#> <resultset numFound="2679" start="0" rows="10">
-#>   [1] <document>\n  <id>knb-lter-sev.298</id>\n  <packageid>knb-lter- ...
-#>   [2] <document>\n  <id>knb-lter-sev.206</id>\n  <packageid>knb-lter- ...
-#>   [3] <document>\n  <id>knb-lter-ntl.72</id>\n  <packageid>knb-lter-n ...
-#>   [4] <document>\n  <id>knb-lter-kbs.19</id>\n  <packageid>knb-lter-k ...
-#>   [5] <document>\n  <id>knb-lter-sev.186</id>\n  <packageid>knb-lter- ...
-#>   [6] <document>\n  <id>knb-lter-sev.205</id>\n  <packageid>knb-lter- ...
-#>   [7] <document>\n  <id>knb-lter-sev.182</id>\n  <packageid>knb-lter- ...
-#>   [8] <document>\n  <id>knb-lter-sev.290</id>\n  <packageid>knb-lter- ...
-#>   [9] <document>\n  <id>knb-lter-sev.289</id>\n  <packageid>knb-lter- ...
-#>   [10] <document>\n  <id>knb-lter-sev.155</id>\n  <packageid>knb-lter- ...
-
 ```
 
 An alternative method for searching and retrieving metadata is the "list and read" method. It involves listing data package identifiers of interest, then read the corresponding metadata of those data packages one at a time, parsing and extracting whatever metadata from them that you're interested in searching or doing additional processing on. Although this sounds like more work than using the search API, and in fact it generally is, there are some use cases where this might be the preferred approach. For example this list and read method allows access to previous versions of a data package, whereas the search API only provides access to the most recent version, and this method provides access to all EML content, not just indexed fields.
@@ -243,6 +158,8 @@ data
 ```
 
 Less common formats require metadata for parsing. This metadata is listed under the "physical" node of a data entities EML.
+
+_See the [emld](https://cran.r-project.org/web/packages/emld/index.html) library for more on working with EML as a list or JSON-LD. See the [xml2](https://cran.r-project.org/web/packages/xml2/index.html) library for working with EML as XML._
 
 ```{r eval=FALSE}
 # Read the same data entity but using the physical metadata

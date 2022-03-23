@@ -9,7 +9,7 @@ read_data_package_citation(
   access = TRUE,
   style = "ESIP",
   ignore = NULL,
-  frmt = "char",
+  as = "char",
   env = "production"
 )
 }
@@ -26,7 +26,7 @@ be: "ESIP", "DRYAD", "BIBTEX", "RAW".}
 the author list. Can be: "INDIVIDUALS", "ORGANIZATIONS", or "POSITIONS". See 
 details below.}
 
-\item{frmt}{(character) Format of the returned citation. Can be: "char", 
+\item{as}{(character) Format of the returned citation. Can be: "char", 
 "html", "json".}
 
 \item{env}{(character) Repository environment. Can be: "production",
@@ -127,7 +127,7 @@ citation
 #> [1] "Armitage AR, Weaver CA, Kominoski JS, and Pennings SC (2020) Hur..."
 
 # Retrieve "ESIP" stylized citation (default) in HTML format
-citation <- read_data_package_citation(packageId, frmt = "html")
+citation <- read_data_package_citation(packageId, as = "html")
 citation
 #> {html_document}
 #> <html>

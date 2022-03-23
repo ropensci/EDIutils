@@ -4,16 +4,19 @@
 \alias{get_journal_citation}
 \title{Get journal citation}
 \usage{
-get_journal_citation(journalCitationId, env = "production")
+get_journal_citation(journalCitationId, as = "data.frame", env = "production")
 }
 \arguments{
 \item{journalCitationId}{(numeric) Journal citation identifier}
+
+\item{as}{(character) Format of the returned object. Can be: "data.frame" 
+or "xml".}
 
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(xml_document) Journal citation
+(data.frame or xml_document) Journal citation
 }
 \description{
 Get journal citation
@@ -23,18 +26,6 @@ Get journal citation
 
 # Get citation
 journalCitation <- get_journal_citation(381)
-journalCitation
-#> {xml_document}
-#> <journalCitation>
-#> [1] <journalCitationId>381</journalCitationId>
-#> [2] <packageId>edi.845.1</packageId>
-#> [3] <principalOwner>uid=csmith,o=EDI,dc=edirepository,dc=org</principa ...
-#> [4] <dateCreated>2021-05-27T13:23:14.981</dateCreated>
-#> [5] <articleDoi>https://doi.org/10.1016/j.scitotenv.2021.148033</artic ...
-#> [6] <articleTitle>Bioturbation frequency alters methane emissions from ...
-#> [7] <articleUrl>https://doi.org/10.1016/j.scitotenv.2021.148033</artic ...
-#> [8] <journalTitle>Science of the Total Environment</journalTitle>
-#> [9] <relationType>IsCitedBy</relationType>
 }
 }
 \seealso{

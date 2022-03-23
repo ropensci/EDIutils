@@ -4,16 +4,23 @@
 \alias{read_data_package_report_resource_metadata}
 \title{Read data package report resource metadata}
 \usage{
-read_data_package_report_resource_metadata(packageId, env = "production")
+read_data_package_report_resource_metadata(
+  packageId,
+  as = "data.frame",
+  env = "production"
+)
 }
 \arguments{
 \item{packageId}{(character) Data package identifier}
+
+\item{as}{(character) Format of the returned object. Can be: "data.frame" 
+or "xml".}
 
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(xml_document) Report resource metadata
+(data.frame or xml_document) Report resource metadata
 }
 \description{
 Read data package report resource metadata
@@ -25,21 +32,6 @@ Read data package report resource metadata
 resourceMetadata <- read_data_package_report_resource_metadata(
   packageId = "knb-lter-mcm.9129.3"
 )
-resourceMetadata
-#> {xml_document}
-#> <resourceMetadata>
-#>  [1] <dateCreated>2021-04-27 17:50:46.084</dateCreated>
-#>  [2] <doi>doi:10.6073/pasta/26cc82b742eb99a667fae2c367032724</doi>
-#>  [3] <entityId>null</entityId>
-#>  [4] <entityName>null</entityName>
-#>  [5] <fileName>null</fileName>
-#>  [6] <identifier>9129</identifier>
-#>  [7] <packageId>knb-lter-mcm.9129.3</packageId>
-#>  [8] <principalOwner>uid=MCM,o=EDI,dc=edirepository,dc=org</principal ...
-#>  [9] <resourceId>https://pasta.lternet.edu/package/eml/knb-lter-mcm/9 ...
-#> [10] <resourceType>dataPackage</resourceType>
-#> [11] <revision>3</revision>
-#> [12] <scope>knb-lter-mcm</scope>
 }
 }
 \seealso{

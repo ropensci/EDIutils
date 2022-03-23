@@ -11,7 +11,7 @@ testthat::test_that("read_evaluate_report() works", {
   vcr::use_cassette("read_evaluate_report_html", {
     qualityReport <- read_evaluate_report(
       transaction, 
-      frmt = "html", 
+      as = "html", 
       env = "staging"
     )
   })
@@ -20,7 +20,7 @@ testthat::test_that("read_evaluate_report() works", {
   vcr::use_cassette("read_evaluate_report_char", {
     qualityReport <- read_evaluate_report(
       transaction, 
-      frmt = "char", 
+      as = "char", 
       env = "staging"
     )
   })

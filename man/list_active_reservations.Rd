@@ -4,17 +4,20 @@
 \alias{list_active_reservations}
 \title{List active reservations}
 \usage{
-list_active_reservations(env = "production")
+list_active_reservations(as = "data.frame", env = "production")
 }
 \arguments{
+\item{as}{(character) Format of the returned object. Can be: "data.frame" 
+or "xml".}
+
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(xml_document) The set of data package identifiers that users have
-actively reserved. Note that data package identifiers that have been
-successfully uploaded are no longer considered active reservations and thus
-are not included in this list.
+(data.frame or xml_document) The set of data package identifiers 
+that users have actively reserved. Note that data package identifiers that 
+have been successfully uploaded are no longer considered active reservations 
+and thus are not included in this list.
 }
 \description{
 List active reservations
@@ -24,28 +27,6 @@ List active reservations
 
 # List reservations
 reservations <- list_active_reservations()
-reservations
-#> {xml_document}
-#> <reservations>
-#>  [1] <reservation>\n  <docid>edi.11</docid>\n  <principal>uid=NTL,o=L ...
-#>  [2] <reservation>\n  <docid>edi.130</docid>\n  <principal>uid=user23 ...
-#>  [3] <reservation>\n  <docid>edi.131</docid>\n  <principal>uid=user20 ...
-#>  [4] <reservation>\n  <docid>edi.132</docid>\n  <principal>uid=chase, ...
-#>  [5] <reservation>\n  <docid>edi.142</docid>\n  <principal>uid=ahall, ...
-#>  [6] <reservation>\n  <docid>edi.152</docid>\n  <principal>uid=ahall, ...
-#>  [7] <reservation>\n  <docid>edi.154</docid>\n  <principal>uid=ahall, ...
-#>  [8] <reservation>\n  <docid>edi.156</docid>\n  <principal>uid=ahall, ...
-#>  [9] <reservation>\n  <docid>edi.158</docid>\n  <principal>uid=ahall, ...
-#> [10] <reservation>\n  <docid>edi.159</docid>\n  <principal>uid=ahall, ...
-#> ...
-
-# Show first
-xml2::xml_find_first(reservations, "reservation")
-#> {xml_node}
-#> <reservation>
-#> [1] <docid>edi.11</docid>
-#> [2] <principal>uid=NTL,o=LTER,dc=ecoinformatics,dc=org</principal>
-#> [3] <dateReserved>2017-03-02 15:02:28.899</dateReserved>
 }
 }
 \seealso{

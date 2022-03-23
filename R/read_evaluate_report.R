@@ -1,7 +1,7 @@
 #' Read evaluate report
 #'
 #' @param transaction (character) Transaction identifier
-#' @param frmt (character) Format of the returned report. Can be: "xml", "html",
+#' @param as (character) Format of the returned report. Can be: "xml", "html",
 #' or "char".
 #' @param env (character) Repository environment. Can be: "production",
 #' "staging", or "development".
@@ -28,6 +28,22 @@
 #' transaction
 #' #> [1] "evaluate_163966785813042760"
 #'
+#' # Read as HTML and write to file for a web browser view
+#' qualityReport <- read_evaluate_report(
+#'   transaction = transaction,
+#'   as = "html",
+#'   env = "staging"
+#' )
+#' writeLines(qualityReport, "./data/report.html")
+#'
+#' # Read as character and write to file for browsing
+#' qualityReport <- read_evaluate_report(
+#'   transaction = transaction,
+#'   as = "char",
+#'   env = "staging"
+#' )
+#' writeLines(qualityReport, "./data/report.txt")
+#' 
 #' # Read as XML
 #' qualityReport <- read_evaluate_report(
 #'   transaction = transaction,
@@ -43,37 +59,18 @@
 #' #> [5] <datasetReport>\n  <qualityCheck qualityType="metadata" system=" ...
 #' #> [6] <entityReport>\n  <entityName>data.txt</entityName>\n  <qualityC ...
 #'
-#' # Read as HTML
-#' qualityReport <- read_evaluate_report(
-#'   transaction = transaction,
-#'   frmt = "html",
-#'   env = "staging"
-#' )
-#' qualityReport
-#' #> {html_document}
-#' #> <html>
-#' #> [1] <body><table xmlns:qr="eml://ecoinformatics.org/qualityReport">< ...
-#'
-#' # Read as character
-#' qualityReport <- read_evaluate_report(
-#'   transaction = transaction,
-#'   frmt = "char",
-#'   env = "staging"
-#' )
-#' writeLines(qualityReport, "./data/report.txt")
-#'
 #' logout()
 #' }
 #'
 read_evaluate_report <- function(transaction,
-                                 frmt = "xml",
+                                 as = "xml",
                                  env = "production") {
   url <- paste0(
     base_url(env), "/package/evaluate/report/eml/",
     transaction
   )
   cookie <- bake_cookie()
-  if (frmt == "html") {
+  if (as == "html") {
     resp <- httr::GET(
       url,
       set_user_agent(),
@@ -84,7 +81,7 @@ read_evaluate_report <- function(transaction,
     res <- httr::content(resp, as = "text", encoding = "UTF-8")
     httr::stop_for_status(resp, res)
     return(xml2::read_html(res))
-  } else if (frmt %in% c("xml", "char")) {
+  } else if (as %in% c("xml", "char")) {
     resp <- httr::GET(
       url,
       set_user_agent(),
@@ -93,9 +90,9 @@ read_evaluate_report <- function(transaction,
     )
     res <- httr::content(resp, as = "text", encoding = "UTF-8")
     httr::stop_for_status(resp, res)
-    if (frmt == "xml") {
+    if (as == "xml") {
       return(xml2::read_xml(res))
-    } else if (frmt == "char") {
+    } else if (as == "char") {
       char <- report2char(xml2::read_xml(res), env = env)
       return(char)
     }

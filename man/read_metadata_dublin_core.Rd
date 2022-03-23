@@ -13,7 +13,11 @@ read_metadata_dublin_core(packageId, env = "production")
 "staging", or "development".}
 }
 \value{
-(xml_document) Dublin Core metadata
+(xml_document) Dublin Core metadata.
+
+See the 
+\href{https://cran.r-project.org/web/packages/xml2/index.html}{xml2} library 
+for more on working with XML.
 }
 \description{
 Read metadata Dublin Core

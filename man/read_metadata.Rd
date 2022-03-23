@@ -13,7 +13,13 @@ read_metadata(packageId, env = "production")
 "staging", or "development".}
 }
 \value{
-(xml_document) EML metadata document
+(xml_document) EML metadata document.
+
+See the 
+\href{https://cran.r-project.org/web/packages/emld/index.html}{emld} library 
+for more on working with EML as a list or JSON-LD. See the 
+\href{https://cran.r-project.org/web/packages/xml2/index.html}{xml2} library 
+for working with EML as XML.
 }
 \description{
 Read metadata

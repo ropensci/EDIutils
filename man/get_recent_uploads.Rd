@@ -4,17 +4,20 @@
 \alias{get_recent_uploads}
 \title{Get recent uploads}
 \usage{
-get_recent_uploads(query, env = "production")
+get_recent_uploads(query, as = "data.frame", env = "production")
 }
 \arguments{
 \item{query}{(character) Query (see details below)}
+
+\item{as}{(character) Format of the returned object. Can be: "data.frame" 
+or "xml".}
 
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(xml_document) A list of zero or more audit records of either
-recently inserted or recently updated data packages.
+(data.frame or xml_document) A list of zero or more audit records 
+of either recently inserted or recently updated data packages.
 }
 \description{
 Get recent uploads
@@ -47,23 +50,6 @@ an upper limit on the number of audit records returned. For example,
 auditReport <- get_recent_uploads(
  query = "serviceMethod=createDataPackage&limit=5"
 )
-
-# Show the first
-xml2::xml_find_first(auditReport, "auditRecord")
-#> {xml_node}
-#> <auditRecord>
-#>  [1] <oid>128171587</oid>
-#>  [2] <entryTime>2022-01-18T08:41:39</entryTime>
-#>  [3] <category>info</category>
-#>  [4] <service>DataPackageManager-1.0</service>
-#>  [5] <serviceMethod>createDataPackage</serviceMethod>
-#>  [6] <responseStatus>200</responseStatus>
-#>  [7] <resourceId>https://pasta.lternet.edu/package/eml/edi/1064/1</re ...
-#>  [8] <user>uid=kzollovenecek,o=EDI,dc=edirepository,dc=org</user>
-#>  [9] <userAgent>null</userAgent>
-#> [10] <groups>authenticated,vetted</groups>
-#> [11] <authSystem>https://pasta.edirepository.org/authentication</auth ...
-#> [12] <entryText/>
 }
 }
 \seealso{

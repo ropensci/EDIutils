@@ -4,12 +4,12 @@
 \alias{read_evaluate_report}
 \title{Read evaluate report}
 \usage{
-read_evaluate_report(transaction, frmt = "xml", env = "production")
+read_evaluate_report(transaction, as = "xml", env = "production")
 }
 \arguments{
 \item{transaction}{(character) Transaction identifier}
 
-\item{frmt}{(character) Format of the returned report. Can be: "xml", "html",
+\item{as}{(character) Format of the returned report. Can be: "xml", "html",
 or "char".}
 
 \item{env}{(character) Repository environment. Can be: "production",
@@ -38,6 +38,22 @@ transaction <- evaluate_data_package(
 transaction
 #> [1] "evaluate_163966785813042760"
 
+# Read as HTML and write to file for a web browser view
+qualityReport <- read_evaluate_report(
+  transaction = transaction,
+  as = "html",
+  env = "staging"
+)
+writeLines(qualityReport, "./data/report.html")
+
+# Read as character and write to file for browsing
+qualityReport <- read_evaluate_report(
+  transaction = transaction,
+  as = "char",
+  env = "staging"
+)
+writeLines(qualityReport, "./data/report.txt")
+
 # Read as XML
 qualityReport <- read_evaluate_report(
   transaction = transaction,
@@ -52,25 +68,6 @@ qualityReport
 #> [4] <includeSystem>knb</includeSystem>
 #> [5] <datasetReport>\n  <qualityCheck qualityType="metadata" system=" ...
 #> [6] <entityReport>\n  <entityName>data.txt</entityName>\n  <qualityC ...
-
-# Read as HTML
-qualityReport <- read_evaluate_report(
-  transaction = transaction,
-  frmt = "html",
-  env = "staging"
-)
-qualityReport
-#> {html_document}
-#> <html>
-#> [1] <body><table xmlns:qr="eml://ecoinformatics.org/qualityReport">< ...
-
-# Read as character
-qualityReport <- read_evaluate_report(
-  transaction = transaction,
-  frmt = "char",
-  env = "staging"
-)
-writeLines(qualityReport, "./data/report.txt")
 
 logout()
 }
