@@ -7,10 +7,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-This vignette demonstrates how to query the EDI repository for journal articles that cite a certain dataset. These stats may be used in reports.
+This vignette demonstrates how to query the EDI repository for journal articles that cite a certain data package. These stats may be used in reports.
 
 
-```r
+```{r, eval=FALSE}
 library(EDIutils)
 library(dplyr)
 library(tidyr)
@@ -21,71 +21,42 @@ library(tidyr)
 Get all identifiers for a certain scope
 
 
-```r
+```{r, eval=FALSE}
 scope <- "edi"
-identifiers <- list_data_package_identifiers(scope = scope, env = "production")
+identifiers <- list_data_package_identifiers(scope)
 ```
 
-Get the latest revisions for each identifer and retrieve all journal citations.
+Get the latest revisions for each identifier and retrieve all journal citations.
 
 The citation information is returned as a data frame. First set up the empty data frame to append all records to.
 
 
-```r
-df_return_all <- data.frame(journalCitationId = character(0),
-                            packageId = character(0),
-                            principalOwner = character(0),
-                            dateCreated = character(0),
-                            articleDoi = character(0),
-                            articleTitle = character(0),
-                            articleUrl = character(0),
-                            journalTitle = character(0),
-                            relationType = character(0))
-
-for (j in 1:length(identifiers)){
-  revision <- list_data_package_revisions(
-    scope = scope,
-    identifier = identifiers[j],
-    filter = 'newest',
-    env = 'production')
-
-  datapackage <- paste(scope, identifiers[j], revision, sep = ".")
-  df_return <- list_data_package_citations(packageId = datapackage,
-                                           as = 'data.frame',
-                                           list_all = TRUE,
-                                           env = 'production')
-  
-  df_return_all <- rbind(df_return_all, df_return)
-
-}
+```{r, eval=FALSE}
+identifiers <- paste0(scope, ".", identifiers, ".1")
+res <- lapply(identifiers, list_data_package_citations, list_all = TRUE)
+df_return_all <- do.call(rbind, res)
 ```
 
-Various analyses may now be conducted on this data frame. E.g., number of articles citing datasets 
+Various analyses may now be conducted on this data frame. E.g., number of articles citing data packages 
 
-
-```r
-df_datasets <- df_return_all %>%
-  separate(packageId, into = c("scope", "datasetNum", "revision"), sep = "\\.") %>%
-  mutate(datasetId = paste(scope, datasetNum, sep = '.')) %>%
+```{r, eval=FALSE}
+df_data_packages <- df_return_all %>%
+  separate(
+    packageId,
+    into = c("scope", "datasetNum", "revision"),
+    sep = "\\."
+  ) %>%
+  mutate(datasetId = paste(scope, datasetNum, sep = ".")) %>%
   distinct(datasetId)
-print(paste('Unique datasets being cited:', nrow(df_datasets)))
+
+print(paste("Unique data packages being cited:", nrow(df_data_packages)))
+#> [1] "Unique data packages being cited: 359"
 ```
 
-```
-## [1] "Unique datasets being cited: 356"
-```
+or the number of articles citing data packages
 
-or the number of articles citing datasets:
-
-
-```r
-df_articles <- df_return_all %>%
-  distinct(articleUrl)
-
+```{r, eval=FALSE}
+df_articles <- df_return_all %>%  distinct(articleUrl)
 print(paste('Number of aricles:', nrow(df_articles)))
+#> [1] "Number of aricles: 487"
 ```
-
-```
-## [1] "Number of aricles: 481"
-```
-

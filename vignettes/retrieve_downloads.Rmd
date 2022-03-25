@@ -20,7 +20,7 @@ Audit reports query a large database containing millions of records and may take
 ## Set up the R environment
 
 
-```r
+```{r, eval=FALSE}
 library(EDIutils)
 library(stringr)
 library(dplyr)
@@ -35,8 +35,8 @@ library(lubridate)
 Accessing the audit report requires authentication.
 
 
-```r
-login(userId = '', userPass = '')
+```{r, eval=FALSE}
+login()
 #> userID: "my_name"
 #> userPass: "my_secret"
 ```
@@ -53,17 +53,22 @@ Setting the query parameters to get the desired audit report:
 For more information on searchable fields see `get_audit_report()` documentation.
   
 
-```r
+```{r, eval=FALSE}
 # Construct the query
 query <- paste("category=info",
-               "serviceMethod=readDataEntity",
-               "resourceId=knb-lter-ntl",
-               "fromTime=2021-10-10T00:00:00",
-               "toTime=2021-10-19T00:00:00",
-               sep = "&")
+  "serviceMethod=readDataEntity",
+  "resourceId=knb-lter-ntl",
+  "fromTime=2021-10-10T00:00:00",
+  "toTime=2021-10-19T00:00:00",
+  sep = "&"
+)
 
 # Get the report
-df_report <- get_audit_report(query = query, as = 'data.frame', env = "production")
+df_report <- get_audit_report(
+  query = query, 
+  as = "data.frame", 
+  env = "production"
+)
 
 logout()
 ```
@@ -72,20 +77,24 @@ Filter the records and parse the entityID into scope, datasetID, and version. He
 
 
 
-```r
+```{r, eval=FALSE}
 df_results <- df_report %>%
-  filter(user != 'robot') %>%
-  filter(userAgent != 'DataONE-Python/3.4.7 +http://dataone.org/') %>%
-  filter(nchar(resourceId) >0) %>%
+  filter(user != "robot") %>%
+  filter(userAgent != "DataONE-Python/3.4.7 +http://dataone.org/") %>%
+  filter(nchar(resourceId) > 0) %>%
   separate(entryTime, into = c("date", NA), sep = "T") %>%
-  separate(resourceId, into = c(NA,NA,NA,NA,NA,NA,"scope", "datasetID", "revision", NA), sep = "/")
+  separate(
+    resourceId, 
+    into = c(NA, NA, NA, NA, NA, NA, "scope", "datasetID", "revision", NA), 
+    sep = "/"
+  )
 ```
 
 Group and count downloads for each data package for the entire time period
 
 
 
-```r
+```{r, eval=FALSE}
 df_downloads <- df_results %>%
   group_by(datasetID) %>%
   summarise(n = n())
@@ -95,7 +104,7 @@ Or count downloads per month
 
 
 
-```r
+```{r, eval=FALSE}
 df_downloads_per_month <- df_results %>%
   mutate(month = month(date)) %>% 
   group_by(month) %>%
@@ -106,21 +115,24 @@ And graph the daily downloads
 
 
 
-```r
+```{r, eval=FALSE}
 df_downloads_daily <- df_results %>%
   group_by(date) %>%
   arrange(date) %>%
   summarise(n = n())
 
-ggplot(df_downloads_daily, aes(x=date, y=n, group = 1)) +
+ggplot(df_downloads_daily, aes(x = date, y = n, group = 1)) +
   geom_line() +
-  labs(y = "Number of Downloaded Entities", 
-              title = "Daily Downloads") +
-  theme(axis.text.x = element_text(angle = 90),
-        axis.title.x = element_blank(),
-        axis.line = element_line(colour = "black"),
-        panel.background = element_rect(fill = "white"))
+  labs(
+    y = "Number of Downloaded Entities",
+    title = "Daily Downloads"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 90),
+    axis.title.x = element_blank(),
+    axis.line = element_line(colour = "black"),
+    panel.background = element_rect(fill = "white")
+  )
 ```
 
-<img src="daily_downloads-1.png"title="plot of chunk daily_downloads" alt="plot of chunk daily_downloads" width="50%" />
-
+![Plot of daily downloads](daily_downloads-1.png)
