@@ -5,3 +5,5 @@
 inst/doc
 EDIutils.Rproj
 *.DS_Store
+/doc/
+/Meta/
