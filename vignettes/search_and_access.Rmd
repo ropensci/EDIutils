@@ -159,7 +159,7 @@ data
 
 Less common formats require metadata for parsing. This metadata is listed under the "physical" node of a data entities EML.
 
-_See the [emld](https://cran.r-project.org/web/packages/emld/index.html) library for more on working with EML as a list or JSON-LD. See the [xml2](https://cran.r-project.org/web/packages/xml2/index.html) library for working with EML as XML._
+_See the [emld](https://CRAN.R-project.org/package=emld) library for more on working with EML as a list or JSON-LD. See the [xml2](https://CRAN.R-project.org/package=xml2) library for working with EML as XML._
 
 ```{r eval=FALSE}
 # Read the same data entity but using the physical metadata

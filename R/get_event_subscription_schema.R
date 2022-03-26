@@ -7,7 +7,7 @@
 #' entities.
 #' 
 #' See the 
-#' \href{https://cran.r-project.org/web/packages/xml2/index.html}{xml2} library 
+#' \href{https://CRAN.R-project.org/package=xml2}{xml2} library 
 #' for more on working with XML.
 #' 
 #' @family Event Notifications
