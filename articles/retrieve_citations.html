@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9003</span>
       </span>
     </div>
 
@@ -100,52 +100,42 @@
 
     
     
-<p>This vignette demonstrates how to query the EDI repository for journal articles that cite a certain dataset. These stats may be used in reports.</p>
+<p>This vignette demonstrates how to query the EDI repository for journal articles that cite a certain data package. These stats may be used in reports.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EDIorg/EDIutils" class="external-link">EDIutils</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://xml2.r-lib.org/" class="external-link">xml2</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></code></pre></div>
 <div class="section level2">
 <h2 id="get-the-journal-citation-report-for-specific-data-packages">Get the Journal Citation Report for Specific Data Packages<a class="anchor" aria-label="anchor" href="#get-the-journal-citation-report-for-specific-data-packages"></a>
 </h2>
 <p>Get all identifiers for a certain scope</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">scope</span> <span class="op">&lt;-</span> <span class="st">"edi"</span>
-<span class="va">identifiers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_data_package_identifiers.html">list_data_package_identifiers</a></span><span class="op">(</span>scope <span class="op">=</span> <span class="va">scope</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span></code></pre></div>
-<p>Get all revisions for each identifer and retrieve journal citations for each. Citation information is connected to the specific revision of a dataset.</p>
-<p>The citation information is returned as XMl in the format:</p>
-<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;journalCitations&gt;
-    &lt;journalCitation&gt;
-        &lt;journalCitationId&gt;15&lt;/journalCitationId&gt;
-        &lt;principalOwner&gt;uid=ucarroll,o=LTER,dc=ecoinformatics,dc=org&lt;/principalOwner&gt;
-        &lt;dateCreated&gt;2017-12-21T14:28:26.235&lt;/dateCreated&gt;
-        &lt;packageId&gt;edi.1000.1&lt;/packageId&gt;
-        &lt;articleDoi&gt;10.5072/FK2/06dccc7b0cb2a2d5f6fef62cb4b36dae&lt;/articleDoi&gt;
-        &lt;articleTitle&gt;Tree Survey in Southern Arizona&lt;/articleTitle&gt;
-        &lt;articleUrl&gt;http://treejournal.com/articles/12345&lt;/articleUrl&gt;
-        &lt;journalTitle&gt;The Tree Journal&lt;/journalTitle&gt;
-    &lt;/journalCitation&gt;
-&lt;journalCitations&gt;</code></pre>
+<span class="va">identifiers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_data_package_identifiers.html">list_data_package_identifiers</a></span><span class="op">(</span><span class="va">scope</span><span class="op">)</span></code></pre></div>
+<p>Get the latest revisions for each identifier and retrieve all journal citations.</p>
+<p>The citation information is returned as a data frame. First set up the empty data frame to append all records to.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">identifiers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">scope</span>, <span class="st">"."</span>, <span class="va">identifiers</span>, <span class="st">".1"</span><span class="op">)</span>
+<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">identifiers</span>, <span class="va">list_data_package_citations</span>, list_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">df_return_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">res</span><span class="op">)</span></code></pre></div>
+<p>Various analyses may now be conducted on this data frame. E.g., number of articles citing data packages</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">citation_dois</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>
-<span class="kw">for</span> <span class="op">(</span><span class="va">j</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">identifiers</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
-  <span class="va">revisions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_data_package_revisions.html">list_data_package_revisions</a></span><span class="op">(</span>
-    scope <span class="op">=</span> <span class="va">scope</span>,
-    identifier <span class="op">=</span> <span class="va">identifiers</span><span class="op">[</span><span class="va">j</span><span class="op">]</span>,
-    env <span class="op">=</span> <span class="st">"production"</span>
-  <span class="op">)</span>
-  
-  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">revisions</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">datapackage</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">scope</span>, <span class="va">identifiers</span><span class="op">[</span><span class="va">j</span><span class="op">]</span>,<span class="va">revisions</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, sep <span class="op">=</span> <span class="st">"."</span><span class="op">)</span>
-    <span class="va">return_xml</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_data_package_citations.html">list_data_package_citations</a></span><span class="op">(</span>packageId <span class="op">=</span> <span class="va">datapackage</span><span class="op">)</span>
-    <span class="va">return_dois</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/xml_text.html" class="external-link">xml_text</a></span><span class="op">(</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_all</a></span><span class="op">(</span><span class="va">return_xml</span>, <span class="st">"//articleDoi"</span><span class="op">)</span><span class="op">)</span>
-    <span class="va">citation_dois</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/append.html" class="external-link">append</a></span><span class="op">(</span><span class="va">citation_dois</span>, <span class="va">return_dois</span><span class="op">)</span>
-  <span class="op">}</span>
-<span class="op">}</span></code></pre></div>
-<p>The list of <code>citation_dois</code> now contains all journal publication DOIs that have cited a dataset in the EDI scope (on 11/5/2021). This is not the number of journal articles because one article may cite more than one dataset. To get to the number of journal articles, the number of unique DOIs needs to be counted.</p>
+<code class="sourceCode R"><span class="va">df_data_packages</span> <span class="op">&lt;-</span> <span class="va">df_return_all</span> <span class="op">%&gt;%</span>
+  <span class="fu">separate</span><span class="op">(</span>
+    <span class="va">packageId</span>,
+    into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"scope"</span>, <span class="st">"datasetNum"</span>, <span class="st">"revision"</span><span class="op">)</span>,
+    sep <span class="op">=</span> <span class="st">"\\."</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>datasetId <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">scope</span>, <span class="va">datasetNum</span>, sep <span class="op">=</span> <span class="st">"."</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">distinct</span><span class="op">(</span><span class="va">datasetId</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Unique data packages being cited:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">df_data_packages</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] "Unique data packages being cited: 359"</span></code></pre></div>
+<p>or the number of articles citing data packages</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">citation_dois</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] 272</span></code></pre></div>
+<code class="sourceCode R"><span class="va">df_articles</span> <span class="op">&lt;-</span> <span class="va">df_return_all</span> <span class="op">%&gt;%</span>  <span class="fu">distinct</span><span class="op">(</span><span class="va">articleUrl</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">'Number of aricles:'</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">df_articles</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] "Number of aricles: 487"</span></code></pre></div>
 </div>
   </div>
 

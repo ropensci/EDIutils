@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EDIutils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9003</span>
       </span>
     </div>
 
@@ -100,41 +100,33 @@
 
     
     
-<p>This vignette demonstrates how to query the EDI repository for data package download metrics. These stats may be used in reports or further processed to understand data user behavior.</p>
+<p>This vignette demonstrates how to query the EDI repository for data package download metrics. These stats may be used in reports or further processed to understand data user behavior. Although EDI makes every effort of accurate reporting, these download data need to be carefully inspected and understood before using.</p>
+<div class="section level2">
+<h2 id="introduction-to-download-reports">Introduction to Download reports<a class="anchor" aria-label="anchor" href="#introduction-to-download-reports"></a>
+</h2>
+<p>The PASTA Audit service collects information about user-related events that occur in PASTA, including data entity downloads. This information is stored in the Audit Manager’s event database and which can be accessed through the <code>get_audit_report</code> command and returns a data frame composed of individual event audit records. Understanding this information is critical to determine the meaning of these events.</p>
+<p>Attention needs to be paid to the <code>user</code> field, which can be <code>public</code> or <code>robot</code>. It is also important to know that the <code>userAgent</code> field is not required and a user agent can define its own text string to insert or leave blank. However, the <code>userAgent</code> provides a lot of interesting information. E.g., it allows a good estimate of downloads being initiated manually through a web browser (e.g., records starting with <code>Mozilla</code>) and downloads initiated programmatically (e.g., MATLAB, RStudio, etc.). The user agent <code>DataONE</code>, however, is the exception and appears to generate download reports that currently cannot be traced to actual, user generated entity downloads. They should be carefully inspected and cross checked with downloads reported for datasets on the DataONE search interface or filtered out as they seem to include internal management related data access.</p>
+<p>Audit reports query a large database containing millions of records and may take some time to generate. In addition, a report containing a lot of audit records will create a large output, which may be slow to completely download and locally manage. It is best to use query parameters to limit requests.</p>
+</div>
 <div class="section level2">
 <h2 id="set-up-the-r-environment">Set up the R environment<a class="anchor" aria-label="anchor" href="#set-up-the-r-environment"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EDIorg/EDIutils" class="external-link">EDIutils</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://xml2.r-lib.org/" class="external-link">xml2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org" class="external-link">lubridate</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'lubridate'</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     date, intersect, setdiff, union</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></code></pre></div>
-<p>Several EDI API functions return XML, <code>xml2</code> is a convenient package to extract desired information and to save returned EML files locally.</p>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org" class="external-link">lubridate</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="get-the-audit-report-for-downloaded-data-entities">Get the Audit Report for Downloaded Data Entities<a class="anchor" aria-label="anchor" href="#get-the-audit-report-for-downloaded-data-entities"></a>
 </h2>
 <p>Accessing the audit report requires authentication.</p>
-<p>In a text editor create the file <code>.Renviron</code> with the content:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/login.html">login</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; User name: "my_name"</span>
-<span class="co">#&gt; User password: "my_secret"</span></code></pre></div>
+<span class="co">#&gt; userID: "my_name"</span>
+<span class="co">#&gt; userPass: "my_secret"</span></code></pre></div>
 <p>Setting the query parameters to get the desired audit report:</p>
 <ul>
 <li>
@@ -154,92 +146,65 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Construct the query</span>
 <span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"category=info"</span>,
-               <span class="st">"serviceMethod=readDataEntity"</span>,
-               <span class="st">"resourceId=knb-lter-ntl"</span>,
-               <span class="st">"fromTime=2021-10-10T00:00:00"</span>,
-               <span class="st">"toTime=2021-10-19T00:00:00"</span>,
-               sep <span class="op">=</span> <span class="st">"&amp;"</span><span class="op">)</span>
+  <span class="st">"serviceMethod=readDataEntity"</span>,
+  <span class="st">"resourceId=knb-lter-ntl"</span>,
+  <span class="st">"fromTime=2021-10-10T00:00:00"</span>,
+  <span class="st">"toTime=2021-10-19T00:00:00"</span>,
+  sep <span class="op">=</span> <span class="st">"&amp;"</span>
+<span class="op">)</span>
 
 <span class="co"># Get the report</span>
-<span class="va">report_xml</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_audit_report.html">get_audit_report</a></span><span class="op">(</span>query <span class="op">=</span> <span class="va">query</span>, env <span class="op">=</span> <span class="st">"production"</span><span class="op">)</span>
+<span class="va">df_report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_audit_report.html">get_audit_report</a></span><span class="op">(</span>
+  query <span class="op">=</span> <span class="va">query</span>, 
+  as <span class="op">=</span> <span class="st">"data.frame"</span>, 
+  env <span class="op">=</span> <span class="st">"production"</span>
+<span class="op">)</span>
 
 <span class="fu"><a href="../reference/logout.html">logout</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="section level3">
-<h3 id="parse-the-report">Parse the Report<a class="anchor" aria-label="anchor" href="#parse-the-report"></a>
-</h3>
-<p>The returned XML has the format:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">&lt;auditReport&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">&lt;auditRecord&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="kw">&lt;oid&gt;</span>115951546<span class="kw">&lt;/oid&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="kw">&lt;entryTime&gt;</span>2021-10-18T09:27:52<span class="kw">&lt;/entryTime&gt;</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>    <span class="kw">&lt;category&gt;</span>info<span class="kw">&lt;/category&gt;</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>    <span class="kw">&lt;service&gt;</span>DataPackageManager-1.0<span class="kw">&lt;/service&gt;</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>    <span class="kw">&lt;serviceMethod&gt;</span>readDataEntity<span class="kw">&lt;/serviceMethod&gt;</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>    <span class="kw">&lt;responseStatus&gt;</span>200<span class="kw">&lt;/responseStatus&gt;</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>    <span class="kw">&lt;resourceId&gt;</span>https://pasta.lternet.edu/package/data/eml/knb-lter-ntl/387/1/c472d5a7ac8a89a12100792e9b5705d3<span class="kw">&lt;/resourceId&gt;</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a>    <span class="kw">&lt;user&gt;</span>public<span class="kw">&lt;/user&gt;</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a>    <span class="kw">&lt;userAgent&gt;</span>null<span class="kw">&lt;/userAgent&gt;</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a>    <span class="kw">&lt;groups/&gt;</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a>    <span class="kw">&lt;authSystem&gt;</span>https://pasta.edirepository.org/authentication<span class="kw">&lt;/authSystem&gt;</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a>    <span class="kw">&lt;entryText&gt;</span>Entity Name: EDI_Data_Metadata_JumpingWorms.csv; Object Name: EDI_Data_Metadata_JumpingWorms.csv; Data Format: text/csv<span class="kw">&lt;/entryText&gt;</span></span>
-<span id="cb4-15"><a href="#cb4-15"></a>  <span class="kw">&lt;/auditRecord&gt;</span></span>
-<span id="cb4-16"><a href="#cb4-16"></a><span class="kw">&lt;/auditReport&gt;</span></span></code></pre></div>
-<p>Set up the data frame to hold date and packageId</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>dl_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
-                         dl_scope <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-                         dl_datasetID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,
-                         dl_revision <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>Get the date and packageId</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">download_date_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/xml_text.html" class="external-link">xml_text</a></span><span class="op">(</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_all</a></span><span class="op">(</span><span class="va">report_xml</span>, <span class="st">"//entryTime"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">download_data_entity</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/xml_text.html" class="external-link">xml_text</a></span><span class="op">(</span><span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_all</a></span><span class="op">(</span><span class="va">report_xml</span>, <span class="st">"//resourceId"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">download_data_entity</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  
-  
-  <span class="va">dl_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html" class="external-link">str_split</a></span><span class="op">(</span><span class="va">download_date_time</span>, <span class="st">"T"</span><span class="op">)</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>
-  <span class="va">dl_entity</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html" class="external-link">str_split</a></span><span class="op">(</span><span class="va">download_data_entity</span>, <span class="st">"/"</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>
-  <span class="va">dl_scope</span> <span class="op">&lt;-</span> <span class="va">dl_entity</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">7</span><span class="op">]</span>
-  <span class="va">dl_datasetID</span> <span class="op">&lt;-</span> <span class="va">dl_entity</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">8</span><span class="op">]</span>
-  <span class="va">dl_revision</span> <span class="op">&lt;-</span> <span class="va">dl_entity</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">9</span><span class="op">]</span>
-  
-  <span class="va">df_results_record</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>dl_date <span class="op">=</span> <span class="va">dl_date</span>, 
-                                   dl_scope <span class="op">=</span> <span class="va">dl_scope</span>, 
-                                   dl_datasetID <span class="op">=</span> <span class="va">dl_datasetID</span>, 
-                                   dl_revision <span class="op">=</span> <span class="va">dl_revision</span><span class="op">)</span>
-  
-  <span class="va">df_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">df_results</span>, <span class="va">df_results_record</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<p>Filter the records and parse the entityID into scope, datasetID, and version. Here robot and DataONE downloads records are filtered out.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df_results</span> <span class="op">&lt;-</span> <span class="va">df_report</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">user</span> <span class="op">!=</span> <span class="st">"robot"</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">userAgent</span> <span class="op">!=</span> <span class="st">"DataONE-Python/3.4.7 +http://dataone.org/"</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nchar.html" class="external-link">nchar</a></span><span class="op">(</span><span class="va">resourceId</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">separate</span><span class="op">(</span><span class="va">entryTime</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"date"</span>, <span class="cn">NA</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"T"</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">separate</span><span class="op">(</span>
+    <span class="va">resourceId</span>, 
+    into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"scope"</span>, <span class="st">"datasetID"</span>, <span class="st">"revision"</span>, <span class="cn">NA</span><span class="op">)</span>, 
+    sep <span class="op">=</span> <span class="st">"/"</span>
+  <span class="op">)</span></code></pre></div>
 <p>Group and count downloads for each data package for the entire time period</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df_downloads</span> <span class="op">&lt;-</span> <span class="va">df_results</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">group_by</span><span class="op">(</span><span class="va">dl_datasetID</span>, <span class="va">dl_scope</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">summarise</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; `summarise()` has grouped output by 'dl_datasetID'. You can override using the `.groups` argument.</span></code></pre></div>
-<p>Or count downloads per month</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df_downloads_per_month</span> <span class="op">&lt;-</span> <span class="va">df_results</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">mutate</span><span class="op">(</span>dl_month <span class="op">=</span> <span class="fu">month</span><span class="op">(</span><span class="va">dl_date</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu">group_by</span><span class="op">(</span><span class="va">dl_month</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">datasetID</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu">summarise</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>And graph the downloads</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<p>Or count downloads per month</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df_downloads_per_month</span> <span class="op">&lt;-</span> <span class="va">df_results</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">mutate</span><span class="op">(</span>month <span class="op">=</span> <span class="fu">month</span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">month</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">summarise</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>And graph the daily downloads</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df_downloads_daily</span> <span class="op">&lt;-</span> <span class="va">df_results</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">group_by</span><span class="op">(</span><span class="va">dl_date</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">arrange</span><span class="op">(</span><span class="va">dl_date</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu">arrange</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op"><a href="https://stringr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu">summarise</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu">ggplot</span><span class="op">(</span><span class="va">df_downloads_daily</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">dl_date</span>, y<span class="op">=</span><span class="va">n</span>, group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+<span class="fu">ggplot</span><span class="op">(</span><span class="va">df_downloads_daily</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">n</span>, group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Number of Downloaded Entities"</span>, 
-              title <span class="op">=</span> <span class="st">"Daily Downloads"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span><span class="op">)</span>,
-        axis.title.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,
-        axis.line <span class="op">=</span> <span class="fu">element_line</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span>,
-        panel.background <span class="op">=</span> <span class="fu">element_rect</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><img src="daily_downloads-1.png" title="plot of chunk daily_downloads" alt="plot of chunk daily_downloads" width="50%"></p>
+  <span class="fu">labs</span><span class="op">(</span>
+    y <span class="op">=</span> <span class="st">"Number of Downloaded Entities"</span>,
+    title <span class="op">=</span> <span class="st">"Daily Downloads"</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme</span><span class="op">(</span>
+    axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span><span class="op">)</span>,
+    axis.title.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,
+    axis.line <span class="op">=</span> <span class="fu">element_line</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span>,
+    panel.background <span class="op">=</span> <span class="fu">element_rect</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<div class="figure">
+<img src="daily_downloads-1.png" alt=""><p class="caption">Plot of daily downloads</p>
 </div>
 </div>
   </div>
