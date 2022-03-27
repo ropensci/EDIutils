@@ -1,3 +1,7 @@
+# EDIutils 0.0.0.9003
+
+Completed implementation of reviewer recommendations (version 0.0.0.9002 was incomplete). Some suggested changes have been added as project issues and will be incorporated in a future release (see https://github.com/ropensci/software-review/issues/498#issuecomment-1064787189)
+
 # EDIutils 0.0.0.9002
 
 Implemented reviewer recommendations (see https://github.com/ropensci/software-review/issues/498)

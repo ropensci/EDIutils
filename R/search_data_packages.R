@@ -111,11 +111,22 @@
 search_data_packages <- function(query, 
                                  as = "data.frame", 
                                  env = "production") {
+  # A two part query is needed to get the full result set. First get the number 
+  # of results matching the query, then submit a second query to return that
+  # number of results.
+  # First query
   query <- gsub(pattern = "\"", replacement = "%22", x = query)
   url <- paste0(
     base_url(env),
     "/package/search/eml?defType=edismax&", query
   )
+  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  res <- httr::content(resp, as = "text", encoding = "UTF-8")
+  httr::stop_for_status(resp, res)
+  res <- xml2::read_xml(res)
+  numfound <- xml2::xml_attr(res, "numFound")
+  # Second query
+  url <- paste0(url, "&rows=", numfound)
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
