@@ -171,7 +171,7 @@
     }
   ],
   "readme": "https://github.com/EDIorg/EDIutils/blob/main/README.md",
-  "fileSize": "650.872KB",
+  "fileSize": "650.953KB",
   "contIntegration": ["https://github.com/EDIorg/EDIutils/actions", "https://codecov.io/github/EDIorg/EDIutils?branch=main"],
   "relatedLink": "https://ediorg.github.io/EDIutils/",
   "releaseNotes": "https://github.com/EDIorg/EDIutils/blob/master/NEWS.md",
