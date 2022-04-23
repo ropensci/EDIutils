@@ -338,7 +338,7 @@ report2char <- function(qualityReport, full = TRUE, env) {
 #' @noRd
 #'
 set_user_agent <- function() {
-  res <- httr::user_agent("https://github.com/EDIorg/EDIutils")
+  res <- httr::user_agent("https://github.com/ropensci/EDIutils")
   return(res)
 }
 

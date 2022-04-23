@@ -8,8 +8,8 @@
 [![Project Status: WIP – Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![R-CMD-check](https://github.com/EDIorg/EDIutils/workflows/R-CMD-check/badge.svg)](https://github.com/EDIorg/EDIutils/actions)
-[![codecov.io](https://codecov.io/gh/EDIorg/EDIutils/branch/main/graph/badge.svg)](https://codecov.io/github/EDIorg/EDIutils?branch=main)
+[![R-CMD-check](https://github.com/ropensci/EDIutils/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/EDIutils/actions)
+[![codecov.io](https://codecov.io/gh/ropensci/EDIutils/branch/main/graph/badge.svg)](https://codecov.io/github/ropensci/EDIutils?branch=main)
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/498_status.svg)](https://github.com/ropensci/software-review/issues/498)
 <!-- badges: end -->
@@ -25,13 +25,13 @@ EDIutils includes functions to search and access existing data, evaluate
 and upload new data, and assist with related data management tasks.
 
 -   [Search and Access
-    Data](https://ediorg.github.io/EDIutils/articles/search_and_access.html)
+    Data](https://docs.ropensci.org/EDIutils/articles/search_and_access.html)
 -   [Evaluate and Upload
-    Data](https://ediorg.github.io/EDIutils/articles/evaluate_and_upload.html)
+    Data](https://docs.ropensci.org/EDIutils/articles/evaluate_and_upload.html)
 -   [Retrieve Download
-    Metrics](https://ediorg.github.io/EDIutils/articles/retrieve_downloads.html)
+    Metrics](https://docs.ropensci.org/EDIutils/articles/retrieve_downloads.html)
 -   [Retrieve Citation
-    Metrics](https://ediorg.github.io/EDIutils/articles/retrieve_citations.html)
+    Metrics](https://docs.ropensci.org/EDIutils/articles/retrieve_citations.html)
 
 ## Installation
 
@@ -40,13 +40,13 @@ Get the latest version:
 ``` r
 # Requires the remotes package
 install.packages("remotes")
-remotes::install_github("EDIorg/EDIutils")
+remotes::install_github("ropensci/EDIutils")
 ```
 
 Get the development version:
 
 ``` r
-remotes::install_github("EDIorg/EDIutils", ref = "development")
+remotes::install_github("ropensci/EDIutils", ref = "development")
 ```
 
 ## Getting Started
@@ -248,14 +248,14 @@ published data.
 
 ## Getting help
 
-Use [GitHub Issues](https://github.com/EDIorg/EDIutils/issues) for bug
+Use [GitHub Issues](https://github.com/ropensci/EDIutils/issues) for bug
 reporting, feature requests, and general questions/discussions. When
 filing bug reports, please include a minimal reproducible example.
 
 ## Contributing
 
 Community contributions are welcome! Please reference our [contributing
-guidelines](https://github.com/EDIorg/EDIutils/blob/master/CONTRIBUTING.md)
+guidelines](https://github.com/ropensci/EDIutils/blob/master/CONTRIBUTING.md)
 for details.
 
 ------------------------------------------------------------------------

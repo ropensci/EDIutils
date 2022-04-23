@@ -1,5 +1,5 @@
 pandoc: 2.11.4
-pkgdown: 1.6.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   evaluate_and_upload: evaluate_and_upload.html
@@ -7,5 +7,5 @@ articles:
   retrieve_downloads: retrieve_downloads.html
   search_and_access: search_and_access.html
   tests_requiring_authentication: tests_requiring_authentication.html
-last_built: 2022-01-22T16:21Z
+last_built: 2022-03-27T19:53Z
 
