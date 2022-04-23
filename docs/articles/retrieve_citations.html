@@ -40,7 +40,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../reference/index.html">Functions</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,16 +50,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/search_and_access.html">Search and Access Data</a>
+      <a href="../articles/evaluate_and_upload.html">Evaluate and Upload Data</a>
     </li>
     <li>
-      <a href="../articles/evaluate_and_upload.html">Evaluate and Upload Data</a>
+      <a href="../articles/retrieve_citations.html">Retrieve Citation Metrics</a>
     </li>
     <li>
       <a href="../articles/retrieve_downloads.html">Retrieve Download Metrics</a>
     </li>
     <li>
-      <a href="../articles/retrieve_citations.html">Retrieve Citation Metrics</a>
+      <a href="../articles/search_and_access.html">Search and Access Data</a>
     </li>
     <li>
       <a href="../articles/tests_requiring_authentication.html">Tests Requiring Authentication</a>
@@ -67,12 +67,12 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EDIorg/EDIutils/" class="external-link">
+  <a href="https://github.com/ropensci/EDIutils/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -93,7 +93,7 @@
       <h1 data-toc-skip>Retrieve Citation Metrics</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EDIorg/EDIutils/blob/HEAD/vignettes/retrieve_citations.Rmd" class="external-link"><code>vignettes/retrieve_citations.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/EDIutils/blob/HEAD/vignettes/retrieve_citations.Rmd" class="external-link"><code>vignettes/retrieve_citations.Rmd</code></a></small>
       <div class="hidden name"><code>retrieve_citations.Rmd</code></div>
 
     </div>
@@ -102,7 +102,7 @@
     
 <p>This vignette demonstrates how to query the EDI repository for journal articles that cite a certain data package. These stats may be used in reports.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/EDIorg/EDIutils" class="external-link">EDIutils</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/EDIutils" class="external-link">EDIutils</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></code></pre></div>
 <div class="section level2">

@@ -1,8 +1,5 @@
 title: EDIutils
 
-template:
-  package: rotemplate
-
 reference:
   - title: Evaluation and Upload
     desc: Describes web service methods for evaluating and uploading data packages.
