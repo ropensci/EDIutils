@@ -1,7 +1,7 @@
 title: EDIutils
 
 template:
-  bootswatch: spacelab
+  package: rotemplate
 
 reference:
   - title: Evaluation and Upload
@@ -63,24 +63,3 @@ reference:
     desc: Functions for handling repository authentication
     contents:
     - has_concept("Authentication")
-
-navbar:
-  title: ~
-  type: default
-  left:
-    - text: Functions
-      href: reference/index.html
-    - text: Articles
-      menu:
-      - text: Search and Access Data
-        href: articles/search_and_access.html
-      - text: Evaluate and Upload Data
-        href: articles/evaluate_and_upload.html
-      - text: Retrieve Download Metrics
-        href: articles/retrieve_downloads.html
-      - text: Retrieve Citation Metrics
-        href: articles/retrieve_citations.html
-      - text: Tests Requiring Authentication
-        href: articles/tests_requiring_authentication.html
-    - text: News
-      href: news/index.html
