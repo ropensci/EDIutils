@@ -43,30 +43,6 @@
     <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/api_read_data_entity_checksum.html</loc>
-  </url>
-  <url>
-    <loc>/reference/api_read_data_entity_resource_metadata.html</loc>
-  </url>
-  <url>
-    <loc>/reference/api_read_data_package_doi.html</loc>
-  </url>
-  <url>
-    <loc>/reference/api_read_data_package_report_checksum.html</loc>
-  </url>
-  <url>
-    <loc>/reference/api_read_data_package_report_resource_metadata.html</loc>
-  </url>
-  <url>
-    <loc>/reference/api_read_data_package_resource_metadata.html</loc>
-  </url>
-  <url>
-    <loc>/reference/api_read_metadata_checksum.html</loc>
-  </url>
-  <url>
-    <loc>/reference/api_read_metadata_resource_metadata.html</loc>
-  </url>
-  <url>
     <loc>/reference/auth_key.html</loc>
   </url>
   <url>
