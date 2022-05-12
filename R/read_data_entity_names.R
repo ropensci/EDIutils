@@ -32,7 +32,14 @@ read_data_entity_names <- function(packageId, env = "production") {
   resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
-  df <- utils::read.csv(text = res, as.is = TRUE, header = FALSE)
+  
+  # PASTA uses commas as a field delimiter, which results in parsing issues if
+  # an entity name contains commas. So fix here until fixed in PASTA.
+  res <- unlist(strsplit(res, "\\n"))
+  dlim <- "\\|\\|\\|"
+  res <- strsplit(sub(",\\s*", dlim, res), dlim)
+  df <- data.frame(do.call(rbind, res))
+  
   names(df) <- c("entityId", "entityName")
   return(df)
 }
