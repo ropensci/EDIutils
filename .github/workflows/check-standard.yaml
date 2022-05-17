@@ -15,7 +15,7 @@ jobs:
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         config:
           - {os: macOS-latest,   r: 'release'}
@@ -23,7 +23,7 @@ jobs:
           - {os: ubuntu-latest,   r: 'release'}
 
     env:
-      GITHUB_PAT: ${{ secrets.ACTION_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
 
     steps:
@@ -59,11 +59,8 @@ jobs:
     needs: R-CMD-check
     runs-on: ubuntu-latest
     env:
-      GITHUB_PAT: ${{ secrets.ACTION_TOKEN }}
-      EDI_USER: ${{ secrets.EDI_USER }}
-      EDI_PASS: ${{ secrets.EDI_PASS }}
-      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      VCR_TURN_OFF: true
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      VCR_TURN_OFF: false
 
     steps:
       - uses: actions/checkout@v2
