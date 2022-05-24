@@ -35,8 +35,8 @@ allowed:
   \item authSystem - A valid auth system identifier
   \item status - A valid HTTP Response Code
   \item resourceId - An EDI data repository resource identifier, e.g.
-  https://pasta.lternet.edu/package/eml/knb-lter-and/2719/6, or a thereof
-  (see details below)
+  https://pasta.lternet.edu/package/eml/knb-lter-and/2719/6, or a substring 
+  thereof (see details below)
   \item fromTime - An ISO8601 timestamp
   \item toTime - An ISO8601 timestamp
   \item limit - A positive whole number
