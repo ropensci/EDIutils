@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/ropensci/EDIutils",
   "issueTracker": "https://github.com/ropensci/EDIutils/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.0.0.9004",
+  "version": "1.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -167,7 +167,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "652.113KB",
+  "fileSize": "660.457KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
