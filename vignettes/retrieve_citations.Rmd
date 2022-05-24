@@ -18,7 +18,7 @@ library(tidyr)
 
 ## Get the Journal Citation Report for Specific Data Packages
 
-Get all identifiers for a certain scope
+Get all identifiers for a certain scope.
 
 
 ```{r, eval=FALSE}
@@ -37,7 +37,7 @@ res <- lapply(identifiers, list_data_package_citations, list_all = TRUE)
 df_return_all <- do.call(rbind, res)
 ```
 
-Various analyses may now be conducted on this data frame. E.g., number of articles citing data packages 
+Various analyses may now be conducted on this data frame. E.g., number of articles citing data packages
 
 ```{r, eval=FALSE}
 df_data_packages <- df_return_all %>%
@@ -50,7 +50,7 @@ df_data_packages <- df_return_all %>%
   distinct(datasetId)
 
 print(paste("Unique data packages being cited:", nrow(df_data_packages)))
-#> [1] "Unique data packages being cited: 359"
+#> [1] "Unique data packages being cited: 375"
 ```
 
 or the number of articles citing data packages
@@ -58,5 +58,5 @@ or the number of articles citing data packages
 ```{r, eval=FALSE}
 df_articles <- df_return_all %>%  distinct(articleUrl)
 print(paste('Number of aricles:', nrow(df_articles)))
-#> [1] "Number of aricles: 487"
+#> [1] "Number of aricles: 503"
 ```

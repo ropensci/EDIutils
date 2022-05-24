@@ -11,7 +11,7 @@ This vignette demonstrates how to query the EDI repository for data package down
 
 ## Introduction to Download reports
 
-The PASTA Audit service collects information about user-related events that occur in PASTA, including data entity downloads. This information is stored in the Audit Manager's event database and which can be accessed through the `get_audit_report` command and returns a data frame composed of individual event audit records. Understanding this information is critical to determine the meaning of these events.
+The PASTA Audit service collects information about user-related events that occur in PASTA, including data entity downloads. This information is stored in the Audit Manager's event database and which can be accessed through the `get_audit_report()` command and returns a data frame composed of individual event audit records. Understanding this information is critical to determine the meaning of these events.
 
 Attention needs to be paid to the `user` field, which can be `public` or `robot`. It is also important to know that the `userAgent` field is not required and a user agent can define its own text string to insert or leave blank. However, the `userAgent` provides a lot of interesting information. E.g., it allows a good estimate of downloads being initiated manually through a web browser (e.g., records starting with `Mozilla`) and downloads initiated programmatically (e.g., MATLAB, RStudio, etc.). The user agent `DataONE`, however, is the exception and appears to generate download reports that currently cannot be traced to actual, user generated entity downloads. They should be carefully inspected and cross checked with downloads reported for datasets on the DataONE search interface or filtered out as they seem to include internal management related data access. 
 
@@ -22,7 +22,6 @@ Audit reports query a large database containing millions of records and may take
 
 ```{r, eval=FALSE}
 library(EDIutils)
-library(stringr)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
@@ -45,7 +44,7 @@ Setting the query parameters to get the desired audit report:
 
   - `category` should be 'info' to only see actual downloads from users not bots
   - `serviceMethod` is readDataEntity, i.e., downloads of data entities
-  - `resourceID` is a substring of the full URL pattern `https://pasta.lternet.edu/package/data/eml/{scope}/{datasetID}/{version}`. In this example we use the scope to get all download records for a site
+  - `resourceID` is a substring of the full URL pattern `https://pasta.lternet.edu/package/data/eml/{scope}/{identifier}/{version}`. In this example we use the scope to get all download records for an LTER site.
   - `fromTime` (ISO format) is important to set to limit the number of records to be processed. Reliable download information with most bot access filtered out are available since about 2019.
   - `toTime` (ISO time format) may be set as well
   - `limit` may be used to limit the number of records
@@ -55,27 +54,22 @@ For more information on searchable fields see `get_audit_report()` documentation
 
 ```{r, eval=FALSE}
 # Construct the query
-query <- paste("category=info",
+query <- paste(
+  "category=info",
   "serviceMethod=readDataEntity",
   "resourceId=knb-lter-ntl",
-  "fromTime=2021-10-10T00:00:00",
-  "toTime=2021-10-19T00:00:00",
+  "fromTime=2018-12-12T00:00:00",
+  "toTime=2022-05-24T00:00:00",
   sep = "&"
 )
 
 # Get the report
-df_report <- get_audit_report(
-  query = query, 
-  as = "data.frame", 
-  env = "production"
-)
+df_report <- get_audit_report(query)
 
 logout()
 ```
 
-Filter the records and parse the entityID into scope, datasetID, and version. Here robot and DataONE downloads records are filtered out.
-
-
+Filter the records and parse the entityID into scope, identifier, and version. Here robot and DataONE downloads records are filtered out.
 
 ```{r, eval=FALSE}
 df_results <- df_report %>%
@@ -85,24 +79,39 @@ df_results <- df_report %>%
   separate(entryTime, into = c("date", NA), sep = "T") %>%
   separate(
     resourceId, 
-    into = c(NA, NA, NA, NA, NA, NA, "scope", "datasetID", "revision", NA), 
+    into = c(NA, NA, NA, NA, NA, NA, "scope", "identifier", "revision", NA), 
     sep = "/"
   )
+
+df_results$date <- ymd(df_results$date)
 ```
 
-Group and count downloads for each data package for the entire time period
-
-
+Group and count downloads for each data package for the entire time period.
 
 ```{r, eval=FALSE}
 df_downloads <- df_results %>%
-  group_by(datasetID) %>%
+  group_by(identifier) %>%
   summarise(n = n())
 ```
 
-Or count downloads per month
+Graph the 20 most downloaded data packages.
+
+```{r, eval=FALSE}
+top20 <- arrange(df_downloads, desc(n)) %>% slice(1:20)
+
+ggplot(top20, aes(x = reorder(identifier, -n), y = n)) +
+  geom_bar(stat = "identity") +
+  labs(
+    y = "Number of Downloads",
+    x = "Data Package Identifier",
+    title = "Downloads by Identifier"
+  )
+```
+
+![Plot of downloads by identifier](downloads_by_identifier.png)
 
 
+Count downloads per month.
 
 ```{r, eval=FALSE}
 df_downloads_per_month <- df_results %>%
@@ -111,9 +120,7 @@ df_downloads_per_month <- df_results %>%
   summarise(n = n())
 ```
 
-And graph the daily downloads
-
-
+And graph the daily downloads.
 
 ```{r, eval=FALSE}
 df_downloads_daily <- df_results %>%
@@ -125,14 +132,9 @@ ggplot(df_downloads_daily, aes(x = date, y = n, group = 1)) +
   geom_line() +
   labs(
     y = "Number of Downloaded Entities",
+    x = "Date",
     title = "Daily Downloads"
-  ) +
-  theme(
-    axis.text.x = element_text(angle = 90),
-    axis.title.x = element_blank(),
-    axis.line = element_line(colour = "black"),
-    panel.background = element_rect(fill = "white")
   )
 ```
 
-![Plot of daily downloads](daily_downloads-1.png)
+![Plot of daily downloads](downloads_by_date.png)
