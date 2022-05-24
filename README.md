@@ -5,13 +5,14 @@
 
 <!-- badges: start -->
 
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![R-CMD-check](https://github.com/ropensci/EDIutils/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/EDIutils/actions)
 [![codecov.io](https://codecov.io/gh/ropensci/EDIutils/branch/main/graph/badge.svg)](https://codecov.io/github/ropensci/EDIutils?branch=main)
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/498_status.svg)](https://github.com/ropensci/software-review/issues/498)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/EDIutils)](http://cran.r-project.org/package=EDIutils)
 <!-- badges: end -->
 
 A client for the Environmental Data Initiative repository REST API. The
@@ -38,9 +39,7 @@ and upload new data, and assist with related data management tasks.
 Get the latest version:
 
 ``` r
-# Requires the remotes package
-install.packages("remotes")
-remotes::install_github("ropensci/EDIutils")
+install.packages("EDIutils")
 ```
 
 Get the development version:

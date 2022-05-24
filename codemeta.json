@@ -70,7 +70,6 @@
       "@type": "SoftwareApplication",
       "identifier": "vcr",
       "name": "vcr",
-      "version": ">= 0.6.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -167,7 +166,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "660.457KB",
+  "fileSize": "660.384KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
