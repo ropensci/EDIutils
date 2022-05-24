@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/audit/report?serviceMethod=readDataEntity&fromTime=2021-12-01&toTime=2021-12-02&limit=2
+    uri: https://pasta.lternet.edu/audit/report?serviceMethod=readDataEntity&limit=1
     body:
       encoding: ''
       string: ''
