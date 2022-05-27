@@ -1,5 +1,8 @@
 ## New submission
-This is a new submission
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Used the canonical CRAN.R-project.org URL for this package
 
 ## Test environments
 * local Windows install, R 4.1.0
