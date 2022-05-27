@@ -166,7 +166,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "660.384KB",
+  "fileSize": "660.385KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -180,5 +180,15 @@
       "name": "{EDIutils}: An API Client for the Environmental Data Initiative Repository in R",
       "url": "https://github.com/ropensci/EDIutils"
     }
-  ]
+  ],
+  "releaseNotes": "https://github.com/ropensci/EDIutils/blob/master/NEWS.md",
+  "readme": "https://github.com/ropensci/EDIutils/blob/main/README.md",
+  "contIntegration": ["https://github.com/ropensci/EDIutils/actions", "https://codecov.io/github/ropensci/EDIutils?branch=main"],
+  "developmentStatus": "https://www.repostatus.org/#active",
+  "review": {
+    "@type": "Review",
+    "url": "https://github.com/ropensci/software-review/issues/498",
+    "provider": "https://ropensci.org"
+  },
+  "keywords": ["r", "r-package", "rstats", "ecology", "eml-metadata", "open-access", "open-data", "research-data-management", "research-data-repository"]
 }
