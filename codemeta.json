@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "EDIutils",
-  "description": "A client for the Environmental Data Initiative repository REST API. The EDI data repository <https://portal.edirepository.org/nis/home.jsp> is for publication and reuse of ecological data with emphasis on metadata accuracy and completeness. It is built upon the PASTA+ software stack <https://pastaplus-core.readthedocs.io/en/latest/index.html#> and was developed in collaboration with the US LTER Network <https://lternet.edu/>. EDIutils includes functions to search and access existing data, evaluate and upload new data, and assist other data management tasks common to repository users.",
+  "description": "A client for the Environmental Data Initiative repository REST API. The 'EDI' data repository <https://portal.edirepository.org/nis/home.jsp> is for publication and reuse of ecological data with emphasis on metadata accuracy and completeness. It is built upon the 'PASTA+' software stack <https://pastaplus-core.readthedocs.io/en/latest/index.html#> and was developed in collaboration with the US 'LTER' Network <https://lternet.edu/>. 'EDIutils' includes functions to search and access existing data, evaluate and upload new data, and assist other data management tasks common to repository users.",
   "name": "EDIutils: An API Client for the Environmental Data Initiative Repository",
   "relatedLink": "https://docs.ropensci.org/EDIutils/",
   "codeRepository": "https://github.com/ropensci/EDIutils",
@@ -166,7 +166,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "660.385KB",
+  "fileSize": "660.873KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -180,15 +180,5 @@
       "name": "{EDIutils}: An API Client for the Environmental Data Initiative Repository in R",
       "url": "https://github.com/ropensci/EDIutils"
     }
-  ],
-  "releaseNotes": "https://github.com/ropensci/EDIutils/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/EDIutils/blob/main/README.md",
-  "contIntegration": ["https://github.com/ropensci/EDIutils/actions", "https://codecov.io/github/ropensci/EDIutils?branch=main"],
-  "developmentStatus": "https://www.repostatus.org/#active",
-  "review": {
-    "@type": "Review",
-    "url": "https://github.com/ropensci/software-review/issues/498",
-    "provider": "https://ropensci.org"
-  },
-  "keywords": ["r", "r-package", "rstats", "ecology", "eml-metadata", "open-access", "open-data", "research-data-management", "research-data-repository"]
+  ]
 }
