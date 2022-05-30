@@ -2,7 +2,14 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Used the canonical CRAN.R-project.org URL for this package
+* Ensured package names, software names and API (application programming 
+interface) names are enclosed in single quotes in the title and description.
+
+* Added a description of the return value for a function that was missing this
+information.
+
+* Ensured functions do not write to the user's home filespace in examples, 
+vignettes, and tests.
 
 ## Test environments
 * local Windows install, R 4.1.0
