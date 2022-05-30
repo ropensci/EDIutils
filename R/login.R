@@ -51,7 +51,7 @@
 #' login(userId = "my_name", userPass = "my_secret")
 #'
 #' # Programmatically with a file containing userId and userPass arguments
-#' login(config = "./data/config.txt")
+#' login(config = paste0(tempdir(), "/config.txt"))
 #' }
 #'
 login <- function(userId = NULL, userPass = NULL, config = NULL) {

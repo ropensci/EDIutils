@@ -36,7 +36,7 @@ login()
 login(userId = "my_name", userPass = "my_secret")
 
 # Programmatically with a file containing userId and userPass arguments
-login(config = "./data/config.txt")
+login(config = paste0(tempdir(), "/config.txt"))
 ```
 
 The `login()` function exchanges credentials for a temporary (~10 hour) authentication token, which is written to the `EDI_TOKEN` environment variable referenced by EDIutils functions requiring authentication.
@@ -60,7 +60,7 @@ Evaluation checks for metadata accuracy and completeness.
 
 # Evaluate data package
 transaction <- evaluate_data_package(
- eml = "./data/edi.595.1.xml", 
+ eml = paste0(tempdir(), "/edi.595.1.xml"), 
  env = "staging")
 transaction
 #> [1] "evaluate_163966785813042760"
@@ -173,7 +173,7 @@ Upload after errors and warnings are fixed.
 ```{r eval=FALSE}
 # Create a new data package
 transaction <- create_data_package(
- eml = "./data/edi.595.1.xml", 
+ eml = paste0(tempdir(), "/edi.595.1.xml"), 
  env = "staging")
 transaction
 #> [1] "create_163966765080210573__edi.595.1"
@@ -193,7 +193,7 @@ Update is the same as upload, but with an incremented data package version numbe
 ```{r eval=FALSE}
 #' # Update data package
 #' transaction <- update_data_package(
-#'   eml = "./data/edi.595.2.xml", 
+#'   eml = paste0(tempdir(), "/edi.595.2.xml"), 
 #'   env = "staging")
 #' transaction
 #' #> [1] "update_edi.595_163966788658131920__edi.595.2"

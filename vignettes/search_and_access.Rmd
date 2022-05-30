@@ -103,9 +103,9 @@ transaction
 read_data_package_error(transaction)
 
 # Download to path
-read_data_package_archive(packageId, transaction, path = "./data")
+read_data_package_archive(packageId, transaction, path = tempdir())
 #> |=============================================================| 100%
-dir("./data")
+dir(tempdir())
 #> [1] ""edi.1047.1.zip"
 ```
 

@@ -22,7 +22,7 @@
 #'
 #' # Evaluate data package
 #' transaction <- evaluate_data_package(
-#'   eml = "./data/edi.595.1.xml",
+#'   eml = paste0(tempdir(), "/edi.595.1.xml"),
 #'   env = "staging"
 #' )
 #' transaction
@@ -34,7 +34,7 @@
 #'   as = "html",
 #'   env = "staging"
 #' )
-#' writeLines(qualityReport, "./data/report.html")
+#' writeLines(qualityReport, paste0(tempdir(), "/report.html"))
 #'
 #' # Read as character and write to file for browsing
 #' qualityReport <- read_evaluate_report(
@@ -42,7 +42,7 @@
 #'   as = "char",
 #'   env = "staging"
 #' )
-#' writeLines(qualityReport, "./data/report.txt")
+#' writeLines(qualityReport, paste0(tempdir(), "/report.txt"))
 #' 
 #' # Read as XML
 #' qualityReport <- read_evaluate_report(

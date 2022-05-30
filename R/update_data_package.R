@@ -30,7 +30,7 @@
 #'
 #' # Update data package
 #' transaction <- update_data_package(
-#'   eml = "./data/edi.595.2.xml",
+#'   eml = paste0(tempdir(), "/edi.595.2.xml"),
 #'   env = "staging"
 #' )
 #' transaction

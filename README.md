@@ -171,7 +171,7 @@ Evaluation checks for metadata accuracy and completeness.
 ``` r
 # Evaluate data package
 transaction <- evaluate_data_package(
- eml = "./data/edi.595.1.xml", 
+ eml = paste0(tempdir(), "/edi.595.1.xml"), 
  env = "staging")
 transaction
 #> [1] "evaluate_163966785813042760"
@@ -227,7 +227,7 @@ Upload after errors and warnings are fixed.
 ``` r
 # Create a new data package
 transaction <- create_data_package(
- eml = "./data/edi.595.1.xml", 
+ eml = paste0(tempdir(), "/edi.595.1.xml"), 
  env = "staging")
 transaction
 #> [1] "create_163966765080210573__edi.595.1"

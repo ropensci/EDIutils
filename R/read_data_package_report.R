@@ -47,7 +47,7 @@
 #'  packageId = "knb-lter-knz.260.4",
 #'  as = "char"
 #' )
-#' # writeLines(qualityReport, "./data/report.txt"))
+#' # writeLines(qualityReport, paste0(tempdir(), "/report.txt"))
 #' }
 read_data_package_report <- function(packageId,
                                      as = "xml",

@@ -27,9 +27,9 @@
 #' read_data_package_error(transaction)
 #'
 #' # Download zip archive
-#' read_data_package_archive(packageId, transaction, path = "./data")
+#' read_data_package_archive(packageId, transaction, path = tempdir())
 #' #> |=============================================================| 100%
-#' dir("./data")
+#' dir(tempdir())
 #' #> [1] "knb-lter-sev.31999.1.zip"
 #' }
 #'

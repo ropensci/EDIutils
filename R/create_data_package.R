@@ -28,7 +28,7 @@
 #'
 #' # Create data package
 #' transaction <- create_data_package(
-#'   eml = "./data/edi.595.1.xml",
+#'   eml = paste0(tempdir(), "/edi.595.1.xml"),
 #'   env = "staging"
 #' )
 #' transaction
