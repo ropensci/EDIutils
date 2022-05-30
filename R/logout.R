@@ -3,6 +3,8 @@
 #' @details Removes the temporary authentication token system variable
 #' "EDI_TOKEN".
 #' 
+#' @return (NULL) No return value.
+#' 
 #' @family Authentication
 #'
 #' @export

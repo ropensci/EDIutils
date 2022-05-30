@@ -6,6 +6,9 @@
 \usage{
 logout()
 }
+\value{
+(NULL) No return value.
+}
 \description{
 Logout of the EDI repository
 }
