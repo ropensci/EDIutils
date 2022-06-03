@@ -9,10 +9,12 @@
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![R-CMD-check](https://github.com/ropensci/EDIutils/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/EDIutils/actions)
-[![codecov.io](https://codecov.io/gh/ropensci/EDIutils/branch/main/graph/badge.svg)](https://codecov.io/github/ropensci/EDIutils?branch=main)
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/498_status.svg)](https://github.com/ropensci/software-review/issues/498)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/EDIutils)](https://cran.r-project.org/package=EDIutils)
+[![codecov.io](https://codecov.io/gh/ropensci/EDIutils/branch/main/graph/badge.svg)](https://codecov.io/github/ropensci/EDIutils?branch=main)
+[![DOI](https://zenodo.org/badge/159572464.svg)](https://zenodo.org/badge/latestdoi/159572464)
+
 <!-- badges: end -->
 
 A client for the Environmental Data Initiative repository REST API. The
