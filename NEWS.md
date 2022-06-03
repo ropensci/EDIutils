@@ -1,4 +1,4 @@
-EDIutils 1.0.0 (2022-05-24)
+EDIutils 1.0.0 (2022-06-01)
 ===========================
 
 EDIutils is now on CRAN
