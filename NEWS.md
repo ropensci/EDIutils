@@ -1,6 +1,9 @@
-EDIutils 1.0.0.9000 (XXXX-XX-XX)
+EDIutils 1.0.1 (XXXX-XX-XX)
 ================================
 
+### BUG FIXES
+  
+  * Fixed character encoding bug in the `vcr` dependency
 
 
 EDIutils 1.0.0 (2022-06-01)
