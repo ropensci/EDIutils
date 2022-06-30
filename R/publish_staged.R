@@ -153,7 +153,7 @@ data_package_citation_exists <- function(staged_id, all_versions = T) {
     
     r <- seq.int(as.numeric(id_rev))
     x <- lapply(r, function(rev) {
-      list_data_package_citations(paste0(id_stem, '.', rev), env = 'staging')
+      list_data_package_citations(paste0(id_stem, '.', rev), env = 'staging', as = 'xml')
     })
     
     x <- lapply(x, function(element) {
