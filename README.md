@@ -27,13 +27,13 @@ stack](https://pastaplus-core.readthedocs.io/en/latest/index.html#).
 EDIutils includes functions to search and access existing data, evaluate
 and upload new data, and assist with related data management tasks.
 
--   [Search and Access
+  - [Search and Access
     Data](https://docs.ropensci.org/EDIutils/articles/search_and_access.html)
--   [Evaluate and Upload
+  - [Evaluate and Upload
     Data](https://docs.ropensci.org/EDIutils/articles/evaluate_and_upload.html)
--   [Retrieve Download
+  - [Retrieve Download
     Metrics](https://docs.ropensci.org/EDIutils/articles/retrieve_downloads.html)
--   [Retrieve Citation
+  - [Retrieve Citation
     Metrics](https://docs.ropensci.org/EDIutils/articles/retrieve_citations.html)
 
 ## Installation
@@ -144,9 +144,10 @@ data
 ### Evaluate and Upload Data
 
 The EDI data repository has a
-“[staging](https://portal-s.edirepository.org/nis/home.jsp)” environment
-to test the upload and rendering of new data packages before publishing
-to “[production](https://portal.edirepository.org/nis/home.jsp)”.
+“[staging](https://portal-s.edirepository.org/nis/home.jsp)”
+environment to test the upload and rendering of new data packages before
+publishing to
+“[production](https://portal.edirepository.org/nis/home.jsp)”.
 Authentication is required by functions involving data evaluation and
 upload. Request an account from
 <support@environmentaldatainitiative.org>.
@@ -171,6 +172,7 @@ identifier
 Evaluation checks for metadata accuracy and completeness.
 
 ``` r
+
 # Evaluate data package
 transaction <- evaluate_data_package(
  eml = paste0(tempdir(), "/edi.595.1.xml"), 
@@ -255,11 +257,11 @@ filing bug reports, please include a minimal reproducible example.
 
 ## Contributing
 
-Community contributions are welcome! Please reference our [contributing
+Community contributions are welcome\! Please reference our [contributing
 guidelines](https://github.com/ropensci/EDIutils/blob/master/CONTRIBUTING.md)
 for details.
 
-------------------------------------------------------------------------
+-----
 
 Please note that this package is released with a [Contributor Code of
 Conduct](https://ropensci.org/code-of-conduct/). By contributing to this

@@ -1,5 +1,13 @@
+EDIutils 1.0.2 (2022-09-05)
+===========================
+
+### BUG FIXES
+  
+  * Fixed failing CRAN check originating from resource outages in the EDI data 
+  repository
+
 EDIutils 1.0.1 (2022-06-28)
-================================
+===========================
 
 ### BUG FIXES
   
