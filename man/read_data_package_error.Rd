@@ -23,26 +23,6 @@ Read data package error
 \note{
 User authentication is required (see \code{login()})
 }
-\examples{
-\dontrun{
-
-# Create zip archive
-packageId <- "knb-lter-sev.31999.1"
-transaction <- create_data_package_archive(packageId)
-transaction
-#> [1] "archive_knb-lter-sev.31999.1_16396683904724129"
-
-# Check creation status
-read_data_package_error(transaction)
-
-# Download zip archive
-read_data_package_archive(packageId, transaction, path = tempdir())
-#> |=============================================================| 100\%
-dir(tempdir())
-#> [1] "knb-lter-sev.31999.1.zip"
-}
-
-}
 \seealso{
 Other Accessing: 
 \code{\link{read_data_entity_checksum}()},

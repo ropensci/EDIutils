@@ -13,35 +13,10 @@ create_data_package_archive(packageId, env = "production")
 "staging", or "development".}
 }
 \value{
-transaction (character) Transaction identifier. May be used in a
-subsequent call to:
-\itemize{
-  \item \code{read_data_package_error()} to determine the operation status
-  \item \code{read_data_package_archive()} to obtain the Zip archive
-}
+transaction (character) Transaction identifier.
 }
 \description{
-Create data package archive (zip)
-}
-\examples{
-\dontrun{
-
-# Create zip archive
-packageId <- "knb-lter-sev.31999.1"
-transaction <- create_data_package_archive(packageId)
-transaction
-#> [1] "archive_knb-lter-sev.31999.1_16396683904724129"
-
-# Check creation status
-read_data_package_error(transaction)
-
-# Download zip archive
-read_data_package_archive(packageId, transaction, path = tempdir())
-#> |=============================================================| 100\%
-dir(tempdir())
-#> [1] "knb-lter-sev.31999.1.zip"
-}
-
+This function is DEPRECATED.
 }
 \seealso{
 Other Miscellaneous: 
