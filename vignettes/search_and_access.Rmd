@@ -94,16 +94,8 @@ packageId <- "edi.1047.1"
 Downloading a data package archive (.zip) requires a data package ID.
 
 ```{r eval=FALSE}
-# Request a zip archive
-transaction <- create_data_package_archive(packageId)
-transaction
-#> [1] "archive_edi.1047.1_14896683904724129"
-
-# Check status of the request (no response indicates success)
-read_data_package_error(transaction)
-
-# Download to path
-read_data_package_archive(packageId, transaction, path = tempdir())
+# Download data package to path
+read_data_package_archive(packageId, path = tempdir())
 #> |=============================================================| 100%
 dir(tempdir())
 #> [1] ""edi.1047.1.zip"

@@ -9,7 +9,8 @@ read_data_package_archive(packageId, transaction, path, env = "production")
 \arguments{
 \item{packageId}{(character) Data package identifier}
 
-\item{transaction}{(character) Transaction identifier}
+\item{transaction}{(character) Transaction identifier. This parameter is 
+DEPRECATED.}
 
 \item{path}{(character) Path of directory in which the result will be written}
 
@@ -26,17 +27,8 @@ Read data package archive
 \examples{
 \dontrun{
 
-# Create zip archive
-packageId <- "knb-lter-sev.31999.1"
-transaction <- create_data_package_archive(packageId)
-transaction
-#> [1] "archive_knb-lter-sev.31999.1_16396683904724129"
-
-# Check creation status
-read_data_package_error(transaction)
-
 # Download zip archive
-read_data_package_archive(packageId, transaction, path = tempdir())
+read_data_package_archive("knb-lter-sev.31999.1", path = tempdir())
 #> |=============================================================| 100\%
 dir(tempdir())
 #> [1] "knb-lter-sev.31999.1.zip"

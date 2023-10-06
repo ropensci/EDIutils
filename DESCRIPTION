@@ -10,7 +10,7 @@ Description: A client for the Environmental Data Initiative repository REST API.
 Imports: curl, httr, jsonlite, xml2
 License: MIT + file LICENSE
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Suggests: knitr, readr, vcr, rmarkdown, roxygen2, testthat
 URL: https://github.com/ropensci/EDIutils, https://docs.ropensci.org/EDIutils/
 BugReports: https://github.com/ropensci/EDIutils/issues

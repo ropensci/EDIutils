@@ -1,7 +1,8 @@
 #' Read data package archive
 #'
 #' @param packageId (character) Data package identifier
-#' @param transaction (character) Transaction identifier
+#' @param transaction (character) Transaction identifier. This parameter is 
+#' DEPRECATED.
 #' @param path (character) Path of directory in which the result will be written
 #' @param env (character) Repository environment. Can be: "production",
 #' "staging", or "development".
@@ -16,17 +17,8 @@
 #' @examples
 #' \dontrun{
 #'
-#' # Create zip archive
-#' packageId <- "knb-lter-sev.31999.1"
-#' transaction <- create_data_package_archive(packageId)
-#' transaction
-#' #> [1] "archive_knb-lter-sev.31999.1_16396683904724129"
-#'
-#' # Check creation status
-#' read_data_package_error(transaction)
-#'
 #' # Download zip archive
-#' read_data_package_archive(packageId, transaction, path = tempdir())
+#' read_data_package_archive("knb-lter-sev.31999.1", path = tempdir())
 #' #> |=============================================================| 100%
 #' dir(tempdir())
 #' #> [1] "knb-lter-sev.31999.1.zip"
@@ -36,10 +28,15 @@ read_data_package_archive <- function(packageId,
                                       transaction,
                                       path,
                                       env = "production") {
+  if (!missing(transaction)) {
+    warning(
+      "The 'transaction' parameter is deprecated and no longer required. ",
+      "Please use this function without it.", call. = FALSE
+    )
+  }
   url <- paste0(
-    base_url(env), "/package/archive/eml/",
-    paste(parse_packageId(packageId), collapse = "/"), "/",
-    transaction
+    base_url(env), "/package/download/eml/",
+    paste(parse_packageId(packageId), collapse = "/")
   )
   resp <- httr::GET(
     url,
