@@ -17,7 +17,7 @@ library(EDIutils)
 
 ## Get an EDI User Account
 
-Request accounts via info@environmentaldatainitiative.org
+Request accounts via info@edirepository.org
 
 ## Use the "staging" Environment!
 The EDI repository "staging" environment is a sandbox for testing data package rendering, etc. Do not use the "production" environment for testing. The "production" environment is where publication quality data are released.

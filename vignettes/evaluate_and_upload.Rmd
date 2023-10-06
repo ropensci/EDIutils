@@ -24,7 +24,7 @@ Evaluation and upload to the repository requires data entities are described wit
 
 ## Authenticate
 
-Authentication is required by functions involving data evaluation and upload, audit report access, event notifications, and other account based features. Request an account from support@environmentaldatainitiative.org. There are three options for authenticating:
+Authentication is required by functions involving data evaluation and upload, audit report access, event notifications, and other account based features. Request an account from support@edirepository.org. There are three options for authenticating:
 
 ```{r eval=FALSE}
 # Interactively at the console
@@ -164,7 +164,7 @@ The Dataset and Entity Reports share the same layout:
 * Suggestion - Potential data package improvements to implement to pass the quality check
 * Reference - Source of the rationale for the quality check or where to find more information
 
-Parse through the document and address any errors or warnings (denoted by the Error and Warn labels). To understand why a quality check failed, first read the Name and Description of the quality check to determine what was being tested and how the test was being conducted. Then, compare the Expected result to what was Found. If it is still not clear what caused the failure, try to gain additional insight from the Explanation, Suggestion, and Reference fields, or contact the EDI Data Curation Team for clarification (info@environmentaldatainitiative.org).
+Parse through the document and address any errors or warnings (denoted by the Error and Warn labels). To understand why a quality check failed, first read the Name and Description of the quality check to determine what was being tested and how the test was being conducted. Then, compare the Expected result to what was Found. If it is still not clear what caused the failure, try to gain additional insight from the Explanation, Suggestion, and Reference fields, or contact the EDI Data Curation Team for clarification (info@edirepository.org).
 
 ## Upload
 
