@@ -57,7 +57,7 @@ The unit of publication is the data package. It contains one or more data entiti
 
 Authentication is required by data evaluation and upload functions, and to 
 access user audit logs and services. Contact EDI for an account 
-<support@edirepository.org>. Authenticate with `login()` 
+<support@edirepository.org>. Authenticate with the `login()` 
 function.
 
 ### Search and Access Data
