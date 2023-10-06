@@ -86,8 +86,22 @@ An alternative method for searching and retrieving metadata is the "list and rea
 
 The EDI data repository provides open access to archived data as packages. Packages can be downloaded in .zip format or their individual data entities downloaded as raw bytes and files. Entities with a common format can be parsed simply by most readers while more complex formats need metadata to help with parsing.
 
+Sometimes, it's valuable to work with the latest version within a series of data packages to ensure you have the most current data for your application. To determine the newest data package identifier, you can utilize the 'newest' filter provided by the `list_data_package_revisions()` function and append the returned value to the 'scope' and 'identifier' parameters.
+
 ```{r eval=FALSE}
-# A data package
+scope = "edi"
+identifier = "1047"
+revision = list_data_package_revisions(scope, identifier, filter = "newest")
+paste(scope, identifier, revision, sep = ".")
+#> [1] "edi.1047.2"
+```
+
+However, there are some important considerations when working with the newest version. For instance, the 'entityId' (identifiers for individual data objects) can change as the data entity evolves, making it unsuitable for referencing the newest data entity. One workaround is to use the 'entityName', which may remain stable across versions, although this isn't always guaranteed. Additionally, be aware that alterations to the data entity structure, such as changes to data table and column names, can potentially disrupt your processes. In such cases, robust messaging and error handling can prove invaluable in workflows that rely on these data.
+
+For the purposes of this vignette, we will use 'edi.1047.1' as our example.
+
+
+```{r eval=FALSE}
 packageId <- "edi.1047.1"
 ```
 
