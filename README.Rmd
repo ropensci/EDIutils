@@ -57,7 +57,7 @@ The unit of publication is the data package. It contains one or more data entiti
 
 Authentication is required by data evaluation and upload functions, and to 
 access user audit logs and services. Contact EDI for an account 
-<support@environmentaldatainitiative.org>. Authenticate with `login()` 
+<support@edirepository.org>. Authenticate with `login()` 
 function.
 
 ### Search and Access Data
@@ -125,7 +125,7 @@ data
 
 ### Evaluate and Upload Data
 
-The EDI data repository has a "[staging](https://portal-s.edirepository.org/nis/home.jsp)" environment to test the upload and rendering of new data packages before publishing to "[production](https://portal.edirepository.org/nis/home.jsp)". Authentication is required by functions involving data evaluation and upload. Request an account from support@environmentaldatainitiative.org.
+The EDI data repository has a "[staging](https://portal-s.edirepository.org/nis/home.jsp)" environment to test the upload and rendering of new data packages before publishing to "[production](https://portal.edirepository.org/nis/home.jsp)". Authentication is required by functions involving data evaluation and upload. Request an account from support@edirepository.org.
 
 ```{r eval=FALSE}
 # Authenticate
