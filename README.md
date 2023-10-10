@@ -12,7 +12,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/498_status.svg)](https://github.com/ropensci/software-review/issues/498)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/EDIutils)](https://cran.r-project.org/package=EDIutils)
-[![codecov.io](https://codecov.io/gh/ropensci/EDIutils/branch/main/graph/badge.svg)](https://codecov.io/github/ropensci/EDIutils?branch=main)
+[![codecov.io](https://codecov.io/gh/ropensci/EDIutils/branch/main/graph/badge.svg)](https://app.codecov.io/github/ropensci/EDIutils?branch=main)
 [![DOI](https://zenodo.org/badge/159572464.svg)](https://zenodo.org/badge/latestdoi/159572464)
 
 <!-- badges: end -->
