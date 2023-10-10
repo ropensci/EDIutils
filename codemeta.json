@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/ropensci/EDIutils",
   "issueTracker": "https://github.com/ropensci/EDIutils/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.0 (2021-05-18)",
+  "runtimePlatform": "R version 4.2.2 (2022-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -172,7 +172,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "645.486KB",
+  "fileSize": "645.787KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
