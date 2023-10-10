@@ -11,8 +11,8 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![R-CMD-check](https://github.com/ropensci/EDIutils/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/EDIutils/actions)
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/498_status.svg)](https://github.com/ropensci/software-review/issues/498)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/EDIutils)](https://cran.r-project.org/package=EDIutils)
-[![codecov.io](https://codecov.io/gh/ropensci/EDIutils/branch/main/graph/badge.svg)](https://codecov.io/github/ropensci/EDIutils?branch=main)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/EDIutils)](https://cran.r-project.org/package=EDIutils)
+[![codecov.io](https://codecov.io/gh/ropensci/EDIutils/branch/main/graph/badge.svg)](https://app.codecov.io/github/ropensci/EDIutils?branch=main)
 [![DOI](https://zenodo.org/badge/159572464.svg)](https://zenodo.org/badge/latestdoi/159572464)
 
 <!-- badges: end -->
@@ -27,14 +27,14 @@ stack](https://pastaplus-core.readthedocs.io/en/latest/index.html#).
 EDIutils includes functions to search and access existing data, evaluate
 and upload new data, and assist with related data management tasks.
 
-  - [Search and Access
-    Data](https://docs.ropensci.org/EDIutils/articles/search_and_access.html)
-  - [Evaluate and Upload
-    Data](https://docs.ropensci.org/EDIutils/articles/evaluate_and_upload.html)
-  - [Retrieve Download
-    Metrics](https://docs.ropensci.org/EDIutils/articles/retrieve_downloads.html)
-  - [Retrieve Citation
-    Metrics](https://docs.ropensci.org/EDIutils/articles/retrieve_citations.html)
+- [Search and Access
+  Data](https://docs.ropensci.org/EDIutils/articles/search_and_access.html)
+- [Evaluate and Upload
+  Data](https://docs.ropensci.org/EDIutils/articles/evaluate_and_upload.html)
+- [Retrieve Download
+  Metrics](https://docs.ropensci.org/EDIutils/articles/retrieve_downloads.html)
+- [Retrieve Citation
+  Metrics](https://docs.ropensci.org/EDIutils/articles/retrieve_citations.html)
 
 ## Installation
 
@@ -70,8 +70,7 @@ organizational unit, “identifier” the series, and “revision” the version
 
 Authentication is required by data evaluation and upload functions, and
 to access user audit logs and services. Contact EDI for an account
-<support@environmentaldatainitiative.org>. Authenticate with `login()`
-function.
+<support@edirepository.org>. Authenticate with the `login()` function.
 
 ### Search and Access Data
 
@@ -144,13 +143,11 @@ data
 ### Evaluate and Upload Data
 
 The EDI data repository has a
-“[staging](https://portal-s.edirepository.org/nis/home.jsp)”
-environment to test the upload and rendering of new data packages before
-publishing to
-“[production](https://portal.edirepository.org/nis/home.jsp)”.
+“[staging](https://portal-s.edirepository.org/nis/home.jsp)” environment
+to test the upload and rendering of new data packages before publishing
+to “[production](https://portal.edirepository.org/nis/home.jsp)”.
 Authentication is required by functions involving data evaluation and
-upload. Request an account from
-<support@environmentaldatainitiative.org>.
+upload. Request an account from <support@edirepository.org>.
 
 ``` r
 # Authenticate
@@ -257,11 +254,11 @@ filing bug reports, please include a minimal reproducible example.
 
 ## Contributing
 
-Community contributions are welcome\! Please reference our [contributing
+Community contributions are welcome! Please reference our [contributing
 guidelines](https://github.com/ropensci/EDIutils/blob/master/CONTRIBUTING.md)
 for details.
 
------
+------------------------------------------------------------------------
 
 Please note that this package is released with a [Contributor Code of
 Conduct](https://ropensci.org/code-of-conduct/). By contributing to this

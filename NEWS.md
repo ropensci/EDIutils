@@ -1,3 +1,15 @@
+EDIutils 1.0.3 (2023-10-10)
+===========================
+
+### MINOR IMPROVEMENTS
+
+  * Demonstrate retrieval of newest data package version (#46)
+  * Update EDI contact email (#51)
+
+### BUG FIXES
+
+  * Fix `read_data_package_archive()` from calling a deprecated endpoint (#47)
+
 EDIutils 1.0.2 (2022-09-05)
 ===========================
 
