@@ -79,6 +79,8 @@ login <- function(userId = NULL, userPass = NULL, config = NULL) {
     handle = httr::handle("")
   )
   httr::stop_for_status(resp)
-  token <- httr::cookies(resp)$value
-  Sys.setenv(EDI_TOKEN = token)
+  token_name <- httr::cookies(resp)$name
+  token_value <- httr::cookies(resp)$value
+  Sys.setenv(EDI_TOKEN = token_value[token_name == "edi-token"])
+  Sys.setenv(AUTH_TOKEN = token_value[token_name == "auth-token"])
 }
