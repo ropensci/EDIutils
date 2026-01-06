@@ -6,13 +6,17 @@
 #' @noRd
 #'
 bake_cookie <- function() {
-  token <- Sys.getenv("EDI_TOKEN")
-  if (token == "") {
+  edi_token <- Sys.getenv("EDI_TOKEN")
+  auth_token <- Sys.getenv("AUTH_TOKEN")
+  if (edi_token == "" || auth_token == "") {
     stop("Authentication token not found. Run 'login()' then try again.",
       call. = FALSE
     )
   }
-  cookie <- httr::set_cookies(`auth-token` = token)
+  cookie <- httr::set_cookies(
+    `edi-token` = edi_token,
+    `auth-token` = auth_token
+    )
   cookie$options$cookie <- curl::curl_unescape(cookie$options$cookie)
   return(cookie)
 }

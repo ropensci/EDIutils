@@ -1,7 +1,7 @@
 #' Logout of the EDI repository
 #'
-#' @details Removes the temporary authentication token system variable
-#' "EDI_TOKEN".
+#' @details Removes the temporary authentication token system variables
+#' "EDI_TOKEN" and "AUTH_TOKEN".
 #' 
 #' @return (NULL) No return value.
 #' 
@@ -16,4 +16,5 @@
 #'
 logout <- function() {
   suppressWarnings(Sys.unsetenv("EDI_TOKEN"))
+  suppressWarnings(Sys.unsetenv("AUTH_TOKEN"))
 }

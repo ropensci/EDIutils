@@ -6,8 +6,8 @@
 #' @param config (character) Path to config.txt, which contains \code{userId}
 #' and \code{userPass} (see details below)
 #'
-#' @return (character) A temporary (~10 hour) authentication token written to
-#' the system variable "EDI_TOKEN".
+#' @return (character) Temporary (~10 hour) authentication tokens written to
+#' the system variables "EDI_TOKEN" and "AUTH_TOKEN".
 #'
 #' @note Only works when authenticating with EDI credentials. Does not work
 #' when authenticating with ORCiD, GitHub, or Google credentials.
@@ -79,6 +79,8 @@ login <- function(userId = NULL, userPass = NULL, config = NULL) {
     handle = httr::handle("")
   )
   httr::stop_for_status(resp)
-  token <- httr::cookies(resp)$value
-  Sys.setenv(EDI_TOKEN = token)
+  token_name <- httr::cookies(resp)$name
+  token_value <- httr::cookies(resp)$value
+  Sys.setenv(EDI_TOKEN = token_value[token_name == "edi-token"])
+  Sys.setenv(AUTH_TOKEN = token_value[token_name == "auth-token"])
 }
