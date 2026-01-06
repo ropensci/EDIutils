@@ -36,11 +36,14 @@ testthat::test_that('Landing page URLs are constructed', {
 
 
 testthat::test_that("bake_cookie() works", {
-  token <- Sys.getenv("EDI_TOKEN")
+  edi_token <- Sys.getenv("EDI_TOKEN")
   Sys.setenv(EDI_TOKEN = "foobar")
+  auth_token <- Sys.getenv("AUTH_TOKEN")
+  Sys.setenv(AUTH_TOKEN = "foobar")
   res <- bake_cookie()
   expect_equal(class(res), "request")
-  Sys.setenv(EDI_TOKEN = token)
+  Sys.setenv(EDI_TOKEN = edi_token)
+  Sys.setenv(AUTH_TOKEN = auth_token)
 })
 
 

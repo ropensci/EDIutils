@@ -39,7 +39,7 @@ login(userId = "my_name", userPass = "my_secret")
 login(config = paste0(tempdir(), "/config.txt"))
 ```
 
-The `login()` function exchanges credentials for a temporary (~10 hour) authentication token, which is written to the `EDI_TOKEN` environment variable referenced by EDIutils functions requiring authentication.
+The `login()` function exchanges credentials for temporary (~10 hour) authentication tokens, which are written to the `EDI_TOKEN` and `AUTH_TOKEN` environment variable referenced by EDIutils functions requiring authentication.
 
 ## Reserve a Data Package ID
 
