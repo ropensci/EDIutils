@@ -16,8 +16,8 @@ If using}
 and \code{userPass} (see details below)}
 }
 \value{
-(character) A temporary (~10 hour) authentication token written to
-the system variable "EDI_TOKEN".
+(character) Temporary (~10 hour) authentication tokens written to
+the system variables "EDI_TOKEN" and "AUTH_TOKEN".
 }
 \description{
 Login to the EDI repository

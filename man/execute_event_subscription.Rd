@@ -59,8 +59,8 @@ logout()
 Other Event Notifications: 
 \code{\link{create_event_subscription}()},
 \code{\link{delete_event_subscription}()},
-\code{\link{get_event_subscription_schema}()},
 \code{\link{get_event_subscription}()},
+\code{\link{get_event_subscription_schema}()},
 \code{\link{query_event_subscriptions}()}
 }
 \concept{Event Notifications}

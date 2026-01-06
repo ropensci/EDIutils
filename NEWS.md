@@ -1,3 +1,10 @@
+EDIutils 1.1.0 (2026-01-06)
+===========================
+
+### MINOR IMPROVEMENTS
+
+  * Update authentication to support new EDI IAM system (#60)
+
 EDIutils 1.0.3 (2023-10-10)
 ===========================
 

@@ -13,8 +13,8 @@ logout()
 Logout of the EDI repository
 }
 \details{
-Removes the temporary authentication token system variable
-"EDI_TOKEN".
+Removes the temporary authentication token system variables
+"EDI_TOKEN" and "AUTH_TOKEN".
 }
 \examples{
 \dontrun{
