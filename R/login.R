@@ -6,8 +6,8 @@
 #' @param config (character) Path to config.txt, which contains \code{userId}
 #' and \code{userPass} (see details below)
 #'
-#' @return (character) A temporary (~10 hour) authentication token written to
-#' the system variable "EDI_TOKEN".
+#' @return (character) Temporary (~10 hour) authentication tokens written to
+#' the system variables "EDI_TOKEN" and "AUTH_TOKEN".
 #'
 #' @note Only works when authenticating with EDI credentials. Does not work
 #' when authenticating with ORCiD, GitHub, or Google credentials.
