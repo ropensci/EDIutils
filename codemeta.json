@@ -26,16 +26,14 @@
       "@type": "Person",
       "givenName": "Colin",
       "familyName": "Smith",
-      "email": "colin.smith@wisc.edu",
-      "@id": "https://orcid.org/0000-0003-2261-9931"
+      "email": "colin.smith@wisc.edu"
     }
   ],
   "contributor": [
     {
       "@type": "Person",
       "givenName": "Corinna",
-      "familyName": "Gries",
-      "@id": "https://orcid.org/0000-0002-9091-6543"
+      "familyName": "Gries"
     }
   ],
   "maintainer": [
@@ -43,8 +41,7 @@
       "@type": "Person",
       "givenName": "Colin",
       "familyName": "Smith",
-      "email": "colin.smith@wisc.edu",
-      "@id": "https://orcid.org/0000-0003-2261-9931"
+      "email": "colin.smith@wisc.edu"
     }
   ],
   "softwareSuggestions": [
@@ -170,9 +167,14 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=xml2"
     },
+    "5": {
+      "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
+    },
     "SystemRequirements": null
   },
-  "fileSize": "646.446KB",
+  "fileSize": "662.058KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

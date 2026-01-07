@@ -45,6 +45,8 @@
 #' @note User authentication is required (see \code{login()})
 #' 
 #' @family Audit Manager Services
+#' 
+#' @importFrom utils read.csv
 #'
 #' @export
 #'
