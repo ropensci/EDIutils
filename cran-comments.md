@@ -1,6 +1,7 @@
 ## Revision
 This release updates authentication methods to use the NEW EDI Identity and 
-Access Management (IAM) system. These changes maintain backward compatibility.
+Access Management (IAM) system and deprecates a function. These changes maintain 
+backward compatibility.
 
 
 ## Test environments
