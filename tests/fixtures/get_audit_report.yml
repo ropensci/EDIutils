@@ -1,59 +1,42 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://pasta.lternet.edu/audit/report?serviceMethod=readDataEntity&limit=1
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+    status: 200
     headers:
-      server: nginx/1.14.0 (Ubuntu)
-      date: Tue, 18 Jan 2022 05:32:47 GMT
-      content-type: application/xml
-      content-length: '1401'
-      connection: keep-alive
+      access-control-allow-origin: '*'
       cache-control: no-cache
+      connection: keep-alive
+      content-length: '689'
+      content-type: application/xml
+      date: Wed, 07 Jan 2026 17:03:58 GMT
+      pasta-first-oid: '39180366'
+      pasta-last-oid: '39180366'
+      server: nginx/1.18.0 (Ubuntu)
+      set-cookie:
+      - auth-token="dWlkPWNzbWl0aCxvPUVESSxkYz1lZGlyZXBvc2l0b3J5LGRjPW9yZypodHRwczovL3Bhc3RhLmVkaXJlcG9zaXRvcnkub3JnL2F1dGhlbnRpY2F0aW9uKjE3Njc4MzQyMzgxOTYqdmV0dGVkKmF1dGhlbnRpY2F0ZWQ=-KCdfNaTGR/U94rikOHbPiA7eFxYkZpwrP9x508bzek6ywrERh+5Jp1dhoelZ/Hl0mSgoiEAw6reHNMEvkaBk/Jz3pj4c+awRk9yjNbCA73ZSq9OgbB+32iWnHA6szWqFM0W85KC3Le7711xCUjXEzmON8sxGMKQ40RcPlolT2N1YUuqExbm/4bPDDDXK1uI8JNOMdm8cNW2/OfIGC69A8w8dmmF3wwjWGqo24wMGytLPZEqGuv+h88cQr8pz9YED4pmctN2UR9v7RRjxm8BeEmW5EHj8zfkPackwMlr84LQ8g2jPJv3nVd0dVpgfBs+uyOfz4iO7rz8tzqgViCbDLA==";
+        HttpOnly; Path=/; SameSite=lax
+      - edi-token=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFREktNTQzYWZhODBjODU5ODI1ZDM1ZDM3ZDkxMTFjMjRhNGE2NWEwZGI5ZiIsImNuIjoiY3NtaXRoIiwiZW1haWwiOm51bGwsInByaW5jaXBhbHMiOlsiRURJLTA3OGU2ZTNjZWU0ZjdmMjgxMmYxNTA3MDFkYTkzNTFhY2I1MWUwODkiLCJFREktN2JlMzUxMGQwOGRlZjBkZmM2Njc4MjRlYmQ0ZjRmMWJiZDc3MDIzNCIsIkVESS1iZGFlNzQ5NzJlZDcxMGM1NmIxZTBkZjE4Y2NiNmUyM2MzMWY2MGY2Il0sImxpbmtzIjpbXSwiaXNFbWFpbEVuYWJsZWQiOmZhbHNlLCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJpZHBDb21tb25OYW1lIjoiY3NtaXRoIiwiaWRwTmFtZSI6ImxkYXAiLCJpZHBVaWQiOiJ1aWQ9Y3NtaXRoLG89RURJLGRjPWVkaXJlcG9zaXRvcnksZGM9b3JnIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmVkaXJlcG9zaXRvcnkub3JnIiwiaGQiOiJlZGlyZXBvc2l0b3J5Lm9yZyIsImlhdCI6MTc2NzgwMjczNSwibmJmIjoxNzY3ODAyNzM1LCJleHAiOjE3Njc4MzE1MzV9.m-umUoeOuiEMAAPR8itPvt2GYPpNNfdte8qiFvKblW1oFeFP_zOnJTmI8rh-Lzx2I4uqWKkmG7gfMYLJD-Pzdw;
+        HttpOnly; Path=/; SameSite=lax
       web-service: AuditManager-0.1
     body:
-      encoding: UTF-8
-      file: no
       string: |
         <auditReport>
         <auditRecord>
-          <oid>121606334</oid>
-          <entryTime>2021-12-01T00:00:07</entryTime>
-          <category>warn</category>
+          <oid>39180366</oid>
+          <entryTime>2018-05-02T00:16:14</entryTime>
+          <category>info</category>
           <service>DataPackageManager-1.0</service>
           <serviceMethod>readDataEntity</serviceMethod>
-          <responseStatus>401</responseStatus>
-          <resourceId></resourceId>
-          <user>robot</user>
-          <userAgent>null</userAgent>
+          <responseStatus>200</responseStatus>
+          <resourceId>https://pasta.lternet.edu/package/data/eml/knb-lter-sgs/157/18/c219e8dbce02b9620d910f1c94bce2c0</resourceId>
+          <user>public</user>
+          <userAgent></userAgent>
           <groups></groups>
           <authSystem>https://pasta.edirepository.org/authentication</authSystem>
-          <entryText>Robots are not authorized access to data objects&#x2e; Robot detected&#x3a; Mozilla&#x2f;5&#x2e;0 &#x28;compatible&#x3b; SemrushBot&#x2f;7&#x7e;bl&#x3b; &#x2b;http&#x3a;&#x2f;&#x2f;www&#x2e;semrush&#x2e;com&#x2f;bot&#x2e;html&#x29;</entryText>
-        </auditRecord>
-        <auditRecord>
-          <oid>121606349</oid>
-          <entryTime>2021-12-01T00:00:21</entryTime>
-          <category>warn</category>
-          <service>DataPackageManager-1.0</service>
-          <serviceMethod>readDataEntity</serviceMethod>
-          <responseStatus>401</responseStatus>
-          <resourceId></resourceId>
-          <user>robot</user>
-          <userAgent>null</userAgent>
-          <groups></groups>
-          <authSystem>https://pasta.edirepository.org/authentication</authSystem>
-          <entryText>Robots are not authorized access to data objects&#x2e; Robot detected&#x3a; Mozilla&#x2f;5&#x2e;0 &#x28;compatible&#x3b; SemrushBot&#x2f;7&#x7e;bl&#x3b; &#x2b;http&#x3a;&#x2f;&#x2f;www&#x2e;semrush&#x2e;com&#x2f;bot&#x2e;html&#x29;</entryText>
+          <entryText>Entity Name&#x3a; otc&#x5f;gas&#x3b; Object Name&#x3a; otc&#x5f;gas&#x2e;txt&#x3b; Data Format&#x3a; text&#x2f;csv</entryText>
         </auditRecord>
         </auditReport>
-  recorded_at: 2022-01-18 05:32:47 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2026-01-07 17:03:58
+recorded_with: VCR-vcr/2.1.0

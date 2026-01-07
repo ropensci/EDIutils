@@ -39,6 +39,7 @@ logout()
 \seealso{
 Other Audit Manager Services: 
 \code{\link{get_audit_count}()},
+\code{\link{get_audit_csv_report}()},
 \code{\link{get_audit_report}()},
 \code{\link{get_docid_reads}()},
 \code{\link{get_packageid_reads}()},

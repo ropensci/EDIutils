@@ -3,7 +3,7 @@ context("Get audit report")
 testthat::test_that("get_audit_report() works", {
   query <- "serviceMethod=readDataEntity&limit=1"
   vcr::use_cassette("get_audit_report", {
-    auditReport <- get_audit_report(query, as = "xml")
+    auditReport <- suppressWarnings(get_audit_report(query, as = "xml"))
   })
   expect_true("xml_document" %in% class(auditReport))
   expect_true("auditRecord" %in% 

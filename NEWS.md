@@ -1,6 +1,9 @@
 EDIutils 1.1.0 (2026-01-06)
 ===========================
 
+### DEPRECATED
+  * Deprecate `get_audit_report()` in favor of `get_audit_csv_report()` (#62)
+
 ### MINOR IMPROVEMENTS
 
   * Update authentication to support new EDI IAM system (#60)

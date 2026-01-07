@@ -35,6 +35,7 @@ resourceReads <- get_docid_reads(scope = "knb-lter-sgs", identifier = 817)
 \seealso{
 Other Audit Manager Services: 
 \code{\link{get_audit_count}()},
+\code{\link{get_audit_csv_report}()},
 \code{\link{get_audit_record}()},
 \code{\link{get_audit_report}()},
 \code{\link{get_packageid_reads}()},

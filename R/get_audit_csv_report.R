@@ -1,15 +1,12 @@
-#' Get audit report (deprecated)
-#' 
-#' This function is deprecated. Please use get_audit_csv_report() instead.
+#' Get audit csv report
 #'
 #' @param query (character) Query (see details below)
-#' @param as (character) Format of the returned object. Can be: "data.frame" 
-#' or "xml".
 #' @param env (character) Repository environment. Can be: "production",
 #' "staging", or "development".
 #'
 #' @return (data.frame or xml_document) Zero or more audit records matching
-#' the query parameters as specified in the request (see details below).
+#' the query parameters as specified in the request (see details below) and
+#' streams back a comma separated values result set.
 #'
 #' @details Query parameters are specified as key=value pairs, multiple pairs
 #' must be delimited with ampersands (&), and only a single value should be
@@ -58,18 +55,17 @@
 #'
 #' # Get audit report for data reads between 2021-12-01 and 2021-12-02
 #' query <- "serviceMethod=readDataEntity&fromTime=2021-12-01&toTime=2021-12-02"
-#' auditReport <- get_audit_report(query)
+#' auditReport <- get_audit_csv_report(query)
 #'
 #' logout()
 #' }
 #'
-get_audit_report <- function(query, as = "data.frame", env = "production") {
-  .Deprecated("get_audit_csv_report")
-  url <- paste0(base_url(env), "/audit/report?", query)
+get_audit_csv_report <- function(query, env = "production") {
+  url <- paste0(base_url(env), "/audit/csvreport?", query)
   cookie <- bake_cookie()
   resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
-  res <- xml2::read_xml(res)
-  ifelse(as == "data.frame", return(xml2df(res)), return(res))
+  res <- read.csv(text = res, stringsAsFactors = FALSE)
+  return(res)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_audit_report.R
 \name{get_audit_report}
 \alias{get_audit_report}
-\title{Get audit report}
+\title{Get audit report (deprecated)}
 \usage{
 get_audit_report(query, as = "data.frame", env = "production")
 }
@@ -20,7 +20,7 @@ or "xml".}
 the query parameters as specified in the request (see details below).
 }
 \description{
-Get audit report
+This function is deprecated. Please use get_audit_csv_report() instead.
 }
 \details{
 Query parameters are specified as key=value pairs, multiple pairs
@@ -76,6 +76,7 @@ logout()
 \seealso{
 Other Audit Manager Services: 
 \code{\link{get_audit_count}()},
+\code{\link{get_audit_csv_report}()},
 \code{\link{get_audit_record}()},
 \code{\link{get_docid_reads}()},
 \code{\link{get_packageid_reads}()},
