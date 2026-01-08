@@ -16,6 +16,8 @@ testthat::test_that("get_journal_citation() works ", {
   children_found <- xml2::xml_name(xml2::xml_children(res))
   children_expected <- c("journalCitationId", "packageId", "principalOwner", 
                          "dateCreated", "articleDoi", "articleTitle", 
-                         "articleUrl", "journalTitle", "relationType")
+                         "articleUrl", "journalTitle", "relationType", 
+                         "pubDate", "journalIssue", "journalVolume", 
+                         "articlePages", "articleAuthors")
   expect_true(all(children_found %in% children_expected))
 })

@@ -10,6 +10,8 @@ testthat::test_that("list_data_package_citations() works", {
     xml2::xml_children(xml2::xml_children(res)[1]))
   children_expected <- c("journalCitationId", "packageId", "principalOwner", 
                          "dateCreated", "articleDoi", "articleTitle", 
-                         "articleUrl", "journalTitle", "relationType")
+                         "articleUrl", "journalTitle", "relationType", 
+                         "pubDate", "journalIssue", "journalVolume", 
+                         "articlePages", "articleAuthors")
   expect_true(all(children_found %in% children_expected))
 })
