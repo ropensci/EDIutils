@@ -1,35 +1,30 @@
 http_interactions:
 - request:
-    method: get
-    uri: https://pasta-s.lternet.edu/package/event/eml?scope=edi
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://pasta.lternet.edu/package/event/eml?scope=edi
   response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+    status: 200
     headers:
-      server: nginx/1.14.0 (Ubuntu)
-      date: Tue, 18 Jan 2022 23:11:43 GMT
-      content-type: application/xml
-      content-length: '852'
+      access-control-allow-origin: '*'
       connection: keep-alive
+      content-type: application/xml
+      date: Thu, 08 Jan 2026 21:49:51 GMT
+      server: nginx/1.18.0 (Ubuntu)
+      set-cookie:
+      - auth-token="dWlkPWNzbWl0aCxvPUVESSxkYz1lZGlyZXBvc2l0b3J5LGRjPW9yZypodHRwczovL3Bhc3RhLmVkaXJlcG9zaXRvcnkub3JnL2F1dGhlbnRpY2F0aW9uKjE3Njc5Mzc3OTE4NjgqdmV0dGVkKmF1dGhlbnRpY2F0ZWQ=-egmbjL7OXJS3vzSsT/Cl6fUo/8GTn4AxZQEJnA5Gk0ssFpMRyQ0D4AdlBJ0L573eRq9myPQN0iyH0r3B+rOar5+iRW7QWbm79jKymx2ALGRlAouMD7FrcqV/ouVHEw3568UniqMlcSgMr2YLwZr1iWsbUP3Ls8vi8VK52uJxAlgh/HheSA/39O7vBh7qPvuC5bSC1MN0YuBCpb76vmYu5BCIAQbifdmSOFlT7/j5Hex4xleoHh7hpN9f1edWJhzJwshT6R+bXbXJb71tdppT3NQ3r7e85qjSfqhblmEnZS4t5RPCJO4fFN8BVGKNAqNFfi//zc+Ne7EfXjYuC0X72Q==";
+        HttpOnly; Path=/; SameSite=lax
+      - edi-token=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFREktNTQzYWZhODBjODU5ODI1ZDM1ZDM3ZDkxMTFjMjRhNGE2NWEwZGI5ZiIsImNuIjoiY3NtaXRoIiwiZW1haWwiOm51bGwsInByaW5jaXBhbHMiOlsiRURJLTA3OGU2ZTNjZWU0ZjdmMjgxMmYxNTA3MDFkYTkzNTFhY2I1MWUwODkiLCJFREktN2JlMzUxMGQwOGRlZjBkZmM2Njc4MjRlYmQ0ZjRmMWJiZDc3MDIzNCIsIkVESS1iZGFlNzQ5NzJlZDcxMGM1NmIxZTBkZjE4Y2NiNmUyM2MzMWY2MGY2Il0sImxpbmtzIjpbXSwiaXNFbWFpbEVuYWJsZWQiOmZhbHNlLCJpc0VtYWlsVmVyaWZpZWQiOmZhbHNlLCJpZHBDb21tb25OYW1lIjoiY3NtaXRoIiwiaWRwTmFtZSI6ImxkYXAiLCJpZHBVaWQiOiJ1aWQ9Y3NtaXRoLG89RURJLGRjPWVkaXJlcG9zaXRvcnksZGM9b3JnIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmVkaXJlcG9zaXRvcnkub3JnIiwiaGQiOiJlZGlyZXBvc2l0b3J5Lm9yZyIsImlhdCI6MTc2NzkwODk3NSwibmJmIjoxNzY3OTA4OTc1LCJleHAiOjE3Njc5Mzc3NzV9.k4J7EwZ-9B73ZEg0yZ7_3Qp_aVDaTgJnKg0sggRlLsq-GFxurm16qPnjSw0VTUBNdIn6bCw4kz58ayU92wzzBg;
+        HttpOnly; Path=/; SameSite=lax
+      transfer-encoding: chunked
     body:
-      encoding: UTF-8
-      file: no
       string: |
         <subscriptions>
           <subscription type="eml">
-            <id>97</id>
-            <creator>uid=ediutils,o=EDI,dc=edirepository,dc=org</creator>
-            <packageId>edi.3.1</packageId>
-            <url>https://some.server.org</url>
+            <id>43</id>
+            <creator>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</creator>
+            <packageId>edi.2241</packageId>
+            <url>https://myendpoint/location</url>
           </subscription>
         </subscriptions>
-  recorded_at: 2022-01-18 23:11:43 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2026-01-08 21:49:51
+recorded_with: VCR-vcr/2.1.0

@@ -1,34 +1,1488 @@
 http_interactions:
 - request:
-    method: get
-    uri: https://pasta.lternet.edu/package/citations/eml/uid=csmith,o=EDI,dc=edirepository,dc=org
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://pasta.lternet.edu/package/citations/eml/EDI-543afa80c859825d35d37d9111c24a4a65a0db9f
   response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+    status: 200
     headers:
-      server: nginx/1.14.0 (Ubuntu)
-      date: Tue, 18 Jan 2022 19:55:15 GMT
-      content-type: application/xml
-      transfer-encoding: chunked
+      access-control-allow-origin: '*'
       connection: keep-alive
+      content-type: application/xml
+      date: Thu, 08 Jan 2026 21:11:06 GMT
+      server: nginx/1.18.0 (Ubuntu)
+      set-cookie:
+      - auth-token="cHVibGljKmh0dHBzOi8vcGFzdGEuZWRpcmVwb3NpdG9yeS5vcmcvYXV0aGVudGljYXRpb24qMTc2NzkzNTQ2NjA5Mw==-OwwfbZ9hZ6PZhaG04Snq+5rH1/p05aFay/VmO8tWlSsndAOzYrVT6cx5QBWW5/bmG1KNAM6w3aO9k1a6TS9XG1IOlqriQb/8RLs9k6z7w4URb9AZV9MNScRoiPUS9lUOCZFSrH01L5S9r9I8X8CjJRRvbx1laY58QnFPYiELadis0uDbe+xwW4EgCUvhCMCdOb5D7zmosLY+wvCqw/zM2z7/NG0OyNKNJTdRsT5xzLpXIiepFTVohjBCEvO3AcGKidm/jG962BLFTPAzgsTFPyjSsYmBA0Zh51RPdw+mMle6wQ3AFuvi5z24oQPbel7vs0KeuUeJ4paA2VRXTPnS1g==";
+        HttpOnly; Max-Age=0; Path=/; SameSite=lax
+      - edi-token=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFREktMDc4ZTZlM2NlZTRmN2YyODEyZjE1MDcwMWRhOTM1MWFjYjUxZTA4OSIsImNuIjoiUHVibGljIEFjY2VzcyIsImVtYWlsIjpudWxsLCJwcmluY2lwYWxzIjpbXSwibGlua3MiOltdLCJpc0VtYWlsRW5hYmxlZCI6ZmFsc2UsImlzRW1haWxWZXJpZmllZCI6ZmFsc2UsImlkcENvbW1vbk5hbWUiOiJQdWJsaWMgQWNjZXNzIiwiaWRwTmFtZSI6InN5c3RlbSIsImlkcFVpZCI6bnVsbCwiaXNzIjoiaHR0cHM6Ly9hdXRoLmVkaXJlcG9zaXRvcnkub3JnIiwiaGQiOiJlZGlyZXBvc2l0b3J5Lm9yZyIsImlhdCI6MTc2NzkwNjY2NiwibmJmIjoxNzY3OTA2NjY2LCJleHAiOjE3Njc5MzU0NjZ9.ZYQKuPBaIEBqEooBwjbuhIUjSTanAAM0GeEawIQL-p8U2Vu_p1_zXXwXu6xXYCnS8q2Qn4Nbgr8c8btpYXFUjw;
+        HttpOnly; Max-Age=0; Path=/; SameSite=lax
+      transfer-encoding: chunked
       web-service: DataPackageManager-1.0
     body:
-      encoding: UTF-8
-      file: no
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<journalCitations>\n<journalCitation>\n
-        \   <journalCitationId>46</journalCitationId>\n    <packageId>edi.17.1</packageId>\n
-        \   <principalOwner>uid=csmith,o=EDI,dc=edirepository,dc=org</principalOwner>\n
-        \   <dateCreated>2018-09-06T09:36:54.459</dateCreated>\n    <articleDoi>https://doi.org/10.1890/11-1026.1</articleDoi>\n
-        \   <articleTitle>Corridors promote fire via connectivity and edge effects</articleTitle>\n
-        \   <articleUrl>https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/11-1026.1</articleUrl>\n
-        \   <journalTitle>Ecological Applications</journalTitle>\n    <relationType>IsCitedBy</relationType>\n</journalCitation>\n</journalCitations>"
-  recorded_at: 2022-01-18 19:55:15 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <journalCitations>
+        <journalCitation>
+            <journalCitationId>46</journalCitationId>
+            <packageId>edi.17.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2018-09-06T09:36:54.459</dateCreated>
+            <articleDoi>10.1890/11-1026.1</articleDoi>
+            <articleTitle>Corridors promote fire via connectivity and edge effects</articleTitle>
+            <articleUrl>https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/11-1026.1</articleUrl>
+            <journalTitle>Ecological Applications</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>47</journalCitationId>
+            <packageId>edi.43.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2018-09-06T09:40:34.073</dateCreated>
+            <articleDoi>10.3368/er.31.1.23</articleDoi>
+            <articleTitle>Landscape Corridors Promote Long-Distance Seed Dispersal by Birds During Winter but Not During Summer at an Experimentally Fragmented Restoration Site</articleTitle>
+            <articleUrl>http://er.uwpress.org/content/31/1/23</articleUrl>
+            <journalTitle>Ecological Restoration</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>48</journalCitationId>
+            <packageId>edi.44.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2018-09-06T09:45:13.156</dateCreated>
+            <articleDoi>10.1890/15-0734.1</articleDoi>
+            <articleTitle>Connectivity from a different perspective: comparing seed dispersal kernels in connected vs. unfragmented landscapes</articleTitle>
+            <articleUrl>https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/15-0734.1</articleUrl>
+            <journalTitle>Ecology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>49</journalCitationId>
+            <packageId>edi.45.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2018-09-06T09:51:31.059</dateCreated>
+            <articleDoi>10.1007/s13592-017-0499-1</articleDoi>
+            <articleTitle>Testing the relative importance of local resources and landscape connectivity on Bombus impatiens (Hymenoptera, Apidae) colonies</articleTitle>
+            <articleUrl>https://link.springer.com/article/10.1007%2Fs13592-017-0499-1</articleUrl>
+            <journalTitle>Apidologie</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>50</journalCitationId>
+            <packageId>edi.51.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2018-09-06T09:56:18.229</dateCreated>
+            <articleDoi>10.1111/een.12517</articleDoi>
+            <articleTitle>Mean body size predicts colony performance in the common eastern bumble bee (Bombus impatiens)</articleTitle>
+            <articleUrl>https://onlinelibrary.wiley.com/doi/abs/10.1111/een.12517</articleUrl>
+            <journalTitle>Ecological Entomology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>51</journalCitationId>
+            <packageId>edi.90.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2018-09-06T09:59:21.981</dateCreated>
+            <articleDoi>10.1890/10-1072.1</articleDoi>
+            <articleTitle>Edge effects, not connectivity, determine the incidence and development of a foliar fungal plant disease</articleTitle>
+            <articleUrl>https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/10-1072.1</articleUrl>
+            <journalTitle>Ecology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>52</journalCitationId>
+            <packageId>edi.102.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2018-09-06T10:02:28.191</dateCreated>
+            <articleDoi>10.1002/ecy.1466</articleDoi>
+            <articleTitle>Disentangling fragmentation effects on herbivory in understory plants of longleaf pine savanna</articleTitle>
+            <articleUrl>https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1002/ecy.1466</articleUrl>
+            <journalTitle>Ecology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>53</journalCitationId>
+            <packageId>edi.103.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2018-09-06T10:05:39.720</dateCreated>
+            <articleDoi>10.1890/ES12-00266.1</articleDoi>
+            <articleTitle>Habitat corridors alter relative trophic position of fire ants</articleTitle>
+            <articleUrl>https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/ES12-00266.1</articleUrl>
+            <journalTitle>Ecosphere</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>54</journalCitationId>
+            <packageId>edi.105.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2018-09-06T10:09:03.417</dateCreated>
+            <articleDoi>10.1890/10-1116.1</articleDoi>
+            <articleTitle>Can dispersal mode predict corridor effects on plant parasites?</articleTitle>
+            <articleUrl>https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/10-1116.1</articleUrl>
+            <journalTitle>Ecology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>55</journalCitationId>
+            <packageId>edi.106.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2018-09-06T10:12:41.044</dateCreated>
+            <articleDoi>10.1656/058.008.0412</articleDoi>
+            <articleTitle>Effects of Corridors on Genetics of a Butterfly in a Landscape Experiment</articleTitle>
+            <articleUrl>http://www.bioone.org/doi/abs/10.1656/058.008.0412</articleUrl>
+            <journalTitle>Southeastern Naturalist</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>58</journalCitationId>
+            <packageId>edi.107.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2018-10-12T12:01:25.083</dateCreated>
+            <articleDoi>10.2307/1942321</articleDoi>
+            <articleTitle>Biological accommodation in the benthic community at McMurdo Sound, Antarctica</articleTitle>
+            <articleUrl>https://esajournals.onlinelibrary.wiley.com/doi/abs/10.2307/1942321</articleUrl>
+            <journalTitle>Ecological Monographs</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>62</journalCitationId>
+            <packageId>edi.255.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2018-10-23T09:21:17.034</dateCreated>
+            <articleDoi>10.1007/s10980-011-9650-y</articleDoi>
+            <articleTitle>Edge-mediated patterns of seed removal in experimentally connected and fragmented landscapes</articleTitle>
+            <articleUrl></articleUrl>
+            <journalTitle>Landscape Ecology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>87</journalCitationId>
+            <packageId>edi.276.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2019-01-25T16:24:09.177</dateCreated>
+            <articleDoi></articleDoi>
+            <articleTitle>Low dissolved oxygen in an estuarine channel (San Joaquin River, California): mechanisms and models based on long-term time series</articleTitle>
+            <articleUrl>https://doi.org/10.15447/sfews.2005v3iss2art2</articleUrl>
+            <journalTitle>San Francisco Estuary and Watershed Science</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>88</journalCitationId>
+            <packageId>edi.276.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2019-01-25T16:24:41.327</dateCreated>
+            <articleDoi></articleDoi>
+            <articleTitle>Sources of oxygen demand in the lower San Joaquin River, California</articleTitle>
+            <articleUrl>https://link.springer.com/article/10.1007/BF02803533</articleUrl>
+            <journalTitle>Estuaries and Coasts</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>115</journalCitationId>
+            <packageId>edi.332.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2019-03-15T11:30:35.684</dateCreated>
+            <articleDoi>10.1111/1365-2745.12985</articleDoi>
+            <articleTitle>Predicting landscape-level distribution and abundance: Integrating demography, fire, elevation, and landscape habitat configuration</articleTitle>
+            <articleUrl></articleUrl>
+            <journalTitle>Journal of Ecology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>116</journalCitationId>
+            <packageId>edi.332.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2019-03-15T11:31:02.924</dateCreated>
+            <articleDoi>10.1111/j.1461-0248.2006.00988.x</articleDoi>
+            <articleTitle>Sensitivity of the population growth rate to demographic variability within and between phases of the disturbance cycle</articleTitle>
+            <articleUrl></articleUrl>
+            <journalTitle>Ecology Letters</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>154</journalCitationId>
+            <packageId>edi.378.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2019-06-10T18:28:27.761</dateCreated>
+            <articleDoi>10.1111/j.1365-2427.2007.01941.x</articleDoi>
+            <articleTitle>Untangling the complex issue of dissolved organic carbon uptake: A stable isotope approach</articleTitle>
+            <articleUrl></articleUrl>
+            <journalTitle>Freshwater Biology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>189</journalCitationId>
+            <packageId>edi.435.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2019-10-17T18:45:40.218</dateCreated>
+            <articleDoi>10.1007/s00442-019-04518-6</articleDoi>
+            <articleTitle>Soil microbes that may accompany climate warming increase alpine plant production</articleTitle>
+            <articleUrl>https://doi.org/10.1007/s00442-019-04518-6</articleUrl>
+            <journalTitle>Oecologia</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>197</journalCitationId>
+            <packageId>edi.417.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2020-01-08T08:51:51.693</dateCreated>
+            <articleDoi>10.1111/gbi.12365</articleDoi>
+            <articleTitle>Biogeochemical and physical controls on methane fluxes from two ferruginous meromictic lakes</articleTitle>
+            <articleUrl>https://doi.org/10.1111/gbi.12365</articleUrl>
+            <journalTitle>Geobiology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>200</journalCitationId>
+            <packageId>edi.460.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2020-01-21T11:37:48.968</dateCreated>
+            <articleDoi>10.1007/s12237-019-00577-3</articleDoi>
+            <articleTitle>Resistance to Hurricane Effects Varies Among Wetland Vegetation Types in the Marsh-Mangrove Ecotone</articleTitle>
+            <articleUrl>https://doi.org/10.1007/s12237-019-00577-3</articleUrl>
+            <journalTitle>Estuaries and Coasts</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>204</journalCitationId>
+            <packageId>edi.404.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2020-02-03T12:53:20.269</dateCreated>
+            <articleDoi>10.1029/2019JG005139</articleDoi>
+            <articleTitle>Response of Humic Acids and Soil Organic Matter to Vegetation Replacement in Subtropical High Mountain Forests</articleTitle>
+            <articleUrl>https://doi.org/10.1029/2019JG005139</articleUrl>
+            <journalTitle>JGR Biogeosciences</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>206</journalCitationId>
+            <packageId>edi.443.2</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2020-02-18T10:00:37.820</dateCreated>
+            <articleDoi>10.1002/lol2.10135</articleDoi>
+            <articleTitle>Paired O2-CO2 measurements provide emergent insights into aquatic ecosystem function</articleTitle>
+            <articleUrl>https://doi.org/10.1002/lol2.10135</articleUrl>
+            <journalTitle>Limnology and Oceanography Letters</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>224</journalCitationId>
+            <packageId>edi.494.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2020-04-10T11:32:43.957</dateCreated>
+            <articleDoi>10.1002/aqc.620</articleDoi>
+            <articleTitle>Effects of flow variation on channel and floodplain biota and habitats of the Sacramento River, California, USA</articleTitle>
+            <articleUrl>https://doi.org/10.1002/aqc.620</articleUrl>
+            <journalTitle>Aquatic Conservation: Marine and Freshwater Ecosystems</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>225</journalCitationId>
+            <packageId>edi.494.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2020-04-10T11:33:03.553</dateCreated>
+            <articleDoi>10.1002/tafs.10028</articleDoi>
+            <articleTitle>Effects of Extreme Hydrologic Regimes on Juvenile Chinook Salmon Prey Resources and Diet Composition in a Large River Floodplain</articleTitle>
+            <articleUrl>https://doi.org/10.1002/tafs.10028</articleUrl>
+            <journalTitle>Transactions of the American Fisheries Society</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>226</journalCitationId>
+            <packageId>edi.494.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2020-04-10T11:33:34.294</dateCreated>
+            <articleDoi>10.1139/f00-245</articleDoi>
+            <articleTitle>Floodplain rearing of juvenile chinook salmon: evidence of enhanced growth and survival</articleTitle>
+            <articleUrl>https://doi.org/10.1139/f00-245</articleUrl>
+            <journalTitle>Canadian Journal of Fisheries and Aquatic Sciences</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>232</journalCitationId>
+            <packageId>edi.468.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2020-05-05T16:07:51.443</dateCreated>
+            <articleDoi>10.1038/s41561-020-0571-8</articleDoi>
+            <articleTitle>Significant methane ebullition from alpine permafrost rivers on the East Qinghai-Tibet Plateau</articleTitle>
+            <articleUrl>https://doi.org/10.1038/s41561-020-0571-8</articleUrl>
+            <journalTitle>Nature Geoscience</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>285</journalCitationId>
+            <packageId>edi.587.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2020-08-06T11:15:38.049</dateCreated>
+            <articleDoi>10.1080/09640568.2018.1530099</articleDoi>
+            <articleTitle>Affective ecologies, adaptive management and restoration efforts in the Sacramento-San Joaquin Delta</articleTitle>
+            <articleUrl>https://doi.org/10.1080/09640568.2018.1530099</articleUrl>
+            <journalTitle>Journal of Environmental Planning and Management</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>319</journalCitationId>
+            <packageId>edi.637.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2020-12-19T15:11:01.794</dateCreated>
+            <articleDoi>10.1660/062.121.0417</articleDoi>
+            <articleTitle>Ontogenetic changes in tail-length and the possible relation to caudal luring in northeast Kansas Copperheads, Agkistrodon contortrix</articleTitle>
+            <articleUrl>https://bioone.org/journals/transactions-of-the-kansas-academy-of-science/volume-121/issue-3-4/062.121.0417/Ontogenetic-Changes-in-Tail-Length-and-the-Possible-Relation-to/10.1660/062.121.0417.short</articleUrl>
+            <journalTitle>Transactions of the Kansas Academy of Science</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>320</journalCitationId>
+            <packageId>edi.637.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2020-12-19T15:13:29.594</dateCreated>
+            <articleDoi>10.1660/062.123.0120</articleDoi>
+            <articleTitle>Revisiting old data to answer modern conservation questions: Population modeling of two species in Kingsnakes, Lampropeltis sp. in Kansas</articleTitle>
+            <articleUrl>https://doi.org/10.1660/062.123.0120</articleUrl>
+            <journalTitle>Transactions of the Kansas Academy of Science</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>326</journalCitationId>
+            <packageId>edi.699.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-01-19T17:12:18.850</dateCreated>
+            <articleDoi>10.1007/s00442-020-04816-4</articleDoi>
+            <articleTitle>Behaviorally-mediated trophic cascade attenuated by prey use of risky places at safe times</articleTitle>
+            <articleUrl>https://doi.org/10.1007/s00442-020-04816-4</articleUrl>
+            <journalTitle>Ecosystem ecology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>334</journalCitationId>
+            <packageId>edi.552.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-03T10:10:12.180</dateCreated>
+            <articleDoi>10.1029/2020GL090959</articleDoi>
+            <articleTitle>Climate change and teleconnections amplify lake stratification with differential local controls of surface water warming and deep water cooling</articleTitle>
+            <articleUrl>https://doi.org/10.1029/2020GL090959</articleUrl>
+            <journalTitle>Geophysical Research Letters</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>346</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:28:57.865</dateCreated>
+            <articleDoi>10.2307/1351412</articleDoi>
+            <articleTitle>Zooplankton distribution and abundance in the Sacramento-San Joaquin delta in relation to certain environmental factors</articleTitle>
+            <articleUrl>https://doi.org/10.2307/1351412</articleUrl>
+            <journalTitle>Estuaries</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>347</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:30:07.317</dateCreated>
+            <articleDoi>10.1007/BF02692224</articleDoi>
+            <articleTitle>Physical, biological, and management responses to variable freshwater flow into the San Francisco Estuary</articleTitle>
+            <articleUrl>https://doi.org/10.1007/BF02692224</articleUrl>
+            <journalTitle>Estuaries</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>348</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:31:57.423</dateCreated>
+            <articleDoi>10.15447/sfews.2005v3iss2art2</articleDoi>
+            <articleTitle>Low Dissolved Oxygen in an Estuarine Channel (San Joaquin River, California): Mechanisms and Models Based on Long-term Time Series</articleTitle>
+            <articleUrl>https://doi.org/10.15447/sfews.2005v3iss2art2</articleUrl>
+            <journalTitle>San Francisco Estuary and Watershed Science</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>349</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:33:07.704</dateCreated>
+            <articleDoi>10.15447/sfews.2008v6iss1art2</articleDoi>
+            <articleTitle>Phytoplankton in the Upper San Francisco Estuary: Recent Biomass Trends, Their Causes, and Their Trophic Significance</articleTitle>
+            <articleUrl>https://doi.org/10.15447/sfews.2008v6iss1art2</articleUrl>
+            <journalTitle>San Francisco Estuary and Watershed Science</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>350</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:33:50.570</dateCreated>
+            <articleDoi>10.15447/sfews.2010v8iss1art2</articleDoi>
+            <articleTitle>Benthic Assemblage Variability in the Upper San Francisco Estuary: A 27-Year Retrospective</articleTitle>
+            <articleUrl>https://doi.org/10.15447/sfews.2010v8iss1art2</articleUrl>
+            <journalTitle>San Francisco Estuary and Watershed Science</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>351</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:34:50.477</dateCreated>
+            <articleDoi>10.1371/journal.pone.0024465</articleDoi>
+            <articleTitle>Projected Evolution of California&#39;s San Francisco Bay-Delta-River System in a Century of Climate Change</articleTitle>
+            <articleUrl>https://doi.org/10.1371/journal.pone.0024465</articleUrl>
+            <journalTitle>PLOS ONE</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>352</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:35:45.734</dateCreated>
+            <articleDoi>10.1007/s12237-010-9342-x</articleDoi>
+            <articleTitle>Shifts in Zooplankton Community Structure: Implications for Food Web Processes in the Upper San Francisco Estuary</articleTitle>
+            <articleUrl>https://doi.org/10.1007/s12237-010-9342-x</articleUrl>
+            <journalTitle>Estuaries and Coasts</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>353</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:37:04.938</dateCreated>
+            <articleDoi>10.1029/2012RG000397</articleDoi>
+            <articleTitle>Drivers of change in estuarine�  coastal ecosystems: Discoveries from four decades of study in San Francisco Bay</articleTitle>
+            <articleUrl>https://doi.org/10.1029/2012RG000397</articleUrl>
+            <journalTitle>Reviews of Geophysics</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>354</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:38:06.518</dateCreated>
+            <articleDoi>10.1007/s10661-012-2708-8</articleDoi>
+            <articleTitle>Benthic macrofaunal assemblages of the San Francisco Estuary and Delta, USA</articleTitle>
+            <articleUrl>https://doi.org/10.1007/s10661-012-2708-8</articleUrl>
+            <journalTitle>Environmental Monitoring and Assessment</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>355</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:39:04.450</dateCreated>
+            <articleDoi>10.1007/s12237-013-9753-6</articleDoi>
+            <articleTitle>Phytoplankton Growth Balanced by Clam and Zooplankton Grazing and Net Transport into the Low-Salinity Zone of the San Francisco Estuary</articleTitle>
+            <articleUrl>https://doi.org/10.1007/s12237-013-9753-6</articleUrl>
+            <journalTitle>Estuaries and Coasts</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>356</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:39:56.366</dateCreated>
+            <articleDoi>10.15447/sfews.2016v14iss3art2</articleDoi>
+            <articleTitle>Fine-Scale Distributions of Zooplankton in the Northern San Francisco Estuary</articleTitle>
+            <articleUrl>https://doi.org/10.15447/sfews.2016v14iss3art2</articleUrl>
+            <journalTitle>San Francisco Estuary and Watershed Science</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>357</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:40:57.564</dateCreated>
+            <articleDoi>10.1016/j.hal.2017.01.011</articleDoi>
+            <articleTitle>Impacts of the 2014 severe drought on the Microcystis bloom in San Francisco Estuary</articleTitle>
+            <articleUrl>https://doi.org/10.1016/j.hal.2017.01.011</articleUrl>
+            <journalTitle>Harmful Algae</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>358</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:41:56.370</dateCreated>
+            <articleDoi>10.1002/lno.10958</articleDoi>
+            <articleTitle>Patterns, pace, and processes of water�  quality variability in a long�  studied estuary</articleTitle>
+            <articleUrl>https://doi.org/10.1002/lno.10958</articleUrl>
+            <journalTitle>Limnology and Oceanography</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>359</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:42:47.956</dateCreated>
+            <articleDoi>10.1007/s10750-017-3385-y</articleDoi>
+            <articleTitle>Effects of freshwater flow and phytoplankton biomass on growth, reproduction, and spatial subsidies of the estuarine copepod Pseudodiaptomus forbesi</articleTitle>
+            <articleUrl>https://doi.org/10.1007/s10750-017-3385-y</articleUrl>
+            <journalTitle>Hydrobiologia</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>360</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:47:23.867</dateCreated>
+            <articleDoi>10.1002/tafs.10015</articleDoi>
+            <articleTitle>Individual�  Based Modeling of Delta Smelt Population Dynamics in the Upper San Francisco Estuary III. Effects of Entrainment Mortality and Changes in Prey</articleTitle>
+            <articleUrl>https://doi.org/10.1002/tafs.10015</articleUrl>
+            <journalTitle>Transactions of the American Fisheries Society</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>361</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:48:14.167</dateCreated>
+            <articleDoi>10.1016/j.margeo.2013.05.008</articleDoi>
+            <articleTitle>A step decrease in sediment concentration in a highly modified tidal river delta following the 1983 El Niño floods</articleTitle>
+            <articleUrl>https://doi.org/10.1016/j.margeo.2013.05.008</articleUrl>
+            <journalTitle>Marine Geology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>362</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:48:59.055</dateCreated>
+            <articleDoi>10.1029/96RG00986</articleDoi>
+            <articleTitle>Phytoplankton bloom dynamics in coastal ecosystems: A review with some general lessons from sustained investigation of San Francisco Bay, California</articleTitle>
+            <articleUrl>https://doi.org/10.1029/96RG00986</articleUrl>
+            <journalTitle>Reviews of Geophysics</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>363</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:49:36.035</dateCreated>
+            <articleDoi>10.15447/sfews.2018v16iss1/art3</articleDoi>
+            <articleTitle>Physical and Biological Responses to Flow in a Tidal Freshwater Slough Complex</articleTitle>
+            <articleUrl>https://doi.org/10.15447/sfews.2018v16iss1/art3</articleUrl>
+            <journalTitle>San Francisco Estuary and Watershed Science</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>364</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:50:56.164</dateCreated>
+            <articleDoi>10.1002/1099-0755(200009/10)10:5%3C323::AID-AQC417%3E3.0.CO;2-J</articleDoi>
+            <articleTitle>Organic matter sources and rehabilitation of the Sacramento�  San Joaquin Delta (California, USA)</articleTitle>
+            <articleUrl>https://doi.org/10.1002/1099-0755(200009/10)10:5%3C323::AID-AQC417%3E3.0.CO;2-J</articleUrl>
+            <journalTitle>Aquatic Conservation: Marine and Freshwater Ecosystems</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>365</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:52:02.974</dateCreated>
+            <articleDoi>10.1016/S0272-7714(06)80012-0</articleDoi>
+            <articleTitle>Hydrodynamic influences on interannual chlorophyll variability in an estuary: Upper San Francisco Bay-Delta (California, U.S.A.)</articleTitle>
+            <articleUrl>https://doi.org/10.1016/S0272-7714(06)80012-0</articleUrl>
+            <journalTitle>Estuarine, Coastal and Shelf Science</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>366</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:52:41.226</dateCreated>
+            <articleDoi>10.4319/lo.2000.45.3.0580</articleDoi>
+            <articleTitle>The influence of climate on phytoplankton community biomass in San Francisco Bay Estuary</articleTitle>
+            <articleUrl>https://doi.org/10.4319/lo.2000.45.3.0580</articleUrl>
+            <journalTitle>Limnology and Oceanography</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>367</journalCitationId>
+            <packageId>edi.458.4</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-02-17T17:53:35.933</dateCreated>
+            <articleDoi>10.2307/1351412</articleDoi>
+            <articleTitle>Zooplankton distribution and abundance in the Sacramento-San Joaquin delta in relation to certain environmental factors</articleTitle>
+            <articleUrl>https://doi.org/10.2307/1351412</articleUrl>
+            <journalTitle>Estuaries</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>375</journalCitationId>
+            <packageId>edi.754.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-05-20T09:18:52.697</dateCreated>
+            <articleDoi>10.3390/f12050614</articleDoi>
+            <articleTitle>Forest Development over a Twenty-Year Chronosequence of Reforested Urban Sites</articleTitle>
+            <articleUrl>https://doi.org/10.3390/f12050614</articleUrl>
+            <journalTitle>Forests</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>376</journalCitationId>
+            <packageId>edi.753.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-05-20T09:19:41.943</dateCreated>
+            <articleDoi>10.3390/f12050614</articleDoi>
+            <articleTitle>Forest Development over a Twenty-Year Chronosequence of Reforested Urban Sites</articleTitle>
+            <articleUrl>https://doi.org/10.3390/f12050614</articleUrl>
+            <journalTitle>Forests</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>377</journalCitationId>
+            <packageId>edi.738.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-05-20T10:27:20.425</dateCreated>
+            <articleDoi>10.3390/f12050614</articleDoi>
+            <articleTitle>Forest Development over a Twenty-Year Chronosequence of Reforested Urban Sites</articleTitle>
+            <articleUrl>https://doi.org/10.3390/f12050614</articleUrl>
+            <journalTitle>Forests</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>380</journalCitationId>
+            <packageId>edi.842.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-05-24T18:51:38.231</dateCreated>
+            <articleDoi>10.1016/j.foreco.2020.118523</articleDoi>
+            <articleTitle>Topographic position amplifies consequences of short-interval stand-replacing fires on postfire tree establishment in subalpine conifer forests</articleTitle>
+            <articleUrl>https://doi.org/10.1016/j.foreco.2020.118523</articleUrl>
+            <journalTitle>Forest Ecology and Management</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>381</journalCitationId>
+            <packageId>edi.845.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-05-27T13:23:14.981</dateCreated>
+            <articleDoi>10.1016/j.scitotenv.2021.148033</articleDoi>
+            <articleTitle>Bioturbation frequency alters methane emissions from reservoir sediments</articleTitle>
+            <articleUrl>https://doi.org/10.1016/j.scitotenv.2021.148033</articleUrl>
+            <journalTitle>Science of the Total Environment</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>556</journalCitationId>
+            <packageId>edi.984.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-10-20T06:06:15.156</dateCreated>
+            <articleDoi>10.1029/2020WR029552</articleDoi>
+            <articleTitle>The Influence of Weather Forecast Resolution on the Circulation of Lake George, NY</articleTitle>
+            <articleUrl>https://doi.org/10.1029/2020WR029552</articleUrl>
+            <journalTitle>Water Resources Research</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>830</journalCitationId>
+            <packageId>edi.1031.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-11-19T12:09:15.357</dateCreated>
+            <articleDoi>10.1111/j.1365-2699.2012.02731.x</articleDoi>
+            <articleTitle>Dissecting NDVI–species richness relationships in Hawaiian dry forests</articleTitle>
+            <articleUrl>https://doi.org/10.1111/j.1365-2699.2012.02731.x</articleUrl>
+            <journalTitle>Journal of Biogeography</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>1031</journalCitationId>
+            <packageId>edi.8.5</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-12-01T11:25:22.901</dateCreated>
+            <articleDoi>10.1073/pnas.1620211114</articleDoi>
+            <articleTitle>Salting our freshwater lakes</articleTitle>
+            <articleUrl>https://doi.org/10.1073/pnas.1620211114</articleUrl>
+            <journalTitle>PNAS</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>1472</journalCitationId>
+            <packageId>edi.1044.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-12-21T08:12:27.923</dateCreated>
+            <articleDoi>10.1086/716236</articleDoi>
+            <articleTitle>Bloom and bust: Historical trends of harmful algal blooms in Muskegon Lake, Michigan, a Great Lakes estuary</articleTitle>
+            <articleUrl>https://doi.org/10.1086/716236</articleUrl>
+            <journalTitle>Freshwater Science</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>1473</journalCitationId>
+            <packageId>edi.1044.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-12-21T08:13:13.919</dateCreated>
+            <articleDoi>10.1016/j.jglr.2021.07.003</articleDoi>
+            <articleTitle>Cold and Wet: Diatoms dominate the  phytoplankton community during a year of anomalous weather in a Great Lakes estuary</articleTitle>
+            <articleUrl>https://doi.org/10.1016/j.jglr.2021.07.003</articleUrl>
+            <journalTitle>Journal of Great Lakes Research</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>1474</journalCitationId>
+            <packageId>edi.1044.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-12-21T08:13:53.333</dateCreated>
+            <articleDoi>10.1111/jai.14076</articleDoi>
+            <articleTitle>Adult lake sturgeon (Acipenser fulvescens Raﬁnesque, 1817) occurrence in  the Muskegon River system, a Lake Michigan drowned river mouth, USA</articleTitle>
+            <articleUrl>https://doi.org/10.1111/jai.14076</articleUrl>
+            <journalTitle>Journal of Applied Ichthyology</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>1475</journalCitationId>
+            <packageId>edi.1044.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-12-21T08:14:36.277</dateCreated>
+            <articleDoi>10.1016/j.jglr.2019.09.025</articleDoi>
+            <articleTitle>Influence of episodic wind events on        thermal stratification and bottom water hypoxia in a Great Lakes estuary</articleTitle>
+            <articleUrl>https://doi.org/10.1016/j.jglr.2019.09.025</articleUrl>
+            <journalTitle>Journal of Great Lakes Research</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>1476</journalCitationId>
+            <packageId>edi.1044.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-12-21T08:15:15.402</dateCreated>
+            <articleDoi>10.1016/j.jglr.2017.12.008</articleDoi>
+            <articleTitle>Chronicles of Hypoxia: Time-series buoy observations reveal annually recurring seasonal basin-wide hypoxia in Muskegon Lake – a Great Lakes estuary</articleTitle>
+            <articleUrl>https://doi.org/10.1016/j.jglr.2017.12.008</articleUrl>
+            <journalTitle>Journal of Great Lakes Research</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>1477</journalCitationId>
+            <packageId>edi.1044.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-12-21T08:16:26.318</dateCreated>
+            <articleDoi>10.1016/j.ecss.2018.05.014</articleDoi>
+            <articleTitle>Modeling reveals the role of coastal upwelling and hydrologic inputs on biologically distinct water exchanges in a Great Lakes estuary</articleTitle>
+            <articleUrl>https://doi.org/10.1016/j.ecss.2018.05.014</articleUrl>
+            <journalTitle>Estuarine, Coastal and Shelf Science</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>1478</journalCitationId>
+            <packageId>edi.1044.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-12-21T08:17:30.435</dateCreated>
+            <articleDoi>10.1007/s10021-017-0160-x</articleDoi>
+            <articleTitle>From Bacteria to Fish:  Ecological consequences of seasonal hypoxia in a Great Lakes estuary</articleTitle>
+            <articleUrl>https://doi.org/10.1007/s10021-017-0160-x</articleUrl>
+            <journalTitle>Ecosystems</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>1479</journalCitationId>
+            <packageId>edi.1044.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-12-21T08:18:27.251</dateCreated>
+            <articleDoi>10.1127/fal/2015/0626</articleDoi>
+            <articleTitle>Alternative approaches for estimating components of lake metabolism using the free-water dissolved-oxygen (FWDO) method</articleTitle>
+            <articleUrl>https://doi.org/10.1127/fal/2015/0626</articleUrl>
+            <journalTitle>Fundamental and Applied Limnology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>1480</journalCitationId>
+            <packageId>edi.1044.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-12-21T08:19:04.787</dateCreated>
+            <articleDoi>10.1093/plankt/fbu066</articleDoi>
+            <articleTitle>Systematically variable planktonic carbon metabolism along a land-to-lake gradient in a Great Lakes coastal zone</articleTitle>
+            <articleUrl>https://doi.org/10.1093/plankt/fbu066</articleUrl>
+            <journalTitle>Journal of Plankton Research</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>1481</journalCitationId>
+            <packageId>edi.1044.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2021-12-21T08:19:34.809</dateCreated>
+            <articleDoi>10.1016/j.ecolmodel.2013.05.010</articleDoi>
+            <articleTitle>New methods for estimating components of lake metabolism based on free-water dissolved- oxygen dynamics</articleTitle>
+            <articleUrl>https://doi.org/10.1016/j.ecolmodel.2013.05.010</articleUrl>
+            <journalTitle>Ecological Modelling</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>3005</journalCitationId>
+            <packageId>edi.1018.3</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2022-07-12T09:41:36.813</dateCreated>
+            <articleDoi>10.1029/2021JG006723</articleDoi>
+            <articleTitle>Soil Amended With Organic Matter Increases Fluvial Erosion Resistance of Cohesive Streambank Soil</articleTitle>
+            <articleUrl>https://doi.org/10.1029/2021JG006723</articleUrl>
+            <journalTitle>Journal of Geophysical Research: Biogeosciences</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>3512</journalCitationId>
+            <packageId>edi.1341.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2023-02-27T15:13:26.613</dateCreated>
+            <articleDoi>10.1016/j.aquabot.2020.103209</articleDoi>
+            <articleTitle>Variations in aquatic macrophyte phenology across three temperate lakes in the Coeur d’Alene Basin</articleTitle>
+            <articleUrl>https://doi.org/10.1016/j.aquabot.2020.103209</articleUrl>
+            <journalTitle>Aquatic Botany</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>3591</journalCitationId>
+            <packageId>edi.1371.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2023-03-16T10:56:46.044</dateCreated>
+            <articleDoi>10.1016/j.jenvman.2023.117690</articleDoi>
+            <articleTitle>Synergistic effects of precipitation and groundwater extraction on freshwater wetland inundation</articleTitle>
+            <articleUrl>https://doi.org/10.1016/j.jenvman.2023.117690</articleUrl>
+            <journalTitle>Journal of Environmental Management</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>3598</journalCitationId>
+            <packageId>edi.1098.2</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2023-03-28T10:10:49.731</dateCreated>
+            <articleDoi>10.1371/journal.pone.0230996</articleDoi>
+            <articleTitle>Quantifying nutrient recovery efficiency and loss from compost-based urban agriculture</articleTitle>
+            <articleUrl>https://doi.org/10.1371/journal.pone.0230996</articleUrl>
+            <journalTitle>PLOS One</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>3599</journalCitationId>
+            <packageId>edi.1098.2</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2023-03-28T10:12:29.938</dateCreated>
+            <articleDoi>10.1007/s11252-021-01191-7</articleDoi>
+            <articleTitle>Investigating potential hydrological ecosystem services in urban gardens through soil amendment experiments and hydrologic models</articleTitle>
+            <articleUrl>https://doi.org/10.1007/s11252-021-01191-7</articleUrl>
+            <journalTitle>Urban Ecosystems</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>3601</journalCitationId>
+            <packageId>edi.1098.2</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2023-03-28T10:26:36.929</dateCreated>
+            <articleDoi>10.2495/UA200041</articleDoi>
+            <articleTitle>Urban Heat Island Mitigation Due to Enhanced Evapotransporation in an Urban Garden in Saint Paul, Minnesota, USA</articleTitle>
+            <articleUrl>https://doi.org/10.2495/UA200041</articleUrl>
+            <journalTitle></journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate></pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>4659</journalCitationId>
+            <packageId>edi.1614.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2024-04-09T15:00:41.561</dateCreated>
+            <articleDoi>10.1139/cjz-2022-0174</articleDoi>
+            <articleTitle>Landscapes of fear and safety: the integration of two different sensory landscapes determines behavioral responses in the crayfish &lt;i&gt;Faxonius rusticus&lt;/i&gt; and is mediated by chemical cues</articleTitle>
+            <articleUrl>https://cdnsciencepub.com/doi/10.1139/cjz-2022-0174</articleUrl>
+            <journalTitle>Canadian Journal of Zoology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate>2023</pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>4693</journalCitationId>
+            <packageId>edi.1142.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2024-05-03T15:04:49.903</dateCreated>
+            <articleDoi>10.1139/cjz-2022-0050</articleDoi>
+            <articleTitle>Are you scared yet? Variations to cue indices elicit differential prey behavioral responses even when gape-limited predators are relatively small</articleTitle>
+            <articleUrl>https://cdnsciencepub.com/doi/10.1139/cjz-2022-0050</articleUrl>
+            <journalTitle>Canadian Journal of Zoology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate>2022</pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>4727</journalCitationId>
+            <packageId>edi.1693.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2024-06-28T17:16:05.338</dateCreated>
+            <articleDoi>10.1899/11-011.1</articleDoi>
+            <articleTitle>Altering aquatic food webs with a global insecticide: arthropod–amphibian links in mesocosms that simulate pond communities</articleTitle>
+            <articleUrl>https://www.journals.uchicago.edu/doi/10.1899/11-011.1</articleUrl>
+            <journalTitle>Journal of the North American Benthological Society</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate>2011</pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>4728</journalCitationId>
+            <packageId>edi.1691.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2024-06-28T17:21:05.859</dateCreated>
+            <articleDoi>10.1073/pnas.031076198</articleDoi>
+            <articleTitle>Predator-induced stress makes the pesticide carbaryl more deadly to gray treefrog tadpoles (            &lt;i&gt;Hyla versicolor&lt;/i&gt;            )</articleTitle>
+            <articleUrl>https://pnas.org/doi/full/10.1073/pnas.031076198</articleUrl>
+            <journalTitle>Proceedings of the National Academy of Sciences</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate>2002</pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>4729</journalCitationId>
+            <packageId>edi.1694.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2024-06-28T17:31:09.914</dateCreated>
+            <articleDoi>10.1890/0012-9658(2001)082[0523:MABPOL]2.0.CO;2</articleDoi>
+            <articleTitle>MORPHOLOGICAL AND BEHAVIORAL PLASTICITY OF LARVAL ANURANS IN RESPONSE TO DIFFERENT PREDATORS</articleTitle>
+            <articleUrl>https://doi.org/10.1890/0012-9658(2001)082[0523:MABPOL]2.0.CO;2</articleUrl>
+            <journalTitle>Ecology</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate>2001</pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>4730</journalCitationId>
+            <packageId>edi.1692.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2024-06-28T17:36:04.280</dateCreated>
+            <articleDoi>10.1890/0012-9658(2001)082[1947:TLEOAP]2.0.CO;2</articleDoi>
+            <articleTitle>THE LASTING EFFECTS OF ADAPTIVE PLASTICITY: PREDATOR-INDUCED TADPOLES BECOME LONG-LEGGED FROGS</articleTitle>
+            <articleUrl>https://doi.org/10.1890/0012-9658(2001)082[1947:TLEOAP]2.0.CO;2</articleUrl>
+            <journalTitle>Ecology</journalTitle>
+            <relationType>IsReferencedBy</relationType>
+            <pubDate>2001</pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>4731</journalCitationId>
+            <packageId>edi.1698.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2024-06-28T17:40:20.513</dateCreated>
+            <articleDoi>10.1890/0012-9658(2000)081[2278:TMIEIL]2.0.CO;2</articleDoi>
+            <articleTitle>TRAIT-MEDIATED INDIRECT EFFECTS IN LARVAL ANURANS: REVERSING COMPETITION WITH THE THREAT OF PREDATION</articleTitle>
+            <articleUrl>https://doi.org/10.1890/0012-9658(2000)081[2278:TMIEIL]2.0.CO;2</articleUrl>
+            <journalTitle>Ecology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate>2000</pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>4732</journalCitationId>
+            <packageId>edi.1699.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2024-06-28T17:44:22.881</dateCreated>
+            <articleDoi>10.1643/0045-8511(2000)2000[0178:MPIFLA]2.0.CO;2</articleDoi>
+            <articleTitle>Morphological Plasticity in Four Larval Anurans Distributed along an Environmental Gradient</articleTitle>
+            <articleUrl>https://doi.org/10.1643/0045-8511(2000)2000[0178:MPIFLA]2.0.CO;2</articleUrl>
+            <journalTitle>Ichthyology and Herpetology</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate>2000</pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        <journalCitation>
+            <journalCitationId>4740</journalCitationId>
+            <packageId>edi.1199.1</packageId>
+            <principalOwner>EDI-543afa80c859825d35d37d9111c24a4a65a0db9f</principalOwner>
+            <dateCreated>2024-07-18T13:49:22.043</dateCreated>
+            <articleDoi>10.1016/j.foreco.2022.120568</articleDoi>
+            <articleTitle>The effects of fire, climate, and species composition on longleaf pine stand structure and growth rates across diverse natural communities in Florida</articleTitle>
+            <articleUrl>https://linkinghub.elsevier.com/retrieve/pii/S037811272200562X</articleUrl>
+            <journalTitle>Forest Ecology and Management</journalTitle>
+            <relationType>IsCitedBy</relationType>
+            <pubDate>2022</pubDate>
+            <journalIssue></journalIssue>
+            <journalVolume></journalVolume>
+            <articlePages></articlePages>
+            <articleAuthors>
+            </articleAuthors>
+        </journalCitation>
+        </journalCitations>
+  recorded_at: 2026-01-08 21:11:06
+recorded_with: VCR-vcr/2.1.0

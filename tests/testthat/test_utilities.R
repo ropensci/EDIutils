@@ -49,7 +49,11 @@ testthat::test_that("bake_cookie() works", {
 
 
 testthat::test_that("create_test_eml() works", {
-  path <- create_test_eml(tempdir(), "edi.1.1")
+  path <- create_test_eml(
+    tempdir(), 
+    "edi.1.1", 
+    edi_id = "EDI-543afa80c859825d35d37d9111c24a4a65a0db9f"
+    )
   expect_true(file.exists(path))
 })
 

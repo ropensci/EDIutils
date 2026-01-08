@@ -72,7 +72,7 @@ login <- function(userId = NULL, userPass = NULL, config = NULL) {
       regmatches(txt[i], regexpr(pattern, txt[i], perl = TRUE))
     )
   }
-  dn <- create_dn(userId, "EDI")
+  dn <- .create_dn(userId, "EDI")
   resp <- httr::GET(
     url = paste0(base_url("production"), "/package/eml"),
     config = httr::authenticate(dn, userPass, type = "basic"),
@@ -83,4 +83,16 @@ login <- function(userId = NULL, userPass = NULL, config = NULL) {
   token_value <- httr::cookies(resp)$value
   Sys.setenv(EDI_TOKEN = token_value[token_name == "edi-token"])
   Sys.setenv(AUTH_TOKEN = token_value[token_name == "auth-token"])
+}
+
+
+.create_dn <- function(userId, ou = "EDI") {
+  ou <- toupper(ou)
+  res <- paste0("uid=", userId, ",o=", ou, ",")
+  if (ou == "EDI") {
+    res <- paste0(res, "dc=edirepository,dc=org")
+  } else {
+    res <- paste0(res, "dc=ecoinformatics,dc=org")
+  }
+  return(res)
 }

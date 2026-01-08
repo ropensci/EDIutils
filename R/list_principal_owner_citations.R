@@ -1,7 +1,9 @@
 #' List principal owner citations
 #'
-#' @param principalOwner (character) Principal owner in the format returned by
-#' \code{create_dn()}
+#' @param principalOwner (character) The EDI-ID of the principal owner. 
+#' This ID can be obtained by logging into the EDI Identity and Access 
+#' Manager (\url{https://auth.edirepository.org/auth/ui/signin}) and 
+#' copying the "EDI-ID" string from your profile home page.
 #' @param as (character) Format of the returned object. Can be: "data.frame" 
 #' or "xml".
 #' @param env (character) Repository environment. Can be: "production",
@@ -18,8 +20,8 @@
 #' \dontrun{
 #' 
 #' # List citations
-#' dn <- create_dn(userId = "FCE", ou = "EDI")
-#' journalCitations <- list_principal_owner_citations(principalOwner = dn)
+#' edi_id <- "EDI-543afa80c859825d35d37d9111c24a4a65a0ff9e"
+#' journalCitations <- list_principal_owner_citations(principalOwner = edi_id)
 #' }
 list_principal_owner_citations <- function(principalOwner, 
                                            as = "data.frame", 

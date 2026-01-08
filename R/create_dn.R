@@ -1,4 +1,10 @@
-#' Create a users distinguished name
+#' Create a users distinguished name (defunct)
+#' 
+#' This function is defunct. Distinguished names are no longer used in EDI
+#' authentication. Use an EDI ID token instead. This ID can be obtained by 
+#' logging into the EDI Identity and Access 
+#' Manager (\url{https://auth.edirepository.org/auth/ui/signin}) and 
+#' copying the "EDI-ID" string from your profile home page.
 #'
 #' @param userId (character) User identifier of an EDI data repository account
 #' @param ou (character) Organizational unit in which \code{userId} belongs.
@@ -20,6 +26,8 @@
 #' dn <- create_dn(userId = "my_userid", ou = "LTER")
 #' dn
 create_dn <- function(userId, ou = "EDI") {
+  .Defunct(msg = "'create_dn()' is defunct. Distinguished names are no longer 
+           used in EDI authentication. Use an EDI ID token instead.")
   ou <- toupper(ou)
   res <- paste0("uid=", userId, ",o=", ou, ",")
   if (ou == "EDI") {

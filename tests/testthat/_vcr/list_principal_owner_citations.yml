@@ -1,0 +1,26 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://pasta.lternet.edu/package/citations/eml/uid=csmith,o=EDI,dc=edirepository,dc=org
+  response:
+    status: 200
+    headers:
+      access-control-allow-origin: '*'
+      connection: keep-alive
+      content-type: application/xml
+      date: Thu, 08 Jan 2026 16:19:37 GMT
+      server: nginx/1.18.0 (Ubuntu)
+      set-cookie:
+      - auth-token="cHVibGljKmh0dHBzOi8vcGFzdGEuZWRpcmVwb3NpdG9yeS5vcmcvYXV0aGVudGljYXRpb24qMTc2NzkxNzk3NzI3Ng==-GvQ0q4LQ4UQS0OprHA9oPz06gQIm5cc7B5uOkjYgM2n6kLKKzj52bva5hy2Rca9wst56YywawHVqiFuRaLAKIxeZcOJIt5kk4o1ahly3R+Jp3Ps89Oh56pvHoN2srtY86UnAsMh0NM+J1+LZCoQ5lSBhRP2VggfWsT1Nf5Eh0yNLZ3WhcbYqNjg7LT3DApotSODJbxDJVyNq70KPvz606vRGsMXDgiYsmEvMNUdUJuLOAqgbYnIEHQ+ondlXcB1PMLO5nacJCwMDHIJexS6nX62JXOJ8Cq4xhB597ZpGZ+o6S5E+rbelLFNXPvKBKf8bAoGEXb8voGtOOR7k4taQSQ==";
+        HttpOnly; Max-Age=0; Path=/; SameSite=lax
+      - edi-token=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFREktMDc4ZTZlM2NlZTRmN2YyODEyZjE1MDcwMWRhOTM1MWFjYjUxZTA4OSIsImNuIjoiUHVibGljIEFjY2VzcyIsImVtYWlsIjpudWxsLCJwcmluY2lwYWxzIjpbXSwibGlua3MiOltdLCJpc0VtYWlsRW5hYmxlZCI6ZmFsc2UsImlzRW1haWxWZXJpZmllZCI6ZmFsc2UsImlkcENvbW1vbk5hbWUiOiJQdWJsaWMgQWNjZXNzIiwiaWRwTmFtZSI6InN5c3RlbSIsImlkcFVpZCI6bnVsbCwiaXNzIjoiaHR0cHM6Ly9hdXRoLmVkaXJlcG9zaXRvcnkub3JnIiwiaGQiOiJlZGlyZXBvc2l0b3J5Lm9yZyIsImlhdCI6MTc2Nzg4OTE3NywibmJmIjoxNzY3ODg5MTc3LCJleHAiOjE3Njc5MTc5Nzd9.Sz2cKqUnH2kPGCyRYPznZvgZBgpkpCxFi4nUzQ-ppHtnxr9tzAZl1KeA6fxFsVXvkMF-nHM0nl01bIpKTWmxFg;
+        HttpOnly; Max-Age=0; Path=/; SameSite=lax
+      transfer-encoding: chunked
+      web-service: DataPackageManager-1.0
+    body:
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <journalCitations>
+        </journalCitations>
+  recorded_at: 2026-01-08 16:19:37
+recorded_with: VCR-vcr/2.1.0

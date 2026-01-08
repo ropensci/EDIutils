@@ -4,17 +4,20 @@
 \alias{list_user_data_packages}
 \title{List user data packages}
 \usage{
-list_user_data_packages(dn, env = "production")
+list_user_data_packages(edi_id, env = "production")
 }
 \arguments{
-\item{dn}{(character) Distinguished name of user. Create with
-\code{create_dn()}.}
+\item{edi_id}{(character) The EDI-ID of the user. This ID can be obtained by 
+logging into the EDI Identity and Access Manager 
+(\url{https://auth.edirepository.org/auth/ui/signin}) and copying the 
+"EDI-ID" string from your profile home page.}
 
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
 }
 \value{
-(character) Data package identifiers belonging to a \code{dn}
+(character) Data package identifiers belonging to a 
+  \code{edi_id}
 }
 \description{
 List all data packages (including their revision values)
@@ -26,8 +29,8 @@ but have since been deleted are excluded from the list.
 \dontrun{
 
 # List user data packages
-dn <- create_dn(userId = "dbjourneynorth")
-packageIds <- list_user_data_packages(dn)
+edi_id <- "EDI-543afa80c859825d35d37d9111c24a4a65a0ff9e"
+packageIds <- list_user_data_packages(edi_id = edi_id)
 packageIds
 #> [1] "edi.948.1" "edi.949.1"
 }

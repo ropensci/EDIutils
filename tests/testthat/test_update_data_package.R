@@ -6,13 +6,15 @@ testthat::test_that("Test attributes of returned object", {
   # Create new data packaging
   identifier <- create_reservation(scope = "edi", env = "staging")
   packageId <- paste0("edi.", identifier, ".1")
-  eml <- create_test_eml(path = tempdir(), packageId = packageId)
+  eml <- create_test_eml(path = tempdir(), packageId = packageId, 
+                         edi_id = "EDI-543afa80c859825d35d37d9111c24a4a65a0db9f")
   on.exit(file.remove(eml), add = TRUE, after = FALSE)
   transaction <- create_data_package(eml, env = "staging")
   res <- check_status_create(transaction, env = "staging")
   # Update data package
   packageId <- paste0("edi.", identifier, ".2")
-  eml <- create_test_eml(path = tempdir(), packageId = packageId)
+  eml <- create_test_eml(path = tempdir(), packageId = packageId, 
+                         edi_id = "EDI-543afa80c859825d35d37d9111c24a4a65a0db9f")
   transaction <- update_data_package(eml, env = "staging")
   res <- check_status_update(transaction, env = "staging")
   expect_true(res)
