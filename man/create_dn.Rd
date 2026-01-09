@@ -22,6 +22,7 @@ IDs. An EDI ID can be obtained from the EDI Identity and Access
 Manager (\url{https://auth.edirepository.org/auth/ui/signin}).
 }
 \examples{
+\dontrun{
 # For an EDI account
 dn <- create_dn(userId = "my_userid", ou = "EDI")
 dn
@@ -29,6 +30,7 @@ dn
 # For an LTER account
 dn <- create_dn(userId = "my_userid", ou = "LTER")
 dn
+}
 }
 \seealso{
 Other Miscellaneous: 
