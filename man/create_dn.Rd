@@ -17,11 +17,9 @@ Can be "EDI" or "LTER". All \code{userId} issued after "2020-05-01" have
 (character) Distinguished name
 }
 \description{
-This function is defunct. Distinguished names are no longer used in EDI
-authentication. Use an EDI ID token instead. This ID can be obtained by 
-logging into the EDI Identity and Access 
-Manager (\url{https://auth.edirepository.org/auth/ui/signin}) and 
-copying the "EDI-ID" string from your profile home page.
+This function is defunct. Distinguished names are deprecated in favor of EDI 
+IDs. An EDI ID can be obtained from the EDI Identity and Access 
+Manager (\url{https://auth.edirepository.org/auth/ui/signin}).
 }
 \examples{
 # For an EDI account

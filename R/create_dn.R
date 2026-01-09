@@ -1,10 +1,8 @@
 #' Create a users distinguished name (defunct)
 #' 
-#' This function is defunct. Distinguished names are no longer used in EDI
-#' authentication. Use an EDI ID token instead. This ID can be obtained by 
-#' logging into the EDI Identity and Access 
-#' Manager (\url{https://auth.edirepository.org/auth/ui/signin}) and 
-#' copying the "EDI-ID" string from your profile home page.
+#' This function is defunct. Distinguished names are deprecated in favor of EDI 
+#' IDs. An EDI ID can be obtained from the EDI Identity and Access 
+#' Manager (\url{https://auth.edirepository.org/auth/ui/signin}).
 #'
 #' @param userId (character) User identifier of an EDI data repository account
 #' @param ou (character) Organizational unit in which \code{userId} belongs.

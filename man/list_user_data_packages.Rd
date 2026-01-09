@@ -7,10 +7,9 @@
 list_user_data_packages(edi_id, env = "production")
 }
 \arguments{
-\item{edi_id}{(character) The EDI-ID of the user. This ID can be obtained by 
-logging into the EDI Identity and Access Manager 
-(\url{https://auth.edirepository.org/auth/ui/signin}) and copying the 
-"EDI-ID" string from your profile home page.}
+\item{edi_id}{(character) The EDI ID of the user. An EDI ID can be obtained 
+from the EDI Identity and Access Manager 
+(\url{https://auth.edirepository.org/auth/ui/signin}).}
 
 \item{env}{(character) Repository environment. Can be: "production",
 "staging", or "development".}
@@ -30,7 +29,7 @@ but have since been deleted are excluded from the list.
 
 # List user data packages
 edi_id <- "EDI-543afa80c859825d35d37d9111c24a4a65a0ff9e"
-packageIds <- list_user_data_packages(edi_id = edi_id)
+packageIds <- list_user_data_packages(edi_id)
 packageIds
 #> [1] "edi.948.1" "edi.949.1"
 }

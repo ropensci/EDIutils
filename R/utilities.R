@@ -123,10 +123,9 @@ config_test_eml <- function(userId, url) {
 #' written to file
 #' @param packageId (character) Package identifier, of the form
 #' "scope.identifier.revision", for the new EML file
-#' @param edi_id (character) The EDI-ID of the user. This ID can be obtained by 
-#' logging into the EDI Identity and Access Manager 
-#' (\url{https://auth.edirepository.org/auth/ui/signin}) and copying the 
-#' "EDI-ID" string from your profile home page.
+#' @param edi_id (character) The EDI ID of the user creating the test EML.
+#' An EDI ID can be obtained from the EDI Identity and Access 
+#' Manager (\url{https://auth.edirepository.org/auth/ui/signin}).
 #'
 #' @return (character) Full path to EML file written by this function to
 #' \code{path}. Should be \code{tempdir()} if executed in a testthat context.

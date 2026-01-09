@@ -1,9 +1,8 @@
 #' List principal owner citations
 #'
-#' @param principalOwner (character) The EDI-ID of the principal owner. 
-#' This ID can be obtained by logging into the EDI Identity and Access 
-#' Manager (\url{https://auth.edirepository.org/auth/ui/signin}) and 
-#' copying the "EDI-ID" string from your profile home page.
+#' @param principalOwner (character) The EDI ID of the principal owner. 
+#' EDI IDs can be obtained from the EDI Identity and Access 
+#' Manager (\url{https://auth.edirepository.org/auth/ui/signin}).
 #' @param as (character) Format of the returned object. Can be: "data.frame" 
 #' or "xml".
 #' @param env (character) Repository environment. Can be: "production",
