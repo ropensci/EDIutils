@@ -16,6 +16,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' # For an EDI account
 #' dn <- create_dn(userId = "my_userid", ou = "EDI")
 #' dn
@@ -23,6 +24,7 @@
 #' # For an LTER account
 #' dn <- create_dn(userId = "my_userid", ou = "LTER")
 #' dn
+#' }
 create_dn <- function(userId, ou = "EDI") {
   .Defunct(msg = "'create_dn()' is defunct. Distinguished names are no longer 
            used in EDI authentication. Use an EDI ID token instead.")

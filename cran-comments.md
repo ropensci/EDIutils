@@ -1,7 +1,17 @@
-## Revision
-This release updates authentication methods to use the NEW EDI Identity and 
-Access Management (IAM) system and deprecates a function. These changes maintain 
-backward compatibility.
+## Release Summary
+This significant EDIutils release, version 2.0.0, implements a fundamental 
+update to the authentication method, as we have transitioned to the 
+**NEW EDI Identity and Access Management (IAM) system**. This change introduces 
+backwards incompatibility with previous package versions for a few functions. 
+To continue using EDI services, users must now create an IAM account and 
+generate API tokens for authentication. Detailed instructions for setting up 
+IAM accounts and generating tokens are available in the relevant sections of the 
+documentation.
+
+These changes are necessary to ensure the long-term stability and 
+maintainability of the package. We have incremented the **MAJOR** version number 
+(following SemVer principles) to clearly indicate these incompatible API 
+changes.
 
 
 ## Test environments
