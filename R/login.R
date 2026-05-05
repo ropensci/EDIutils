@@ -6,8 +6,8 @@
 #' @param config (character) Path to config.txt, which contains \code{userId}
 #' and \code{userPass} (see details below)
 #'
-#' @return (character) Temporary (~10 hour) authentication tokens written to
-#' the system variables "EDI_TOKEN" and "AUTH_TOKEN".
+#' @return (character) Temporary (~10 hour) authentication token written to
+#' the system variable "EDI_TOKEN".
 #'
 #' @note Only works when authenticating with EDI credentials. Does not work
 #' when authenticating with ORCiD, GitHub, or Google credentials.
@@ -74,7 +74,7 @@ login <- function(userId = NULL, userPass = NULL, config = NULL) {
   }
   dn <- .create_dn(userId, "EDI")
   resp <- httr::GET(
-    url = paste0(base_url("production"), "/package/eml"),
+    url = paste0(base_url("development"), "/package/eml"),
     config = httr::authenticate(dn, userPass, type = "basic"),
     handle = httr::handle("")
   )
@@ -82,7 +82,7 @@ login <- function(userId = NULL, userPass = NULL, config = NULL) {
   token_name <- httr::cookies(resp)$name
   token_value <- httr::cookies(resp)$value
   Sys.setenv(EDI_TOKEN = token_value[token_name == "edi-token"])
-  Sys.setenv(AUTH_TOKEN = token_value[token_name == "auth-token"])
+  try(Sys.setenv(AUTH_TOKEN = token_value[token_name == "auth-token"]), silent = TRUE) # facilitates deprecation of the "auth-token"
 }
 
 

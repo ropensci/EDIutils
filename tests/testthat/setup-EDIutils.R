@@ -10,7 +10,6 @@ if (!nzchar(Sys.getenv("EDI_TOKEN"))) {
   if (dir.exists(vcr_dir)) {
     # Fake API token to fool our package
     Sys.setenv("EDI_TOKEN" = "foobar")
-    Sys.setenv("AUTH_TOKEN" = "foobar")
   } else {
     # If there's no mock files nor API token, impossible to run tests
     stop("No API key nor cassettes, tests cannot be run.",
