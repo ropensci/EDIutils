@@ -1,7 +1,6 @@
 #' Login to the EDI repository
 #'
 #' @param userId (character) User identifier of an EDI data repository account.
-#' If using
 #' @param userPass (character) Password of \code{userId}
 #' @param config (character) Path to config.txt, which contains \code{userId}
 #' and \code{userPass} (see details below)
