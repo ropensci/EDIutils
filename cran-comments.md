@@ -1,28 +1,18 @@
 ## Release Summary
-This significant EDIutils release, version 2.0.0, implements a fundamental 
-update to the authentication method, as we have transitioned to the 
-**NEW EDI Identity and Access Management (IAM) system**. This change introduces 
-backwards incompatibility with previous package versions for a few functions. 
-To continue using EDI services, users must now create an IAM account and 
-generate API tokens for authentication. Detailed instructions for setting up 
-IAM accounts and generating tokens are available in the relevant sections of the 
-documentation.
-
-These changes are necessary to ensure the long-term stability and 
-maintainability of the package. We have incremented the **MAJOR** version number 
-(following SemVer principles) to clearly indicate these incompatible API 
-changes.
+This EDIutils release, version 2.1.0, makes a minor improvement in transitioning
+between the old and new style authentication tokens returned by the EDI 
+repository gate keeper.
 
 
 ## Test environments
-* aarch64-apple-darwin20, (local machine), R 4.5.2
-* aarch64-apple-darwin20 (R-hub), R development (unstable) (2026-01-06 r89281)
-* x86_64-w64-mingw32 (R-hub), R development (unstable) (2026-01-06 r89281 ucrt)
-* x86_64-w64-mingw32 (R-hub), R version 4.5.2 (2025-10-31 ucrt)
-* x86_64-w64-mingw32 (R-hub), R version 4.4.3 (2025-02-28 ucrt)
-* x86_64-pc-linux-gnu Ubuntu (R-hub), R development (unstable) (2026-01-06 r89281)
-* x86_64-pc-linux-gnu Ubuntu (R-hub), R version 4.5.2 (2025-10-31)
-* x86_64-pc-linux-gnu Ubuntu (R-hub), R version 4.5.2 Patched (2026-01-05 r89281)
+* aarch64-apple-darwin20, (local machine), R 4.6.0
+# * aarch64-apple-darwin20 (R-hub), R development (unstable) (2026-01-06 r89281)
+* x86_64-w64-mingw32 (R-hub), R development (unstable) (2026-05-03 r89994)
+* x86_64-w64-mingw32 (R-hub), R version 4.6.0 (2026-04-24 ucrt)
+* x86_64-w64-mingw32 (R-hub), R version 4.5.3 (2026-03-11 ucrt)
+* x86_64-pc-linux-gnu Ubuntu (R-hub), R development (unstable) (2026-05-04 r89999)
+* x86_64-pc-linux-gnu Ubuntu (R-hub), R version 4.6.0 (2026-04-24)
+* x86_64-pc-linux-gnu Ubuntu (R-hub), R version 4.6.0 Patched (2026-05-01 r89994)
 
 
 ## R CMD check results
@@ -31,4 +21,4 @@ changes.
 ## Downstream dependencies
 There are currently no downstream dependencies for this package.
 
-Thank you!
+Thanks!
