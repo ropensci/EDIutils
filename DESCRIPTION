@@ -1,6 +1,6 @@
 Package: EDIutils
 Title: An API Client for the Environmental Data Initiative Repository
-Version: 2.0.0
+Version: 2.1.0
 Authors@R: 
     c(person("Colin", "Smith", email = "colin.smith@wisc.edu", role = c("aut", "cre"), comment = "0000-0003-2261-9931"),
     person("Corinna", "Gries", role = "ctb", comment = "0000-0002-9091-6543"),

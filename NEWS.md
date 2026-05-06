@@ -1,4 +1,12 @@
-EDIutils 2.2.0 (2026-01-09)
+EDIutils 2.1.0 (2026-05-05)
+===========================
+
+### MINOR IMPROVEMENTS
+
+  * Gracefully handle deprecation of the `auth-token`
+
+
+EDIutils 2.0.0 (2026-01-09)
 ===========================
 
 ### DEPRECATED AND DEFUNCT
