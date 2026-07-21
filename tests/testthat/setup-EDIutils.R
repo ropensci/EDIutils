@@ -17,9 +17,15 @@ if (!nzchar(Sys.getenv("EDI_TOKEN"))) {
     )
   }
 }
+# Configure sensitive data filtering for vcr recording
+sensitive_list <- list("<<github_api_token>>" = Sys.getenv('GITHUB_TOKEN'))
+if (nzchar(Sys.getenv("EDI_API_KEY"))) {
+  sensitive_list[["<<edi_api_key>>"]] <- Sys.getenv("EDI_API_KEY")
+}
+
 invisible(vcr::vcr_configure(
   dir = vcr::vcr_test_path("fixtures"),
-  filter_sensitive_data = list("<<github_api_token>>" = Sys.getenv('GITHUB_TOKEN')),
+  filter_sensitive_data = sensitive_list,
   filter_request_headers = list(`auth-token` = "<<<not-my-bearer-token>>>"),
   filter_response_headers = list(`auth-token` = "<<<not-my-bearer-token>>>")
 ))

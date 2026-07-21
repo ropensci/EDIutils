@@ -98,11 +98,11 @@ logout()
 
 }
 \seealso{
-Other Evaluation and Upload: 
-\code{\link{check_status_create}()},
-\code{\link{check_status_evaluate}()},
-\code{\link{check_status_update}()},
-\code{\link{create_data_package}()},
-\code{\link{update_data_package}()}
+Other Evaluation and Upload:
+\code{\link[=check_status_create]{check_status_create()}},
+\code{\link[=check_status_evaluate]{check_status_evaluate()}},
+\code{\link[=check_status_update]{check_status_update()}},
+\code{\link[=create_data_package]{create_data_package()}},
+\code{\link[=update_data_package]{update_data_package()}}
 }
 \concept{Evaluation and Upload}

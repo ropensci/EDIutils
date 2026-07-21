@@ -35,7 +35,7 @@ read_data_entity_name <- function(packageId, entityId, env = "production") {
     paste(parse_packageId(packageId), collapse = "/"), "/",
     entityId
   )
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   return(text2char(res))

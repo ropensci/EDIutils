@@ -7,8 +7,12 @@
 #'
 bake_cookie <- function() {
   edi_token <- Sys.getenv("EDI_TOKEN")
+  has_key <- Sys.getenv("EDI_API_KEY") != ""
   try(auth_token <- Sys.getenv("AUTH_TOKEN"), silent = TRUE)  # facilitates deprecation of the "auth-token"
   if (edi_token == "") {
+    if (has_key) {
+      return(httr::config())
+    }
     stop("Authentication token not found. Run 'login()' then try again.",
       call. = FALSE
     )
@@ -167,10 +171,7 @@ create_test_eml <- function(path, packageId, edi_id) {
 #' @noRd
 #'
 get_test_package <- function() {
-  id <- list_data_package_identifiers("edi", "staging")[1]
-  rev <- list_data_package_revisions("edi", id, "newest", "staging")
-  res <- paste(c("edi", id, rev), collapse = ".")
-  return(res)
+  return("edi.1892.2")
 }
 
 
@@ -349,6 +350,78 @@ set_user_agent <- function() {
 }
 
 
+#' Check if a vcr cassette is actively replaying
+#'
+#' @return (logical) TRUE if a vcr cassette is active and we are in playback mode.
+#'
+#' @noRd
+#'
+is_vcr_replaying <- function() {
+  if (requireNamespace("vcr", quietly = TRUE)) {
+    cass <- vcr::current_cassette()
+    if (!is.null(cass)) {
+      return(cass$record %in% c("none", "once"))
+    }
+  }
+  return(FALSE)
+}
+
+
+#' Append API key to URL if present
+#'
+#' @param url (character) The URL to modify
+#'
+#' @return (character) The modified URL with the "key" query parameter appended
+#' if the EDI_API_KEY environment variable is set.
+#'
+#' @noRd
+#'
+add_api_key <- function(url) {
+  key <- Sys.getenv("EDI_API_KEY")
+  if (key == "") {
+    return(url)
+  }
+  
+  if (is_vcr_replaying()) {
+    return(url)
+  }
+  
+  if (grepl("\\?", url)) {
+    if (!grepl("([?&])key=", url)) {
+      url <- paste0(url, "&key=", key)
+    }
+  } else {
+    url <- paste0(url, "?key=", key)
+  }
+  return(url)
+}
+
+#' Internal API request wrappers
+#' @noRd
+api_get <- function(url, ...) {
+  url <- add_api_key(url)
+  httr::GET(url, ...)
+}
+
+#' @noRd
+api_post <- function(url, ...) {
+  url <- add_api_key(url)
+  httr::POST(url, ...)
+}
+
+#' @noRd
+api_put <- function(url, ...) {
+  url <- add_api_key(url)
+  httr::PUT(url, ...)
+}
+
+#' @noRd
+api_delete <- function(url, ...) {
+  url <- add_api_key(url)
+  httr::DELETE(url, ...)
+}
+
+
 
 
 
@@ -361,8 +434,14 @@ set_user_agent <- function() {
 #' @noRd
 #'
 skip_if_logged_out <- function() {
-  if ((Sys.getenv("EDI_TOKEN") != "") & 
-      (Sys.getenv("EDI_TOKEN") != "foobar")) {
+  has_token <- (Sys.getenv("EDI_TOKEN") != "") && (Sys.getenv("EDI_TOKEN") != "foobar")
+  has_key <- (Sys.getenv("EDI_API_KEY") != "") && (Sys.getenv("EDI_API_KEY") != "foobar")
+  
+  if (has_key && tolower(Sys.getenv("RUN_ALL_TESTS")) != "true") {
+    testthat::skip("Skipping computationally heavy authenticated test. Set RUN_ALL_TESTS='true' to run.")
+  }
+  
+  if (has_token || has_key) {
     return(invisible(TRUE))
   }
   testthat::skip("Not run when logged out. Login with 'login()'.")

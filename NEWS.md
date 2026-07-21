@@ -1,3 +1,18 @@
+EDIutils 2.2.0 (2026-07-21)
+===========================
+
+### MAJOR IMPROVEMENTS
+
+  * Transitioned all API wrapper functions to support mandatory authenticated access using EDI-API keys. Direct `httr` request verbs are now centralized through internal wrappers (`api_get()`, `api_post()`, `api_put()`, `api_delete()`) that append the API key as a query parameter (`?key=`) when the environment variable `EDI_API_KEY` is present.
+
+### MINOR IMPROVEMENTS
+
+  * Updated `login()` to support API key authentication via a new `key` parameter, credentials configuration file, or interactive console prompt.
+  * Updated `logout()` to unset the `EDI_API_KEY` environment variable.
+  * Enhanced `skip_if_logged_out()` to support running authenticated tests with the `EDI_API_KEY`, while skipping computationally heavy tests unless the environment variable `RUN_ALL_TESTS` is explicitly set to `"true"`.
+  * Updated package vignettes and `README.Rmd` documentation with API key authentication details and usage examples.
+
+
 EDIutils 2.1.0 (2026-05-05)
 ===========================
 

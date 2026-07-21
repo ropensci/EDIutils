@@ -19,8 +19,8 @@ transaction (character) Transaction identifier.
 This function is DEPRECATED.
 }
 \seealso{
-Other Miscellaneous: 
-\code{\link{create_dn}()},
-\code{\link{is_authorized}()}
+Other Miscellaneous:
+\code{\link[=create_dn]{create_dn()}},
+\code{\link[=is_authorized]{is_authorized()}}
 }
 \concept{Miscellaneous}

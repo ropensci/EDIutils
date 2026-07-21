@@ -79,7 +79,7 @@ create_journal_citation <- function(packageId,
   # Submit request
   url <- paste0(base_url(env), "/package/citation/eml")
   cookie <- bake_cookie()
-  resp <- httr::POST(
+  resp <- api_post(
     url,
     set_user_agent(),
     cookie,

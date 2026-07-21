@@ -94,7 +94,7 @@ evaluate_data_package <- function(eml,
     url <- paste0(url, "?useChecksum")
   }
   cookie <- bake_cookie()
-  resp <- httr::POST(
+  resp <- api_post(
     url,
     set_user_agent(),
     cookie,

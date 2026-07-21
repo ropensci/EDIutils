@@ -26,7 +26,9 @@ The EDI repository "staging" environment is a sandbox for testing data package r
 
 #### Requiring Authentication
 
-The first line of any test requiring authentication should include `skip_if_logged_out()`. This is an internal use only function located in R/utilities.R. Tests including this line will be skipped unless the R environment variables `EDI_TOKEN` and `AUTH_TOKEN` are set. Use `login()` to set this variable.
+The first line of any test requiring authentication should include `skip_if_logged_out()`. This is an internal use only function located in R/utilities.R. Tests including this line will be skipped unless the R environment variable `EDI_API_KEY` is set, or the legacy `EDI_TOKEN` and `AUTH_TOKEN` variables are set. Authenticate by passing `login(key = "your_key")` or by defining the environment variable `EDI_API_KEY`. 
+
+Note that computationally heavy tests are skipped when using an API key unless the environment variable `RUN_ALL_TESTS` is set to `"true"`.
 
 Example:
 ```{r eval=FALSE}
@@ -87,7 +89,7 @@ testthat::test_that("Test attributes of returned object", {
 
 ## Run Tests
 
-1. Authenticate with `login()`
+1. Authenticate with `login(key = "your_key")` or set the environment variable `EDI_API_KEY`
 
 2. Configure test data package with `config_test_eml()`
 

@@ -33,12 +33,12 @@ resourceReads <- get_docid_reads(scope = "knb-lter-sgs", identifier = 817)
 }
 }
 \seealso{
-Other Audit Manager Services: 
-\code{\link{get_audit_count}()},
-\code{\link{get_audit_csv_report}()},
-\code{\link{get_audit_record}()},
-\code{\link{get_audit_report}()},
-\code{\link{get_packageid_reads}()},
-\code{\link{get_recent_uploads}()}
+Other Audit Manager Services:
+\code{\link[=get_audit_count]{get_audit_count()}},
+\code{\link[=get_audit_csv_report]{get_audit_csv_report()}},
+\code{\link[=get_audit_record]{get_audit_record()}},
+\code{\link[=get_audit_report]{get_audit_report()}},
+\code{\link[=get_packageid_reads]{get_packageid_reads()}},
+\code{\link[=get_recent_uploads]{get_recent_uploads()}}
 }
 \concept{Audit Manager Services}

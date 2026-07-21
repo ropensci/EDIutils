@@ -24,22 +24,26 @@ Evaluation and upload to the repository requires data entities are described wit
 
 ## Authenticate
 
-Authentication is required by functions involving data evaluation and upload, audit report access, event notifications, and other account based features. Request an account from support@edirepository.org. There are three options for authenticating:
+Authentication is required for all API methods. Effective July 30, 2026, the EDI repository requires mandatory authenticated access for all REST API endpoints. You can obtain a free EDI user profile and generate an API access key from the [EDI IAM Portal](https://auth.edirepository.org/auth/ui/signin). 
+
+There are four options for authenticating:
 
 ```{r eval=FALSE}
-# Interactively at the console
-login()
-#> User name: "my_name"
-#> User password: "my_secret"
+# 1. (Recommended) Authenticate using your EDI-API key
+login(key = "your_api_key")
 
-# Programmatically with function arguments
-login(userId = "my_name", userPass = "my_secret")
-
-# Programmatically with a file containing userId and userPass arguments
+# 2. (Recommended) Programmatically with a file containing your API key
+# File contents: key = your_api_key
 login(config = paste0(tempdir(), "/config.txt"))
+
+# 3. Interactively at the console (prompts for API key or legacy credentials)
+login()
+
+# 4. (Legacy fallback) Programmatically with username and password
+login(userId = "my_name", userPass = "my_secret")
 ```
 
-The `login()` function exchanges credentials for temporary (~10 hour) authentication tokens, which are written to the `EDI_TOKEN` and `AUTH_TOKEN` environment variable referenced by EDIutils functions requiring authentication.
+Setting the environment variable `EDI_API_KEY` (either through `login()` or directly in your `.Renviron` file) will automatically authenticate all requests. For legacy credentials, `login()` exchanges your credentials for temporary (~10 hour) tokens written to the `EDI_TOKEN` and `AUTH_TOKEN` system environment variables.
 
 ## Reserve a Data Package ID
 

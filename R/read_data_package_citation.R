@@ -138,7 +138,7 @@ read_data_package_citation <- function(packageId,
   }
   # Place request
   if (as == "char") {
-    resp <- httr::GET(
+    resp <- api_get(
       url,
       set_user_agent(),
       httr::accept("text/plain"),
@@ -148,7 +148,7 @@ read_data_package_citation <- function(packageId,
     httr::stop_for_status(resp, res)
     return(res)
   } else if (as == "html") {
-    resp <- httr::GET(
+    resp <- api_get(
       url,
       set_user_agent(),
       httr::accept("text/html"),
@@ -158,7 +158,7 @@ read_data_package_citation <- function(packageId,
     httr::stop_for_status(resp, res)
     return(xml2::read_html(res))
   } else if (as == "json") {
-    resp <- httr::GET(
+    resp <- api_get(
       url,
       set_user_agent(),
       httr::accept("application/json"),

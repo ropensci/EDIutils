@@ -32,7 +32,7 @@ list_data_package_revisions <- function(scope,
   if (!is.null(filter)) {
     url <- paste0(url, "?filter=", filter)
   }
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   return(as.numeric(text2char(res)))

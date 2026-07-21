@@ -42,7 +42,7 @@ delete_journal_citation <- function(journalCitationId, env = "production") {
     journalCitationId
   )
   cookie <- bake_cookie()
-  resp <- httr::DELETE(
+  resp <- api_delete(
     url,
     set_user_agent(),
     cookie,

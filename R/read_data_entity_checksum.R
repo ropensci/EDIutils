@@ -38,7 +38,7 @@ read_data_entity_checksum <- function(packageId, entityId, env = "production") {
     base_url(env), "/package/data/checksum/eml/",
     paste(pkg, collapse = "/"), "/", entityId
   )
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   return(text2char(res))

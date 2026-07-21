@@ -17,4 +17,5 @@
 logout <- function() {
   suppressWarnings(Sys.unsetenv("EDI_TOKEN"))
   try(suppressWarnings(Sys.unsetenv("AUTH_TOKEN")), silent = TRUE) # facilitates deprecation of the "auth-token"
+  suppressWarnings(Sys.unsetenv("EDI_API_KEY"))
 }

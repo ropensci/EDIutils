@@ -31,13 +31,14 @@ library(lubridate)
 
 ## Get the Audit Report for Downloaded Data Entities
 
-Accessing the audit report requires authentication.
-
+Authentication is required for all API methods. Effective July 30, 2026, the EDI repository requires mandatory authenticated access for all REST API endpoints. You can obtain a free EDI user profile and generate an API access key from the [EDI IAM Portal](https://auth.edirepository.org/auth/ui/signin).
 
 ```{r, eval=FALSE}
+# Authenticate using your EDI-API key
+login(key = "your_api_key")
+
+# Or authenticate interactively / via legacy credentials
 login()
-#> userID: "my_name"
-#> userPass: "my_secret"
 ```
 
 Setting the query parameters to get the desired audit report:

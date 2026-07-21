@@ -35,16 +35,16 @@ packageIds
 }
 }
 \seealso{
-Other Listing: 
-\code{\link{list_data_descendants}()},
-\code{\link{list_data_entities}()},
-\code{\link{list_data_package_identifiers}()},
-\code{\link{list_data_package_revisions}()},
-\code{\link{list_data_package_scopes}()},
-\code{\link{list_data_sources}()},
-\code{\link{list_deleted_data_packages}()},
-\code{\link{list_recent_changes}()},
-\code{\link{list_recent_uploads}()},
-\code{\link{list_service_methods}()}
+Other Listing:
+\code{\link[=list_data_descendants]{list_data_descendants()}},
+\code{\link[=list_data_entities]{list_data_entities()}},
+\code{\link[=list_data_package_identifiers]{list_data_package_identifiers()}},
+\code{\link[=list_data_package_revisions]{list_data_package_revisions()}},
+\code{\link[=list_data_package_scopes]{list_data_package_scopes()}},
+\code{\link[=list_data_sources]{list_data_sources()}},
+\code{\link[=list_deleted_data_packages]{list_deleted_data_packages()}},
+\code{\link[=list_recent_changes]{list_recent_changes()}},
+\code{\link[=list_recent_uploads]{list_recent_uploads()}},
+\code{\link[=list_service_methods]{list_service_methods()}}
 }
 \concept{Listing}

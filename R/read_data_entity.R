@@ -61,7 +61,7 @@ read_data_entity <- function(packageId, entityId, env = "production") {
     paste(parse_packageId(packageId), collapse = "/"), "/",
     entityId
   )
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
   if (resp$status_code == "200") {
     res <- httr::content(resp, as = "raw", encoding = "UTF-8")
   } else {

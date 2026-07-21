@@ -57,7 +57,7 @@ read_data_package_report <- function(packageId,
     paste(parse_packageId(packageId), collapse = "/")
   )
   if (as == "html") {
-    resp <- httr::GET(
+    resp <- api_get(
       url,
       set_user_agent(),
       httr::accept("text/html"),
@@ -67,7 +67,7 @@ read_data_package_report <- function(packageId,
     httr::stop_for_status(resp, res)
     return(xml2::read_html(res))
   } else if (as %in% c("xml", "char")) {
-    resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+    resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
     res <- httr::content(resp, as = "text", encoding = "UTF-8")
     httr::stop_for_status(resp, res)
     if (as == "xml") {

@@ -33,8 +33,8 @@ dn
 }
 }
 \seealso{
-Other Miscellaneous: 
-\code{\link{create_data_package_archive}()},
-\code{\link{is_authorized}()}
+Other Miscellaneous:
+\code{\link[=create_data_package_archive]{create_data_package_archive()}},
+\code{\link[=is_authorized]{is_authorized()}}
 }
 \concept{Miscellaneous}

@@ -71,7 +71,7 @@ read_evaluate_report <- function(transaction,
   )
   cookie <- bake_cookie()
   if (as == "html") {
-    resp <- httr::GET(
+    resp <- api_get(
       url,
       set_user_agent(),
       cookie,
@@ -82,7 +82,7 @@ read_evaluate_report <- function(transaction,
     httr::stop_for_status(resp, res)
     return(xml2::read_html(res))
   } else if (as %in% c("xml", "char")) {
-    resp <- httr::GET(
+    resp <- api_get(
       url,
       set_user_agent(),
       cookie,

@@ -29,10 +29,10 @@ journalCitation <- get_journal_citation(381)
 }
 }
 \seealso{
-Other Journal Citations: 
-\code{\link{create_journal_citation}()},
-\code{\link{delete_journal_citation}()},
-\code{\link{list_data_package_citations}()},
-\code{\link{list_principal_owner_citations}()}
+Other Journal Citations:
+\code{\link[=create_journal_citation]{create_journal_citation()}},
+\code{\link[=delete_journal_citation]{delete_journal_citation()}},
+\code{\link[=list_data_package_citations]{list_data_package_citations()}},
+\code{\link[=list_principal_owner_citations]{list_principal_owner_citations()}}
 }
 \concept{Journal Citations}

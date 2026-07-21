@@ -30,9 +30,9 @@ reservations
 }
 }
 \seealso{
-Other Identifier Reservations: 
-\code{\link{create_reservation}()},
-\code{\link{delete_reservation}()},
-\code{\link{list_active_reservations}()}
+Other Identifier Reservations:
+\code{\link[=create_reservation]{create_reservation()}},
+\code{\link[=delete_reservation]{delete_reservation()}},
+\code{\link[=list_active_reservations]{list_active_reservations()}}
 }
 \concept{Identifier Reservations}

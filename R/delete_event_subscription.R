@@ -51,7 +51,7 @@ delete_event_subscription <- function(subscriptionId, env = "production") {
     subscriptionId
   )
   cookie <- bake_cookie()
-  resp <- httr::DELETE(url, set_user_agent(), cookie, handle = httr::handle(""))
+  resp <- api_delete(url, set_user_agent(), cookie, handle = httr::handle(""))
   msg <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, msg)
   if (resp$status_code == "200") {

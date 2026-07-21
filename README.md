@@ -69,8 +69,12 @@ organizational unit, “identifier” the series, and “revision” the version
 ### Authentication
 
 Authentication is required by data evaluation and upload functions, and
-to access user audit logs and services. Contact EDI for an account
-<support@edirepository.org>. Authenticate with the `login()` function.
+to access user audit logs and services. Obtain a free EDI user profile
+and an API access key from the [EDI IAM
+Portal](https://auth.edirepository.org/auth/ui/signin). Authenticate by
+passing your key to `login(key = "your_key")` or by setting the
+environment variable `EDI_API_KEY`. Legacy username and password
+credentials are also supported as a fallback via `login()`.
 
 ### Search and Access Data
 
@@ -150,8 +154,12 @@ Authentication is required by functions involving data evaluation and
 upload. Request an account from <support@edirepository.org>.
 
 ``` r
-# Authenticate
+# Authenticate using your EDI-API key
+login(key = "your_api_key")
+
+# Or authenticate using legacy username/password
 login()
+#> EDI-API key (leave blank to use username/password): 
 #> User name: "my_name"
 #> User password: "my_secret"
 ```

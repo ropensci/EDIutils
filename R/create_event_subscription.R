@@ -53,7 +53,7 @@ create_event_subscription <- function(packageId, url, env = "production") {
   on.exit(file.remove(fsub))
   url <- paste0(base_url(env), "/package/event/eml")
   cookie <- bake_cookie()
-  resp <- httr::POST(
+  resp <- api_post(
     url,
     set_user_agent(),
     cookie,

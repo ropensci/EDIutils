@@ -2,16 +2,17 @@
 #'
 #' @param userId (character) User identifier of an EDI data repository account.
 #' @param userPass (character) Password of \code{userId}
+#' @param key (character) EDI-API access key.
 #' @param config (character) Path to config.txt, which contains \code{userId}
-#' and \code{userPass} (see details below)
+#' and \code{userPass} or \code{key} (see details below)
 #'
-#' @return (character) Temporary (~10 hour) authentication token written to
-#' the system variable "EDI_TOKEN".
+#' @return (NULL) No return value. The token or API key is written to its respective environment variable.
 #'
-#' @note Only works when authenticating with EDI credentials. Does not work
-#' when authenticating with ORCiD, GitHub, or Google credentials.
+#' @note Legacy credentials login only works when authenticating with EDI credentials. 
+#' For modern token-free authentication, generate an API key from the EDI Portal 
+#' and supply it as the \code{key} parameter or in your \code{config} file.
 #'
-#' Be careful not to accidentally share your \code{userId} and \code{userPass}.
+#' Be careful not to accidentally share your credentials.
 #' Some tips to avoid this:
 #' \itemize{
 #'   \item Don't write code that explicitly lists your credentials.
@@ -26,13 +27,13 @@
 #'
 #'
 #' @details
-#' If \code{userId}, \code{userPass}, and \code{config} are NULL, the console
+#' If \code{userId}, \code{userPass}, \code{key}, and \code{config} are NULL, the console
 #' will prompt for credentials.
 #'
 #' \code{config}: Supplying credentials in a file named config.txt facilitates
 #' authentication within automated/unassisted processes. Contents of this file
 #' should be new line separated and have the form "<argument> = <value>" (e.g.
-#' userId = myname).
+#' userId = myname or key = my_api_key).
 #' 
 #' @family Authentication
 #'
@@ -43,45 +44,79 @@
 #'
 #' # Interactively at the console
 #' login()
-#' #> User name: "my_name"
-#' #> User password: "my_secret"
+#' #> EDI-API key (leave blank to use username/password): "my_api_key"
 #'
-#' # Programmatically with function arguments
+#' # Programmatically with an API key
+#' login(key = "my_api_key")
+#'
+#' # Programmatically with legacy function arguments
 #' login(userId = "my_name", userPass = "my_secret")
 #'
-#' # Programmatically with a file containing userId and userPass arguments
+#' # Programmatically with a file containing credentials
 #' login(config = paste0(tempdir(), "/config.txt"))
 #' }
 #'
-login <- function(userId = NULL, userPass = NULL, config = NULL) {
-  on.exit(rm(userId))
-  on.exit(rm(userPass))
-  if (is.null(userId) & is.null(userPass) & is.null(config)) {
-    userId <- readline("User name: ")
-    userPass <- readline("User password: ")
-  } else if (!is.null(config)) {
+#' @importFrom httr GET authenticate handle cookies stop_for_status
+#'
+login <- function(userId = NULL, userPass = NULL, key = NULL, config = NULL) {
+  on.exit(rm(userId, userPass, key), add = TRUE)
+  
+  if (!is.null(config)) {
     txt <- readLines(config, warn = FALSE)
     pattern <- "(?<==).*"
-    i <- grepl("userId", txt)
-    userId <- trimws(
-      regmatches(txt[i], regexpr(pattern, txt[i], perl = TRUE))
-    )
-    i <- grepl("userPass", txt)
-    userPass <- trimws(
-      regmatches(txt[i], regexpr(pattern, txt[i], perl = TRUE))
-    )
+    
+    i_uid <- grepl("userId", txt)
+    if (any(i_uid)) {
+      userId <- trimws(regmatches(txt[i_uid], regexpr(pattern, txt[i_uid], perl = TRUE)))
+    }
+    
+    i_pwd <- grepl("userPass", txt)
+    if (any(i_pwd)) {
+      userPass <- trimws(regmatches(txt[i_pwd], regexpr(pattern, txt[i_pwd], perl = TRUE)))
+    }
+    
+    i_key <- grepl("key", txt)
+    if (any(i_key)) {
+      key <- trimws(regmatches(txt[i_key], regexpr(pattern, txt[i_key], perl = TRUE)))
+    }
   }
-  dn <- .create_dn(userId, "EDI")
-  resp <- httr::GET(
-    url = paste0(base_url("development"), "/package/eml"),
-    config = httr::authenticate(dn, userPass, type = "basic"),
-    handle = httr::handle("")
-  )
-  httr::stop_for_status(resp)
-  token_name <- httr::cookies(resp)$name
-  token_value <- httr::cookies(resp)$value
-  Sys.setenv(EDI_TOKEN = token_value[token_name == "edi-token"])
-  try(Sys.setenv(AUTH_TOKEN = token_value[token_name == "auth-token"]), silent = TRUE) # facilitates deprecation of the "auth-token"
+  
+  if (!is.null(key) && key != "") {
+    Sys.setenv(EDI_API_KEY = key)
+    message("Logged in with EDI-API key.")
+    return(invisible(NULL))
+  }
+  
+  if (is.null(userId) && is.null(userPass) && is.null(key)) {
+    key_input <- readline("EDI-API key (leave blank to use username/password): ")
+    key_input <- trimws(key_input)
+    if (key_input != "") {
+      Sys.setenv(EDI_API_KEY = key_input)
+      message("Logged in with EDI-API key.")
+      return(invisible(NULL))
+    }
+    
+    userId <- readline("User name: ")
+    userPass <- readline("User password: ")
+  }
+  
+  if (!is.null(userId) && !is.null(userPass) && userId != "" && userPass != "") {
+    dn <- .create_dn(userId, "EDI")
+    resp <- httr::GET(
+      url = paste0(base_url("development"), "/package/eml"),
+      config = httr::authenticate(dn, userPass, type = "basic"),
+      handle = httr::handle("")
+    )
+    httr::stop_for_status(resp)
+    token_name <- httr::cookies(resp)$name
+    token_value <- httr::cookies(resp)$value
+    Sys.setenv(EDI_TOKEN = token_value[token_name == "edi-token"])
+    try(Sys.setenv(AUTH_TOKEN = token_value[token_name == "auth-token"]), silent = TRUE) # facilitates deprecation of the "auth-token"
+    message("Logged in with EDI username and password.")
+  } else {
+    stop("Please provide either an API key, or both userId and userPass.", call. = FALSE)
+  }
+  return(invisible(NULL))
 }
 
 
