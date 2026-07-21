@@ -55,7 +55,7 @@ update_data_package <- function(eml, useChecksum = FALSE, env = "production") {
     url <- paste0(url, "?useChecksum")
   }
   cookie <- bake_cookie()
-  resp <- httr::PUT(
+  resp <- api_put(
     url,
     set_user_agent(),
     cookie,

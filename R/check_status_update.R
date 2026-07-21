@@ -55,7 +55,7 @@ check_status_update <- function(transaction, wait = TRUE, env = "production") {
         paste(parse_packageId(packageId), collapse = "/")
       )
       cookie <- bake_cookie()
-      resp <- httr::GET(
+      resp <- api_get(
         url,
         set_user_agent(),
         cookie,
@@ -72,7 +72,7 @@ check_status_update <- function(transaction, wait = TRUE, env = "production") {
       paste(parse_packageId(packageId), collapse = "/")
     )
     cookie <- bake_cookie()
-    resp <- httr::GET(
+    resp <- api_get(
       url,
       set_user_agent(),
       cookie,

@@ -38,7 +38,7 @@ read_data_package_archive <- function(packageId,
     base_url(env), "/package/download/eml/",
     paste(parse_packageId(packageId), collapse = "/")
   )
-  resp <- httr::GET(
+  resp <- api_get(
     url,
     set_user_agent(),
     handle = httr::handle(""),

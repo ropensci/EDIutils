@@ -43,7 +43,7 @@ is_authorized <- function(resourceId, env = "production") {
     resourceId
   )
   cookie <- bake_cookie()
-  resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), cookie, handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   if (resp$status_code == "200") {

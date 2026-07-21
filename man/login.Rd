@@ -4,38 +4,39 @@
 \alias{login}
 \title{Login to the EDI repository}
 \usage{
-login(userId = NULL, userPass = NULL, config = NULL)
+login(userId = NULL, userPass = NULL, key = NULL, config = NULL)
 }
 \arguments{
-\item{userId}{(character) User identifier of an EDI data repository account.
-If using}
+\item{userId}{(character) User identifier of an EDI data repository account.}
 
 \item{userPass}{(character) Password of \code{userId}}
 
+\item{key}{(character) EDI-API access key.}
+
 \item{config}{(character) Path to config.txt, which contains \code{userId}
-and \code{userPass} (see details below)}
+and \code{userPass} or \code{key} (see details below)}
 }
 \value{
-(character) Temporary (~10 hour) authentication tokens written to
-the system variables "EDI_TOKEN" and "AUTH_TOKEN".
+(NULL) No return value. The token or API key is written to its respective environment variable.
 }
 \description{
 Login to the EDI repository
 }
 \details{
-If \code{userId}, \code{userPass}, and \code{config} are NULL, the console
+If \code{userId}, \code{userPass}, \code{key}, and \code{config} are NULL, the console
 will prompt for credentials.
 
 \code{config}: Supplying credentials in a file named config.txt facilitates
 authentication within automated/unassisted processes. Contents of this file
 should be new line separated and have the form "<argument> = <value>" (e.g.
-userId = myname).
+userId = myname or key = my_api_key).
 }
 \note{
-Only works when authenticating with EDI credentials. Does not work
-when authenticating with ORCiD, GitHub, or Google credentials.
+Legacy credentials login only works when authenticating with EDI credentials. 
+For modern token-free authentication, generate an API key from the EDI Portal 
+and supply it as the \code{key} parameter or in your \code{config} file.
 
-Be careful not to accidentally share your \code{userId} and \code{userPass}.
+Be careful not to accidentally share your credentials.
 Some tips to avoid this:
 \itemize{
   \item Don't write code that explicitly lists your credentials.
@@ -53,19 +54,21 @@ If you may have shared your credentials, please reset your password at
 
 # Interactively at the console
 login()
-#> User name: "my_name"
-#> User password: "my_secret"
+#> EDI-API key (leave blank to use username/password): "my_api_key"
 
-# Programmatically with function arguments
+# Programmatically with an API key
+login(key = "my_api_key")
+
+# Programmatically with legacy function arguments
 login(userId = "my_name", userPass = "my_secret")
 
-# Programmatically with a file containing userId and userPass arguments
+# Programmatically with a file containing credentials
 login(config = paste0(tempdir(), "/config.txt"))
 }
 
 }
 \seealso{
-Other Authentication: 
-\code{\link{logout}()}
+Other Authentication:
+\code{\link[=logout]{logout()}}
 }
 \concept{Authentication}

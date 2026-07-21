@@ -120,14 +120,14 @@ search_data_packages <- function(query,
     base_url(env),
     "/package/search/eml?defType=edismax&", query
   )
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   res <- xml2::read_xml(res)
   numfound <- xml2::xml_attr(res, "numFound")
   # Second query
   url <- paste0(url, "&rows=", numfound)
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   res <- xml2::read_xml(res)

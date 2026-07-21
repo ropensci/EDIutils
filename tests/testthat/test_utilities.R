@@ -107,3 +107,41 @@ testthat::test_that("xml2df() works", {
   res <- xml2df(dataDescendants)
   expect_equal(class(res), "data.frame")
 })
+
+
+
+testthat::test_that("add_api_key() works", {
+  # Save original key
+  orig_key <- Sys.getenv("EDI_API_KEY")
+  on.exit(if (orig_key == "") Sys.unsetenv("EDI_API_KEY") else Sys.setenv(EDI_API_KEY = orig_key))
+  
+  # No key set
+  Sys.unsetenv("EDI_API_KEY")
+  expect_equal(add_api_key("https://pasta.lternet.edu/package"), "https://pasta.lternet.edu/package")
+  
+  # Key set, no existing parameters
+  Sys.setenv(EDI_API_KEY = "testkey")
+  expect_equal(add_api_key("https://pasta.lternet.edu/package"), "https://pasta.lternet.edu/package?key=testkey")
+  
+  # Key set, existing parameters
+  expect_equal(add_api_key("https://pasta.lternet.edu/package?ore"), "https://pasta.lternet.edu/package?ore&key=testkey")
+  
+  # Key set, key already in URL (should not duplicate)
+  expect_equal(add_api_key("https://pasta.lternet.edu/package?key=testkey"), "https://pasta.lternet.edu/package?key=testkey")
+})
+
+
+testthat::test_that("login() and logout() with API key works", {
+  # Save original key
+  orig_key <- Sys.getenv("EDI_API_KEY")
+  on.exit(if (orig_key == "") Sys.unsetenv("EDI_API_KEY") else Sys.setenv(EDI_API_KEY = orig_key))
+  
+  # Test programmatic login with key
+  Sys.unsetenv("EDI_API_KEY")
+  login(key = "test_api_key")
+  expect_equal(Sys.getenv("EDI_API_KEY"), "test_api_key")
+  
+  # Test logout unsets key
+  logout()
+  expect_equal(Sys.getenv("EDI_API_KEY"), "")
+})

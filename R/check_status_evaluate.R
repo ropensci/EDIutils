@@ -55,7 +55,7 @@ check_status_evaluate <- function(transaction,
         transaction
       )
       cookie <- bake_cookie()
-      resp <- httr::GET(
+      resp <- api_get(
         url,
         set_user_agent(),
         cookie,
@@ -72,7 +72,7 @@ check_status_evaluate <- function(transaction,
       transaction
     )
     cookie <- bake_cookie()
-    resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
+    resp <- api_get(url, set_user_agent(), cookie, handle = httr::handle(""))
     if (resp$status_code == "200") {
       return(TRUE)
     } else {

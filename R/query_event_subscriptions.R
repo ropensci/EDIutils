@@ -61,7 +61,7 @@ query_event_subscriptions <- function(query = NULL,
     url <- paste0(url, query)
   }
   cookie <- bake_cookie()
-  resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), cookie, handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   res <- xml2::read_xml(res)

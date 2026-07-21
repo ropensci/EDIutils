@@ -65,7 +65,7 @@
 get_audit_csv_report <- function(query, env = "production") {
   url <- paste0(base_url(env), "/audit/csvreport?", query)
   cookie <- bake_cookie()
-  resp <- httr::GET(url, set_user_agent(), cookie, handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), cookie, handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   res <- read.csv(text = res, stringsAsFactors = FALSE)

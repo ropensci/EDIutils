@@ -35,7 +35,7 @@ get_provenance_metadata <- function(packageId, env = "production") {
     base_url(env), "/package/provenance/eml/",
     paste(parse_packageId(packageId), collapse = "/")
   )
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   return(xml2::read_xml(res))

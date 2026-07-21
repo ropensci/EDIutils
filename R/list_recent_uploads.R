@@ -27,7 +27,7 @@ list_recent_uploads <- function(type,
     base_url(env), "/package/uploads/eml",
     "?type=", type, "&limit=", limit
   )
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   res <- xml2::read_xml(res)

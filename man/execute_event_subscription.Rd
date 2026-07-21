@@ -56,11 +56,11 @@ logout()
 
 }
 \seealso{
-Other Event Notifications: 
-\code{\link{create_event_subscription}()},
-\code{\link{delete_event_subscription}()},
-\code{\link{get_event_subscription}()},
-\code{\link{get_event_subscription_schema}()},
-\code{\link{query_event_subscriptions}()}
+Other Event Notifications:
+\code{\link[=create_event_subscription]{create_event_subscription()}},
+\code{\link[=delete_event_subscription]{delete_event_subscription()}},
+\code{\link[=get_event_subscription]{get_event_subscription()}},
+\code{\link[=get_event_subscription_schema]{get_event_subscription_schema()}},
+\code{\link[=query_event_subscriptions]{query_event_subscriptions()}}
 }
 \concept{Event Notifications}

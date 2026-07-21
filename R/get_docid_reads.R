@@ -26,7 +26,7 @@ get_docid_reads <- function(scope,
                             as = "data.frame", 
                             env = "production") {
   url <- paste0(base_url(env), "/audit/reads/", scope, "/", identifier)
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   res <- xml2::read_xml(res)

@@ -29,7 +29,7 @@
 #' }
 list_user_data_packages <- function(edi_id, env = "production") {
   url <- paste0(base_url(env), "/package/user/", edi_id)
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   return(text2char(res))

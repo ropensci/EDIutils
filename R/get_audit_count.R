@@ -68,7 +68,7 @@ get_audit_count <- function(query, env = "production") {
     url <- paste0(url, query)
   }
   cookie <- bake_cookie()
-  resp <- httr::GET(
+  resp <- api_get(
     url,
     set_user_agent(),
     cookie,

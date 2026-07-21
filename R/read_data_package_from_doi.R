@@ -48,7 +48,7 @@ read_data_package_from_doi <- function(doi, ore = FALSE) {
   if (ore) {
     url <- paste0(url, "?ore")
   }
-  resp <- httr::GET(url, set_user_agent(), handle = httr::handle(""))
+  resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   if (ore) {

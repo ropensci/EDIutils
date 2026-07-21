@@ -48,8 +48,8 @@ logout()
 
 }
 \seealso{
-Other Miscellaneous: 
-\code{\link{create_data_package_archive}()},
-\code{\link{create_dn}()}
+Other Miscellaneous:
+\code{\link[=create_data_package_archive]{create_data_package_archive()}},
+\code{\link[=create_dn]{create_dn()}}
 }
 \concept{Miscellaneous}

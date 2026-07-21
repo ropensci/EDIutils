@@ -46,7 +46,7 @@ get_recent_uploads <- function(query, as = "data.frame", env = "production") {
   if (!is.null(query)) {
     url <- paste0(url, query)
   }
-  resp <- httr::GET(
+  resp <- api_get(
     url,
     set_user_agent(),
     handle = httr::handle("")

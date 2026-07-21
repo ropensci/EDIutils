@@ -50,7 +50,7 @@ execute_event_subscription <- function(subscriptionId, env = "production") {
     subscriptionId
   )
   cookie <- bake_cookie()
-  resp <- httr::POST(
+  resp <- api_post(
     url,
     set_user_agent(),
     cookie,
