@@ -7,12 +7,14 @@
 #'
 bake_cookie <- function() {
   edi_token <- Sys.getenv("EDI_TOKEN")
-  has_key <- Sys.getenv("EDI_API_KEY") != ""
+  has_key <- Sys.getenv("EDI_API_KEY") != "" && Sys.getenv("EDI_API_KEY") != "foobar"
   try(auth_token <- Sys.getenv("AUTH_TOKEN"), silent = TRUE)  # facilitates deprecation of the "auth-token"
+  
+  if (has_key && (edi_token == "" || edi_token == "foobar")) {
+    return(httr::config())
+  }
+  
   if (edi_token == "") {
-    if (has_key) {
-      return(httr::config())
-    }
     stop("Authentication token not found. Run 'login()' then try again.",
       call. = FALSE
     )
@@ -171,7 +173,8 @@ create_test_eml <- function(path, packageId, edi_id) {
 #' @noRd
 #'
 get_test_package <- function() {
-  return("edi.1892.2")
+  user_data_packages <- list_user_data_packages("EDI-0c385786add7d657afe19ddf52858a6a7226ba32", env = "staging")
+  return(user_data_packages[1])
 }
 
 

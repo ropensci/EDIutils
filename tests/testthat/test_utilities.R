@@ -145,3 +145,39 @@ testthat::test_that("login() and logout() with API key works", {
   logout()
   expect_equal(Sys.getenv("EDI_API_KEY"), "")
 })
+
+
+testthat::test_that("bake_cookie() handles key-only authentication correctly", {
+  # Save original environment variables
+  orig_token <- Sys.getenv("EDI_TOKEN")
+  orig_key <- Sys.getenv("EDI_API_KEY")
+  on.exit({
+    if (orig_token == "") Sys.unsetenv("EDI_TOKEN") else Sys.setenv(EDI_TOKEN = orig_token)
+    if (orig_key == "") Sys.unsetenv("EDI_API_KEY") else Sys.setenv(EDI_API_KEY = orig_key)
+  })
+  
+  # Case 1: EDI_TOKEN is empty, EDI_API_KEY is empty -> expect error
+  Sys.unsetenv("EDI_TOKEN")
+  Sys.unsetenv("EDI_API_KEY")
+  expect_error(bake_cookie(), "Authentication token not found")
+  
+  # Case 2: EDI_TOKEN is set, EDI_API_KEY is empty -> expect baked cookie
+  Sys.setenv(EDI_TOKEN = "mock_token")
+  cookie <- bake_cookie()
+  expect_s3_class(cookie, "request")
+  expect_match(cookie$options$cookie, "edi-token=mock_token")
+  
+  # Case 3: EDI_TOKEN is empty, EDI_API_KEY is set -> expect empty config (no error)
+  Sys.unsetenv("EDI_TOKEN")
+  Sys.setenv(EDI_API_KEY = "mock_key")
+  config <- bake_cookie()
+  expect_s3_class(config, "request")
+  expect_null(config$options$cookie)
+  
+  # Case 4: EDI_TOKEN is 'foobar' (fake), EDI_API_KEY is set (live test run) -> expect empty config
+  Sys.setenv(EDI_TOKEN = "foobar")
+  Sys.setenv(EDI_API_KEY = "mock_key")
+  config <- bake_cookie()
+  expect_s3_class(config, "request")
+  expect_null(config$options$cookie)
+})
