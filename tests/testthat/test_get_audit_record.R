@@ -2,9 +2,9 @@ context("Get audit record")
 
 testthat::test_that("get_audit_record() works (real call)", {
   skip_if_logged_out()
-  uploads <- get_recent_uploads(query = "serviceMethod=createDataPackage&limit=1")
+  uploads <- get_recent_uploads(query = "serviceMethod=createDataPackage&limit=1", env = "staging")
   oid <- uploads$oid
-  auditReport <- get_audit_record(oid, as = "xml")
+  auditReport <- get_audit_record(oid, as = "xml", env = "staging")
   res <- xml2::xml_find_first(auditReport, ".//auditRecord")
   children_found <- xml2::xml_name(xml2::xml_children(res))
   children_expected <- c("oid", "entryTime", "category", "service",
