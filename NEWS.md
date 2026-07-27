@@ -1,7 +1,7 @@
-EDIutils 2.2.0 (2026-07-21)
+EDIutils 3.0.0 (2026-07-27)
 ===========================
 
-### MAJOR IMPROVEMENTS
+### BREAKING CHANGES
 
   * Transitioned all API wrapper functions to support mandatory authenticated access using EDI-API keys. Direct `httr` request verbs are now centralized through internal wrappers (`api_get()`, `api_post()`, `api_put()`, `api_delete()`) that append the API key as a query parameter (`?key=`) when the environment variable `EDI_API_KEY` is present.
 
