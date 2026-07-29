@@ -44,6 +44,10 @@ bake_cookie <- function() {
 #' @noRd
 #'
 base_url <- function(env) {
+  test_env <- Sys.getenv("EDI_TEST_ENV")
+  if (test_env != "" && tolower(env) == "production" && !is_vcr_replaying()) {
+    env <- test_env
+  }
   env <- tolower(env)
   if (env == "development") {
     res <- "https://pasta-d.lternet.edu"
@@ -72,6 +76,10 @@ base_url <- function(env) {
 #' @noRd
 #'
 base_url_portal <- function(env) {
+  test_env <- Sys.getenv("EDI_TEST_ENV")
+  if (test_env != "" && tolower(env) == "production" && !is_vcr_replaying()) {
+    env <- test_env
+  }
   env <- tolower(env)
   if (env == "development") {
     res <- "https://portal-d.edirepository.org"
