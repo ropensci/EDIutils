@@ -89,8 +89,47 @@ testthat::test_that("Test attributes of returned object", {
 
 ## Run Tests
 
-1. Authenticate with `login(key = "your_key")` or set the environment variable `EDI_API_KEY`
+### Standard Mock Tests (Fast / Offline)
 
-2. Configure test data package with `config_test_eml()`
+By default, the test suite uses `vcr` cassettes for fast, offline testing:
 
-3. Run test suite `devtools::test()`
+1. Run the test suite:
+   ```r
+   devtools::test()
+   ```
+
+### Live HTTP Tests Against Staging
+
+To run tests against the live PASTA staging environment instead of recorded VCR cassettes:
+
+1. Set your staging API key:
+   ```r
+   Sys.setenv("EDI_API_KEY" = "your_staging_api_key")
+   ```
+
+2. (Optional) Configure test data package if running package lifecycle tests:
+   ```r
+   config_test_eml()
+   ```
+
+3. Enable all authenticated tests:
+   ```r
+   Sys.setenv("RUN_ALL_TESTS" = "true")
+   ```
+
+4. Bypass VCR cassette playback:
+   ```r
+   Sys.setenv("VCR_TURN_OFF" = "true")
+   ```
+
+5. **Request Throttling**: When running real HTTP requests, the test suite automatically introduces a delay between requests (default 1 second) via `httr` response callbacks to avoid PASTA rate limits (HTTP 429). You can customize or disable this delay via the `EDI_TEST_THROTTLE_DELAY` environment variable:
+   ```r
+   # Set custom delay in seconds (e.g. 2s or 0s)
+   Sys.setenv("EDI_TEST_THROTTLE_DELAY" = "1")
+   ```
+
+6. Run the test suite:
+   ```r
+   devtools::test()
+   ```
+
