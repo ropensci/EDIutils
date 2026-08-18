@@ -1,9 +1,9 @@
 ## Release Summary
-This EDIutils release, version 3.0.0, transitions all API wrapper functions to 
-support mandatory authenticated access using EDI API keys. To minimize the 
-impact on downstream workflows, authentication requires minimal updates: users 
-simply need to set their API key as an environment variable or pass it directly 
-into the login() function.
+This EDIutils release, version 3.0.1, improves test suite reliability and 
+isolation by migrating all test suites and VCR mock fixtures to the PASTA 
+staging environment, dynamically discovering test entity and descendant 
+identifiers, configuring live request throttling to prevent HTTP 429 rate 
+limiting, and modularizing internal test helper utilities.
 
 
 ## Test environments
