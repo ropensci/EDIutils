@@ -1,3 +1,16 @@
+EDIutils 3.0.1 (2026-08-18)
+===========================
+
+### MINOR IMPROVEMENTS
+
+  * Migrated the test suite and VCR cassette fixtures to the PASTA staging environment (`https://pasta-s.lternet.edu`), preventing test pollution on the production repository.
+  * Enhanced entity and descendant tests to dynamically resolve entity IDs and derived package identifiers at runtime.
+  * Added configurable request throttling (`EDI_TEST_THROTTLE_DELAY`, default 2s in CI) for live HTTP test requests to prevent HTTP 429 rate limit errors.
+  * Configured VCR cassette mocks for `read_data_package_archive()`.
+  * Refactored test-only helper functions into `tests/testthat/helper-test-package.R` to keep package runtime namespace clean and modular.
+  * Updated GitHub Actions CI workflows with sequential execution (`max-parallel: 1`), request throttling, and `workflow_dispatch` manual triggers.
+
+
 EDIutils 3.0.0 (2026-07-27)
 ===========================
 

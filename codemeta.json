@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/ropensci/EDIutils",
   "issueTracker": "https://github.com/ropensci/EDIutils/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
