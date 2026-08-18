@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://pasta.lternet.edu/audit/csvreport?serviceMethod=readDataEntity&limit=1
+    uri: https://pasta-s.lternet.edu/audit/csvreport?serviceMethod=readDataEntity&limit=1
   response:
     status: 200
     headers:

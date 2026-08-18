@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/package/search/eml?defType=edismax&q=%22air+temperature%22&fl=*
+    uri: https://pasta-s.lternet.edu/package/search/eml?defType=edismax&q=%22air+temperature%22&fl=*
     body:
       encoding: ''
       string: ''
@@ -114,7 +114,7 @@ http_interactions:
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: https://pasta.lternet.edu/package/search/eml?defType=edismax&q=%22air+temperature%22&fl=*&rows=1347
+    uri: https://pasta-s.lternet.edu/package/search/eml?defType=edismax&q=%22air+temperature%22&fl=*&rows=1347
     body:
       encoding: ''
       string: ''

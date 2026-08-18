@@ -2,7 +2,7 @@ context("Get event subscription schema")
 
 testthat::test_that("get_event_subscription_schema() works", {
   vcr::use_cassette("get_event_subscription_schema", {
-    res <- get_event_subscription_schema()
+    res <- get_event_subscription_schema(env = "staging")
   })
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))
   expect_true("element" %in% xml2::xml_name(xml2::xml_children(res)))

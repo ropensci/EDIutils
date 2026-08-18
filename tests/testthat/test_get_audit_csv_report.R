@@ -3,7 +3,7 @@ context("Get audit csv report")
 testthat::test_that("get_audit_csv_report() works", {
   query <- "serviceMethod=readDataEntity&limit=1"
   vcr::use_cassette("get_audit_csv_report", {
-    auditReport <- get_audit_csv_report(query)
+    auditReport <- get_audit_csv_report(query, env = "staging")
   })
   expect_true("data.frame" %in% class(auditReport))
   expected_columns <- c(

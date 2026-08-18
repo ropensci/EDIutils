@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://cite.edirepository.org/cite/edi.460.1?env=production&style=ESIP&access
+    uri: https://cite.edirepository.org/cite/edi.1923.1?env=staging&style=ESIP&access
     body:
       encoding: ''
       string: ''

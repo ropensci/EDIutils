@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://pasta.lternet.edu/audit/report?serviceMethod=readDataEntity&limit=1
+    uri: https://pasta-s.lternet.edu/audit/report?serviceMethod=readDataEntity&limit=1
   response:
     status: 200
     headers:
@@ -30,7 +30,7 @@ http_interactions:
           <service>DataPackageManager-1.0</service>
           <serviceMethod>readDataEntity</serviceMethod>
           <responseStatus>200</responseStatus>
-          <resourceId>https://pasta.lternet.edu/package/data/eml/knb-lter-sgs/157/18/c219e8dbce02b9620d910f1c94bce2c0</resourceId>
+          <resourceId>https://pasta-s.lternet.edu/package/data/eml/knb-lter-sgs/157/18/c219e8dbce02b9620d910f1c94bce2c0</resourceId>
           <user>public</user>
           <userAgent></userAgent>
           <groups></groups>

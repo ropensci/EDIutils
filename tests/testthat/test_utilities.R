@@ -1,11 +1,6 @@
 context('Utility functions')
 
 testthat::test_that('PASTA URLs are valid', {
-  orig_test_env <- Sys.getenv("EDI_TEST_ENV")
-  if (orig_test_env != "") {
-    Sys.unsetenv("EDI_TEST_ENV")
-    on.exit(Sys.setenv(EDI_TEST_ENV = orig_test_env), add = TRUE)
-  }
   # development
   expect_equal(base_url('development'), 'https://pasta-d.lternet.edu')
   # staging
@@ -18,11 +13,6 @@ testthat::test_that('PASTA URLs are valid', {
 
 
 testthat::test_that('Portal URLs are valid', {
-  orig_test_env <- Sys.getenv("EDI_TEST_ENV")
-  if (orig_test_env != "") {
-    Sys.unsetenv("EDI_TEST_ENV")
-    on.exit(Sys.setenv(EDI_TEST_ENV = orig_test_env), add = TRUE)
-  }
   # development
   expect_equal(
     base_url_portal('development'), 'https://portal-d.edirepository.org')
@@ -104,15 +94,16 @@ testthat::test_that("xml2df() works", {
   # One level of nesting
   vcr::use_cassette("read_data_package_report_resource_metadata", {
     resourceMetadata <- read_data_package_report_resource_metadata(
-      packageId = "knb-lter-mcm.9129.3", 
-      as = "xml"
+      packageId = get_test_package(), 
+      as = "xml",
+      env = "staging"
     )
   })
   res <- xml2df(resourceMetadata)
   expect_equal(class(res), "data.frame")
   # Two levels of nesting
   vcr::use_cassette("list_data_descendants", {
-    dataDescendants <- list_data_descendants("knb-lter-bnz.501.17", as = "xml")
+    dataDescendants <- list_data_descendants(get_test_package(), as = "xml", env = "staging")
   })
   res <- xml2df(dataDescendants)
   expect_equal(class(res), "data.frame")

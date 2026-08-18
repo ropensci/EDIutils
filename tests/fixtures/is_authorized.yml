@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/package/authz?resourceId=https://pasta.lternet.edu/package/report/eml/knb-lter-sbc/6006/3
+    uri: https://pasta-s.lternet.edu/package/authz?resourceId=https://pasta-s.lternet.edu/package/report/eml/edi/1923/1
     body:
       encoding: ''
       string: ''
@@ -23,6 +23,6 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: https://pasta.lternet.edu/package/report/eml/knb-lter-sbc/6006/3
+      string: https://pasta-s.lternet.edu/package/report/eml/knb-lter-sbc/6006/3
   recorded_at: 2022-01-18 16:44:54 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
