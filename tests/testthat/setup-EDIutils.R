@@ -29,3 +29,15 @@ invisible(vcr::vcr_configure(
   filter_request_headers = list(`auth-token` = "<<<not-my-bearer-token>>>"),
   filter_response_headers = list(`auth-token` = "<<<not-my-bearer-token>>>")
 ))
+
+# Throttle real HTTP requests to avoid PASTA rate limits (e.g. HTTP 429)
+# Note: httr's response callback is only invoked on actual network requests,
+# ensuring vcr cassette replays remain instantaneous.
+throttle_delay <- as.numeric(Sys.getenv("EDI_TEST_THROTTLE_DELAY", "1"))
+if (is.finite(throttle_delay) && throttle_delay > 0) {
+  httr::set_callback("response", function(req, res) {
+    Sys.sleep(throttle_delay)
+    return(NULL)
+  })
+}
+
