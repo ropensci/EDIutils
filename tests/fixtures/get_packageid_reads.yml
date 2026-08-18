@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/audit/reads/knb-lter-sgs/817/17
+    uri: https://pasta-s.lternet.edu/audit/reads/edi/1923/1
     body:
       encoding: ''
       string: ''
@@ -28,7 +28,7 @@ http_interactions:
         <?xml version="1.0" encoding="UTF-8"?>
         <resourceReads>
             <resource>
-                <resourceId>https://pasta.lternet.edu/package/metadata/eml/knb-lter-sgs/817/17</resourceId>
+                <resourceId>https://pasta-s.lternet.edu/package/metadata/eml/knb-lter-sgs/817/17</resourceId>
                 <resourceType>metadata</resourceType>
                 <scope>knb-lter-sgs</scope>
                 <identifier>817</identifier>
@@ -37,7 +37,7 @@ http_interactions:
                 <nonRobotReads>518</nonRobotReads>
             </resource>
             <resource>
-                <resourceId>https://pasta.lternet.edu/package/eml/knb-lter-sgs/817/17</resourceId>
+                <resourceId>https://pasta-s.lternet.edu/package/eml/knb-lter-sgs/817/17</resourceId>
                 <resourceType>dataPackage</resourceType>
                 <scope>knb-lter-sgs</scope>
                 <identifier>817</identifier>
@@ -46,7 +46,7 @@ http_interactions:
                 <nonRobotReads>394</nonRobotReads>
             </resource>
             <resource>
-                <resourceId>https://pasta.lternet.edu/package/report/eml/knb-lter-sgs/817/17</resourceId>
+                <resourceId>https://pasta-s.lternet.edu/package/report/eml/knb-lter-sgs/817/17</resourceId>
                 <resourceType>report</resourceType>
                 <scope>knb-lter-sgs</scope>
                 <identifier>817</identifier>
@@ -55,7 +55,7 @@ http_interactions:
                 <nonRobotReads>11</nonRobotReads>
             </resource>
             <resource>
-                <resourceId>https://pasta.lternet.edu/package/data/eml/knb-lter-sgs/817/17/7c1ee60c37b60b35f05c94475c070750</resourceId>
+                <resourceId>https://pasta-s.lternet.edu/package/data/eml/knb-lter-sgs/817/17/7c1ee60c37b60b35f05c94475c070750</resourceId>
                 <resourceType>data</resourceType>
                 <scope>knb-lter-sgs</scope>
                 <identifier>817</identifier>

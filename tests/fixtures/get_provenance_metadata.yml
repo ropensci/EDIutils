@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/package/provenance/eml/knb-lter-pal/309/1
+    uri: https://pasta-s.lternet.edu/package/provenance/eml/edi/1923/1
     body:
       encoding: ''
       string: ''
@@ -88,7 +88,7 @@ http_interactions:
         <distribution>
         <online>
         <onlineDescription>This online link references an EML document that describes data used in the creation of this derivative data package.</onlineDescription>
-        <url function="information">https://pasta.lternet.edu/package/metadata/eml/knb-lter-pal/309/1</url>
+        <url function="information">https://pasta-s.lternet.edu/package/metadata/eml/knb-lter-pal/309/1</url>
         </online>
         </distribution>
         <contact>

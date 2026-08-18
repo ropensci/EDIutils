@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/package/eml/knb-lter-cwt/5026/13
+    uri: https://pasta-s.lternet.edu/package/eml/edi/1923/1
     body:
       encoding: ''
       string: ''
@@ -24,10 +24,10 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: |
-        https://pasta.lternet.edu/package/data/eml/knb-lter-cwt/5026/13/7abb4028c288b4570dcb637f04ddda2b
-        https://pasta.lternet.edu/package/data/eml/knb-lter-cwt/5026/13/95d85c2a592f8b8113fe4286082fb347
-        https://pasta.lternet.edu/package/metadata/eml/knb-lter-cwt/5026/13
-        https://pasta.lternet.edu/package/report/eml/knb-lter-cwt/5026/13
-        https://pasta.lternet.edu/package/eml/knb-lter-cwt/5026/13
+        https://pasta-s.lternet.edu/package/data/eml/knb-lter-cwt/5026/13/7abb4028c288b4570dcb637f04ddda2b
+        https://pasta-s.lternet.edu/package/data/eml/knb-lter-cwt/5026/13/95d85c2a592f8b8113fe4286082fb347
+        https://pasta-s.lternet.edu/package/metadata/eml/knb-lter-cwt/5026/13
+        https://pasta-s.lternet.edu/package/report/eml/knb-lter-cwt/5026/13
+        https://pasta-s.lternet.edu/package/eml/edi/1923/1
   recorded_at: 2022-01-18 01:40:06 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/package/eml/deleted
+    uri: https://pasta-s.lternet.edu/package/eml/deleted
     body:
       encoding: ''
       string: ''

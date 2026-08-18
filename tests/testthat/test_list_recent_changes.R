@@ -2,10 +2,10 @@ context("List recent changes")
 
 testthat::test_that("list_recent_changes() works", {
   skip_if_logged_out()
-  res <- res <- list_recent_changes(
+  res <- list_recent_changes(
     fromDate = "2021-01-01T00:00:00",
     toDate = "2021-02-01T00:00:00",
-    scope = "knb-lter-hbr",
+    scope = "edi",
     as = "xml",
     env = "staging")
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))

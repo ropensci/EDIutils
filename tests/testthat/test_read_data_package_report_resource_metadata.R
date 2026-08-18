@@ -3,8 +3,9 @@ context("Read data package report resource metadata")
 testthat::test_that("read_data_package_report_resource_metadata() works", {
   vcr::use_cassette("read_data_package_report_resource_metadata", {
     res <- read_data_package_report_resource_metadata(
-      packageId = "knb-lter-mcm.9129.3", 
-      as = "xml"
+      packageId = get_test_package(), 
+      as = "xml",
+      env = "staging"
     )
   })
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))

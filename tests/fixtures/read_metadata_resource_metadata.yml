@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/package/metadata/rmd/eml/knb-lter-pal/309/1
+    uri: https://pasta-s.lternet.edu/package/metadata/rmd/eml/edi/1923/1
     body:
       encoding: ''
       string: ''
@@ -35,7 +35,7 @@ http_interactions:
             <md5Checksum>e1cbd509d73797dd4b23f0d30c30548d</md5Checksum>
             <packageId>knb-lter-pal.309.1</packageId>
             <principalOwner>uid=PAL,o=EDI,dc=edirepository,dc=org</principalOwner>
-            <resourceId>https://pasta.lternet.edu/package/metadata/eml/knb-lter-pal/309/1</resourceId>
+            <resourceId>https://pasta-s.lternet.edu/package/metadata/eml/knb-lter-pal/309/1</resourceId>
             <resourceType>metadata</resourceType>
             <revision>1</revision>
             <scope>knb-lter-pal</scope>

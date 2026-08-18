@@ -4,6 +4,7 @@
 #' format "shoulder/pasta/md5"
 #' @param ore (logical) Return an OAI-ORE compliant resource map in RDF-XML
 #' format
+#' @inheritParams read_metadata
 #'
 #' @return (character or xml_document) A resource map with reference URLs to
 #' each of the metadata, data, and quality report resources that comprise the
@@ -43,8 +44,8 @@
 #' #> [7] <rdf:Description rdf:about="http://www.openarchives.org/ore/terms ...
 #' #> [8] <rdf:Description rdf:about="http://www.openarchives.org/ore/terms ...
 #' }
-read_data_package_from_doi <- function(doi, ore = FALSE) {
-  url <- paste0(base_url("production"), "/package/doi/", doi)
+read_data_package_from_doi <- function(doi, ore = FALSE, env = "production") {
+  url <- paste0(base_url(env), "/package/doi/", doi)
   if (ore) {
     url <- paste0(url, "?ore")
   }

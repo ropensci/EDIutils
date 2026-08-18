@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/package/uploads/eml?type=update&limit=5
+    uri: https://pasta-s.lternet.edu/package/uploads/eml?type=update&limit=5
     body:
       encoding: ''
       string: ''

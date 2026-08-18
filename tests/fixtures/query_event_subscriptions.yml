@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://pasta.lternet.edu/package/event/eml?scope=edi
+    uri: https://pasta-s.lternet.edu/package/event/eml?scope=edi
   response:
     status: 200
     headers:

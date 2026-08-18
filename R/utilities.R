@@ -44,10 +44,6 @@ bake_cookie <- function() {
 #' @noRd
 #'
 base_url <- function(env) {
-  test_env <- Sys.getenv("EDI_TEST_ENV")
-  if (test_env != "" && tolower(env) == "production" && !is_vcr_replaying()) {
-    env <- test_env
-  }
   env <- tolower(env)
   if (env == "development") {
     res <- "https://pasta-d.lternet.edu"
@@ -76,10 +72,6 @@ base_url <- function(env) {
 #' @noRd
 #'
 base_url_portal <- function(env) {
-  test_env <- Sys.getenv("EDI_TEST_ENV")
-  if (test_env != "" && tolower(env) == "production" && !is_vcr_replaying()) {
-    env <- test_env
-  }
   env <- tolower(env)
   if (env == "development") {
     res <- "https://portal-d.edirepository.org"
@@ -181,8 +173,25 @@ create_test_eml <- function(path, packageId, edi_id) {
 #' @noRd
 #'
 get_test_package <- function() {
-  user_data_packages <- list_user_data_packages("EDI-0c385786add7d657afe19ddf52858a6a7226ba32", env = "staging")
-  return(user_data_packages[1])
+  if (tolower(Sys.getenv("VCR_TURN_OFF")) != "true") {
+    return("edi.1923.1")
+  }
+  pkg <- tryCatch({
+    revs <- list_data_package_revisions(
+      scope = "edi",
+      identifier = "1923",
+      filter = "newest",
+      env = "staging"
+    )
+    if (length(revs) > 0 && !is.na(revs[1])) {
+      paste0("edi.1923.", revs[1])
+    } else {
+      "edi.1923.1"
+    }
+  }, error = function(e) {
+    "edi.1923.1"
+  })
+  return(pkg)
 }
 
 

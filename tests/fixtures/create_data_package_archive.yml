@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://pasta.lternet.edu/package/archive/eml/knb-lter-sev/31999/1
+    uri: https://pasta-s.lternet.edu/package/archive/eml/edi/1923/1
     body:
       encoding: ''
       string: ''

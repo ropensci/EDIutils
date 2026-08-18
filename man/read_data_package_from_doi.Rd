@@ -4,7 +4,7 @@
 \alias{read_data_package_from_doi}
 \title{Read data package from Digital Object Identifier}
 \usage{
-read_data_package_from_doi(doi, ore = FALSE)
+read_data_package_from_doi(doi, ore = FALSE, env = "production")
 }
 \arguments{
 \item{doi}{(character) Digital Object Identifier of data package in the
@@ -12,6 +12,9 @@ format "shoulder/pasta/md5"}
 
 \item{ore}{(logical) Return an OAI-ORE compliant resource map in RDF-XML
 format}
+
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (character or xml_document) A resource map with reference URLs to

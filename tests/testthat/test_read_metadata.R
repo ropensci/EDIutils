@@ -2,7 +2,8 @@ context("Read metadata")
 
 testthat::test_that("read_metadata() works", {
   vcr::use_cassette("read_metadata", {
-    res <- read_metadata("edi.100.1")
+    pkg <- get_test_package()
+    res <- read_metadata(pkg, env = "staging")
   })
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))
   expect_true(all(c("access", "dataset") %in% 

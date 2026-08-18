@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/package/rmd/eml/knb-lter-mcm/9129/3
+    uri: https://pasta-s.lternet.edu/package/rmd/eml/edi/1923/1
     body:
       encoding: ''
       string: ''
@@ -34,7 +34,7 @@ http_interactions:
             <identifier>9129</identifier>
             <packageId>knb-lter-mcm.9129.3</packageId>
             <principalOwner>uid=MCM,o=EDI,dc=edirepository,dc=org</principalOwner>
-            <resourceId>https://pasta.lternet.edu/package/eml/knb-lter-mcm/9129/3</resourceId>
+            <resourceId>https://pasta-s.lternet.edu/package/eml/knb-lter-mcm/9129/3</resourceId>
             <resourceType>dataPackage</resourceType>
             <revision>3</revision>
             <scope>knb-lter-mcm</scope>

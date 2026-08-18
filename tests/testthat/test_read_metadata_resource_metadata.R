@@ -2,7 +2,7 @@ context("Read metadata resource metadata")
 
 testthat::test_that("read_metadata_resource_metadata() works", {
   vcr::use_cassette("read_metadata_resource_metadata", {
-    res <- read_metadata_resource_metadata("knb-lter-pal.309.1", as = "xml")
+    res <- read_metadata_resource_metadata(get_test_package(), as = "xml", env = "staging")
   })
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))
   children_expected <- c("dateCreated", "entityId", "entityName", "fileName", 

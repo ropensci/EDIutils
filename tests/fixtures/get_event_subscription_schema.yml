@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/package/event/eml/schema
+    uri: https://pasta-s.lternet.edu/package/event/eml/schema
     body:
       encoding: ''
       string: ''

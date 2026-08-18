@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/package/metadata/eml/knb-lter-cap/691/2
+    uri: https://pasta-s.lternet.edu/package/metadata/eml/edi/1923/1
     body:
       encoding: ''
       string: ''
@@ -43,7 +43,7 @@ http_interactions:
         \           <simpleDelimited>\n              <fieldDelimiter>,</fieldDelimiter>\n
         \             <quoteCharacter>\"</quoteCharacter>\n            </simpleDelimited>\n
         \         </textFormat>\n        </dataFormat>\n        <distribution>\n          <online>\n
-        \           <url\n                    function=\"download\">https://pasta.lternet.edu/package/data/eml/knb-lter-cap/691/2/f6e4efd0b04aea3860724824ca05c5dd</url>\n
+        \           <url\n                    function=\"download\">https://pasta-s.lternet.edu/package/data/eml/knb-lter-cap/691/2/f6e4efd0b04aea3860724824ca05c5dd</url>\n
         \         </online>\n        </distribution>\n      </physical>\n      <coverage>\n
         \       <temporalCoverage>\n          <rangeOfDates>\n            <beginDate>\n
         \             <calendarDate>2010-10-12</calendarDate>\n            </beginDate>\n

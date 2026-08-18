@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pasta.lternet.edu/package/data/rmd/eml/knb-lter-cce/310/1/4aaaff61e0d316130be0b445d3013877
+    uri: https://pasta-s.lternet.edu/package/data/rmd/eml/edi/1923/1/4aaaff61e0d316130be0b445d3013877
     body:
       encoding: ''
       string: ''
@@ -35,7 +35,7 @@ http_interactions:
             <md5Checksum>8b22bf5c72c405aab93e44a6aa5b7d79</md5Checksum>
             <packageId>knb-lter-cce.310.1</packageId>
             <principalOwner>uid=EDI,o=EDI,dc=edirepository,dc=org</principalOwner>
-            <resourceId>https://pasta.lternet.edu/package/data/eml/knb-lter-cce/310/1/4aaaff61e0d316130be0b445d3013877</resourceId>
+            <resourceId>https://pasta-s.lternet.edu/package/data/eml/knb-lter-cce/310/1/4aaaff61e0d316130be0b445d3013877</resourceId>
             <resourceLocation>/pasta/data1</resourceLocation>
             <resourceSize>322263158</resourceSize>
             <resourceType>data</resourceType>
