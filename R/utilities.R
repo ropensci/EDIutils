@@ -195,6 +195,33 @@ get_test_package <- function() {
 }
 
 
+#' Get a test derived data package ID
+#'
+#' @return (character) Data package ID of the form "scope.identifier.revision"
+#' of a package derived from the test package.
+#'
+#' @noRd
+#'
+get_test_derived_package <- function() {
+  if (tolower(Sys.getenv("VCR_TURN_OFF")) != "true") {
+    return("edi.1932.1")
+  }
+  pkg <- tryCatch({
+    src_pkg <- get_test_package()
+    desc <- list_data_descendants(src_pkg, as = "data.frame", env = "staging")
+    if (is.data.frame(desc) && nrow(desc) > 0 && nzchar(desc$packageId[1])) {
+      desc$packageId[1]
+    } else {
+      "edi.1932.1"
+    }
+  }, error = function(e) {
+    "edi.1932.1"
+  })
+  return(pkg)
+}
+
+
+
 
 
 
@@ -380,7 +407,7 @@ is_vcr_replaying <- function() {
   if (requireNamespace("vcr", quietly = TRUE)) {
     cass <- vcr::current_cassette()
     if (!is.null(cass)) {
-      return(cass$record %in% c("none", "once"))
+      return(cass$replaying())
     }
   }
   return(FALSE)

@@ -1,8 +1,9 @@
 context("List data sources")
 
 testthat::test_that("list_data_sources() works", {
+  packageId <- get_test_derived_package()
   vcr::use_cassette("list_data_sources", {
-    res <- list_data_sources(get_test_package(), as = "xml", env = "staging")
+    res <- list_data_sources(packageId, as = "xml", env = "staging")
   })
   expect_true(all(class(res) %in% c("xml_document", "xml_node")))
   expect_true("dataSource" %in% xml2::xml_name(xml2::xml_children(res)))
