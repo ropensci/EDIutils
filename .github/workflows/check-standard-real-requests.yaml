@@ -7,6 +7,7 @@ on:
     branches: main
   schedule:
     - cron: '23 3 23 * *'
+  workflow_dispatch:
 
 name: R-CMD-check-real-requests
 
@@ -33,6 +34,7 @@ jobs:
       EDI_USER: ${{ secrets.EDI_USER }}
       EDI_PASS: ${{ secrets.EDI_PASS }}
       EDI_API_KEY: ${{ secrets.EDI_API_KEY }}
+      EDI_TEST_THROTTLE_DELAY: 2
       RUN_ALL_TESTS: true
       VCR_TURN_OFF: true
 
@@ -75,6 +77,7 @@ jobs:
       EDI_USER: ${{ secrets.EDI_USER }}
       EDI_PASS: ${{ secrets.EDI_PASS }}
       EDI_API_KEY: ${{ secrets.EDI_API_KEY }}
+      EDI_TEST_THROTTLE_DELAY: 2
       RUN_ALL_TESTS: true
       VCR_TURN_OFF: true
 
