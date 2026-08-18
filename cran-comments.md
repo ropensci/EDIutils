@@ -1,9 +1,11 @@
 ## Release Summary
-This EDIutils release, version 3.0.1, improves test suite reliability and 
-isolation by migrating all test suites and VCR mock fixtures to the PASTA 
-staging environment, dynamically discovering test entity and descendant 
-identifiers, configuring live request throttling to prevent HTTP 429 rate 
-limiting, and modularizing internal test helper utilities.
+This is a minor release (v3.0.1) updating test infrastructure and test isolation:
+* Migrated test suite and VCR mock fixtures to the PASTA staging environment to 
+  prevent test pollution on the production repository.
+* Dynamically resolve test entity and descendant identifiers.
+* Added request throttling for live HTTP test requests to prevent HTTP 429 rate 
+  limiting.
+* Modularized internal test helper utilities.
 
 
 ## Test environments
