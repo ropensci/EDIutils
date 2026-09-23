@@ -36,14 +36,21 @@ optionally specifying the date and time to and/or from which the changes
 should be listed. An optional scope value can be specified to filter results
 for a particular data package scope.
 }
+\note{
+User authentication is required (see \code{login()})
+}
 \examples{
 \dontrun{
+
+login()
 
 # Changes occurring in the first 3 days of 2021 for all scopes
 dataPackageChanges <- list_recent_changes(
  fromDate = "2021-01-01T00:00:00",
  toDate = "2021-01-03T00:00:00"
 )
+
+logout()
 }
 }
 \seealso{

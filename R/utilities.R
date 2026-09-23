@@ -308,29 +308,50 @@ add_api_key <- function(url) {
   return(url)
 }
 
+add_auth_cookie <- function(...) {
+  args <- list(...)
+  if (is_vcr_replaying()) {
+    return(args)
+  }
+  edi_token <- Sys.getenv("EDI_TOKEN")
+  if (nzchar(edi_token) && edi_token != "foobar") {
+    has_cookie <- any(vapply(args, function(x) {
+      inherits(x, "request") && !is.null(x$options$cookie)
+    }, logical(1)))
+    if (!has_cookie) {
+      args <- c(args, list(bake_cookie()))
+    }
+  }
+  return(args)
+}
+
 #' Internal API request wrappers
 #' @noRd
 api_get <- function(url, ...) {
   url <- add_api_key(url)
-  httr::GET(url, ...)
+  args <- add_auth_cookie(...)
+  do.call(httr::GET, c(list(url = url), args))
 }
 
 #' @noRd
 api_post <- function(url, ...) {
   url <- add_api_key(url)
-  httr::POST(url, ...)
+  args <- add_auth_cookie(...)
+  do.call(httr::POST, c(list(url = url), args))
 }
 
 #' @noRd
 api_put <- function(url, ...) {
   url <- add_api_key(url)
-  httr::PUT(url, ...)
+  args <- add_auth_cookie(...)
+  do.call(httr::PUT, c(list(url = url), args))
 }
 
 #' @noRd
 api_delete <- function(url, ...) {
   url <- add_api_key(url)
-  httr::DELETE(url, ...)
+  args <- add_auth_cookie(...)
+  do.call(httr::DELETE, c(list(url = url), args))
 }
 
 
