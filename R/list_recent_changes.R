@@ -17,6 +17,8 @@
 #' packageId, scope, identifier, revision, principal, doi, serviceMethod, and 
 #' date.
 #' 
+#' @note User authentication is required (see \code{login()})
+#' 
 #' @family Listing
 #'
 #' @export
@@ -24,11 +26,15 @@
 #' @examples
 #' \dontrun{
 #' 
+#' login()
+#' 
 #' # Changes occurring in the first 3 days of 2021 for all scopes
 #' dataPackageChanges <- list_recent_changes(
 #'  fromDate = "2021-01-01T00:00:00",
 #'  toDate = "2021-01-03T00:00:00"
 #' )
+#' 
+#' logout()
 #' }
 list_recent_changes <- function(fromDate = NULL,
                                 toDate = NULL,
@@ -45,7 +51,8 @@ list_recent_changes <- function(fromDate = NULL,
   if (!is.null(scope)) {
     url <- paste0(url, "&scope=", scope)
   }
-  resp <- api_get(url, set_user_agent(), handle = httr::handle(""))
+  cookie <- bake_cookie()
+  resp <- api_get(url, set_user_agent(), cookie, handle = httr::handle(""))
   res <- httr::content(resp, as = "text", encoding = "UTF-8")
   httr::stop_for_status(resp, res)
   res <- xml2::read_xml(res)

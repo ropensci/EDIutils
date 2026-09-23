@@ -5,6 +5,8 @@ EDIutils 3.0.2 (2026-09-23)
 
   * Added `env = "production"` parameter to `login()` to allow selecting the target repository environment ("production", "staging", or "development") when authenticating with legacy LDAP credentials. Previously, `login()` hardcoded the development tier, which caused authentication failures (`HTTP 401 Unauthorized`) when making requests to production or staging due to tier-specific JWT digital signing keys (#73).
   * Supported optional `env` configuration in credentials file for `login(config = ...)`.
+  * Fixed `list_recent_changes()` and `get_recent_uploads()` to send authentication cookie via `bake_cookie()`, resolving HTTP 401 Unauthorized and HTTP 403 Forbidden errors when authenticated with `EDI_TOKEN`.
+  * Updated internal API wrappers (`api_get()`, `api_post()`, `api_put()`, `api_delete()`) in `R/utilities.R` to automatically forward the `EDI_TOKEN` session cookie when logged in, ensuring consistent authentication across all repository endpoints.
 
 
 EDIutils 3.0.1 (2026-08-18)

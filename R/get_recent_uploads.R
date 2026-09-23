@@ -28,6 +28,7 @@
 #' and are thus filtered from the query results. The query parameter limit sets
 #' an upper limit on the number of audit records returned. For example,
 #' "limit=3".
+#' @note User authentication is required (see \code{login()})
 #' 
 #' @family Audit Manager Services
 #'
@@ -36,19 +37,25 @@
 #' @examples
 #' \dontrun{
 #' 
+#' login()
+#' 
 #' # Get the 5 most recently created data packages
 #' auditReport <- get_recent_uploads(
 #'  query = "serviceMethod=createDataPackage&limit=5"
 #' )
+#' 
+#' logout()
 #' }
 get_recent_uploads <- function(query, as = "data.frame", env = "production") {
   url <- paste0(base_url(env), "/audit/recent-uploads?")
   if (!is.null(query)) {
     url <- paste0(url, query)
   }
+  cookie <- bake_cookie()
   resp <- api_get(
     url,
     set_user_agent(),
+    cookie,
     handle = httr::handle("")
   )
   res <- httr::content(resp, as = "text", encoding = "UTF-8")

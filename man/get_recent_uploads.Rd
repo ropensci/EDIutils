@@ -43,13 +43,20 @@ and are thus filtered from the query results. The query parameter limit sets
 an upper limit on the number of audit records returned. For example,
 "limit=3".
 }
+\note{
+User authentication is required (see \code{login()})
+}
 \examples{
 \dontrun{
+
+login()
 
 # Get the 5 most recently created data packages
 auditReport <- get_recent_uploads(
  query = "serviceMethod=createDataPackage&limit=5"
 )
+
+logout()
 }
 }
 \seealso{

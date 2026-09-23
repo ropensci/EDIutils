@@ -16,3 +16,24 @@ testthat::test_that("list_recent_changes() works", {
                          "principal", "doi", "serviceMethod", "date")
   expect_true(all(children_found %in% children_expected))
 })
+
+testthat::test_that("list_recent_changes() requires authentication", {
+  orig_token <- Sys.getenv("EDI_TOKEN", "")
+  orig_key <- Sys.getenv("EDI_API_KEY", "")
+  on.exit({
+    if (orig_token == "") Sys.unsetenv("EDI_TOKEN") else Sys.setenv(EDI_TOKEN = orig_token)
+    if (orig_key == "") Sys.unsetenv("EDI_API_KEY") else Sys.setenv(EDI_API_KEY = orig_key)
+  })
+  
+  Sys.unsetenv("EDI_TOKEN")
+  Sys.unsetenv("EDI_API_KEY")
+  expect_error(
+    list_recent_changes(
+      fromDate = "2021-01-01T00:00:00",
+      toDate = "2021-02-01T00:00:00",
+      scope = "edi",
+      env = "staging"
+    ),
+    "Authentication token not found"
+  )
+})
