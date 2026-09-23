@@ -5,6 +5,8 @@
 #' @param key (character) EDI-API access key.
 #' @param config (character) Path to config.txt, which contains \code{userId}
 #' and \code{userPass} or \code{key} (see details below)
+#' @param env (character) Repository environment. Can be: "production",
+#' "staging", or "development".
 #'
 #' @return (NULL) No return value. The token or API key is written to its respective environment variable.
 #'
@@ -50,7 +52,7 @@
 #' login(key = "my_api_key")
 #'
 #' # Programmatically with legacy function arguments
-#' login(userId = "my_name", userPass = "my_secret")
+#' login(userId = "my_name", userPass = "my_secret", env = "production")
 #'
 #' # Programmatically with a file containing credentials
 #' login(config = paste0(tempdir(), "/config.txt"))
@@ -58,7 +60,7 @@
 #'
 #' @importFrom httr GET authenticate handle cookies stop_for_status
 #'
-login <- function(userId = NULL, userPass = NULL, key = NULL, config = NULL) {
+login <- function(userId = NULL, userPass = NULL, key = NULL, config = NULL, env = "production") {
   on.exit(rm(userId, userPass, key), add = TRUE)
   
   if (!is.null(config)) {
@@ -78,6 +80,11 @@ login <- function(userId = NULL, userPass = NULL, key = NULL, config = NULL) {
     i_key <- grepl("key", txt)
     if (any(i_key)) {
       key <- trimws(regmatches(txt[i_key], regexpr(pattern, txt[i_key], perl = TRUE)))
+    }
+
+    i_env <- grepl("env", txt)
+    if (any(i_env)) {
+      env <- trimws(regmatches(txt[i_env], regexpr(pattern, txt[i_env], perl = TRUE)))
     }
   }
   
@@ -103,7 +110,7 @@ login <- function(userId = NULL, userPass = NULL, key = NULL, config = NULL) {
   if (!is.null(userId) && !is.null(userPass) && userId != "" && userPass != "") {
     dn <- .create_dn(userId, "EDI")
     resp <- httr::GET(
-      url = paste0(base_url("development"), "/package/eml"),
+      url = paste0(base_url(env), "/package/eml"),
       config = httr::authenticate(dn, userPass, type = "basic"),
       handle = httr::handle("")
     )

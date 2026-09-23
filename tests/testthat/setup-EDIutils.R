@@ -1,6 +1,6 @@
 # Occasionally we want to test with real HTTP calls to the API
 if (Sys.getenv("EDI_USER") != "" & Sys.getenv("EDI_PASS") != "") {
-  login(userId = Sys.getenv("EDI_USER"), userPass = Sys.getenv("EDI_PASS"))
+  login(userId = Sys.getenv("EDI_USER"), userPass = Sys.getenv("EDI_PASS"), env = Sys.getenv("EDI_ENV", "staging"))
 }
 
 # Most of the time we run mock tests
