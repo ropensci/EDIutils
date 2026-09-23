@@ -1,3 +1,12 @@
+EDIutils 3.0.2 (2026-09-23)
+===========================
+
+### BUG FIXES
+
+  * Added `env = "production"` parameter to `login()` to allow selecting the target repository environment ("production", "staging", or "development") when authenticating with legacy LDAP credentials. Previously, `login()` hardcoded the development tier, which caused authentication failures (`HTTP 401 Unauthorized`) when making requests to production or staging due to tier-specific JWT digital signing keys (#73).
+  * Supported optional `env` configuration in credentials file for `login(config = ...)`.
+
+
 EDIutils 3.0.1 (2026-08-18)
 ===========================
 

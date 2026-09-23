@@ -4,7 +4,13 @@
 \alias{login}
 \title{Login to the EDI repository}
 \usage{
-login(userId = NULL, userPass = NULL, key = NULL, config = NULL)
+login(
+  userId = NULL,
+  userPass = NULL,
+  key = NULL,
+  config = NULL,
+  env = "production"
+)
 }
 \arguments{
 \item{userId}{(character) User identifier of an EDI data repository account.}
@@ -15,6 +21,9 @@ login(userId = NULL, userPass = NULL, key = NULL, config = NULL)
 
 \item{config}{(character) Path to config.txt, which contains \code{userId}
 and \code{userPass} or \code{key} (see details below)}
+
+\item{env}{(character) Repository environment. Can be: "production",
+"staging", or "development".}
 }
 \value{
 (NULL) No return value. The token or API key is written to its respective environment variable.
@@ -60,7 +69,7 @@ login()
 login(key = "my_api_key")
 
 # Programmatically with legacy function arguments
-login(userId = "my_name", userPass = "my_secret")
+login(userId = "my_name", userPass = "my_secret", env = "production")
 
 # Programmatically with a file containing credentials
 login(config = paste0(tempdir(), "/config.txt"))
